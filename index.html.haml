@@ -1,0 +1,51 @@
+---
+layout: base
+---
+.row
+  .span3
+  .span6
+    %img{ :src=>'/images/weld_logo_450x.png', :alt=>'Weld', :class=>"weld-home-logo" }
+  .span3
+.hero-unit
+  %p Weld is the reference implementation for <a href="http://www.cdi-spec.org/" target="_blank">CDI: Contexts and Dependency Injection for the Java EE platform</a>. The CDI specification is a part of the Java EE platform, ie. any Java EE-compliant application server must provide support for CDI. Weld is integrated into many application servers, e.g. <a href="http://www.wildfly.org/" target="_blank">WildFly 8</a> and <a href="https://glassfish.java.net/" target="_blank">Oracle GlassFish 4.x</a>.
+  %p Weld is available under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License 2.0</a>.
+.row
+  .span6
+    %h2 Quick Links
+    %ul.simple
+      %li
+        %p
+          %i.icon-github
+          Source code:
+          %a{ :href=>'http://github.com/weld', :target=>'_blank' }
+            http://github.com/weld
+      %li
+        %p
+          %i.icon-bug
+          Issue Tracker (JBoss JIRA):
+          %a{ :href=>'https://jira.jboss.org/jira/browse/WELD', :target=>'_blank' }
+            https://jira.jboss.org/jira/browse/WELD
+      %li
+        %p
+          %i.icon-book
+          Latest documentation:
+          %a{ :href=>'http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/', :target=>'_blank' }
+            http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/
+      %li
+        %p
+          %i.icon-comments
+          Discussions:
+          %a{ :href=>'https://community.jboss.org/en/weld?view=discussions', :target=>'_blank' }
+            https://community.jboss.org/en/weld?view=discussions
+    
+  .span6
+    %h2 News
+    %ul.simple
+      - for post in site.posts
+        %li
+          %h3
+            %a{ :href=>post.url }#{post.title}
+          - if (post.content.length > 0)
+            %p{:style=>"color: #666;"}
+              %strong #{post.date.year}-#{post.date.month}-#{post.date.day}: #{post.author}
+            %p= summarize(html_to_text(post.content), 50)

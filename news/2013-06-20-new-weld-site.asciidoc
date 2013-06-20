@@ -1,0 +1,9 @@
+---
+layout: base
+title: Weld has a new web site!
+author: Martin Kouba
+---
+
+== Weld has a new web site!
+
+And it's built with Awestruct.

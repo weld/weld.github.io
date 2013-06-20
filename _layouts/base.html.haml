@@ -1,0 +1,55 @@
+!!!5
+%html
+  %head
+    %meta{ :charset=>'utf-8' }
+    %title Weld - the Reference Implementation for CDI
+    %meta{ :name=>'viewport', :content=>'width=device-width, initial-scale=1.0' }
+    :css
+      body {
+        padding-top: 60px;
+      }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/styles.css" }
+    %link{ :rel=>'stylesheet', :href=>'//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' }
+    /[if lt IE 9]
+      %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{ :href=>"#{site.base_url}" }
+            %img{ :src=>'/images/weld_icon_32x.png', :alt=>'Weld', :class=>"weld-logo" }
+          %ul.nav
+            %li
+              %a{ :href=>"#{site.base_url}" } Home
+            %li
+              %a{ :href=>"/roadmap" }
+                Roadmap
+            %li
+              %a{ :href=>"/documentation" }
+                Documentation
+            %li
+              %a{ :href=>"http://github.com/weld", :target=>"_blank" }
+                Source Code
+            %li
+              %a{ :href=>"https://community.jboss.org/en/weld?view=discussions", :target=>"_blank" }
+                Forums
+            %li
+              %a{ :href=>"/download" }
+                Download
+            %li
+              %a{ :href=>"https://jira.jboss.org/jira/browse/WELD", :target=>"_blank" }
+                Issue Tracker
+            %li
+              %a{ :href=>"/tck"}
+                CDI TCK
+    .container
+      ~ content
+      %hr
+      %footer
+        %p 
+          &copy; #{Date.today.year} 
+          %a{ :href=>"www.redhat.com" }
+            %img{:src=>'http://static.jboss.org/theme/images/common/redhat_logo.png'}
+    -# Uncomment script tags (remove leading -#) when you're ready to use behaviors
+    -# %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js' }
+    -# %script{ :type=>'text/javascript', :src=>"#{site.base_url}/javascripts/bootstrap-collapse.js" }
