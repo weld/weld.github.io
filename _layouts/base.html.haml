@@ -8,7 +8,7 @@
       body {
         padding-top: 60px;
       }
-    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/styles.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"/stylesheets/styles.css" }
     %link{ :rel=>'stylesheet', :href=>'//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' }
     /[if lt IE 9]
       %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
@@ -16,11 +16,11 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand{ :href=>"#{site.base_url}" }
+          %a.brand{ :href=>"/" }
             %img{ :src=>'/images/weld_icon_32x.png', :alt=>'Weld', :class=>"weld-logo" }
           %ul.nav
             %li
-              %a{ :href=>"#{site.base_url}" } Home
+              %a{ :href=>"/" } Home
             %li
               %a{ :href=>"/roadmap" }
                 Roadmap
