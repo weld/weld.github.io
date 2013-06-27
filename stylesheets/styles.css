@@ -2453,7 +2453,7 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(/images/glyphicons-halflings.png?1371796063);
+  background-image: url(/images/glyphicons-halflings.png?1371796157);
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
@@ -2478,7 +2478,7 @@ table th[class*="span"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url(/images/glyphicons-halflings-white.png?1371796063);
+  background-image: url(/images/glyphicons-halflings-white.png?1371796157);
 }
 
 /* line 52, /var/lib/gems/1.8/gems/bootstrap-sass-2.3.1.0/vendor/assets/stylesheets/bootstrap/_sprites.scss */
@@ -8304,19 +8304,24 @@ img.weld-home-logo {
 }
 
 /* line 22, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+.navbar .nav li a {
+  font-family: 'TitilliumText22LMedium',sans;
+}
+
+/* line 26, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 body {
   font-size: 16px;
   background: linear-gradient(to bottom, #bdc4cf 0px, #f3f3f3 40%) no-repeat scroll 0 0 transparent;
   height: 100%;
 }
 
-/* line 28, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 32, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.hero-unit {
   background: linear-gradient(to bottom, #000000 0px, #313131 40%) no-repeat scroll 0 0 transparent;
   color: white;
 }
 
-/* line 33, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 37, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1, h2, h3 {
   font-family: 'TitilliumText22LMedium', sans;
   font-weight: bold;
@@ -8324,7 +8329,7 @@ h1, h2, h3 {
   color: #656565;
 }
 
-/* line 40, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 44, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .content .btn-primary {
   background-color: #48678D;
   background-image: linear-gradient(to bottom, #4f729d, #3e5776);
@@ -8334,12 +8339,12 @@ h1, h2, h3 {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* line 49, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 53, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.simple {
   margin-left: 0px;
 }
 
-/* line 53, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 57, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.simple li {
   list-style-type: none;
 }
