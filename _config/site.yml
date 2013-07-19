@@ -1,2 +1,8 @@
 asciidoc:
   engine: asciidoctor
+profiles: 
+  production:
+    base_url: http://weld.github.io
+    deploy: 
+      host: github_pages
+      branch: master
