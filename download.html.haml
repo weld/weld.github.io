@@ -2,4 +2,75 @@
 layout: base
 ---
 %h2 Download
-%p ...
+%h3 Java EE Application Server
+%p
+  The easiest way to use Weld is with a Java EE Application Server. Weld is used by the following application servers:
+  %ul
+    %li
+      %a{:href=>"http://www.wildfly.org/"}WildFly 8
+    %li
+      %a{:href=>"http://www.jboss.org/products/eap.html"}JBoss Enterprise Application Platform 6
+    %li
+      %a{:href=>"https://www.jboss.org/jbossas/"}JBoss AS 7
+    %li
+      %a{:href=>"http://glassfish.java.net/"}GlassFish
+    %li
+      %a{:href=>"http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html"}Oracle WebLogic Server
+%h3 Maven
+
+TODO
+
+%h3 Binary distribution
+
+/ TODO: externalize releases into a separate file
+
+- releases = [{"version" => "2.1.0.Alpha1",
+               "category" => "Alpha",
+               "date" => "28.8.2013",
+               "versionId" => "12322304"},
+              {"version" => "2.0.3.Final",
+               "category" => "Final",
+               "date" => "22.7.2013",
+               "versionId" => "12322078"},
+              {"version" => "1.1.14.Final",
+               "category" => "Final",
+               "date" => "1.8.2013",
+               "versionId" => "12322154"},
+              {"version" => "1.0.1.Final",
+               "category" => "Final",
+               "date" => "23.02.2010",
+               "versionId" => "12314457"},
+             ]
+
+%table.downloads
+  %tr
+    %th
+      Version
+    %th
+      Category
+    %th
+      Release date
+    %th
+      Changelog
+    %th
+      Download
+  - for release in releases
+    %tr
+      %td.version
+        =release["version"]
+      %td
+        =release["category"]
+      %td
+        =release["date"]
+      %td
+        %a{:href=>"https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=" + release['versionId']}
+          Changelog
+      %td
+        %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/" + release['version']}
+          Download
+
+%h3 Snapshots
+%p
+  Nightly snapshots are produced regularly by our continuous integration server and available from the
+  %a{:href=>"https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/weld/"}
+    snapshots repository.

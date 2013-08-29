@@ -152,3 +152,16 @@ ul.simple {
 ul.simple li {
     list-style-type: none;
 }
+
+table.downloads {
+  width: 650px;
+  th {
+    border-bottom: 1px solid;
+    text-align: left;
+  }
+  td {
+    vertical-align: top;
+    border-bottom: 1px solid;
+    text-align: left;
+  }
+}
