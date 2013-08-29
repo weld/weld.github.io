@@ -29,6 +29,10 @@
                 %i.icon-download
                 Download
             %li
+              %a{ :href=>"/news" }
+                %i.icon-edit
+                News
+            %li
               %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel" }
                 %i.icon-road
                 Road map
@@ -48,10 +52,6 @@
               %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" }
                 %i.icon-tasks
                 Bug tracker
-            %li
-              %a{ :href=>"/governance" }
-                %i.icon-edit
-                Governance
           %a.hidden-desktop#toggle_menu{:href=>"#"}
             %i.icon-exchange
           %ul.nav.nav-tabs.nav-stacked.span2.hide.hidden-desktop#mobile_menu

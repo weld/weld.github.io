@@ -4,6 +4,4 @@ title: Weld has a new web site!
 author: Martin Kouba
 ---
 
-== Weld has a new web site!
-
-And it's built with Awestruct.
+Weld has a new web site and it's built with Awestruct!
