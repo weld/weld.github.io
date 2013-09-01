@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: news
 title: Weld has a new web site!
 author: Martin Kouba
 ---

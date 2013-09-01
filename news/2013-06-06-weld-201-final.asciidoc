@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: news
 title: Weld 2.0.1.Final
 author: Jozef Hartinger
 ---
