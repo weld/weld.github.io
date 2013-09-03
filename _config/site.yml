@@ -6,3 +6,4 @@ profiles:
     deploy: 
       host: github_pages
       branch: master
+title: Weld
