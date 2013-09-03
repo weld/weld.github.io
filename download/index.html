@@ -10,7 +10,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- /If IE7 for font-awesome -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
-    <link href="http://weld.github.io/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:4242/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
@@ -134,148 +134,150 @@
             </div>
           </div>
           <div class="row-fluid">
-            <h2>Download</h2>
-            <h3>Java EE Application Server</h3>
-            <p>
-              The easiest way to use Weld is with a Java EE Application Server. Weld is used by the following application servers:
+            <div class="span10">
+              <h2>Download</h2>
+              <h3>Java EE Application Server</h3>
+              <p>
+                The easiest way to use Weld is with a Java EE Application Server. Weld is used by the following application servers:
+                <ul>
+                  <li>
+                    <a href="http://www.wildfly.org/">WildFly 8</a>
+                  </li>
+                  <li>
+                    <a href="http://www.jboss.org/products/eap.html">JBoss Enterprise Application Platform 6</a>
+                  </li>
+                  <li>
+                    <a href="https://www.jboss.org/jbossas/">JBoss AS 7</a>
+                  </li>
+                  <li>
+                    <a href="http://glassfish.java.net/">GlassFish</a>
+                  </li>
+                  <li>
+                    <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">Oracle WebLogic Server</a>
+                  </li>
+                </ul>
+              </p>
+              <h3>Maven</h3>
               <ul>
                 <li>
-                  <a href="http://www.wildfly.org/">WildFly 8</a>
+                  <a href="http://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C1.1%7Cjar">
+                    CDI API
+                  </a>
                 </li>
                 <li>
-                  <a href="http://www.jboss.org/products/eap.html">JBoss Enterprise Application Platform 6</a>
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C2.0.3.Final%7Cjar">Weld Core</a>
                 </li>
                 <li>
-                  <a href="https://www.jboss.org/jbossas/">JBoss AS 7</a>
+                  Weld Servlet (
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C2.0.3.Final%7Cjar">Core</a>
+                  ,
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C2.0.3.Final%7Cjar">With dependencies</a>
+                  )
                 </li>
                 <li>
-                  <a href="http://glassfish.java.net/">GlassFish</a>
+                  Weld SE (
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C2.0.3.Final%7Cjar">Core</a>
+                  ,
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C2.0.3.Final%7Cjar">With dependencies</a>
+                  )
                 </li>
                 <li>
-                  <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">Oracle WebLogic Server</a>
+                  <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C2.0.3.Final%7Cjar">
+                    Weld OSGi bundle
+                  </a>
                 </li>
               </ul>
-            </p>
-            <h3>Maven</h3>
-            <ul>
-              <li>
-                <a href="http://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C1.1%7Cjar">
-                  CDI API
+              <h3>Binary distribution</h3>
+              <table class="downloads">
+                <tr>
+                  <th>
+                    Version
+                  </th>
+                  <th>
+                    Category
+                  </th>
+                  <th>
+                    Release date
+                  </th>
+                  <th>
+                    Changelog
+                  </th>
+                  <th>
+                    Download
+                  </th>
+                </tr>
+                <tr>
+                  <td class="version">
+                    2.0.3.Final
+                  </td>
+                  <td>
+                    Final
+                  </td>
+                  <td>
+                    22.7.2013
+                  </td>
+                  <td>
+                    <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322078">
+                      Changelog
+                    </a>
+                  </td>
+                  <td>
+                    <a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.3.Final">
+                      Download
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="version">
+                    1.1.14.Final
+                  </td>
+                  <td>
+                    Final
+                  </td>
+                  <td>
+                    1.8.2013
+                  </td>
+                  <td>
+                    <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322154">
+                      Changelog
+                    </a>
+                  </td>
+                  <td>
+                    <a href="http://sourceforge.net/projects/jboss/files/Weld/1.1.14.Final">
+                      Download
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="version">
+                    1.0.1.Final
+                  </td>
+                  <td>
+                    Final
+                  </td>
+                  <td>
+                    23.02.2010
+                  </td>
+                  <td>
+                    <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12314457">
+                      Changelog
+                    </a>
+                  </td>
+                  <td>
+                    <a href="http://sourceforge.net/projects/jboss/files/Weld/1.0.1.Final">
+                      Download
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <h3>Snapshots</h3>
+              <p>
+                Nightly snapshots are produced regularly by our continuous integration server and available from the
+                <a href="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/weld/">
+                  snapshots repository.
                 </a>
-              </li>
-              <li>
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C2.0.3.Final%7Cjar">Weld Core</a>
-              </li>
-              <li>
-                Weld Servlet (
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C2.0.3.Final%7Cjar">Core</a>
-                ,
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C2.0.3.Final%7Cjar">With dependencies</a>
-                )
-              </li>
-              <li>
-                Weld SE (
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C2.0.3.Final%7Cjar">Core</a>
-                ,
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C2.0.3.Final%7Cjar">With dependencies</a>
-                )
-              </li>
-              <li>
-                <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C2.0.3.Final%7Cjar">
-                  Weld OSGi bundle
-                </a>
-              </li>
-            </ul>
-            <h3>Binary distribution</h3>
-            <table class="downloads">
-              <tr>
-                <th>
-                  Version
-                </th>
-                <th>
-                  Category
-                </th>
-                <th>
-                  Release date
-                </th>
-                <th>
-                  Changelog
-                </th>
-                <th>
-                  Download
-                </th>
-              </tr>
-              <tr>
-                <td class="version">
-                  2.0.3.Final
-                </td>
-                <td>
-                  Final
-                </td>
-                <td>
-                  22.7.2013
-                </td>
-                <td>
-                  <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322078">
-                    Changelog
-                  </a>
-                </td>
-                <td>
-                  <a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.3.Final">
-                    Download
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class="version">
-                  1.1.14.Final
-                </td>
-                <td>
-                  Final
-                </td>
-                <td>
-                  1.8.2013
-                </td>
-                <td>
-                  <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322154">
-                    Changelog
-                  </a>
-                </td>
-                <td>
-                  <a href="http://sourceforge.net/projects/jboss/files/Weld/1.1.14.Final">
-                    Download
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class="version">
-                  1.0.1.Final
-                </td>
-                <td>
-                  Final
-                </td>
-                <td>
-                  23.02.2010
-                </td>
-                <td>
-                  <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12314457">
-                    Changelog
-                  </a>
-                </td>
-                <td>
-                  <a href="http://sourceforge.net/projects/jboss/files/Weld/1.0.1.Final">
-                    Download
-                  </a>
-                </td>
-              </tr>
-            </table>
-            <h3>Snapshots</h3>
-            <p>
-              Nightly snapshots are produced regularly by our continuous integration server and available from the
-              <a href="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/weld/">
-                snapshots repository.
-              </a>
-            </p>
+              </p>
+            </div>
           </div>
         </div>
       </div>

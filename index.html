@@ -10,7 +10,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- /If IE7 for font-awesome -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
-    <link href="http://weld.github.io/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:4242/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
@@ -134,105 +134,107 @@
             </div>
           </div>
           <div class="row-fluid">
-            <div class="row">
-              <div class="span10">
-                <p>
-                  Weld is the reference implementation of
-                  <a href="http://cdi-spec.org">
-                    CDI: Contexts and Dependency Injection for the Java EE Platform
-                  </a>
-                  which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
-                </p>
-                <p>
-                  Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic and others. Weld can also be used in a Servlet-only environment (Tomcat, Jetty) or plain Java SE environment.
-                </p>
-                <p>
-                  Weld is licensed under the
-                  <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
-                    Apache License, Version 2.0
-                  </a>
-                </p>
+            <div class="span10">
+              <div class="row">
+                <div class="span12">
+                  <p>
+                    Weld is the reference implementation of
+                    <a href="http://cdi-spec.org">
+                      CDI: Contexts and Dependency Injection for the Java EE Platform
+                    </a>
+                    which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+                  </p>
+                  <p>
+                    Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic and others. Weld can also be used in a Servlet-only environment (Tomcat, Jetty) or plain Java SE environment.
+                  </p>
+                  <p>
+                    Weld is licensed under the
+                    <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
+                      Apache License, Version 2.0
+                    </a>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="span5">
-                <div>
-                  <h2>Try Weld Today</h2>
+              <div class="row">
+                <div class="span6">
                   <div>
-                    <p>
-                      To use Weld today, download the
-                      <a>WildFly server</a>
-                      (formelly JBoss AS) and add the following code to the
-                      <em>pom.xml</em>
-                      file of your application:
-                    </p>
-                    <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.1&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
-                    <p>
-                      For alternative ways of using Weld, see the
-                      <a href="/download">download section</a>
-                      or the
-                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">reference documentation.</a>
-                    </p>
+                    <h2>Try Weld Today</h2>
+                    <div>
+                      <p>
+                        To use Weld today, download the
+                        <a>WildFly server</a>
+                        (formelly JBoss AS) and add the following code to the
+                        <em>pom.xml</em>
+                        file of your application:
+                      </p>
+                      <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.1&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
+                      <p>
+                        For alternative ways of using Weld, see the
+                        <a href="/download">download section</a>
+                        or the
+                        <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">reference documentation.</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <h2>Weld Book</h2>
+                    <p>The latest book on Weld is now available:</p>
+                    <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
+                      <img height="307" src="images/book.jpg" width="250">
+                    </a>
                   </div>
                 </div>
-                <div>
-                  <h2>Weld Book</h2>
-                  <p>The latest book on Weld is now available:</p>
-                  <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
-                    <img height="307" src="images/book.jpg" width="250">
-                  </a>
+                <div class="span6">
+                  <h2>News</h2>
+                  <ul class="simple">
+                    <li>
+                      <h3>
+                        <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
+                      </h3>
+                      <p style="color: #666;">
+                        <strong>2013-6-20: Martin Kouba</strong>
+                      </p>
+                      <p>
+                        
+                        Weld has a new web site and it&#8217;s built with Awestruct!
+                        
+                        
+                        
+                        ...
+                      </p>
+                    </li>
+                    <li>
+                      <h3>
+                        <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
+                      </h3>
+                      <p style="color: #666;">
+                        <strong>2013-6-6: Jozef Hartinger</strong>
+                      </p>
+                      <p>
+                        
+                        Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the release notes.
+                        
+                        
+                        Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see...
+                      </p>
+                    </li>
+                    <li>
+                      <h3>
+                        <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
+                      </h3>
+                      <p style="color: #666;">
+                        <strong>2013-4-25: Jozef Hartinger</strong>
+                      </p>
+                      <p>
+                        
+                        I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (JSR 346). For a list of major changes in CDI 1.1 see the specification.
+                        
+                        
+                        The reference implementation will soon be available in GlassFish 4 and WildFly (formerly JBoss Application...
+                      </p>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <div class="span5">
-                <h2>News</h2>
-                <ul class="simple">
-                  <li>
-                    <h3>
-                      <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
-                    </h3>
-                    <p style="color: #666;">
-                      <strong>2013-6-20: Martin Kouba</strong>
-                    </p>
-                    <p>
-                      
-                      Weld has a new web site and it&#8217;s built with Awestruct!
-                      
-                      
-                      
-                      ...
-                    </p>
-                  </li>
-                  <li>
-                    <h3>
-                      <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                    </h3>
-                    <p style="color: #666;">
-                      <strong>2013-6-6: Jozef Hartinger</strong>
-                    </p>
-                    <p>
-                      
-                      Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the release notes.
-                      
-                      
-                      Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see...
-                    </p>
-                  </li>
-                  <li>
-                    <h3>
-                      <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                    </h3>
-                    <p style="color: #666;">
-                      <strong>2013-4-25: Jozef Hartinger</strong>
-                    </p>
-                    <p>
-                      
-                      I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (JSR 346). For a list of major changes in CDI 1.1 see the specification.
-                      
-                      
-                      The reference implementation will soon be available in GlassFish 4 and WildFly (formerly JBoss Application...
-                    </p>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
