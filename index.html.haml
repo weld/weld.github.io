@@ -3,13 +3,42 @@ layout: base
 ---
 .row
   .span10
-    %p Weld is the reference implementation for CDI: Contexts and Dependency Injection for the Java EE Platform.
-    %p For an application server to be Java EE compliant it must contain a CDI implementation.  As the Java standard for CDI, Weld is integrated into many application servers such as JBoss EAP, WildFly, Glassfish, Tomcat, and Jetty.
+    %p 
+      Weld is the reference implementation of 
+      %a{:href=>"http://cdi-spec.org"}
+        CDI: Contexts and Dependency Injection for the Java EE Platform
+      which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+    %p
+      Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic and others. Weld can also be used in a Servlet-only environment (Tomcat, Jetty) or plain Java SE environment.
+    %p 
+      Weld is licensed under the 
+      %a{:href=>"http://www.apache.org/licenses/LICENSE-2.0.html"}
+        Apache License, Version 2.0
 .row
   .span5
     %div
       %h2 Try Weld Today
-      %p TODO
+      %div
+        %p 
+          To use Weld today, download the
+          %a{}WildFly server
+          (formelly JBoss AS) and add the following code to the 
+          %em pom.xml
+          file of your application:
+        %pre.code
+          = preserve do
+            :escaped
+              <dependency>
+                 <groupId>javax.enterprise</groupId>
+                 <artifactId>cdi-api</artifactId>
+                 <version>1.1</version>
+                 <scope>provided</scope>
+              </dependency>
+        %p
+          For alternative ways of using Weld, see the
+          %a{:href=>"/download"}download section
+          or the
+          %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html"}reference documentation.
     %div
       %h2 Weld Book
       %p The latest book on Weld is now available:
