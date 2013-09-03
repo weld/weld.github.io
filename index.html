@@ -2,154 +2,261 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Weld - the Reference Implementation for CDI</title>
+    <title>
+      Weld: Home
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <style>
-      body {
-        padding-top: 60px;
-      }
-    </style>
-    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- /If IE7 for font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:4242/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/">
-            <img alt="Weld" class="weld-logo" src="/images/weld_icon_32x.png">
-          </a>
-          <ul class="nav">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2" style="min-height:1px;">
+          <ul class="nav nav-tabs nav-stacked span2 visible-desktop" id="main_nav">
             <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel">
-                Roadmap
-              </a>
-            </li>
-            <li>
-              <a href="/documentation">
-                Documentation
-              </a>
-            </li>
-            <li>
-              <a href="http://github.com/weld" target="_blank">
-                Source Code
-              </a>
-            </li>
-            <li>
-              <a href="/community">
-                Community
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
               </a>
             </li>
             <li>
               <a href="/download">
+                <i class="icon-download"></i>
                 Download
               </a>
             </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="span3"></div>
-        <div class="span6">
-          <img alt="Weld" class="weld-home-logo" src="/images/weld_logo_450x.png">
-        </div>
-        <div class="span3"></div>
-      </div>
-      <div class="hero-unit">
-        <p>Weld is the reference implementation for <a href="http://www.cdi-spec.org/" target="_blank">CDI: Contexts and Dependency Injection for the Java EE platform</a>. The CDI specification is a part of the Java EE platform, ie. any Java EE-compliant application server must provide support for CDI. Weld is integrated into many application servers, e.g. <a href="http://www.wildfly.org/" target="_blank">WildFly 8</a> and <a href="https://glassfish.java.net/" target="_blank">Oracle GlassFish 4.x</a>.</p>
-        <p>Weld is available under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License 2.0</a>.</p>
-      </div>
-      <div class="row">
-        <div class="span6">
-          <h2>Quick Links</h2>
-          <ul class="simple">
             <li>
-              <p>
-                <i class="icon-github"></i>
-                Source code:
-                <a href="http://github.com/weld" target="_blank">
-                  http://github.com/weld
-                </a>
-              </p>
+              <a href="/news">
+                <i class="icon-edit"></i>
+                News
+              </a>
             </li>
             <li>
-              <p>
-                <i class="icon-bug"></i>
-                Issue Tracker (JBoss JIRA):
-                <a href="https://jira.jboss.org/jira/browse/WELD" target="_blank">
-                  https://jira.jboss.org/jira/browse/WELD
-                </a>
-              </p>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel">
+                <i class="icon-road"></i>
+                Road map
+              </a>
             </li>
             <li>
-              <p>
+              <a href="/documentation">
                 <i class="icon-book"></i>
-                Latest documentation:
-                <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/" target="_blank">
-                  http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/
-                </a>
-              </p>
+                Documentation
+              </a>
             </li>
             <li>
-              <p>
-                <i class="icon-comments"></i>
-                Discussions:
-                <a href="https://community.jboss.org/en/weld?view=discussions" target="_blank">
-                  https://community.jboss.org/en/weld?view=discussions
-                </a>
-              </p>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+          </ul>
+          <a class="hidden-desktop" href="#" id="toggle_menu">
+            <i class="icon-exchange"></i>
+          </a>
+          <ul class="nav nav-tabs nav-stacked span2 hide hidden-desktop" id="mobile_menu">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="/roadmap">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://jira.jboss.org/jira/browse/WELD">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+            <li>
+              <a href="/governance"></a>
+              <i class="icon-edit">
+                Governance
+              </i>
             </li>
           </ul>
         </div>
-        <div class="span6">
-          <h2>News</h2>
-          <ul class="simple">
-            <li>
-              <h3>
-                <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
-              </h3>
-              <p style="color: #666;">
-                <strong>2013-6-20: Martin Kouba</strong>
-              </p>
-              <p>
-                
-                
-                  Weld has a new web site!
-                  
-                  
-                
-                    
-                  And it&#8217;s built with Awestruct.
-                
-                
-                  
-                  
-                
-                
-                
-                ...
-              </p>
-            </li>
-          </ul>
+        <div class="span10">
+          <div class="row">
+            <div class="span4">
+              <img alt="Weld Logo" class="weld-home-logo" src="/images/weld_logo_450x.png">
+            </div>
+            <div class="span8">
+              <img alt="CDI tagcloud" class="cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="row">
+              <div class="span10">
+                <p>
+                  Weld is the reference implementation of
+                  <a href="http://cdi-spec.org">
+                    CDI: Contexts and Dependency Injection for the Java EE Platform
+                  </a>
+                  which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+                </p>
+                <p>
+                  Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic and others. Weld can also be used in a Servlet-only environment (Tomcat, Jetty) or plain Java SE environment.
+                </p>
+                <p>
+                  Weld is licensed under the
+                  <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
+                    Apache License, Version 2.0
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span5">
+                <div>
+                  <h2>Try Weld Today</h2>
+                  <div>
+                    <p>
+                      To use Weld today, download the
+                      <a>WildFly server</a>
+                      (formelly JBoss AS) and add the following code to the
+                      <em>pom.xml</em>
+                      file of your application:
+                    </p>
+                    <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.1&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
+                    <p>
+                      For alternative ways of using Weld, see the
+                      <a href="/download">download section</a>
+                      or the
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">reference documentation.</a>
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h2>Weld Book</h2>
+                  <p>The latest book on Weld is now available:</p>
+                  <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
+                    <img height="307" src="images/book.jpg" width="250">
+                  </a>
+                </div>
+              </div>
+              <div class="span5">
+                <h2>News</h2>
+                <ul class="simple">
+                  <li>
+                    <h3>
+                      <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
+                    </h3>
+                    <p style="color: #666;">
+                      <strong>2013-6-20: Martin Kouba</strong>
+                    </p>
+                    <p>
+                      
+                      Weld has a new web site and it&#8217;s built with Awestruct!
+                      
+                      
+                      
+                      ...
+                    </p>
+                  </li>
+                  <li>
+                    <h3>
+                      <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
+                    </h3>
+                    <p style="color: #666;">
+                      <strong>2013-6-6: Jozef Hartinger</strong>
+                    </p>
+                    <p>
+                      
+                      Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the release notes.
+                      
+                      
+                      Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see...
+                    </p>
+                  </li>
+                  <li>
+                    <h3>
+                      <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
+                    </h3>
+                    <p style="color: #666;">
+                      <strong>2013-4-25: Jozef Hartinger</strong>
+                    </p>
+                    <p>
+                      
+                      I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (JSR 346). For a list of major changes in CDI 1.1 see the specification.
+                      
+                      
+                      The reference implementation will soon be available in GlassFish 4 and WildFly (formerly JBoss Application...
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <hr>
       <footer>
-        <p>
-          &copy; 2013
-          <a href="www.redhat.com">
-            <img src="http://static.jboss.org/theme/images/common/redhat_logo.png">
-          </a>
-        </p>
+        <div class="row">
+          <p>
+            Copyright &copy; 2013, Red Hat, Inc.
+            Weld is licensed under the
+            <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
+              Apache License, Version 2.0
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   </body>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
+    });
+  </script>
 </html>
