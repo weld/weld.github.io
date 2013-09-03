@@ -3,8 +3,6 @@ layout: base
 title: Download
 ---
 
-- releases = eval File.open('releases').read
-
 %h2 Download
 %h3 Java EE Application Server
 %p
@@ -26,22 +24,23 @@ title: Download
     %a{:href=>"http://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C1.1%7Cjar"}
       CDI API
   %li
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C" + releases[0]['version'] + "%7Cjar"}Weld Core
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{site.releases[0].version}%7Cjar"}Weld Core
   %li
     Weld Servlet (
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C" + releases[0]['version'] + "%7Cjar"}Core
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C#{site.releases[0].version}%7Cjar"}Core
     , 
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C" + releases[0]['version'] + "%7Cjar"}With dependencies
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C#{site.releases[0].version}%7Cjar"}With dependencies
     )
   %li
     Weld SE (
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C" + releases[0]['version'] + "%7Cjar"}Core
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C#{site.releases[0].version}%7Cjar"}Core
     ,
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C" + releases[0]['version'] + "%7Cjar"}With dependencies
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C#{site.releases[0].version}%7Cjar"}With dependencies
     )
   %li
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C" + releases[0]['version'] + "%7Cjar"} 
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C#{site.releases[0].version}%7Cjar"} 
       Weld OSGi bundle
+
 
 %h3 Binary distribution
 
@@ -57,7 +56,7 @@ title: Download
       Changelog
     %th
       Download
-  - for release in releases
+  - for release in ( site.releases )
     %tr
       %td.version
         =release["version"]
@@ -66,10 +65,10 @@ title: Download
       %td
         =release["date"]
       %td
-        %a{:href=>"https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=" + release['versionId']}
+        %a{:href=>"https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=#{release.versionId}"}
           Changelog
       %td
-        %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/" + release['version']}
+        %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
           Download
 
 %h3 Snapshots
