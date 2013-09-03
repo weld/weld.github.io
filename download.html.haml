@@ -1,6 +1,9 @@
 ---
 layout: base
 ---
+
+- releases = eval File.open('releases').read
+
 %h2 Download
 %h3 Java EE Application Server
 %p
@@ -17,14 +20,29 @@ layout: base
     %li
       %a{:href=>"http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html"}Oracle WebLogic Server
 %h3 Maven
-
-TODO
+%ul
+  %li
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C1.1%7Cjar"}
+      CDI API
+  %li
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C" + releases[0]['version'] + "%7Cjar"}Weld Core
+  %li
+    Weld Servlet (
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C" + releases[0]['version'] + "%7Cjar"}Core
+    , 
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C" + releases[0]['version'] + "%7Cjar"}With dependencies
+    )
+  %li
+    Weld SE (
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C" + releases[0]['version'] + "%7Cjar"}Core
+    ,
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C" + releases[0]['version'] + "%7Cjar"}With dependencies
+    )
+  %li
+    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C" + releases[0]['version'] + "%7Cjar"} 
+      Weld OSGi bundle
 
 %h3 Binary distribution
-
-/ TODO: externalize releases into a separate file
-
-- releases = eval File.open('releases').read
 
 %table.downloads
   %tr

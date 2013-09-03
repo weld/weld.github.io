@@ -1,8 +1,8 @@
 [
-  {"version" => "2.1.0.Alpha1",
-   "category" => "Alpha",
-   "date" => "28.8.2013",
-   "versionId" => "12322304"},
+#  {"version" => "2.1.0.Alpha1",
+#   "category" => "Alpha",
+#   "date" => "28.8.2013",
+#   "versionId" => "12322304"},
 
   {"version" => "2.0.3.Final",
    "category" => "Final",
