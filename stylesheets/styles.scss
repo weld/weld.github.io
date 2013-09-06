@@ -141,12 +141,19 @@ h1, h2, h3 {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-ul.simple {
+ul.newsColumn {
     margin-left: 0px;
 }
 
-ul.simple li {
+ul.newsColumn li {
     list-style-type: none;
+    padding-bottom:10px;
+}
+
+ul.newsColumn strong {
+    color: #666;
+    font-size: .8em;
+    margin-top: -8px;
 }
 
 table.downloads {
