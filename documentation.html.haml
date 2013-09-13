@@ -13,8 +13,17 @@ title: Documentation
     %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf"}PDF
 
 %h2 FAQ
+%ul
+  - site.faq.each_with_index do |faq, i|
+    %li
+      %a{:href=>"##{i}"}
+        = faq.title
+
+%hr
+
 - site.faq.each_with_index do |faq, i|
-  %h4
-    = faq.title
-  ~ faq[:rendered_content]
+  %div{:id=>"#{i}"}
+    %h4
+      = faq.title
+    ~ faq[:rendered_content]
 
