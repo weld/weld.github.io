@@ -11,3 +11,10 @@ title: Documentation
     %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/html_single/"}HTML (Single page)
   %li
     %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf"}PDF
+
+%h2 FAQ
+- site.faq.each_with_index do |faq, i|
+  %h4
+    = faq.title
+  ~ faq[:rendered_content]
+
