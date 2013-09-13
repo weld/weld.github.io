@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.github.io/</id>
   <title>Weld</title>
-  <updated>2013-09-06T16:56:40+02:00</updated>
+  <updated>2013-09-13T09:28:05+02:00</updated>
   <link href="http://weld.github.io/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.github.io/" rel="alternate" type="text/html" />
   <entry>
     <id>http://weld.github.io/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2013-09-06T16:56:40+02:00</updated>
+    <updated>2013-09-13T09:28:05+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.github.io/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -31,7 +31,7 @@
   <entry>
     <id>http://weld.github.io/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2013-09-06T16:56:40+02:00</updated>
+    <updated>2013-09-13T09:28:05+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.github.io/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -72,7 +72,7 @@
   <entry>
     <id>http://weld.github.io/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2013-09-06T16:56:40+02:00</updated>
+    <updated>2013-09-13T09:28:05+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.github.io/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
