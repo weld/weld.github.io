@@ -1,0 +1,11 @@
+= Some of my beans aren't deployed and I can't see why? 
+
+Weld will not create beans if it can't load the class, or some class dependency. If that happens, you'll see a note in the server log.
+
+
+[source]
+----
+WELD-000119: Not generating any bean definitions from org.jboss.weld.tests.beanDeployment.noclassdeffound.Bar because of underlying class loading error
+----
+
+You can view more details by increasing the log level of the application server to DEBUG.

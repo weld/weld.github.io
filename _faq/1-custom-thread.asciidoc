@@ -1,0 +1,5 @@
+= If I create a thread in my CDI bean, how will Weld react?
+
+Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld http://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html[reference guide] contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.
+
+The dependent context and the application context will work as usual in any user created thread.
