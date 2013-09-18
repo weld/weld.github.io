@@ -2,6 +2,11 @@ asciidoc:
   engine: asciidoctor
 profiles: 
   production:
+    base_url: http://weld.cdi-spec.org
+    deploy: 
+      host: github_pages
+      branch: master
+  github:
     base_url: http://weld.github.io
     deploy: 
       host: github_pages
