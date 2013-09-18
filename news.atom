@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
-  <id>http://weld.github.io/</id>
+  <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2013-09-13T10:23:15+02:00</updated>
-  <link href="http://weld.github.io/news.atom" rel="self" type="application/atom+xml" />
-  <link href="http://weld.github.io/" rel="alternate" type="text/html" />
+  <updated>2013-09-17T08:21:15+02:00</updated>
+  <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
+  <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
-    <id>http://weld.github.io/news/2013/06/20/new-weld-site/</id>
+    <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2013-09-13T10:23:15+02:00</updated>
+    <updated>2013-09-17T08:21:15+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
-    <link href="http://weld.github.io/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
       <name>Martin Kouba</name>
     </author>
@@ -29,11 +29,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://weld.github.io/news/2013/06/06/weld-201-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2013-09-13T10:23:15+02:00</updated>
+    <updated>2013-09-17T08:21:15+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
-    <link href="http://weld.github.io/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -56,7 +56,7 @@
     </summary>
     <content type="html">
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the &lt;a href=&quot;http://weld.github.io/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12321507:&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the &lt;a href=&quot;http://weld.cdi-spec.org/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12321507:&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see &lt;a href=&quot;http://in.relation.to/Bloggers/CDI11Available&quot;&gt;Pete’s blog post&lt;/a&gt;. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!&lt;/p&gt;
@@ -70,11 +70,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://weld.github.io/news/2013/04/25/weld-200-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2013-09-13T10:23:15+02:00</updated>
+    <updated>2013-09-17T08:21:15+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
-    <link href="http://weld.github.io/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
