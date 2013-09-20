@@ -3,5 +3,7 @@ layout: news
 title: Weld has a new web site!
 author: Martin Kouba
 ---
+:excerpt: Weld has a new web site and it's built with Awestruct!
+:awestruct-excerpt: {excerpt}
 
-Weld has a new web site and it's built with Awestruct!
+{excerpt}
