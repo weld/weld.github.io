@@ -2,6 +2,7 @@
 layout: base
 title: News
 ---
+
 - for post in page.posts
   .post
     %h3
@@ -13,3 +14,9 @@ title: News
       = post.content
 
 = page.posts.links
+
+%hr
+%div
+  %a{:href=>"http://weld.cdi-spec.org/news.atom"}
+    %i.icon-envelope
+    Subscribe to Weld news
