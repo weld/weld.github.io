@@ -45,7 +45,7 @@ title: Home
   .span4
     %h2 News
     %ul.newsColumn
-      - for post in site.posts
+      - for post in site.posts[0,3]
         %li
           %h4
             %a{ :href=>post.url }#{post.title}
