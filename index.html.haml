@@ -14,7 +14,7 @@ title: Home
 .row
   .span5
     %div
-      %h2 Try Weld Today
+      %h1 Try Weld Today
       %div
         %p 
           To use Weld today, download the
@@ -38,16 +38,16 @@ title: Home
           %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html"}reference documentation.
   .span3
     %div
-      %h2 Weld Book
+      %h1 Weld Book
       %p The latest book on Weld is now available:
       %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
         %img{:src=>"images/book.jpg", :width=>"250", :height=>"307"}
   .span4
-    %h2 News
+    %h1 News
     %ul.newsColumn
       - for post in site.posts[0,3]
         %li
-          %h4
+          %h3
             %a{ :href=>post.url }#{post.title}
           - if (post.content.length > 0)
             %p

@@ -2,7 +2,7 @@
 layout: base
 title: Documentation
 ---
-%h2 Documentation
+%h1 Documentation
 %p Weld reference documentation can be viewed online or downloaded as a PDF.
 %ul
   %li 
@@ -12,7 +12,7 @@ title: Documentation
   %li
     %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf"}PDF
 
-%h2 FAQ
+%h1 FAQ
 %ul
   - site.faq.each_with_index do |faq, i|
     %li
@@ -23,7 +23,7 @@ title: Documentation
 
 - site.faq.each_with_index do |faq, i|
   %div{:id=>"#{i}"}
-    %h4
+    %h3
       = faq.title
     ~ faq[:rendered_content]
 
