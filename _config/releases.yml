@@ -1,3 +1,7 @@
+- version: '2.1.0.Final'
+  category: Final
+  date: 22.10.2013
+  versionId: 12322304
 - version: '2.1.0.CR1'
   category: Preview
   date: 2.10.2013
