@@ -13,6 +13,7 @@ Here is the highlight of what’s new in Weld 2.1.0:
 - SLF4j was replaced with link:https://github.com/jboss-logging:[jboss-logging]
 - 30 fixed bugs
 
+[[weld-osgi]]
 The future of Weld-OSGi
 -----------------------
 
