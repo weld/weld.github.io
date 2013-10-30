@@ -43,7 +43,10 @@ title: Home
       %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
         %img{:src=>"images/book.jpg", :width=>"250", :height=>"307"}
   .span4
-    %h1 News
+    %h1
+      News
+      %a{:href=>"http://weld.cdi-spec.org/news.atom"}
+        %i.icon-rss
     %ul.newsColumn
       - for post in site.posts[0,3]
         %li
