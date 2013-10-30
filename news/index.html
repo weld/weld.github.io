@@ -15,6 +15,7 @@
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
+    <link ="application/atom+xml" href="http://weld.cdi-spec.org/news.atom" rel="alternate">
   </head>
   <body>
     <div class="container-fluid">
@@ -326,11 +327,12 @@
                   </div>
                 </div>
               </div>
-              <div class="pagination-links"><span class="current-page">1</span> </div>
+              <!-- TODO: uncomment when paging makes sense -->
+              <!-- = page.posts.links -->
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="icon-envelope"></i>
+                  <i class="icon-rss"></i>
                   Subscribe to Weld news
                 </a>
               </div>
