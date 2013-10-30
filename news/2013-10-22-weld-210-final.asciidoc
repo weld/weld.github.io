@@ -39,6 +39,8 @@ Instead, we decided to shift our focus towards Pax CDI and make sure it works we
 This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current link:https://ops4j1.jira.com/wiki/display/PAXCDI/Download:[Pax CDI SNAPSHOT] 
 or wait for the upcoming link:https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996:[0.5 release].
 
+EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the link:http://localhost:4242/news/2013/10/22/weld-210-final/[release announcement] for more details.
+
 
 Performance
 ------------
