@@ -1,0 +1,33 @@
+= My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
+
+This is a https://issues.jboss.org/browse/CDI-377[known issue] in the specification and occurs with third-party libraries such as https://code.google.com/p/guava-libraries/issues/detail?id=1433[Guava].
+
+A workaround is to configure the application server to require the ++beans.xml++ file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:
+
+**GlassFish 4**
+
+global configuration:
+[source]
+----
+asadmin set configs.config.server-config.cdi-service.enable-implicit-cdi=false
+----
+per-deployment configuration:
+[source]
+----
+asadmin deploy --property implicitCdiEnabled=false <archive>
+----
+
+**WildFly 8**
+
+global configuration:
+[source]
+----
+/subsystem=weld:write-attribute(name=require-bean-descriptor,value=true)
+----
+per-deployment configuration - add the following content to ++META-INF/jboss-all.xml++ of the application
+[source]
+----
+<jboss xmlns="urn:jboss:1.0">
+    <weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/>
+</jboss>
+----
