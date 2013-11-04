@@ -171,6 +171,11 @@
                     Why does Weld set character encoding of an HTTP request/response body to ISO-8859-1?
                   </a>
                 </li>
+                <li>
+                  <a href="#4">
+                    My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -249,6 +254,64 @@
                 
                 <div class="content monospaced">
                 <pre class="highlight"><code class="xml language-xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"&gt;&#x000A;    &lt;filter&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;filter-class&gt;org.apache.catalina.filters.SetCharacterEncodingFilter&lt;/filter-class&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;encoding&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;UTF-8&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;ignore&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;false&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;    &lt;/filter&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;Conversation&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;&lt;/web-app&gt;</code></pre>
+                </div>
+                </div>
+                
+                </div>
+                </div>
+              </div>
+              <div id="4">
+                <h3>
+                  My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>This is a <a href="https://issues.jboss.org/browse/CDI-377">known issue</a> in the specification and occurs with third-party libraries such as <a href="https://code.google.com/p/guava-libraries/issues/detail?id=1433">Guava</a>.</p>
+                </div>
+                <div class="paragraph">
+                <p>A workaround is to configure the application server to require the <code>beans.xml</code> file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:</p>
+                </div>
+                <div class="paragraph">
+                <p><strong>GlassFish 4</strong></p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration:</p>
+                </div>
+                <div class="listingblock">
+                
+                <div class="content monospaced">
+                <pre class="highlight"><code>asadmin set configs.config.server-config.cdi-service.enable-implicit-cdi=false</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>per-deployment configuration:</p>
+                </div>
+                <div class="listingblock">
+                
+                <div class="content monospaced">
+                <pre class="highlight"><code>asadmin deploy --property implicitCdiEnabled=false &lt;archive&gt;</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p><strong>WildFly 8</strong></p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration:</p>
+                </div>
+                <div class="listingblock">
+                
+                <div class="content monospaced">
+                <pre class="highlight"><code>/subsystem=weld:write-attribute(name=require-bean-descriptor,value=true)</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>per-deployment configuration - add the following content to <code>META-INF/jboss-all.xml</code> of the application</p>
+                </div>
+                <div class="listingblock">
+                
+                <div class="content monospaced">
+                <pre class="highlight"><code>&lt;jboss xmlns="urn:jboss:1.0"&gt;&#x000A;    &lt;weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/&gt;&#x000A;&lt;/jboss&gt;</code></pre>
                 </div>
                 </div>
                 
