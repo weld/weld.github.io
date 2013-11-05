@@ -176,6 +176,11 @@
                     My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
                   </a>
                 </li>
+                <li>
+                  <a href="#5">
+                    How can I bundle my entire SE application with Weld into a single jar?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -312,6 +317,28 @@
                 
                 <div class="content monospaced">
                 <pre class="highlight"><code>&lt;jboss xmlns="urn:jboss:1.0"&gt;&#x000A;    &lt;weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/&gt;&#x000A;&lt;/jboss&gt;</code></pre>
+                </div>
+                </div>
+                
+                </div>
+                </div>
+              </div>
+              <div id="5">
+                <h3>
+                  How can I bundle my entire SE application with Weld into a single jar?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>Weld internal classes are not intended to be used in a CDI deployment. As a result, you may <a href="https://issues.jboss.org/browse/WELD-1129">encounter validation errors</a> when packaging your application together with Weld in a single fat jar file.</p>
+                </div>
+                <div class="paragraph">
+                <p>A workaround is to exclude Weld classes from bean scanning:</p>
+                </div>
+                <div class="listingblock">
+                
+                <div class="content monospaced">
+                <pre class="highlight"><code class="xml language-xml">&lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"&#x000A;       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&#x000A;       version="1.1" bean-discovery-mode="all"&gt;&#x000A;    &lt;scan&gt;&#x000A;        &lt;exclude name="org.jboss.weld.**" /&gt;&#x000A;    &lt;/scan&gt;&#x000A;&lt;/beans&gt;</code></pre>
                 </div>
                 </div>
                 
