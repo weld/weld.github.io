@@ -1,0 +1,17 @@
+= How can I bundle my entire SE application with Weld into a single jar?
+
+Weld internal classes are not intended to be used in a CDI deployment. As a result, you may https://issues.jboss.org/browse/WELD-1129[encounter validation errors] when packaging your application together with Weld in a single fat jar file.
+
+A workaround is to exclude Weld classes from bean scanning:
+
+[source,xml]
+----
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+       version="1.1" bean-discovery-mode="all">
+    <scan>
+        <exclude name="org.jboss.weld.**" />
+    </scan>
+</beans>
+----
