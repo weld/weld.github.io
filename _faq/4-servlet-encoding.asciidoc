@@ -27,7 +27,7 @@ A workaround is to have the application encoding-setting filter to be called bef
         <url-pattern>/*</url-pattern>  
     </filter-mapping>    
     <filter-mapping>  
-        <filter-name>Conversation</filter-name>  
+        <filter-name>CDI Conversation Filter</filter-name>  
         <url-pattern>/*</url-pattern>  
     </filter-mapping>  
 </web-app>  
