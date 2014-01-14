@@ -2,13 +2,78 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2014-01-14T14:37:30+01:00</updated>
+  <updated>2014-01-14T15:14:18+01:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
+    <title>Three new Weld releases</title>
+    <updated>2014-01-14T15:14:18+01:00</updated>
+    <published>2014-01-14T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
+    <author>
+      <name>Jozef Hartinger</name>
+    </author>
+    <summary>
+      
+      This week we are releasing three new builds of Weld. Firstly, Weld 2.1.2.Final was released. This is a bug-fixing release with 11 issues resolved. Most notably:
+      
+      
+      
+      
+      
+      The conversation context is now initialized lazily. This resolves the problem with custom character encoding that many of you run into. See the reference documentation for details.
+      
+      
+      Weld now runs fine on JDK8
+      
+      
+      Jetty 9.1 is now supported by weld-servlet
+      
+      
+      
+      
+      In addition, Weld 1.1.17.Final (CDI 1.0) was released with several bug fixes.
+      
+      
+      Last but not least, there was a memory leak identified in GlassFish caused partly by GlassFish and partly by Weld. GlassFish still uses Weld 2.0. Although we...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This week we are releasing three new builds of Weld. Firstly, &lt;strong&gt;Weld 2.1.2.Final&lt;/strong&gt; was released. This is a bug-fixing release with 11 issues resolved. Most notably:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;The conversation context is now initialized lazily. This resolves the problem with custom character encoding that many of you run into. See the &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.1.2.Final/en-US/html/scopescontexts.html#d0e2009&quot;&gt;reference documentation&lt;/a&gt; for details.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Weld now runs fine on JDK8&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Jetty 9.1 is now supported by weld-servlet&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In addition, &lt;strong&gt;Weld 1.1.17.Final&lt;/strong&gt; (CDI 1.0) was released with several bug fixes.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Last but not least, there was a &lt;a href=&quot;https://java.net/jira/browse/GLASSFISH-20928&quot;&gt;memory leak identified in GlassFish&lt;/a&gt; caused partly by GlassFish and partly by Weld. GlassFish still uses Weld 2.0. Although we do not maintain the 2.0 branch any longer and advice everyone to upgrade to Weld 2.1, the memory leak may be a problem for GlassFish users that are not able to upgrade to Weld 2.1 themselves. Therefore, we decided to do one more 2.0 release where this problem is fixed so that GlassFish users stuck on Weld 2.0 have an easy fix. Enjoy &lt;strong&gt;Weld 2.0.5.Final!&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Now, our focus shifts completely towards Weld 2.2 where performance optimization and lowering memory consumption are the main goals. Expect first Alpha of Weld 2.2 by the end of January.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;If you are interested in Weld make sure you check our &lt;a href=&quot;http://weld.cdi-spec.org/community/&quot;&gt;community page&lt;/a&gt; or the &lt;a href=&quot;https://issues.jboss.org/issues/?filter=12320398&quot;&gt;list of open issues awaiting contribution&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -43,7 +108,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -198,7 +263,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -221,7 +286,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -244,7 +309,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -285,7 +350,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2014-01-14T14:37:30+01:00</updated>
+    <updated>2014-01-14T14:37:46+01:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
