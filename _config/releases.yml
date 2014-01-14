@@ -1,3 +1,7 @@
+- version: '2.1.2.Final'
+  category: Final
+  date: 14.1.2014
+  versionId: 12323843
 - version: '2.1.1.Final'
   category: Final
   date: 11.12.2013
@@ -22,6 +26,10 @@
   category: Preview
   date: 4.9.2013
   versionId: 12321054
+- version: '2.0.5.Final'
+  category: Final
+  date: 14.1.2014
+  versionId: 12323868
 - version: '2.0.4.Final'
   category: Final
   date: 4.9.2013
@@ -46,6 +54,10 @@
   category: Final
   date: 25.4.2013
   versionId: 12322078
+- version: '1.1.17.Final'
+  category: Final
+  date: 14.1.2014
+  versionId: 12322534
 - version: '1.1.16.Final'
   category: Final
   date: 27.9.2013
