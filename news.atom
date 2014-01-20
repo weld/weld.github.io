@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2014-01-14T15:14:18+01:00</updated>
+  <updated>2014-01-20T09:23:55+01:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2014-01-14T15:14:18+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -73,7 +73,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -108,7 +108,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -157,7 +157,7 @@
     </summary>
     <content type="html">
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of &lt;a href=&quot;http://cdi-spec.org:&quot;&gt;Contexts and Dependency Injection for Java EE (CDI)&lt;/a&gt;.
+      &lt;p&gt;I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of &lt;a href=&quot;http://cdi-spec.org&quot;&gt;Contexts and Dependency Injection for Java EE (CDI)&lt;/a&gt;.
       Here is the highlight of what’s new in Weld 2.1.0:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
@@ -173,7 +173,7 @@
       &lt;p&gt;Better integration with various Servlet dispatch types&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;SLF4j was replaced with &lt;a href=&quot;https://github.com/jboss-logging:&quot;&gt;jboss-logging&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;SLF4j was replaced with &lt;a href=&quot;https://github.com/jboss-logging&quot;&gt;jboss-logging&lt;/a&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
       &lt;p&gt;30 fixed bugs&lt;/p&gt;
@@ -184,7 +184,7 @@
       &lt;h2 id=&quot;weld-osgi&quot;&gt;The future of Weld-OSGi&lt;/h2&gt;
       &lt;div class=&quot;sectionbody&quot;&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi:&quot;&gt;Weld-osgi&lt;/a&gt; is a framework that allows the CDI programming model to be used in the OSGi environment.
+      &lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi&quot;&gt;Weld-osgi&lt;/a&gt; is a framework that allows the CDI programming model to be used in the OSGi environment.
       The framework was developed entirely by the Weld community and became a part of Weld since version 1.2.0&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
@@ -205,21 +205,21 @@
       &lt;/ol&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;The weld-osgi framework served as an inspiration for a standardization effort, known as &lt;a href=&quot;http://www.osgi.org/download/osgi-early-draft-2013-03.pdf:&quot;&gt;RFC-193&lt;/a&gt; (formerly RFP-146).
-      The proposal is now part of the &lt;a href=&quot;http://www.osgi.org/download/osgi-early-draft-2013-03.pdf:&quot;&gt;OSGi early draft&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;The weld-osgi framework served as an inspiration for a standardization effort, known as &lt;a href=&quot;http://www.osgi.org/download/osgi-early-draft-2013-03.pdf&quot;&gt;RFC-193&lt;/a&gt; (formerly RFP-146).
+      The proposal is now part of the &lt;a href=&quot;http://www.osgi.org/download/osgi-early-draft-2013-03.pdf&quot;&gt;OSGi early draft&lt;/a&gt;&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Due to the tight schedule of CDI 1.1, weld-osgi did never make it to Weld 2.0 and was therefore left behind, stuck in the gradually abandoned 1.2 branch.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In the meantime, work on the reference implementation of RFC-193 begun. The reference implementation is known as &lt;a href=&quot;https://ops4j1.jira.com/wiki/display/PAXCDI/Documentation:&quot;&gt;Pax CDI&lt;/a&gt; and it is an open-source project hosted on &lt;a href=&quot;https://github.com/ops4j/org.ops4j.pax.cdi:&quot;&gt;GitHub&lt;/a&gt;.
+      &lt;p&gt;In the meantime, work on the reference implementation of RFC-193 begun. The reference implementation is known as &lt;a href=&quot;https://ops4j1.jira.com/wiki/display/PAXCDI/Documentation&quot;&gt;Pax CDI&lt;/a&gt; and it is an open-source project hosted on &lt;a href=&quot;https://github.com/ops4j/org.ops4j.pax.cdi&quot;&gt;GitHub&lt;/a&gt;.
       Pax CDI aims to be portable across OSGi implementations as well as CDI implementations.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;We always wanted to bring OSGi support back in Weld 2.1. However, we decided not to revive the weld-osgi framework nor align it to the new RFC-193 specification. Therefore, weld-osgi will not be merged into Weld 2.x code base.
       Instead, we decided to shift our focus towards Pax CDI and make sure it works well with Weld.
-      This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current &lt;a href=&quot;https://ops4j1.jira.com/wiki/display/PAXCDI/Download:&quot;&gt;Pax CDI SNAPSHOT&lt;/a&gt;
-      or wait for the upcoming &lt;a href=&quot;https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996:&quot;&gt;0.5 release&lt;/a&gt;.&lt;/p&gt;
+      This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current &lt;a href=&quot;https://ops4j1.jira.com/wiki/display/PAXCDI/Download&quot;&gt;Pax CDI SNAPSHOT&lt;/a&gt;
+      or wait for the upcoming &lt;a href=&quot;https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996&quot;&gt;0.5 release&lt;/a&gt;.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the &lt;a href=&quot;http://team.ops4j.org/wiki/display/PAXCDI/2013/10/27/Pax+CDI+0.5.0+Released&quot;&gt;release announcement&lt;/a&gt; for more details.&lt;/p&gt;
@@ -237,8 +237,8 @@
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;In Weld 2.1.0 we optimized the component that handles context activation/deactivation and cut down the overhead.
       In addition, it is now possible to completely suppress CDI context activation on certain types of HTTP requests should this minimized overhead still be undesired.
-      See &lt;a href=&quot;https://community.jboss.org/people/mkouba/blog/2013/09/18/weld%E2%80%94skip-cdi-context-activation-for-some-http-requests:&quot;&gt;Martin’s blog post&lt;/a&gt; or
-      &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194:&quot;&gt;the reference documentation&lt;/a&gt; for more details.&lt;/p&gt;
+      See &lt;a href=&quot;https://community.jboss.org/people/mkouba/blog/2013/09/18/weld%E2%80%94skip-cdi-context-activation-for-some-http-requests&quot;&gt;Martin’s blog post&lt;/a&gt; or
+      &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194&quot;&gt;the reference documentation&lt;/a&gt; for more details.&lt;/p&gt;
       &lt;/div&gt;
       
       &lt;/div&gt;
@@ -263,7 +263,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -286,7 +286,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -309,7 +309,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -350,7 +350,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2014-01-14T14:37:46+01:00</updated>
+    <updated>2014-01-20T09:23:55+01:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>

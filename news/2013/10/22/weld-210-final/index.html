@@ -145,7 +145,7 @@
                 </p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of <a href="http://cdi-spec.org:">Contexts and Dependency Injection for Java EE (CDI)</a>.
+                  <p>I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of <a href="http://cdi-spec.org">Contexts and Dependency Injection for Java EE (CDI)</a>.
                   Here is the highlight of what’s new in Weld 2.1.0:</p>
                   </div>
                   <div class="ulist">
@@ -161,7 +161,7 @@
                   <p>Better integration with various Servlet dispatch types</p>
                   </li>
                   <li>
-                  <p>SLF4j was replaced with <a href="https://github.com/jboss-logging:">jboss-logging</a></p>
+                  <p>SLF4j was replaced with <a href="https://github.com/jboss-logging">jboss-logging</a></p>
                   </li>
                   <li>
                   <p>30 fixed bugs</p>
@@ -172,7 +172,7 @@
                   <h2 id="weld-osgi">The future of Weld-OSGi</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p><a href="http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi:">Weld-osgi</a> is a framework that allows the CDI programming model to be used in the OSGi environment.
+                  <p><a href="http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi">Weld-osgi</a> is a framework that allows the CDI programming model to be used in the OSGi environment.
                   The framework was developed entirely by the Weld community and became a part of Weld since version 1.2.0</p>
                   </div>
                   <div class="paragraph">
@@ -193,21 +193,21 @@
                   </ol>
                   </div>
                   <div class="paragraph">
-                  <p>The weld-osgi framework served as an inspiration for a standardization effort, known as <a href="http://www.osgi.org/download/osgi-early-draft-2013-03.pdf:">RFC-193</a> (formerly RFP-146).
-                  The proposal is now part of the <a href="http://www.osgi.org/download/osgi-early-draft-2013-03.pdf:">OSGi early draft</a></p>
+                  <p>The weld-osgi framework served as an inspiration for a standardization effort, known as <a href="http://www.osgi.org/download/osgi-early-draft-2013-03.pdf">RFC-193</a> (formerly RFP-146).
+                  The proposal is now part of the <a href="http://www.osgi.org/download/osgi-early-draft-2013-03.pdf">OSGi early draft</a></p>
                   </div>
                   <div class="paragraph">
                   <p>Due to the tight schedule of CDI 1.1, weld-osgi did never make it to Weld 2.0 and was therefore left behind, stuck in the gradually abandoned 1.2 branch.</p>
                   </div>
                   <div class="paragraph">
-                  <p>In the meantime, work on the reference implementation of RFC-193 begun. The reference implementation is known as <a href="https://ops4j1.jira.com/wiki/display/PAXCDI/Documentation:">Pax CDI</a> and it is an open-source project hosted on <a href="https://github.com/ops4j/org.ops4j.pax.cdi:">GitHub</a>.
+                  <p>In the meantime, work on the reference implementation of RFC-193 begun. The reference implementation is known as <a href="https://ops4j1.jira.com/wiki/display/PAXCDI/Documentation">Pax CDI</a> and it is an open-source project hosted on <a href="https://github.com/ops4j/org.ops4j.pax.cdi">GitHub</a>.
                   Pax CDI aims to be portable across OSGi implementations as well as CDI implementations.</p>
                   </div>
                   <div class="paragraph">
                   <p>We always wanted to bring OSGi support back in Weld 2.1. However, we decided not to revive the weld-osgi framework nor align it to the new RFC-193 specification. Therefore, weld-osgi will not be merged into Weld 2.x code base.
                   Instead, we decided to shift our focus towards Pax CDI and make sure it works well with Weld.
-                  This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current <a href="https://ops4j1.jira.com/wiki/display/PAXCDI/Download:">Pax CDI SNAPSHOT</a>
-                  or wait for the upcoming <a href="https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996:">0.5 release</a>.</p>
+                  This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current <a href="https://ops4j1.jira.com/wiki/display/PAXCDI/Download">Pax CDI SNAPSHOT</a>
+                  or wait for the upcoming <a href="https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996">0.5 release</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the <a href="http://team.ops4j.org/wiki/display/PAXCDI/2013/10/27/Pax+CDI+0.5.0+Released">release announcement</a> for more details.</p>
@@ -225,8 +225,8 @@
                   <div class="paragraph">
                   <p>In Weld 2.1.0 we optimized the component that handles context activation/deactivation and cut down the overhead.
                   In addition, it is now possible to completely suppress CDI context activation on certain types of HTTP requests should this minimized overhead still be undesired.
-                  See <a href="https://community.jboss.org/people/mkouba/blog/2013/09/18/weld&#8212;skip-cdi-context-activation-for-some-http-requests:">Martin’s blog post</a> or
-                  <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194:">the reference documentation</a> for more details.</p>
+                  See <a href="https://community.jboss.org/people/mkouba/blog/2013/09/18/weld&#8212;skip-cdi-context-activation-for-some-http-requests">Martin’s blog post</a> or
+                  <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194">the reference documentation</a> for more details.</p>
                   </div>
                   
                   </div>
