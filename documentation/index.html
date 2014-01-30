@@ -140,13 +140,21 @@
               <p>Weld reference documentation can be viewed online or downloaded as a PDF.</p>
               <ul>
                 <li>
-                  <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/">HTML</a>
+                  The latest version:
+                  <ul>
+                    <li>
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/">HTML</a>
+                    </li>
+                    <li>
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/">HTML (Single page)</a>
+                    </li>
+                    <li>
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf">PDF</a>
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/">HTML (Single page)</a>
-                </li>
-                <li>
-                  <a href="http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf">PDF</a>
+                  <a href="http://docs.jboss.org/weld/reference/" target="_blank">Browse all Weld reference documentation</a>
                 </li>
               </ul>
               <h1>FAQ</h1>
@@ -188,15 +196,17 @@
                   If I create a thread in my CDI bean, how will Weld react?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html">reference guide</a> contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.</p>
+                    
+                  <p>Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html">reference guide</a> contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.</p>
                 </div>
                 <div class="paragraph">
-                <p>The dependent context and the application context will work as usual in any user created thread.</p>
+                    
+                  <p>The dependent context and the application context will work as usual in any user created thread.</p>
                 </div>
                 
-                </div>
+                  </div>
                 </div>
               </div>
               <div id="1">
@@ -204,18 +214,21 @@
                   Why does Weld leave some proxy class definitions lying around when I undeploy my application? How can I prevent this?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>When a Weld-enabled application is deployed on an application server or a web server, proxy classes for beans implementing interfaces or extending classes contained in common libraries are loaded in the class loader (CL) for that library, not the thread context class loader (TCCL). This means that these proxy classes will not be removed from the server when the application is undeployed.</p>
+                    
+                  <p>When a Weld-enabled application is deployed on an application server or a web server, proxy classes for beans implementing interfaces or extending classes contained in common libraries are loaded in the class loader (CL) for that library, not the thread context class loader (TCCL). This means that these proxy classes will not be removed from the server when the application is undeployed.</p>
                 </div>
                 <div class="paragraph">
-                <p>The reason for this approach is to support the use of package scoped classes and members of classes which need to be proxied as beans. Thus the TCCL is not used for the proxy classes generated by Weld.</p>
+                    
+                  <p>The reason for this approach is to support the use of package scoped classes and members of classes which need to be proxied as beans. Thus the TCCL is not used for the proxy classes generated by Weld.</p>
                 </div>
                 <div class="paragraph">
-                <p>One way to prevent this problem is to simply deploy those libraries with your application. In this scenario, those classes are loaded in a CL associated with the application and will thus be removed when the application is undeployed.</p>
+                    
+                  <p>One way to prevent this problem is to simply deploy those libraries with your application. In this scenario, those classes are loaded in a CL associated with the application and will thus be removed when the application is undeployed.</p>
                 </div>
                 
-                </div>
+                  </div>
                 </div>
               </div>
               <div id="2">
@@ -223,21 +236,25 @@
                   Some of my beans aren&#8217;t deployed and I can&#8217;t see why?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>Weld will not create beans if it can&#8217;t load the class, or some class dependency. If that happens, you&#8217;ll see a note in the server log.</p>
+                    
+                  <p>Weld will not create beans if it can&#8217;t load the class, or some class dependency. If that happens, you&#8217;ll see a note in the server log.</p>
                 </div>
                 <div class="listingblock">
-                
-                <div class="content monospaced">
-                <pre class="highlight"><code>WELD-000119: Not generating any bean definitions from org.jboss.weld.tests.beanDeployment.noclassdeffound.Bar because of underlying class loading error</code></pre>
-                </div>
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code>WELD-000119: Not generating any bean definitions from org.jboss.weld.tests.beanDeployment.noclassdeffound.Bar because of underlying class loading error</code></pre>
+                    
+                  </div>
                 </div>
                 <div class="paragraph">
-                <p>You can view more details by increasing the log level of the application server to DEBUG.</p>
+                    
+                  <p>You can view more details by increasing the log level of the application server to DEBUG.</p>
                 </div>
                 
-                </div>
+                  </div>
                 </div>
               </div>
               <div id="3">
@@ -245,24 +262,29 @@
                   Why does Weld set character encoding of an HTTP request/response body to ISO-8859-1?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>An application may set character encoding of a request by calling the <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)">ServletRequest.setCharacterEncoding()</a> method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.</p>
+                    
+                  <p>An application may set character encoding of a request by calling the <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String">http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String</a>)[ServletRequest.setCharacterEncoding()] method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.</p>
                 </div>
                 <div class="paragraph">
-                <p>In order to properly activate the conversation context, Weld reads the <em>cid</em> request parameter in the beginning of request processing (see <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context">the CDI spec for details</a>). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter which that tries to set character encoding will not work since it does that too late.</p>
+                    
+                  <p>In order to properly activate the conversation context, Weld reads the <em>cid</em> request parameter in the beginning of request processing (see <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context">the CDI spec for details</a>). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter which that tries to set character encoding will not work since it does that too late.</p>
                 </div>
                 <div class="paragraph">
-                <p>A workaround is to have the application encoding-setting filter to be called before Weld tries to read the "cid" parameter in the ConversationFilter. This can be done by mapping the custom filter <em>before</em> Weld&#8217;s ConversationFilter in web.xml</p>
+                    
+                  <p>A workaround is to have the application encoding-setting filter to be called before Weld tries to read the "cid" parameter in the ConversationFilter. This can be done by mapping the custom filter <em>before</em> Weld&#8217;s ConversationFilter in web.xml</p>
                 </div>
                 <div class="listingblock">
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code class="xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"&gt;&#x000A;    &lt;filter&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;filter-class&gt;org.apache.catalina.filters.SetCharacterEncodingFilter&lt;/filter-class&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;encoding&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;UTF-8&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;ignore&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;false&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;    &lt;/filter&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;CDI Conversation Filter&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;&lt;/web-app&gt;</code></pre>
+                    
+                  </div>
+                </div>
                 
-                <div class="content monospaced">
-                <pre class="highlight"><code class="xml language-xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"&gt;&#x000A;    &lt;filter&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;filter-class&gt;org.apache.catalina.filters.SetCharacterEncodingFilter&lt;/filter-class&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;encoding&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;UTF-8&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;ignore&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;false&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;    &lt;/filter&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;CDI Conversation Filter&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;&lt;/web-app&gt;</code></pre>
-                </div>
-                </div>
-                
-                </div>
+                  </div>
                 </div>
               </div>
               <div id="4">
@@ -270,57 +292,73 @@
                   My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>This is a <a href="https://issues.jboss.org/browse/CDI-377">known issue</a> in the specification and occurs with third-party libraries such as <a href="https://code.google.com/p/guava-libraries/issues/detail?id=1433">Guava</a>.</p>
+                    
+                  <p>This is a <a href="https://issues.jboss.org/browse/CDI-377">known issue</a> in the specification and occurs with third-party libraries such as <a href="https://code.google.com/p/guava-libraries/issues/detail?id=1433">Guava</a>.</p>
                 </div>
                 <div class="paragraph">
-                <p>A workaround is to configure the application server to require the <code>beans.xml</code> file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:</p>
+                    
+                  <p>A workaround is to configure the application server to require the <tt>beans.xml</tt> file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:</p>
                 </div>
                 <div class="paragraph">
-                <p><strong>GlassFish 4</strong></p>
+                    
+                  <p><strong>GlassFish 4</strong></p>
                 </div>
                 <div class="paragraph">
-                <p>global configuration:</p>
+                    
+                  <p>global configuration:</p>
                 </div>
                 <div class="listingblock">
-                
-                <div class="content monospaced">
-                <pre class="highlight"><code>asadmin set configs.config.server-config.cdi-service.enable-implicit-cdi=false</code></pre>
-                </div>
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code>asadmin set configs.config.server-config.cdi-service.enable-implicit-cdi=false</code></pre>
+                    
+                  </div>
                 </div>
                 <div class="paragraph">
-                <p>per-deployment configuration:</p>
+                    
+                  <p>per-deployment configuration:</p>
                 </div>
                 <div class="listingblock">
-                
-                <div class="content monospaced">
-                <pre class="highlight"><code>asadmin deploy --property implicitCdiEnabled=false &lt;archive&gt;</code></pre>
-                </div>
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code>asadmin deploy --property implicitCdiEnabled=false &lt;archive&gt;</code></pre>
+                    
+                  </div>
                 </div>
                 <div class="paragraph">
-                <p><strong>WildFly 8</strong></p>
+                    
+                  <p><strong>WildFly 8</strong></p>
                 </div>
                 <div class="paragraph">
-                <p>global configuration:</p>
+                    
+                  <p>global configuration:</p>
                 </div>
                 <div class="listingblock">
-                
-                <div class="content monospaced">
-                <pre class="highlight"><code>/subsystem=weld:write-attribute(name=require-bean-descriptor,value=true)</code></pre>
-                </div>
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code>/subsystem=weld:write-attribute(name=require-bean-descriptor,value=true)</code></pre>
+                    
+                  </div>
                 </div>
                 <div class="paragraph">
-                <p>per-deployment configuration - add the following content to <code>META-INF/jboss-all.xml</code> of the application</p>
+                    
+                  <p>per-deployment configuration - add the following content to <tt>META-INF/jboss-all.xml</tt> of the application</p>
                 </div>
                 <div class="listingblock">
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code>&lt;jboss xmlns="urn:jboss:1.0"&gt;&#x000A;    &lt;weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/&gt;&#x000A;&lt;/jboss&gt;</code></pre>
+                    
+                  </div>
+                </div>
                 
-                <div class="content monospaced">
-                <pre class="highlight"><code>&lt;jboss xmlns="urn:jboss:1.0"&gt;&#x000A;    &lt;weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/&gt;&#x000A;&lt;/jboss&gt;</code></pre>
-                </div>
-                </div>
-                
-                </div>
+                  </div>
                 </div>
               </div>
               <div id="5">
@@ -328,21 +366,25 @@
                   How can I bundle my entire SE application with Weld into a single jar?
                 </h3>
                 <div id="preamble">
-                <div class="sectionbody">
+                  <div class="sectionbody">
                 <div class="paragraph">
-                <p>Weld internal classes are not intended to be used in a CDI deployment. As a result, you may <a href="https://issues.jboss.org/browse/WELD-1129">encounter validation errors</a> when packaging your application together with Weld in a single fat jar file.</p>
+                    
+                  <p>Weld internal classes are not intended to be used in a CDI deployment. As a result, you may <a href="https://issues.jboss.org/browse/WELD-1129">encounter validation errors</a> when packaging your application together with Weld in a single fat jar file.</p>
                 </div>
                 <div class="paragraph">
-                <p>A workaround is to exclude Weld classes from bean scanning:</p>
+                    
+                  <p>A workaround is to exclude Weld classes from bean scanning:</p>
                 </div>
                 <div class="listingblock">
+                  
+                  <div class="content monospaced">
+                    
+                    <pre class="highlight"><code class="xml">&lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"&#x000A;       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&#x000A;       version="1.1" bean-discovery-mode="all"&gt;&#x000A;    &lt;scan&gt;&#x000A;        &lt;exclude name="org.jboss.weld.**" /&gt;&#x000A;    &lt;/scan&gt;&#x000A;&lt;/beans&gt;</code></pre>
+                    
+                  </div>
+                </div>
                 
-                <div class="content monospaced">
-                <pre class="highlight"><code class="xml language-xml">&lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"&#x000A;       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&#x000A;       version="1.1" bean-discovery-mode="all"&gt;&#x000A;    &lt;scan&gt;&#x000A;        &lt;exclude name="org.jboss.weld.**" /&gt;&#x000A;    &lt;/scan&gt;&#x000A;&lt;/beans&gt;</code></pre>
-                </div>
-                </div>
-                
-                </div>
+                  </div>
                 </div>
               </div>
             </div>
