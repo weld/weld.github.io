@@ -1,0 +1,32 @@
+---
+layout: news
+title: CDI 1.2 and Weld 2.2
+author: Jozef Hartinger
+---
+
+Work on a maintenance release of the CDI specification (CDI 1.2) has started recently. Now is the best time to add feedback on link:http://www.cdi-spec.org/news/2013/12/16/CDI-1-2-issues-list/[issues being addressed]. Most of the discussion happens in the link:https://lists.jboss.org/mailman/listinfo/cdi-dev[cdi-dev mailing list] or the link:http://webchat.freenode.net/?channels=jsr346[IRC channel].
+
+*Weld 2.2* is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:
+
+- bootstrap time
+- memory footprint
+- throughput
+- maximum number of concurrent clients
+- session replication overhead
+
+Today, we released *Weld 2.2.0.Alpha1*. The most significant changes include:
+
+- Added link:http://docs.jboss.org/weld/javadoc/2.2/weld-spi/org/jboss/weld/resources/spi/ClassFileInfo.html[new SPI] that allows bytecode-scanning frameworks (such as link:https://github.com/wildfly/jandex[jandex]) to be integrated. This yields improved bootstrap time especially with large deployments.
+- Reduced memory consumption (our tests show 6-12% less memory used after bootstrap with large deployments)
+- Improved event/observer performance
+- Java Web Start support finally got in (thanks to Alexandre Gattiker for the patch!)
+- Improved Servlet container support (Jetty 9.1, ServletContainerInitializer used to bootstrap Weld, Tomcat 8 support)
+- A new Groovy example (groovy-numberguess) was added
+- Many other bug fixes and improvements. See the link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322332[release notes] for a complete list of changes
+
+Now, we continue to work on Weld 2.2. Expect the final version in late March. In the meantime, try this release and let us know what you think in the link:https://community.jboss.org/en/weld[forum]. If you are interested in Weld make sure you check our link:http://weld.cdi-spec.org/community/[community page] or the link:https://issues.jboss.org/issues/?filter=12320398[list of open issues awaiting contribution].
+
+&#91; link:https://sourceforge.net/projects/jboss/files/Weld/2.2.0.Alpha1[Distribution] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322332[Release notes] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.2.0.Alpha1/en-US/html/[Documentation] &#93;
+&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93;
