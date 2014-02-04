@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News
+      Weld: CDI 1.2 and Weld 2.2
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
@@ -138,78 +138,77 @@
             <div class="span10">
               <div class="post">
                 <h1>
-                  <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
+                  CDI 1.2 and Weld 2.2
                 </h1>
                 <p style="color: #666;">
-                  <strong>2013-6-20: Martin Kouba</strong>
+                  <strong>2014-2-4: Jozef Hartinger</strong>
                 </p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld has a new web site and it&#8217;s built with Awestruct!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <h1>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h1>
-                <p style="color: #666;">
-                  <strong>2013-6-6: Jozef Hartinger</strong>
-                </p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
+                  <p>Work on a maintenance release of the CDI specification (CDI 1.2) has started recently. Now is the best time to add feedback on <a href="http://www.cdi-spec.org/news/2013/12/16/CDI-1-2-issues-list/">issues being addressed</a>. Most of the discussion happens in the <a href="https://lists.jboss.org/mailman/listinfo/cdi-dev">cdi-dev mailing list</a> or the <a href="http://webchat.freenode.net/?channels=jsr346">IRC channel</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
+                  <p><strong>Weld 2.2</strong> is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:</p>
+                  </div>
+                  <div class="ulist">
+                  
+                  <ul>
+                  <li>
+                  <p>bootstrap time</p>
+                  </li>
+                  <li>
+                  <p>memory footprint</p>
+                  </li>
+                  <li>
+                  <p>throughput</p>
+                  </li>
+                  <li>
+                  <p>maximum number of concurrent clients</p>
+                  </li>
+                  <li>
+                  <p>session replication overhead</p>
+                  </li>
+                  </ul>
                   </div>
                   <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
+                  <p>Today, we released <strong>Weld 2.2.0.Alpha1</strong>. The most significant changes include:</p>
+                  </div>
+                  <div class="ulist">
+                  
+                  <ul>
+                  <li>
+                  <p>Added <a href="http://docs.jboss.org/weld/javadoc/2.2/weld-spi/org/jboss/weld/resources/spi/ClassFileInfo.html">new SPI</a> that allows bytecode-scanning frameworks (such as <a href="https://github.com/wildfly/jandex">jandex</a>) to be integrated. This yields improved bootstrap time especially with large deployments.</p>
+                  </li>
+                  <li>
+                  <p>Reduced memory consumption (our tests show 6-12% less memory used after bootstrap with large deployments)</p>
+                  </li>
+                  <li>
+                  <p>Improved event/observer performance</p>
+                  </li>
+                  <li>
+                  <p>Java Web Start support finally got in (thanks to Alexandre Gattiker for the patch!)</p>
+                  </li>
+                  <li>
+                  <p>Improved Servlet container support (Jetty 9.1, ServletContainerInitializer used to bootstrap Weld, Tomcat 8 support)</p>
+                  </li>
+                  <li>
+                  <p>A new Groovy example (groovy-numberguess) was added</p>
+                  </li>
+                  <li>
+                  <p>Many other bug fixes and improvements. See the <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322332">release notes</a> for a complete list of changes</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Now, we continue to work on Weld 2.2. Expect the final version in late March. In the meantime, try this release and let us know what you think in the <a href="https://community.jboss.org/en/weld">forum</a>. If you are interested in Weld make sure you check our <a href="http://weld.cdi-spec.org/community/">community page</a> or the <a href="https://issues.jboss.org/issues/?filter=12320398">list of open issues awaiting contribution</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.2.0.Alpha1">Distribution</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322332">Release notes</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.2.0.Alpha1/en-US/html/">Documentation</a> &#93;
                   &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
                   </div>
                 </div>
-              </div>
-              <div class="post">
-                <h1>
-                  <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                </h1>
-                <p style="color: #666;">
-                  <strong>2013-4-25: Jozef Hartinger</strong>
-                </p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (<a href="http://www.jcp.org/en/jsr/detail?id=346">JSR 346</a>). For a list of major changes in CDI 1.1 see the <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes">specification</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The reference implementation will soon be available in <a href="https://glassfish.java.net/">GlassFish 4</a> and <a href="http://wildfly.org/">WildFly</a> (formerly JBoss Application Server). In the meantime you can check snapshots of the application servers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, Weld artifacts can be obtained from maven or you can use a distribution bundle.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along with the Weld release comes the final release of the Technology Compatibility Kit (TCK) for CDI 1.1. Martin Kouba did an excellent job writing new tests and keeping the TCK in sync with the almost never-ending stream of specification changes. The TCK splits the specification into 1550 testable assertions out of which 96.71% is covered by TCK tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I would like to thank to everyone who lent a hand and helped delivering these releases, especially: Martin Kouba, Pete Muir, Marko Lukša, Stuart Douglas, Marek Schmidt, Ron Šmeral, Tomáš Remeš, JJ Snyder, Phil Zampino, Tomaž Cerar, Hardy Ferentschik, Lincoln Baxter III, Matúš Abaffy and others.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; Distribution (<a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.0.Final/">Weld</a>, <a href="https://sourceforge.net/projects/jboss/files/CDI-TCK/1.1.0.Final/">CDITCK</a>) &#93;
-                  &#91; Documentation (<a href="http://docs.jboss.org/weld/reference/2.0.0.Final/en-US/">Weld</a>, <a href="http://docs.jboss.org/cdi/tck/reference/1.1.0.Final/doc/">CDITCK</a>) &#93;
-                  &#91; Javadoc (<a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1</a>, <a href="http://docs.jboss.org/weld/javadoc/2.0/">Weld SPI</a>) &#93;
-                  &#91; <a href="https://issues.jboss.org/browse/WELD">Issue tracker</a> &#93;</p>
-                  </div>
-                </div>
-              </div>
-              <!-- TODO: uncomment when paging makes sense -->
-              <!-- = page.posts.links -->
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="icon-rss"></i>
-                  Subscribe to Weld news
-                </a>
               </div>
             </div>
           </div>
