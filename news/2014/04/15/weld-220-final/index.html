@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 2.2 released!
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- /If IE7 for font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
+    <link href="http://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2" style="min-height:1px;">
+          <ul class="nav nav-tabs nav-stacked span2 visible-desktop" id="main_nav">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                Download
+              </a>
+            </li>
+            <li>
+              <a href="/news">
+                <i class="icon-edit"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Docs &amp; FAQ
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+          </ul>
+          <a class="hidden-desktop" href="#" id="toggle_menu">
+            <i class="icon-exchange"></i>
+          </a>
+          <ul class="nav nav-tabs nav-stacked span2 hide hidden-desktop" id="mobile_menu">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="/roadmap">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://jira.jboss.org/jira/browse/WELD">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+            <li>
+              <a href="/governance"></a>
+              <i class="icon-edit">
+                Governance
+              </i>
+            </li>
+          </ul>
+        </div>
+        <div class="span10">
+          <div class="row">
+            <div class="span4">
+              <img alt="Weld Logo" class="weld-home-logo" src="/images/weld_logo_450x.png">
+            </div>
+            <div class="span8">
+              <img alt="CDI tagcloud" class="cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span10">
+              <div class="post">
+                <h1>
+                  Weld 2.2 released!
+                </h1>
+                <p style="color: #666;">
+                  <strong>2014-4-15: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Today we released Weld 2.2.0.Final - the reference implementation of <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html">Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)</a>.
+                  Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_cdi_1_2">CDI 1.2</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>CDI 1.2 is a maintenance release of the <a href="https://jcp.org/en/jsr/detail?id=346">CDI specification</a>. It contains a number of small fixes and clarifications as well as several enhancements.
+                  Most notable changes for application developers are related to the definition of <em>bean defining annotations</em>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations">CDI 1.2</a>, the set of bean defining annotations now contains:</p>
+                  </div>
+                  <div class="ulist">
+                  
+                  <ul>
+                  <li>
+                  <p>all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;)</p>
+                  </li>
+                  <li>
+                  <p>the built-in @Dependent scope</p>
+                  </li>
+                  <li>
+                  <p>@Interceptor and @Decorator annotations</p>
+                  </li>
+                  <li>
+                  <p>stereotype annotations</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As a result, any class annotated with a <em>bean defining annotation</em> is by default recognized by the application server and registered as a CDI bean. The beans.xml file is optional.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
+                  See <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&amp;version=12323655">the release notes</a> for the complete list of changes.</p>
+                  </div>
+                  
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_performance">Performance</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld is now capable of using bytecode-scanning utilities, such as the <a href="https://github.com/wildfly/jandex">Jandex</a> tool, to speed up deployment.
+                  This is especially notable in extra large deployments (e.g. 5000+ classes) where we observed up to <strong>20% faster deployment</strong>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, there are noticeable improvements in the following areas:</p>
+                  </div>
+                  <div class="ulist">
+                  
+                  <ul>
+                  <li>
+                  <p>runtime performance of observers, interceptors and decorators</p>
+                  </li>
+                  <li>
+                  <p>session replication overhead (failover)</p>
+                  </li>
+                  <li>
+                  <p>memory consumption</p>
+                  </li>
+                  </ul>
+                  </div>
+                  
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_2_2_on_wildfly">Weld 2.2 on WildFly</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p><a href="http://wildfly.org">WildFly</a> does not come with Weld 2.2 support yet. It is however easy to patch an existing WildFly installation to use Weld 2.2.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>To do so, follow these steps:</p>
+                  </div>
+                  <div class="olist arabic">
+                  
+                  <ol class="arabic">
+                  <li>
+                  <p>Download a patch appropriate for the WildFly version (e.g. 8.0.0.Final) from the <a href="http://sourceforge.net/projects/jboss/files/Weld/2.2.0.Final/">download section</a></p>
+                  </li>
+                  <li>
+                  <p>In the WildFly installation, run the CLI console</p>
+                  <div class="listingblock">
+                  
+                  <div class="content monospaced">
+                  <pre>sh jboss-cli.sh</pre>
+                  </div>
+                  </div>
+                  
+                  </li>
+                  <li>
+                  <p>From the console run the following command:</p>
+                  <div class="listingblock">
+                  
+                  <div class="content monospaced">
+                  <pre>patch apply /path/to/wildfly-8.0.0.Final-weld-2.2.0.Final-patch.zip</pre>
+                  </div>
+                  </div>
+                  
+                  </li>
+                  </ol>
+                  </div>
+                  <div class="paragraph">
+                  <p>Your installation is now patched!</p>
+                  </div>
+                  
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_se_and_servlet">Weld SE and Servlet</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld comes with the SE module which allows CDI to be used in plain Java SE environment. In Weld 2.2 we added partial support for implicit bean archives.
+                  Partial support here means that the beans.xml file is still required, but <strong>bean-discovery-mode=”annotated”</strong> can be specified for Weld to only discover classes explicitly annotated with bean defining annotations (see above).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition to the Weld SE module, Weld also provides the Weld Servlet module which makes it possible to use Weld on top of a plain Servlet container, such as Apache Tomcat or Jetty.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In this release we simplified configuration by bootstrapping Weld using the <em>ServletContainerInitializer</em>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Furthermore, Weld Servlet now supports <strong>Jetty 9.1</strong>. At the same time, the support for <strong>Tomcat 6 was dropped</strong>. To summarize, Weld Servlet is currently supported on the following Servlet containers:</p>
+                  </div>
+                  <div class="ulist">
+                  
+                  <ul>
+                  <li>
+                  <p>Tomcat 7, 8</p>
+                  </li>
+                  <li>
+                  <p>Jetty 7, 8, 9.0, 9.1</p>
+                  </li>
+                  </ul>
+                  </div>
+                  
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_acknowledgement">Acknowledgement</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>We greatly appreciate your contributions to this release.
+                  Big thanks go to: Martin Kouba, Matúš Abaffy, Matej Briškár, Ron Šmeral, Marek Schmidt, Marko Lukša, Tomáš Remeš, Stuart Douglas, Radoslav Husár, Max Pimm, Alexandre Gattiker, Antonin Stefanutti and Steve Moyer.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/">CDI 1.2 API</a> &#93;
+                  &#91; <a href="http://weld.cdi-spec.org/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/issues/?filter=12321473">Release notes</a> &#93;</p>
+                  </div>
+                  
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="row">
+          <p>
+            Copyright &copy; 2014,
+            <a href="http://redhat.com">
+              Red Hat, Inc.
+            </a>
+            Weld is licensed under the
+            <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
+              Apache License, Version 2.0
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
+    });
+  </script>
+</html>
