@@ -1,6 +1,9 @@
 = My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
 
-This is a https://issues.jboss.org/browse/CDI-377[known issue] in the specification and occurs with third-party libraries such as https://code.google.com/p/guava-libraries/issues/detail?id=1433[Guava].
+Firstly, this issue only affects CDI 1.1. If possible, go and upgrade to CDI 1.2 (Weld 2.2 or later) where this issue does not occur.
+
+If you cannot do that, read further:
+This is a https://issues.jboss.org/browse/CDI-377[known issue] in the CDI 1.1 specification and occurs with third-party libraries such as https://code.google.com/p/guava-libraries/issues/detail?id=1433[Guava].
 
 A workaround is to configure the application server to require the ++beans.xml++ file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:
 
