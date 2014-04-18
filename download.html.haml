@@ -68,9 +68,14 @@ title: Download
         %a{:href=>"https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=#{release.versionId}"}
           Changelog
       %td
-        %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
-          Download
-
+        - unless release.version < "2.0.0.Final"
+          %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
+            Download
+        - else
+          Available in
+          %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{release.version}%7Cjar"}
+            Maven
+          
 %h2 Snapshots
 %p
   Nightly snapshots are produced regularly by our continuous integration server and available from the
