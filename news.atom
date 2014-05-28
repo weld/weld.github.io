@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2014-04-18T17:08:30+02:00</updated>
+  <updated>2014-05-28T14:41:19+02:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -28,7 +28,6 @@
       
       
       In CDI 1.2, the set of bean defining annotations now contains:
-      
       
       
       
@@ -57,7 +56,6 @@
       &lt;p&gt;In &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations&quot;&gt;CDI 1.2&lt;/a&gt;, the set of bean defining annotations now contains:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, …)&lt;/p&gt;
@@ -80,7 +78,6 @@
       &lt;p&gt;In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
       See &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&amp;amp;version=12323655&quot;&gt;the release notes&lt;/a&gt; for the complete list of changes.&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -94,7 +91,6 @@
       &lt;p&gt;In addition, there are noticeable improvements in the following areas:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;runtime performance of observers, interceptors and decorators&lt;/p&gt;
@@ -107,7 +103,6 @@
       &lt;/li&gt;
       &lt;/ul&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -120,7 +115,6 @@
       &lt;p&gt;To do so, follow these steps:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;olist arabic&quot;&gt;
-      
       &lt;ol class=&quot;arabic&quot;&gt;
       &lt;li&gt;
       &lt;p&gt;Download a patch appropriate for the WildFly version (e.g. 8.0.0.Final) from the &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/2.2.0.Final/&quot;&gt;download section&lt;/a&gt;&lt;/p&gt;
@@ -128,29 +122,24 @@
       &lt;li&gt;
       &lt;p&gt;In the WildFly installation, run the CLI console&lt;/p&gt;
       &lt;div class=&quot;listingblock&quot;&gt;
-      
-      &lt;div class=&quot;content monospaced&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
       &lt;pre&gt;sh jboss-cli.sh&lt;/pre&gt;
       &lt;/div&gt;
       &lt;/div&gt;
-      
       &lt;/li&gt;
       &lt;li&gt;
       &lt;p&gt;From the console run the following command:&lt;/p&gt;
       &lt;div class=&quot;listingblock&quot;&gt;
-      
-      &lt;div class=&quot;content monospaced&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
       &lt;pre&gt;patch apply /path/to/wildfly-8.0.0.Final-weld-2.2.0.Final-patch.zip&lt;/pre&gt;
       &lt;/div&gt;
       &lt;/div&gt;
-      
       &lt;/li&gt;
       &lt;/ol&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Your installation is now patched!&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -170,7 +159,6 @@
       &lt;p&gt;Furthermore, Weld Servlet now supports &lt;strong&gt;Jetty 9.1&lt;/strong&gt;. At the same time, the support for &lt;strong&gt;Tomcat 6 was dropped&lt;/strong&gt;. To summarize, Weld Servlet is currently supported on the following Servlet containers:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;Tomcat 7, 8&lt;/p&gt;
@@ -180,7 +168,6 @@
       &lt;/li&gt;
       &lt;/ul&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -196,7 +183,6 @@
       [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/&quot;&gt;Documentation&lt;/a&gt; ]
       [ &lt;a href=&quot;https://issues.jboss.org/issues/?filter=12321473&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
     </content>
@@ -204,7 +190,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -216,7 +202,6 @@
       
       
       Weld 2.2 is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:
-      
       
       
       
@@ -243,7 +228,6 @@
       
       
       
-      
       Added new SPI that allows bytecode-scanning frameworks (such as jandex)...
     </summary>
     <content type="html">
@@ -254,7 +238,6 @@
       &lt;p&gt;&lt;strong&gt;Weld 2.2&lt;/strong&gt; is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;bootstrap time&lt;/p&gt;
@@ -277,7 +260,6 @@
       &lt;p&gt;Today, we released &lt;strong&gt;Weld 2.2.0.Alpha1&lt;/strong&gt;. The most significant changes include:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;Added &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/2.2/weld-spi/org/jboss/weld/resources/spi/ClassFileInfo.html&quot;&gt;new SPI&lt;/a&gt; that allows bytecode-scanning frameworks (such as &lt;a href=&quot;https://github.com/wildfly/jandex&quot;&gt;jandex&lt;/a&gt;) to be integrated. This yields improved bootstrap time especially with large deployments.&lt;/p&gt;
@@ -316,7 +298,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -325,7 +307,6 @@
     <summary>
       
       This week we are releasing three new builds of Weld. Firstly, Weld 2.1.2.Final was released. This is a bug-fixing release with 11 issues resolved. Most notably:
-      
       
       
       
@@ -351,7 +332,6 @@
       &lt;p&gt;This week we are releasing three new builds of Weld. Firstly, &lt;strong&gt;Weld 2.1.2.Final&lt;/strong&gt; was released. This is a bug-fixing release with 11 issues resolved. Most notably:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;The conversation context is now initialized lazily. This resolves the problem with custom character encoding that many of you run into. See the &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.1.2.Final/en-US/html/scopescontexts.html#d0e2009&quot;&gt;reference documentation&lt;/a&gt; for details.&lt;/p&gt;
@@ -381,7 +361,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -396,9 +376,6 @@
       &#91; Release notes &#93;
       &#91; Documentation &#93;
       &#91; CDI 1.1 Javadoc &#93;
-      
-      
-      
       ...
     </summary>
     <content type="html">
@@ -416,7 +393,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -426,7 +403,6 @@
       
       I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of Contexts and Dependency Injection for Java EE (CDI).
       Here is the highlight of what’s new in Weld 2.1.0:
-      
       
       
       
@@ -460,7 +436,6 @@
       
       
       
-      
       The CDI programming model...
     </summary>
     <content type="html">
@@ -469,7 +444,6 @@
       Here is the highlight of what’s new in Weld 2.1.0:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;ulist&quot;&gt;
-      
       &lt;ul&gt;
       &lt;li&gt;
       &lt;p&gt;OSGi support with Pax CDI&lt;/p&gt;
@@ -499,7 +473,6 @@
       &lt;p&gt;The framework provides three main features:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;olist arabic&quot;&gt;
-      
       &lt;ol class=&quot;arabic&quot;&gt;
       &lt;li&gt;
       &lt;p&gt;The CDI programming model can be used within OSGi bundles.&lt;/p&gt;
@@ -532,7 +505,6 @@
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the &lt;a href=&quot;http://team.ops4j.org/wiki/display/PAXCDI/2013/10/27/Pax+CDI+0.5.0+Released&quot;&gt;release announcement&lt;/a&gt; for more details.&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -548,7 +520,6 @@
       See &lt;a href=&quot;https://community.jboss.org/people/mkouba/blog/2013/09/18/weld%E2%80%94skip-cdi-context-activation-for-some-http-requests&quot;&gt;Martin’s blog post&lt;/a&gt; or
       &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194&quot;&gt;the reference documentation&lt;/a&gt; for more details.&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
@@ -563,7 +534,6 @@
       [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.1.0.Final/en-US/html/&quot;&gt;Documentation&lt;/a&gt; ]
       [ &lt;a href=&quot;http://docs.jboss.org/cdi/api/1.1/&quot;&gt;CDI 1.1 Javadoc&lt;/a&gt; ]&lt;/p&gt;
       &lt;/div&gt;
-      
       &lt;/div&gt;
       &lt;/div&gt;
     </content>
@@ -571,7 +541,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -580,9 +550,6 @@
     <summary>
       
       A tip how to configure a new feature introduced in Weld 2.1.0.Beta2 which allows to skip CDI context activation for some HTTP requests: http://goo.gl/PAiwBS
-      
-      
-      
       ...
     </summary>
     <content type="html">
@@ -594,7 +561,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -603,9 +570,6 @@
     <summary>
       
       Weld has a new web site and it&#8217;s built with Awestruct!
-      
-      
-      
       ...
     </summary>
     <content type="html">
@@ -617,7 +581,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -635,9 +599,6 @@
       &#91; Release notes &#93;
       &#91; Documentation &#93;
       &#91; CDI 1.1 Javadoc &#93;
-      
-      
-      
       ...
     </summary>
     <content type="html">
@@ -658,7 +619,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2014-04-18T17:08:30+02:00</updated>
+    <updated>2014-05-28T14:41:19+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>

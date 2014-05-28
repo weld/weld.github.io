@@ -159,7 +159,6 @@
                   <p>In <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations">CDI 1.2</a>, the set of bean defining annotations now contains:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;)</p>
@@ -182,7 +181,6 @@
                   <p>In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
                   See <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&amp;version=12323655">the release notes</a> for the complete list of changes.</p>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -196,7 +194,6 @@
                   <p>In addition, there are noticeable improvements in the following areas:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>runtime performance of observers, interceptors and decorators</p>
@@ -209,7 +206,6 @@
                   </li>
                   </ul>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -222,7 +218,6 @@
                   <p>To do so, follow these steps:</p>
                   </div>
                   <div class="olist arabic">
-                  
                   <ol class="arabic">
                   <li>
                   <p>Download a patch appropriate for the WildFly version (e.g. 8.0.0.Final) from the <a href="http://sourceforge.net/projects/jboss/files/Weld/2.2.0.Final/">download section</a></p>
@@ -230,29 +225,24 @@
                   <li>
                   <p>In the WildFly installation, run the CLI console</p>
                   <div class="listingblock">
-                  
-                  <div class="content monospaced">
+                  <div class="content">
                   <pre>sh jboss-cli.sh</pre>
                   </div>
                   </div>
-                  
                   </li>
                   <li>
                   <p>From the console run the following command:</p>
                   <div class="listingblock">
-                  
-                  <div class="content monospaced">
+                  <div class="content">
                   <pre>patch apply /path/to/wildfly-8.0.0.Final-weld-2.2.0.Final-patch.zip</pre>
                   </div>
                   </div>
-                  
                   </li>
                   </ol>
                   </div>
                   <div class="paragraph">
                   <p>Your installation is now patched!</p>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -272,7 +262,6 @@
                   <p>Furthermore, Weld Servlet now supports <strong>Jetty 9.1</strong>. At the same time, the support for <strong>Tomcat 6 was dropped</strong>. To summarize, Weld Servlet is currently supported on the following Servlet containers:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>Tomcat 7, 8</p>
@@ -282,7 +271,6 @@
                   </li>
                   </ul>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -298,7 +286,6 @@
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/issues/?filter=12321473">Release notes</a> &#93;</p>
                   </div>
-                  
                   </div>
                   </div>
                 </div>
@@ -318,7 +305,6 @@
                   <p><strong>Weld 2.2</strong> is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>bootstrap time</p>
@@ -341,7 +327,6 @@
                   <p>Today, we released <strong>Weld 2.2.0.Alpha1</strong>. The most significant changes include:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>Added <a href="http://docs.jboss.org/weld/javadoc/2.2/weld-spi/org/jboss/weld/resources/spi/ClassFileInfo.html">new SPI</a> that allows bytecode-scanning frameworks (such as <a href="https://github.com/wildfly/jandex">jandex</a>) to be integrated. This yields improved bootstrap time especially with large deployments.</p>
@@ -389,7 +374,6 @@
                   <p>This week we are releasing three new builds of Weld. Firstly, <strong>Weld 2.1.2.Final</strong> was released. This is a bug-fixing release with 11 issues resolved. Most notably:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>The conversation context is now initialized lazily. This resolves the problem with custom character encoding that many of you run into. See the <a href="http://docs.jboss.org/weld/reference/2.1.2.Final/en-US/html/scopescontexts.html#d0e2009">reference documentation</a> for details.</p>
@@ -448,7 +432,6 @@
                   Here is the highlight of what’s new in Weld 2.1.0:</p>
                   </div>
                   <div class="ulist">
-                  
                   <ul>
                   <li>
                   <p>OSGi support with Pax CDI</p>
@@ -478,7 +461,6 @@
                   <p>The framework provides three main features:</p>
                   </div>
                   <div class="olist arabic">
-                  
                   <ol class="arabic">
                   <li>
                   <p>The CDI programming model can be used within OSGi bundles.</p>
@@ -511,7 +493,6 @@
                   <div class="paragraph">
                   <p>EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the <a href="http://team.ops4j.org/wiki/display/PAXCDI/2013/10/27/Pax+CDI+0.5.0+Released">release announcement</a> for more details.</p>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -527,7 +508,6 @@
                   See <a href="https://community.jboss.org/people/mkouba/blog/2013/09/18/weld&#8212;skip-cdi-context-activation-for-some-http-requests">Martin’s blog post</a> or
                   <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194">the reference documentation</a> for more details.</p>
                   </div>
-                  
                   </div>
                   </div>
                   <div class="sect1">
@@ -542,7 +522,6 @@
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.1.0.Final/en-US/html/">Documentation</a> &#93;
                   &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
                   </div>
-                  
                   </div>
                   </div>
                 </div>
