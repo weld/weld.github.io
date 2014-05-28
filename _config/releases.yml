@@ -90,6 +90,18 @@
   category: Final
   date: 25.4.2013
   versionId: 12322078
+- version: '1.1.23.Final'
+  category: Final
+  date: 28.5.2014
+  versionId: 12324901
+- version: '1.1.22.Final'
+  category: Final
+  date: 15.5.2014
+  versionId: 12324868
+- version: '1.1.21.Final'
+  category: Final
+  date: 22.4.2014
+  versionId: 12324670
 - version: '1.1.20.Final'
   category: Final
   date: 18.4.2014
