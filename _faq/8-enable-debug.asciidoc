@@ -1,0 +1,48 @@
+= How do I enable debug logging for Weld in a specific container?
+
+When things do not work as expected, more information might be helpful in solving the problem. For this reason, you might want to enable the debug (fine) log level for Weld.
+
+Each container has its own way to do this:
+
+**GlassFish** (more info: http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html[Setting Log Levels - GlassFish])
+
+global configuration - add the following line to ++_domain-dir_/config/logging.properties++
+[source]
+----
+org.jboss.weld.level=FINE
+----
+
+**WildFly** (more info: https://docs.jboss.org/author/display/WFLY8/Logging+Configuration[Logging Configuration - WildFly])
+
+global configuration - add the following content to the logging subsystem in ++$JBOSS_HOME/standalone/configuration/standalone-full.xml++
+[source]
+----
+<logger category="org.jboss.weld">
+    <level name="DEBUG"/>
+</logger>
+----
+per-deployment configuration - add the following line to the logging configuration file (e.g. ++META-INF/logging.properties++) of the application
+[source]
+----
+org.jboss.weld.level=DEBUG
+----
+TIP: If you want to see the debug messages also in the console, make sure the console handler's level is set to at least DEBUG.
+
+
+**Tomcat** (more info: http://tomcat.apache.org/tomcat-7.0-doc/logging.html[Logging in Tomcat])
+
+global configuration - add the following line to ++$CATALINA_HOME/conf/logging.properties++
+[source]
+----
+org.jboss.weld.level=FINE
+----
+per-deployment configuration - add the following line to ++WEB-INF/classes/logging.properties++
+[source]
+----
+org.jboss.weld.level=FINE
+----
+
+**Jetty**
+
+For enabling debug logging on Jetty, see http://www.eclipse.org/jetty/documentation/current/configuring-logging.html[Jetty Logging]
+
