@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2014-05-28T14:41:19+02:00</updated>
+  <updated>2014-05-28T14:41:35+02:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -190,7 +190,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -298,7 +298,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -361,7 +361,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -393,7 +393,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -541,7 +541,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -561,7 +561,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -581,7 +581,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -619,7 +619,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2014-05-28T14:41:19+02:00</updated>
+    <updated>2014-05-28T14:41:35+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
