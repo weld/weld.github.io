@@ -194,6 +194,11 @@
                     I use the Instance API to obtain bean instances. Why does it seem to cause a memory leak?
                   </a>
                 </li>
+                <li>
+                  <a href="#7">
+                    How do I enable debug logging for Weld in a specific container?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -366,6 +371,88 @@
                 <div class="paragraph">
                 <p>By default, each object obtained using <code>Instance</code> remains managed (is not released) until the <code>Instance</code> object is destroyed. This can easily create a memory leak.
                 Therefore, the application should explicitly destroy obtained instances when it no longer needs by calling the <a href="http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/Instance.html#destroy(T)">Instance.destroy()</a> method.</p>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div id="7">
+                <h3>
+                  How do I enable debug logging for Weld in a specific container?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>When things do not work as expected, more information might be helpful in solving the problem. For this reason, you might want to enable the debug (fine) log level for Weld.</p>
+                </div>
+                <div class="paragraph">
+                <p>Each container has its own way to do this:</p>
+                </div>
+                <div class="paragraph">
+                <p><strong>GlassFish</strong> (more info: <a href="http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html">Setting Log Levels - GlassFish</a>)</p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration - add the following line to <code><em>domain-dir</em>/config/logging.properties</code></p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>org.jboss.weld.level=FINE</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p><strong>WildFly</strong> (more info: <a href="https://docs.jboss.org/author/display/WFLY8/Logging+Configuration">Logging Configuration - WildFly</a>)</p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration - add the following content to the logging subsystem in <code>$JBOSS_HOME/standalone/configuration/standalone-full.xml</code></p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>&lt;logger category="org.jboss.weld"&gt;&#x000A;    &lt;level name="DEBUG"/&gt;&#x000A;&lt;/logger&gt;</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>per-deployment configuration - add the following line to the logging configuration file (e.g. <code>META-INF/logging.properties</code>) of the application</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>org.jboss.weld.level=DEBUG</code></pre>
+                </div>
+                </div>
+                <div class="admonitionblock tip">
+                <table>
+                <tr>
+                <td class="icon">
+                <div class="title">Tip</div>
+                </td>
+                <td class="content">
+                If you want to see the debug messages also in the console, make sure the console handler&#8217;s level is set to at least DEBUG.
+                </td>
+                </tr>
+                </table>
+                </div>
+                <div class="paragraph">
+                <p><strong>Tomcat</strong> (more info: <a href="http://tomcat.apache.org/tomcat-7.0-doc/logging.html">Logging in Tomcat</a>)</p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration - add the following line to <code>$CATALINA_HOME/conf/logging.properties</code></p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>org.jboss.weld.level=FINE</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>per-deployment configuration - add the following line to <code>WEB-INF/classes/logging.properties</code></p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>org.jboss.weld.level=FINE</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p><strong>Jetty</strong></p>
+                </div>
+                <div class="paragraph">
+                <p>For enabling debug logging on Jetty, see <a href="http://www.eclipse.org/jetty/documentation/current/configuring-logging.html">Jetty Logging</a></p>
                 </div>
                 </div>
                 </div>
