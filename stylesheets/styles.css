@@ -200,3 +200,11 @@ footer p {
 /* line 201, /opt/jboss/weld-site/stylesheets/styles.scss */
 div#preamble {
   margin-bottom: 30px; }
+
+/* line 205, /opt/jboss/weld-site/stylesheets/styles.scss */
+.tabnavclearfix {
+  padding: 0px 50px 0px 50px; }
+
+/* line 209, /opt/jboss/weld-site/stylesheets/styles.scss */
+#tabnav-panel.tabnav-opened {
+  border-bottom: initial; }
