@@ -9,8 +9,11 @@
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" }
     //If IE7 for font-awesome
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :media=>'screen', :href=>"//static.jboss.org/css/tabzilla.css" }
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/styles.css" }
-    %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
+
+    %script{ :type=>'text/javascript', :src=>'//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js' }
+    %script{ :type=>'text/javascript', :src=>'//static.jboss.org/js/_jbossorg-tabzilla.js' }
     /[if lt IE 9]
       %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
 
@@ -88,6 +91,13 @@
               %i.icon-edit
                 Governance
         .span10
+          .row
+            .dropup
+              #ajbossproject
+                A JBoss Project
+              %a#tab.tabnav-closed{ :href=>'#'} Red Hat
+              %script
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false );
           .row
             .span4
               %img{ :src=>'/images/weld_logo_450x.png', :alt=>'Weld Logo', :class=>"weld-home-logo"}
