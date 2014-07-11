@@ -3,7 +3,7 @@ asciidoc:
 profiles: 
   production:
     base_url: http://weld.cdi-spec.org
-    google_analytics: UA-45187401-1
+    site.google_analytics = { :account => 'UA-45187401-1' }
     deploy: 
       host: github_pages
       branch: master
