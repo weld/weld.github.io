@@ -1,0 +1,30 @@
+---
+layout: news
+title: Weld.Next
+author: Jozef Hartinger
+---
+
+Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12325389[23 issues]. 
+In addition, the Servlet module got an update and among other things now supports: 
+
+- all three bean discovery modes (e.g. only explicitly annotated classes will be loaded as CDI beans)
+- bean archive isolation
+- using Jandex for faster deployment discovery
+
+See the link:http://docs.jboss.org/weld/reference/2.2.5.Final/en-US/html/_application_servers_and_environments_supported_by_weld.html#_servlet_containers_such_as_tomcat_or_jetty[reference documentation ] 
+for details.
+
+Talking about documentation we are grateful to link:http://www.next-presso.com/author/antoine/[Antoine Sabot-Durand] for migrating our reference documentation to link:http://www.methods.co.nz/asciidoc/[AsciiDoc]. 
+We also thank our community contributors *Antonin Stefanutti* and *Stefan Grossmann* who contributed with pull requests.
+
+Weld 3.0
+--------
+
+In the coming months, our focus will be shifting towards *Weld 3.0* - the future reference implementation of link:http://cdi-spec.org/[CDI 2.0]. 
+Initially, we plan on releasing Alpha releases every two weeks starting in early October.
+
+The Alpha releases are likely to break compatibility from time to time and will often contain bleeding edge or prototype code. 
+The goals is however to give the CDI community a chance to test drive the proposed changes in the CDI specification as soon as possible and give quick feedback to the CDI expert group.
+
+Weld 3.0 will also be a good opportunity to get involved in the development of this open-source project. *Interested?* See our link:http://weld.cdi-spec.org/community/[community web page] for more details.
+
