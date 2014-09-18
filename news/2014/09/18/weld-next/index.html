@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: Home
+      Weld: Weld.Next
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
@@ -149,121 +149,55 @@
           </div>
           <div class="row-fluid">
             <div class="span10">
-              <div class="row">
-                <div class="span12">
-                  <p>
-                    Weld is the reference implementation of
-                    <a href="http://cdi-spec.org">
-                      CDI: Contexts and Dependency Injection for the Java EE Platform
-                    </a>
-                    which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
-                  </p>
-                  <p>
-                    Weld is integrated into many Java EE application servers such as WildFly, JBoss Enterprise Application Platform, GlassFish, Oracle WebLogic and others. Weld can also be used in a Servlet-only environment (Tomcat, Jetty) or plain Java SE environment.
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="span5">
-                  <div>
-                    <h1>Try Weld Today</h1>
-                    <div>
-                      <p>
-                        To use Weld today, download the
-                        <a href="http://wildfly.org">WildFly server</a>
-                        (formelly JBoss AS) and add the following code to the
-                        <em>pom.xml</em>
-                        file of your application:
-                      </p>
-                      <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.1&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
-                      <p>
-                        For alternative ways of using Weld, see the
-                        <a href="/download">download section</a>
-                        or the
-                        <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">reference documentation.</a>
-                      </p>
-                    </div>
+              <div class="post">
+                <h1>
+                  Weld.Next
+                </h1>
+                <p style="color: #666;">
+                  <strong>2014-9-18: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12325389">23 issues</a>.
+                  In addition, the Servlet module got an update and among other things now supports:</p>
                   </div>
-                </div>
-                <div class="span3">
-                  <div>
-                    <h1>Weld Book</h1>
-                    <p>The latest book on Weld is now available:</p>
-                    <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
-                      <img height="307" src="images/book.jpg" width="250">
-                    </a>
-                  </div>
-                </div>
-                <div class="span4">
-                  <h1>
-                    News
-                    <a href="http://weld.cdi-spec.org/news.atom">
-                      <i class="icon-rss"></i>
-                    </a>
-                  </h1>
-                  <ul class="newsColumn">
-                    <li>
-                      <h3>
-                        <a href="/news/2014/09/18/weld-next/">Weld.Next</a>
-                      </h3>
-                      <p>
-                        <strong>2014-9-18: Jozef Hartinger</strong>
-                      </p>
-                      <p>
-                        
-                        Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses 23 issues.
-                        In addition, the Servlet module got an update and among other things now supports:
-                        
-                        
-                        
-                        
-                        all three bean discovery modes (e.g. only explicitly annotated classes will be loaded as CDI beans)
-                        
-                        
-                        bean archive isolation
-                        
-                        
-                        using Jandex for faster deployment...
-                      </p>
-                      <a href="/news/2014/09/18/weld-next/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2014/04/15/weld-220-final/">Weld 2.2 (CDI 1.2 reference implementation) released!</a>
-                      </h3>
-                      <p>
-                        <strong>2014-4-15: Jozef Hartinger</strong>
-                      </p>
-                      <p>
-                        
-                        Today we released Weld 2.2.0.Final - the reference implementation of Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2).
-                        Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.
-                        
-                        
-                        CDI 1.2
-                        
-                        
-                        CDI 1.2 is a maintenance release of the CDI...
-                      </p>
-                      <a href="/news/2014/04/15/weld-220-final/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2014/02/04/weld-220-alpha1/">CDI 1.2 and Weld 2.2</a>
-                      </h3>
-                      <p>
-                        <strong>2014-2-4: Jozef Hartinger</strong>
-                      </p>
-                      <p>
-                        
-                        Work on a maintenance release of the CDI specification (CDI 1.2) has started recently. Now is the best time to add feedback on issues being addressed. Most of the discussion happens in the cdi-dev mailing list or the IRC channel.
-                        
-                        
-                        Weld 2.2 is going to be the reference implementation of CDI...
-                      </p>
-                      <a href="/news/2014/02/04/weld-220-alpha1/">Read more &raquo;</a>
-                    </li>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>all three bean discovery modes (e.g. only explicitly annotated classes will be loaded as CDI beans)</p>
+                  </li>
+                  <li>
+                  <p>bean archive isolation</p>
+                  </li>
+                  <li>
+                  <p>using Jandex for faster deployment discovery</p>
+                  </li>
                   </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>See the <a href="http://docs.jboss.org/weld/reference/2.2.5.Final/en-US/html/_application_servers_and_environments_supported_by_weld.html#_servlet_containers_such_as_tomcat_or_jetty">reference documentation </a>
+                  for details.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Talking about documentation we are grateful to <a href="http://www.next-presso.com/author/antoine/">Antoine Sabot-Durand</a> for migrating our reference documentation to <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a>.
+                  We also thank our community contributors <strong>Antonin Stefanutti</strong> and <strong>Stefan Grossmann</strong> who contributed with pull requests.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_3_0">Weld 3.0</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>In the coming months, our focus will be shifting towards <strong>Weld 3.0</strong> - the future reference implementation of <a href="http://cdi-spec.org/">CDI 2.0</a>.
+                  Initially, we plan on releasing Alpha releases every two weeks starting in early October.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The Alpha releases are likely to break compatibility from time to time and will often contain bleeding edge or prototype code.
+                  The goals is however to give the CDI community a chance to test drive the proposed changes in the CDI specification as soon as possible and give quick feedback to the CDI expert group.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Weld 3.0 will also be a good opportunity to get involved in the development of this open-source project. <strong>Interested?</strong> See our <a href="http://weld.cdi-spec.org/community/">community web page</a> for more details.</p>
+                  </div>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
