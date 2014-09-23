@@ -108,13 +108,11 @@
               ~ content
       %footer
         .row
-          %p
-            Copyright &copy; #{Date.today.year},
-            %a{:href=>"http://redhat.com"}
-              Red Hat, Inc.
-            Weld is licensed under the 
-            %a{:href=>"http://www.apache.org/licenses/LICENSE-2.0.html"}
-              Apache License, Version 2.0
+          .container{:id => "companyfooter"}
+            .redhatlogo{:style => "text-align:center;"}
+              .logospacer{:style => "height:10px;"}
+              %a{:href => "http://www.redhat.com/"}
+                %img{:src => "http://static.jboss.org/theme/images/common/redhat_logo.png"}
   %script{ :type=>'text/javascript', :src=>"//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" }
   - if site.google_analytics
     = google_analytics
