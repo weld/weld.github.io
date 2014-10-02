@@ -8,3 +8,5 @@ layout: base
     %strong #{page.date.year}-#{page.date.month}-#{page.date.day}: #{page.author}
   .content
     ~ content
+  - if site.disqus
+    = page.disqus_comments

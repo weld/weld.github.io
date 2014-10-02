@@ -4,6 +4,8 @@ profiles:
   production:
     base_url: http://weld.cdi-spec.org
     google_analytics: UA-45187401-1
+    disqus_generate_id: true
+    disqus: weld-cdi
     deploy: 
       host: github_pages
       branch: master
@@ -12,4 +14,8 @@ profiles:
     deploy: 
       host: github_pages
       branch: master
+  development:
+    base_url: http://localhost:4242
+    disqus: weld-cdi
+    disqus_developer: true
 title: Weld

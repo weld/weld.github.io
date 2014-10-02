@@ -7,6 +7,7 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Indexifier.new
   extension Awestruct::Extensions::Atomizer.new(:posts, '/news.atom')
   extension Awestruct::Extensions::FAQ.new( '_faq', :faq ) 
+  extension Awestruct::Extensions::Disqus.new
   helper Awestruct::Extensions::GoogleAnalytics
 end
 
