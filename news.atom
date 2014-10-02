@@ -2,13 +2,250 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2014-10-02T09:46:17+02:00</updated>
+  <updated>2014-10-02T18:53:07+02:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
+    <title>Weld 3.0.0.Alpha1 released!</title>
+    <updated>2014-10-02T18:53:07+02:00</updated>
+    <published>2014-10-02T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
+    <author>
+      <name>Jozef Hartinger</name>
+    </author>
+    <summary>
+      
+      Today we are releasing Weld 3.0.0.Alpha1. This release serves as an early proof of concept of some of the ideas that are being discussed by the CDI Expert Group for the upcoming
+      CDI 2.0 specification. Furthermore, this is a great opportunity for the community to test-drive some of the proposed improvements and provide us with feedback.
+      Be warned though that this released does not come with any guarantee of stability and that binary and functional compatibility is likely to be broken in the following releases.
+      
+      
+      Ordering of observer methods
+      
+      
+      The first of the new features are ordered observer methods. This requirement came up a...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Today we are releasing Weld 3.0.0.Alpha1. This release serves as an &lt;strong&gt;early proof of concept&lt;/strong&gt; of some of the ideas that are being discussed by the CDI Expert Group for the upcoming
+      &lt;a href=&quot;http://cdi-spec.org/&quot;&gt;CDI 2.0 specification&lt;/a&gt;. Furthermore, this is a great opportunity for the community to test-drive some of the proposed improvements and &lt;strong&gt;provide us with feedback&lt;/strong&gt;.
+      Be warned though that this released does not come with any guarantee of stability and that binary and functional compatibility is likely to be broken in the following releases.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_ordering_of_observer_methods&quot;&gt;Ordering of observer methods&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The first of the new features are ordered observer methods. This requirement came up a long ago and several approaches were proposed in the meantime, as documented by
+      &lt;a href=&quot;https://issues.jboss.org/browse/CDI-4&quot;&gt;CDI-4&lt;/a&gt;.The Alpha1 release employs the general-purpose &lt;code&gt;@Priority&lt;/code&gt; annotation to determine the order in which observer methods are to be notified.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;There are many open questions about this feature. Here are some of the rules we set for the purpose of this experimental implementation. These are by no means set in stone but instead we encourage you
+      to give us feedback on these:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Each observer method has a certain priority value. An observer method that does not define a priority explicitly is given the default priority which is 2500 (in the middle of the &lt;code&gt;Interceptor.Priority.APPLICATION&lt;/code&gt; range)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;The priority of an observer method determines the order. An observer method with lower value is called before an observer method with higher value&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;If multiple observer methods define the same priority value, the order is undefined&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Observer methods priorities should match &lt;a href=&quot;https://javaee-spec.java.net/nonav/javadocs/javax/interceptor/Interceptor.Priority.html&quot;&gt;existing priority range convention&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;The ordering applies to both transactional and non-transactional observer methods&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;The priority annotation is applied on the event parameter (not the observer method)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Here’s an example:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {
+          // ...
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Note that &lt;code&gt;javax.annotation.Priority&lt;/code&gt; can currently only be applied to types. Therefore, we temporarily created a substitute called &lt;strong&gt;&lt;code&gt;org.jboss.weld.experimental.Priority&lt;/code&gt;&lt;/strong&gt; which is identical
+      to the original except that it can also be applied on parameters (of observer methods). The plan is to propagate this change back to &lt;code&gt;javax.annotation.Priority&lt;/code&gt;. In the meantime, Weld’s twin
+      gets the job done.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In addition to the &lt;code&gt;@Priority&lt;/code&gt; annotation, the SPI was also enhanced to expose the priority of an observer method. We are not touching &lt;code&gt;javax.enterprise&lt;/code&gt; interfaces just yet. Instead,
+      the &lt;code&gt;org.jboss.weld.experimental&lt;/code&gt; package contains proposals for how the new SPI should look like. As the package name suggests, this SPI is good for a test-drive but do not expect it to be stable.
+      To use the experimental SPIs, you’ll need to add a dependency on &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-api%7C3.0.Alpha1%7Cjar&quot;&gt;weld-api&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Here’s an example of reading the observer method priority using the SPI in an Extension. &lt;code&gt;ExperimentalProcessObserverMethod&lt;/code&gt; and &lt;code&gt;ExperimentalObserverMethod&lt;/code&gt; interfaces come from the
+      &lt;code&gt;org.jboss.weld.experimental package&lt;/code&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;public class SimpleExtension implements Extension {
+      
+          void observe(@Observes ExperimentalProcessObserverMethod&amp;lt;User, ?&amp;gt; event) {
+              ExperimentalObserverMethod&amp;lt;User&amp;gt; observerMethod = event.getObserverMethod();
+              this.priority = observerMethod.getPriority();
+          }
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Use the &lt;a href=&quot;https://issues.jboss.org/browse/CDI-4&quot;&gt;corresponding CDI ticket&lt;/a&gt; for any feedback on these features.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_vetoing_and_modifying_observer_methods&quot;&gt;Vetoing and modifying observer methods&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;We’ll stay with observer methods for a few more paragraphs. A &lt;a href=&quot;https://issues.jboss.org/browse/CDI-458&quot;&gt;request&lt;/a&gt; was raised in the CDI issue tracker for making it possible to disable an
+      observer method using the &lt;code&gt;ProcessObserverMethod&lt;/code&gt; SPI.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This Alpha1 release introduces the &lt;code&gt;veto()&lt;/code&gt; methods (aligned with &lt;code&gt;ProcessAnnotatedType.veto()&lt;/code&gt;) for this:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&amp;lt;?, Debug&amp;gt; event) {
+          if (projectStage != ProjectStage.Development) {
+              event.veto();
+          }
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In addition, the observer method metadata may be altered by an extension. This is done similarly to how &lt;code&gt;InjectionTarget&lt;/code&gt;, &lt;code&gt;InjectionPoint&lt;/code&gt; or &lt;code&gt;BeanAttribute&lt;/code&gt; metadata are modified which
+      is most often by wrapping the original object (decorator design pattern). Any piece of metadata (including aforementioned priority) can be altered. For example, the transaction phase:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;void alterObserver(@Observes ExperimentalProcessObserverMethod&amp;lt;User, ?&amp;gt; event) {
+          event.setObserverMethod(new ForwardingExperimentalObserverMethod&amp;lt;User&amp;gt;(event.getObserverMethod()) {
+              @Override
+              public TransactionPhase getTransactionPhase() {
+                  return TransactionPhase.AFTER_SUCCESS;
+              }
+          });
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_repeatable_qualifiers_and_interceptor_bindings&quot;&gt;Repeatable qualifiers and interceptor bindings&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This release serves as a proof of concept for supporting repeating qualifiers and interceptor bindings. You can now fully utilize Java 8 features and use multiple qualifiers or interceptor bindings
+      of the same type in the same location, for example:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;public class School {
+      
+          @Produces
+          @Speaks(&quot;English&quot;)
+          @Speaks(&quot;French&quot;)
+          public Student graduate() {
+              // ...
+          }
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Repeating qualifiers can be used for both bean and event resolution. See the &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html&quot;&gt;Java documentation&lt;/a&gt; for how to define
+      a repeating annotation.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_interceptor_bindings_in_invocation_context&quot;&gt;Interceptor bindings in invocation context&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This is an often recurring scenario. An interceptor binding defines several &lt;code&gt;@NonBinding&lt;/code&gt; members which serve as configuration for the interceptor. How does an interceptor get hold of these values?
+      This is not easy as the interceptor binding may often appear on the intercepted method, the class that defined it or may be inherited from another interceptor binding or stereotype (even transitively!).
+      This problem gave birth to utilities such as
+      &lt;a href=&quot;https://git-wip-us.apache.org/repos/asf?p=deltaspike.git;a=blob;f=deltaspike/core/api/src/main/java/org/apache/deltaspike/core/util/AnnotationUtils.java;h=9d4c8e2f72936facf1ef0d8d9655c4186965afde;hb=HEAD&quot;&gt;this one&lt;/a&gt;.
+      Still, even after all this effort the result is not entirely correct as it was obtained using Java reflection ignoring the fact that the interceptor binding may have been modified
+      (e.g. using &lt;code&gt;ProcessAnnotatedType&lt;/code&gt;).&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This problem is being addressed as &lt;a href=&quot;https://issues.jboss.org/browse/CDI-468&quot;&gt;CDI-468&lt;/a&gt;. The Alpha1 release of Weld implements this feature and exposes new methods for obtaining interceptor bindings
+      that are in effect for the interception. This is done using &lt;code&gt;ExperimentalInvocationContext.getInterceptorBindings()&lt;/code&gt; or &lt;code&gt;ExperimentalInvocationContext.getInterceptorBindingsByType()&lt;/code&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Again, &lt;code&gt;ExperimentalInvocationContext&lt;/code&gt; can be found in the &lt;code&gt;org.jboss.weld.experimental&lt;/code&gt; package and depicts how the future version of &lt;code&gt;javax.interceptor.InvocationContext&lt;/code&gt; could look like.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;@Interceptor
+      @Secure
+      public class SecurityInterceptor {
+      
+          @Inject
+          private User user;
+      
+          @AroundInvoke
+          public Object intercept(ExperimentalInvocationContext ctx) throws Exception {
+              Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();
+              if (!user.getRoles().contains(binding.requireRole())) {
+                  throw new SecurityException();
+              }
+              return ctx.proceed();
+          }
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Again, your feedback is welcome at &lt;a href=&quot;https://issues.jboss.org/browse/CDI-468&quot;&gt;CDI-468&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_changes_in_the_annotated_layer&quot;&gt;Changes in the Annotated layer&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;CDI provides an abstraction over the Reflection API - &lt;a href=&quot;http://docs.jboss.org/cdi/api/1.2/javax/enterprise/inject/spi/Annotated.html&quot;&gt;AnnotatedType and friends&lt;/a&gt; - which mostly allows extensions
+      to alter the set of annotations present on a type, field, method, etc.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The Alpha1 release contains two minor additions to this API. Firstly, the API now supports Java 8 repeating annotations with a new method &lt;code&gt;ExperimentalAnnotated.getAnnotationsByType(Class&amp;lt;T&amp;gt; annotationClass)&lt;/code&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Secondly, it is now possible to access the &lt;code&gt;java.lang.reflect.Parameter&lt;/code&gt; instance that is wrapped by &lt;code&gt;AnnotatedParameter&lt;/code&gt; using &lt;code&gt;ExperimentalAnnotatedParameter.getJavaParameter();&lt;/code&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;See &lt;a href=&quot;https://issues.jboss.org/browse/CDI-471&quot;&gt;CDI-471&lt;/a&gt; and &lt;a href=&quot;https://issues.jboss.org/browse/CDI-481&quot;&gt;CDI-481&lt;/a&gt; for details.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_give_it_a_try&quot;&gt;Give it a try!&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html&quot;&gt;Experimental API documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12322333&quot;&gt;Release notes&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1&quot;&gt;Distribution&lt;/a&gt; ]
+      [ &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha1-patch.zip/download&quot;&gt;Patch for WildFly 9&lt;/a&gt; ]&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -93,7 +330,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -275,7 +512,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -383,7 +620,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -446,7 +683,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -478,7 +715,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -626,7 +863,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -646,7 +883,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -666,7 +903,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -704,7 +941,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2014-10-02T09:46:17+02:00</updated>
+    <updated>2014-10-02T18:52:21+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>

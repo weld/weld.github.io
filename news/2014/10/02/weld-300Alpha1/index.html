@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 3.0.0.Alpha1 released!
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- /If IE7 for font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="http://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2" style="min-height:1px;">
+          <ul class="nav nav-tabs nav-stacked span2 visible-desktop" id="main_nav">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                Download
+              </a>
+            </li>
+            <li>
+              <a href="/news">
+                <i class="icon-edit"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Docs &amp; FAQ
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+          </ul>
+          <a class="hidden-desktop" href="#" id="toggle_menu">
+            <i class="icon-exchange"></i>
+          </a>
+          <ul class="nav nav-tabs nav-stacked span2 hide hidden-desktop" id="mobile_menu">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="/roadmap">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://jira.jboss.org/jira/browse/WELD">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+            <li>
+              <a href="/governance"></a>
+              <i class="icon-edit">
+                Governance
+              </i>
+            </li>
+          </ul>
+        </div>
+        <div class="span10">
+          <div class="row">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false );
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <img alt="Weld Logo" class="weld-home-logo" src="/images/weld_logo_450x.png">
+            </div>
+            <div class="span8">
+              <img alt="CDI tagcloud" class="cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span10">
+              <div class="post">
+                <h1>
+                  Weld 3.0.0.Alpha1 released!
+                </h1>
+                <p style="color: #666;">
+                  <strong>2014-10-2: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Today we are releasing Weld 3.0.0.Alpha1. This release serves as an <strong>early proof of concept</strong> of some of the ideas that are being discussed by the CDI Expert Group for the upcoming
+                  <a href="http://cdi-spec.org/">CDI 2.0 specification</a>. Furthermore, this is a great opportunity for the community to test-drive some of the proposed improvements and <strong>provide us with feedback</strong>.
+                  Be warned though that this released does not come with any guarantee of stability and that binary and functional compatibility is likely to be broken in the following releases.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_ordering_of_observer_methods">Ordering of observer methods</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>The first of the new features are ordered observer methods. This requirement came up a long ago and several approaches were proposed in the meantime, as documented by
+                  <a href="https://issues.jboss.org/browse/CDI-4">CDI-4</a>.The Alpha1 release employs the general-purpose <code>@Priority</code> annotation to determine the order in which observer methods are to be notified.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are many open questions about this feature. Here are some of the rules we set for the purpose of this experimental implementation. These are by no means set in stone but instead we encourage you
+                  to give us feedback on these:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Each observer method has a certain priority value. An observer method that does not define a priority explicitly is given the default priority which is 2500 (in the middle of the <code>Interceptor.Priority.APPLICATION</code> range)</p>
+                  </li>
+                  <li>
+                  <p>The priority of an observer method determines the order. An observer method with lower value is called before an observer method with higher value</p>
+                  </li>
+                  <li>
+                  <p>If multiple observer methods define the same priority value, the order is undefined</p>
+                  </li>
+                  <li>
+                  <p>Observer methods priorities should match <a href="https://javaee-spec.java.net/nonav/javadocs/javax/interceptor/Interceptor.Priority.html">existing priority range convention</a></p>
+                  </li>
+                  <li>
+                  <p>The ordering applies to both transactional and non-transactional observer methods</p>
+                  </li>
+                  <li>
+                  <p>The priority annotation is applied on the event parameter (not the observer method)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Here’s an example:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {&#x000A;    // ...&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Note that <code>javax.annotation.Priority</code> can currently only be applied to types. Therefore, we temporarily created a substitute called <strong><code>org.jboss.weld.experimental.Priority</code></strong> which is identical
+                  to the original except that it can also be applied on parameters (of observer methods). The plan is to propagate this change back to <code>javax.annotation.Priority</code>. In the meantime, Weld’s twin
+                  gets the job done.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition to the <code>@Priority</code> annotation, the SPI was also enhanced to expose the priority of an observer method. We are not touching <code>javax.enterprise</code> interfaces just yet. Instead,
+                  the <code>org.jboss.weld.experimental</code> package contains proposals for how the new SPI should look like. As the package name suggests, this SPI is good for a test-drive but do not expect it to be stable.
+                  To use the experimental SPIs, you&#8217;ll need to add a dependency on <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-api%7C3.0.Alpha1%7Cjar">weld-api</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Here’s an example of reading the observer method priority using the SPI in an Extension. <code>ExperimentalProcessObserverMethod</code> and <code>ExperimentalObserverMethod</code> interfaces come from the
+                  <code>org.jboss.weld.experimental package</code>.</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">public class SimpleExtension implements Extension {&#x000A;&#x000A;    void observe(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;        ExperimentalObserverMethod&lt;User&gt; observerMethod = event.getObserverMethod();&#x000A;        this.priority = observerMethod.getPriority();&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Use the <a href="https://issues.jboss.org/browse/CDI-4">corresponding CDI ticket</a> for any feedback on these features.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_vetoing_and_modifying_observer_methods">Vetoing and modifying observer methods</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>We’ll stay with observer methods for a few more paragraphs. A <a href="https://issues.jboss.org/browse/CDI-458">request</a> was raised in the CDI issue tracker for making it possible to disable an
+                  observer method using the <code>ProcessObserverMethod</code> SPI.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This Alpha1 release introduces the <code>veto()</code> methods (aligned with <code>ProcessAnnotatedType.veto()</code>) for this:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&lt;?, Debug&gt; event) {&#x000A;    if (projectStage != ProjectStage.Development) {&#x000A;        event.veto();&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, the observer method metadata may be altered by an extension. This is done similarly to how <code>InjectionTarget</code>, <code>InjectionPoint</code> or <code>BeanAttribute</code> metadata are modified which
+                  is most often by wrapping the original object (decorator design pattern). Any piece of metadata (including aforementioned priority) can be altered. For example, the transaction phase:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">void alterObserver(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;    event.setObserverMethod(new ForwardingExperimentalObserverMethod&lt;User&gt;(event.getObserverMethod()) {&#x000A;        @Override&#x000A;        public TransactionPhase getTransactionPhase() {&#x000A;            return TransactionPhase.AFTER_SUCCESS;&#x000A;        }&#x000A;    });&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_repeatable_qualifiers_and_interceptor_bindings">Repeatable qualifiers and interceptor bindings</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This release serves as a proof of concept for supporting repeating qualifiers and interceptor bindings. You can now fully utilize Java 8 features and use multiple qualifiers or interceptor bindings
+                  of the same type in the same location, for example:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">public class School {&#x000A;&#x000A;    @Produces&#x000A;    @Speaks("English")&#x000A;    @Speaks("French")&#x000A;    public Student graduate() {&#x000A;        // ...&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Repeating qualifiers can be used for both bean and event resolution. See the <a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">Java documentation</a> for how to define
+                  a repeating annotation.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_interceptor_bindings_in_invocation_context">Interceptor bindings in invocation context</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This is an often recurring scenario. An interceptor binding defines several <code>@NonBinding</code> members which serve as configuration for the interceptor. How does an interceptor get hold of these values?
+                  This is not easy as the interceptor binding may often appear on the intercepted method, the class that defined it or may be inherited from another interceptor binding or stereotype (even transitively!).
+                  This problem gave birth to utilities such as
+                  <a href="https://git-wip-us.apache.org/repos/asf?p=deltaspike.git;a=blob;f=deltaspike/core/api/src/main/java/org/apache/deltaspike/core/util/AnnotationUtils.java;h=9d4c8e2f72936facf1ef0d8d9655c4186965afde;hb=HEAD">this one</a>.
+                  Still, even after all this effort the result is not entirely correct as it was obtained using Java reflection ignoring the fact that the interceptor binding may have been modified
+                  (e.g. using <code>ProcessAnnotatedType</code>).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This problem is being addressed as <a href="https://issues.jboss.org/browse/CDI-468">CDI-468</a>. The Alpha1 release of Weld implements this feature and exposes new methods for obtaining interceptor bindings
+                  that are in effect for the interception. This is done using <code>ExperimentalInvocationContext.getInterceptorBindings()</code> or <code>ExperimentalInvocationContext.getInterceptorBindingsByType()</code>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Again, <code>ExperimentalInvocationContext</code> can be found in the <code>org.jboss.weld.experimental</code> package and depicts how the future version of <code>javax.interceptor.InvocationContext</code> could look like.</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="java language-java">@Interceptor&#x000A;@Secure&#x000A;public class SecurityInterceptor {&#x000A;&#x000A;    @Inject&#x000A;    private User user;&#x000A;&#x000A;    @AroundInvoke&#x000A;    public Object intercept(ExperimentalInvocationContext ctx) throws Exception {&#x000A;        Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();&#x000A;        if (!user.getRoles().contains(binding.requireRole())) {&#x000A;            throw new SecurityException();&#x000A;        }&#x000A;        return ctx.proceed();&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Again, your feedback is welcome at <a href="https://issues.jboss.org/browse/CDI-468">CDI-468</a>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_changes_in_the_annotated_layer">Changes in the Annotated layer</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>CDI provides an abstraction over the Reflection API - <a href="http://docs.jboss.org/cdi/api/1.2/javax/enterprise/inject/spi/Annotated.html">AnnotatedType and friends</a> - which mostly allows extensions
+                  to alter the set of annotations present on a type, field, method, etc.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The Alpha1 release contains two minor additions to this API. Firstly, the API now supports Java 8 repeating annotations with a new method <code>ExperimentalAnnotated.getAnnotationsByType(Class&lt;T&gt; annotationClass)</code></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Secondly, it is now possible to access the <code>java.lang.reflect.Parameter</code> instance that is wrapped by <code>AnnotatedParameter</code> using <code>ExperimentalAnnotatedParameter.getJavaParameter();</code></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>See <a href="https://issues.jboss.org/browse/CDI-471">CDI-471</a> and <a href="https://issues.jboss.org/browse/CDI-481">CDI-481</a> for details.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_give_it_a_try">Give it a try!</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322333">Release notes</a> &#93;
+                  &#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1">Distribution</a> &#93;
+                  &#91; <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha1-patch.zip/download">Patch for WildFly 9</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "0971406bac879574ab6bda34731c01d2b080e47d";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="row">
+          <div class="container" id="companyfooter">
+            <div class="redhatlogo" style="text-align:center;">
+              <div class="logospacer" style="height:10px;"></div>
+              <a href="http://www.redhat.com/">
+                <img src="http://static.jboss.org/theme/images/common/redhat_logo.png">
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
+    });
+  </script>
+</html>
