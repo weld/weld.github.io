@@ -2,6 +2,10 @@
   category: Experimental
   date: 2.10.2014
   versionId: 12322333
+- version: '2.2.6.Final'
+  category: Final
+  date: 17.10.2014
+  versionId: 12325577
 - version: '2.2.5.Final'
   category: Final
   date: 18.9.2014
