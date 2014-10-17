@@ -91,13 +91,13 @@
               %i.icon-edit
                 Governance
         .span10
-          .row
+          .rowfluid
             .dropup
               #ajbossproject
                 A JBoss Project
               %a#tab.tabnav-closed{ :href=>'#'} Red Hat
               %script
-                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false );
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
           .row
             .span4
               %img{ :src=>'/images/weld_logo_450x.png', :alt=>'Weld Logo', :class=>"weld-home-logo"}
