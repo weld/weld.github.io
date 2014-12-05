@@ -61,7 +61,11 @@ title: Download
       %td.version
         =release["version"]
       %td
-        =release["category"]
+        - if release["category"] == "Experimental"
+          %strong
+            =release["category"]
+        - else
+          =release["category"]
       %td
         =release["date"]
       %td
