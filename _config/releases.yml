@@ -1,3 +1,7 @@
+- version: '3.0.0.Alpha3'
+  category: Experimental
+  date: 10.12.2014
+  versionId: 12325836
 - version: '2.2.8.Final'
   category: Final
   date: 9.12.2014
