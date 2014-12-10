@@ -1,0 +1,211 @@
+---
+layout: news
+title: An update on Weld 3
+author: Jozef Hartinger
+---
+
+Today we are releasing the third Alpha release of Weld 3. These Alpha releases serve
+as prototypes of changes currently being discussed by the CDI expert group for
+the upcoming CDI 2.0.
+
+The Alpha releases are not suitable for production use as the new API and functionality
+are still subject to change. We are releasing them to allow the community to test-drive
+the changes early in the development cycle. We want to shorten the feedback loop and
+identify possible glitches as soon as possible.
+
+Let’s just quickly review what has been available since Alpha1:
+
+* declarative ordering of observer methods using `@Priority`
+* ability for an extension to veto and modify an observer method
+* support for Java 8 repeatable annotations as qualifiers and interceptor bindings
+* enhanced `AnnotatedType` API
+
+For more details and examples of these features see my
+link:http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/[previous blog post].
+
+On top of this, we’re now adding the *following new features and enhancements*:
+
+* asynchronous events
+* simplified configuration of Weld-specific properties
+* Guava is no longer used internally
+
+== Asynchronous events
+
+Since its first version CDI has provided events as a facility for component interaction.
+Events enable loose coupling while preserving type safety.
+So far, CDI has supported synchronous delivery of events - the calling thread blocks
+until invocations of all associated observer methods complete. An alternative to
+this are transactional observer methods which are called asynchronously at the end
+of a transaction.
+
+For the upcoming CDI 2.0 specification one of the hot topics is enhancement of the
+events facility. The expert group is considering adding fully asynchronous event
+dispatching mechanism.
+
+A working prototype of this is available in Weld 3.0.0.Alpha3. The current proposal
+adds a method called `fireAsync` to the existing `Event` interface.
+
+[source,java]
+----
+@Inject
+private ExperimentalEvent<Configuration> event;
+…
+event.fireAsync(new Configuration());
+----
+
+The call to `event.fireAsync()` returns immediately. The event is delivered to
+corresponding observers in a dedicated thread pool that can be configured.
+
+=== What about thread-safety?
+
+There are two common usage pattens for events. In the first one an immutable event
+object is used. An alternative is to use mutable events. A mutable event allows
+observers to participate on the result which is later used by the component that
+fired the event. An example of this would be the
+link:https://docs.oracle.com/javaee/6/api/javax/enterprise/inject/spi/ProcessAnnotatedType.html[ProcessAnnotatedType<T>]
+event used by CDI extensions. When events are fired synchronously, both
+approaches work fine but how does this work when we switch to async?
+
+Nothing changes actually. No matter if the event object is immutable or not, you
+do not have to worry about thread-safety of the event object. The current implementation
+comes with the guarantee that event object is safely published which means that
+an observer method observes the event in the state in which:
+
+* it was left by an observer executing before the given observer, or
+* the initial state of the event if the given observer is the first one
+
+Furthermore, the state is consistent throughout the execution of an observer method
+which means that we guarantee safe publication and prevent races for you. The only
+thing that should be avoided is modifying the state of the event object outside of
+an observer method. This behavior matches the
+link:https://docs.google.com/document/d/1lFtgLm6hY-uECdA1r0Sfimq6vkVYThoUZsevPUaSP0E/edit?usp=sharing[option 4.1.1.1 in the current spec proposal].
+
+In addition, if observer methods are ordered (another new feature proposed for CDI 2.0)
+we preserve the ordering (as in such situation the observers are ordered for a reason!)
+and invoke observers in the given order.
+
+Last but not least, if an observer is transactional, we again preserve this and
+invoke the observer method in the corresponding transaction phase.
+
+=== How do I know when event delivery finishes and what about exceptions?
+
+In the current prototype we’re reusing the
+link:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html[CompletionStage]
+API, introduced in Java 8, which allows actions (callbacks) to be bound to the completion of the
+asynchronous delivery process. This is what it looks like:
+
+[source,java]
+----
+event.fireAsync(new Configuration()).thenAccept(config -> master.compute(config));
+----
+
+This piece of code starts with asynchronously firing a mutable configuration object
+allowing loosely-coupled observers to alter the configuration of a computation.
+Once all observers finish, computation is initiated based on the resulting configuration.
+
+If an exception occurs this can be dealt with also, either by falling back to a default value
+
+[source,java]
+----
+event.fireAsync(new Configuration())
+    .exceptionally(throwable -> DEFAULT_CONFIGURATION)
+    .thenAccept((config) -> master.compute(config));
+----
+
+or by executing arbitrary code:
+
+[source,java]
+----
+event.fireAsync(new Configuration()).whenComplete((config, throwable) -> {
+    if (throwable != null) {
+        System.err.println("Oops. Failed because of " + throwable.getMessage());
+    } else {
+        master.compute(config);
+    }
+});
+----
+
+`CompletionStage` allows much more. If you are unfamiliar with the API see the
+link:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html[Javadoc]
+page for more information.
+
+=== How do I try this myself?
+
+It’s easy and multiple options are available. First of them is to use Weld in a
+*standalone application*.
+
+1. Create a new Java SE application.
+
+2. Add dependency on Weld
++
+[source,java]
+----
+<dependency>
+    <groupId>org.jboss.weld.se</groupId>
+    <artifactId>weld-se-core</artifactId>
+    <version>3.0.0.Alpha3</version>
+</dependency>
+----
+
+3. Create an empty `beans.xml` file, e.g.
++
+[source,shell]
+----
+mkdir src/main/resources/META-INF
+touch src/main/resources/META-INF/beans.xml
+----
+
+4. Launch Weld and fire an event asynchronously
++
+[source,java]
+----
+public static void main(String[] args) {
+    WeldContainer weld = new Weld().initialize();
+    Event<String> evnt = weld.event().select(String.class);
+    ExperimentalEvent<String> event = (ExperimentalEvent<String>) evnt;
+
+    event.fireAsync("message");
+}
+----
+
+==== WildFly
+
+Alternatively, a patch is available for WildFly that upgrades Weld within an existing WildFly instance. See the
+link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha3[download page]
+for more details.
+
+Note that these new prototyped APIs are not part of the CDI API yet. Instead, they are currently located
+in
+link:http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-api%22[Weld API]
+in a package named
+link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[org.jboss.weld.experimental]
+
+All these altered APIs have the `Experimental` prefix (that's why we are using `ExperimentalEvent` in the examples)
+
+*We would appreciate your feedback!* Feel free to use
+link:https://community.jboss.org/en/weld?view=discussions[Weld forums]
+or the
+link:https://lists.jboss.org/mailman/listinfo/cdi-dev[cdi-dev mailing list]
+for this purpose.
+
+== What’s next?
+
+We are going to continue releasing early prototypes of features currently proposed for
+CDI 2.0. The plan is to release a new Alpha version every 3 weeks. There are several
+areas we want to focus on:
+
+* simplifying how extensions register beans and observers
+* monitoring and debugging of CDI applications
+* experimenting with full interception (intercepting even calls within a given component)
+* splitting the codebase into a “light” and “full” version (to support proposed *CDI light* version)
+* bootstrap API for SE environment
+
+
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12325836[Release notes] &#93;
+&#91; link:https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha3[Distribution] &#93;
+&#91; Patch for Wildfly
+(link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha3/wildfly-8.2.0.Final-weld-3.0.0.Alpha3-patch.zip/download[8.2],
+link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha3/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha3-patch.zip/download[9 Alpha])
+&#93;
