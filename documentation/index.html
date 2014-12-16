@@ -217,6 +217,11 @@
                     How do I enable debug logging for Weld in a specific container?
                   </a>
                 </li>
+                <li>
+                  <a href="#8">
+                    What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -471,6 +476,32 @@
                 </div>
                 <div class="paragraph">
                 <p>For enabling debug logging on Jetty, see <a href="http://www.eclipse.org/jetty/documentation/current/configuring-logging.html">Jetty Logging</a></p>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div id="8">
+                <h3>
+                  What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>When running on Tomcat with asynchronous Servlets you may observe the following warnings:</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre>WARN: WELD-000225: Bean store leak was detected during org.jboss.weld.context.http.HttpSessionContextImpl association: org.apache.catalina.connector.Request@5d22c824&#x000A;WARN: WELD-000335: Conversation context is already active, most likely it was not cleaned up properly during previous request processing: org.apache.catalina.connector.Request@5d22c824&#x000A;WARN: WELD-000715: HttpContextLifecycle guard not set. The Servlet container is not fully compliant.</pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>A hook exists in the Servlet specification for integrating frameworks such as Weld into a Servlet container.
+                This hooks is called <code>ServletRequestListener</code>. The problem here is that Tomcat implements these hooks in a different
+                way than all the other implementations (Undertow, JBoss Web, Jetty and Grizzly).
+                Tomcat&#8217;s implementation does not allow for an integrating framework that uses ThreadLocals (like Weld does) to be used
+                correctly in asynchronous Servlet requests. As a result, these warnings are observed as Weld is not able to clean up contexts and
+                bean instances properly at the end of a request. See the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=57314">Tomcat bug report</a>
+                for more details.</p>
                 </div>
                 </div>
                 </div>
