@@ -1,0 +1,17 @@
+= What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
+
+When running on Tomcat with asynchronous Servlets you may observe the following warnings:
+
+----
+WARN: WELD-000225: Bean store leak was detected during org.jboss.weld.context.http.HttpSessionContextImpl association: org.apache.catalina.connector.Request@5d22c824
+WARN: WELD-000335: Conversation context is already active, most likely it was not cleaned up properly during previous request processing: org.apache.catalina.connector.Request@5d22c824
+WARN: WELD-000715: HttpContextLifecycle guard not set. The Servlet container is not fully compliant.
+----
+
+A hook exists in the Servlet specification for integrating frameworks such as Weld into a Servlet container.
+This hooks is called `ServletRequestListener`. The problem here is that Tomcat implements these hooks in a different
+way than all the other implementations (Undertow, JBoss Web, Jetty and Grizzly).
+Tomcat's implementation does not allow for an integrating framework that uses ThreadLocals (like Weld does) to be used
+correctly in asynchronous Servlet requests. As a result, these warnings are observed as Weld is not able to clean up contexts and
+bean instances properly at the end of a request. See the link:https://issues.apache.org/bugzilla/show_bug.cgi?id=57314[Tomcat bug report]
+for more details.
