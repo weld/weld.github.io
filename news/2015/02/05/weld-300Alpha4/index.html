@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 3.0.0.Alpha4
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- /If IE7 for font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="http://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2" style="min-height:1px;">
+          <ul class="nav nav-tabs nav-stacked span2 visible-desktop" id="main_nav">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                Download
+              </a>
+            </li>
+            <li>
+              <a href="/news">
+                <i class="icon-edit"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Docs &amp; FAQ
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+          </ul>
+          <a class="hidden-desktop" href="#" id="toggle_menu">
+            <i class="icon-exchange"></i>
+          </a>
+          <ul class="nav nav-tabs nav-stacked span2 hide hidden-desktop" id="mobile_menu">
+            <li>
+              <a href="/">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/download">
+                <i class="icon-download"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a href="/roadmap">
+                <i class="icon-road"></i>
+                Road map
+              </a>
+            </li>
+            <li>
+              <a href="/documentation">
+                <i class="icon-book"></i>
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a href="/community">
+                <i class="icon-group"></i>
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="http://github.com/weld">
+                <i class="icon-github-alt"></i>
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://jira.jboss.org/jira/browse/WELD">
+                <i class="icon-tasks"></i>
+                Bug tracker
+              </a>
+            </li>
+            <li>
+              <a href="/governance"></a>
+              <i class="icon-edit">
+                Governance
+              </i>
+            </li>
+          </ul>
+        </div>
+        <div class="span10">
+          <div class="rowfluid">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <img alt="Weld Logo" class="weld-home-logo" src="/images/weld_logo_450x.png">
+            </div>
+            <div class="span8">
+              <img alt="CDI tagcloud" class="cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span10">
+              <div class="post">
+                <h1>
+                  Weld 3.0.0.Alpha4
+                </h1>
+                <p style="color: #666;">
+                  <strong>2015-2-5: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Here we are again with the next Alpha release of Weld 3.
+                  This time there are no additional CDI 2.0 previews.
+                  Instead, this release contains multiple performance improvements, enables <code>@Asynchronous</code>
+                  calls to be implemented simply with CDI interceptors and most importantly, it comes with
+                  <strong>weld-probe</strong>.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_probe">Weld Probe</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Why isn&#8217;t my field injected?
+                  Why isn&#8217;t my interceptor triggered?
+                  What extensions do third-party libraries register?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Have you ever found yourself asking a similar question?
+                  Making Weld developer-friendly and helpful in troubleshooting is our priority.
+                  Yet, similar problems still occur sometimes.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>But we can do event better! In Alpha4 of Weld 3 we are introducing a new tool called <strong>Weld Probe</strong>.
+                  Probe is a built-in tool that provides a detailed view into internals of a CDI application.
+                  Weld Probe has a web UI and is provided out-of-the-box.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Probe makes it easy to inspect:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>beans, their properties such as qualifiers, stereotypes and name</p>
+                  </li>
+                  <li>
+                  <p>a graph of bean dependencies</p>
+                  </li>
+                  <li>
+                  <p>observers and producers declared by beans</p>
+                  </li>
+                  <li>
+                  <p>interceptors and decorators bound to a bean</p>
+                  </li>
+                  <li>
+                  <p>extensions</p>
+                  </li>
+                  <li>
+                  <p>information about current contextual instances</p>
+                  </li>
+                  <li>
+                  <p>tracking of invocations and invocation trees</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Plus more addons are planned in future.</p>
+                  </div>
+                  <div class="imageblock">
+                  <div class="content">
+                  <img src="https://developer.jboss.org/servlet/JiveServlet/showImage/38-5641-24345/probe_bean_detail.png" alt="Weld Probe Screenshot">
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>To try probe all that needs to be done is to upgrade to Alpha4, enable the development mode and point your browser to the URL
+                  of your CDI application plus <code>/weld-probe</code> suffix.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>For more thorough overview of what Probe provides see
+                  <a href="http://goo.gl/ICQrRA">Martin&#8217;s blog post</a> or the
+                  <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha4/en-US/html/devmode.html#_probe">reference documentation</a>.
+                  You can play with Probe using this
+                  <a href="http://probe-weld.itos.redhat.com/weld-numberguess">simple CDI application</a>
+                  hosted on <a href="https://www.openshift.com/">OpenShift</a>. Just append
+                  <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe">/weld-probe</a>
+                  to the URL.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Bear in mind that Probe is still work in progress and that this early preview may have defects
+                  here and there.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_implementing_asynchronous_using_cdi_interceptor">Implementing @Asynchronous using CDI interceptor</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>It <strong>is</strong> possible to implement a substitute for EJB <code>@Asynchronous</code> method calls using CDI interceptors.
+                  Arjan Tijms recently <a href="http://jdevelopment.nl/cdi-based-asynchronous-alternative/">blogged about his solution</a>
+                  A similar one can be found in
+                  <a href="https://github.com/weld/core/blob/master/tests-arquillian/src/test/java/org/jboss/weld/tests/interceptors/thread/async/AsyncInterceptor.java">Weld&#8217;s testsuite</a>.
+                  Long story short: This would not work smoothly until now because of a limitation in Weld. This limitation is now gone in Alpha4.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_performance">Performance</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This release integrates various runtime performance improvements mainly around bean instance construction,
+                  producer and observer method invocation.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_next">Next</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld 3.0.0.Alpha5 is planned in 3 weeks time from now, with some more CDI 2.0 previews.
+                  We are going to continue releasing Alpha versions of Weld 3.0 roughly every 3 weeks until
+                  the early draft of CDI 2.0, which should happen sometime in March.
+                  At that point, we&#8217;ll move to Beta releases.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In the meantime, we&#8217;d like to hear your feedback on Probe or on Weld 3.0 Alpha releases in general.
+                  Feel free to use our <a href="https://community.jboss.org/en/weld?view=discussions">forums</a> or <a href="http://webchat.freenode.net/?channels=weld-dev">#weld-dev on freenode</a></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12326166">Release notes</a> &#93;
+                  &#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4">Distribution</a> &#93;
+                  &#91; Patch for Wildfly
+                  (<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-8.2.0.Final-weld-3.0.0.Alpha4-patch.zip/download">8.2</a>,
+                  <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha4-patch.zip/download">9 Alpha</a>)
+                  &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "ab512d024a69d961632bcd7434714738549c92f2";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="row">
+          <div class="container" id="companyfooter">
+            <div class="redhatlogo" style="text-align:center;">
+              <div class="logospacer" style="height:10px;"></div>
+              <a href="http://www.redhat.com/">
+                <img src="http://static.jboss.org/theme/images/common/redhat_logo.png">
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
+    });
+  </script>
+</html>

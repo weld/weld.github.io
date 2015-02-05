@@ -2,13 +2,176 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2015-01-27T21:24:59+01:00</updated>
+  <updated>2015-02-05T19:11:37+01:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
+    <title>Weld 3.0.0.Alpha4</title>
+    <updated>2015-02-05T19:11:37+01:00</updated>
+    <published>2015-02-05T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
+    <author>
+      <name>Jozef Hartinger</name>
+    </author>
+    <summary>
+      
+      Here we are again with the next Alpha release of Weld 3.
+      This time there are no additional CDI 2.0 previews.
+      Instead, this release contains multiple performance improvements, enables @Asynchronous
+      calls to be implemented simply with CDI interceptors and most importantly, it comes with
+      weld-probe.
+      
+      
+      Weld Probe
+      
+      
+      Why isn&#8217;t my field injected?
+      Why isn&#8217;t my interceptor triggered?
+      What extensions do third-party libraries register?
+      
+      
+      Have you ever found yourself asking a similar question?
+      Making Weld developer-friendly and helpful in troubleshooting is our priority.
+      Yet, similar problems still occur sometimes.
+      
+      
+      But we can do event better! In Alpha4 of Weld 3 we are introducing a new tool called Weld Probe.
+      Probe is a built-in tool...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Here we are again with the next Alpha release of Weld 3.
+      This time there are no additional CDI 2.0 previews.
+      Instead, this release contains multiple performance improvements, enables &lt;code&gt;@Asynchronous&lt;/code&gt;
+      calls to be implemented simply with CDI interceptors and most importantly, it comes with
+      &lt;strong&gt;weld-probe&lt;/strong&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_weld_probe&quot;&gt;Weld Probe&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Why isn&amp;#8217;t my field injected?
+      Why isn&amp;#8217;t my interceptor triggered?
+      What extensions do third-party libraries register?&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Have you ever found yourself asking a similar question?
+      Making Weld developer-friendly and helpful in troubleshooting is our priority.
+      Yet, similar problems still occur sometimes.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;But we can do event better! In Alpha4 of Weld 3 we are introducing a new tool called &lt;strong&gt;Weld Probe&lt;/strong&gt;.
+      Probe is a built-in tool that provides a detailed view into internals of a CDI application.
+      Weld Probe has a web UI and is provided out-of-the-box.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Probe makes it easy to inspect:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;beans, their properties such as qualifiers, stereotypes and name&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;a graph of bean dependencies&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;observers and producers declared by beans&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;interceptors and decorators bound to a bean&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;extensions&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;information about current contextual instances&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;tracking of invocations and invocation trees&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Plus more addons are planned in future.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;imageblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;img src=&quot;https://developer.jboss.org/servlet/JiveServlet/showImage/38-5641-24345/probe_bean_detail.png&quot; alt=&quot;Weld Probe Screenshot&quot;&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;To try probe all that needs to be done is to upgrade to Alpha4, enable the development mode and point your browser to the URL
+      of your CDI application plus &lt;code&gt;/weld-probe&lt;/code&gt; suffix.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;For more thorough overview of what Probe provides see
+      &lt;a href=&quot;http://goo.gl/ICQrRA&quot;&gt;Martin&amp;#8217;s blog post&lt;/a&gt; or the
+      &lt;a href=&quot;http://docs.jboss.org/weld/reference/3.0.0.Alpha4/en-US/html/devmode.html#_probe&quot;&gt;reference documentation&lt;/a&gt;.
+      You can play with Probe using this
+      &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess&quot;&gt;simple CDI application&lt;/a&gt;
+      hosted on &lt;a href=&quot;https://www.openshift.com/&quot;&gt;OpenShift&lt;/a&gt;. Just append
+      &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe&quot;&gt;/weld-probe&lt;/a&gt;
+      to the URL.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Bear in mind that Probe is still work in progress and that this early preview may have defects
+      here and there.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_implementing_asynchronous_using_cdi_interceptor&quot;&gt;Implementing @Asynchronous using CDI interceptor&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;It &lt;strong&gt;is&lt;/strong&gt; possible to implement a substitute for EJB &lt;code&gt;@Asynchronous&lt;/code&gt; method calls using CDI interceptors.
+      Arjan Tijms recently &lt;a href=&quot;http://jdevelopment.nl/cdi-based-asynchronous-alternative/&quot;&gt;blogged about his solution&lt;/a&gt;
+      A similar one can be found in
+      &lt;a href=&quot;https://github.com/weld/core/blob/master/tests-arquillian/src/test/java/org/jboss/weld/tests/interceptors/thread/async/AsyncInterceptor.java&quot;&gt;Weld&amp;#8217;s testsuite&lt;/a&gt;.
+      Long story short: This would not work smoothly until now because of a limitation in Weld. This limitation is now gone in Alpha4.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_performance&quot;&gt;Performance&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This release integrates various runtime performance improvements mainly around bean instance construction,
+      producer and observer method invocation.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_next&quot;&gt;Next&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Weld 3.0.0.Alpha5 is planned in 3 weeks time from now, with some more CDI 2.0 previews.
+      We are going to continue releasing Alpha versions of Weld 3.0 roughly every 3 weeks until
+      the early draft of CDI 2.0, which should happen sometime in March.
+      At that point, we&amp;#8217;ll move to Beta releases.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In the meantime, we&amp;#8217;d like to hear your feedback on Probe or on Weld 3.0 Alpha releases in general.
+      Feel free to use our &lt;a href=&quot;https://community.jboss.org/en/weld?view=discussions&quot;&gt;forums&lt;/a&gt; or &lt;a href=&quot;http://webchat.freenode.net/?channels=weld-dev&quot;&gt;#weld-dev on freenode&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html&quot;&gt;Experimental API documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12326166&quot;&gt;Release notes&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4&quot;&gt;Distribution&lt;/a&gt; ]
+      [ Patch for Wildfly
+      (&lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-8.2.0.Final-weld-3.0.0.Alpha4-patch.zip/download&quot;&gt;8.2&lt;/a&gt;,
+      &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha4-patch.zip/download&quot;&gt;9 Alpha&lt;/a&gt;)
+      ]&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -334,7 +497,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -571,7 +734,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -656,7 +819,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -838,7 +1001,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -946,7 +1109,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -1009,7 +1172,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -1041,7 +1204,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -1189,7 +1352,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -1209,7 +1372,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -1229,7 +1392,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -1267,7 +1430,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2015-01-27T21:24:59+01:00</updated>
+    <updated>2015-02-05T17:50:53+01:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
