@@ -1,0 +1,86 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha4
+author: Jozef Hartinger
+---
+
+Here we are again with the next Alpha release of Weld 3.
+This time there are no additional CDI 2.0 previews.
+Instead, this release contains multiple performance improvements, enables `@Asynchronous`
+calls to be implemented simply with CDI interceptors and most importantly, it comes with
+*weld-probe*.
+
+== Weld Probe
+
+Why isn't my field injected?
+Why isn't my interceptor triggered?
+What extensions do third-party libraries register?
+
+Have you ever found yourself asking a similar question?
+Making Weld developer-friendly and helpful in troubleshooting is our priority.
+Yet, similar problems still occur sometimes.
+
+But we can do event better! In Alpha4 of Weld 3 we are introducing a new tool called *Weld Probe*.
+Probe is a built-in tool that provides a detailed view into internals of a CDI application.
+Weld Probe has a web UI and is provided out-of-the-box.
+
+Probe makes it easy to inspect:
+
+* beans, their properties such as qualifiers, stereotypes and name
+* a graph of bean dependencies
+* observers and producers declared by beans
+* interceptors and decorators bound to a bean
+* extensions
+* information about current contextual instances
+* tracking of invocations and invocation trees
+
+Plus more addons are planned in future.
+
+image::https://developer.jboss.org/servlet/JiveServlet/showImage/38-5641-24345/probe_bean_detail.png[Weld Probe Screenshot]
+
+To try probe all that needs to be done is to upgrade to Alpha4, enable the development mode and point your browser to the URL
+of your CDI application plus `/weld-probe` suffix.
+
+For more thorough overview of what Probe provides see
+link:http://goo.gl/ICQrRA[Martin's blog post] or the
+link:http://docs.jboss.org/weld/reference/3.0.0.Alpha4/en-US/html/devmode.html#_probe[reference documentation].
+You can play with Probe using this
+link:http://probe-weld.itos.redhat.com/weld-numberguess[simple CDI application]
+hosted on link:https://www.openshift.com/[OpenShift]. Just append
+link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[/weld-probe]
+to the URL.
+
+Bear in mind that Probe is still work in progress and that this early preview may have defects
+here and there.
+
+
+== Implementing @Asynchronous using CDI interceptor
+
+It *is* possible to implement a substitute for EJB `@Asynchronous` method calls using CDI interceptors.
+Arjan Tijms recently link:http://jdevelopment.nl/cdi-based-asynchronous-alternative/[blogged about his solution]
+A similar one can be found in
+link:https://github.com/weld/core/blob/master/tests-arquillian/src/test/java/org/jboss/weld/tests/interceptors/thread/async/AsyncInterceptor.java[Weld's testsuite].
+Long story short: This would not work smoothly until now because of a limitation in Weld. This limitation is now gone in Alpha4.
+
+== Performance
+
+This release integrates various runtime performance improvements mainly around bean instance construction,
+producer and observer method invocation.
+
+== Next
+
+Weld 3.0.0.Alpha5 is planned in 3 weeks time from now, with some more CDI 2.0 previews.
+We are going to continue releasing Alpha versions of Weld 3.0 roughly every 3 weeks until
+the early draft of CDI 2.0, which should happen sometime in March.
+At that point, we'll move to Beta releases.
+
+In the meantime, we'd like to hear your feedback on Probe or on Weld 3.0 Alpha releases in general.
+Feel free to use our link:https://community.jboss.org/en/weld?view=discussions[forums] or link:http://webchat.freenode.net/?channels=weld-dev[#weld-dev on freenode]
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12326166[Release notes] &#93;
+&#91; link:https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4[Distribution] &#93;
+&#91; Patch for Wildfly
+(link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-8.2.0.Final-weld-3.0.0.Alpha4-patch.zip/download[8.2],
+link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha4-patch.zip/download[9 Alpha])
+&#93;
