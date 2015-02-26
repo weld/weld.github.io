@@ -177,7 +177,7 @@
                   </div>
                   <div class="paragraph">
                   <p>One of the goals of CDI 2.0 is to fill this gap and simplify extension development.
-                  This Weld release comes with a preview of the Bean builder API.
+                  This Weld release comes with a preview of the <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/BeanBuilder.html">Bean builder API</a>.
                   The API is inspired by Bean builder
                   <a href="http://deltaspike.apache.org/javadoc/1.2.1/org/apache/deltaspike/core/util/bean/BeanBuilder.html">API provided by DeltaSpike</a>.
                   In addition, Java 8 lambdas are used in the API to simplify the entire process even further.</p>
@@ -198,6 +198,9 @@
                   <div class="content">
                   <pre class="highlight"><code class="java language-java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Connection.class)&#x000A;        .produceWith(this::newConnection)&#x000A;        .disposeWith(connection -&gt; connection.close());&#x000A;}</code></pre>
                   </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>See the <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/BeanBuilder.html">BeanBuilder Javadoc</a> for more information.</p>
                   </div>
                   </div>
                   </div>
