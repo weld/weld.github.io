@@ -8,43 +8,109 @@ title: Community
 %h1 Community
 %p Weld is an open-source project. Contributions and participation is welcome.
 
-%h2 User forum
-%p
-  The 
-  %a{:href=>"https://community.jboss.org/en/weld?view=discussions"}
-    Weld user forum
-  is intended for developers who use Weld to build their applications.
+Quick links:
+%ul
+  %li
+    %a{:href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel"}
+      issue tracker
+  %li
+    %a{:href=>"http://github.com/weld"}
+      source code repository
+  %li
+    %a{:href=>"https://community.jboss.org/en/weld?view=discussions"}
+      user forum
+  %li
+    %a{:href=>"http://webchat.freenode.net/?channels=weld-dev"}
+      \#weld-dev
+    IRC channel hosted on
+    %code
+      freenode.net
+    (
+    %a{:href=>"http://transcripts.jboss.org/channel/irc.freenode.org/%23weld-dev/index.html"}
+      log
+    )
+  %li
+    %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev"}
+      weld-dev mailing list
+  %li
+    %a{:href=>"https://issues.jboss.org/issues/?filter=12320398"}
+      list of starter issues
+  %li
+    %a{:href=>"https://github.com/weld/core/graphs/contributors"}
+      contributors
 
-%h2 IRC Chat
+%h2 How to contribute
 %p
-  The
-  %a{:href=>"http://webchat.freenode.net/?channels=weld-dev"}
-    \#weld-dev IRC channel
-  hosted on
-  %code
-    irc.freenode.net
-  focuses on Weld development discussion. The conversation is logged and the log is available at
-  %a{:href=>"http://transcripts.jboss.org/channel/irc.freenode.org/%23weld-dev/index.html"}
-    transcripts.jboss.org
+  Want to join the group of
+  %a{:href=>"https://github.com/weld/core/graphs/contributors"}
+    Weld contributors
+  ?
+  It's easy. A great way to start is to check out our
+  %a{:href=>"https://issues.jboss.org/issues/?filter=12320398"}
+    list of starter issues.
+  Besides, there are other ways to contribute, for example:
+  %ul
+    %li
+      reporting bugs in our
+      %a{:href=>"https://issues.jboss.org/browse/WELD"}
+        issue tracker
+    %li
+      fix or expand our
+      %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/"}
+        reference documentation
+    %li
+      expand our
+      %a{:href=>"https://github.com/weld/core/tree/master/tests-arquillian"}
+        test suite
+      by writing a test case
+    %li
+      implement a new feature or enhancement
 
-%h2 Mailing list
-%p
-  Discussions related to development of Weld also takes place in the
-  %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev"}
-    weld-dev mailing list
-  \. An archive
-  for the mailing list is available at 
-  %a{:href=>"http://lists.jboss.org/pipermail/weld-dev/"}
-    lists.jboss.org
-
-%h2 Source code repository
-%p
-  Weld uses 
-  %a{:href=>"http://git-scm.com/"}
-    Git
-  for source code version control. All the source code is hosted on
-  %a{:href=>"http://github.com/"} 
+%h3
+  1. Fork and clone source code repository from
+  %a{:href=>"https://github.com/weld"}
     GitHub
+%p
+  If you are new to GitHub you can find help
+  %a{:href=>"https://help.github.com/categories/bootcamp/"}
+    here.
+  Weld implementation resides in
+  %a{:href=>"https://github.com/weld/core"}
+    core repository.
+  To clone your new fork execute following command in your command line:
+%span
+  %code
+    git clone git@github.com:<your_account_name>/core.git
+
+%h3 2. Explore Weld source code structure
+%p
+  You can import Weld source as Maven project to your favourite IDE. Before you start coding we ask you to setup code formatting. You can find neccessary files for your IDE in
+  %b ide-configs
+  directory in your local clone directory structure. If you are new to CDI/Weld then the
+  %b examples
+  and
+  %b probe
+  directories could be good starting point for you.
+
+%h3 3. Choose a topic of your interest
+%p
+  You can check open issues, tasks, feature requests and bugs at
+  %a{:href=>"https://issues.jboss.org/browse/WELD/"}
+    Weld Jira.
+  Alternatively, feel free to come up with new ideas.
+%p
+  If you are new to Weld and need help, use
+  %a{:href=>"https://developer.jboss.org/en/weld?view=discussions"}
+    user forum
+  or
+  %a{:href=>"http://webchat.freenode.net/?channels=weld-dev"}
+    \#weld-dev IRC channel.
+  For discussing Weld development use our
+  %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev"}
+    development mailing list.
+  When working on a new feature or bug it's very helpful to also provide tests case covering the related area.
+
+%h3 4. Submit a pull request
 %p
   We follow the
   %a{:href=>"http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow"}
@@ -52,73 +118,15 @@ title: Community
   for managing changes to the Weld source code. If you are new to using GitHub we recommend that you read this
   %a{:href=>"https://help.github.com/articles/using-pull-requests"}
     tutorial.
-
-%h2 Reporting a bug
 %p
-  Bug reports and feature requests can be reported in the project
-  %a{:href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel"}
-    JIRA
-
-%h2 Contributors
-%ul
-  %li
-    %a{:href=>"https://github.com/weld/core/graphs/contributors"}
-      List of Weld contributors
-%p
-  If you are interested in becoming a contributor, check the
-  %a{:href=>"https://issues.jboss.org/issues/?filter=12320398"}
-    list of open issues awaiting contributions
-  or let us know on the developer mailing list.
-%br
-%h1 Contributing guide 
-%h2 
-  1. Fork and clone source code repository from
-  %a{:href=>"https://github.com/weld"}
-    GitHub
-%p 
-  If you are new to GitHub you can find help
-  %a{:href=>"https://help.github.com/categories/bootcamp/"} 
-    here. 
-  Weld implementation resides in 
-  %a{:href=>"https://github.com/weld/core"}  
-    core repository. 
-  To clone your new fork execute following command in your command line:
-%span
-  %code
-    git clone git@github.com:<your_account_name>/core.git
-
-%h2 2. Explore Weld source code structure
-%p 
-  You can import Weld source as Maven project to your favourite IDE. Before you start coding we ask you to setup code formatting. You can find neccessary files for your IDE in 
-  %b "ide-configs" 
-  directory in your local clone directory structure. If you are new to CDI/Weld then the 
-  %b "examples" 
-  and 
-  %b "probe" 
-  directories could be good starting point for you.
-
-%h2 3. Choose a topic of your interest
-%p
-  You can check actual issues, tasks, feature requests etc. at 
-  %a{:href=>"https://issues.jboss.org/browse/WELD/"}
-    Weld Jira 
-  or you can come with your new idea of course. If you need any help let's discuss on 
-  %a{:href=>"http://webchat.freenode.net/?channels=weld-dev"}
-    \#weld-dev IRC channel
-  ,
-  %a{:href=>"https://developer.jboss.org/en/weld?view=discussions"}
-    user forum 
-  or at 
-  %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev"}
-    mailing list. 
-  When you are working on new feature or some bug it's very helpful when you also provide tests covering the related area.
-
-%h2 4. Submit a pull request
-%p
-  Make sure your branch can built without any errors and the tests are passing (running "mvn clean install" in Weld core root directory could be sufficient). Commit your work to your branch with suitable commit message (it's good idea to include Jira issue key if any exists) and submit a pull request to the related upstream branch at GitHub. Pull request will trigger CI job at 
+  Before submitting a pull request make sure your branch can be built without any errors and the tests are passing
+  (running "mvn clean install" in Weld core root directory could be sufficient). Commit your work to your branch
+  with a suitable commit message (it's good idea to include Jira issue key if any exists) and submit a pull request
+  to the related upstream branch at GitHub. Pull request will trigger CI job at
   %a{:href=>"http://hudson.jboss.org/hudson/job/Weld-2.x-pull-player-executor-osprey/"}
-    Jenkins 
-  where you can check your results. Once it passed and the request is verified by admins (Weld devs) and luckily also merged you can become new Weld 
+    Jenkins
+  where you can check your results. Once the request passes tests and is verified by an integration manager (Weld core developers)
+  you become a Weld
   %a{:href=>"https://github.com/weld/core/graphs/contributors"}
-    contributor 
-  \:-).    
+    contributor
+  \:-).
