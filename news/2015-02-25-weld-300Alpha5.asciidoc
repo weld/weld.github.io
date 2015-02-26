@@ -1,0 +1,90 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha5
+author: Jozef Hartinger
+---
+
+Weld 3.0.0.Alpha5, the latest release in the series of CDI 2.0 prototypes, has been released.
+The highlights of the release include new Bean builder API and many improvements to Weld Probe.
+
+== Bean Builder API
+
+The common way for frameworks and libraries to expose their API to applications via CDI is by using producer methods.
+An alternative approach is a custom implementation of the `javax.enterprise.inject.spi.Bean` interface that is registered by a CDI portable extension.
+This latter approach gives the extension more control but is also less straightforward.
+
+One of the goals of CDI 2.0 is to fill this gap and simplify extension development.
+This Weld release comes with a preview of the Bean builder API.
+The API is inspired by Bean builder
+link:http://deltaspike.apache.org/javadoc/1.2.1/org/apache/deltaspike/core/util/bean/BeanBuilder.html[API provided by DeltaSpike].
+In addition, Java 8 lambdas are used in the API to simplify the entire process even further.
+
+Here's an example of a simple extension that builds and registers a bean:
+
+[source,java]
+----
+void register(@Observes ExperimentalAfterBeanDiscovery event) {
+    event.addBean()
+        .addType(Integer.class)
+        .addQualifier(Random.LITERAL)
+        .produceWith(() -> new java.util.Random().nextInt(1000));
+}
+----
+
+That's it!
+Likewise, it is easy to can define a bean with custom disposal logic using a lambda expression:
+
+[source,java]
+----
+void register(@Observes ExperimentalAfterBeanDiscovery event) {
+    event.addBean()
+        .addType(Connection.class)
+        .produceWith(this::newConnection)
+        .disposeWith(connection -> connection.close());
+}
+----
+
+== Event monitoring with Probe
+
+We introduced Probe in the link:http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/[previous blog post].
+This release adds event monitoring view to Probe.
+In this view both system and application events are displayed.
+The events can be filtered by type and qualifiers.
+It is also possible to track which observer methods a particular event was delivered to.
+
+image::blog/probe-events.png[Weld Probe event monitoring]
+
+=== Further improvements
+
+In addition, there were a couple of minor improvements to Probe, namely:
+
+* better filtering of invocation trees - Probe now searches the whole tree, not just the entry points
+* the context view now displays the conversation context
+* Probe is now more careful and does not try to bind interceptors to classes that are not proxyable
+* all the configuration options for Probe are now link:http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#config-dev-mode[documented]
+
+If you haven't tried Probe yet check this link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[demo running on OpenShift].
+The easiest way to get Probe to run locally is to patch WildFly with a link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5[Weld patch].
+If you're not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial].
+
+== Relaxed construction
+
+CDI requires that beans that are normal-scoped, intercepted or decorated always define a no-argument constructor.
+This requirement applies even if the bean already defines an @Inject annotated constructor with parameters.
+This is purely a technical requirement implied by how Java allocates class instances.
+
+Weld is however able to operate fine even if this requirement is not met.
+Weld uses special non-portable JVM APIs that allow it to allocate proxy instances without calling proxy’s constructor.
+This mode is non-portable and needs to be link:http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#relaxedConstruction[explicitly enabled using a configuration option].
+
+This mode is not new but has been neglected in the past.
+For this release we added a bunch of tests for this mode, fixed a lot of bugs and enabled it by default in Weld-SE.
+Any feedback on this mode is appreciated.
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12326167[Release notes] &#93;
+&#91; link:https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5[Distribution] &#93;
+&#91; Patch for Wildfly
+(link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-8.2.0.Final-weld-3.0.0.Alpha5-patch.zip/download[8.2],
+link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha5-patch.zip/download[9 Alpha])
+&#93;
