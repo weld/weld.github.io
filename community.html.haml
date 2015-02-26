@@ -69,4 +69,56 @@ title: Community
   %a{:href=>"https://issues.jboss.org/issues/?filter=12320398"}
     list of open issues awaiting contributions
   or let us know on the developer mailing list.
+%br
+%h1 Contributing guide 
+%h2 
+  1. Fork and clone source code repository from
+  %a{:href=>"https://github.com/weld"}
+    GitHub
+%p 
+  If you are new to GitHub you can find help
+  %a{:href=>"https://help.github.com/categories/bootcamp/"} 
+    here. 
+  Weld implementation resides in 
+  %a{:href=>"https://github.com/weld/core"}  
+    core repository. 
+  To clone your new fork execute following command in your command line:
+%span
+  %code
+    git clone git@github.com:<your_account_name>/core.git
 
+%h2 2. Explore Weld source code structure
+%p 
+  You can import Weld source as Maven project to your favourite IDE. Before you start coding we ask you to setup code formatting. You can find neccessary files for your IDE in 
+  %b "ide-configs" 
+  directory in your local clone directory structure. If you are new to CDI/Weld then the 
+  %b "examples" 
+  and 
+  %b "probe" 
+  directories could be good starting point for you.
+
+%h2 3. Choose a topic of your interest
+%p
+  You can check actual issues, tasks, feature requests etc. at 
+  %a{:href=>"https://issues.jboss.org/browse/WELD/"}
+    Weld Jira 
+  or you can come with your new idea of course. If you need any help let's discuss on 
+  %a{:href=>"http://webchat.freenode.net/?channels=weld-dev"}
+    \#weld-dev IRC channel
+  ,
+  %a{:href=>"https://developer.jboss.org/en/weld?view=discussions"}
+    user forum 
+  or at 
+  %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev"}
+    mailing list. 
+  When you are working on new feature or some bug it's very helpful when you also provide tests covering the related area.
+
+%h2 4. Submit a pull request
+%p
+  Make sure your branch can built without any errors and the tests are passing (running "mvn clean install" in Weld core root directory could be sufficient). Commit your work to your branch with suitable commit message (it's good idea to include Jira issue key if any exists) and submit a pull request to the related upstream branch at GitHub. Pull request will trigger CI job at 
+  %a{:href=>"http://hudson.jboss.org/hudson/job/Weld-2.x-pull-player-executor-osprey/"}
+    Jenkins 
+  where you can check your results. Once it passed and the request is verified by admins (Weld devs) and luckily also merged you can become new Weld 
+  %a{:href=>"https://github.com/weld/core/graphs/contributors"}
+    contributor 
+  \:-).    
