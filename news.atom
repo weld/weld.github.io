@@ -2,13 +2,163 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2015-02-05T19:13:15+01:00</updated>
+  <updated>2015-02-26T09:27:59+01:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</id>
+    <title>Weld 3.0.0.Alpha5</title>
+    <updated>2015-02-26T09:27:59+01:00</updated>
+    <published>2015-02-25T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
+    <author>
+      <name>Jozef Hartinger</name>
+    </author>
+    <summary>
+      
+      Weld 3.0.0.Alpha5, the latest release in the series of CDI 2.0 prototypes, has been released.
+      The highlights of the release include new Bean builder API and many improvements to Weld Probe.
+      
+      
+      Bean Builder API
+      
+      
+      The common way for frameworks and libraries to expose their API to applications via CDI is by using producer methods.
+      An alternative approach is a custom implementation of the javax.enterprise.inject.spi.Bean interface that is registered by a CDI portable extension.
+      This latter approach gives the extension more control but is also less straightforward.
+      
+      
+      One of the goals of CDI 2.0 is to fill this gap and simplify extension development.
+      This Weld release comes with...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Weld 3.0.0.Alpha5, the latest release in the series of CDI 2.0 prototypes, has been released.
+      The highlights of the release include new Bean builder API and many improvements to Weld Probe.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_bean_builder_api&quot;&gt;Bean Builder API&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The common way for frameworks and libraries to expose their API to applications via CDI is by using producer methods.
+      An alternative approach is a custom implementation of the &lt;code&gt;javax.enterprise.inject.spi.Bean&lt;/code&gt; interface that is registered by a CDI portable extension.
+      This latter approach gives the extension more control but is also less straightforward.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;One of the goals of CDI 2.0 is to fill this gap and simplify extension development.
+      This Weld release comes with a preview of the Bean builder API.
+      The API is inspired by Bean builder
+      &lt;a href=&quot;http://deltaspike.apache.org/javadoc/1.2.1/org/apache/deltaspike/core/util/bean/BeanBuilder.html&quot;&gt;API provided by DeltaSpike&lt;/a&gt;.
+      In addition, Java 8 lambdas are used in the API to simplify the entire process even further.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Here’s an example of a simple extension that builds and registers a bean:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;void register(@Observes ExperimentalAfterBeanDiscovery event) {
+          event.addBean()
+              .addType(Integer.class)
+              .addQualifier(Random.LITERAL)
+              .produceWith(() -&amp;gt; new java.util.Random().nextInt(1000));
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;That’s it!
+      Likewise, it is easy to can define a bean with custom disposal logic using a lambda expression:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;void register(@Observes ExperimentalAfterBeanDiscovery event) {
+          event.addBean()
+              .addType(Connection.class)
+              .produceWith(this::newConnection)
+              .disposeWith(connection -&amp;gt; connection.close());
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_event_monitoring_with_probe&quot;&gt;Event monitoring with Probe&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;We introduced Probe in the &lt;a href=&quot;http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/&quot;&gt;previous blog post&lt;/a&gt;.
+      This release adds event monitoring view to Probe.
+      In this view both system and application events are displayed.
+      The events can be filtered by type and qualifiers.
+      It is also possible to track which observer methods a particular event was delivered to.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;imageblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;img src=&quot;http://weld.cdi-spec.org/images/blog/probe-events.png&quot; alt=&quot;Weld Probe event monitoring&quot;&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect2&quot;&gt;
+      &lt;h3 id=&quot;_further_improvements&quot;&gt;Further improvements&lt;/h3&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In addition, there were a couple of minor improvements to Probe, namely:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;better filtering of invocation trees - Probe now searches the whole tree, not just the entry points&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;the context view now displays the conversation context&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Probe is now more careful and does not try to bind interceptors to classes that are not proxyable&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;all the configuration options for Probe are now &lt;a href=&quot;http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#config-dev-mode&quot;&gt;documented&lt;/a&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;If you haven’t tried Probe yet check this &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events&quot;&gt;demo running on OpenShift&lt;/a&gt;.
+      The easiest way to get Probe to run locally is to patch WildFly with a &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5&quot;&gt;Weld patch&lt;/a&gt;.
+      If you’re not familiar with patching WildFly, check &lt;a href=&quot;http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html&quot;&gt;Markus’s tutorial&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_relaxed_construction&quot;&gt;Relaxed construction&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;CDI requires that beans that are normal-scoped, intercepted or decorated always define a no-argument constructor.
+      This requirement applies even if the bean already defines an @Inject annotated constructor with parameters.
+      This is purely a technical requirement implied by how Java allocates class instances.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Weld is however able to operate fine even if this requirement is not met.
+      Weld uses special non-portable JVM APIs that allow it to allocate proxy instances without calling proxy’s constructor.
+      This mode is non-portable and needs to be &lt;a href=&quot;http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#relaxedConstruction&quot;&gt;explicitly enabled using a configuration option&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This mode is not new but has been neglected in the past.
+      For this release we added a bunch of tests for this mode, fixed a lot of bugs and enabled it by default in Weld-SE.
+      Any feedback on this mode is appreciated.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html&quot;&gt;Experimental API documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12326167&quot;&gt;Release notes&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5&quot;&gt;Distribution&lt;/a&gt; ]
+      [ Patch for Wildfly
+      (&lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-8.2.0.Final-weld-3.0.0.Alpha5-patch.zip/download&quot;&gt;8.2&lt;/a&gt;,
+      &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha5-patch.zip/download&quot;&gt;9 Alpha&lt;/a&gt;)
+      ]&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
     <title>Weld 3.0.0.Alpha4</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2015-02-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
     <author>
@@ -171,7 +321,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -497,7 +647,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -734,7 +884,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -819,7 +969,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -1001,7 +1151,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -1109,7 +1259,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -1172,7 +1322,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -1204,7 +1354,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -1352,7 +1502,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -1372,7 +1522,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -1392,7 +1542,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -1430,7 +1580,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2015-02-05T19:13:15+01:00</updated>
+    <updated>2015-02-25T08:46:41+01:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
