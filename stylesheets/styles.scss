@@ -209,3 +209,10 @@ div#preamble {
 #tabnav-panel.tabnav-opened {
     border-bottom: initial;
 }
+
+table.tableblock, tr.tableblock, th.tableblock, td.tableblock {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+}
