@@ -247,6 +247,11 @@
                     What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
                   </a>
                 </li>
+                <li>
+                  <a href="#9">
+                    What is the relation between Weld, CDI and Java EE versions?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -528,6 +533,62 @@
                 bean instances properly at the end of a request. See the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=57314">Tomcat bug report</a>
                 for more details.</p>
                 </div>
+                </div>
+                </div>
+              </div>
+              <div id="9">
+                <h3>
+                  What is the relation between Weld, CDI and Java EE versions?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>Weld versions do not match CDI versioning.
+                An overview is provided in the following table:</p>
+                </div>
+                <table class="tableblock frame-all grid-all" style="width:100%; ">
+                <colgroup>
+                <col style="width:25%;">
+                <col style="width:25%;">
+                <col style="width:25%;">
+                <col style="width:25%;"> 
+                </colgroup>
+                <thead>
+                <tr>
+                <th class="tableblock halign-left valign-top">Weld version</th>
+                <th class="tableblock halign-left valign-top">CDI version</th>
+                <th class="tableblock halign-left valign-top">Java EE version</th>
+                <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">Not actively developed anymore. Support available with <a href="http://www.jboss.org/products/eap/overview/">JBoss EAP</a></p></td>
+                </tr>
+                <tr>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">Not actively developed anymore.</p></td>
+                </tr>
+                <tr>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">7+</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">The stable version of Weld.</p></td>
+                </tr>
+                <tr>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">2.0 (Under development)</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">Prototype releases for the upcoming CDI 2.0 (still under development).</p></td>
+                </tr>
+                </tbody>
+                </table>
+                
                 </div>
                 </div>
               </div>
