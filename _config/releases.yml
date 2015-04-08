@@ -1,3 +1,7 @@
+- version: '3.0.0.Alpha7'
+  category: Experimental
+  date: 8.4.2015
+  versionId: 12326695
 - version: '2.2.10.SP1'
   category: Final
   date: 8.4.2015
