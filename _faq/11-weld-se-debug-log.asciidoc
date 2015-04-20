@@ -1,0 +1,33 @@
+= How do I enable debug logging for Weld SE?
+
+In Weld 2.1 http://www.slf4j.org[SLF4J] was replaced with https://developer.jboss.org/wiki/JBossLoggingTooling[JBoss Logging] which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you'll have to **identify** and **configure** the underlying logging framework.
+
+**Which logging framework writes data?**
+
+The supported "back-end" frameworks include:
+
+. https://developer.jboss.org/wiki/StandaloneJBossLogManager[jboss-logmanager]
+. http://logging.apache.org/log4j/2.x/[Log4j]
+. http://www.slf4j.org/[SLF4J]
+. JDK logging
+
+A system property `org.jboss.logging.provider` may be used to specify the logging framework directly. Supported values are `jboss`, `jdk`, `log4j` and `slf4j`. If this system property is not set, JBoss Logging will attempt to find the logging frameworks from the above-mentioned list on the classpath - the first one found is taken. 
+
+**Simple way for testing purposes**
+
+If you just want to see the debug log messages as quickly as possible try to add `org.slf4j:slf4j-simple` on the classpath, set the "back-end" framwork to `slf4j` and change the level for `org.jboss.weld`, e.g.:
+
+[source]
+----
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-simple</artifactId>
+  <version>1.7.2</version>
+  <scope>test</scope>
+</dependency>
+----
+
+[source]
+----
+mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug
+----
