@@ -258,6 +258,11 @@
                     What is the relation between Weld, CDI and Java EE versions?
                   </a>
                 </li>
+                <li>
+                  <a href="#10">
+                    How do I enable debug logging for Weld SE?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -595,6 +600,59 @@
                 </tbody>
                 </table>
                 
+                </div>
+                </div>
+              </div>
+              <div id="10">
+                <h3>
+                  How do I enable debug logging for Weld SE?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>In Weld 2.1 <a href="http://www.slf4j.org">SLF4J</a> was replaced with <a href="https://developer.jboss.org/wiki/JBossLoggingTooling">JBoss Logging</a> which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you&#8217;ll have to <strong>identify</strong> and <strong>configure</strong> the underlying logging framework.</p>
+                </div>
+                <div class="paragraph">
+                <p><strong>Which logging framework writes data?</strong></p>
+                </div>
+                <div class="paragraph">
+                <p>The supported "back-end" frameworks include:</p>
+                </div>
+                <div class="olist arabic">
+                <ol class="arabic">
+                <li>
+                <p><a href="https://developer.jboss.org/wiki/StandaloneJBossLogManager">jboss-logmanager</a></p>
+                </li>
+                <li>
+                <p><a href="http://logging.apache.org/log4j/2.x/">Log4j</a></p>
+                </li>
+                <li>
+                <p><a href="http://www.slf4j.org/">SLF4J</a></p>
+                </li>
+                <li>
+                <p>JDK logging</p>
+                </li>
+                </ol>
+                </div>
+                <div class="paragraph">
+                <p>A system property <code>org.jboss.logging.provider</code> may be used to specify the logging framework directly. Supported values are <code>jboss</code>, <code>jdk</code>, <code>log4j</code> and <code>slf4j</code>. If this system property is not set, JBoss Logging will attempt to find the logging frameworks from the above-mentioned list on the classpath - the first one found is taken.</p>
+                </div>
+                <div class="paragraph">
+                <p><strong>Simple way for testing purposes</strong></p>
+                </div>
+                <div class="paragraph">
+                <p>If you just want to see the debug log messages as quickly as possible try to add <code>org.slf4j:slf4j-simple</code> on the classpath, set the "back-end" framwork to <code>slf4j</code> and change the level for <code>org.jboss.weld</code>, e.g.:</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.slf4j&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;&#x000A;  &lt;version&gt;1.7.2&lt;/version&gt;&#x000A;  &lt;scope&gt;test&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+                </div>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug</code></pre>
+                </div>
+                </div>
                 </div>
                 </div>
               </div>
