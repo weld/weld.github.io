@@ -1,0 +1,98 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha8
+author: Jozef Hartinger
+---
+
+Weld 3.0.0.Alpha8 has been released.
+The main change is the enhanced API for using Weld in Java SE environment. In addition, this release comes with several weld-probe improvements.
+
+== Enhanced API for Weld SE
+
+Weld has provided link:http://docs.jboss.org/weld/reference/latest-2.2/en-US/html/environments.html#_java_se[support for the Java SE environment] for a long time with the weld-se module.
+The API provides an easy way for an application to initialize Weld and use it in a standalone mode.
+On initialization Weld SE scans the classpath for bean archives with the `beans.xml` file, similarly to how it's done in the Java EE environment.
+
+In this release we are extending the API further.
+This is partially inspired by the current discussion in the CDI expert group where a standardized CDI API for Java SE is being proposed as part of link:https://issues.jboss.org/browse/CDI-26[CDI-26].
+
+The following code snippet shows the new API in action:
+
+[source,java]
+----
+Weld builder = new Weld()
+    .disableDiscovery()
+    .packages(Main.class, Utils.class)
+    .interceptors(TransactionalInterceptor.class)
+    .property("org.jboss.weld.construction.relaxed", true);
+
+try (WeldContainer weld = builder.initialize()) {
+    MyBean bean = weld.select(MyBean.class).get();
+    System.out.println(bean.computeResult());
+}
+----
+
+There are several new things to notice:
+
+* the `Weld` class is used as a builder to configure Weld before it is initialized
+* automatic scanning can be disabled
+* instead of scanning, classes or packages can be selected explicitly. All classes in those packages will be managed by Weld
+* interceptors, decorators, extensions and link:http://docs.jboss.org/weld/reference/3.0.0.Alpha8/en-US/html/configure.html#_weld_configuration[Weld-specific configuration options] can be specified using the builder
+* `WeldContainer` now implements `AutoCloseable` and can therefore be used in a `try-with-resources` block. At any time that execution gets outside of the code block, the Weld instance is shut down and all managed instances are safely destroyed.
+
+It is also possible to start multiple independent Weld instances:
+[source,java]
+----
+new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();
+new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();
+
+MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();
+System.out.println(bean.computeResult());
+
+WeldContainer.instance("one").shutdown();
+WeldContainer.instance("two").shutdown();
+----
+
+Here, two independent `WeldContainer` instances are initialized.
+Each of them is given a unique ID.
+The ID can subsequently be used to obtain a `WeldContainer` reference in a different place of the code.
+One possible use-case this enables is for a library or framework (e.g. a testing framework) to use an embedded instance of Weld internally for its own needs (dependency injection, events, extensibility).
+This instance would not interfere with the Weld instance used by the application.
+
+Obviously, automatic classpath scanning can still be used as before:
+
+[source,java]
+----
+try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {
+    MyBean bean = weld.select(MyBean.class).get();
+    System.out.println(bean.computeResult());
+}
+----
+
+== Weld Probe Enhancements
+
+Since the last Alpha releases there were several enhancements to Weld Probe.
+If you are not familiar with Weld Probe, check this link:http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/[introductory blog post first].
+
+A new feature of Probe is that, when the development mode is enabled, it now embeds a tiny information bar directly into the application's HTML output.
+That makes it easy to navigate to Probe directly from the application anytime.
+Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.
+
+image::blog/probe-bar.png[Weld Probe information bar embedded in application's HTML output]
+{empty} +
+
+Additionally, the following Probe improvements were implemented:
+
+* tracked invocations are now grouped into a invocation tree instead of being tracked in isolation
+* a special type of edges is now used in the overview graph to represent a "declared by" relation (when a bean declares a producer method or field)
+* Instance<?> injection points are now treated specially - a resolved bean is show as injection point's dependency
+
+See this link:http://probe-weld.itos.redhat.com/weld-numberguess[live demo] and try Weld Probe yourself.
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12326881[Release notes] &#93;
+&#91; link:https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8[Distribution] &#93;
+&#91; Patch for Wildfly
+(link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-8.2.0.Final-weld-3.0.0.Alpha8-patch.zip/download[8.2],
+link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-9.0.0.Beta2-weld-3.0.0.Alpha8-patch.zip/download[9 Beta])
+&#93;
