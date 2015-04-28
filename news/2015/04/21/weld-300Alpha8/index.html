@@ -244,6 +244,20 @@
                   <pre class="highlight"><code class="java language-java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;    MyBean bean = weld.select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;}</code></pre>
                   </div>
                   </div>
+                  <div class="paragraph">
+                  <p><strong>Update:</strong></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>To play with the new API use the following dependency in you Maven project:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlight"><code class="xml language-xml">&lt;dependency&gt;&#x000A;    &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;    &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Aforementioned classes are from the <code>org.jboss.weld.environment.se</code> package.</p>
+                  </div>
                   </div>
                   </div>
                   <div class="sect1">
