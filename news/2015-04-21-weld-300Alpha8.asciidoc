@@ -69,6 +69,21 @@ try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {
 }
 ----
 
+*Update:*
+
+To play with the new API use the following dependency in you Maven project:
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.jboss.weld.se</groupId>
+    <artifactId>weld-se-core</artifactId>
+    <version>3.0.0.Alpha8</version>
+</dependency>
+----
+
+Aforementioned classes are from the `org.jboss.weld.environment.se` package.
+
 == Weld Probe Enhancements
 
 Since the last Alpha releases there were several enhancements to Weld Probe.
