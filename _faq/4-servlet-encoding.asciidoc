@@ -1,5 +1,8 @@
 = Why does Weld set character encoding of an HTTP request/response body to ISO-8859-1?
 
+*Update*: Since Weld 2.2 the conversation context is activated lazily and this problem does not occur.
+If you are using an older version of Weld or need the conversation context to be activated eagerly, read further.
+
 An application may set character encoding of a request by calling the http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)[ServletRequest.setCharacterEncoding()] method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.
 
 In order to properly activate the conversation context, Weld reads the _cid_ request parameter in the beginning of request processing (see http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context[the CDI spec for details]). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter that tries to set character encoding will not work since it does that too late.
