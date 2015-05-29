@@ -325,6 +325,10 @@
                 <div id="preamble">
                 <div class="sectionbody">
                 <div class="paragraph">
+                <p><strong>Update</strong>: Since Weld 2.2 the conversation context is activated lazily and this problem does not occur.
+                If you are using an older version of Weld or need the conversation context to be activated eagerly, read further.</p>
+                </div>
+                <div class="paragraph">
                 <p>An application may set character encoding of a request by calling the <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)">ServletRequest.setCharacterEncoding()</a> method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.</p>
                 </div>
                 <div class="paragraph">
