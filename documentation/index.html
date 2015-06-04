@@ -263,6 +263,11 @@
                     How do I enable debug logging for Weld SE?
                   </a>
                 </li>
+                <li>
+                  <a href="#11">
+                    How to deploy a Weld application to a Jetty standalone instance?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -656,6 +661,34 @@
                 <div class="content">
                 <pre class="highlight"><code>mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug</code></pre>
                 </div>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div id="11">
+                <h3>
+                  How to deploy a Weld application to a Jetty standalone instance?
+                </h3>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>You should not experience any classloading issues when starting Jetty as an embedded webapp server from within another Java program. However, if you&#8217;re using a Jetty standalone instance the deployment with bundled Weld Servlet integration will probably fail and you may observe a similar message in the log:</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre>FAILED org.eclipse.jetty.annotations.ServletContainerInitializerListener@124d02b2: java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$Decorator&#x000A;java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$Decorator</pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>The reason is that since Jetty 8 some internal classes are not visible from the web application. See also <a href="http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes">Setting Server Classes</a>. Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using. Unfortunately, it&#8217;s not so simple. The only workaround is to use a <a href="http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html">Jetty Deployable Descriptor XML File</a> (this is a Jetty 9 feature, in Jetty 8 a similar feature is incorporated - <a href="http://wiki.eclipse.org/Jetty/Feature/ContextDeployer">ContextProvider</a>). For instance, if there is an application archive named <code>weld-numberguess.war</code> deployed in the <code>webapps</code> directory, the following XML descriptor should be created in the same directory:</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>&lt;?xml version="1.0"?&gt;&#x000A;&lt;!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd"&gt;&#x000A;&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;&#x000A;  &lt;Set name="contextPath"&gt;/weld-numberguess&lt;/Set&gt;&#x000A;  &lt;Set name="war"&gt;&lt;Property name="jetty.webapps" default="."/&gt;/weld-numberguess.war&lt;/Set&gt;&#x000A;  &lt;Call name="prependServerClass"&gt;&#x000A;    &lt;Arg&gt;-org.eclipse.jetty.server.handler.ContextHandler,-org.eclipse.jetty.servlet.FilterHolder,-org.eclipse.jetty.servlet.ServletContextHandler,-org.eclipse.jetty.servlet.ServletHolder&lt;/Arg&gt;&#x000A;  &lt;/Call&gt;&#x000A;&lt;/Configure&gt;</code></pre>
+                </div>
+                </div>
+                <div class="paragraph">
+                <p>Note that in Jetty 9.3 distribution there should be a special CDI/Weld module which allows to deploy a CDI application without bundling the Weld Servlet integration code.</p>
                 </div>
                 </div>
                 </div>
