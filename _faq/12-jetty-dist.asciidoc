@@ -7,7 +7,7 @@ FAILED org.eclipse.jetty.annotations.ServletContainerInitializerListener@124d02b
 java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$Decorator
 ----
 
-The reason is that since Jetty 8 some internal classes are not visible from the web application. See also http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes[Setting Server Classes]. Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using. Unfortunately, it's not so simple. The only workaround is to use a http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html[Jetty Deployable Descriptor XML File] (this is a Jetty 9 feature, in Jetty 8 a similar feature is incorporated - http://wiki.eclipse.org/Jetty/Feature/ContextDeployer[ContextProvider]). For instance, if there is an application archive named `weld-numberguess.war` deployed in the `webapps` directory, the following XML descriptor should be created in the same directory:
+The reason is that since Jetty 8 some internal classes are not visible from the web application. See also http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes[Setting Server Classes]. Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using. Unfortunately, it's not so simple. The only workaround is to use a http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html[Jetty Deployable Descriptor XML File] (this is a Jetty 9 feature, in Jetty 8 a similar feature is incorporated - http://wiki.eclipse.org/Jetty/Feature/ContextDeployer[ContextProvider]). For instance, if there is an application archive named `weld-numberguess.war` deployed in the `webapps` directory, an XML descriptor named `weld-numberguess.xml` should be created in the same directory (the file should have the same base name as the war - see alse the scanning rules described in http://www.eclipse.org/jetty/documentation/current/deployment-architecture.html#default-web-app-provider[Jetty docs]):
 
 [source]
 ----
@@ -22,4 +22,4 @@ The reason is that since Jetty 8 some internal classes are not visible from the 
 </Configure>
 ----
 
-Note that in Jetty 9.3 distribution there should be a special CDI/Weld module which allows to deploy a CDI application without bundling the Weld Servlet integration code.
+Note that in the upcoming Jetty 9.3 distribution there should be a special CDI/Weld module which allows to deploy a CDI application without bundling the Weld Servlet integration code.
