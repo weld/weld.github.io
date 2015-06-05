@@ -680,7 +680,7 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>The reason is that since Jetty 8 some internal classes are not visible from the web application. See also <a href="http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes">Setting Server Classes</a>. Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using. Unfortunately, it&#8217;s not so simple. The only workaround is to use a <a href="http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html">Jetty Deployable Descriptor XML File</a> (this is a Jetty 9 feature, in Jetty 8 a similar feature is incorporated - <a href="http://wiki.eclipse.org/Jetty/Feature/ContextDeployer">ContextProvider</a>). For instance, if there is an application archive named <code>weld-numberguess.war</code> deployed in the <code>webapps</code> directory, the following XML descriptor should be created in the same directory:</p>
+                <p>The reason is that since Jetty 8 some internal classes are not visible from the web application. See also <a href="http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes">Setting Server Classes</a>. Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using. Unfortunately, it&#8217;s not so simple. The only workaround is to use a <a href="http://www.eclipse.org/jetty/documentation/current/configuring-specific-webapp-deployment.html">Jetty Deployable Descriptor XML File</a> (this is a Jetty 9 feature, in Jetty 8 a similar feature is incorporated - <a href="http://wiki.eclipse.org/Jetty/Feature/ContextDeployer">ContextProvider</a>). For instance, if there is an application archive named <code>weld-numberguess.war</code> deployed in the <code>webapps</code> directory, an XML descriptor named <code>weld-numberguess.xml</code> should be created in the same directory (the file should have the same base name as the war - see alse the scanning rules described in <a href="http://www.eclipse.org/jetty/documentation/current/deployment-architecture.html#default-web-app-provider">Jetty docs</a>):</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -688,7 +688,7 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>Note that in Jetty 9.3 distribution there should be a special CDI/Weld module which allows to deploy a CDI application without bundling the Weld Servlet integration code.</p>
+                <p>Note that Jetty distributions (from version <strong>9.2.4</strong>) contain a <strong>dedicated <a href="http://www.eclipse.org/jetty/documentation/current/framework-weld.html">CDI/Weld module</a></strong> which allows to deploy a CDI application without bundling the Weld Servlet integration code.</p>
                 </div>
                 </div>
                 </div>
