@@ -1,3 +1,11 @@
+- version: '3.0.0.Alpha10'
+  category: Experimental
+  date: 11.6.2015
+  versionId: 12327052
+- version: '2.2.13.Final'
+  category: Final
+  date: 11.6.2015
+  versionId: 12327488
 - version: '3.0.0.Alpha9'
   category: Experimental
   date: 25.5.2015
