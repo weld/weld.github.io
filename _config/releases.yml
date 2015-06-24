@@ -1,3 +1,7 @@
+- version: '2.3.0.Beta1'
+  category: Beta
+  date: 23.6.2015
+  versionId: 12327405
 - version: '3.0.0.Alpha10'
   category: Experimental
   date: 11.6.2015
