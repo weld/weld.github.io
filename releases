@@ -1,0 +1,21 @@
+[
+#  {"version" => "2.1.0.Alpha1",
+#   "category" => "Alpha",
+#   "date" => "28.8.2013",
+#   "versionId" => "12322304"},
+
+  {"version" => "2.0.3.Final",
+   "category" => "Final",
+   "date" => "22.7.2013",
+   "versionId" => "12322078"},
+
+  {"version" => "1.1.14.Final",
+   "category" => "Final",
+   "date" => "1.8.2013",
+   "versionId" => "12322154"},
+
+  {"version" => "1.0.1.Final",
+   "category" => "Final",
+   "date" => "23.02.2010",
+   "versionId" => "12314457"},
+]
