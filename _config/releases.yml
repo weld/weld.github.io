@@ -6,243 +6,304 @@
   category: Beta
   date: 3.7.2015
   versionId: 12327518
+  download: sf
 - version: '3.0.0.Alpha11'
   category: Experimental
   date: 2.7.2015
   versionId: 12327407
+  download: sf
 - version: '2.2.14.Final'
   category: Final
   date: 29.6.2015
   versionId: 12327513
+  download: sf
 - version: '2.3.0.Beta1'
   category: Beta
   date: 23.6.2015
   versionId: 12327405
+  download: sf
 - version: '3.0.0.Alpha10'
   category: Experimental
   date: 11.6.2015
   versionId: 12327052
+  download: sf
 - version: '2.2.13.Final'
   category: Final
   date: 11.6.2015
   versionId: 12327488
+  download: sf
 - version: '3.0.0.Alpha9'
   category: Experimental
   date: 25.5.2015
   versionId: 12326947
+  download: sf
 - version: '2.2.12.Final'
   category: Final
   date: 18.5.2015
   versionId: 12326948
+  download: sf
 - version: '3.0.0.Alpha8'
   category: Experimental
   date: 22.4.2015
   versionId: 12326881
+  download: sf
 - version: '2.2.11.Final'
   category: Final
   date: 21.4.2015
   versionId: 12326581
+  download: sf
 - version: '3.0.0.Alpha7'
   category: Experimental
   date: 8.4.2015
   versionId: 12326695
+  download: sf
 - version: '2.2.10.SP1'
   category: Final
   date: 8.4.2015
   versionId: 12326907
+  download: sf
 - version: '2.2.10.Final'
   category: Final
   date: 26.3.2015
   versionId: 12326325
+  download: sf
 - version: '3.0.0.Alpha6'
   category: Experimental
   date: 10.3.2015
   versionId: 12326582
+  download: sf
 - version: '3.0.0.Alpha5'
   category: Experimental
   date: 25.2.2015
   versionId: 12326167
+  download: sf
 - version: '3.0.0.Alpha4'
   category: Experimental
   date: 5.2.2015
   versionId: 12326166
+  download: sf
 - version: '2.2.9.Final'
   category: Final
   date: 20.1.2015
   versionId: 12326294
+  download: sf
 - version: '3.0.0.Alpha3'
   category: Experimental
   date: 10.12.2014
   versionId: 12325836
+  download: sf
 - version: '2.2.8.Final'
   category: Final
   date: 9.12.2014
   versionId: 12325971
+  download: sf
 - version: '3.0.0.Alpha2'
   category: Experimental
   date: 2.12.2014
   versionId: 12325762
+  download: sf
 - version: '2.2.7.Final'
   category: Final
   date: 26.11.2014
   versionId: 12325970
+  download: sf
 - version: '3.0.0.Alpha1'
   category: Experimental
   date: 2.10.2014
   versionId: 12322333
+  download: sf
 - version: '2.2.6.Final'
   category: Final
   date: 17.10.2014
   versionId: 12325577
+  download: sf
 - version: '2.2.5.Final'
   category: Final
   date: 18.9.2014
   versionId: 12325389
+  download: sf
 - version: '2.2.4.Final'
   category: Final
   date: 29.7.2014
   versionId: 12325317
+  download: sf
 - version: '2.2.3.Final'
   category: Final
   date: 9.7.2014
   versionId: 12325155
+  download: sf
 - version: '2.2.2.Final'
   category: Final
   date: 20.6.2014
   versionId: 12324857
+  download: sf
 - version: '2.2.1.Final'
   category: Final
   date: 12.5.2014
   versionId: 12324556
+  download: sf
 - version: '2.2.0.SP1'
   category: Final
   date: 17.4.2014
   versionId: 12324756
+  download: sf
 - version: '2.2.0.Final'
   category: Final
   date: 15.4.2014
   versionId: 12324617
+  download: sf
 - version: '2.2.0.CR2'
   category: Preview
   date: 7.4.2014
   versionId: 12323957
+  download: sf
 - version: '2.2.0.CR1'
   category: Preview
   date: 3.4.2014
   versionId: 12324466
+  download: sf
 - version: '2.2.0.Beta2'
   category: Preview
   date: 24.3.2014
   versionId: 12324352
+  download: sf
 - version: '2.2.0.Beta1'
   category: Preview
   date: 4.3.2014
   versionId: 12324052
+  download: sf
 - version: '2.2.0.Alpha2'
   category: Preview
   date: 13.2.2014
   versionId: 12323965
+  download: sf
 - version: '2.2.0.Alpha1'
   category: Preview
   date: 4.2.2014
   versionId: 12322332
+  download: sf
 - version: '2.1.2.Final'
   category: Final
   date: 14.1.2014
   versionId: 12323843
+  download: sf
 - version: '2.1.1.Final'
   category: Final
   date: 11.12.2013
   versionId: 12322670
+  download: sf
 - version: '2.1.0.Final'
   category: Final
   date: 22.10.2013
   versionId: 12322304
+  download: sf
 - version: '2.1.0.CR1'
   category: Preview
   date: 2.10.2013
   versionId: 12322331
+  download: sf
 - version: '2.1.0.Beta2'
   category: Preview
   date: 18.9.2013
   versionId: 12322471
+  download: sf
 - version: '2.1.0.Beta1'
   category: Preview
   date: 6.9.2013
   versionId: 12322330
+  download: sf
 - version: '2.1.0.Alpha1'
   category: Preview
   date: 4.9.2013
   versionId: 12321054
+  download: sf
 - version: '2.0.5.Final'
   category: Final
   date: 14.1.2014
   versionId: 12323868
+  download: sf
 - version: '2.0.4.Final'
   category: Final
   date: 4.9.2013
   versionId: 12322079
+  download: sf
 - version: '2.0.3.Final'
   category: Final
   date: 22.7.2013
   versionId: 12322078
+  download: sf
 - version: '2.0.2.Final'
   category: Final
   date: 2.7.2013
   versionId: 12321859
+  download: sf
 - version: '2.0.1.Final'
   category: Final
   date: 6.6.2013
   versionId: 12321507
+  download: sf
 - version: '2.0.0.SP1'
   category: Final
   date: 14.5.2013
   versionId: 12321852
+  download: sf
 - version: '2.0.0.Final'
   category: Final
   date: 25.4.2013
   versionId: 12322078
+  download: sf
 - version: '1.1.23.Final'
   category: Final
   date: 28.5.2014
   versionId: 12324901
+  download: maven
 - version: '1.1.22.Final'
   category: Final
   date: 15.5.2014
   versionId: 12324868
+  download: maven
 - version: '1.1.21.Final'
   category: Final
   date: 22.4.2014
   versionId: 12324670
+  download: maven
 - version: '1.1.20.Final'
   category: Final
   date: 18.4.2014
   versionId: 12324629
+  download: maven
 - version: '1.1.19.Final'
   category: Final
   date: 4.4.2014
   versionId: 12324182
+  download: maven
 - version: '1.1.18.Final'
   category: Final
   date: 27.2.2014
   versionId: 12323935
+  download: maven
 - version: '1.1.17.Final'
   category: Final
   date: 14.1.2014
   versionId: 12322534
+  download: maven
 - version: '1.1.16.Final'
   category: Final
   date: 27.9.2013
   versionId: 12322460
+  download: maven
 - version: '1.1.15.Final'
   category: Final
   date: 16.9.2013
   versionId: 12322318
+  download: maven
 - version: '1.1.14.Final'
   category: Final
   date: 1.8.2013
   versionId: 12322154
+  download: maven
 - version: '1.0.1.Final'
   category: Final
   date: 23.02.2010
   versionId: 12314457
+  download: maven
