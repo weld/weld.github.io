@@ -1,0 +1,114 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha12
+author: Martin Kouba
+---
+
+Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it's a reference implementation of link:http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html[CDI 2.0 Early Draft] (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: link:http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/[CDI 2.0 Early Draft Review 1 released].
+
+== Bootstrapping a CDI container in Java SE
+
+Starting a CDI container is now really that easy:
+
+[source,java]
+----
+public static void main(String... args) {
+    try(CDI<Object> cdi = CDI.getCDIProvider().initialize()) {
+        ComputingService service = cdi.select(ComputingService.class).get();
+        service.compute();
+    }
+}
+----
+
+`javax.enterprise.inject.spi.CDI` now implements `AutoCloseable` and can therefore be used in a `try-with-resources` block. 
+
+Note that the specification of the bean discovery process in Java SE is not finished yet. Therefore, bean archives which don't contain a beans.xml file are not supported. The main reason is that we don't want to implement a feature which is being discussed and will likely undergo some important changes. Nevertheless, the feature will be implemented in one of the next alpha versions.
+
+=== Weld SE bootstrap API
+
+How does it compare to Weld SE bootstrap API? Weld has provided support for the Java SE environment for a long time. Recently, the `org.jboss.weld.environment.se.Weld` class was turned into a powerful builder which allows to configure the Weld container before it is initialized.
+
+Typical usage of the Weld SE API looks like this:
+
+[source,java]
+----
+try (WeldContainer container = new Weld().initialize()) {
+    ComputingService service = container.select(ComputingService.class).get();
+    service.compute();
+}
+----
+
+This looks very similar to CDI SE, right? However, there are several advanced feratures available:
+
+* automatic scanning can be disabled, classes or packages can be selected explicitly
+** `WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();`
+* WeldContainer allows to fire events easily
+** `container.event().select(Bar.class).fire(new Bar());` 
+* Weld-specific link:http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration[configuration options] can be specified using the builder
+* it is possible to start multiple independent Weld instances (specification does not require this)
+
+See also link:http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/[Weld 3.0.0.Alpha8 announcement] for more information.
+
+
+== Asynchronous Events
+
+An experimental support of asynchronous events is implemented in Weld since 3.0.0.Alpha3. However, in this release the API was aligned with CDI 2.0 EDR1:
+
+[source,java]
+----
+class OrderProcessor {
+
+    @Inject Event<Order> orderEvent;
+
+    public void process(Order order) {
+        orderEvent.fireAsync(order).thenAccept((o)->System.out.println("Asynchronous processing finished: " + o.getId()));
+    }
+
+    public void processingOrder(@Observes Order event) {
+        // This observer is notified synchronously, before the fireAsync() method returns
+    }
+
+    public void asyncProcessingOrder(@ObservesAsync Order event) {
+        // This observer is notified asynchronously, in a different thread
+    }
+}
+----
+
+There are few important things to notice:
+
+* the event was triggered with `fireAsync()`
+* the asynchronous observer is defined by `@ObservesAsync`
+** this is required because of backward compatibilty with previous versions of CDI, see also link:http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/#_why_this_double_activation_is_needed[Why this double activation is needed?]
+* synchronous observers defined by `@Observes` are also notified!
+
+To sum it up:
+
+[options="header"]
+|===
+|Event method |`@Observes` notified|`@ObservesAsync` notified
+
+|`fire()`
+|yes, in the same thread
+|no
+
+|`fireAsync()`
+|yes, in the same thread
+|yes, in a different thread
+|===
+
+=== Observers SPI Changes
+
+`javax.enterprise.inject.spi.ObserverMethod` now extends `javax.enterprise.inject.spi.Prioritized` and overrides the `ObserverMethod.getPriority()` method which is used to determine the notification order in which the event observer methods are invoked. `Prioritized` interface is currently only used for observers. However, the Weld team is working on a prototype where `Prioritized` can be used to globally select/enable custom alternative beans, interceptors and decorators, see also link:https://issues.jboss.org/browse/WELD-2000[WELD-2000].
+
+Furthermore, `ObserverMethod.isAsync()` method was added to determine whether an observer method is asynchronous or not. 
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip[patch for WildFly] is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is *WildFly 10.0.0.Alpha6*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial].
+
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327471[Release notes] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha12/weld-3.0.0.Alpha12.zip[Distribution] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip[Patch for Wildfly 10 Alpha]
+&#93;
