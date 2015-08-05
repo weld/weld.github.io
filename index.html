@@ -12,13 +12,13 @@
     <!-- /If IE7 for font-awesome -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css">
     <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="http://localhost:4242/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <link href="http://localhost:4242/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="http://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
     <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script>
     <script>
@@ -231,22 +231,6 @@
                   <ul class="newsColumn">
                     <li>
                       <h3>
-                        <a href="/news/2015/08/05/weld-300Alpha12/">Weld 3.0.0.Alpha12</a>
-                      </h3>
-                      <p>
-                        <strong>2015-8-5: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it&#8217;s a reference implementation of CDI 2.0 Early Draft (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: CDI 2.0 Early Draft Review 1 released.
-                        
-                        
-                        Bootstrapping a CDI container in Java...
-                      </p>
-                      <a href="/news/2015/08/05/weld-300Alpha12/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
                         <a href="/news/2015/04/21/weld-300Alpha8/">Weld 3.0.0.Alpha8</a>
                       </h3>
                       <p>
@@ -286,6 +270,31 @@
                       </p>
                       <a href="/news/2015/02/25/weld-300Alpha5/">Read more &raquo;</a>
                     </li>
+                    <li>
+                      <h3>
+                        <a href="/news/2015/02/05/weld-300Alpha4/">Weld 3.0.0.Alpha4</a>
+                      </h3>
+                      <p>
+                        <strong>2015-2-5: Jozef Hartinger</strong>
+                      </p>
+                      <p>
+                        
+                        Here we are again with the next Alpha release of Weld 3.
+                        This time there are no additional CDI 2.0 previews.
+                        Instead, this release contains multiple performance improvements, enables @Asynchronous
+                        calls to be implemented simply with CDI interceptors and most importantly, it comes with
+                        weld-probe.
+                        
+                        
+                        Weld Probe
+                        
+                        
+                        Why isn&#8217;t my field injected?
+                        Why isn&#8217;t my interceptor triggered?
+                        What...
+                      </p>
+                      <a href="/news/2015/02/05/weld-300Alpha4/">Read more &raquo;</a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -308,6 +317,16 @@
     </div>
   </body>
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

@@ -1,235 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4242/</id>
+  <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2015-08-05T11:01:55+02:00</updated>
-  <link href="http://localhost:4242" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4242/" rel="alternate" type="text/html" />
+  <updated>2015-08-03T16:59:12+02:00</updated>
+  <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
+  <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
-    <id>http://localhost:4242/news/2015/08/05/weld-300Alpha12/</id>
-    <title>Weld 3.0.0.Alpha12</title>
-    <updated>2015-08-05T11:01:55+02:00</updated>
-    <published>2015-08-05T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2015/08/05/weld-300Alpha12/" rel="alternate" type="text/html" />
-    <author>
-      <name>Martin Kouba</name>
-    </author>
-    <summary>
-      
-      Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it&#8217;s a reference implementation of CDI 2.0 Early Draft (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: CDI 2.0 Early Draft Review 1 released.
-      
-      
-      Bootstrapping a CDI container in Java SE
-      
-      
-      Starting a CDI container is now really that easy:
-      
-      
-      
-      public static void main(String... args) {
-          try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {
-              ComputingService service = cdi.select(ComputingService.class).get();
-              service.compute();
-          }
-      }
-      
-      
-      
-      javax.enterprise.inject.spi.CDI now implements AutoCloseable and can...
-    </summary>
-    <content type="html">
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it’s a reference implementation of &lt;a href=&quot;http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html&quot;&gt;CDI 2.0 Early Draft&lt;/a&gt; (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: &lt;a href=&quot;http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/&quot;&gt;CDI 2.0 Early Draft Review 1 released&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_bootstrapping_a_cdi_container_in_java_se&quot;&gt;Bootstrapping a CDI container in Java SE&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Starting a CDI container is now really that easy:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public static void main(String... args) {
-          try(CDI&amp;lt;Object&amp;gt; cdi = CDI.getCDIProvider().initialize()) {
-              ComputingService service = cdi.select(ComputingService.class).get();
-              service.compute();
-          }
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;code&gt;javax.enterprise.inject.spi.CDI&lt;/code&gt; now implements &lt;code&gt;AutoCloseable&lt;/code&gt; and can therefore be used in a &lt;code&gt;try-with-resources&lt;/code&gt; block.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Note that the specification of the bean discovery process in Java SE is not finished yet. Therefore, bean archives which don’t contain a beans.xml file are not supported. The main reason is that we don’t want to implement a feature which is being discussed and will likely undergo some important changes. Nevertheless, the feature will be implemented in one of the next alpha versions.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_weld_se_bootstrap_api&quot;&gt;Weld SE bootstrap API&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;How does it compare to Weld SE bootstrap API? Weld has provided support for the Java SE environment for a long time. Recently, the &lt;code&gt;org.jboss.weld.environment.se.Weld&lt;/code&gt; class was turned into a powerful builder which allows to configure the Weld container before it is initialized.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Typical usage of the Weld SE API looks like this:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;try (WeldContainer container = new Weld().initialize()) {
-          ComputingService service = container.select(ComputingService.class).get();
-          service.compute();
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;This looks very similar to CDI SE, right? However, there are several advanced feratures available:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;automatic scanning can be disabled, classes or packages can be selected explicitly&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;code&gt;WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;WeldContainer allows to fire events easily&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;code&gt;container.event().select(Bar.class).fire(new Bar());&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Weld-specific &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration&quot;&gt;configuration options&lt;/a&gt; can be specified using the builder&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;it is possible to start multiple independent Weld instances (specification does not require this)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;See also &lt;a href=&quot;http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/&quot;&gt;Weld 3.0.0.Alpha8 announcement&lt;/a&gt; for more information.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_asynchronous_events&quot;&gt;Asynchronous Events&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;An experimental support of asynchronous events is implemented in Weld since 3.0.0.Alpha3. However, in this release the API was aligned with CDI 2.0 EDR1:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;class OrderProcessor {
-      
-          @Inject Event&amp;lt;Order&amp;gt; orderEvent;
-      
-          public void process(Order order) {
-              orderEvent.fireAsync(order).thenAccept((o)-&amp;gt;System.out.println(&quot;Asynchronous processing finished: &quot; + o.getId()));
-          }
-      
-          public void processingOrder(@Observes Order event) {
-              // This observer is notified synchronously, before the fireAsync() method returns
-          }
-      
-          public void asyncProcessingOrder(@ObservesAsync Order event) {
-              // This observer is notified asynchronously, in a different thread
-          }
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;There are few important things to notice:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;the event was triggered with &lt;code&gt;fireAsync()&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;the asynchronous observer is defined by &lt;code&gt;@ObservesAsync&lt;/code&gt;&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;this is required because of backward compatibilty with previous versions of CDI, see also &lt;a href=&quot;http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/#_why_this_double_activation_is_needed&quot;&gt;Why this double activation is needed?&lt;/a&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;synchronous observers defined by &lt;code&gt;@Observes&lt;/code&gt; are also notified!&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;To sum it up:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;table class=&quot;tableblock frame-all grid-all spread&quot;&gt;
-      &lt;colgroup&gt;
-      &lt;col style=&quot;width: 33%;&quot;&gt;
-      &lt;col style=&quot;width: 33%;&quot;&gt;
-      &lt;col style=&quot;width: 33%;&quot;&gt;
-      &lt;/colgroup&gt;
-      &lt;thead&gt;
-      &lt;tr&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Event method&lt;/th&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;code&gt;@Observes&lt;/code&gt; notified&lt;/th&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;code&gt;@ObservesAsync&lt;/code&gt; notified&lt;/th&gt;
-      &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;code&gt;fire()&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in the same thread&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;no&lt;/p&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;code&gt;fireAsync()&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in the same thread&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in a different thread&lt;/p&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/tbody&gt;
-      &lt;/table&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_observers_spi_changes&quot;&gt;Observers SPI Changes&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;code&gt;javax.enterprise.inject.spi.ObserverMethod&lt;/code&gt; now extends &lt;code&gt;javax.enterprise.inject.spi.Prioritized&lt;/code&gt; and overrides the &lt;code&gt;ObserverMethod.getPriority()&lt;/code&gt; method which is used to determine the notification order in which the event observer methods are invoked. &lt;code&gt;Prioritized&lt;/code&gt; interface is currently only used for observers. However, the Weld team is working on a prototype where &lt;code&gt;Prioritized&lt;/code&gt; can be used to globally select/enable custom alternative beans, interceptors and decorators, see also &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2000&quot;&gt;WELD-2000&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Furthermore, &lt;code&gt;ObserverMethod.isAsync()&lt;/code&gt; method was added to determine whether an observer method is asynchronous or not.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_wildfly_patch&quot;&gt;WildFly Patch&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;As usual, a &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip&quot;&gt;patch for WildFly&lt;/a&gt; is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is &lt;strong&gt;WildFly 10.0.0.Alpha6&lt;/strong&gt;.  If you’re not familiar with patching WildFly, check &lt;a href=&quot;http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html&quot;&gt;Markus’s tutorial&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html&quot;&gt;Experimental API documentation&lt;/a&gt; ]
-      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12327471&quot;&gt;Release notes&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/weld-3.0.0.Alpha12.zip&quot;&gt;Distribution&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip&quot;&gt;Patch for Wildfly 10 Alpha&lt;/a&gt;
-      ]&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-    </content>
-  </entry>
-  <entry>
-    <id>http://localhost:4242/news/2015/04/21/weld-300Alpha8/</id>
+    <id>http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</id>
     <title>Weld 3.0.0.Alpha8</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2015-04-21T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2015/04/21/weld-300Alpha8/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -373,7 +154,7 @@
       &lt;/div&gt;
       &lt;div class=&quot;imageblock&quot;&gt;
       &lt;div class=&quot;content&quot;&gt;
-      &lt;img alt=&quot;Weld Probe information bar embedded in application's HTML output&quot; src=&quot;http://localhost:4242/images/blog/probe-bar.png&quot;&gt;
+      &lt;img alt=&quot;Weld Probe information bar embedded in application's HTML output&quot; src=&quot;http://weld.cdi-spec.org/images/blog/probe-bar.png&quot;&gt;
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
@@ -412,11 +193,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2015/02/25/weld-300Alpha5/</id>
+    <id>http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</id>
     <title>Weld 3.0.0.Alpha5</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2015-02-25T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -501,7 +282,7 @@
       &lt;/div&gt;
       &lt;div class=&quot;imageblock&quot;&gt;
       &lt;div class=&quot;content&quot;&gt;
-      &lt;img alt=&quot;Weld Probe event monitoring&quot; src=&quot;http://localhost:4242/images/blog/probe-events.png&quot;&gt;
+      &lt;img alt=&quot;Weld Probe event monitoring&quot; src=&quot;http://weld.cdi-spec.org/images/blog/probe-events.png&quot;&gt;
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect2&quot;&gt;
@@ -565,11 +346,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2015/02/05/weld-300Alpha4/</id>
+    <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
     <title>Weld 3.0.0.Alpha4</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2015-02-05T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -728,11 +509,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/12/10/an-update-on-weld-3/</id>
+    <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1054,11 +835,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/10/02/weld-300Alpha1/</id>
+    <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1291,11 +1072,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/09/18/weld-next/</id>
+    <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1376,11 +1157,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/04/15/weld-220-final/</id>
+    <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1558,11 +1339,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/02/04/weld-220-alpha1/</id>
+    <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1666,11 +1447,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2014/01/14/weld-212-final/</id>
+    <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1729,11 +1510,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/12/11/weld-211-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1761,11 +1542,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/10/22/weld-210-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1909,11 +1690,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/09/20/weld-210beta2-tip/</id>
+    <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
       <name>Martin Kouba</name>
     </author>
@@ -1929,11 +1710,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/06/20/new-weld-site/</id>
+    <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
       <name>Martin Kouba</name>
     </author>
@@ -1949,11 +1730,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/06/06/weld-201-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
@@ -1973,7 +1754,7 @@
     </summary>
     <content type="html">
       &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the &lt;a href=&quot;http://localhost:4242/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12321507:&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the &lt;a href=&quot;http://weld.cdi-spec.org/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12321507:&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see &lt;a href=&quot;http://in.relation.to/Bloggers/CDI11Available&quot;&gt;Pete’s blog post&lt;/a&gt;. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!&lt;/p&gt;
@@ -1987,11 +1768,11 @@
     </content>
   </entry>
   <entry>
-    <id>http://localhost:4242/news/2013/04/25/weld-200-final/</id>
+    <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2015-08-03T17:07:36+02:00</updated>
+    <updated>2015-08-03T16:59:12+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
-    <link href="http://localhost:4242/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
+    <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
       <name>Jozef Hartinger</name>
     </author>
