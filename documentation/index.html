@@ -274,23 +274,17 @@
                 <h3>
                   If I create a thread in my CDI bean, how will Weld react?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html">reference guide</a> contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.</p>
                 </div>
                 <div class="paragraph">
                 <p>The dependent context and the application context will work as usual in any user created thread.</p>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="1">
                 <h3>
                   Why does Weld leave some proxy class definitions lying around when I undeploy my application? How can I prevent this?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>When a Weld-enabled application is deployed on an application server or a web server, proxy classes for beans implementing interfaces or extending classes contained in common libraries are loaded in the class loader (CL) for that library, not the thread context class loader (TCCL). This means that these proxy classes will not be removed from the server when the application is undeployed.</p>
                 </div>
@@ -300,15 +294,11 @@
                 <div class="paragraph">
                 <p>One way to prevent this problem is to simply deploy those libraries with your application. In this scenario, those classes are loaded in a CL associated with the application and will thus be removed when the application is undeployed.</p>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="2">
                 <h3>
                   Some of my beans aren&#8217;t deployed and I can&#8217;t see why?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>Weld will not create beans if it can&#8217;t load the class, or some class dependency. If that happens, you&#8217;ll see a note in the server log.</p>
                 </div>
@@ -320,15 +310,11 @@
                 <div class="paragraph">
                 <p>You can view more details by increasing the log level of the application server to DEBUG.</p>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="3">
                 <h3>
                   Why does Weld set character encoding of an HTTP request/response body to ISO-8859-1?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p><strong>Update</strong>: Since Weld 2.2 the conversation context is activated lazily and this problem does not occur.
                 If you are using an older version of Weld or need the conversation context to be activated eagerly, read further.</p>
@@ -344,9 +330,7 @@
                 </div>
                 <div class="listingblock">
                 <div class="content">
-                <pre class="highlight"><code class="xml language-xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"&gt;&#x000A;    &lt;filter&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;filter-class&gt;org.apache.catalina.filters.SetCharacterEncodingFilter&lt;/filter-class&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;encoding&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;UTF-8&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;ignore&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;false&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;    &lt;/filter&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;CDI Conversation Filter&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;&lt;/web-app&gt;</code></pre>
-                </div>
-                </div>
+                <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"&gt;&#x000A;    &lt;filter&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;filter-class&gt;org.apache.catalina.filters.SetCharacterEncodingFilter&lt;/filter-class&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;encoding&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;UTF-8&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;        &lt;init-param&gt;&#x000A;            &lt;param-name&gt;ignore&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;false&lt;/param-value&gt;&#x000A;        &lt;/init-param&gt;&#x000A;    &lt;/filter&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;    &lt;filter-mapping&gt;&#x000A;        &lt;filter-name&gt;CDI Conversation Filter&lt;/filter-name&gt;&#x000A;        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&#x000A;    &lt;/filter-mapping&gt;&#x000A;&lt;/web-app&gt;</code></pre>
                 </div>
                 </div>
               </div>
@@ -354,8 +338,6 @@
                 <h3>
                   My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>Firstly, this issue only affects CDI 1.1. If possible, go and upgrade to CDI 1.2 (Weld 2.2 or later) where this issue does not occur.</p>
                 </div>
@@ -364,7 +346,7 @@
                 This is a <a href="https://issues.jboss.org/browse/CDI-377">known issue</a> in the CDI 1.1 specification and occurs with third-party libraries such as <a href="https://code.google.com/p/guava-libraries/issues/detail?id=1433">Guava</a>.</p>
                 </div>
                 <div class="paragraph">
-                <p>A workaround is to configure the application server to require the <code>beans.xml</code> file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:</p>
+                <p>A workaround is to configure the application server to require the beans.xml file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:</p>
                 </div>
                 <div class="paragraph">
                 <p><strong>GlassFish 4</strong></p>
@@ -397,13 +379,11 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>per-deployment configuration - add the following content to <code>META-INF/jboss-all.xml</code> of the application</p>
+                <p>per-deployment configuration - add the following content to META-INF/jboss-all.xml of the application</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
                 <pre class="highlight"><code>&lt;jboss xmlns="urn:jboss:1.0"&gt;&#x000A;    &lt;weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/&gt;&#x000A;&lt;/jboss&gt;</code></pre>
-                </div>
-                </div>
                 </div>
                 </div>
               </div>
@@ -411,8 +391,6 @@
                 <h3>
                   How can I bundle my entire SE application with Weld into a single jar?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>Weld internal classes are not intended to be used in a CDI deployment. As a result, you may <a href="https://issues.jboss.org/browse/WELD-1129">encounter validation errors</a> when packaging your application together with Weld in a single fat jar file.</p>
                 </div>
@@ -421,9 +399,7 @@
                 </div>
                 <div class="listingblock">
                 <div class="content">
-                <pre class="highlight"><code class="xml language-xml">&lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"&#x000A;       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&#x000A;       version="1.1" bean-discovery-mode="all"&gt;&#x000A;    &lt;scan&gt;&#x000A;        &lt;exclude name="org.jboss.weld.**" /&gt;&#x000A;    &lt;/scan&gt;&#x000A;&lt;/beans&gt;</code></pre>
-                </div>
-                </div>
+                <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"&#x000A;       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"&#x000A;       version="1.1" bean-discovery-mode="all"&gt;&#x000A;    &lt;scan&gt;&#x000A;        &lt;exclude name="org.jboss.weld.**" /&gt;&#x000A;    &lt;/scan&gt;&#x000A;&lt;/beans&gt;</code></pre>
                 </div>
                 </div>
               </div>
@@ -431,29 +407,23 @@
                 <h3>
                   I use the Instance API to obtain bean instances. Why does it seem to cause a memory leak?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
-                <p>The <code>Instance</code> API is often used in loops to obtain multiple instances of a certain bean. Here is an example:</p>
+                <p>The Instance API is often used in loops to obtain multiple instances of a certain bean. Here is an example:</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
-                <pre class="highlight"><code class="java language-java">    @Inject&#x000A;    private Instance&lt;A&gt; instance;&#x000A;&#x000A;    public void foo() {&#x000A;        // obtain multiple instances of A&#x000A;        for (;;) {&#x000A;            instance.get();&#x000A;    }</code></pre>
+                <pre class="highlight"><code class="language-java" data-lang="java">    @Inject&#x000A;    private Instance&lt;A&gt; instance;&#x000A;&#x000A;    public void foo() {&#x000A;        // obtain multiple instances of A&#x000A;        for (;;) {&#x000A;            instance.get();&#x000A;    }</code></pre>
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>By default, each object obtained using <code>Instance</code> remains managed (is not released) until the <code>Instance</code> object is destroyed. This can easily create a memory leak.
+                <p>By default, each object obtained using Instance remains managed (is not released) until the Instance object is destroyed. This can easily create a memory leak.
                 Therefore, the application should explicitly destroy obtained instances when it no longer needs by calling the <a href="http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/Instance.html#destroy(T)">Instance.destroy()</a> method.</p>
-                </div>
-                </div>
                 </div>
               </div>
               <div id="7">
                 <h3>
                   How do I enable debug logging for Weld in a specific container?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>When things do not work as expected, more information might be helpful in solving the problem. For this reason, you might want to enable the debug (fine) log level for Weld.</p>
                 </div>
@@ -464,7 +434,7 @@
                 <p><strong>GlassFish</strong> (more info: <a href="http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html">Setting Log Levels - GlassFish</a>)</p>
                 </div>
                 <div class="paragraph">
-                <p>global configuration - add the following line to <code><em>domain-dir</em>/config/logging.properties</code></p>
+                <p>global configuration - add the following line to _domain-dir_/config/logging.properties</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -475,7 +445,7 @@
                 <p><strong>WildFly</strong> (more info: <a href="https://docs.jboss.org/author/display/WFLY8/Logging+Configuration">Logging Configuration - WildFly</a>)</p>
                 </div>
                 <div class="paragraph">
-                <p>global configuration - add the following content to the logging subsystem in <code>$JBOSS_HOME/standalone/configuration/standalone-full.xml</code></p>
+                <p>global configuration - add the following content to the logging subsystem in $JBOSS_HOME/standalone/configuration/standalone-full.xml</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -483,7 +453,7 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>per-deployment configuration - add the following line to the logging configuration file (e.g. <code>META-INF/logging.properties</code>) of the application</p>
+                <p>per-deployment configuration - add the following line to the logging configuration file (e.g. META-INF/logging.properties) of the application</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -506,7 +476,7 @@
                 <p><strong>Tomcat</strong> (more info: <a href="http://tomcat.apache.org/tomcat-7.0-doc/logging.html">Logging in Tomcat</a>)</p>
                 </div>
                 <div class="paragraph">
-                <p>global configuration - add the following line to <code>$CATALINA_HOME/conf/logging.properties</code></p>
+                <p>global configuration - add the following line to $CATALINA_HOME/conf/logging.properties</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -514,7 +484,7 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>per-deployment configuration - add the following line to <code>WEB-INF/classes/logging.properties</code></p>
+                <p>per-deployment configuration - add the following line to WEB-INF/classes/logging.properties</p>
                 </div>
                 <div class="listingblock">
                 <div class="content">
@@ -527,15 +497,11 @@
                 <div class="paragraph">
                 <p>For enabling debug logging on Jetty, see <a href="http://www.eclipse.org/jetty/documentation/current/configuring-logging.html">Jetty Logging</a></p>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="8">
                 <h3>
                   What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>When running on Tomcat with asynchronous Servlets you may observe the following warnings:</p>
                 </div>
@@ -553,25 +519,21 @@
                 bean instances properly at the end of a request. See the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=57314">Tomcat bug report</a>
                 for more details.</p>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="9">
                 <h3>
                   What is the relation between Weld, CDI and Java EE versions?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>Weld versions do not match CDI versioning.
                 An overview is provided in the following table:</p>
                 </div>
-                <table class="tableblock frame-all grid-all" style="width:100%; ">
+                <table class="tableblock frame-all grid-all spread">
                 <colgroup>
-                <col style="width:25%;">
-                <col style="width:25%;">
-                <col style="width:25%;">
-                <col style="width:25%;"> 
+                <col style="width: 25%;">
+                <col style="width: 25%;">
+                <col style="width: 25%;">
+                <col style="width: 25%;">
                 </colgroup>
                 <thead>
                 <tr>
@@ -608,16 +570,11 @@
                 </tr>
                 </tbody>
                 </table>
-                
-                </div>
-                </div>
               </div>
               <div id="10">
                 <h3>
                   How do I enable debug logging for Weld SE?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>In Weld 2.1 <a href="http://www.slf4j.org">SLF4J</a> was replaced with <a href="https://developer.jboss.org/wiki/JBossLoggingTooling">JBoss Logging</a> which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you&#8217;ll have to <strong>identify</strong> and <strong>configure</strong> the underlying logging framework.</p>
                 </div>
@@ -662,15 +619,11 @@
                 <pre class="highlight"><code>mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug</code></pre>
                 </div>
                 </div>
-                </div>
-                </div>
               </div>
               <div id="11">
                 <h3>
                   How to deploy a Weld application to a Jetty standalone instance?
                 </h3>
-                <div id="preamble">
-                <div class="sectionbody">
                 <div class="paragraph">
                 <p>You should not experience any classloading issues when starting Jetty as an embedded webapp server from within another Java program. However, if you&#8217;re using a Jetty standalone instance the deployment with bundled Weld Servlet integration will probably fail and you may observe a similar message in the log:</p>
                 </div>
@@ -689,8 +642,6 @@
                 </div>
                 <div class="paragraph">
                 <p>Note that Jetty distributions (from version <strong>9.2.4</strong>) contain a <strong>dedicated <a href="http://www.eclipse.org/jetty/documentation/current/framework-weld.html">CDI/Weld module</a></strong> which allows to deploy a CDI application without bundling the Weld Servlet integration code.</p>
-                </div>
-                </div>
                 </div>
               </div>
             </div>
@@ -713,14 +664,15 @@
   </body>
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
   </script>
-  <script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-45187401-1");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){
