@@ -4,34 +4,35 @@ title: Home
 ---
 .row
   .span12
-    %p 
-      Weld is the reference implementation of 
-      %a{:href=>"http://cdi-spec.org"}
-        CDI: Contexts and Dependency Injection for the Java EE Platform
-      which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
-    %p
-      Weld is integrated into many Java EE application servers such as 
-      = succeed ',' do
-        %a{:href=>"http://www.wildfly.org/"}WildFly
-      = succeed ',' do
-        %a{:href=>"http://www.jboss.org/products/eap.html"}JBoss Enterprise Application Platform
-      = succeed ',' do
-        %a{:href=>"http://glassfish.java.net/"}GlassFish
-      = succeed ',' do
-        %a{:href=>"http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html"}Oracle WebLogic Server
-      %a{:href=>"https://developer.ibm.com/wasdev/downloads/"}WebSphere Application Server
-      and others. Weld can also be used in a
-      %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-servlet"}Servlet-only environment (Tomcat, Jetty) 
-      or plain
-      %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se"}Java SE environment.
+    %div.hero-unit
+      %p 
+        Weld is the reference implementation of 
+        %a{:href=>"http://cdi-spec.org",:target=>'_blank'}
+          CDI: Contexts and Dependency Injection for the Java EE Platform
+        which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+      %p
+        Weld is integrated into many Java EE application servers such as 
+        = succeed ',' do
+          %a{:href=>"http://www.wildfly.org/",:target=>'_blank'}WildFly
+        = succeed ',' do
+          %a{:href=>"http://www.jboss.org/products/eap.html",:target=>'_blank'}JBoss Enterprise Application Platform
+        = succeed ',' do
+          %a{:href=>"http://glassfish.java.net/",:target=>'_blank'}GlassFish
+        = succeed ',' do
+          %a{:href=>"http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html",:target=>'_blank'}Oracle WebLogic Server
+        %a{:href=>"https://developer.ibm.com/wasdev/downloads/",:target=>'_blank'}WebSphere Application Server
+        and others. Weld can also be used in a
+        %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-servlet",:target=>'_blank'}Servlet-only environment (Tomcat, Jetty) 
+        or plain
+        %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se",:target=>'_blank'}Java SE environment.
 .row
   .span5
     %div
-      %h1 Try Weld Today
+      %h2 Try Weld Today
       %div
         %p 
           To use Weld today, download the
-          %a{:href=>"http://wildfly.org"}WildFly server
+          %a{:href=>"http://wildfly.org",:target=>'_blank'}WildFly server
           (formelly JBoss AS) and add the following code to the 
           %em pom.xml
           file of your application:
@@ -49,14 +50,16 @@ title: Home
           %a{:href=>"/download"}download section
           or the
           %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html"}reference documentation.
-  .span3
+      %div
+        %h2 Weld Book
+        %p The latest book on Weld is now available:
+        %div#book-box
+          %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
+            %img{:src=>"images/book.jpg", :width=>"250", :height=>"307", :class=>"weld-book-img"}
+  .span1
     %div
-      %h1 Weld Book
-      %p The latest book on Weld is now available:
-      %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
-        %img{:src=>"images/book.jpg", :width=>"250", :height=>"307"}
-  .span4
-    %h1
+  .span6
+    %h2
       News
       %a{:href=>"http://weld.cdi-spec.org/news.atom"}
         %i.icon-rss
