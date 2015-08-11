@@ -117,13 +117,14 @@ img.cdi-background {
 //body styles
 body {
     font-family: 'Muli','Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     height: 100%;
 }
 
 div.hero-unit {
-    background: linear-gradient(to bottom, #000000 0px, #313131 40%) no-repeat scroll 0 0 transparent;
-    color: white;
+    padding: 35px;
+    line-height: 25px;
+    margin: 15px 0px 15px 0px;
 }
 
 h1, h2, h3 {
@@ -215,4 +216,16 @@ table.tableblock, tr.tableblock, th.tableblock, td.tableblock {
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
+}
+
+div#book-box {
+    text-align: center;
+}
+
+img.weld-nav-logo {
+    margin: 40px 0 15px 20px;
+}
+
+img.weld-book-img {
+    box-shadow: 10px 10px silver;
 }
