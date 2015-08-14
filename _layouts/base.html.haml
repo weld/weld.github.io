@@ -6,10 +6,8 @@
       = "#{site.title}: #{page.title}"
     %meta{ :name=>'viewport', :content=>'width=device-width, initial-scale=1.0' }
     %link{ :rel=>'shortcut icon', :type=>'image/x-icon', :href=>"/images/weld_icon_32x.ico" }
-    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" }
-    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" }
-    //If IE7 for font-awesome
-    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" }
     %link{ :rel=>'stylesheet', :type=>'text/css', :media=>'screen', :href=>"//static.jboss.org/css/tabzilla.css" }
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/styles.css" }
 
@@ -26,86 +24,60 @@
       hljs.initHighlightingOnLoad();
   %body
     .container-fluid
-      .row-fluid
-        .span2{:style=>"min-height:1px;"}
-          %ul.nav.nav-tabs.nav-stacked.span2.visible-desktop#main_nav
-            %li
-              %a{ :href=>"/" }
-                %i.icon-home
-                Home
-            %li
-              %a{ :href=>"/download" }
-                %i.icon-download
-                Download
-            %li
-              %a{ :href=>"/news" }
-                %i.icon-edit
-                News
-            %li
-              %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel",:target=>'_blank' }
-                %i.icon-road
-                Road map
-            %li
-              %a{ :href=>"/documentation" }
-                %i.icon-book
-                Docs &amp; FAQ
-            %li
-              %a{ :href=>"/community" }
-                %i.icon-group
-                Community
-            %li
-              %a{ :href=>"http://github.com/weld",:target=>'_blank' }
-                %i.icon-github-alt
-                Source code
-            %li
-              %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel",:target=>'_blank' }
-                %i.icon-tasks
-                Bug tracker
-            %li
-              %a{ :href=>"https://twitter.com/jbossweld",:target=>'_blank' }
-                %i.icon-twitter
-                Follow @jbossweld
-          %a.hidden-desktop#toggle_menu{:href=>"#"}
-            %i.icon-exchange
-          %ul.nav.nav-tabs.nav-stacked.span2.hide.hidden-desktop#mobile_menu
-            %li
-              %a{ :href=>"/" }
-                %i.icon-home
-                Home
-            %li
-              %a{ :href=>"/download" }
-                %i.icon-download
-                Download
-            %li
-              %a{ :href=>"/download" }
-                %i.icon-edit
-                News
-            %li
-              %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel",:target=>'_blank' }
-                %i.icon-road
-                Road map
-            %li
-              %a{ :href=>"/documentation" }
-                %i.icon-book
-                Docs &amp; FAQ
-            %li
-              %a{ :href=>"/community" }
-                %i.icon-group
-                Community
-            %li
-              %a{ :href=>"http://github.com/weld",:target=>'_blank' }
-                %i.icon-github-alt
-                Source code
-            %li
-              %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel",:target=>'_blank' }
-                %i.icon-tasks
-                Bug tracker
-            %li
-              %a{ :href=>"https://twitter.com/jbossweld",:target=>'_blank' }
-                %i.icon-twitter
-                Follow @jbossweld
-        .span10
-          .rowfluid
+      .row
+        .col-md-2.col-sm-3
+          %div.sidebar-nav
+            %div.navbar.navbar-default{"role"=>"navigation"}
+              %div.navbar-header
+                %button.navbar-toggle{type=>"button","data-toggle"=>"collapse","data-target"=>".sidebar-navbar-collapse"}
+                  %span.sr-only
+                    Toggle navigation
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                %a.visible-xs.navbar-brand{href=>"#"}
+                  %img{ :src=>'/images/weld_logo_100x.png', :alt=>'Weld Logo'}
+              %div.collapse.navbar-collapse.sidebar-navbar-collapse
+                %ul.nav.navbar-nav
+                  %li
+                    %a{ :href=>"/" }
+                      %i.fa.fa-home
+                      &nbsp;Home
+                  %li
+                    %a{ :href=>"/download" }
+                      %i.fa.fa-download
+                      &nbsp;Download
+                  %li
+                    %a{ :href=>"/news" }
+                      %i.fa.fa-edit
+                      &nbsp;News
+                  %li
+                    %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Aroadmap-panel",:target=>'_blank' }
+                      %i.fa.fa-road
+                      &nbsp;Road Map
+                  %li
+                    %a{ :href=>"/documentation" }
+                      %i.fa.fa-book
+                      &nbsp;Docs &amp; FAQ
+                  %li
+                    %a{ :href=>"/community" }
+                      %i.fa.fa-group
+                      &nbsp;Community
+                  %li
+                    %a{ :href=>"http://github.com/weld",:target=>'_blank' }
+                      %i.fa.fa-github-alt
+                      &nbsp;Source Code
+                  %li
+                    %a{ :href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel",:target=>'_blank' }
+                      %i.fa.fa-tasks
+                      &nbsp;Bug Tracker
+                  %li
+                    %a{ :href=>"https://twitter.com/jbossweld",:target=>'_blank' }
+                      %i.fa.fa-twitter
+                      &nbsp;Follow @jbossweld
+        .col-md-10.col-sm-9
+          .row.hidden-xs
             .dropup
               #ajbossproject
                 A JBoss Project
@@ -113,21 +85,22 @@
               %script
                 window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
           .row
-            .span4
-              %img{ :src=>'/images/weld_logo_450x.png', :alt=>'Weld Logo', :class=>"weld-home-logo"}
-            .span8
-              %img{ :src=>'/images/CDIbackground.png', :alt=>'CDI tagcloud', :class=>"cdi-background"}
-          .row-fluid
-            .span10
+            .col-md-4
+              %a{:href => "/"}
+                %img.hidden-xs.weld-home-logo{ :src=>'/images/weld_logo_450x.png', :alt=>'Weld Logo'}
+            .col-md-8
+              %img.hidden-xs.hidden-sm.cdi-background{ :src=>'/images/CDIbackground.png', :alt=>'CDI tagcloud'}
+          .row
+            .col-md-10
               ~ content
-      %footer
-        .row
-          .container{:id => "companyfooter"}
-            .redhatlogo{:style => "text-align:center;"}
-              .logospacer{:style => "height:10px;"}
-              %a{:href => "http://www.redhat.com/"}
-                %img{:src => "http://static.jboss.org/theme/images/common/redhat_logo.png"}
-  %script{ :type=>'text/javascript', :src=>"//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" }
+    %footer
+      .row
+        .container{:id => "companyfooter"}
+          .redhatlogo{:style => "text-align:center;"}
+            .logospacer{:style => "height:10px;"}
+            %a{:href => "http://www.redhat.com/"}
+              %img{:src => "http://static.jboss.org/theme/images/common/redhat_logo.png"}
+  %script{ :type=>'text/javascript', :src=>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" }
   - if site.google_analytics
     = google_analytics
   :javascript

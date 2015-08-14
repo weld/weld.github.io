@@ -1,102 +1,38 @@
 //Include Muli google font
 @import url(http://fonts.googleapis.com/css?family=Muli);
 
-// Centered nav tabs and pills
-.nav-tabs-center > li, .nav-pills-center > li {
-  float:none;
-  display:inline-block;
-  margin-bottom: -1px;
-  *display:inline; /* ie7 fix */
-  zoom:1; /* hasLayout ie7 trigger */
-}
-
-.nav-tabs-center, .nav-pills-center {
-  text-align:center;
+div.navbar {
+  font-size: 0.9em;
+  background-color: transparent;
+  border: 0 none;
   border-bottom: 1px solid #ddd;
 }
 
-.nav-tabs-center > li > a,
-.nav-pills-center > li > a {
-  padding-right: 12px;
-  padding-left: 12px;
-  margin-right: 2px;
-  line-height: 14px;
+.navbar-default .navbar-nav > li {
+  margin-bottom: -1px;
 }
 
-.nav-tabs-center > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  line-height: 21px;
-  border: 1px solid transparent;
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
-}
-.nav-tabs-center:before, .nav-tabs-center:after,
-.nav-pills-center:before,
-.nav-pills-center:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.nav-tabs-center:after,
-.nav-pills-center:after {
-  clear: both;
-}
-
-.nav-tabs-center > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
-}
-
-.nav-tabs-center > .active > a,
-.nav-tabs-center > .active > a:hover {
-  color: #777777;
-  background-color: white;
+.navbar-default .navbar-nav > li > a {
+  color: #0088cc;
   border: 1px solid #ddd;
-  border-bottom-color: transparent;
-  cursor: default;
 }
-.nav-pills-center > .active > a,
-.nav-pills-center > .active > a:hover {
-  color: white;
-  background-color: #558bc4;
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #eee;
 }
-.nav-tabs-center .dropdown-menu {
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
+
+.navbar-default .navbar-nav > li:last-child > a {
   border-radius: 0 0 6px 6px;
 }
-.nav-tabs-center .dropdown-toggle .caret {
-  margin-top: 8px;
-}
-.nav-tabs-center .active .dropdown-toggle .caret {
-  border-top-color: #777777;
-  border-bottom-color: #777777;
-}
-.nav-tabs-center .open .dropdown-toggle,
-.nav-pills-center .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover {
-  color: white;
-  background-color: #bbbbbb;
-  border-color: #bbbbbb;
+
+.navbar-default .navbar-nav > li:first-child > a {
+  border-radius: 6px 6px 0 0;
+  background-color: #eee;
+  border: 0 none;
 }
 
-.scrollTop {
-  font-size: 40px;
-  opacity:0.3;
-  position:fixed;
-  bottom:50px;
-  right:100px;
-  display:none;
-  width:40px;
-  height:40px;
-}
-
-#main_nav {
-  position:fixed;
-  top: 40px;
-  font-size: .9em;
-  padding-right: 20px;
+.navbar-default .navbar-nav > li:first-child > a:hover {
+  color: black;
 }
 
 code {
@@ -116,15 +52,19 @@ img.cdi-background {
 
 //body styles
 body {
-    font-family: 'Muli','Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-size: 15px;
-    height: 100%;
+  font-family: 'Muli','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  height: 100%;
 }
 
-div.hero-unit {
-    padding: 35px;
-    line-height: 25px;
-    margin: 15px 0px 15px 0px;
+.container-fluid div.jumbotron {
+  padding: 35px;
+  line-height: 25px;
+  margin: 15px 0px 15px 0px;
+}
+
+div.jumbotron p {
+  font-size: 1.1em;
 }
 
 h1, h2, h3 {
@@ -191,12 +131,9 @@ pre.code {
 
 footer {
     background-color: #E8EDEE;
-    margin: 20px;
     font-size: 80%;
     text-align: center;
-    p {
-        margin: 20px;
-    }
+    margin-top: 30px;
 }
 
 div#preamble {
@@ -228,4 +165,45 @@ img.weld-nav-logo {
 
 img.weld-book-img {
     box-shadow: 10px 10px silver;
+}
+
+@media (min-width: 768px) {
+
+  .sidebar-nav {
+    position: fixed;
+    top: 35px;
+  }
+
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+}
+
+@media (min-width: 1280px) {
+
+  .sidebar-nav {
+    min-width: 14em;
+    left: 35px;
+  }
+
+}
+
+div.row {
+  margin: 0px;
 }

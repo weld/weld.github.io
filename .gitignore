@@ -3,3 +3,4 @@ _tmp
 .awestruct
 .sass-cache
 *~
+/.project
