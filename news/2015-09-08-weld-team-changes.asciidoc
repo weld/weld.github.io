@@ -6,7 +6,7 @@ author: Jozef Hartinger
 
 I am pleased to announce a couple of changes coming to the Weld team:
 
-Firstly of all, link:https://developer.jboss.org/people/mkouba[Martin] will be taking over leadership of the project. 
+First of all, link:https://developer.jboss.org/people/mkouba[Martin] will be taking over leadership of the project. 
 Martin has proven himself to be an excellent engineer over all the years and I am happy that I can leave the project in his hands.
 His primary task is going to be leading the project towards the Weld 3 milestone.
 
