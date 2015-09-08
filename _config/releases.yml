@@ -1,3 +1,7 @@
+- version: '2.3.0.CR2'
+  category: Candidate release
+  date: 8.9.2015
+  versionId: 12327253
 - version: '3.0.0.Alpha13'
   category: Experimental
   date: 28.8.2015
