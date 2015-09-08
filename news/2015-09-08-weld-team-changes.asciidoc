@@ -1,0 +1,18 @@
+---
+layout: news
+title: Weld team changes
+author: Jozef Hartinger
+---
+
+I am pleased to announce a couple of changes coming to the Weld team:
+
+Firstly of all, link:https://developer.jboss.org/people/mkouba[Martin] will be taking over leadership of the project. 
+Martin has proven himself to be an excellent engineer over all the years and I am happy that I can leave the project in his hands.
+His primary task is going to be leading the project towards the Weld 3 milestone.
+
+Secondly, I will be moving to work temporarily on a different project.
+I truly enjoyed working on Weld and with the CDI community.
+Now after almost 4 years on the project I was given an exciting opportunity which I decided to pursuit.
+
+Last but not least, Matěj Novotný is joining the team as a quality engineer. 
+He’s going to work on expanding our testsuites and making sure Weld releases do not break anything :-)
