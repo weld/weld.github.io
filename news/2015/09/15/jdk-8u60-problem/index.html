@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: Home
+      Weld: JDK 8u60 reveals a problem in Weld
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
@@ -128,125 +128,79 @@
           </div>
           <div class="row">
             <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="jumbotron">
-                    <p>
-                      Weld is the reference implementation of
-                      <a href="http://cdi-spec.org" target="_blank">
-                        CDI: Contexts and Dependency Injection for the Java EE Platform
-                      </a>
-                      which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
-                    </p>
-                    <p>
-                      Weld is integrated into many Java EE application servers such as
-                      <a href="http://www.wildfly.org/" target="_blank">WildFly</a>,
-                      <a href="http://www.jboss.org/products/eap.html" target="_blank">JBoss Enterprise Application Platform</a>,
-                      <a href="http://glassfish.java.net/" target="_blank">GlassFish</a>,
-                      <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html" target="_blank">Oracle WebLogic Server</a>,
-                      <a href="https://developer.ibm.com/wasdev/downloads/" target="_blank">WebSphere Application Server</a>
-                      and others. Weld can also be used in a
-                      <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-servlet" target="_blank">Servlet-only environment (Tomcat, Jetty)</a>
-                      or plain
-                      <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se" target="_blank">Java SE environment.</a>
-                    </p>
+              <div class="post">
+                <h1>
+                  JDK 8u60 reveals a problem in Weld
+                </h1>
+                <p style="color: #666;">
+                  <strong>2015-9-15: Martin Kouba</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Recently released <strong>JDK 8u60</strong> has revealed a problem in Weld where not all synthetic members were ignored correctly.
+                  This has been fixed in <strong>2.2.16.Final</strong>, <strong>2.3.0.CR2</strong> and <strong>3.0.0.Alpha14</strong> (not released yet).
+                  However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
+                  See also <a href="https://issues.jboss.org/browse/WELD-2019">the related issue - WELD-2019</a>.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_use_case">Use case</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>If there is a lambda referencing an event/disposed parameter inside an observer/disposer method, the compiler creates a synthetic method with the event parameter as one of the method parameters. Since 8u60 the parameter annotations are preserved even for the synthetic method.
+                  And so Weld incorrectly recognizes these synthetic methods as observer/disposer methods.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_symptoms">Symptoms</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>You may get <code>WELD-000409: Observer method for container lifecycle event can only&#8230;&#8203;</code> if using such a lambda in an extension or even <code>WELD-001408 Unsatisfied dependencies for type&#8230;&#8203;</code> if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_example">Example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class Foo {&#x000A;  void observe(@Observes @Juicy String payload) {&#x000A;    Arrays.asList("foo").stream().filter((s) -&gt; s.equals(payload));&#x000A;  }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>A synthetic method is created for the lambda and the event parameter is passed as a method parameter. The annotations are preserved.
+                  As a result Weld creates two observer methods having the same event parameter: <code>@Observes @Juicy String payload</code>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_workaround">Workaround</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Instead of the event parameter reference use an additional local variable with the same value assigned:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public void observe(@Observes @Juicy String payload) {&#x000A;   String p = payload;&#x000A;   Arrays.asList("foo").stream().filter((s) -&gt; s.equals(p));&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-5">
-                  <div>
-                    <h2>Try Weld Today</h2>
-                    <div>
-                      <p>
-                        To use Weld today, download the
-                        <a href="http://wildfly.org" target="_blank">WildFly server</a>
-                        (formelly JBoss AS) and add the following code to the
-                        <em>pom.xml</em>
-                        file of your application:
-                      </p>
-                      <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.2&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
-                      <p>
-                        For alternative ways of using Weld, see the
-                        <a href="/download">download section</a>
-                        or the
-                        <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">reference documentation.</a>
-                      </p>
-                    </div>
-                    <div>
-                      <h2>Weld Book</h2>
-                      <p>The latest book on Weld is now available:</p>
-                      <div id="book-box">
-                        <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
-                          <img class="weld-book-img" height="307" src="images/book.jpg" width="250">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-1">
-                  <div></div>
-                </div>
-                <div class="col-md-6">
-                  <h2>
-                    News
-                    <a href="http://weld.cdi-spec.org/news.atom">
-                      <i class="icon-rss"></i>
-                    </a>
-                  </h2>
-                  <ul class="newsColumn">
-                    <li>
-                      <h3>
-                        <a href="/news/2015/09/15/jdk-8u60-problem/">JDK 8u60 reveals a problem in Weld</a>
-                      </h3>
-                      <p>
-                        <strong>2015-9-15: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Recently released JDK 8u60 has revealed a problem in Weld where not all synthetic members were ignored correctly.
-                        This has been fixed in 2.2.16.Final, 2.3.0.CR2 and 3.0.0.Alpha14 (not released yet).
-                        However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
-                        See also...
-                      </p>
-                      <a href="/news/2015/09/15/jdk-8u60-problem/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2015/09/08/weld-team-changes/">Weld team changes</a>
-                      </h3>
-                      <p>
-                        <strong>2015-9-8: Jozef Hartinger</strong>
-                      </p>
-                      <p>
-                        
-                        I am pleased to announce a couple of changes coming to the Weld team:
-                        
-                        
-                        First of all, Martin will be taking over leadership of the project.
-                        Martin has proven himself to be an excellent engineer over all the years and I am happy that I can leave the project in his hands.
-                        His...
-                      </p>
-                      <a href="/news/2015/09/08/weld-team-changes/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2015/08/05/weld-300Alpha12/">Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</a>
-                      </h3>
-                      <p>
-                        <strong>2015-8-5: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it&#8217;s a reference implementation of CDI 2.0 Early Draft (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: CDI 2.0 Early Draft Review 1 released.
-                        
-                        
-                        Bootstrapping a CDI container in Java...
-                      </p>
-                      <a href="/news/2015/08/05/weld-300Alpha12/">Read more &raquo;</a>
-                    </li>
-                  </ul>
-                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "1f9323e6c05b5e57eff0671cba32081abd4b79f9";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>

@@ -2,13 +2,96 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2015-09-14T14:12:00+02:00</updated>
+  <updated>2015-09-15T14:17:57+02:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</id>
+    <title>JDK 8u60 reveals a problem in Weld</title>
+    <updated>2015-09-15T14:17:57+02:00</updated>
+    <published>2015-09-15T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/" rel="alternate" type="text/html" />
+    <author>
+      <name>Martin Kouba</name>
+    </author>
+    <summary>
+      
+      Recently released JDK 8u60 has revealed a problem in Weld where not all synthetic members were ignored correctly.
+      This has been fixed in 2.2.16.Final, 2.3.0.CR2 and 3.0.0.Alpha14 (not released yet).
+      However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
+      See also the related issue - WELD-2019.
+      
+      
+      Use case
+      
+      
+      If there is a lambda referencing an event/disposed parameter inside an observer/disposer method, the compiler creates a synthetic method with the event parameter as one of the method parameters. Since 8u60 the parameter annotations are preserved even for the synthetic method.
+      And so Weld incorrectly recognizes...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Recently released &lt;strong&gt;JDK 8u60&lt;/strong&gt; has revealed a problem in Weld where not all synthetic members were ignored correctly.
+      This has been fixed in &lt;strong&gt;2.2.16.Final&lt;/strong&gt;, &lt;strong&gt;2.3.0.CR2&lt;/strong&gt; and &lt;strong&gt;3.0.0.Alpha14&lt;/strong&gt; (not released yet).
+      However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
+      See also &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2019&quot;&gt;the related issue - WELD-2019&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_use_case&quot;&gt;Use case&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;If there is a lambda referencing an event/disposed parameter inside an observer/disposer method, the compiler creates a synthetic method with the event parameter as one of the method parameters. Since 8u60 the parameter annotations are preserved even for the synthetic method.
+      And so Weld incorrectly recognizes these synthetic methods as observer/disposer methods.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_symptoms&quot;&gt;Symptoms&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;You may get &lt;code&gt;WELD-000409: Observer method for container lifecycle event can only…​&lt;/code&gt; if using such a lambda in an extension or even &lt;code&gt;WELD-001408 Unsatisfied dependencies for type…​&lt;/code&gt; if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_example&quot;&gt;Example&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;class Foo {
+        void observe(@Observes @Juicy String payload) {
+          Arrays.asList(&quot;foo&quot;).stream().filter((s) -&amp;gt; s.equals(payload));
+        }
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;A synthetic method is created for the lambda and the event parameter is passed as a method parameter. The annotations are preserved.
+      As a result Weld creates two observer methods having the same event parameter: &lt;code&gt;@Observes @Juicy String payload&lt;/code&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_workaround&quot;&gt;Workaround&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Instead of the event parameter reference use an additional local variable with the same value assigned:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public void observe(@Observes @Juicy String payload) {
+         String p = payload;
+         Arrays.asList(&quot;foo&quot;).stream().filter((s) -&amp;gt; s.equals(p));
+      }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2015-09-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -51,7 +134,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</id>
     <title>Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2015-08-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/" rel="alternate" type="text/html" />
     <author>
@@ -270,7 +353,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</id>
     <title>Weld 3.0.0.Alpha8</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2015-04-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/" rel="alternate" type="text/html" />
     <author>
@@ -457,7 +540,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</id>
     <title>Weld 3.0.0.Alpha5</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2015-02-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
     <author>
@@ -610,7 +693,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
     <title>Weld 3.0.0.Alpha4</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2015-02-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
     <author>
@@ -773,7 +856,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -1099,7 +1182,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -1336,7 +1419,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -1421,7 +1504,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -1603,7 +1686,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -1711,7 +1794,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -1774,7 +1857,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -1806,7 +1889,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -1954,7 +2037,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -1974,7 +2057,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -1994,7 +2077,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -2032,7 +2115,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2015-09-14T14:12:00+02:00</updated>
+    <updated>2015-09-15T14:17:57+02:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
