@@ -1,0 +1,44 @@
+---
+layout: news
+title: JDK 8u60 reveals a problem in Weld
+author: Martin Kouba
+---
+
+Recently released *JDK 8u60* has revealed a problem in Weld where not all synthetic members were ignored correctly.
+This has been fixed in *2.2.16.Final*, *2.3.0.CR2* and *3.0.0.Alpha14* (not released yet).
+However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
+See also link:https://issues.jboss.org/browse/WELD-2019[the related issue - WELD-2019].
+
+== Use case
+
+If there is a lambda referencing an event/disposed parameter inside an observer/disposer method, the compiler creates a synthetic method with the event parameter as one of the method parameters. Since 8u60 the parameter annotations are preserved even for the synthetic method.
+And so Weld incorrectly recognizes these synthetic methods as observer/disposer methods.
+
+== Symptoms
+
+You may get `WELD-000409: Observer method for container lifecycle event can only...` if using such a lambda in an extension or even `WELD-001408 Unsatisfied dependencies for type...` if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.
+
+== Example
+
+[source,java]
+----
+class Foo {
+  void observe(@Observes @Juicy String payload) {
+    Arrays.asList("foo").stream().filter((s) -> s.equals(payload));
+  }
+}
+----
+
+A synthetic method is created for the lambda and the event parameter is passed as a method parameter. The annotations are preserved.
+As a result Weld creates two observer methods having the same event parameter: `@Observes @Juicy String payload`.
+
+== Workaround
+
+Instead of the event parameter reference use an additional local variable with the same value assigned:
+[source,java]
+----
+public void observe(@Observes @Juicy String payload) {
+   String p = payload;
+   Arrays.asList("foo").stream().filter((s) -> s.equals(p));
+}
+----
