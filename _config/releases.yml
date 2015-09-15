@@ -1,3 +1,7 @@
+- version: '2.2.16.Final'
+  category: Final
+  date: 9.9.2015
+  versionId: 12327594
 - version: '2.3.0.CR2'
   category: Candidate release
   date: 8.9.2015
