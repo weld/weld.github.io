@@ -1,3 +1,11 @@
+- version: '2.3.0.Final'
+  category: Final
+  date: 18.9.2015
+  versionId: 12328057
+- version: '2.2.16.SP1'
+  category: Final
+  date: 17.9.2015
+  versionId: 12328216
 - version: '2.2.16.Final'
   category: Final
   date: 9.9.2015
