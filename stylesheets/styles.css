@@ -202,3 +202,7 @@ img.weld-book-img {
 /* line 207, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.row {
   margin: 0px; }
+
+/* line 211, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+p.tableblock {
+  margin: 5px; }
