@@ -3,11 +3,39 @@
 Weld versions do not match CDI versioning.
 An overview is provided in the following table:
 
-[cols="4*", options="header"]
+[cols="5*", options="header"]
 |======================
-|Weld version|CDI version|Java EE version|Description
-|1.1         |1.0        |6              |Not actively developed anymore. Support available with link:http://www.jboss.org/products/eap/overview/[JBoss EAP]
-|2.1         |1.1        |7              |Not actively developed anymore.
-|2.2         |1.2        |7+             |The stable version of Weld.
-|3.0         |2.0 (Under development)|8  |Prototype releases for the upcoming CDI 2.0 (still under development).
+
+|Weld version|CDI version|Java version|Java EE version|Description
+
+|1.1
+|1.0
+|6+
+|6
+|Not actively developed anymore. Support available with link:http://www.jboss.org/products/eap/overview/[JBoss EAP]
+
+|2.1
+|1.1
+|6+
+|7
+|Not actively developed anymore.
+
+|2.2
+|1.2
+|6+
+|7
+|Not actively developed anymore.
+
+|2.3{set:cellbgcolor:#eee}
+|1.2
+|7+
+|7
+|The stable version of Weld.
+
+|3.0{set:cellbgcolor:none}
+|2.0 (Under development)
+|8+
+|8
+|Prototype releases for the upcoming CDI 2.0 (still under development).
+
 |======================
