@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.2 (CDI 1.2 reference implementation) released!
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2014-04-15
 ---
 
 Today we released Weld 2.2.0.Final - the reference implementation of link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html[Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)]. 

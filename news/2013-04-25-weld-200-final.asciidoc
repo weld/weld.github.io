@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.0.0.Final released
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2013-04-25
 ---
 
 I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (link:http://www.jcp.org/en/jsr/detail?id=346[JSR 346]). For a list of major changes in CDI 1.1 see the link:http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes[specification].

@@ -2,6 +2,9 @@
 layout: news
 title: Weld 3.0.0.Alpha1 released!
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2014-10-02
 ---
 
 Today we are releasing Weld 3.0.0.Alpha1. This release serves as an *early proof of concept* of some of the ideas that are being discussed by the CDI Expert Group for the upcoming 

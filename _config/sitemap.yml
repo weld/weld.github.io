@@ -1,0 +1,4 @@
+excluded_extensions: ['.ico', '.haml']
+excluded_files: [ '/CNAME', '/project.properties' ]
+
+

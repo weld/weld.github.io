@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.1.0.Beta2 tip
 author: Martin Kouba
+priority: 1
+change_frequency: daily
+date: 2013-09-20
 ---
 :excerpt: A tip how to skip CDI context activation for some HTTP requests...
 :awestruct-excerpt: {excerpt}
