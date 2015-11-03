@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.3.1.Final arrives...
 author: Martin Kouba
+priority: 1
+change_frequency: daily
+date: 2015-10-27
 ---
 :excerpt: TEST
 

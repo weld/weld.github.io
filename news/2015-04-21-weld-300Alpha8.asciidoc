@@ -2,6 +2,9 @@
 layout: news
 title: Weld 3.0.0.Alpha8
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2015-04-21
 ---
 
 Weld 3.0.0.Alpha8 has been released.

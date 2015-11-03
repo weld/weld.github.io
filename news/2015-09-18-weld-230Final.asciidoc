@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.3.0.Final released!
 author: Martin Kouba
+priority: 1
+change_frequency: daily
+date: 2015-09-18
 ---
 
 Weld 2.3.0.Final has been just released! From now on, 2.3 is the current stable version of Weld and 2.2 is not actively developed anymore - i.e. no new features are added, only bugs will be fixed. Weld 2.3 will remain a *CDI 1.2* implementation. We are incrementing the minor version due to several new features added. Weld 2.3 is also included in link:http://wildfly.org/[WildFly 10] application server.

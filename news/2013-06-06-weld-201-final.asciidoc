@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.0.1.Final
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2013-06-06
 ---
 
 Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the link:/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12321507:[release notes].

@@ -2,6 +2,9 @@
 layout: news
 title: Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!
 author: Martin Kouba
+priority: 1
+change_frequency: daily
+date: 2015-08-05
 ---
 
 Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it's a reference implementation of link:http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html[CDI 2.0 Early Draft] (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: link:http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/[CDI 2.0 Early Draft Review 1 released].

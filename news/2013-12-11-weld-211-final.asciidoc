@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.1.1.Final
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2013-12-11
 ---
 
 Weld 2.1.1.Final was released. More than 20 issues were addressed in this release. See the link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322670[release notes] for details. Thanks to everyone involved in this release!
