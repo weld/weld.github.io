@@ -3,8 +3,7 @@ layout: news
 title: Weld 3.0.0.Alpha4
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2015-02-05
+change_frequency: weekly
 ---
 
 Here we are again with the next Alpha release of Weld 3.

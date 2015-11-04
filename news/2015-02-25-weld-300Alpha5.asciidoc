@@ -3,8 +3,7 @@ layout: news
 title: Weld 3.0.0.Alpha5
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2015-02-25
+change_frequency: weekly
 ---
 
 Weld 3.0.0.Alpha5, the latest release in the series of CDI 2.0 prototypes, has been released.

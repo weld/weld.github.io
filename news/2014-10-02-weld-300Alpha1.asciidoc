@@ -3,17 +3,16 @@ layout: news
 title: Weld 3.0.0.Alpha1 released!
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2014-10-02
+change_frequency: weekly
 ---
 
-Today we are releasing Weld 3.0.0.Alpha1. This release serves as an *early proof of concept* of some of the ideas that are being discussed by the CDI Expert Group for the upcoming 
-link:http://cdi-spec.org/[CDI 2.0 specification]. Furthermore, this is a great opportunity for the community to test-drive some of the proposed improvements and *provide us with feedback*. 
+Today we are releasing Weld 3.0.0.Alpha1. This release serves as an *early proof of concept* of some of the ideas that are being discussed by the CDI Expert Group for the upcoming
+link:http://cdi-spec.org/[CDI 2.0 specification]. Furthermore, this is a great opportunity for the community to test-drive some of the proposed improvements and *provide us with feedback*.
 Be warned though that this released does not come with any guarantee of stability and that binary and functional compatibility is likely to be broken in the following releases.
 
 == Ordering of observer methods
 
-The first of the new features are ordered observer methods. This requirement came up a long ago and several approaches were proposed in the meantime, as documented by 
+The first of the new features are ordered observer methods. This requirement came up a long ago and several approaches were proposed in the meantime, as documented by
 link:https://issues.jboss.org/browse/CDI-4[CDI-4].The Alpha1 release employs the general-purpose `@Priority` annotation to determine the order in which observer methods are to be notified.
 
 There are many open questions about this feature. Here are some of the rules we set for the purpose of this experimental implementation. These are by no means set in stone but instead we encourage you
@@ -35,15 +34,15 @@ public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User 
 }
 ----
 
-Note that `javax.annotation.Priority` can currently only be applied to types. Therefore, we temporarily created a substitute called *`org.jboss.weld.experimental.Priority`* which is identical 
-to the original except that it can also be applied on parameters (of observer methods). The plan is to propagate this change back to `javax.annotation.Priority`. In the meantime, Weld’s twin 
+Note that `javax.annotation.Priority` can currently only be applied to types. Therefore, we temporarily created a substitute called *`org.jboss.weld.experimental.Priority`* which is identical
+to the original except that it can also be applied on parameters (of observer methods). The plan is to propagate this change back to `javax.annotation.Priority`. In the meantime, Weld’s twin
 gets the job done.
 
-In addition to the `@Priority` annotation, the SPI was also enhanced to expose the priority of an observer method. We are not touching `javax.enterprise` interfaces just yet. Instead, 
+In addition to the `@Priority` annotation, the SPI was also enhanced to expose the priority of an observer method. We are not touching `javax.enterprise` interfaces just yet. Instead,
 the `org.jboss.weld.experimental` package contains proposals for how the new SPI should look like. As the package name suggests, this SPI is good for a test-drive but do not expect it to be stable.
 To use the experimental SPIs, you'll need to add a dependency on link:http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-api%7C3.0.Alpha1%7Cjar[weld-api].
 
-Here’s an example of reading the observer method priority using the SPI in an Extension. `ExperimentalProcessObserverMethod` and `ExperimentalObserverMethod` interfaces come from the 
+Here’s an example of reading the observer method priority using the SPI in an Extension. `ExperimentalProcessObserverMethod` and `ExperimentalObserverMethod` interfaces come from the
 `org.jboss.weld.experimental package`.
 
 [source,java]
@@ -61,7 +60,7 @@ Use the link:https://issues.jboss.org/browse/CDI-4[corresponding CDI ticket] for
 
 == Vetoing and modifying observer methods
 
-We’ll stay with observer methods for a few more paragraphs. A link:https://issues.jboss.org/browse/CDI-458[request] was raised in the CDI issue tracker for making it possible to disable an 
+We’ll stay with observer methods for a few more paragraphs. A link:https://issues.jboss.org/browse/CDI-458[request] was raised in the CDI issue tracker for making it possible to disable an
 observer method using the `ProcessObserverMethod` SPI.
 
 This Alpha1 release introduces the `veto()` methods (aligned with `ProcessAnnotatedType.veto()`) for this:
@@ -75,7 +74,7 @@ void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod<?, De
 }
 ----
 
-In addition, the observer method metadata may be altered by an extension. This is done similarly to how `InjectionTarget`, `InjectionPoint` or `BeanAttribute` metadata are modified which 
+In addition, the observer method metadata may be altered by an extension. This is done similarly to how `InjectionTarget`, `InjectionPoint` or `BeanAttribute` metadata are modified which
 is most often by wrapping the original object (decorator design pattern). Any piece of metadata (including aforementioned priority) can be altered. For example, the transaction phase:
 
 [source,java]
@@ -92,7 +91,7 @@ void alterObserver(@Observes ExperimentalProcessObserverMethod<User, ?> event) {
 
 == Repeatable qualifiers and interceptor bindings
 
-This release serves as a proof of concept for supporting repeating qualifiers and interceptor bindings. You can now fully utilize Java 8 features and use multiple qualifiers or interceptor bindings 
+This release serves as a proof of concept for supporting repeating qualifiers and interceptor bindings. You can now fully utilize Java 8 features and use multiple qualifiers or interceptor bindings
 of the same type in the same location, for example:
 
 [source,java]
@@ -108,19 +107,19 @@ public class School {
 }
 ----
 
-Repeating qualifiers can be used for both bean and event resolution. See the link:http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html[Java documentation] for how to define 
+Repeating qualifiers can be used for both bean and event resolution. See the link:http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html[Java documentation] for how to define
 a repeating annotation.
 
 == Interceptor bindings in invocation context
 
 This is an often recurring scenario. An interceptor binding defines several `@NonBinding` members which serve as configuration for the interceptor. How does an interceptor get hold of these values?
 This is not easy as the interceptor binding may often appear on the intercepted method, the class that defined it or may be inherited from another interceptor binding or stereotype (even transitively!).
-This problem gave birth to utilities such as 
-link:https://git-wip-us.apache.org/repos/asf?p=deltaspike.git;a=blob;f=deltaspike/core/api/src/main/java/org/apache/deltaspike/core/util/AnnotationUtils.java;h=9d4c8e2f72936facf1ef0d8d9655c4186965afde;hb=HEAD[this one]. 
-Still, even after all this effort the result is not entirely correct as it was obtained using Java reflection ignoring the fact that the interceptor binding may have been modified 
+This problem gave birth to utilities such as
+link:https://git-wip-us.apache.org/repos/asf?p=deltaspike.git;a=blob;f=deltaspike/core/api/src/main/java/org/apache/deltaspike/core/util/AnnotationUtils.java;h=9d4c8e2f72936facf1ef0d8d9655c4186965afde;hb=HEAD[this one].
+Still, even after all this effort the result is not entirely correct as it was obtained using Java reflection ignoring the fact that the interceptor binding may have been modified
 (e.g. using `ProcessAnnotatedType`).
 
-This problem is being addressed as link:https://issues.jboss.org/browse/CDI-468[CDI-468]. The Alpha1 release of Weld implements this feature and exposes new methods for obtaining interceptor bindings 
+This problem is being addressed as link:https://issues.jboss.org/browse/CDI-468[CDI-468]. The Alpha1 release of Weld implements this feature and exposes new methods for obtaining interceptor bindings
 that are in effect for the interception. This is done using `ExperimentalInvocationContext.getInterceptorBindings()` or `ExperimentalInvocationContext.getInterceptorBindingsByType()`.
 
 Again, `ExperimentalInvocationContext` can be found in the `org.jboss.weld.experimental` package and depicts how the future version of `javax.interceptor.InvocationContext` could look like.
@@ -149,10 +148,10 @@ Again, your feedback is welcome at link:https://issues.jboss.org/browse/CDI-468[
 
 == Changes in the Annotated layer
 
-CDI provides an abstraction over the Reflection API - link:http://docs.jboss.org/cdi/api/1.2/javax/enterprise/inject/spi/Annotated.html[AnnotatedType and friends] - which mostly allows extensions 
+CDI provides an abstraction over the Reflection API - link:http://docs.jboss.org/cdi/api/1.2/javax/enterprise/inject/spi/Annotated.html[AnnotatedType and friends] - which mostly allows extensions
 to alter the set of annotations present on a type, field, method, etc.
 
-The Alpha1 release contains two minor additions to this API. Firstly, the API now supports Java 8 repeating annotations with a new method `ExperimentalAnnotated.getAnnotationsByType(Class<T> annotationClass)` 
+The Alpha1 release contains two minor additions to this API. Firstly, the API now supports Java 8 repeating annotations with a new method `ExperimentalAnnotated.getAnnotationsByType(Class<T> annotationClass)`
 
 Secondly, it is now possible to access the `java.lang.reflect.Parameter` instance that is wrapped by `AnnotatedParameter` using `ExperimentalAnnotatedParameter.getJavaParameter();`
 

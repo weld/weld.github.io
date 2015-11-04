@@ -3,8 +3,7 @@ layout: news
 title: CDI 1.2 and Weld 2.2
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2014-02-04
+change_frequency: weekly
 ---
 
 Work on a maintenance release of the CDI specification (CDI 1.2) has started recently. Now is the best time to add feedback on link:http://www.cdi-spec.org/news/2013/12/16/CDI-1-2-issues-list/[issues being addressed]. Most of the discussion happens in the link:https://lists.jboss.org/mailman/listinfo/cdi-dev[cdi-dev mailing list] or the link:http://webchat.freenode.net/?channels=jsr346[IRC channel].

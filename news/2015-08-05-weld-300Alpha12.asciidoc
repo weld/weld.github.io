@@ -3,8 +3,7 @@ layout: news
 title: Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!
 author: Martin Kouba
 priority: 1
-change_frequency: daily
-date: 2015-08-05
+change_frequency: weekly
 ---
 
 Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it's a reference implementation of link:http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html[CDI 2.0 Early Draft] (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: link:http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/[CDI 2.0 Early Draft Review 1 released].
@@ -23,7 +22,7 @@ public static void main(String... args) {
 }
 ----
 
-`javax.enterprise.inject.spi.CDI` now implements `AutoCloseable` and can therefore be used in a `try-with-resources` block. 
+`javax.enterprise.inject.spi.CDI` now implements `AutoCloseable` and can therefore be used in a `try-with-resources` block.
 
 Note that the specification of the bean discovery process in Java SE is not finished yet. Therefore, bean archives which don't contain a beans.xml file are not supported. The main reason is that we don't want to implement a feature which is being discussed and will likely undergo some important changes. Nevertheless, the feature will be implemented in one of the next alpha versions.
 
@@ -46,7 +45,7 @@ This looks very similar to CDI SE, right? However, there are several advanced fe
 * automatic scanning can be disabled, classes or packages can be selected explicitly
 ** `WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();`
 * WeldContainer allows to fire events easily
-** `container.event().select(Bar.class).fire(new Bar());` 
+** `container.event().select(Bar.class).fire(new Bar());`
 * Weld-specific link:http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration[configuration options] can be specified using the builder
 * it is possible to start multiple independent Weld instances (specification does not require this)
 
@@ -103,7 +102,7 @@ To sum it up:
 
 `javax.enterprise.inject.spi.ObserverMethod` now extends `javax.enterprise.inject.spi.Prioritized` and overrides the `ObserverMethod.getPriority()` method which is used to determine the notification order in which the event observer methods are invoked. `Prioritized` interface is currently only used for observers. However, the Weld team is working on a prototype where `Prioritized` can be used to globally select/enable custom alternative beans, interceptors and decorators, see also link:https://issues.jboss.org/browse/WELD-2000[WELD-2000].
 
-Furthermore, `ObserverMethod.isAsync()` method was added to determine whether an observer method is asynchronous or not. 
+Furthermore, `ObserverMethod.isAsync()` method was added to determine whether an observer method is asynchronous or not.
 
 == WildFly Patch
 

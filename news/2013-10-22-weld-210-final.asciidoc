@@ -3,11 +3,10 @@ layout: news
 title: Weld 2.1.0.Final
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2013-10-22
+change_frequency: weekly
 ---
 
-I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of link:http://cdi-spec.org[Contexts and Dependency Injection for Java EE (CDI)]. 
+I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of link:http://cdi-spec.org[Contexts and Dependency Injection for Java EE (CDI)].
 Here is the highlight of what’s new in Weld 2.1.0:
 
 - OSGi support with Pax CDI
@@ -20,7 +19,7 @@ Here is the highlight of what’s new in Weld 2.1.0:
 The future of Weld-OSGi
 -----------------------
 
-link:http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi[Weld-osgi] is a framework that allows the CDI programming model to be used in the OSGi environment. 
+link:http://www.slideshare.net/TrevorReznik/weldosgi-injecting-easiness-in-osgi[Weld-osgi] is a framework that allows the CDI programming model to be used in the OSGi environment.
 The framework was developed entirely by the Weld community and became a part of Weld since version 1.2.0
 
 The framework provides three main features:
@@ -29,7 +28,7 @@ The framework provides three main features:
 2. The OSGi service layer and utility facilities are accessible through CDI injection
 3. The CDI event bus can be used for both inter-bundle communication and delivering OSGi events.
 
-The weld-osgi framework served as an inspiration for a standardization effort, known as link:http://www.osgi.org/download/osgi-early-draft-2013-03.pdf[RFC-193] (formerly RFP-146). 
+The weld-osgi framework served as an inspiration for a standardization effort, known as link:http://www.osgi.org/download/osgi-early-draft-2013-03.pdf[RFC-193] (formerly RFP-146).
 The proposal is now part of the link:http://www.osgi.org/download/osgi-early-draft-2013-03.pdf[OSGi early draft]
 
 Due to the tight schedule of CDI 1.1, weld-osgi did never make it to Weld 2.0 and was therefore left behind, stuck in the gradually abandoned 1.2 branch.
@@ -38,8 +37,8 @@ In the meantime, work on the reference implementation of RFC-193 begun. The refe
 Pax CDI aims to be portable across OSGi implementations as well as CDI implementations.
 
 We always wanted to bring OSGi support back in Weld 2.1. However, we decided not to revive the weld-osgi framework nor align it to the new RFC-193 specification. Therefore, weld-osgi will not be merged into Weld 2.x code base.
-Instead, we decided to shift our focus towards Pax CDI and make sure it works well with Weld. 
-This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current link:https://ops4j1.jira.com/wiki/display/PAXCDI/Download[Pax CDI SNAPSHOT] 
+Instead, we decided to shift our focus towards Pax CDI and make sure it works well with Weld.
+This was done and Weld 2.1.0 is now one of the CDI runtimes supported by Pax CDI. You can play with the current link:https://ops4j1.jira.com/wiki/display/PAXCDI/Download[Pax CDI SNAPSHOT]
 or wait for the upcoming link:https://ops4j1.jira.com/browse/PAXCDI/fixforversion/11996[0.5 release].
 
 EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the link:http://team.ops4j.org/wiki/display/PAXCDI/2013/10/27/Pax+CDI+0.5.0+Released[release announcement] for more details.
@@ -48,12 +47,12 @@ EDIT 2013-10-30: Pax CDI 0.5.0 was released. See the link:http://team.ops4j.org/
 Performance
 ------------
 
-The CDI specification requires the request, conversation and application contexts to be active during every HTTP request. 
+The CDI specification requires the request, conversation and application contexts to be active during every HTTP request.
 Obviously, the CDI contexts are not necessary for every HTTP request. Fetching a static resource is an example of one such request.
 
-In Weld 2.1.0 we optimized the component that handles context activation/deactivation and cut down the overhead. 
-In addition, it is now possible to completely suppress CDI context activation on certain types of HTTP requests should this minimized overhead still be undesired. 
-See link:https://community.jboss.org/people/mkouba/blog/2013/09/18/weld--skip-cdi-context-activation-for-some-http-requests[Martin’s blog post] or 
+In Weld 2.1.0 we optimized the component that handles context activation/deactivation and cut down the overhead.
+In addition, it is now possible to completely suppress CDI context activation on certain types of HTTP requests should this minimized overhead still be undesired.
+See link:https://community.jboss.org/people/mkouba/blog/2013/09/18/weld--skip-cdi-context-activation-for-some-http-requests[Martin’s blog post] or
 link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194[the reference documentation] for more details.
 
 Acknowledgement
@@ -63,6 +62,6 @@ We greatly appreciate your contributions to this release. Big thanks go to: Mart
 
 
 &#91; link:https://sourceforge.net/projects/jboss/files/Weld/2.1.0.Final[Distribution] &#93;
-&#91; link:https://issues.jboss.org/issues/?jql=project%20%3D%20WELD%20AND%20fixVersion%20in%20%28%222.1.0.Final%22%2C%20%222.1.0.Alpha1%22%2C%20%222.1.0.Beta1%22%2C%20%222.1.0.Beta2%22%2C%20%222.1.0.CR1%22%29%20ORDER%20BY%20updated%20ASC[Release notes] &#93; 
-&#91; link:http://docs.jboss.org/weld/reference/2.1.0.Final/en-US/html/[Documentation] &#93; 
-&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93; 
+&#91; link:https://issues.jboss.org/issues/?jql=project%20%3D%20WELD%20AND%20fixVersion%20in%20%28%222.1.0.Final%22%2C%20%222.1.0.Alpha1%22%2C%20%222.1.0.Beta1%22%2C%20%222.1.0.Beta2%22%2C%20%222.1.0.CR1%22%29%20ORDER%20BY%20updated%20ASC[Release notes] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.1.0.Final/en-US/html/[Documentation] &#93;
+&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93;

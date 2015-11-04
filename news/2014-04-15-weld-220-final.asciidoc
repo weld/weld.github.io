@@ -3,17 +3,16 @@ layout: news
 title: Weld 2.2 (CDI 1.2 reference implementation) released!
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2014-04-15
+change_frequency: weekly
 ---
 
-Today we released Weld 2.2.0.Final - the reference implementation of link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html[Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)]. 
+Today we released Weld 2.2.0.Final - the reference implementation of link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html[Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)].
 Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.
 
 CDI 1.2
 -------
 
-CDI 1.2 is a maintenance release of the link:https://jcp.org/en/jsr/detail?id=346[CDI specification]. It contains a number of small fixes and clarifications as well as several enhancements. 
+CDI 1.2 is a maintenance release of the link:https://jcp.org/en/jsr/detail?id=346[CDI specification]. It contains a number of small fixes and clarifications as well as several enhancements.
 Most notable changes for application developers are related to the definition of _bean defining annotations_.
 
 In link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations[CDI 1.2], the set of bean defining annotations now contains:
@@ -25,13 +24,13 @@ In link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotatio
 
 As a result, any class annotated with a _bean defining annotation_ is by default recognized by the application server and registered as a CDI bean. The beans.xml file is optional.
 
-In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification. 
+In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
 See link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&version=12323655[the release notes] for the complete list of changes.
 
 Performance
 -----------
 
-Weld is now capable of using bytecode-scanning utilities, such as the link:https://github.com/wildfly/jandex[Jandex] tool, to speed up deployment. 
+Weld is now capable of using bytecode-scanning utilities, such as the link:https://github.com/wildfly/jandex[Jandex] tool, to speed up deployment.
 This is especially notable in extra large deployments (e.g. 5000+ classes) where we observed up to *20% faster deployment*.
 
 In addition, there are noticeable improvements in the following areas:
@@ -67,7 +66,7 @@ Your installation is now patched!
 
 Weld SE and Servlet
 -------------------
-Weld comes with the SE module which allows CDI to be used in plain Java SE environment. In Weld 2.2 we added partial support for implicit bean archives. 
+Weld comes with the SE module which allows CDI to be used in plain Java SE environment. In Weld 2.2 we added partial support for implicit bean archives.
 Partial support here means that the beans.xml file is still required, but *bean-discovery-mode=”annotated”* can be specified for Weld to only discover classes explicitly annotated with bean defining annotations (see above).
 
 In addition to the Weld SE module, Weld also provides the Weld Servlet module which makes it possible to use Weld on top of a plain Servlet container, such as Apache Tomcat or Jetty.
@@ -82,12 +81,11 @@ Furthermore, Weld Servlet now supports *Jetty 9.1*. At the same time, the suppor
 Acknowledgement
 ---------------
 
-We greatly appreciate your contributions to this release. 
+We greatly appreciate your contributions to this release.
 Big thanks go to: Martin Kouba, Matúš Abaffy, Matej Briškár, Ron Šmeral, Marek Schmidt, Marko Lukša, Tomáš Remeš, Stuart Douglas, Radoslav Husár, Max Pimm, Alexandre Gattiker, Antonin Stefanutti and Steve Moyer.
 
 
 &#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API] &#93;
 &#91; link:http://weld.cdi-spec.org/download/[Download] &#93;
-&#91; link:http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/[Documentation] &#93; 
-&#91; link:https://issues.jboss.org/issues/?filter=12321473[Release notes] &#93; 
- 
+&#91; link:http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/[Documentation] &#93;
+&#91; link:https://issues.jboss.org/issues/?filter=12321473[Release notes] &#93;

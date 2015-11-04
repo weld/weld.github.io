@@ -3,13 +3,12 @@ layout: news
 title: Weld 2.1.1.Final
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2013-12-11
+change_frequency: weekly
 ---
 
 Weld 2.1.1.Final was released. More than 20 issues were addressed in this release. See the link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322670[release notes] for details. Thanks to everyone involved in this release!
 
 &#91; link:https://sourceforge.net/projects/jboss/files/Weld/2.1.1.Final[Distribution] &#93;
-&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322670[Release notes] &#93; 
-&#91; link:http://docs.jboss.org/weld/reference/2.1.1.Final/en-US/html/[Documentation] &#93; 
-&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93; 
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12322670[Release notes] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.1.1.Final/en-US/html/[Documentation] &#93;
+&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93;

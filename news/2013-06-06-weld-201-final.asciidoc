@@ -3,8 +3,7 @@ layout: news
 title: Weld 2.0.1.Final
 author: Jozef Hartinger
 priority: 1
-change_frequency: daily
-date: 2013-06-06
+change_frequency: weekly
 ---
 
 Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the link:/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12321507:[release notes].
@@ -12,6 +11,6 @@ Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 
 Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see link:http://in.relation.to/Bloggers/CDI11Available[Pete's blog post]. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!
 
 &#91; link:https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final[Distribution] &#93;
-&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12321507[Release notes] &#93; 
-&#91; link:http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/[Documentation] &#93; 
-&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93; 
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12321507[Release notes] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/[Documentation] &#93;
+&#91; link:http://docs.jboss.org/cdi/api/1.1/[CDI 1.1 Javadoc] &#93;
