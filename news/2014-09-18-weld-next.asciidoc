@@ -2,6 +2,9 @@
 layout: news
 title: Weld.Next
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2014-09-18
 ---
 
 Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12325389[23 issues]. 

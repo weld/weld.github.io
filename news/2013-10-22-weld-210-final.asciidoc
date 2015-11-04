@@ -2,6 +2,9 @@
 layout: news
 title: Weld 2.1.0.Final
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2013-10-22
 ---
 
 I am pleased to announce that Weld 2.1.0.Final has just been released. Weld is the reference implementation of link:http://cdi-spec.org[Contexts and Dependency Injection for Java EE (CDI)]. 

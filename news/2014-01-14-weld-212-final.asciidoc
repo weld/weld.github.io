@@ -2,6 +2,9 @@
 layout: news
 title: Three new Weld releases
 author: Jozef Hartinger
+priority: 1
+change_frequency: daily
+date: 2014-01-14
 ---
 
 This week we are releasing three new builds of Weld. Firstly, *Weld 2.1.2.Final* was released. This is a bug-fixing release with 11 issues resolved. Most notably:

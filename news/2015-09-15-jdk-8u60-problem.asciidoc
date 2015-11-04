@@ -2,6 +2,9 @@
 layout: news
 title: JDK 8u60 reveals a problem in Weld
 author: Martin Kouba
+priority: 1
+change_frequency: daily
+date: 2015-09-15
 ---
 
 Recently released *JDK 8u60* has revealed a problem in Weld where not all synthetic members were ignored correctly.
