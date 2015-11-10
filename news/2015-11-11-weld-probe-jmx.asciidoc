@@ -1,0 +1,101 @@
+---
+layout: news
+title: Weld development mode and JMX support
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+---
+
+Weld comes with a special mode for application development.
+When enabled, some interesting data are collected so that it's possible to inspect and monitor application components at runtime (see also link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[the demo application hosted on OpenShift]).
+Data in JSON format are available through the REST API,  eventually through the MXBean of name `org.jboss.weld.probe:type=JsonData,context=ID` where ID should be replaced with an identifier of an application.
+The JMX support might be especially useful for environments and applications which do not utilize a web container (Java SE, OSGi, etc.).
+
+== How to enable JMX support
+
+Simply use the link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration[Weld configuration facility] and `org.jboss.weld.probe.jmxSupport` configuration property. If set to `true` one or more MBean components may be registered so that it is possible to use JMX to access the Probe development tool data.
+
+== JMX client
+
+So for example if using Weld SE without a web container it's still possible to access the Probe data.
+There is a lot of JMX clients out there (for example jconsole or jvisualvm from the Oracle JDK).
+The problem is not all of us prefer reading JSON data.
+Hey wait! Weld Probe already has an HTML client, right?
+Yes, but this client works with REST API.
+We would have to embed a web container (e.g. Undertow) and add Weld Servlet or do some configuration manually.
+But what if there are multiple Weld instances in the same JVM? The configuration might become quite complex.
+Luckily, there is another solution - a *working prototype* of link:https://github.com/weld/weld-probe-jmx[JMX client reusing the default HTML GUI].
+
+=== Clone, build and run
+
+```
+    # Clone the git repo
+    git clone git@github.com:weld/weld-probe-jmx.git
+    # Specify the weld version used in your application and run the build
+    mvn clean package -Dversion.weld=2.3.1.Final
+    # Run the client
+    java -jar target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar
+```
+
+=== How does it work?
+
+* First, the client attempts to connect to a JMX server (your application)
+* User may select a Weld container to inspect
+* Then the client starts an Undertow instance locally, HTML client is available at: http://127.0.0.1:8181/probe-jmx/weld-probe
+* Data are fetched remotely through JMX
+* User may reconnect at any time
+
+See also the JBoss Forge example below to see an example output.
+
+=== Configuration
+
+Moreover, it's also possible to configure the JMX server URL, Undertow host and port - used to expose the HTML client. E.g. for WildFly (standalone mode) a different jmxServiceUrl must be specified and jboss-client.jar must be also on the class path, e.g.:
+
+```
+java -Dorg.jboss.weld.probe.jmxServiceUrl="service:jmx:http-remoting-jmx://127.0.0.1:9990" -cp '/opt/jboss/wildfly/bin/client/jboss-client.jar:target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar' org.jboss.weld.probe.ProbeJmx
+```
+
+== JBoss Forge example
+
+An interesting use case would be to inspect JBoss Forge addons powered by CDI (works with *Forge 2.20.1.Final* and later).
+Before we start Forge we need to set some extra system properties:
+```
+export FORGE_OPTS="-Dorg.jboss.weld.development=true -Dorg.jboss.weld.probe.jmxSupport=true -Dorg.jboss.weld.probe.eventMonitor.containerLifecycleEvents=true -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+```
+System properties starting with `com.sun.management` simply allow to connect to JMX remotely.
+`org.jboss.weld.development` enables the development mode.
+`org.jboss.weld.probe.jmxSupport` enables the JMX support.
+Finally, If `org.jboss.weld.probe.eventMonitor.containerLifecycleEvents` is set to `true` all the container lifecycle events are monitored during bootstrap.
+
+Then start the Forge as usually and run the prototype. You should see a similar output:
+
+----
+Connecting to a remote JMX server: service:jmx:rmi:///jndi/rmi://127.0.0.1:9999/jmxrmi
+Select a Weld container (JSON data provider):
+[0] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:shell_1447145001728"
+[1] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:configuration_1447145001592"
+[2] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:parser-java_1447145002037"
+[3] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:bean-validation_1447145001526"
+[4] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:javaee_1447145003135"
+[5] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"
+[6] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:convert_1447145001526"
+
+[disconnected]$
+----
+
+Now select a Weld container to inspect, e.g. `5`:
+
+----
+[disconnected]$ 5
+Connecting to the Weld container [5]: org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"
+Starting Undertow...
+Lis 10, 2015 9:44:16 DOP. org.xnio.Xnio <clinit>
+INFO: XNIO version 3.3.1.Final
+Lis 10, 2015 9:44:16 DOP. org.xnio.nio.NioXnio <clinit>
+INFO: XNIO NIO Implementation Version 3.3.1.Final
+Weld Probe HTML client available at: http://127.0.0.1:8181/probe-jmx/weld-probe
+
+[connected #5]$
+----
+
+The HTML client is available at http://127.0.0.1:8181/probe-jmx/weld-probe. It's also possible to reconnect or exit. Type `help` to get a list of all possible commands.

@@ -38,6 +38,16 @@ div.navbar {
 code {
   background-color: inherit;
 }
+
+p code {
+    background-color: #efefef;
+    border-radius: 3px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    font-family: "Muli","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 0.9em;
+}
+
 .first-in-row { margin-left: 0 !important; }
 
 //image placement

@@ -5,7 +5,6 @@ author: Martin Kouba
 priority: 1
 change_frequency: weekly
 ---
-:excerpt: TEST
 
 Weld 2.3.1.Final has been released! The delivery: a few killed bugs, couple of Weld SE enhancements and several Weld Probe improvements.
 
