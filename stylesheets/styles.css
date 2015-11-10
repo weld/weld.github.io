@@ -37,54 +37,63 @@ div.navbar {
 code {
   background-color: inherit; }
 
-/* line 41, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 42, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+p code {
+  background-color: #efefef;
+  border-radius: 3px;
+  padding: 2px 4px;
+  white-space: nowrap;
+  font-family: "Muli","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 0.9em; }
+
+/* line 51, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .first-in-row {
   margin-left: 0 !important; }
 
-/* line 44, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 54, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-home-logo {
   margin: 40px 0 15px 20px;
   float: left; }
 
-/* line 49, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 59, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.cdi-background {
   float: right; }
 
-/* line 54, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 64, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 body {
   font-family: 'Muli','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 15px;
   height: 100%; }
 
-/* line 60, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 70, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .container-fluid div.jumbotron {
   padding: 35px;
   line-height: 25px;
   margin: 15px 0px 15px 0px; }
 
-/* line 66, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 76, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.jumbotron p {
   font-size: 1.1em; }
 
-/* line 70, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 80, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1, h2, h3 {
   font-weight: bold;
   text-rendering: optimizelegibility;
   color: #656565; }
 
-/* line 76, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 86, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1 {
   font-size: 27px; }
 
-/* line 80, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 90, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h2 {
   font-size: 22px; }
 
-/* line 84, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 94, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h3 {
   font-size: 18px; }
 
-/* line 88, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 98, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .content .btn-primary {
   background-color: #48678D;
   background-image: linear-gradient(to bottom, #4f729d, #3e5776);
@@ -93,116 +102,116 @@ h3 {
   color: #FFFFFF;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
 
-/* line 97, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 107, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn {
   margin-left: 0px; }
 
-/* line 101, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 111, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn li {
   list-style-type: none;
   padding-bottom: 10px; }
 
-/* line 106, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 116, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn strong {
   color: #666;
   font-size: .8em;
   margin-top: -8px; }
 
-/* line 112, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 122, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads {
   width: 100%; }
-/* line 114, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 124, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads th {
   border-bottom: 1px solid;
   text-align: left; }
-/* line 118, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 128, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads td {
   vertical-align: top;
   border-bottom: 1px solid;
   text-align: left; }
 
-/* line 125, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 135, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 pre.code {
   border: 1px solid #AAAAAA;
   font-size: 80%;
   padding: 5px;
   overflow: auto; }
 
-/* line 132, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 142, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 footer {
   background-color: #E8EDEE;
   font-size: 80%;
   text-align: center;
   margin-top: 30px; }
 
-/* line 139, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 149, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div#preamble {
   margin-bottom: 30px; }
 
-/* line 143, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 153, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .tabnavclearfix {
   padding: 0px 50px 0px 50px; }
 
-/* line 147, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 157, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 #tabnav-panel.tabnav-opened {
   border-bottom: initial; }
 
-/* line 151, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 161, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.tableblock, tr.tableblock, th.tableblock, td.tableblock {
   border: 1px solid;
   border-collapse: collapse;
   text-align: center;
   vertical-align: middle; }
 
-/* line 158, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 168, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div#book-box {
   text-align: center; }
 
-/* line 162, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 172, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-nav-logo {
   margin: 40px 0 15px 20px; }
 
-/* line 166, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 176, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-book-img {
   box-shadow: 10px 10px silver; }
 
 @media (min-width: 768px) {
-  /* line 172, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 182, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav {
     position: fixed;
     top: 35px; }
 
-  /* line 177, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 187, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none; }
 
-  /* line 181, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 191, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar ul {
     float: none; }
 
-  /* line 184, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 194, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar ul:not {
     display: block; }
 
-  /* line 187, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 197, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar li {
     float: none;
     display: block; }
 
-  /* line 191, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 201, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar li a {
     padding-top: 8px;
     padding-bottom: 8px; } }
 @media (min-width: 1280px) {
-  /* line 200, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+  /* line 210, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav {
     min-width: 14em;
     left: 35px; } }
-/* line 207, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 217, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.row {
   margin: 0px; }
 
-/* line 211, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 221, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 p.tableblock {
   margin: 5px; }

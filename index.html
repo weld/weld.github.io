@@ -17,8 +17,8 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
     <link href="http://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script>
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/default.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
     <script>
       hljs.initHighlightingOnLoad();
     </script>
@@ -197,6 +197,21 @@
                   <ul class="newsColumn">
                     <li>
                       <h3>
+                        <a href="/news/2015/11/10/weld-probe-jmx/">Weld development mode and JMX support</a>
+                      </h3>
+                      <p>
+                        <strong>2015-11-10: Martin Kouba</strong>
+                      </p>
+                      <p>
+                        
+                        Weld comes with a special mode for application development.
+                        When enabled, some interesting data are collected so that it&#8217;s possible to inspect and monitor application components at runtime (see also the demo application hosted on OpenShift).
+                        Data in JSON format are available through the REST API,  eventually through the MXBean of...
+                      </p>
+                      <a href="/news/2015/11/10/weld-probe-jmx/">Read more &raquo;</a>
+                    </li>
+                    <li>
+                      <h3>
                         <a href="/news/2015/10/27/weld-231Final/">Weld 2.3.1.Final arrives...</a>
                       </h3>
                       <p>
@@ -241,22 +256,6 @@
                         Weld 2.3.0.Final has been just released! From now on, 2.3 is the current stable version of Weld and 2.2 is not actively developed anymore - i.e. no new features are added, only bugs will be fixed. Weld 2.3 will remain a CDI 1.2 implementation. We are incrementing the minor version...
                       </p>
                       <a href="/news/2015/09/18/weld-230Final/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2015/09/15/jdk-8u60-problem/">JDK 8u60 reveals a problem in Weld</a>
-                      </h3>
-                      <p>
-                        <strong>2015-9-15: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Recently released JDK 8u60 has revealed a problem in Weld where not all synthetic members were ignored correctly.
-                        This has been fixed in 2.2.16.Final, 2.3.0.CR2 and 3.0.0.Alpha14 (not released yet).
-                        However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
-                        See also...
-                      </p>
-                      <a href="/news/2015/09/15/jdk-8u60-problem/">Read more &raquo;</a>
                     </li>
                   </ul>
                 </div>
