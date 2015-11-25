@@ -1,0 +1,20 @@
+---
+layout: news
+title: Arquillian container SE 1.0.0.CR1 released!
+author: Tomas Remes
+priority: 1
+change_frequency: weekly
+---
+
+We are pleased to announce a new release of Arquillian container SE. If you are looking for a reliable way to test your application in Java SE then this is the right tool to try out!
+
+This managed SE container launches new JVM process for each of your test archives. This standalone process with isolated classpath is also the main reason (and also the difference e.g to arquillian-container-weld) why we introduced such tool.
+
+You can manage your classpath dependencies by using link:https://github.com/shrinkwrap/resolver[ShrinkWrap resolver] or another option is to provide path to your directory containing your dependencies jars via container property. You can get ready your
+dependencies jars by using e.g Maven dependency plugin. Another options which you would expect as debugging, setting a system property or exporting deployment archive are also available.
+Test execution is managed by Arquillian JMX protocol.
+
+Finally you can find some basic tests using Arquillian
+container SE in link:https://github.com/weld/core/tree/2.3/environments/se/tests[Weld SE tests] or in link:https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/se[CDI TCK].
+Feedback is more than welcomed and if you have any questions don't hesitate to ask!
+
