@@ -130,6 +130,44 @@
             <div class="col-md-10">
               <div class="post">
                 <h1>
+                  <a href="/news/2014/01/14/weld-212-final/">Three new Weld releases</a>
+                </h1>
+                <p style="color: #666;">
+                  <strong>2014-1-14: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>This week we are releasing three new builds of Weld. Firstly, <strong>Weld 2.1.2.Final</strong> was released. This is a bug-fixing release with 11 issues resolved. Most notably:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The conversation context is now initialized lazily. This resolves the problem with custom character encoding that many of you run into. See the <a href="http://docs.jboss.org/weld/reference/2.1.2.Final/en-US/html/scopescontexts.html#d0e2009">reference documentation</a> for details.</p>
+                  </li>
+                  <li>
+                  <p>Weld now runs fine on JDK8</p>
+                  </li>
+                  <li>
+                  <p>Jetty 9.1 is now supported by weld-servlet</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, <strong>Weld 1.1.17.Final</strong> (CDI 1.0) was released with several bug fixes.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Last but not least, there was a <a href="https://java.net/jira/browse/GLASSFISH-20928">memory leak identified in GlassFish</a> caused partly by GlassFish and partly by Weld. GlassFish still uses Weld 2.0. Although we do not maintain the 2.0 branch any longer and advice everyone to upgrade to Weld 2.1, the memory leak may be a problem for GlassFish users that are not able to upgrade to Weld 2.1 themselves. Therefore, we decided to do one more 2.0 release where this problem is fixed so that GlassFish users stuck on Weld 2.0 have an easy fix. Enjoy <strong>Weld 2.0.5.Final!</strong></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Now, our focus shifts completely towards Weld 2.2 where performance optimization and lowering memory consumption are the main goals. Expect first Alpha of Weld 2.2 by the end of January.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you are interested in Weld make sure you check our <a href="http://weld.cdi-spec.org/community/">community page</a> or the <a href="https://issues.jboss.org/issues/?filter=12320398">list of open issues awaiting contribution</a>.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="post">
+                <h1>
                   <a href="/news/2013/12/11/weld-211-final/">Weld 2.1.1.Final</a>
                 </h1>
                 <p style="color: #666;">
@@ -277,28 +315,6 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>Weld has a new web site and it&#8217;s built with Awestruct!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <h1>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h1>
-                <p style="color: #666;">
-                  <strong>2013-6-6: Jozef Hartinger</strong>
-                </p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
                   </div>
                 </div>
               </div>
