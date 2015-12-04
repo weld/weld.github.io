@@ -1,0 +1,21 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha14
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+---
+
+Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
+It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
+Moreover, this release also contains quite a lot of enhancements and bugfixes. See also https://issues.jboss.org/projects/WELD/versions/12327856[the release details].
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip[patch for WildFly] is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is *WildFly 10.0.0.CR4*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial].
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327856[Release notes] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha14/weld-3.0.0.Alpha14.zip[Distribution] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip[Patch for Wildfly 10 CR4]
+&#93;
