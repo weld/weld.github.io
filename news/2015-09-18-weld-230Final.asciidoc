@@ -21,7 +21,7 @@ Notable features and changes:
 &#91; link:http://docs.jboss.org/weld/reference/2.3.0.Final/en-US/html/[Documentation] &#93;
 &#91; link:https://issues.jboss.org/projects/WELD/versions/12328057[Release notes] &#93;
 
-=== Weld 2.2.16.SP1
+== Weld 2.2.16.SP1
 
 In addition, Weld 2.2.16.SP1 has been also released. It's a bugfix release for 2.2 branch.
 
