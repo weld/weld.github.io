@@ -62,7 +62,7 @@ change_frequency: weekly
       Changelog
     %th
       Download
-  - for release in ( site.releases )
+  - for release in site.releases[0,10]
     %tr
       %td.version
         =release["version"]
@@ -97,6 +97,13 @@ change_frequency: weekly
         - else
           %a{:href=>"http://download.jboss.org/weld/#{release.version}"}
             Download
+
+%p
+
+%a{ :href=>"/dist" }
+  %i.fa.fa-download
+  &nbsp;Binary distribution archive
+
 %h2 Snapshots
 %p
   Nightly snapshots are produced regularly by our continuous integration server and available from the

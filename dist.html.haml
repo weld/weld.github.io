@@ -1,0 +1,58 @@
+---
+layout: base
+title: Download - binary distributions
+priority: 1
+change_frequency: daily
+---
+
+%h1 Download - binary distribution archive
+
+%table.downloads
+  %tr
+    %th
+      Version
+    %th
+      Category
+    %th
+      CDI version
+    %th
+      Release date
+    %th
+      Changelog
+    %th
+      Download
+  - for release in site.releases
+    %tr
+      %td.version
+        =release["version"]
+      %td
+        - if release["category"] == "Experimental"
+          %strong
+            =release["category"]
+        - else
+          =release["category"]
+      %td
+        - if release["version"].index("1.0") == 0 || release["version"].index("1.1") == 0
+          1.0
+        - if release["version"].index("2.0") == 0 || release["version"].index("2.1") == 0
+          1.1
+        - if release["version"].index("2.2") == 0 || release["version"].index("2.3") == 0
+          1.2
+        - if release["version"].index("3.0") == 0
+          2.0 (Preview)
+      %td
+        =release["date"]
+      %td
+        %a{:href=>"https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=#{release.versionId}"}
+          Changelog
+      %td
+        - if release.download == "sf"
+          %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
+            Download
+        - elsif release.download == "maven"
+          Available in
+          %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{release.version}%7Cjar"}
+            Maven
+        - else
+          %a{:href=>"http://download.jboss.org/weld/#{release.version}"}
+            Download
