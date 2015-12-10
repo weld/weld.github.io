@@ -128,10 +128,67 @@
           </div>
           <div class="row">
             <div class="col-md-10">
+              <h1>News</h1>
               <div class="post">
-                <h1>
+                <h2>
+                  <a href="/news/2015/12/10/weld-232Final/">Weld 2.3.2.Final</a>
+                </h2>
+                <p style="color: #666;">
+                  <strong>2015-12-10: Martin Kouba</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 2.3.2.Final the last version for this year has been released! It is a bug-fixing release with 15 issues resolved. See also <a href="https://issues.jboss.org/projects/WELD/versions/12328625">the release details</a>. Thanks to everyone involved in this release!</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_notable_bug_fixes_and_enhancements">Notable bug-fixes and enhancements</h2>
+                  <div class="sectionbody">
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld proxies - add workaround for IBM JVM 8 (<a href="https://issues.jboss.org/browse/WELD-2056">WELD-2056</a> and <a href="https://issues.apache.org/jira/browse/DELTASPIKE-1010">DELTASPIKE-1010</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix resource injection when using <code>arquillian-weld-ee-embedded-1.1</code> (<a href="https://issues.jboss.org/browse/WELD-2065">WELD-2065</a> and <a href="https://issues.jboss.org/browse/ARQ-2000">ARQ-2000</a>)</p>
+                  </li>
+                  <li>
+                  <p>All conversation contexts should be destroyed after the <code>Servlet.service()</code> method completes (<a href="https://issues.jboss.org/browse/WELD-2052">WELD-2052</a>)</p>
+                  </li>
+                  <li>
+                  <p>Clear <code>RequestScopedCache</code> for remote EJB calls (<a href="https://issues.jboss.org/browse/WELD-2069">WELD-2069</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Allow to perform dependency injection upon objects not having a CDI-compatible constructor (<a href="https://issues.jboss.org/browse/WELD-2039">WELD-2039</a>)</p>
+                  </li>
+                  <li>
+                  <p>Add Jandex support even for WARs not extracted to the file system (<a href="https://issues.jboss.org/browse/WELD-2070">WELD-2070</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Probe development tool is now part of the OSGi bundle (<a href="https://issues.jboss.org/browse/WELD-2061">WELD-2061</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/">CDI 1.2 API</a> &#93;
+                  &#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.2.Final/en-US/html/">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328625">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2015-12-4: Martin Kouba</strong>
                 </p>
@@ -159,9 +216,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2015/11/25/arq-container-se-CR1/">Arquillian container SE 1.0.0.CR1 released!</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2015-11-25: Tomas Remes</strong>
                 </p>
@@ -194,9 +251,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2015/11/10/weld-probe-jmx/">Weld development mode and JMX support</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2015-11-10: Martin Kouba</strong>
                 </p>
@@ -316,9 +373,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2015/10/27/weld-231Final/">Weld 2.3.1.Final arrives...</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2015-10-27: Martin Kouba</strong>
                 </p>
@@ -363,59 +420,6 @@
                   &#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.3.1.Final/en-US/html/">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12327517">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <h1>
-                  <a href="/news/2015/09/18/weld-230Final/">Weld 2.3.0.Final released!</a>
-                </h1>
-                <p style="color: #666;">
-                  <strong>2015-9-18: Martin Kouba</strong>
-                </p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.3.0.Final has been just released! From now on, 2.3 is the current stable version of Weld and 2.2 is not actively developed anymore - i.e. no new features are added, only bugs will be fixed. Weld 2.3 will remain a <strong>CDI 1.2</strong> implementation. We are incrementing the minor version due to several new features added. Weld 2.3 is also included in <a href="http://wildfly.org/">WildFly 10</a> application server.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable features and changes:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Java 6 support was dropped - Java 7 is the minimal requirement for building and running Weld 2.3</p>
-                  </li>
-                  <li>
-                  <p>Weld 2.3 comes with a special mode for application development, the <a href="http://docs.jboss.org/weld/reference/2.3.0.Final/en-US/html/devmode.html#probe">Probe development tool</a> allows to inspect application CDI components at runtime</p>
-                  </li>
-                  <li>
-                  <p>Weld SE Bootstrap API was enhanced in many ways - new features are mostly backported from <a href="http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/#_weld_se_bootstrap_api">Weld 3 development branch</a></p>
-                  </li>
-                  <li>
-                  <p>Weld Servlet now supports Undertow web server</p>
-                  </li>
-                  <li>
-                  <p>Revised delivery of <code>@Initialized</code>/<code>@Destroyed</code> events for <code>@ApplicationScoped</code> in an EAR (see also <a href="https://issues.jboss.org/browse/WELD-1821">WELD-1821</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/">CDI 1.2 API</a> &#93;
-                  &#91; <a href="http://weld.cdi-spec.org/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.0.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328057">Release notes</a> &#93;</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_weld_2_2_16_sp1">Weld 2.2.16.SP1</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>In addition, Weld 2.2.16.SP1 has been also released. It&#8217;s a bugfix release for 2.2 branch.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="https://issues.jboss.org/projects/WELD/versions/12327594">Weld 2.2.16.Final Release notes</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328216">Weld 2.2.16.SP1 Release notes</a> &#93;</p>
-                  </div>
-                  </div>
                   </div>
                 </div>
               </div>

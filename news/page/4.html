@@ -128,10 +128,165 @@
           </div>
           <div class="row">
             <div class="col-md-10">
+              <h1>News</h1>
               <div class="post">
-                <h1>
+                <h2>
+                  <a href="/news/2014/04/15/weld-220-final/">Weld 2.2 (CDI 1.2 reference implementation) released!</a>
+                </h2>
+                <p style="color: #666;">
+                  <strong>2014-4-15: Jozef Hartinger</strong>
+                </p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Today we released Weld 2.2.0.Final - the reference implementation of <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html">Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)</a>.
+                  Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_cdi_1_2">CDI 1.2</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>CDI 1.2 is a maintenance release of the <a href="https://jcp.org/en/jsr/detail?id=346">CDI specification</a>. It contains a number of small fixes and clarifications as well as several enhancements.
+                  Most notable changes for application developers are related to the definition of <em>bean defining annotations</em>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations">CDI 1.2</a>, the set of bean defining annotations now contains:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;&#8203;)</p>
+                  </li>
+                  <li>
+                  <p>the built-in @Dependent scope</p>
+                  </li>
+                  <li>
+                  <p>@Interceptor and @Decorator annotations</p>
+                  </li>
+                  <li>
+                  <p>stereotype annotations</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As a result, any class annotated with a <em>bean defining annotation</em> is by default recognized by the application server and registered as a CDI bean. The beans.xml file is optional.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
+                  See <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&amp;version=12323655">the release notes</a> for the complete list of changes.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_performance">Performance</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld is now capable of using bytecode-scanning utilities, such as the <a href="https://github.com/wildfly/jandex">Jandex</a> tool, to speed up deployment.
+                  This is especially notable in extra large deployments (e.g. 5000+ classes) where we observed up to <strong>20% faster deployment</strong>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition, there are noticeable improvements in the following areas:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>runtime performance of observers, interceptors and decorators</p>
+                  </li>
+                  <li>
+                  <p>session replication overhead (failover)</p>
+                  </li>
+                  <li>
+                  <p>memory consumption</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_2_2_on_wildfly">Weld 2.2 on WildFly</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p><a href="http://wildfly.org">WildFly</a> does not come with Weld 2.2 support yet. It is however easy to patch an existing WildFly installation to use Weld 2.2.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>To do so, follow these steps:</p>
+                  </div>
+                  <div class="olist arabic">
+                  <ol class="arabic">
+                  <li>
+                  <p>Download a patch appropriate for the WildFly version (e.g. 8.0.0.Final) from the <a href="http://sourceforge.net/projects/jboss/files/Weld/2.2.0.Final/">download section</a></p>
+                  </li>
+                  <li>
+                  <p>In the WildFly installation, run the CLI console</p>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>sh jboss-cli.sh</pre>
+                  </div>
+                  </div>
+                  </li>
+                  <li>
+                  <p>From the console run the following command:</p>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>patch apply /path/to/wildfly-8.0.0.Final-weld-2.2.0.Final-patch.zip</pre>
+                  </div>
+                  </div>
+                  </li>
+                  </ol>
+                  </div>
+                  <div class="paragraph">
+                  <p>Your installation is now patched!</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_se_and_servlet">Weld SE and Servlet</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld comes with the SE module which allows CDI to be used in plain Java SE environment. In Weld 2.2 we added partial support for implicit bean archives.
+                  Partial support here means that the beans.xml file is still required, but <strong>bean-discovery-mode=”annotated”</strong> can be specified for Weld to only discover classes explicitly annotated with bean defining annotations (see above).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In addition to the Weld SE module, Weld also provides the Weld Servlet module which makes it possible to use Weld on top of a plain Servlet container, such as Apache Tomcat or Jetty.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In this release we simplified configuration by bootstrapping Weld using the <em>ServletContainerInitializer</em>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Furthermore, Weld Servlet now supports <strong>Jetty 9.1</strong>. At the same time, the support for <strong>Tomcat 6 was dropped</strong>. To summarize, Weld Servlet is currently supported on the following Servlet containers:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Tomcat 7, 8</p>
+                  </li>
+                  <li>
+                  <p>Jetty 7, 8, 9.0, 9.1</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_acknowledgement">Acknowledgement</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>We greatly appreciate your contributions to this release.
+                  Big thanks go to: Martin Kouba, Matúš Abaffy, Matej Briškár, Ron Šmeral, Marek Schmidt, Marko Lukša, Tomáš Remeš, Stuart Douglas, Radoslav Husár, Max Pimm, Alexandre Gattiker, Antonin Stefanutti and Steve Moyer.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/">CDI 1.2 API</a> &#93;
+                  &#91; <a href="http://weld.cdi-spec.org/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/issues/?filter=12321473">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2014/02/04/weld-220-alpha1/">CDI 1.2 and Weld 2.2</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2014-2-4: Jozef Hartinger</strong>
                 </p>
@@ -201,9 +356,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2014/01/14/weld-212-final/">Three new Weld releases</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2014-1-14: Jozef Hartinger</strong>
                 </p>
@@ -239,9 +394,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2013/12/11/weld-211-final/">Weld 2.1.1.Final</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2013-12-11: Jozef Hartinger</strong>
                 </p>
@@ -258,9 +413,9 @@
                 </div>
               </div>
               <div class="post">
-                <h1>
+                <h2>
                   <a href="/news/2013/10/22/weld-210-final/">Weld 2.1.0.Final</a>
-                </h1>
+                </h2>
                 <p style="color: #666;">
                   <strong>2013-10-22: Jozef Hartinger</strong>
                 </p>
@@ -361,19 +516,6 @@
                   &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
                   </div>
                   </div>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <h1>
-                  <a href="/news/2013/09/20/weld-210beta2-tip/">Weld 2.1.0.Beta2 tip</a>
-                </h1>
-                <p style="color: #666;">
-                  <strong>2013-9-20: Martin Kouba</strong>
-                </p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A tip how to configure a new feature introduced in Weld 2.1.0.Beta2 which allows to skip CDI context activation for some HTTP requests: <a href="http://goo.gl/PAiwBS" class="bare">http://goo.gl/PAiwBS</a></p>
                   </div>
                 </div>
               </div>
