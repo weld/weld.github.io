@@ -615,7 +615,21 @@
                 </div>
                 </div>
                 <div class="paragraph">
-                <p>Note that Jetty distributions (from version <strong>9.2.4</strong>) contain a <strong>dedicated <a href="http://www.eclipse.org/jetty/documentation/current/framework-weld.html">CDI/Weld module</a></strong> which allows to deploy a CDI application without bundling the Weld Servlet integration code.</p>
+                <p>Note that Jetty distributions (from version <strong>9.2.4</strong>) contain a <strong>dedicated <a href="http://www.eclipse.org/jetty/documentation/current/framework-weld.html">CDI/Weld module</a></strong> which allows to deploy a CDI application without bundling the Weld Servlet integration code.
+                However, note that if you want to deploy application using CDI along with JSF (e.g. weld-numberguess example) you need to copy the following dependencies directly to the CDI module directory:</p>
+                </div>
+                <div class="ulist">
+                <ul>
+                <li>
+                <p>JSF API</p>
+                </li>
+                <li>
+                <p>JSF IMPL</p>
+                </li>
+                <li>
+                <p><a href="http://search.maven.org/#search|ga|1|weld-core-jsf">Weld Core JSF</a></p>
+                </li>
+                </ul>
                 </div>
               </div>
             </div>
