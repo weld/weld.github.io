@@ -59,7 +59,7 @@
                   </li>
                   <li>
                     <a href="/news">
-                      <i class="fa fa-edit"></i>
+                      <i class="fa fa-newspaper-o"></i>
                       &nbsp;News
                     </a>
                   </li>
@@ -128,15 +128,23 @@
           </div>
           <div class="row">
             <div class="col-md-10">
-              <div class="row">
+              <div class="row hidden-xs">
                 <div class="col-md-12">
                   <div class="jumbotron">
+                    <h1>Contexts and Dependency Injection for the Java Platform.</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div>
+                    <h2>About</h2>
                     <p>
                       Weld is the reference implementation of
-                      <a href="http://cdi-spec.org" target="_blank">
-                        CDI: Contexts and Dependency Injection for the Java EE Platform
-                      </a>
-                      which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+                      <a href="http://cdi-spec.org" target="_blank">CDI: Contexts and Dependency Injection for the Java EE Platform</a>
+                      which is a
+                      <a href="https://jcp.org/en/home/index" target="_blank">JCP</a>
+                      standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
                     </p>
                     <p>
                       Weld is integrated into many Java EE application servers such as
@@ -150,22 +158,16 @@
                       or plain
                       <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se" target="_blank">Java SE environment.</a>
                     </p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-5">
-                  <div>
                     <h2>Try Weld Today</h2>
                     <div>
                       <p>
                         To use Weld today, download the
                         <a href="http://wildfly.org" target="_blank">WildFly server</a>
-                        (formelly JBoss AS) and add the following code to the
+                        (formerly JBoss AS) and add the following code to the
                         <em>pom.xml</em>
                         file of your application:
                       </p>
-                      <pre class="code">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.2&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</pre>
+                      <pre class="code"><code class="xml">&lt;dependency&gt;&#x000A;   &lt;groupId&gt;javax.enterprise&lt;/groupId&gt;&#x000A;   &lt;artifactId&gt;cdi-api&lt;/artifactId&gt;&#x000A;   &lt;version&gt;1.2&lt;/version&gt;&#x000A;   &lt;scope&gt;provided&lt;/scope&gt;&#x000A;&lt;/dependency&gt;</code></pre>
                       <p>
                         For alternative ways of using Weld, see the
                         <a href="/download">download section</a>
@@ -187,78 +189,76 @@
                 <div class="col-md-1">
                   <div></div>
                 </div>
-                <div class="col-md-6">
-                  <h2>
-                    News
-                    <a href="http://weld.cdi-spec.org/news.atom">
-                      <i class="icon-rss"></i>
-                    </a>
-                  </h2>
-                  <ul class="newsColumn">
-                    <li>
-                      <h3>
-                        <a href="/news/2015/12/10/weld-232Final/">Weld 2.3.2.Final</a>
-                      </h3>
-                      <p>
-                        <strong>2015-12-10: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Weld 2.3.2.Final the last version for this year has been released! It is a bug-fixing release with 15 issues resolved. See also the release details. Thanks to everyone involved in this release!
-                        
-                        
-                        Notable bug-fixes and enhancements
-                        
-                        
-                        
-                        
-                        Weld proxies - add workaround for IBM JVM 8 (WELD-2056 and DELTASPIKE-1010)
-                        
-                        
-                        Fix resource injection when using...
-                      </p>
-                      <a href="/news/2015/12/10/weld-232Final/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
-                      </h3>
-                      <p>
-                        <strong>2015-12-4: Martin Kouba</strong>
-                      </p>
-                      <p>
-                        
-                        Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
-                        It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
-                        Moreover, this release also contains quite a lot of enhancements and bugfixes. See also the release details.
-                        
-                        
-                        WildFly Patch
-                        
-                        
-                        As usual,...
-                      </p>
-                      <a href="/news/2015/12/04/weld-300Alpha14/">Read more &raquo;</a>
-                    </li>
-                    <li>
-                      <h3>
-                        <a href="/news/2015/11/25/arq-container-se-CR1/">Arquillian container SE 1.0.0.CR1 released!</a>
-                      </h3>
-                      <p>
-                        <strong>2015-11-25: Tomas Remes</strong>
-                      </p>
-                      <p>
-                        
-                        We are pleased to announce a new release of Arquillian container SE.
-                        If you are looking for a reliable way to test your application in Java SE then this is the right tool to try out!
-                        
-                        
-                        This managed SE container launches new JVM process for each of your test archives.
-                        This standalone process...
-                      </p>
-                      <a href="/news/2015/11/25/arq-container-se-CR1/">Read more &raquo;</a>
-                    </li>
-                  </ul>
+                <div class="col-md-4">
+                  <div class="well">
+                    <h2>
+                      Latest News
+                      <a href="http://weld.cdi-spec.org/news.atom">
+                        <i class="icon-rss"></i>
+                      </a>
+                    </h2>
+                    <ul class="newsColumn">
+                      <li>
+                        <h3>
+                          <a href="/news/2015/12/10/weld-232Final/">Weld 2.3.2.Final</a>
+                        </h3>
+                        <p>
+                          <strong>2015-12-10: Martin Kouba</strong>
+                        </p>
+                        <p>
+                          
+                          Weld 2.3.2.Final the last version for this year has been released! It is a bug-fixing release with 15 issues resolved. See also the release details. Thanks to everyone involved in...
+                          <a href="/news/2015/12/10/weld-232Final/">more</a>
+                        </p>
+                        <hr>
+                      </li>
+                      <li>
+                        <h3>
+                          <a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
+                        </h3>
+                        <p>
+                          <strong>2015-12-4: Martin Kouba</strong>
+                        </p>
+                        <p>
+                          
+                          Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
+                          It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to...
+                          <a href="/news/2015/12/04/weld-300Alpha14/">more</a>
+                        </p>
+                        <hr>
+                      </li>
+                      <li>
+                        <h3>
+                          <a href="/news/2015/11/25/arq-container-se-CR1/">Arquillian container SE 1.0.0.CR1 released!</a>
+                        </h3>
+                        <p>
+                          <strong>2015-11-25: Tomas Remes</strong>
+                        </p>
+                        <p>
+                          
+                          We are pleased to announce a new release of Arquillian container SE.
+                          If you are looking for a reliable way to test your application in Java SE then this is the...
+                          <a href="/news/2015/11/25/arq-container-se-CR1/">more</a>
+                        </p>
+                        <hr>
+                      </li>
+                      <li>
+                        <h3>
+                          <a href="/news/2015/11/10/weld-probe-jmx/">Weld development mode and JMX support</a>
+                        </h3>
+                        <p>
+                          <strong>2015-11-10: Martin Kouba</strong>
+                        </p>
+                        <p>
+                          
+                          Weld comes with a special mode for application development.
+                          When enabled, some interesting data are collected so that it&#8217;s possible to inspect and monitor application components at runtime (see also the...
+                          <a href="/news/2015/11/10/weld-probe-jmx/">more</a>
+                        </p>
+                        <hr>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
