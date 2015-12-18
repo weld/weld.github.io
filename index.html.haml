@@ -4,14 +4,23 @@ title: Home
 priority: 0.5
 change_frequency: weekly
 ---
-.row
+.row.hidden-xs
   .col-md-12
     %div.jumbotron
+      %h1 Contexts and Dependency Injection for the Java Platform.
+      -# %div.search-box
+      -#  %i.fa.fa-search.fa-lg
+      -#  %input{:placeholder=>"Search issues, site, docs...",:size=>"25"}
+.row
+  .col-md-8
+    %div
+      %h2 About
       %p
         Weld is the reference implementation of
-        %a{:href=>"http://cdi-spec.org",:target=>'_blank'}
-          CDI: Contexts and Dependency Injection for the Java EE Platform
-        which is the Java standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
+        %a{:href=>"http://cdi-spec.org",:target=>'_blank'} CDI: Contexts and Dependency Injection for the Java EE Platform
+        which is a
+        %a{:href=>"https://jcp.org/en/home/index",:target=>'_blank'} JCP
+        standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE platform.
       %p
         Weld is integrated into many Java EE application servers such as
         = succeed ',' do
@@ -27,26 +36,24 @@ change_frequency: weekly
         %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-servlet",:target=>'_blank'}Servlet-only environment (Tomcat, Jetty)
         or plain
         %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se",:target=>'_blank'}Java SE environment.
-.row
-  .col-md-5
-    %div
       %h2 Try Weld Today
       %div
         %p
           To use Weld today, download the
           %a{:href=>"http://wildfly.org",:target=>'_blank'}WildFly server
-          (formelly JBoss AS) and add the following code to the
+          (formerly JBoss AS) and add the following code to the
           %em pom.xml
           file of your application:
         %pre.code
-          = preserve do
-            :escaped
-              <dependency>
-                 <groupId>javax.enterprise</groupId>
-                 <artifactId>cdi-api</artifactId>
-                 <version>1.2</version>
-                 <scope>provided</scope>
-              </dependency>
+          %code.xml
+            = preserve do
+              :escaped
+                <dependency>
+                   <groupId>javax.enterprise</groupId>
+                   <artifactId>cdi-api</artifactId>
+                   <version>1.2</version>
+                   <scope>provided</scope>
+                </dependency>
         %p
           For alternative ways of using Weld, see the
           %a{:href=>"/download"}download section
@@ -60,18 +67,21 @@ change_frequency: weekly
             %img{:src=>"images/book.jpg", :width=>"250", :height=>"307", :class=>"weld-book-img"}
   .col-md-1
     %div
-  .col-md-6
-    %h2
-      News
-      %a{:href=>"http://weld.cdi-spec.org/news.atom"}
-        %i.icon-rss
-    %ul.newsColumn
-      - for post in site.posts[0,3]
-        %li
-          %h3
-            %a{ :href=>post.url }#{post.title}
-          - if (post.content.length > 0)
-            %p
-              %strong #{post.date.year}-#{post.date.month}-#{post.date.day}: #{post.author}
-            %p= post.excerpt || summarize(html_to_text(post.content), 50)
-            %a{:href=>post.url} Read more &raquo;
+  .col-md-4
+    %div.well
+      %h2
+        Latest News
+        %a{:href=>"http://weld.cdi-spec.org/news.atom"}
+          %i.icon-rss
+      %ul.newsColumn
+        - for post in site.posts[0,4]
+          %li
+            %h3
+              %a{ :href=>post.url }#{post.title}
+            - if (post.content.length > 0)
+              %p
+                %strong #{post.date.year}-#{post.date.month}-#{post.date.day}: #{post.author}
+              %p
+                = post.excerpt || summarize(html_to_text(post.content), 30)
+                %a{:href=>post.url} more
+              %hr

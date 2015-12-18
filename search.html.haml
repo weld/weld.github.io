@@ -1,0 +1,15 @@
+---
+layout: base
+title: Quick Search
+---
+
+%h1 Quick Search
+
+%div
+  %form{:id=>"search-form"}
+    %i.fa.fa-search.fa-lg
+    %input{:id=>"search-text",:placeholder=>"Search issues, faq, docs...",:size=>"25"}
+
+%div.search-results{:id=>"search-results"}
+
+%script{ :type=>'text/javascript', :src=>"/scripts/search.js" }
