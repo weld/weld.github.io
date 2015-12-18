@@ -180,10 +180,4 @@
     <priority>1</priority>
     <changefreq>daily</changefreq>
   </url>
-  <url>
-    <loc>http://weld.cdi-spec.org/search/</loc>
-    <lastmod>2015-12-18</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
 </urlset>
