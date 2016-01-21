@@ -139,3 +139,47 @@ change_frequency: weekly
   %a{:href=>"https://github.com/weld/core/graphs/contributors"}
     contributor
   \:-).
+
+%h2 How to report a bug
+%p
+  The 
+  %a{:href=>"https://issues.jboss.org/projects/WELD"}
+    issue tracker
+  is where all Weld bugs, feature requests and enhancement requests reside.
+  It is therefore a place to start when you want to file a bug. We are trying to address every reported bug, which means we
+  first need to understand the issue, prepare environment (application servers, Java vendor and version etc.) and finally 
+  reproduce it. Once we do this, we usually create an automated test and search for a solution. This workflow gets a lot faster
+  if the issue is reported properly, e.g. contains all the necessary information. Here are a few points on how to report a bug:
+  %ul
+    %li
+      %b Browse current issues before creating a new one.
+      %br/
+      Try to avoid duplicating issues. There might be issue similar to yours which could have been resolved or is currently
+      open/in progress.
+    %li
+      %b Create one issue per bug
+      %br/
+      If you encountered several problems, do not put them all in one issue. Instead create issue for each problem encountered.
+      This makes each issue clear, focused and easy to track and follow. If need be, you can always link issues together.
+    %li
+      %b Give the issue a proper name.
+      %br/
+      The name should already give an idea what the issue is going to be about. If its the interceptors you want to talk about,
+      mention it in the issue name.
+    %li
+      %b Provide information about environment.
+      %br/
+      Mention the version of Weld, application server, dependencies which might be relevant to the issue and so forth.
+      We are always verifying bugs in multiple environments but to reproduce your case, we want to simulate your environment.
+    %li
+      %b Give clear description of the issue.
+      %br/
+      This is pretty straightforward, the better you describe it, the less we ask "What do you mean by ... ?" .
+    %li
+      %b Provide a reproducer or a test case if possible.
+      %br/
+      Last but definitely not least providing a reproducer speeds up the process a lot. You bumped into an issue and likely
+      investigated it and to some extend understood it. This ultimately makes you the best person to provide an example.
+      Actually you might already have one - the application where you came across this problem! Don't hesitate to share it 
+      with us. General rule is that the reproducer should contain the smallest possible piece of code showing the bug.
+      The purpose is to isolate the bug from anything which may interfere hence allowing for easier bug hunting.
