@@ -13,21 +13,25 @@ change_frequency: weekly
 %h2 Quick links:
 %ul{:style=>"list-style-type: none; margin-left: 0px;"}
   %li
-    %a{:href=>"https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel",:target=>'_blank'}
+    %a{:href=>"https://issues.jboss.org/browse/WELD",:target=>'_blank'}
       %i.fa.fa-bug
-        issue tracker
+      issue tracker
+    (
+    %a{:href=>"/bug",:target=>'_blank'}
+      how to report a bug
+    )
   %li
     %a{:href=>"http://github.com/weld",:target=>'_blank'}
-      %i.fa.fa-github 
-        source code repository
+      %i.fa.fa-github
+      source code repository
   %li
     %a{:href=>"https://community.jboss.org/en/weld?view=discussions",:target=>'_blank'}
-      %i.fa.fa-comment 
-        user forum
+      %i.fa.fa-comment
+      user forum
   %li
     %a{:href=>"http://webchat.freenode.net/?channels=weld-dev",:target=>'_blank'}
       %i.fa.fa-comments
-        \#weld-dev
+      \#weld-dev
     IRC channel hosted on
     %code
       freenode.net
@@ -38,15 +42,15 @@ change_frequency: weekly
   %li
     %a{:href=>"https://lists.jboss.org/mailman/listinfo/weld-dev",:target=>'_blank'}
       %i.fa.fa-envelope
-        weld-dev mailing list
+      weld-dev mailing list
   %li
     %a{:href=>"https://issues.jboss.org/issues/?filter=12320398",:target=>'_blank'}
       %i.fa.fa-tasks
-        list of starter issues
+      list of starter issues
   %li
     %a{:href=>"https://github.com/weld/core/graphs/contributors",:target=>'_blank'}
       %i.fa.fa-user
-        contributors
+      contributors
 
 %h2 How to contribute
 %p
@@ -63,6 +67,10 @@ change_frequency: weekly
       reporting bugs in our
       %a{:href=>"https://issues.jboss.org/browse/WELD"}
         issue tracker
+      (please read
+      %a{:href=>"/bug",:target=>'_blank'}
+        how to report a bug
+      first ;-)
     %li
       fix or expand our
       %a{:href=>"http://docs.jboss.org/weld/reference/latest-master/en-US/html/"}
