@@ -11,12 +11,13 @@ Weld 3.0.0.Alpha15 the next experimental Weld version has been released.
 See also https://issues.jboss.org/projects/WELD/versions/12327857[the release details].
 
 The `CompletionStage` used to bind actions to the completion of the asynchronous delivery is now using `org.jboss.weld.manager.api.ExecutorServices` SPI as the default asynchronous execution facility.
-Previously, the default executor of the underlying `CompletableFuture` (`ForkJoinPool#commonPool()` by default) was used.
-This is important in Java EE where `ForkJoinPool#commonPool()` is not a good fit.
+Previously, the `ForkJoinPool#commonPool()` (a default executor of the underlying `CompletableFuture`) was used.
+It's an important change because the `ForkJoinPool#commonPool()` is not a good fit for Java EE.
 See also link:https://issues.jboss.org/browse/WELD-2073[WELD-2073].
 
 The `ExperimentalAfterBeanDiscovery` recieves two more methods: `interceptorBuilder()` and `addInterceptor()`.
-In this way, you don't need to create an interceptor class for simple use cases:
+An interceptor builder allows you to create an interceptor bean without the need to create an interceptor class.
+This might be handy for simple use cases:
 [source,java]
 ----
 class MyExtension {
