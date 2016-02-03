@@ -1,0 +1,51 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha15
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The next experimental Weld version has been released.
+---
+
+Weld 3.0.0.Alpha15 the next experimental Weld version has been released.
+See also https://issues.jboss.org/projects/WELD/versions/12327857[the release details].
+
+The `CompletionStage` used to bind actions to the completion of the asynchronous delivery is now using `org.jboss.weld.manager.api.ExecutorServices` SPI as the default asynchronous execution facility.
+Previously, the default executor of the underlying `CompletableFuture` (`ForkJoinPool#commonPool()` by default) was used.
+This is important in Java EE where `ForkJoinPool#commonPool()` is not a good fit.
+See also link:https://issues.jboss.org/browse/WELD-2073[WELD-2073].
+
+The `ExperimentalAfterBeanDiscovery` recieves two more methods: `interceptorBuilder()` and `addInterceptor()`.
+In this way, you don't need to create an interceptor class for simple use cases:
+[source,java]
+----
+class MyExtension {
+  void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {
+    event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -> {
+            long start = System.currentTimeMillis();
+            try {
+                return c.proceed();
+            } finally {
+                System.out.println("Time: " + System.currentTimeMillis() - start);
+            }
+        }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);
+  }
+}
+----
+See also link:https://issues.jboss.org/browse/WELD-2008[WELD-2008].
+
+This release also contains some enhancements and bugfixes around proxies.
+E.g. better support for DeltaSpike partial beans (link:https://issues.jboss.org/browse/WELD-2084[WELD-2084]), better support for Camel CDI (link:https://issues.jboss.org/browse/WELD-2089[WELD-2089]) and better support for proxies with non public classes (link:https://issues.jboss.org/browse/WELD-2091[WELD-2091]).
+Furthermore, we are going to drop Jetty 7,8, 9.0, 9.1 and 9.2 support in Weld 3 (link:https://issues.jboss.org/browse/WELD-2032[WELD-2032]).
+Also the decorator validation was improved (link:https://issues.jboss.org/browse/WELD-2085[WELD-2085], link:https://issues.jboss.org/browse/WELD-1811[WELD-1811], link:https://issues.jboss.org/browse/WELD-2039[WELD-2039]).
+Last but not least, we have performed some SPI cleanup (link:https://issues.jboss.org/browse/WELD-2077[WELD-2077], link:https://issues.jboss.org/browse/WELD-2079[WELD-2079]).
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.Alpha15/wildfly-10.0.0.Final-weld-3.0.0.Alpha15-patch.zip[patch for WildFly] is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial].
+
+&#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327857[Release notes] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha15/weld-3.0.0.Alpha15.zip[Distribution] &#93;
+&#91; link:http://download.jboss.org/weld/3.0.0.Alpha15/wildfly-10.0.0.Final-weld-3.0.0.Alpha15-patch.zip[Patch for Wildfly 10.0.0.Final]
+&#93;
