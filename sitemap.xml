@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://weld.cdi-spec.org/bug/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://weld.cdi-spec.org/community/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://weld.cdi-spec.org/dist/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>1</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>http://weld.cdi-spec.org/documentation/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://weld.cdi-spec.org/download/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://weld.cdi-spec.org/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -181,8 +181,14 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</loc>
+    <lastmod>2016-02-04</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>http://weld.cdi-spec.org/news/</loc>
-    <lastmod>2016-01-21</lastmod>
+    <lastmod>2016-02-04</lastmod>
     <priority>1</priority>
     <changefreq>daily</changefreq>
   </url>
