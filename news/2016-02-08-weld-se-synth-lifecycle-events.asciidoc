@@ -1,0 +1,44 @@
+---
+layout: news
+title: Weld SE and synthetic container lifecycle event observers
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: A new experimental feature of Weld SE planned for 3.0.0.Alpha16.
+---
+
+Last week Weld 3.0.0.Alpha15 was released and so it's time to reveal the features that should go into the next experimental release.
+The main goal of Weld 3.0.0.Alpha16 is to reflect the output of https://issues.jboss.org/browse/CDI-558[CDI-558].
+However, we would also like to continue to deliver experimental prototypes so that users could test a new functionality (that we find interesting and useful) and the CDI EG could eventually include this into CDI 2.0.
+
+It should be easier to start playing with extensions in Weld SE. Right now, it's possible to pass an `Extension` instance to the `Weld` builder so that it's not necessary to configure service providers (i.e. `META-INF/services/javax.enterprise.inject.spi.Extension` file).
+In such case, the extension class is automatically scanned for observer methods and the instance is used as the receiver of the notifications.
+We would like to make this even easier.
+It will be possible to add a *synthetic container lifecycle event observer* without declaring an extension class.
+The observer logic is represented as a lambda expression.
+This might be especially useful for prototyping and/or for discovering how extensions work.
+
+The starting point is the `org.jboss.weld.environment.se.ContainerLifecycleObserver` class.
+There are few static methods, each corresponding to a specific container lifecycle event (e.g. `beforeBeanDiscovery()`).
+Some variants return a builder so that it's possible to customize the observer (observed type, priority, etc.).
+Others accept a lambda and return an observer instance direcly.
+
+A synthetic observer may be added to the builder directly - see `Weld.addContainerLifecycleObserver()` - or grouped in a synthetic extension - see `ContainerLifecycleObserver.extensionBuilder()`.
+
+[source,java]
+----
+Extension testExtension = ContainerLifecycleObserver.extensionBuilder()
+    .add(afterBeanDiscovery((e) -> System.out.println("Bean discovery completed!")))
+    .add(processAnnotatedType().notify((e) -> {
+            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {
+                e.veto();
+            }
+        })).build();
+
+try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {
+    // Use the container...
+}
+----
+
+This feature is merged in the master branch. If you want to try it out, you'll have to use a *3.0.0-SNAPSHOT* version or build the Weld from source: `mvn clean install`.
+Do you find it useful? Any feedback is appreciated! Feel free to add comments to this blog post or to the corresponding issue: https://issues.jboss.org/browse/WELD-2102[WELD-2012].
