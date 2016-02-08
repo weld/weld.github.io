@@ -37,6 +37,7 @@ div.navbar {
 
 code {
   background-color: inherit;
+  font-family: "Lucida Console", monospace;
 }
 
 p code {
@@ -260,4 +261,23 @@ div.search-results ol li i {
 
 div.search-results ol li p.search-desc {
   font-size: 85%;
+}
+
+div.news-date {
+    background-color: #82939d;
+}
+
+div.news-author {
+    background-color: #86b4dc;
+}
+
+div.news-boxed {
+    text-align: center;
+    display: inline-block;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 0.8em;
 }

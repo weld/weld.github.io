@@ -4,8 +4,11 @@ layout: base
 .post
   %h1
     #{page.title}
-  %p{:style=>"color: #666;"}
-    %strong #{page.date.year}-#{page.date.month}-#{page.date.day}: #{page.author}
+  %div.news-date.news-boxed
+    #{page.date.year}-#{page.date.month}-#{page.date.day}
+  %div.news-author.news-boxed
+    #{page.author}
+  %p
   .content
     ~ content
   - if site.disqus
