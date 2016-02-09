@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: Weld 3.0.0.Alpha14
+      Weld: Weld SE and synthetic container lifecycle event observers
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
@@ -130,10 +130,10 @@
             <div class="col-md-10">
               <div class="post">
                 <h1>
-                  Weld 3.0.0.Alpha14
+                  Weld SE and synthetic container lifecycle event observers
                 </h1>
                 <div class="news-date news-boxed">
-                  2015-12-4
+                  2016-2-8
                 </div>
                 <div class="news-author news-boxed">
                   Martin Kouba
@@ -141,33 +141,44 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
-                  It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
-                  Moreover, this release also contains quite a lot of enhancements and bugfixes. See also <a href="https://issues.jboss.org/projects/WELD/versions/12327856">the release details</a>.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">patch for WildFly</a> is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is <strong>WildFly 10.0.0.CR4</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
+                  <p>Last week Weld 3.0.0.Alpha15 was released and so it&#8217;s time to reveal the features that should go into the next experimental release.
+                  The main goal of Weld 3.0.0.Alpha16 is to reflect the output of <a href="https://issues.jboss.org/browse/CDI-558">CDI-558</a>.
+                  However, we would also like to continue to deliver experimental prototypes so that users could test a new functionality (that we find interesting and useful) and the CDI EG could eventually include this into CDI 2.0.</p>
                   </div>
                   <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327856">Release notes</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/weld-3.0.0.Alpha14.zip">Distribution</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">Patch for Wildfly 10 CR4</a>
-                  &#93;</p>
+                  <p>It should be easier to start playing with extensions in Weld SE. Right now, it&#8217;s possible to pass an <code>Extension</code> instance to the <code>Weld</code> builder so that it&#8217;s not necessary to configure service providers (i.e. <code>META-INF/services/javax.enterprise.inject.spi.Extension</code> file).
+                  In such case, the extension class is automatically scanned for observer methods and the instance is used as the receiver of the notifications.
+                  We would like to make this even easier.
+                  It is now possible to add a <strong>synthetic container lifecycle event observer</strong> without declaring an extension class.
+                  The observer logic is represented as a lambda expression.
+                  This might be especially useful for prototyping and/or for discovering how extensions work.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The starting point is the <code>org.jboss.weld.environment.se.ContainerLifecycleObserver</code> class.
+                  There are few static methods, each corresponding to a specific container lifecycle event (e.g. <code>beforeBeanDiscovery()</code>).
+                  Some variants return a builder so that it&#8217;s possible to customize the observer (observed type, priority, etc.).
+                  Others accept a lambda and return an observer instance direcly.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>A synthetic observer may be added to the builder directly - see <code>Weld.addContainerLifecycleObserver()</code> - or grouped in a synthetic extension - see <code>ContainerLifecycleObserver.extensionBuilder()</code>.</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
                   </div>
                   </div>
+                  <div class="paragraph">
+                  <p>This feature is merged in the master branch. If you want to try it out, you&#8217;ll have to use a <strong>3.0.0-SNAPSHOT</strong> version or build the Weld from source: <code>mvn clean install</code>.
+                  Do you find it useful? Any feedback is appreciated! Feel free to add comments to this blog post or to the corresponding issue: <a href="https://issues.jboss.org/browse/WELD-2102">WELD-2012</a>.</p>
                   </div>
                 </div>
                 
                             <div id="disqus_thread"></div>
                             <script type="text/javascript">
                             var disqus_shortname = 'weld-cdi';
-                            var disqus_url = "http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/";
+                            var disqus_url = "http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/";
                             var disqus_developer = null;
-                            var disqus_identifier = "61b77ed52a2c556800dd7c0903b923a6567b0a02";
+                            var disqus_identifier = "0789ca842a716bde07fb94df425c7c84a79206f9";
                             (function() {
                               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
                               dsq.src = "http://weld-cdi.disqus.com/embed.js";
