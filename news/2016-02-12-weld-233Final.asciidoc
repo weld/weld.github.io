@@ -1,0 +1,34 @@
+---
+layout: news
+title: Weld 2.3.3.Final
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The next bug-fix release for the stable 2.3 branch (CDI 1.2 implementation) has been released.
+---
+:linkattrs:
+
+Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
+See also https://issues.jboss.org/projects/WELD/versions/12328954[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+Notable improvements:
+
+* allows to proxy classes with non-static non-private final methods
+** this is a non-portable way to get around the link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable[CDI spec restrictions, window="_blank"], see also link:http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods[Proxying classes with final methods, window="_blank"] and link:https://issues.jboss.org/browse/CDI-527[CDI-527, window="_blank"]
+** *use with caution!*
+* other enhancements and bug-fixes around proxies:
+** better support for DeltaSpike partial beans (link:https://issues.jboss.org/browse/WELD-2084[WELD-2084, window="_blank"])
+** better support for Camel CDI (link:https://issues.jboss.org/browse/WELD-2089[WELD-2089, window="_blank"])
+** better support for proxies with non public classes (link:https://issues.jboss.org/browse/WELD-2091[WELD-2091, window="_blank"])
+* Weld Probe has a slightly redesigned menu and a new link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[Dashboard, window="_blank"] view with some basic stats
+* the decorator validation was improved (link:https://issues.jboss.org/browse/WELD-2085[WELD-2085, window="_blank"], link:https://issues.jboss.org/browse/WELD-1811[WELD-1811, window="_blank"], link:https://issues.jboss.org/browse/WELD-2039[WELD-2039, window="_blank"])
+* minor SPI cleanup was performed  (link:https://issues.jboss.org/browse/WELD-2077[WELD-2077, window="_blank"], link:https://issues.jboss.org/browse/WELD-2079[WELD-2079, window="_blank"])
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.3.3.Final/wildfly-10.0.0.Final-weld-2.3.3.Final-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API, window="_blank"] &#93;
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12328954[Release notes, window="_blank"] &#93;
