@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News
+      Weld: Weld 2.3.3.Final
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
@@ -128,73 +128,95 @@
           </div>
           <div class="row">
             <div class="col-md-10">
-              <h1>News</h1>
               <div class="post">
-                <h2>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h2>
+                <h1>
+                  Weld 2.3.3.Final
+                </h1>
                 <div class="news-date news-boxed">
-                  2013-6-6
+                  2016-2-12
                 </div>
                 <div class="news-author news-boxed">
-                  Jozef Hartinger
+                  Martin Kouba
                 </div>
+                <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
+                  <p>Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
+                  See also <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">the release details</a>.
+                  Thanks to everyone involved in this release!
+                  Notable improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>allows to proxy classes with non-static non-private final methods</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>this is a non-portable way to get around the <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable" target="_blank">CDI spec restrictions</a>, see also <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods" target="_blank">Proxying classes with final methods</a> and <a href="https://issues.jboss.org/browse/CDI-527" target="_blank">CDI-527</a></p>
+                  </li>
+                  <li>
+                  <p><strong>use with caution!</strong></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>other enhancements and bug-fixes around proxies:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>better support for DeltaSpike partial beans (<a href="https://issues.jboss.org/browse/WELD-2084" target="_blank">WELD-2084</a>)</p>
+                  </li>
+                  <li>
+                  <p>better support for Camel CDI (<a href="https://issues.jboss.org/browse/WELD-2089" target="_blank">WELD-2089</a>)</p>
+                  </li>
+                  <li>
+                  <p>better support for proxies with non public classes (<a href="https://issues.jboss.org/browse/WELD-2091" target="_blank">WELD-2091</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Probe has a slightly redesigned menu and a new <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe" target="_blank">Dashboard</a> view with some basic stats</p>
+                  </li>
+                  <li>
+                  <p>the decorator validation was improved (<a href="https://issues.jboss.org/browse/WELD-2085" target="_blank">WELD-2085</a>, <a href="https://issues.jboss.org/browse/WELD-1811" target="_blank">WELD-1811</a>, <a href="https://issues.jboss.org/browse/WELD-2039" target="_blank">WELD-2039</a>)</p>
+                  </li>
+                  <li>
+                  <p>minor SPI cleanup was performed  (<a href="https://issues.jboss.org/browse/WELD-2077" target="_blank">WELD-2077</a>, <a href="https://issues.jboss.org/browse/WELD-2079" target="_blank">WELD-2079</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.3.Final/wildfly-10.0.0.Final-weld-2.3.3.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
+                  &#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">Release notes</a> &#93;</p>
                   </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
+                  </div>
                   </div>
                 </div>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-4-25
-                </div>
-                <div class="news-author news-boxed">
-                  Jozef Hartinger
-                </div>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (<a href="http://www.jcp.org/en/jsr/detail?id=346">JSR 346</a>). For a list of major changes in CDI 1.1 see the <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes">specification</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The reference implementation will soon be available in <a href="https://glassfish.java.net/">GlassFish 4</a> and <a href="http://wildfly.org/">WildFly</a> (formerly JBoss Application Server). In the meantime you can check snapshots of the application servers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, Weld artifacts can be obtained from maven or you can use a distribution bundle.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along with the Weld release comes the final release of the Technology Compatibility Kit (TCK) for CDI 1.1. Martin Kouba did an excellent job writing new tests and keeping the TCK in sync with the almost never-ending stream of specification changes. The TCK splits the specification into 1550 testable assertions out of which 96.71% is covered by TCK tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I would like to thank to everyone who lent a hand and helped delivering these releases, especially: Martin Kouba, Pete Muir, Marko Lukša, Stuart Douglas, Marek Schmidt, Ron Šmeral, Tomáš Remeš, JJ Snyder, Phil Zampino, Tomaž Cerar, Hardy Ferentschik, Lincoln Baxter III, Matúš Abaffy and others.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; Distribution (<a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.0.Final/">Weld</a>, <a href="https://sourceforge.net/projects/jboss/files/CDI-TCK/1.1.0.Final/">CDITCK</a>) &#93;
-                  &#91; Documentation (<a href="http://docs.jboss.org/weld/reference/2.0.0.Final/en-US/">Weld</a>, <a href="http://docs.jboss.org/cdi/tck/reference/1.1.0.Final/doc/">CDITCK</a>) &#93;
-                  &#91; Javadoc (<a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1</a>, <a href="http://docs.jboss.org/weld/javadoc/2.0/">Weld SPI</a>) &#93;
-                  &#91; <a href="https://issues.jboss.org/browse/WELD">Issue tracker</a> &#93;</p>
-                  </div>
-                </div>
-              </div>
-              <div class="pagination-links"><a href="/news/page/5.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/5.html" class="page-link">5</a> <span class="current-page">6</span> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="icon-rss"></i>
-                  Subscribe to Weld news
-                </a>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "22b96d1ff848fc10858dcf13a41fec035fe159aa";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>
