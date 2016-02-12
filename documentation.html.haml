@@ -32,6 +32,7 @@ change_frequency: weekly
   %li
     %a{:href=>"http://docs.jboss.org/weld/reference/",:target=>"_blank"}Browse documentation for older Weld releases
 
+%a{:name=>"faq_contents"}
 %h1 FAQ
 %ul
   - site.faq.each_with_index do |faq, i|
@@ -43,6 +44,10 @@ change_frequency: weekly
 
 - site.faq.each_with_index do |faq, i|
   %div{:id=>"#{i}"}
-    %h3
+    %h2
       = faq.title
     ~ faq[:rendered_content]
+    %a{:href=>"#faq_contents"}
+      %i.fa.fa-arrow-circle-o-up.fa-lg
+      Top
+    %hr
