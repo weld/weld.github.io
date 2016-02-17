@@ -15,7 +15,7 @@ Previously, the `ForkJoinPool#commonPool()` (a default executor of the underlyin
 It's an important change because the `ForkJoinPool#commonPool()` is not a good fit for Java EE.
 See also link:https://issues.jboss.org/browse/WELD-2073[WELD-2073].
 
-The `ExperimentalAfterBeanDiscovery` recieves two more methods: `interceptorBuilder()` and `addInterceptor()`.
+The `ExperimentalAfterBeanDiscovery` receives two more methods: `interceptorBuilder()` and `addInterceptor()`.
 An interceptor builder allows you to create an interceptor bean without the need to create an interceptor class.
 This might be handy for simple use cases:
 [source,java]
