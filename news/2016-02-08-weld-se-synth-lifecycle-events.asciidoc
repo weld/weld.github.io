@@ -5,6 +5,7 @@ author: Martin Kouba
 priority: 1
 change_frequency: weekly
 excerpt: A new experimental feature of Weld SE planned for 3.0.0.Alpha16.
+desc: Weld SE 3.x introducing synthetic lifecycle event observer.
 ---
 
 Last week Weld 3.0.0.Alpha15 was released and so it's time to reveal the features that should go into the next experimental release.
