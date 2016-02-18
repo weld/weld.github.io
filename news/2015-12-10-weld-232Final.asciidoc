@@ -4,6 +4,7 @@ title: Weld 2.3.2.Final
 author: Martin Kouba
 priority: 1
 change_frequency: weekly
+desc: Weld 2.3.2.Final released.
 ---
 
 Weld 2.3.2.Final the last version for this year has been released! It is a bug-fixing release with 15 issues resolved. See also https://issues.jboss.org/projects/WELD/versions/12328625[the release details]. Thanks to everyone involved in this release!
