@@ -2,7 +2,7 @@
  * TODO: This is a work in progress
  */
 
-var restUrlBase = "http://dcp2.jboss.org/v2/rest/search?project=weld&sortBy=new&size=20&query=";
+var restUrlBase = "http://dcp2.jboss.org/v2/rest/search?project=weld&size=20&query=";
 
 $("#search-form").submit(function(event) {
     search($("#search-text").val());
@@ -43,7 +43,11 @@ function getTypeIcon(type) {
     } else if (type == 'jbossorg_sbs_forum') {
         icon += 'fa fa-comment';
     } else if (type == 'jbossorg_blogpost') {
-        icon += 'fa fa fa-newspaper-o';
+        icon += 'fa fa-newspaper-o';
+    } else if (type == 'cdi-weld_weld_website') {
+        icon += 'fa fa-home';
+    } else if (type == 'jbossorg_sbs_article') {
+        icon += 'fa fa-file-text-o';
     } else {
         // TODO other types, e.g. weld site and mailing list
         icon += 'fa fa-question';
