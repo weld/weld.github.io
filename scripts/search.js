@@ -24,7 +24,7 @@ function search(query) {
                         + "</a> ";
                     if (hit.fields.sys_description) {
                         output += '<p class="search-desc">'
-                            + abbreviate(hit.fields.sys_description.toString(), 150)
+                            + abbreviate(hit.fields.sys_description.toString().replace(/(<([^>]+)>)/ig,""), 150)
                             + "</p>";
                     }
                     output += "</li>";
