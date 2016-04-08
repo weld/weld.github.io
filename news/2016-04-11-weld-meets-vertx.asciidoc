@@ -1,0 +1,70 @@
+---
+layout: news
+title: Weld meets Vert.x
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+desc: Weld meets Vert.x
+---
+:linkattrs:
+
+http://vertx.io/[Vert.x, window="_blank"] defines itself as "a toolkit for building reactive applications on the JVM".
+Sounds cool and trendy.
+Weld, on the other hand, comes from the Java EE world, based on standards and traditional concepts.
+But wait, what if we try to combine the two worlds to get the best of them?
+
+Vert.x makes use of a light-weight distributed messaging system to allow application components to communicate in a loosely coupled way.
+This should sound familiar to all CDI users where beans may produce and consume events as well.
+Weld team developed a https://github.com/weld/weld-vertx[working prototype] of Weld/Vert.x integration that allows to automatically register certain observer methods as Vert.x message consumers.
+A simple echo message consumer could look like this:
+
+[source,java]
+----
+import org.jboss.weld.vertx.VertxConsumer;
+import org.jboss.weld.vertx.VertxEvent;
+
+class Foo {
+    public void echoConsumer(@Observes @VertxConsumer("test.echo.address") VertxEvent event) {
+        event.setReply(event.getMessageBody());
+    }
+}
+----
+
+* `@VertxConsumer` - a qualifier used to specify the address the consumer will be registered to: `test.echo.address`
+* `VertxEvent` - a wrapper of a Vert.x message
+
+Since we're working with a regular observer method, additional parameters may be declared (next to the event parameter).
+These parameters are injection points. So it's easy to *declare a message consumer dependencies*:
+
+[source,java]
+----
+public void consumerWithDependencies(@Observes @VertxConsumer("test.dependencies.address") VertxEvent event, CoolService coolService, StatsService statsService) {
+    coolService.process(event.getMessageBody());
+    statsService.log(event);
+}
+----
+
+NOTE: If you inject a dependent bean, it will be destroyed when the invocation completes.
+
+Last but not least - an observer may also *send/publish messages using the Vert.x event bus*:
+
+[source,java]
+----
+public void consumerStrikesBack(@Observes @VertxConsumer("test.publish.address") VertxEvent event) {
+    event.messageTo("test.huhu.address").publish("huhu");
+}
+----
+
+And how does it work under the hood?
+First of all, it's necessary to deploy `org.jboss.weld.vertx.WeldVerticle`.
+This `Verticle` starts Weld SE container and automatically registers `org.jboss.weld.vertx.VertxExtension` to process all observer methods and detect observers which should become message consumers.
+Then a special handler is registered for each address to bridge the event bus to the CDI world.
+Handlers use `Vertx.executeBlocking()` since we expect the code to be blocking.
+Later on, whenever a new message is delivered to the handler, `Event.fire()` is used to notify all relevant observers.
+
+The prototype is surely missing some features. Nevertheless, it shows the CDI programming model might be applicable to the "reactive" world even if not a first class citizen.
+Moreover, the prototype demonstrates the flexibility of the CDI extension mechanism.
+
+If you want to try it out, you'll have to clone the https://github.com/weld/weld-vertx repository and build it from source (i.e. run `mvn clean install`).
+And if you find it useful feel free to add comments to this blog post. Any feedback is appreciated!
+

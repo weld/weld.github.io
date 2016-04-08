@@ -288,3 +288,25 @@ div.content a[target="_blank"]:after {
   content: " \f08e";
 }
 **/
+
+div.note {
+    border: 1px solid #7dcf7d;
+    background-color: #dff0d8;
+}
+
+div.admonitionblock .content {
+    padding: 15px;
+}
+
+div.admonitionblock {
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div.admonitionblock .icon .title {
+    font-weight: bold;
+    color: #404040;
+    border-right: 1px solid silver;
+    padding: 10px;
+}
