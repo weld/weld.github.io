@@ -282,3 +282,24 @@ div.content a[target="_blank"]:after {
   content: " \f08e";
 }
 **/
+/* line 292, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.note {
+  border: 1px solid #7dcf7d;
+  background-color: #dff0d8; }
+
+/* line 297, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.admonitionblock .content {
+  padding: 15px; }
+
+/* line 301, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.admonitionblock {
+  border-radius: 4px 4px 4px 4px;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+/* line 307, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.admonitionblock .icon .title {
+  font-weight: bold;
+  color: #404040;
+  border-right: 1px solid silver;
+  padding: 10px; }
