@@ -1,0 +1,40 @@
+---
+layout: news
+title: Weld 2.3.4.Final
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The next version of the stable 2.3 branch (CDI 1.2, WildFly 10) has been released.
+desc: Weld 2.3.4.Final released
+---
+:linkattrs:
+
+Weld 2.3.4.Final the next version of the stable 2.3 branch has been released!
+See also https://issues.jboss.org/projects/WELD/versions/12329779[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+Notable bugfixes and improvements:
+
+* log important actions performed by extensions (link:https://issues.jboss.org/browse/WELD-2134[WELD-2134, window="_blank"])
+** for example, if you want to track down all extensions modifying `AnnotatedType` definitions, then link:/documentation/#7["enable the debug logging for Weld", window="_blank"] and look for messages containing `ProcessAnnotatedType.setAnnotatedType() called by ...`
+* Conversations - allow to configure the default timeout and the concurrent access timeout (link:https://issues.jboss.org/browse/WELD-2113[WELD-2113, window="_blank"])
+* recover if a transaction is in progress but a JTA Synchronization callback cannot be registered (link:https://issues.jboss.org/browse/WELD-2120[WELD-2120, window="_blank"])
+* EJB proxies do not implement private methods anymore (link:https://issues.jboss.org/browse/WELD-2119[WELD-2119, window="_blank"])
+* interceptor instances used for @AroundConstruct are now reused for other types of interception (link:https://issues.jboss.org/browse/WELD-2131[WELD-2131, window="_blank"])
+* Weld Servlet
+** fixed handling of archives from `WEB-INF/lib` on Tomcat 8 with `unpackWARs=false` (link:https://issues.jboss.org/browse/WELD-2122[WELD-2122, window="_blank"])
+** `WeldTerminalListener` should not throw NPE if injection into listeners is not supported (link:https://issues.jboss.org/browse/WELD-2123[WELD-2123, window="_blank"])
+* Weld SE
+** improved support of http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_implicit_bean_archive_support_2[implicit bean archives] (link:https://issues.jboss.org/browse/WELD-2129[WELD-2129, window="_blank"])
+** there are two new built-in interceptor bindings - `@ActivateRequestScope` and `@ActivateThreadScope` - to activate the http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_request_context[request scope, window="_blank"] or the http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_thread_context[thread scope, window="_blank"] within a business method invocation
+** Weld builder allows to configure bean archive isolation, development mode and registration of shutdown hook manually (link:https://issues.jboss.org/browse/WELD-2135[WELD-2135, window="_blank"])
+** a basic nested archive support was added (link:https://issues.jboss.org/browse/WELD-1930[WELD-1930, window="_blank"])
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.3.4.Final/wildfly-10.0.0.Final-weld-2.3.4.Final-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API, window="_blank"] &#93;
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12329779[Release notes, window="_blank"] &#93;
