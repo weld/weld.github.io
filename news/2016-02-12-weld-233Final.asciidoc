@@ -14,7 +14,7 @@ See also https://issues.jboss.org/projects/WELD/versions/12328954[the release de
 Thanks to everyone involved in this release!
 Notable improvements:
 
-* allows to proxy classes with non-static non-private final methods
+* allow to proxy classes with non-static non-private final methods
 ** this is a non-portable way to get around the link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable[CDI spec restrictions, window="_blank"], see also link:http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods[Proxying classes with final methods, window="_blank"] and link:https://issues.jboss.org/browse/CDI-527[CDI-527, window="_blank"]
 ** *use with caution!*
 * other enhancements and bug-fixes around proxies:
