@@ -138,9 +138,13 @@ table.downloads {
   }
 }
 
-pre.code {
-    border: 1px solid #AAAAAA;
-    font-size: 80%;
+pre {
+    background-color: #f0f0f0;
+}
+
+pre code {
+    border: 0px solid #AAAAAA;
+    font-size: 1.1em;
     padding: 5px;
     overflow: auto;
     background-color: #f0f0f0;

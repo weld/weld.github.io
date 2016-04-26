@@ -1,0 +1,131 @@
+---
+layout: news
+title: Weld 3.0.0.Alpha16
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Start playing with metadata configurators included in the next Weld experimental version aligned with CDI 2.0.Alpha4.
+desc: Weld 3.0.0.Alpha16 released
+---
+:linkattrs:
+
+The next experimental Weld version has been released!
+See also https://issues.jboss.org/projects/WELD/versions/12327858[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: link:/news/2016/04/22/weld-234Final/[Weld 2.3.4.Final]).
+However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (link:https://issues.jboss.org/browse/CDI-558[CDI-558, window="_blank"]).
+So that everyone can play with the API, discover possibilities and find potential issues.
+Note that this release also introduces a non-standard experimental feature: link:news/2016/02/08/weld-se-synth-lifecycle-events/[Weld SE synthetic container lifecycle event observers].
+So it should be even easier to get started - no extension class is needed in Weld SE.
+
+== Metadata configurators - basic ideas
+
+Note that we don't use the term "builder" because there is no `build()` method in the API.
+Also note that the API is not intended to cover every possible case.
+Instead, we would like to help with common tasks.
+And if necessary, an extension developer can always use the original replacement methods for more complicated stuff.
+
+IMPORTANT POINTS:
+
+* an extension developer receives a configurator instance from a container lifecycle event
+* a configurator instance is always automatically processed at the end of the observer invocation
+* for **bean discovery events** (all events starting with `Process`):
+** `configureX()` methods return the same configurator instance (for the given observer method invocation)
+** the configurator is initialized/preconfigured with the component being processed, e.g. `ProcessAnnotatedType.configureAnnotatedType()` returns a configurator initialized with `ProcessAnnotatedType.getAnnotatedType()`
+** the result of the configurator will automatically replace the original component (e.g. `AnnotatedType` in case of `ProcessAnnotatedType`)
+** replacement methods (e.g. `ProcessAnnotatedType.setAnnotatedType()`) should not be used together with configurators (link:https://issues.jboss.org/browse/CDI-596[CDI-596, window="_blank"])
+* for **application lifecycle events** (e.g. `AfterBeanDiscovery`):
+** `addX()` methods always return a new configurator instance
+** the configurator is always uninitialized/empty, but we should probably define some default values wherever it makes sense (e.g. `Reception` for observer methods)
+** the result of the configurator will be automatically added (e.g. `Bean` in case of `AfterBeanDiscovery.addBean()`)
+
+We have prepared some simple examples - see below.
+More advanced examples can be found in link:https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators[the TCK test cases, window="_blank"].
+And as usual - feel free to add comments to this blog post. Any feedback is appreciated!
+
+== BeforeBeanDiscovery example
+
+[source,java]
+----
+@Singleton
+class MyService {
+    // This class is not placed in a bean archive
+}
+
+class MyExtension implements Extension {
+
+    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {
+        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped
+        event.addAnnotatedType(MyService.class.getName(), MyService.class)
+               .remove(Singleton.class)
+               .add(ApplicationScoped.Literal.INSTANCE);
+    }
+}
+----
+
+== ProcessAnnotatedType example
+
+[source,java]
+----
+class MyExtension implements Extension {
+
+    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType<?> event) {
+        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync
+        event.configureAnnotatedType()
+                .filterMethods(MyExtension::isObserver)
+                .forEach(methodConfigurator -> methodConfigurator.add(Monitored.Literal.INSTANCE))
+    }
+
+    static boolean isObserver(AnnotatedMethod<?> annotatedMethod) {
+        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);
+    }
+}
+----
+
+== ProcessBeanAttributes example
+
+[source,java]
+----
+class MyExtension implements Extension {
+
+    void processBeanAttributes(@Observes ProcessBeanAttributes<?> event) {
+        // For all beans remove the IllegalBeanType from the set of bean types
+        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {
+            Set<Type> legalTypes = new HashSet(event.getBeanAttributes().getTypes());
+            legalTypes.remove(IllegalBeanType.class);
+            event.configureBeanAttributes().types(legalTypes);
+        }
+    }
+}
+----
+
+
+== AfterBeanDiscovery example
+
+[source,java]
+----
+class MyExtension implements Extension {
+
+    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {
+        //  Add a new synthetic observer method - no need to use the fluent API
+        ObserverMethodConfigurator configurator = event.addObserverMethod();
+        configurator.observedType(Foo.class);
+        configurator.reception(Reception.ALWAYS);
+        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);
+        configurator.notifyWith((foo) -> System.out.println("Foo observed: " + foo));
+
+        // Add dependent bean - Integer between 0 and 999
+        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)
+                .produceWith(() -> new java.util.Random().nextInt(1000))
+    }
+}
+----
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12327858[Release notes, window="_blank"] &#93;
