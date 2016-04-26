@@ -9,13 +9,14 @@ desc: Weld - CDI Reference Implementation
   .col-md-12
     %div.jumbotron
       %h1 Contexts and Dependency Injection for the Java Platform.
+      %p Runs on Java EE application servers, servlet containers, Java SE, Ceylon, Vert.x ...
       -# %div.search-box
       -#  %i.fa.fa-search.fa-lg
       -#  %input{:placeholder=>"Search issues, site, docs...",:size=>"25"}
 .row
   .col-md-8
     %div
-      %h2 About
+      -# %h2 About
       %p
         Weld is the reference implementation of
         %a{:href=>"http://cdi-spec.org",:target=>'_blank'} CDI: Contexts and Dependency Injection for the Java EE Platform
@@ -43,7 +44,7 @@ desc: Weld - CDI Reference Implementation
           To use Weld today, download the
           %a{:href=>"http://wildfly.org",:target=>'_blank'}WildFly server
           (formerly JBoss AS) and add the following code to the
-          %em pom.xml
+          %code pom.xml
           file of your application:
         %pre.code
           %code.xml
@@ -82,8 +83,6 @@ desc: Weld - CDI Reference Implementation
             - if (post.content.length > 0)
               %div.news-date.news-boxed
                 #{post.date.year}-#{post.date.month}-#{post.date.day}
-              %div.news-author.news-boxed
-                #{post.author}
               %p
                 = post.excerpt || summarize(html_to_text(post.content), 20)
                 %a{:href=>post.url} more
