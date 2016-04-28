@@ -132,6 +132,154 @@
               <h1>News</h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2015/04/21/weld-300Alpha8/">Weld 3.0.0.Alpha8</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2015-4-21
+                </div>
+                <div class="news-author news-boxed">
+                  Jozef Hartinger
+                </div>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 3.0.0.Alpha8 has been released.
+                  The main change is the enhanced API for using Weld in Java SE environment. In addition, this release comes with several weld-probe improvements.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_enhanced_api_for_weld_se">Enhanced API for Weld SE</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Weld has provided <a href="http://docs.jboss.org/weld/reference/latest-2.2/en-US/html/environments.html#_java_se">support for the Java SE environment</a> for a long time with the weld-se module.
+                  The API provides an easy way for an application to initialize Weld and use it in a standalone mode.
+                  On initialization Weld SE scans the classpath for bean archives with the <code>beans.xml</code> file, similarly to how it&#8217;s done in the Java EE environment.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In this release we are extending the API further.
+                  This is partially inspired by the current discussion in the CDI expert group where a standardized CDI API for Java SE is being proposed as part of <a href="https://issues.jboss.org/browse/CDI-26">CDI-26</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The following code snippet shows the new API in action:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Weld builder = new Weld()&#x000A;        .disableDiscovery()&#x000A;        .packages(Main.class, Utils.class)&#x000A;        .interceptors(TransactionalInterceptor.class)&#x000A;        .property("org.jboss.weld.construction.relaxed", true);&#x000A;    &#x000A;    try (WeldContainer weld = builder.initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are several new things to notice:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>the <code>Weld</code> class is used as a builder to configure Weld before it is initialized</p>
+                  </li>
+                  <li>
+                  <p>automatic scanning can be disabled</p>
+                  </li>
+                  <li>
+                  <p>instead of scanning, classes or packages can be selected explicitly. All classes in those packages will be managed by Weld</p>
+                  </li>
+                  <li>
+                  <p>interceptors, decorators, extensions and <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha8/en-US/html/configure.html#_weld_configuration">Weld-specific configuration options</a> can be specified using the builder</p>
+                  </li>
+                  <li>
+                  <p><code>WeldContainer</code> now implements <code>AutoCloseable</code> and can therefore be used in a <code>try-with-resources</code> block. At any time that execution gets outside of the code block, the Weld instance is shut down and all managed instances are safely destroyed.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>It is also possible to start multiple independent Weld instances:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();&#x000A;    new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();&#x000A;    &#x000A;    MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;    &#x000A;    WeldContainer.instance("one").shutdown();&#x000A;    WeldContainer.instance("two").shutdown();</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Here, two independent <code>WeldContainer</code> instances are initialized.
+                  Each of them is given a unique ID.
+                  The ID can subsequently be used to obtain a <code>WeldContainer</code> reference in a different place of the code.
+                  One possible use-case this enables is for a library or framework (e.g. a testing framework) to use an embedded instance of Weld internally for its own needs (dependency injection, events, extensibility).
+                  This instance would not interfere with the Weld instance used by the application.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Obviously, automatic classpath scanning can still be used as before:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p><strong>Update:</strong></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>To play with the new API use the following dependency in you Maven project:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Aforementioned classes are from the <code>org.jboss.weld.environment.se</code> package.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_probe_enhancements">Weld Probe Enhancements</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Since the last Alpha releases there were several enhancements to Weld Probe.
+                  If you are not familiar with Weld Probe, check this <a href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/">introductory blog post first</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>A new feature of Probe is that, when the development mode is enabled, it now embeds a tiny information bar directly into the application&#8217;s HTML output.
+                  That makes it easy to navigate to Probe directly from the application anytime.
+                  Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.</p>
+                  </div>
+                  <div class="imageblock">
+                  <div class="content">
+                  <img src="/images/blog/probe-bar.png" alt="Weld Probe information bar embedded in application's HTML output">
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p><br></p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Additionally, the following Probe improvements were implemented:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>tracked invocations are now grouped into a invocation tree instead of being tracked in isolation</p>
+                  </li>
+                  <li>
+                  <p>a special type of edges is now used in the overview graph to represent a "declared by" relation (when a bean declares a producer method or field)</p>
+                  </li>
+                  <li>
+                  <p>Instance&lt;?&gt; injection points are now treated specially - a resolved bean is show as injection point&#8217;s dependency</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>See this <a href="http://probe-weld.itos.redhat.com/weld-numberguess">live demo</a> and try Weld Probe yourself.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12326881">Release notes</a> &#93;
+                  &#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8">Distribution</a> &#93;
+                  &#91; Patch for Wildfly
+                  (<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-8.2.0.Final-weld-3.0.0.Alpha8-patch.zip/download">8.2</a>,
+                  <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-9.0.0.Beta2-weld-3.0.0.Alpha8-patch.zip/download">9 Beta</a>)
+                  &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2015/02/25/weld-300Alpha5/">Weld 3.0.0.Alpha5</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -857,60 +1005,6 @@
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322333">Release notes</a> &#93;
                   &#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1">Distribution</a> &#93;
                   &#91; <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha1/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha1-patch.zip/download">Patch for WildFly 9</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2014/09/18/weld-next/">Weld.Next</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2014-9-18
-                </div>
-                <div class="news-author news-boxed">
-                  Jozef Hartinger
-                </div>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12325389">23 issues</a>.
-                  In addition, the Servlet module got an update and among other things now supports:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>all three bean discovery modes (e.g. only explicitly annotated classes will be loaded as CDI beans)</p>
-                  </li>
-                  <li>
-                  <p>bean archive isolation</p>
-                  </li>
-                  <li>
-                  <p>using Jandex for faster deployment discovery</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>See the <a href="http://docs.jboss.org/weld/reference/2.2.5.Final/en-US/html/_application_servers_and_environments_supported_by_weld.html#_servlet_containers_such_as_tomcat_or_jetty">reference documentation </a>
-                  for details.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Talking about documentation we are grateful to <a href="http://www.next-presso.com/author/antoine/">Antoine Sabot-Durand</a> for migrating our reference documentation to <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a>.
-                  We also thank our community contributors <strong>Antonin Stefanutti</strong> and <strong>Stefan Grossmann</strong> who contributed with pull requests.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_weld_3_0">Weld 3.0</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>In the coming months, our focus will be shifting towards <strong>Weld 3.0</strong> - the future reference implementation of <a href="http://cdi-spec.org/">CDI 2.0</a>.
-                  Initially, we plan on releasing Alpha releases every two weeks starting in early October.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The Alpha releases are likely to break compatibility from time to time and will often contain bleeding edge or prototype code.
-                  The goals is however to give the CDI community a chance to test drive the proposed changes in the CDI specification as soon as possible and give quick feedback to the CDI expert group.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Weld 3.0 will also be a good opportunity to get involved in the development of this open-source project. <strong>Interested?</strong> See our <a href="http://weld.cdi-spec.org/community/">community web page</a> for more details.</p>
                   </div>
                   </div>
                   </div>
