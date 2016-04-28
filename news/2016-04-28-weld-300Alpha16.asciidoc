@@ -16,7 +16,7 @@ Thanks to everyone involved in this release!
 This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: link:/news/2016/04/22/weld-234Final/[Weld 2.3.4.Final]).
 However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (link:https://issues.jboss.org/browse/CDI-558[CDI-558, window="_blank"]).
 So that everyone can play with the API, discover possibilities and find potential issues.
-Note that this release also introduces a non-standard experimental feature: link:news/2016/02/08/weld-se-synth-lifecycle-events/[Weld SE synthetic container lifecycle event observers].
+Note that this release also introduces a non-standard experimental feature: link:/news/2016/02/08/weld-se-synth-lifecycle-events/[Weld SE synthetic container lifecycle event observers].
 So it should be even easier to get started - no extension class is needed in Weld SE.
 
 == Metadata configurators - basic ideas
