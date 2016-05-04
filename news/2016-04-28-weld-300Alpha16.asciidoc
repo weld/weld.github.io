@@ -109,7 +109,7 @@ class MyExtension implements Extension {
 
     void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {
         //  Add a new synthetic observer method - no need to use the fluent API
-        ObserverMethodConfigurator configurator = event.addObserverMethod();
+        ObserverMethodConfigurator<Foo> configurator = event.<Foo>addObserverMethod();
         configurator.observedType(Foo.class);
         configurator.reception(Reception.ALWAYS);
         configurator.transactionPhase(TransactionPhase.IN_PROGRESS);
