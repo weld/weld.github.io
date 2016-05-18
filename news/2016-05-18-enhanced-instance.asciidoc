@@ -1,0 +1,175 @@
+---
+layout: news
+title: Experiments with enhanced version of javax.enterprise.inject.Instance
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Weld team is considering adding an enhanced version of javax.enterprise.inject.Instance to the Weld API. Explore the possibilities...
+desc: Experiments with enhanced version of javax.enterprise.inject.Instance
+---
+:linkattrs:
+
+`javax.enterprise.inject.Instance` is sometimes invaluable companion.
+For example, `Instance` allows you to handle unsatisfied and ambiguous dependencies gracefully.
+E.g. it's possible to avoid unnecessary deployment problems:
+
+[source,java]
+----
+interface OrderProcessor {
+  void process(Order order);
+  int getPriority();
+}
+
+class OrderService {
+
+  @Inject
+  Instance<OrderProcessor> instance;
+
+  void create(Order order) {
+    if (!instance.isUnsatisfied() && !instance.isAmbiguous()) {
+        instance.get().process(order);
+    } else {
+        // Log a warning or throw an exception
+    }
+  }
+}
+----
+
+It is less known that `Instance` extends `Iterable` and so it allows to iterate through contextual references of beans with the specified combination of required type and qualifiers.
+This might be useful if the set of beans satisfying the given type and qualifiers is not known beforehand.
+We may also need to resolve ambiguities manually, e.g. inspect all the instances and choose only those matching our needs.
+
+[source,java]
+----
+@ApplicationScoped
+class OrderService {
+
+  @Inject
+  @Any
+  Instance<OrderProcessor> instance;
+
+  void create(Order order) {
+    for (OrderProcessor processor : instance) {
+        if (processor.getPriority() > 10) {
+            processor.process(order);
+        }
+    }
+  }
+}
+----
+
+Another interesting use case might be selecting exactly one implementation:
+
+[source,java]
+----
+@ApplicationScoped
+class OrderService {
+
+  @Inject
+  @Any
+  Instance<OrderProcessor> instance;
+
+  void create(Order order) {
+    List<OrderProcessor> processors = new ArrayList<>();
+    for (OrderProcessor processor : instance) {
+        processors.add(processor);
+    }
+    Collections.sort(processors, Comparator.<OrderProcessor> comparingInt(p -> p.getPriority()).reversed());
+    // Use the processor with highest priority
+    processors.get(0).ping();
+  }
+}
+----
+
+This works nice.
+But we have to pay extra attention to the scopes.
+If a `Processor` implementation is `@Dependent` a similar usage results in memory leaks.
+What's the reason?
+The `Processor` instance is the dependent object of `Instance<OrderProcessor>` which is the dependent object of `OrderService`.
+And so each `Instance.get()` will produce a new `Processor` bound to the lifecycle of the `OrderService`.
+To avoid the leak we should always call `Instance.destroy()` method in similar cases.
+However, `Instance.destroy()` always destroys the underlying contextual instance!
+Even if you pass e.g. a client proxy of an `@ApplicationScoped` bean.
+This is not always desirable.
+Currently, it's quite complicated to detect a dependent bean inside the loop.
+
+To extend the possibilities the Weld team is experimenting with `org.jboss.weld.inject.WeldInstance` - an enhanced version of `javax.enterprise.inject.Instance`.
+There are three new methods we find useful. The first one - `getHandler()` - allows to obtain a contextual reference handler which not only holds the contextual reference but also allows to inspect the metadata of the relevant bean and to destroy the underlying contextual instance.
+Moreover, the handler implements `AutoCloseable`:
+
+[source,java]
+----
+import org.jboss.weld.inject.WeldInstance;
+
+class Foo {
+
+  @Inject
+  WeldInstance<Bar> instance;
+
+  void doWork() {
+    try (Handler<Bar> bar = instance.getHandler()) {
+        bar.get().doBusiness();
+        // Note that Bar will be automatically destroyed at the end of the try-with-resources statement
+    }
+
+    Handler<Bar> bar = instance.getHandler()
+    bar.get().doBusiness();
+    // Calls Instance.destroy()
+    bar.destroy();
+  }
+
+}
+----
+
+The next method - `handlerIterator()` - returns an iterator over contextual reference handlers. This might be useful if you need more control over contextual references inside the loop:
+
+[source,java]
+----
+@ApplicationScoped
+class OrderService {
+
+  @Inject
+  @Any
+  WeldInstance<OrderProcessor> instance;
+
+  void create(Order order) {
+    for (Iterator<Handler<OrderProcessor>> iterator = instance.handlerIterator(); iterator.hasNext();) {
+            Handler<OrderProcessor> processor = iterator.next();
+            processor.get().process(order);
+            if (processor.getBean().getScope().equals(Dependent.class)) {
+                // Destroy only dependent processors
+                processor.destroy();
+            }
+        }
+  }
+}
+----
+
+The last one is just a convenient method - `isResolvable()` - a replacement for `!isUnsatisfied() && !isAmbiguous()` which is the expression most users are interested in:
+
+[source,java]
+----
+class OrderService {
+
+  @Inject
+  Instance<OrderProcessor> instance;
+
+  void create(Order order) {
+    if (instance.isResolvable()) {
+        instance.get().process(order);
+    } else {
+        // Log a warning or throw an exception
+    }
+  }
+}
+----
+
+Weld team is considering adding `org.jboss.weld.inject.WeldInstance` to the Weld API (2.3 and 3.0).
+`WeldInstance` would be automatically available in Weld SE and Weld Servlet where the Weld API is always on the class path.
+It would be also available in Weld-powered EE containers - in this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use `provided` scope in Maven).
+
+
+See also link:https://issues.jboss.org/browse/WELD-2151[WELD-2151, window="_blank"] and the work in progress: https://github.com/mkouba/core/tree/WELD-2151.
+And feel free to add comments to this blog post.
+Any feedback is appreciated!
+
