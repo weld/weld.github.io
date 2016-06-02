@@ -4,6 +4,8 @@ layout: base
 .post
   %h1
     #{page.title}
+    %a{:href=>"http://weld.cdi-spec.org/news.atom",:title=>"Subscribe to Weld news"}
+      %i.fa.fa-rss
   %div.news-date.news-boxed
     #{page.date.year}-#{page.date.month}-#{page.date.day}
   %div.news-author.news-boxed
