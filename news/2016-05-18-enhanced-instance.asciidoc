@@ -164,7 +164,7 @@ class OrderService {
 }
 ----
 
-Weld team is considering adding `org.jboss.weld.inject.WeldInstance` to the Weld API (2.3 and 3.0).
+Weld team is considering adding `org.jboss.weld.inject.WeldInstance` to the Weld API (2.4 and 3.0).
 `WeldInstance` would be automatically available in Weld SE and Weld Servlet where the Weld API is always on the class path.
 It would be also available in Weld-powered EE containers - in this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use `provided` scope in Maven).
 
