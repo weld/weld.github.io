@@ -1,0 +1,73 @@
+---
+layout: news
+title: Update on weld-vertx
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
+desc: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
+---
+:linkattrs:
+
+This is a follow-up on the article link:/news/2016/04/11/weld-meets-vertx/[Weld meets Vert.x].
+Weld team has just released the first alpha version of https://github.com/weld/weld-vertx[weld-vertx, window="_blank"] (available in http://search.maven.org/#search|gav|1|g%3A%22org.jboss.weld.vertx%22[Maven central, window="_blank"]).
+Since the last time we talked about `weld-vertx` two new features were added.
+First, it's possible to inject the relevant `io.vertx.core.Vertx` and `io.vertx.core.Context` instances direcly into beans.
+Also there is a new module called `weld-vertx-web` which extends functionality of `weld-vertx-core` and `io.vertx:vertx-web` and allows to register `Route` handlers discovered during container initialization.
+In other words, it's possible to configure a `Route` in a declarative way:
+
+[source,java]
+----
+import javax.inject.Inject;
+
+import org.jboss.weld.vertx.web.WebRoute;
+
+import io.vertx.core.Handler;
+import io.vertx.ext.web.RoutingContext;
+
+// This annotation is used to configure a Route
+@WebRoute("/hello")
+public class HelloHandler implements Handler<RoutingContext> {
+
+    @Inject
+    SayHelloService service;
+
+    @Override
+    public void handle(RoutingContext ctx) {
+        ctx.response().setStatusCode(200).end(service.hello());
+    }
+
+}
+----
+
+The registered handler instances are NOT real bean instances, i.e. they're not managed by the CDI container (similarly as http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#javaee_components[Java EE components]).
+However, the **dependency injection** is supported.
+
+
+The central point of integration is the `org.jboss.weld.vertx.web.WeldWebVerticle`.
+This Verticle extends `org.jboss.weld.vertx.WeldVerticle` and provides the `WeldWebVerticle.registerRoutes(Router)` method:
+
+[source,java]
+----
+ class MyApp {
+
+     public static void main(String[] args) {
+         final Vertx vertx = Vertx.vertx();
+         final WeldWebVerticle weldVerticle = new WeldWebVerticle();
+
+         vertx.deployVerticle(weldVerticle, result -> {
+
+             if (result.succeeded()) {
+                 // Configure the router after Weld bootstrap finished
+                 Router router = Router.router(vertx);
+                 router.route().handler(BodyHandler.create());
+                 weldVerticle.registerRoutes(router);
+                 vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+             }
+         });
+     }
+ }
+----
+
+Give it a try and let us know if you have any idea how to extend the functionality of `weld-vertx`.
+Any feedback is appreciated!
