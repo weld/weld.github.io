@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News
+      Weld: Update on weld-vertx
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Latest news about Weld." name="description">
+    <meta content="Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities." name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -129,82 +129,66 @@
           </div>
           <div class="row content-wrapper">
             <div class="col-md-10">
-              <h1>
-                News
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                </a>
-              </h1>
               <div class="post">
-                <h2>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h2>
+                <h1>
+                  Update on weld-vertx
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
                 <div class="news-date news-boxed">
-                  2013-6-6
+                  2016-6-21
                 </div>
                 <div class="news-author news-boxed">
-                  Jozef Hartinger
+                  Martin Kouba
                 </div>
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
+                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank">Weld meets Vert.x</a>.
+                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank">weld-vertx</a> (it seems there is a problem with synchronization to the Maven Central, until it gets fixed please use the <a href="https://developer.jboss.org/wiki/MavenRepository" target="_blank">JBoss Maven Repository</a>).
+                  Since the last time we talked about <code>weld-vertx</code> two new features were added.
+                  First, it&#8217;s possible to inject the relevant <code>io.vertx.core.Vertx</code> and <code>io.vertx.core.Context</code> instances direcly into beans.
+                  Also there is a new module called <code>weld-vertx-web</code> which extends functionality of <code>weld-vertx-core</code> and <code>io.vertx:vertx-web</code> and allows to register <code>Route</code> handlers discovered during container initialization.
+                  In other words, it&#8217;s possible to configure a <code>Route</code> in a declarative way:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">import javax.inject.Inject;&#x000A;&#x000A;import org.jboss.weld.vertx.web.WebRoute;&#x000A;&#x000A;import io.vertx.core.Handler;&#x000A;import io.vertx.ext.web.RoutingContext;&#x000A;&#x000A;// This annotation is used to configure a Route&#x000A;@WebRoute("/hello")&#x000A;public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    SayHelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;&#x000A;}</code></pre>
+                  </div>
                   </div>
                   <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
+                  <p>The registered handler instances are NOT real bean instances, i.e. they&#8217;re not managed by the CDI container (similarly as <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#javaee_components">Java EE components</a>).
+                  However, the <strong>dependency injection</strong> is supported.</p>
                   </div>
                   <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
+                  <p>The central point of integration is the <code>org.jboss.weld.vertx.web.WeldWebVerticle</code>.
+                  This Verticle extends <code>org.jboss.weld.vertx.WeldVerticle</code> and provides the <code>WeldWebVerticle.registerRoutes(Router)</code> method:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java"> class MyApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;&#x000A;             if (result.succeeded()) {&#x000A;                 // Configure the router after Weld bootstrap finished&#x000A;                 Router router = Router.router(vertx);&#x000A;                 router.route().handler(BodyHandler.create());&#x000A;                 weldVerticle.registerRoutes(router);&#x000A;                 vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Give it a try and let us know if you have any idea how to extend the functionality of <code>weld-vertx</code>.
+                  Any feedback is appreciated!</p>
                   </div>
                 </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-4-25
-                </div>
-                <div class="news-author news-boxed">
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (<a href="http://www.jcp.org/en/jsr/detail?id=346">JSR 346</a>). For a list of major changes in CDI 1.1 see the <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes">specification</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The reference implementation will soon be available in <a href="https://glassfish.java.net/">GlassFish 4</a> and <a href="http://wildfly.org/">WildFly</a> (formerly JBoss Application Server). In the meantime you can check snapshots of the application servers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, Weld artifacts can be obtained from maven or you can use a distribution bundle.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along with the Weld release comes the final release of the Technology Compatibility Kit (TCK) for CDI 1.1. Martin Kouba did an excellent job writing new tests and keeping the TCK in sync with the almost never-ending stream of specification changes. The TCK splits the specification into 1550 testable assertions out of which 96.71% is covered by TCK tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I would like to thank to everyone who lent a hand and helped delivering these releases, especially: Martin Kouba, Pete Muir, Marko Lukša, Stuart Douglas, Marek Schmidt, Ron Šmeral, Tomáš Remeš, JJ Snyder, Phil Zampino, Tomaž Cerar, Hardy Ferentschik, Lincoln Baxter III, Matúš Abaffy and others.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; Distribution (<a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.0.Final/">Weld</a>, <a href="https://sourceforge.net/projects/jboss/files/CDI-TCK/1.1.0.Final/">CDITCK</a>) &#93;
-                  &#91; Documentation (<a href="http://docs.jboss.org/weld/reference/2.0.0.Final/en-US/">Weld</a>, <a href="http://docs.jboss.org/cdi/tck/reference/1.1.0.Final/doc/">CDITCK</a>) &#93;
-                  &#91; Javadoc (<a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1</a>, <a href="http://docs.jboss.org/weld/javadoc/2.0/">Weld SPI</a>) &#93;
-                  &#91; <a href="https://issues.jboss.org/browse/WELD">Issue tracker</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/6.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/6.html" class="page-link">6</a> <span class="current-page">7</span> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                  Subscribe to Weld news
-                </a>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "bee4c4c4537d2665bd615d05f5a7ee9e6476b22d";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>

@@ -137,13 +137,90 @@
               </h1>
               <div class="post">
                 <h2>
-                  <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE and synthetic container lifecycle event observers</a>
+                  <a href="/news/2016/02/12/weld-233Final/">Weld 2.3.3.Final</a>
                 </h2>
+                <div class="news-date news-boxed">
+                  2016-2-12
+                </div>
                 <div class="news-author news-boxed">
                   Martin Kouba
                 </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
+                  See also <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">the release details</a>.
+                  Thanks to everyone involved in this release!
+                  Notable improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>allow to proxy classes with non-static non-private final methods</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>this is a non-portable way to get around the <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable" target="_blank">CDI spec restrictions</a>, see also <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods" target="_blank">Proxying classes with final methods</a> and <a href="https://issues.jboss.org/browse/CDI-527" target="_blank">CDI-527</a></p>
+                  </li>
+                  <li>
+                  <p><strong>use with caution!</strong></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>other enhancements and bug-fixes around proxies:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>better support for DeltaSpike partial beans (<a href="https://issues.jboss.org/browse/WELD-2084" target="_blank">WELD-2084</a>)</p>
+                  </li>
+                  <li>
+                  <p>better support for Camel CDI (<a href="https://issues.jboss.org/browse/WELD-2089" target="_blank">WELD-2089</a>)</p>
+                  </li>
+                  <li>
+                  <p>better support for proxies with non public classes (<a href="https://issues.jboss.org/browse/WELD-2091" target="_blank">WELD-2091</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Probe has a slightly redesigned menu and a new <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe" target="_blank">Dashboard</a> view with some basic stats</p>
+                  </li>
+                  <li>
+                  <p>the decorator validation was improved (<a href="https://issues.jboss.org/browse/WELD-2085" target="_blank">WELD-2085</a>, <a href="https://issues.jboss.org/browse/WELD-1811" target="_blank">WELD-1811</a>, <a href="https://issues.jboss.org/browse/WELD-2039" target="_blank">WELD-2039</a>)</p>
+                  </li>
+                  <li>
+                  <p>minor SPI cleanup was performed  (<a href="https://issues.jboss.org/browse/WELD-2077" target="_blank">WELD-2077</a>, <a href="https://issues.jboss.org/browse/WELD-2079" target="_blank">WELD-2079</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.3.Final/wildfly-10.0.0.Final-weld-2.3.3.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
+                  &#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
+                  <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE and synthetic container lifecycle event observers</a>
+                </h2>
                 <div class="news-date news-boxed">
                   2016-2-8
+                </div>
+                <div class="news-author news-boxed">
+                  Martin Kouba
                 </div>
                 <p></p>
                 <div class="content">
@@ -185,11 +262,11 @@
                 <h2>
                   <a href="/news/2016/02/04/weld-300Alpha15/">Weld 3.0.0.Alpha15</a>
                 </h2>
-                <div class="news-author news-boxed">
-                  Martin Kouba
-                </div>
                 <div class="news-date news-boxed">
                   2016-2-4
+                </div>
+                <div class="news-author news-boxed">
+                  Martin Kouba
                 </div>
                 <p></p>
                 <div class="content">
@@ -245,11 +322,11 @@
                 <h2>
                   <a href="/news/2015/12/10/weld-232Final/">Weld 2.3.2.Final</a>
                 </h2>
-                <div class="news-author news-boxed">
-                  Martin Kouba
-                </div>
                 <div class="news-date news-boxed">
                   2015-12-10
+                </div>
+                <div class="news-author news-boxed">
+                  Martin Kouba
                 </div>
                 <p></p>
                 <div class="content">
@@ -306,11 +383,11 @@
                 <h2>
                   <a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
                 </h2>
-                <div class="news-author news-boxed">
-                  Martin Kouba
-                </div>
                 <div class="news-date news-boxed">
                   2015-12-4
+                </div>
+                <div class="news-author news-boxed">
+                  Martin Kouba
                 </div>
                 <p></p>
                 <div class="content">
@@ -332,46 +409,6 @@
                   &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">Patch for Wildfly 10 CR4</a>
                   &#93;</p>
                   </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/11/25/arq-container-se-CR1/">Arquillian container SE 1.0.0.CR1 released!</a>
-                </h2>
-                <div class="news-author news-boxed">
-                  Tomas Remes
-                </div>
-                <div class="news-date news-boxed">
-                  2015-11-25
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>We are pleased to announce a new release of Arquillian container SE.
-                  If you are looking for a reliable way to test your application in Java SE then this is the right tool to try out!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This managed SE container launches new JVM process for each of your test archives.
-                  This standalone process with isolated classpath is also the main reason why we introduced such tool  (and also the difference e.g to <code>arquillian-weld-se-embedded</code>).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>You can manage your classpath dependencies by using <a href="https://github.com/shrinkwrap/resolver">ShrinkWrap resolver</a>.
-                  Another option is to provide path to your directory containing your dependencies jars via container property.
-                  You can get ready your dependencies jars by using e.g Maven dependency plugin. Another options which you would expect as debugging, setting system properties or exporting deployment archive are also available.
-                  Test execution is managed by Arquillian JMX protocol.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Finally you can find some basic tests using Arquillian
-                  container SE in <a href="https://github.com/weld/core/tree/2.3/environments/se/tests">Weld SE tests</a> or in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/se">CDI TCK</a>.
-                  Feedback is more than welcomed and if you have any questions don&#8217;t hesitate to ask!</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="title">Maven Coordinates:</div>
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;        &lt;version&gt;1.0.0.CR1&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                 </div>
