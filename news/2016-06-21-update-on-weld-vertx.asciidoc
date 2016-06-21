@@ -9,8 +9,8 @@ desc: Weld team has just released the first version of weld-vertx. Check the new
 ---
 :linkattrs:
 
-This is a follow-up on the article link:/news/2016/04/11/weld-meets-vertx/[Weld meets Vert.x].
-Weld team has just released the first alpha version of https://github.com/weld/weld-vertx[weld-vertx, window="_blank"] (available in http://search.maven.org/#search|gav|1|g%3A%22org.jboss.weld.vertx%22[Maven central, window="_blank"]).
+This is a follow-up on the article link:/news/2016/04/11/weld-meets-vertx/[Weld meets Vert.x, window="_blank"].
+Weld team has just released the first alpha version of https://github.com/weld/weld-vertx[weld-vertx, window="_blank"] (it seems there is a problem with synchronization to the Maven Central, until it gets fixed please use the https://developer.jboss.org/wiki/MavenRepository[JBoss Maven Repository, window="_blank"]).
 Since the last time we talked about `weld-vertx` two new features were added.
 First, it's possible to inject the relevant `io.vertx.core.Vertx` and `io.vertx.core.Context` instances direcly into beans.
 Also there is a new module called `weld-vertx-web` which extends functionality of `weld-vertx-core` and `io.vertx:vertx-web` and allows to register `Route` handlers discovered during container initialization.
