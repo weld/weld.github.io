@@ -4,6 +4,7 @@ title: Weld development mode and JMX support
 author: Martin Kouba
 priority: 1
 change_frequency: weekly
+tags: [probe, jmx]
 ---
 
 Weld comes with a special mode for application development.

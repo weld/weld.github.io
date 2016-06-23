@@ -6,6 +6,7 @@ priority: 1
 change_frequency: weekly
 excerpt: The next experimental Weld version has been released.
 desc: Weld 3.0.0.Alpha15 released. ExperimentalAfterBeanDiscovery event has been enhanced.
+tags: [release, cdi2]
 ---
 
 Weld 3.0.0.Alpha15 the next experimental Weld version has been released.

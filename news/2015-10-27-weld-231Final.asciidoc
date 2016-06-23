@@ -4,6 +4,7 @@ title: Weld 2.3.1.Final arrives...
 author: Martin Kouba
 priority: 1
 change_frequency: weekly
+tags: [release]
 ---
 
 Weld 2.3.1.Final has been released! The delivery: a few killed bugs, couple of Weld SE enhancements and several Weld Probe improvements.

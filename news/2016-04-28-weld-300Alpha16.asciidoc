@@ -6,6 +6,7 @@ priority: 1
 change_frequency: weekly
 excerpt: Start playing with metadata configurators included in the next experimental version of Weld (aligned with CDI 2.0.Alpha4).
 desc: Weld 3.0.0.Alpha16 released
+tags: [release, cdi2]
 ---
 :linkattrs:
 

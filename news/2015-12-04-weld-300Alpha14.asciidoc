@@ -5,6 +5,7 @@ author: Martin Kouba
 priority: 1
 change_frequency: weekly
 desc: Weld 3.0.0.Alpha14 released.
+tags: [release, cdi2]
 ---
 
 Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.

@@ -275,11 +275,7 @@ div.search-results ol li p.search-desc {
 }
 
 div.news-date {
-    background-color: #82939d;
-}
-
-div.news-author {
-    background-color: #86b4dc;
+    background-color: #4a5860;
 }
 
 div.news-boxed {
@@ -321,4 +317,8 @@ div.admonitionblock .icon .title {
     color: #404040;
     border-right: 1px solid silver;
     padding: 10px;
+}
+
+span.tags a {
+    color: #e5eaec;
 }

@@ -4,6 +4,7 @@ title: Arquillian container SE 1.0.0.CR1 released!
 author: Tomas Remes
 priority: 1
 change_frequency: weekly
+tags: [arquillian, testing]
 ---
 
 We are pleased to announce a new release of Arquillian container SE.

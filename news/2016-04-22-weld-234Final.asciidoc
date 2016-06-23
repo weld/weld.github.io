@@ -6,6 +6,7 @@ priority: 1
 change_frequency: weekly
 excerpt: The next version of the stable 2.3 branch (CDI 1.2, WildFly 10) has been released.
 desc: Weld 2.3.4.Final released
+tags: [release]
 ---
 :linkattrs:
 

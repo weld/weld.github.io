@@ -84,6 +84,17 @@ desc: Weld - CDI Reference Implementation
             - if (post.content.length > 0)
               %div.news-date.news-boxed
                 #{post.date.year}-#{post.date.month}-#{post.date.day}
+                - if (post.tags.length > 0)
+                  &nbsp;
+                  %span.tags
+                    %i.fa.fa-tags
+                    - for tag in post.tags
+                      - link = "/news/tags/"
+                      - link << tag.to_s
+                      %a{:href=>link}<
+                        #{tag}
+                      - if tag != post.tags.last
+                        =", "
               %p
                 = post.excerpt || summarize(html_to_text(post.content), 20)
                 %a{:href=>post.url} more

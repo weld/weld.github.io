@@ -4,6 +4,7 @@ title: Weld 3.0.0.Alpha4
 author: Jozef Hartinger
 priority: 1
 change_frequency: weekly
+tags: [release, cdi2]
 ---
 
 Here we are again with the next Alpha release of Weld 3.

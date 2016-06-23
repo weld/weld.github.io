@@ -5,6 +5,7 @@ author: Martin Kouba
 priority: 1
 change_frequency: weekly
 desc: Weld meets Vert.x
+tags: [vertx, integration]
 ---
 :linkattrs:
 
