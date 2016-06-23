@@ -4,6 +4,7 @@ title: An update on Weld 3
 author: Jozef Hartinger
 priority: 1
 change_frequency: weekly
+tags: [cdi2]
 ---
 
 Today we are releasing the third Alpha release of Weld 3. These Alpha releases serve

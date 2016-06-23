@@ -6,6 +6,7 @@ priority: 1
 change_frequency: weekly
 excerpt: Weld team is considering adding an enhanced version of javax.enterprise.inject.Instance to the Weld API. Explore the possibilities...
 desc: Experiments with enhanced version of javax.enterprise.inject.Instance
+tags: [api, draft]
 ---
 :linkattrs:
 

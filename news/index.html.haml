@@ -18,7 +18,19 @@ desc: Latest news about Weld.
     - if (post.content.length > 0)
       %div.news-date.news-boxed
         #{post.date.year}-#{post.date.month}-#{post.date.day}
-      %div.news-author.news-boxed
+        - if (post.tags.length > 0)
+          &nbsp;
+          %span.tags
+            %i.fa.fa-tags
+            - for tag in post.tags
+              - link = "/news/tags/"
+              - link << tag.to_s
+              %a{:href=>link}<
+                #{tag}
+              - if tag != post.tags.last
+                =", "
+        &nbsp;
+        %i.fa.fa-pencil
         #{post.author}
     %p
     .content

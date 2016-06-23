@@ -4,6 +4,7 @@ title: Weld team changes
 author: Jozef Hartinger
 priority: 1
 change_frequency: weekly
+tags: [team]
 ---
 
 I am pleased to announce a couple of changes coming to the Weld team:

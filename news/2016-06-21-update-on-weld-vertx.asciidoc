@@ -6,6 +6,7 @@ priority: 1
 change_frequency: weekly
 excerpt: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
 desc: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
+tags: [vertx, integration]
 ---
 :linkattrs:
 
