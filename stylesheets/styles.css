@@ -270,13 +270,9 @@ div.search-results ol li p.search-desc {
 
 /* line 277, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.news-date {
-  background-color: #82939d; }
+  background-color: #4a5860; }
 
 /* line 281, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
-div.news-author {
-  background-color: #86b4dc; }
-
-/* line 285, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.news-boxed {
   text-align: center;
   display: inline-block;
@@ -294,24 +290,28 @@ div.content a[target="_blank"]:after {
   content: " \f08e";
 }
 **/
-/* line 304, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 300, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.note {
   border: 1px solid #7dcf7d;
   background-color: #dff0d8; }
 
-/* line 309, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 305, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .content {
   padding: 15px; }
 
-/* line 313, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 309, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock {
   border-radius: 4px 4px 4px 4px;
   margin-top: 15px;
   margin-bottom: 15px; }
 
-/* line 319, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 315, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .icon .title {
   font-weight: bold;
   color: #404040;
   border-right: 1px solid silver;
   padding: 10px; }
+
+/* line 322, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+span.tags a {
+  color: #e5eaec; }
