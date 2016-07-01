@@ -1,3 +1,7 @@
+- version: '2.3.5.Final'
+  category: Final
+  date: 1.7.2016
+  versionId: 12330052
 - version: '3.0.0.Alpha16'
   category: Experimental
   date: 28.4.2016
