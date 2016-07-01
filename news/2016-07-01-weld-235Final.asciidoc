@@ -1,0 +1,49 @@
+---
+layout: news
+title: Weld 2.3.5.Final
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The next version of the stable 2.3 branch (CDI 1.2, WildFly 10) has been released.
+desc: Weld 2.3.5.Final released
+tags: [release, plans]
+---
+:linkattrs:
+
+The next version of the stable 2.3 branch has been released!
+See also https://issues.jboss.org/projects/WELD/versions/12330052[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+We are plan to create the *2.4 branch* of Weld within a few months.
+Weld 2.4 will remain a *CDI 1.2* implementation.
+We would like to do some cleanup (e.g. remove deprecated classes from Weld SE), enhance the API and also add some new features.
+See also link:https://issues.jboss.org/projects/WELD/versions/12330683[the list of issues for 2.4.0.CR1, window="_blank"].
+
+Notable bugfixes and improvements:
+
+* fixed static disposer method invocation (link:https://issues.jboss.org/browse/WELD-2176[WELD-2176, window="_blank"])
+* fixed private observer/producer/disposer invocation on a bean with decorator (link:https://issues.jboss.org/browse/WELD-2179[WELD-2179, window="_blank"])
+* fixed `Instance.destroy()` for dependent session beans (link:https://issues.jboss.org/browse/WELD-2148[WELD-2148, window="_blank"])
+* fixed `ArraySet.hashCode()` to comply with `java.util.Set.hashCode()` contract (link:https://issues.jboss.org/browse/WELD-2185[WELD-2185, window="_blank"])
+* log veto actions and modifications of lists returned by `AfterTypeDiscovery` (link:https://issues.jboss.org/browse/WELD-2170[WELD-2170, window="_blank"], link:https://issues.jboss.org/browse/WELD-2171[WELD-2171, window="_blank"])
+* log a warning when a class is annotated with a scope but does not declare an appropriate constructor (link:https://issues.jboss.org/browse/WELD-2178[WELD-2178, window="_blank"])
+* support extension deployed in multiple WARs in an EAR (link:https://issues.jboss.org/browse/WELD-2143[WELD-2143, window="_blank"])
+* detect non-unique `BeanDeploymentArchive` identifier (link:https://issues.jboss.org/browse/WELD-2165[WELD-2165, window="_blank"])
+* Weld Servlet
+** fixed extraction of bean archive id - problem occures with embedded Jetty (link:https://issues.jboss.org/browse/WELD-2161[WELD-2161, window="_blank"])
+** improve the way `JandexDiscoveryStrategy` identifies an annotation annotated with `@NormalScope` (link:https://issues.jboss.org/browse/WELD-2160[WELD-2160, window="_blank"])
+** `weld-servlet-core` declares dependency on `weld-core-jsf`
+* Weld SE
+** do not pass system properties to Weld configuration (link:https://issues.jboss.org/browse/WELD-2146[WELD-2146, window="_blank"])
+* Probe - allow to test bean availability in a given bean archive
+** check for example the availability of an alternative in the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/availableBeans?bda=2b32e9d8-9a3c-34e9-b3f6-49753fedc76e&requiredType=org.jboss.weld.examples.numberguess.AnotherGameBean[demo application, window="_blank"]
+* many documentation and reference guide updates
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.3.5.Final/wildfly-10.0.0.Final-weld-2.3.5.Final-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API, window="_blank"] &#93;
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.3.5.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12330052[Release notes, window="_blank"] &#93;

@@ -22,13 +22,6 @@ layout: base
     &nbsp;
     %i.fa.fa-pencil
     #{page.author}
-  - if page.tags
-    %p.tags
-    - for tag in page.tags
-      - link = "/news/tags/"
-      - link << tag.to_s
-      %a{:href=>link}
-        #{tag}
   %p
   .content
     ~ content
