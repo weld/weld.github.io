@@ -137,6 +137,78 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2015/09/15/jdk-8u60-problem/">JDK 8u60 reveals a problem in Weld</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2015-9-15
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/bug">bug</a>
+                    ,
+                    <a href="/news/tags/jdk">jdk</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Recently released <strong>JDK 8u60</strong> has revealed a problem in Weld where not all synthetic members were ignored correctly.
+                  This has been fixed in <strong>2.2.16.Final</strong>, <strong>2.3.0.CR2</strong> and <strong>3.0.0.Alpha14</strong> (not released yet).
+                  However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
+                  See also <a href="https://issues.jboss.org/browse/WELD-2019">the related issue - WELD-2019</a>.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_use_case">Use case</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>If there is a lambda referencing an event/disposed parameter inside an observer/disposer method, the compiler creates a synthetic method with the event parameter as one of the method parameters. Since 8u60 the parameter annotations are preserved even for the synthetic method.
+                  And so Weld incorrectly recognizes these synthetic methods as observer/disposer methods.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_symptoms">Symptoms</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>You may get <code>WELD-000409: Observer method for container lifecycle event can only&#8230;&#8203;</code> if using such a lambda in an extension or even <code>WELD-001408 Unsatisfied dependencies for type&#8230;&#8203;</code> if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_example">Example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class Foo {&#x000A;      void observe(@Observes @Juicy String payload) {&#x000A;        Arrays.asList("foo").stream().filter((s) -&gt; s.equals(payload));&#x000A;      }&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>A synthetic method is created for the lambda and the event parameter is passed as a method parameter. The annotations are preserved.
+                  As a result Weld creates two observer methods having the same event parameter: <code>@Observes @Juicy String payload</code>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_workaround">Workaround</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Instead of the event parameter reference use an additional local variable with the same value assigned:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public void observe(@Observes @Juicy String payload) {&#x000A;       String p = payload;&#x000A;       Arrays.asList("foo").stream().filter((s) -&gt; s.equals(p));&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2015/09/08/weld-team-changes/">Weld team changes</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -641,154 +713,6 @@
                   &#91; Patch for Wildfly
                   (<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-8.2.0.Final-weld-3.0.0.Alpha5-patch.zip/download">8.2</a>,
                   <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha5-patch.zip/download">9 Alpha</a>)
-                  &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/02/05/weld-300Alpha4/">Weld 3.0.0.Alpha4</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2015-2-5
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                    ,
-                    <a href="/news/tags/cdi2">cdi2</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Here we are again with the next Alpha release of Weld 3.
-                  This time there are no additional CDI 2.0 previews.
-                  Instead, this release contains multiple performance improvements, enables <code>@Asynchronous</code>
-                  calls to be implemented simply with CDI interceptors and most importantly, it comes with
-                  <strong>weld-probe</strong>.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_weld_probe">Weld Probe</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Why isn&#8217;t my field injected?
-                  Why isn&#8217;t my interceptor triggered?
-                  What extensions do third-party libraries register?</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Have you ever found yourself asking a similar question?
-                  Making Weld developer-friendly and helpful in troubleshooting is our priority.
-                  Yet, similar problems still occur sometimes.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>But we can do event better! In Alpha4 of Weld 3 we are introducing a new tool called <strong>Weld Probe</strong>.
-                  Probe is a built-in tool that provides a detailed view into internals of a CDI application.
-                  Weld Probe has a web UI and is provided out-of-the-box.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Probe makes it easy to inspect:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>beans, their properties such as qualifiers, stereotypes and name</p>
-                  </li>
-                  <li>
-                  <p>a graph of bean dependencies</p>
-                  </li>
-                  <li>
-                  <p>observers and producers declared by beans</p>
-                  </li>
-                  <li>
-                  <p>interceptors and decorators bound to a bean</p>
-                  </li>
-                  <li>
-                  <p>extensions</p>
-                  </li>
-                  <li>
-                  <p>information about current contextual instances</p>
-                  </li>
-                  <li>
-                  <p>tracking of invocations and invocation trees</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Plus more addons are planned in future.</p>
-                  </div>
-                  <div class="imageblock">
-                  <div class="content">
-                  <img src="https://developer.jboss.org/servlet/JiveServlet/showImage/38-5641-24345/probe_bean_detail.png" alt="Weld Probe Screenshot">
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>To try probe all that needs to be done is to upgrade to Alpha4, enable the development mode and point your browser to the URL
-                  of your CDI application plus <code>/weld-probe</code> suffix.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>For more thorough overview of what Probe provides see
-                  <a href="http://goo.gl/ICQrRA">Martin&#8217;s blog post</a> or the
-                  <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha4/en-US/html/devmode.html#_probe">reference documentation</a>.
-                  You can play with Probe using this
-                  <a href="http://probe-weld.itos.redhat.com/weld-numberguess">simple CDI application</a>
-                  hosted on <a href="https://www.openshift.com/">OpenShift</a>. Just append
-                  <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe">/weld-probe</a>
-                  to the URL.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Bear in mind that Probe is still work in progress and that this early preview may have defects
-                  here and there.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_implementing_asynchronous_using_cdi_interceptor">Implementing @Asynchronous using CDI interceptor</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>It <strong>is</strong> possible to implement a substitute for EJB <code>@Asynchronous</code> method calls using CDI interceptors.
-                  Arjan Tijms recently <a href="http://jdevelopment.nl/cdi-based-asynchronous-alternative/">blogged about his solution</a>
-                  A similar one can be found in
-                  <a href="https://github.com/weld/core/blob/master/tests-arquillian/src/test/java/org/jboss/weld/tests/interceptors/thread/async/AsyncInterceptor.java">Weld&#8217;s testsuite</a>.
-                  Long story short: This would not work smoothly until now because of a limitation in Weld. This limitation is now gone in Alpha4.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_performance">Performance</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>This release integrates various runtime performance improvements mainly around bean instance construction,
-                  producer and observer method invocation.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_next">Next</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Weld 3.0.0.Alpha5 is planned in 3 weeks time from now, with some more CDI 2.0 previews.
-                  We are going to continue releasing Alpha versions of Weld 3.0 roughly every 3 weeks until
-                  the early draft of CDI 2.0, which should happen sometime in March.
-                  At that point, we&#8217;ll move to Beta releases.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>In the meantime, we&#8217;d like to hear your feedback on Probe or on Weld 3.0 Alpha releases in general.
-                  Feel free to use our <a href="https://community.jboss.org/en/weld?view=discussions">forums</a> or <a href="http://webchat.freenode.net/?channels=weld-dev">#weld-dev on freenode</a></p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12326166">Release notes</a> &#93;
-                  &#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4">Distribution</a> &#93;
-                  &#91; Patch for Wildfly
-                  (<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-8.2.0.Final-weld-3.0.0.Alpha4-patch.zip/download">8.2</a>,
-                  <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha4/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha4-patch.zip/download">9 Alpha</a>)
                   &#93;</p>
                   </div>
                   </div>
