@@ -1,0 +1,30 @@
+---
+layout: news
+title: Arquillian container Weld 2.0.0.Beta1 released!
+author: Tomas Remes
+priority: 1
+change_frequency: weekly
+tags: [arquillian, testing]
+---
+
+We are pleased to announce a release of embedded Arquillian container adapter for Weld.
+This container has deserved some love for really long time.
+We tried to refactor it and introduced new master branch which now corresponds to 2.0.0.x version stream.
+The original master was branched in 1.0.
+There is no more any `arquillian-weld-ee-embedded-1.1` or `arquillian-weld-se-embedded`.
+It's squashed to one `arquillian-weld-embedded` and you can configure environments either programmatically or using configuration properties.
+See link:https://github.com/arquillian/arquillian-container-weld
+This new version is going to be used in Weld as soon as possible.
+
+[source,xml]
+.Maven Coordinates:
+----
+    <dependency>
+        <groupId>org.jboss.arquillian.container</groupId>
+        <artifactId>arquillian-weld-embedded</artifactId>
+        <version>2.0.0.Beta1</version>
+    </dependency>
+----
+
+We would really appreciate if you can try it and let us know your experience!
+
