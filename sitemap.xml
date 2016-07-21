@@ -235,6 +235,12 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</loc>
+    <lastmod>2016-07-21</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>http://weld.cdi-spec.org/news/</loc>
     <lastmod>2016-07-21</lastmod>
     <priority>1</priority>
