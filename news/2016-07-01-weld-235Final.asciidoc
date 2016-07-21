@@ -14,7 +14,7 @@ The next version of the stable 2.3 branch has been released!
 See also https://issues.jboss.org/projects/WELD/versions/12330052[the release details, window="_blank"].
 Thanks to everyone involved in this release!
 
-We are plan to create the *2.4 branch* of Weld within a few months.
+We plan to create the *2.4 branch* of Weld within a few weeks.
 Weld 2.4 will remain a *CDI 1.2* implementation.
 We would like to do some cleanup (e.g. remove deprecated classes from Weld SE), enhance the API and also add some new features.
 See also link:https://issues.jboss.org/projects/WELD/versions/12330683[the list of issues for 2.4.0.CR1, window="_blank"].
