@@ -1,0 +1,113 @@
+---
+layout: news
+title: First release candidate of Weld 2.4
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The first release candidate of the 2.4 branch (CDI 1.2) has been released.
+desc: Weld 2.4.0.CR1 released
+tags: [release]
+---
+:linkattrs:
+
+I am pleased to announce the first release candidate of Weld 2.4 (CDI 1.2).
+See also https://issues.jboss.org/projects/WELD/versions/12330683[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+== Removed dependency on `com.google.guava:guava`
+
+Weld does not depend on `com.google.guava:guava` anymore (actually, Weld 3 does not depend on guava since 3.0.0.Alpha2).
+This significantly reduces the footprint of both Weld SE and Weld Servlet.
+The dependency is also not bundled with shaded artifacts for Weld SE and Weld Servlet.
+
+== Enhanced version of `javax.enterprise.inject.Instance`
+
+Weld now provides `org.jboss.weld.inject.WeldInstance` - an enhanced version of `javax.enterprise.inject.Instance`.
+There are three additional methods - `getHandler()`, `handlers()` and `isResolvable()`.
+A handler allows to inspect the metadata of the relevant bean and to destroy the underlying contextual instance.
+`isResolvable()` is just a convenient method - a replacement for `!isUnsatisfied() && !isAmbiguous()`.
+For more details see also http://docs.jboss.org/weld/reference/2.4.0.CR1/en-US/html/injection.html#_enhanced_version_of_literal_javax_enterprise_inject_instance_literal[the reference guide, window="_blank"].
+
+`WeldInstance` is automatically available in Weld SE and Weld Servlet where the Weld API is always on the class path.
+It is also available in Weld-powered EE containers. In this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use provided scope in Maven).
+
+This functionality is based on a new proposal for https://issues.jboss.org/browse/CDI-589[CDI-589, window="_blank"].
+
+== Veto `AnnotatedType` not annotated with bean defining annotation
+
+Sometimes it might be useful to process all types during bootstrap, i.e. fire/observe `ProcessAnnotatedType` event for each Java class discovered, but veto types which are *not annotated with a bean defining annotation*.
+The main reason is that not all classes that meet all of the necessary conditions are intended to become beans.
+And so vetoing such types helps to conserve memory used by the container.
+Note that if you use `bean-discovey-mode=annotated` (implicit bean archive) then no `ProcessAnnotatedType` will be fired for any such type because it’s not discovered at all.
+And there might be portable extensions which use `ProcessAnnotatedType` to extract some important information from classes which are not beans.
+
+Therefore, Weld allows to use `bean-discovey-mode=all` (explicit bean archive) and veto types without a bean defining annotation whose `AnnotatedType#getJavaClass().getName()` matches a file:///opt/source/weld/dist/weld-2.4.0.CR1/doc/en-US/html/configure.html#veto-types-without-bean-defining-annotation[regular expression].
+In other words, a type is vetoed if its name matches a regular expression and at the same time is not annotated with a bean defining annotation.
+This functionality is implemented as a built-in portable extension processing all types from all bean archives (it was already doable using an extension but we believe it's more convenient to have this functionality out of the box).
+
+This is a workaround for problems mentioned in https://issues.jboss.org/browse/CDI-420[CDI-420, window="_blank"].
+
+== `@ActivateRequestScope` moved to Weld API
+
+This interceptor binding can be used to activate the request scope within a business method invocation.
+It was previously part of the Weld SE but we believe it might be useful in any environment.
+See also https://issues.jboss.org/browse/WELD-2150[WELD-2150, window="_blank"].
+
+== Improved rolling upgrades support
+
+https://issues.jboss.org/secure/ViewProfile.jspa?name=lprimak[Lenny Primak] (a Weld community member - thanks for the report again!) struggled with rolling upgrades on certain application servers (Payara, GlassFish).
+Therefore, a new configuration property was introduced.
+This property allows to specify a delimiter which is used to abbreviate a bean archive identifier (which is usually derived from the archive name) before used as a part of an identifier of an internal component (such as bean).
+See also http://docs.jboss.org/weld/reference/2.4.0.CR1/en-US/html/configure.html#_rolling_upgrades_id_delimiter[the reference guide, window="_blank"] and https://issues.jboss.org/browse/WELD-2064[WELD-2064, window="_blank"].
+
+== Events - reflect the output of CDI-494
+
+This change reflects the clarification around `Event` operations - _"A wildcard type is not considered an unresolvable type variable"_.
+See also https://issues.jboss.org/browse/WELD-2137[WELD-2137, window="_blank"] and https://issues.jboss.org/browse/CDI-494[CDI-494, window="_blank"].
+Simply said, the snippet below and similar ones should now work:
+[source,java]
+----
+@Inject Event<List<?>> event;
+
+public void fireLists() {
+  List<String> stringList = new ArrayList<>();
+  event.fire(stringList);
+  List<Integer> intList = new ArrayList<>();
+  event.fire(intList);
+}
+
+void observeAllLists(@Observes List<?> anyList) {
+  // Will be notified
+}
+----
+
+== Probe - allow to filter unused beans
+
+The Probe development tool now identifies beans which are most likely unused (a bean is considered unused if it has no direct dependents, does not declare any observer or producer methods, is not annotated with `@Named` and is not a built-in bean, extension, interceptor or decorator).
+This might be useful to identify types suitable for vetoing as mentioned in <<_veto_code_annotatedtype_code_not_annotated_with_bean_defining_annotation>>.
+
+== Cleanup
+
+Weld has underwent an internal cleanup. A lot of deprecated and unused classes were removed.
+
+== Initial Java 9 support
+
+It's now possible to build Weld with Java 9.
+Note that this does not mean that Weld is modularized in a http://openjdk.java.net/projects/jigsaw/[Jigsaw way, window="_blank"].
+It's just the first step on a long road ;-).
+
+== Bugs
+
+Last but not least - a few bugs were killed.
+Weld SE - provided `ClassLoader` is also used to load extensions (https://issues.jboss.org/browse/WELD-2209[WELD-2209, window="_blank"]).
+`AnnotatedTypeValidator` does consider extended interfaces (https://issues.jboss.org/browse/WELD-2221[WELD-2221, window="_blank"]).
+Invocation of a JDK8 default method should be intercepted (this only works if using `jboss-classfilewriter` 1.2.0.Beta1+, https://issues.jboss.org/browse/WELD-2093[WELD-2093, window="_blank"]).
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.0.CR1/wildfly-10.0.0.Final-weld-2.4.0.CR1-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.0.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API, window="_blank"] &#93;
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.0.CR1/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12330683[Release notes, window="_blank"] &#93;
