@@ -194,12 +194,12 @@
                   And there might be portable extensions which use <code>ProcessAnnotatedType</code> to extract some important information from classes which are not beans.</p>
                   </div>
                   <div class="paragraph">
-                  <p>Therefore, Weld allows to use <code>bean-discovey-mode=all</code> (explicit bean archive) and veto types without a bean defining annotation whose <code>AnnotatedType#getJavaClass().getName()</code> matches a <a href="file:///opt/source/weld/dist/weld-2.4.0.CR1/doc/en-US/html/configure.html#veto-types-without-bean-defining-annotation">regular expression</a>.
+                  <p>Therefore, Weld allows to use <code>bean-discovey-mode=all</code> (explicit bean archive) and veto types without a bean defining annotation whose <code>AnnotatedType#getJavaClass().getName()</code> matches a <a href="http://docs.jboss.org/weld/reference/2.4.0.CR1/en-US/html/configure.html#veto-types-without-bean-defining-annotation">regular expression</a>.
                   In other words, a type is vetoed if its name matches a regular expression and at the same time is not annotated with a bean defining annotation.
                   This functionality is implemented as a built-in portable extension processing all types from all bean archives (it was already doable using an extension but we believe it&#8217;s more convenient to have this functionality out of the box).</p>
                   </div>
                   <div class="paragraph">
-                  <p>This is a workaround for problems mentioned in <a href="https://issues.jboss.org/browse/CDI-420" target="_blank">CDI-420</a>.</p>
+                  <p>This is a workaround for problems of <code>bean-discovey-mode=annotated</code> mentioned in <a href="https://issues.jboss.org/browse/CDI-420" target="_blank">CDI-420</a>.</p>
                   </div>
                   </div>
                   </div>
