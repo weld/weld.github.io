@@ -41,11 +41,11 @@ And so vetoing such types helps to conserve memory used by the container.
 Note that if you use `bean-discovey-mode=annotated` (implicit bean archive) then no `ProcessAnnotatedType` will be fired for any such type because it’s not discovered at all.
 And there might be portable extensions which use `ProcessAnnotatedType` to extract some important information from classes which are not beans.
 
-Therefore, Weld allows to use `bean-discovey-mode=all` (explicit bean archive) and veto types without a bean defining annotation whose `AnnotatedType#getJavaClass().getName()` matches a file:///opt/source/weld/dist/weld-2.4.0.CR1/doc/en-US/html/configure.html#veto-types-without-bean-defining-annotation[regular expression].
+Therefore, Weld allows to use `bean-discovey-mode=all` (explicit bean archive) and veto types without a bean defining annotation whose `AnnotatedType#getJavaClass().getName()` matches a http://docs.jboss.org/weld/reference/2.4.0.CR1/en-US/html/configure.html#veto-types-without-bean-defining-annotation[regular expression].
 In other words, a type is vetoed if its name matches a regular expression and at the same time is not annotated with a bean defining annotation.
 This functionality is implemented as a built-in portable extension processing all types from all bean archives (it was already doable using an extension but we believe it's more convenient to have this functionality out of the box).
 
-This is a workaround for problems mentioned in https://issues.jboss.org/browse/CDI-420[CDI-420, window="_blank"].
+This is a workaround for problems of `bean-discovey-mode=annotated` mentioned in https://issues.jboss.org/browse/CDI-420[CDI-420, window="_blank"].
 
 == `@ActivateRequestScope` moved to Weld API
 
