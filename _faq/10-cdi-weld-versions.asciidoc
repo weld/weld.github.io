@@ -26,11 +26,18 @@ An overview is provided in the following table:
 |7
 |Not actively developed anymore.
 
-|2.3{set:cellbgcolor:#eee}
+|2.3
+|1.2
+|7+
+|7
+|Not actively developed anymore.
+
+|2.4{set:cellbgcolor:#eee}
 |1.2
 |7+
 |7
 |The stable version of Weld.
+
 
 |3.0{set:cellbgcolor:none}
 |2.0 (Under development)
