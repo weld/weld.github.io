@@ -147,6 +147,7 @@ table.downloads {
 
 pre {
     background-color: #f0f0f0;
+    font-family: "Lucida Console", monospace;
 }
 
 pre code {
@@ -321,4 +322,8 @@ div.admonitionblock .icon .title {
 
 span.tags a {
     color: #e5eaec;
+}
+
+ul li p {
+  margin: 0px;
 }
