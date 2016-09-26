@@ -1,0 +1,102 @@
+---
+layout: news
+title: Weld Tip &num;1 - Logging
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The very first article from a series of concise Weld tips.
+desc: Weld Tips #1 - Logging
+tags: [tips]
+---
+:linkattrs:
+
+This is the first article from a series of short articles covering some useful Weld features.
+In this article we talk about logging.
+The topics for the next articles include: *DEVELOPMENT MODE*, *PERFORMANCE*, *NON-EE ENVIRONMENTS* and *TESTING*.
+
+== Motivation
+
+Logging is usually no fancy stuff.
+But very often it's _the best thing to start with if problems arise_.
+Moreover, it's the easiest form of debugging.
+
+In this article you will find:
+
+* <<under_the_hood>> - how to control and configure the output
+* <<filter>> - how to keep logs small and to the point
+* <<bootstrap>> - registered beans, actions performed by extensions
+
+[[under_the_hood]]
+== Under the hood
+
+Weld is using link:https://developer.jboss.org/wiki/JBossLoggingTooling[JBoss Logging].
+This is an abstraction layer wchich does not "write" any log messages at all.
+Instead, it effectively constructs a log message and then delegates to a back-end logging framework.
+The supported frameworks include link:https://developer.jboss.org/wiki/StandaloneJBossLogManager[jboss-logmanager], link:http://logging.apache.org/log4j/2.x/[Log4j], link:http://www.slf4j.org/[SLF4J] and JDK logging.
+
+So which logging framework is actually used to write the Weld messages?
+Well, it depends on the environment.
+In a *Java EE container* (e.g. WildFly) the logging configuration is under the direction of the container.
+You should follow the container-specific guides to change the configuration (see for example link:https://docs.jboss.org/author/display/WFLY10/Logging+Configuration[WildFly - Logging Configuration] and link:/documentation/#7[How do I enable debug logging for Weld in a specific container?]).
+
+A web application deployed to a *servlet container* usually bundles a logging framework and possibly some configuration file.
+In this case, the configuration is in hands of the application developer.
+If no logging framework is bundled follow the container-specific guides to change the configuration (e.g. link:http://tomcat.apache.org/tomcat-8.0-doc/logging.html[Logging in Tomcat]).
+
+TIP: A system property `org.jboss.logging.provider` can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also link:https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java[LoggerProviders, window="_blank"].
+
+In *Java SE* the situation is very similar to servlet containers except the class loading is usually even less complicated (see also link:/documentation/#10[ How do I enable debug logging for Weld SE?]).
+
+[[filter]]
+== Set the log level and use categories to filter messages
+
+The default log level is usually `INFO`.
+Weld does not log that much information with this level.
+You will have to set the log level to `DEBUG` (or even `TRACE`) to see what's going on in your application.
+If you set the level globally (for all frameworks and libraries), the log files will be bloated and it will be very hard to get some relevant info from there.
+If you set the level for Weld only (i.e. for `org.jboss.weld`), it should be better.
+Moreover, it's possible to use categories to filter messages from a particular "domain".
+Weld log messages are grouped into several categories:
+
+* `org.jboss.weld.Bootstrap`
+* `org.jboss.weld.Validator`
+* `org.jboss.weld.Bean`
+* `org.jboss.weld.Context`
+* `org.jboss.weld.El`
+* `org.jboss.weld.Conversation`
+* and others (see also link:https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java[org.jboss.weld.logging.Category, window="_blank"])
+
+So for example, if you're only interested in log messages related to *EL resolution* set the log level for the `org.jboss.weld.El` category to `TRACE` (or level with corresponding priority).
+
+[[bootstrap]]
+== Monitoring bootstrap
+
+CDI is designed to fail fast.
+An extensive validation is performed during application initialization in order to avoid malicious errors at runtime.
+Container usually also logs a lot of interesting info during bootstrap.
+Let's try to set the log level to *DEBUG* for the `org.jboss.weld.Bootstrap` category and see what we get.
+
+=== Registered beans
+
+As simple as it looks - Weld logs _all the beans_ found in the application, e.g.:
+
+----
+DEBUG [Bootstrap] WELD-000106: Bean: Managed Bean [class org.jboss.cdi.tck.tests.lookup.dependency.resolution.broken.unsatisfied.Vanilla] with qualifiers [@Any @Default]
+DEBUG [Bootstrap] WELD-000106: Bean: Producer Method [String[]] with qualifiers [@BatchProperty @Any] declared as [[UnbackedAnnotatedMethod] @Produces @BatchProperty public org.jberet.creation.BatchBeanProducer.getStringArray(InjectionPoint)]
+----
+=== Actions performed by extensions
+
+There is no doubt that portable extensions are really powerful.
+They can change almost anything.
+That's great for framework/libraries developers.
+On the other hand, this may cause problems when looking for a bug.
+There is an application class provided by a developer but what does the CDI container actually see?
+Well, it depends... because portable extensions are allowed to redefine this.
+And that's why Weld logs all the _"modification"_ operations performed by extensions, such as `ProcessAnnotatedType.veto()`:
+
+----
+DEBUG [Bootstrap] WELD-000148: ProcessAnnotatedType.veto() called by com.foo.MyExtension@50fed5b1 for [BackedAnnotatedType] public class com.foo.Foo
+----
+
+TIP: If your application deploys successfully, you can use link:http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html#devtools[Development Tools] to inspect the runtime info (will be covered in one of the follow-up articles).
+
