@@ -63,10 +63,18 @@ Weld log messages are grouped into several categories:
 * `org.jboss.weld.Bean`
 * `org.jboss.weld.Context`
 * `org.jboss.weld.El`
-* `org.jboss.weld.Conversation`
 * and others (see also link:https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java[org.jboss.weld.logging.Category, window="_blank"])
 
 So for example, if you're only interested in log messages related to *EL resolution* set the log level for the `org.jboss.weld.El` category to `TRACE` (or level with corresponding priority).
+Another useful example is the check of link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration[Weld configuration, window="_blank"].
+Simply set the log level to `DEBUG` and filter the `org.jboss.weld.Configuration` category:
+
+----
+DEBUG [Configuration] WELD-001907: Reading properties file: test.war/WEB-INF/classes/weld.properties
+DEBUG [Configuration] WELD-001903: Configuration key RESOLUTION_CACHE_SIZE already set to 1 000 in a source with higher priority, value 500 from system properties is ignored
+DEBUG [Configuration] WELD-001904: Unsupported configuration key found and ignored: com.foo.bar
+DEBUG [Configuration] WELD-001902: Configuration initialized: {CONCURRENT_DEPLOYMENT=false, RESOLUTION_CACHE_SIZE=1000, RELAXED_CONSTRUCTION=true}
+----
 
 [[bootstrap]]
 == Monitoring bootstrap
