@@ -5,7 +5,7 @@ priority: 1
 change_frequency: daily
 desc: Latest news about Weld.
 ---
-
+- page.title = "News - tag #{page.selected_tag}" if !page.selected_tag.nil?
 %h1
   News
   %a{:href=>"http://weld.cdi-spec.org/news.atom"}
