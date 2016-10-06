@@ -9,6 +9,10 @@ desc: Weld 2.4.0.CR1 released
 tags: [release]
 ---
 :linkattrs:
+:toc: macro
+:toc-title: Contents
+
+toc::[]
 
 I am pleased to announce the first release candidate of Weld 2.4 (CDI 1.2).
 See also https://issues.jboss.org/projects/WELD/versions/12330683[the release details, window="_blank"].

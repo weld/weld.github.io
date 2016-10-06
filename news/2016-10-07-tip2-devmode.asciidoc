@@ -1,0 +1,126 @@
+---
+layout: news
+title: Weld Tip 2 - Development Mode
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Meet Weld Probe - a development tool which allows to inspect CDI components at runtime.
+desc: Weld Tip 2 - Development Mode
+tags: [tips]
+---
+:linkattrs:
+:toc: macro
+:toc-title: Contents
+
+toc::[]
+
+In this article we're going to cover the link:http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html[special mode for application development, window="_blank"].
+When enabled, a built-in tool called *Probe* provides a detailed insight into internals of a CDI application.
+Probe makes it easy to inspect:
+
+* bean archives
+* beans and their properties such as qualifiers, stereotypes and name
+* a graph of bean dependencies
+* observers and producers declared by beans
+* interceptors and decorators bound to a bean
+* extensions
+* information about current contextual instances
+* tracking of invocations and invocation trees
+* tracking of fired events
+* Weld configuration
+* and more!
+
+Before you start reading, you might want to check the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[live demo hosted on OpenShift, window="_blank"] and see what Probe can offer.
+Ok, now let's get it working!
+
+== How to enable the development mode
+
+No surprise that the development mode is _DISABLED_ by default.
+It should _NEVER_ be used in production as it may have negative impact on performance and/or represent a potential security risk.
+Note that if you successfully enable the development mode you should see `Weld Development Mode: ENABLED` warning in the log during application bootstrap.
+Make sure to disable the development mode before deploying to production!
+
+=== Web application
+
+For any web application, set the Servlet initialization parameter `org.jboss.weld.development` to `true`:
+
+[source,xml]
+----
+<web-app>
+    <context-param>
+        <param-name>org.jboss.weld.development</param-name>
+        <param-value>true</param-value>
+    </context-param>
+</web-app>
+----
+
+=== WildFly
+
+Since WildFly 10 it's also possible to enable the Weld development mode globally (i.e. for all the applications deployed) by setting `development-mode` attribute to true:
+----
+/subsystem=weld:write-attribute(name=development-mode,value=true)
+----
+See also link:https://docs.jboss.org/author/display/WFLY10/CDI+Reference[WildFly CDI Reference, window="_blank"].
+
+=== Weld SE
+
+For a Java SE application, set the system property `org.jboss.weld.development` to true:
+----
+java -cp myCoolApp.jar -Dorg.jboss.weld.development=true com.foo.MyMain
+----
+or use the `Weld.property()` method:
+
+[source,java]
+----
+org.jboss.weld.environment.se.Weld;
+
+public static void main(String[] args) {
+   Weld weld = new Weld().property("org.jboss.weld.development", true);
+   try (WeldContainer container = weld.initialize()) {
+      ...
+   }
+}
+----
+
+== How does it actually work?
+
+Probe collects CDI-related data from your application and then makes the data available through the _REST API_, eventually through the _MXBean_ of name `org.jboss.weld.probe:type=JsonData,context=ID` where ID should be replaced with an idenfitier of an application.
+
+== Probe UI
+
+Probe has also a _web UI_ (single-page application) available at `{webapp-context-path}/weld-probe` (once your webapp starts), e.g. `http://localhost:8080/weld-numberguess/weld-probe`.
+By default, Probe also embeds a tiny information bar directly into the application’s HTML output.
+That makes it easy to navigate to Probe directly from the application anytime.
+Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.
+
+* The best place to start is probably the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/beans[Beans view, window="_blank"]
+* You may also discover the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&beanClass=ValidationExtension[observer methods declared by an extension, window="_blank"]
+* Monitor all the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[fired events, window="_blank"] and track which observer methods a particular event was delivered to
+* And more...
+
+We believe the UI is quite intuitive but feel free to ask questions on any channel (irc, gitter, mailing list, etc.).
+
+TIP: There are some configuration properties which allow to tune or disable Probe features, e.g. to restrict the set of components which will be monitored. See also link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[Development Mode Configuration, window="_blank"].
+
+== What if I don't have a webapp?
+
+Nothing is lost!
+JMX and link:https://github.com/weld/weld-probe-client-adapter[weld-probe-client-adapter, window="_blank"] come to rescue.
+This "adapter" allows to reuse the default HTML UI even if there is no REST API available (non-web environments).
+The adapter either connects to a JMX server (link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[Probe JMX support must be enabled, window="_blank"]) or loads data from an exported file (see also <<probe-offline>>), then starts an embedded Undertow webserver instance and exposes the default HTML client but using the data from the first step.
+
+[[probe-offline]]
+== Does it work offline?
+
+Sometimes it's not possible to inspect a running system (e.g. due to security reasons).
+Probe allows to _export_ the collected data and inspect it _offline_.
+There are two ways to export the data:
+
+1. Using REST API: HTTP GET `{webapp-context-path}/weld-probe/export`
+2. Configure Probe to export data after deployment (see also `org.jboss.weld.probe.exportDataAfterDeployment` property in link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[Development Mode Configuration, window="_blank"])
+
+And now use the link:https://github.com/weld/weld-probe-client-adapter[weld-probe-client-adapter, window="_blank"] again:
+
+----
+java -jar weld-probe-client-adapter-1.0.0.Final-shaded.jar /home/weld/weld-probe-export.zip
+----
