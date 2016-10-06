@@ -1,42 +1,41 @@
-//Include google font
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 div.navbar {
-  background-color: transparent;
-  border: 0 none;
-  border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    border: 0 none;
+    border-bottom: 1px solid #ddd;
 }
 
 .navbar-default .navbar-nav > li {
-  margin-bottom: -1px;
+    margin-bottom: -1px;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #0088cc;
-  border: 1px solid #ddd;
+    color: #0088cc;
+    border: 1px solid #ddd;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .navbar-default .navbar-nav > li:last-child > a {
-  border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
 }
 
 .navbar-default .navbar-nav > li:first-child > a {
-  border-radius: 6px 6px 0 0;
-  background-color: #eee;
-  border: 0 none;
+    border-radius: 6px 6px 0 0;
+    background-color: #eee;
+    border: 0 none;
 }
 
 .navbar-default .navbar-nav > li:first-child > a:hover {
-  color: black;
+    color: black;
 }
 
 code {
-  background-color: inherit;
-  font-family: "Lucida Console", monospace;
+    background-color: inherit;
+    font-family: "Lucida Console", monospace;
 }
 
 p code {
@@ -52,41 +51,41 @@ p code {
 
 //image placement
 img.weld-home-logo {
-  margin: 40px 0 15px 20px;
-  float: left;
+    margin: 40px 0 15px 20px;
+    float: left;
 }
 
 img.cdi-background {
-  float: right;
+    float: right;
 }
 
 html {
-  font-size: small;
+    font-size: small;
 }
 
 //body styles
 body {
-  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 110%;
-  height: 100%;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 110%;
+    height: 100%;
 }
 
 p {
-  margin: 0 0 15px;
+    margin: 0 0 15px;
 }
 
 .container-fluid div.jumbotron {
-  padding: 35px;
-  line-height: 25px;
-  margin: 15px 0px 15px 0px;
+    padding: 35px;
+    line-height: 25px;
+    margin: 15px 0px 15px 0px;
 }
 
 div.jumbotron p {
-  font-size: 120%;
+    font-size: 120%;
 }
 
 div.jumbotron h1 {
-  font-size: 400%;
+    font-size: 400%;
 }
 
 h1, h2, h3 {
@@ -291,13 +290,6 @@ div.news-boxed {
     margin-bottom: 5px;
 }
 
-/**
-div.content a[target="_blank"]:after {
-  font-family: 'FontAwesome';
-  content: " \f08e";
-}
-**/
-
 div.note {
     border: 1px solid #7dcf7d;
     background-color: #dff0d8;
@@ -318,6 +310,8 @@ div.admonitionblock .icon .title {
     color: #404040;
     border-right: 1px solid silver;
     padding: 10px;
+    text-transform: uppercase;
+    font-size: large;
 }
 
 span.tags a {
@@ -325,5 +319,13 @@ span.tags a {
 }
 
 ul li p {
-  margin: 0px;
+    margin: 0px;
+}
+
+div.toc {
+    float: right;
+    border: 1px solid silver;
+    margin-left: 30px;
+    padding: 15px;
+    border-radius: 10px;
 }
