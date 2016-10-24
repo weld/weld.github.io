@@ -1,0 +1,188 @@
+---
+layout: news
+title: Weld Tip 3 - Boost performance of Weld apps
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Explore various aspects of CDI/Weld applications performance.
+desc: Weld Tip 3 - Boost performance of Weld apps
+tags: [tips]
+---
+:linkattrs:
+:toc: macro
+:toc-title: Contents
+:icons: font
+
+toc::[]
+
+In this article we're going to dive into various performance aspects of CDI applications.
+As you've probably noticed performance testing is sometimes tricky.
+First of all, it's difficult to create a meaningful benchmark.
+One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. link:http://openjdk.java.net/projects/code-tools/jmh/[JMH, window="_blank"] for microbenchmarks) accordingly.
+But even that usually proves to be unsufficient.
+One should also run the test in a relevant context (data, load, etc.).
+Performance specialists also say that's it's good to avoid premature optimizations but keep performance aspects in mind when tuning the "final" code.
+But all these considerations are out of scope of this article.
+Let's go through several areas where CDI affects the performance of your application and discuss the possibilities.
+
+== Bootstrap
+
+During bootstrap the overhead of a framework should be minimal so that it does not _slow down_ the application startup and also does not eat all the memory available.
+However, CDI needs to do all that magic behind the scenes - read annotations, build and validate metadata, etc.
+The following sections describe what could be done to minimize the impact.
+
+=== Discovery mode
+
+In CDI 1.0 there was only one _"discovery mode"_.
+How does it work?
+Simply put: find all bean archives (containing `beans.xml`), discover and process all the found classes (identify beans, etc.).
+Needless to say, this might be a performance problem for large applications with thousands of classes.
+In CDI 1.1+ we call this mode `all` and a bean archive with this mode is called *EXPLICIT*.
+Since CDI 1.1+ a new discovery mode - `annotated` - can be used.
+The difference is that if this mode is used only classes with a link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations[bean defining annotation, window="_blank"] are considered.
+In other words, a component must be explicitly designated.
+A bean archive with this mode is called *IMPLICIT*.
+To make things a little bit more complicated, an implicit bean archive does not have to contain a `beans.xml` file at all.
+One class with a bean defining annotation or a session bean is enough.
+
+Implicit bean archive has pros and cons:
+
+* icon:thumbs-o-up[] saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)
+* icon:thumbs-o-up[] speeds up the bootstrap (the container does not have to process all the types, fire events like `ProcessBean`, etc.)
+* icon:thumbs-down[] does not fire `ProcessAnnotatedType` for all types from the bean archive; this breaks some extensions (e.g. `MessageBundleExtension` from DeltaSpike)
+* icon:thumbs-down[] does not pick up `@javax.inject.Singleton` beans (it's not a bean defining annotation)
+
+*CONCLUSION*: If possible, use the `annotated` discovery mode.
+
+TIP: Most Weld-based runtimes allow to suppress implicit bean archives without `beans.xml`, i.e. to require the `beans.xml` file in bean archives so that it's not necessary to scan all the parts of the application. See also link:/documentation/#4[FAQ].
+
+TIP: If it's not possible to use `annotated` mode, you can try a Weld-specific feature to conserve memory used: link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation[Veto types without bean defining annotation, window="_blank"].
+A similar solution is going to be standardized in CDI 2.0 (see also link:https://issues.jboss.org/browse/CDI-420[CDI-420, window="_blank"]).
+
+=== Extensions
+
+CDI portable extensions are essential integration points.
+And users love integrated technologies.
+However, the more extensions the more work must be done during bootstrap.
+For example, there is a `ProcessAnnotatedType` container lifecycle event.
+This event is fired:
+
+* for every type in an EXPLICIT bean archive,
+* for every session bean and every type with a bean defining annotation in an IMPLICIT bean archive.
+
+The delivery might be restricted by means of type arguments, e.g. for observer `void observeNumbers(@Observes ProcessAnnotatedType<Number> event)` an extension will be notified for every class assignable to `Number`.
+However, if you do `<T> void observe(@Observes ProcessAnnotatedType<T> event)` your extension will be notified for every class that is discovered.
+Now if we have an application with one EXPLICIT bean archive with 2000 classes, then a specific observer method on such extesion will be called 2000x.
+And if there are three similar extensions, the CDI container will have to create 2000 events and notify 6000 observers.
+This should be ok unless the observer logic is overly complex.
+
+*CONCLUSION*: Pay attention to extensions used in your application.
+If you wonder what extensions are in service, use for example Weld Probe link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&kind=EXTENSION[observers view, window="_blank"] or link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[fired events view, window="_blank"] together with link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[`org.jboss.weld.probe.eventMonitor.containerLifecycleEvents` enabled, window="_blank"].
+
+TIP: If possible, don't use the extensions which observe all the annotated types from your application, i.e. which defined something like `void observe(@Observes ProcessAnnotatedType<?> event)`.
+Since CDI 1.1 `@WithAnnotations` should be used to restrict the set of types an extension is going to process. link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&kind=EXTENSION&observedType=javax.enterprise.inject.spi.ProcessAnnotatedType[Weld Probe, window="_blank"] warns you about these extensions.
+
+
+[[jandex]]
+=== Jandex
+
+In some environments (WildFly, Weld SE, and more) Weld can leverage an "offline reflection library", such as link:https://github.com/wildfly/jandex[Jandex, window="_blank"], to speed up the scanning process.
+These libraries allow to effectively filter classes link:http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans[which are not beans, window="_blank"] and vetoed classes.
+It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
+As a result Weld does not even have to _load the classes_ or use _reflection API_ to detect types which should be ignored.
+
+TIP: In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the link:https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project[Ant task, window="_blank"].
+
+== Runtime
+
+In runtime the overhead of a framework should be minimal so that it's not an application bottleneck.
+However, CDI needs to do all that magic behind the scenes - create bean instances, manage contexts, intercept and decorate invocations, etc.
+The following sections describe what could be done to minimize the impact.
+
+=== Identify problematic components easily
+
+Before you start a profiler or a similar tool, it's a good idea to identify all the CDI components involved in a problematic "request".
+This means all the beans, observer methods, interceptors and decorators.
+The good start might be the Weld Probe link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations[invocation trees, window="_blank"] view.
+An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
+Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
+Sometimes profilers are just an overkill.
+
+=== Lazy initialization of bean instances
+
+Weld initializes bean instances of normal scoped beans lazily.
+In other words, when injecting a normal scoped bean (`@RequestScoped`, `@ApplicationScoped`, etc.) a new instance is not created until actually used.
+Instead, a shared client proxy is injected.
+This proxy invokes a method upon the correct bean instance (created if necessary).
+
+TIP: Having many injection points resolving to normal scoped beans does not necessarily mean additional overhead associated with bean instance creation.
+
+In the following example, an `OrderProcessor` instance is not created until its `OrderProcess.process()` method is called:
+
+[source,java]
+----
+@ApplicationScoped
+class OrderProcessor {
+  @PostConstruct
+  void init() {
+    // Do some expensive initialization logic
+  }
+  void process() {
+    // Business logic
+  }
+}
+@RequestScoped
+class OrderService {
+  @Inject
+  OrderProcessor processor; // A shared client proxy is injected
+
+  void create(Order order) {
+    if (order.isValid()) {
+        // Processor is not initialized unless we have a valid order
+        processor.process(order);
+    }
+  }
+}
+----
+
+TIP: Weld's session context is also initilized lazily and doesn't require an HTTP session to actually exist until a bean instance must be written (i.e. until a method of a `@SessionScoped` bean is invoked).
+
+=== Drawbacks of `@Dependent` pseudo-scope
+
+From performance point of view `@Dependent` is NOT a best fit for:
+
+* icon:thumbs-down[] a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)
+* icon:thumbs-down[] a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)
+* icon:thumbs-down[] a bean which is used in EL expressions
+
+For all these cases, a new `@Dependent` bean instance is created to handle the logic and destroyed when the invocation/evaluation completes.
+In other words, the bean instances are not reused.
+That's not necessarily a problem if a bean does not have an "expensive" initialization or depends on others "heavyweight" components.
+But very often, a wider scope is more suitable.
+
+=== Mapping CDI contexts to HTTP requests
+
+By default, bult-in CDI contexts are activated at the beginning of an HTTP request processing and deactivated once the processing finishes.
+This might be an unnecessary overhead in certain situations, e.g. when serving static resources (images, JavaScript, etc.).
+Weld allows to activate the contexts only for a subset of requests only.
+A regular expression may be used for filtering HTTP requests that should have contexts active during their processing.
+
+[source,xml]
+----
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>org.jboss.weld.context.mapping</param-name>
+        <param-value>.*\.html</param-value> <!-- Only activate contexts for resources with html suffix, e.g. /some/path.html -->
+    </context-param>
+</web-app>
+----
+
+=== Bean identifier index optimization
+
+This optimization is used to *reduce the HTTP session replication overhead* (clustering use case).
+Simply put: Weld tries to minimize the amount of bytes send over the network.
+However, the inconsistency detection mechanism may cause problems in environments where application stop does not imply HTTP session destruction.
+Thus it's disabled by default in Servlet containers.
+See also the link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_bean_identifier_index_optimization[reference guide] for more info.

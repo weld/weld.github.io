@@ -99,7 +99,7 @@ h1 {
 }
 
 h2 {
-    font-size: 130%;
+    font-size: 140%;
 }
 
 h3 {
@@ -226,7 +226,7 @@ img.weld-book-img {
 @media (min-width: 1280px) {
 
   .sidebar-nav {
-    min-width: 14em;
+    min-width: 15em;
     left: 35px;
   }
 
@@ -311,7 +311,14 @@ div.admonitionblock .icon .title {
     border-right: 1px solid silver;
     padding: 10px;
     text-transform: uppercase;
-    font-size: large;
+}
+
+div.admonitionblock td.icon .icon-tip:before {
+    content: "\f0eb";
+    color: #111;
+    font-size: 200%;
+    border-right: 1px solid silver;
+    padding: 10px;
 }
 
 span.tags a {
@@ -324,8 +331,28 @@ ul li p {
 
 div.toc {
     float: right;
-    border: 1px solid silver;
     margin-left: 30px;
     padding: 15px;
     border-radius: 10px;
+}
+
+div.toc div.title {
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+div.toc ul.sectlevel1 {
+    border: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.toc ul.sectlevel1 li {
+    padding: 5px;
+}
+
+div.toc ul.sectlevel1 li ul.sectlevel2 li {
+    padding: 2px;
 }
