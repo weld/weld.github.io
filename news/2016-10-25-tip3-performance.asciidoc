@@ -70,7 +70,7 @@ This event is fired:
 * for every type in an EXPLICIT bean archive,
 * for every session bean and every type with a bean defining annotation in an IMPLICIT bean archive.
 
-The delivery might be restricted by means of type arguments, e.g. for observer `void observeNumbers(@Observes ProcessAnnotatedType<Number> event)` an extension will be notified for every class assignable to `Number`.
+The delivery might be restricted by means of type arguments, e.g. for observer `void observeNumbers(@Observes ProcessAnnotatedType<? extends Number> event)` an extension will be notified for every class assignable to `Number`.
 However, if you do `<T> void observe(@Observes ProcessAnnotatedType<T> event)` your extension will be notified for every class that is discovered.
 Now if we have an application with one EXPLICIT bean archive with 2000 classes, then a specific observer method on such extesion will be called 2000x.
 And if there are three similar extensions, the CDI container will have to create 2000 events and notify 6000 observers.
