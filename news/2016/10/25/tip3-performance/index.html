@@ -278,7 +278,7 @@
                   </ul>
                   </div>
                   <div class="paragraph">
-                  <p>The delivery might be restricted by means of type arguments, e.g. for observer <code>void observeNumbers(@Observes ProcessAnnotatedType&lt;Number&gt; event)</code> an extension will be notified for every class assignable to <code>Number</code>.
+                  <p>The delivery might be restricted by means of type arguments, e.g. for observer <code>void observeNumbers(@Observes ProcessAnnotatedType&lt;? extends Number&gt; event)</code> an extension will be notified for every class assignable to <code>Number</code>.
                   However, if you do <code>&lt;T&gt; void observe(@Observes ProcessAnnotatedType&lt;T&gt; event)</code> your extension will be notified for every class that is discovered.
                   Now if we have an application with one EXPLICIT bean archive with 2000 classes, then a specific observer method on such extesion will be called 2000x.
                   And if there are three similar extensions, the CDI container will have to create 2000 events and notify 6000 observers.
