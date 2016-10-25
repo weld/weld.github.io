@@ -99,7 +99,7 @@ h1 {
 
 /* line 101, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h2 {
-  font-size: 130%; }
+  font-size: 140%; }
 
 /* line 105, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h3 {
@@ -225,7 +225,7 @@ img.weld-book-img {
 @media (min-width: 1280px) {
   /* line 228, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav {
-    min-width: 14em;
+    min-width: 15em;
     left: 35px; } }
 /* line 235, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.row {
@@ -306,21 +306,48 @@ div.admonitionblock .icon .title {
   color: #404040;
   border-right: 1px solid silver;
   padding: 10px;
-  text-transform: uppercase;
-  font-size: large; }
+  text-transform: uppercase; }
 
-/* line 317, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 316, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.admonitionblock td.icon .icon-tip:before {
+  content: "\f0eb";
+  color: #111;
+  font-size: 200%;
+  border-right: 1px solid silver;
+  padding: 10px; }
+
+/* line 324, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 span.tags a {
   color: #e5eaec; }
 
-/* line 321, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 328, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul li p {
   margin: 0px; }
 
-/* line 325, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 332, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc {
   float: right;
-  border: 1px solid silver;
   margin-left: 30px;
   padding: 15px;
   border-radius: 10px; }
+
+/* line 339, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.toc div.title {
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px; }
+
+/* line 345, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.toc ul.sectlevel1 {
+  border: 1px solid #ddd;
+  border-radius: 0 0 5px 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+/* line 352, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.toc ul.sectlevel1 li {
+  padding: 5px; }
+
+/* line 356, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.toc ul.sectlevel1 li ul.sectlevel2 li {
+  padding: 2px; }
