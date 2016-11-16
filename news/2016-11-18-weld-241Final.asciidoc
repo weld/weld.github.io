@@ -1,0 +1,38 @@
+---
+layout: news
+title: Weld 2.4.1.Final
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: The development of Weld 3 (CDI 2) is underway. But for now the first bugfix version of Weld 2.4 (CDI 1.2) is landing.
+desc: Weld 2.4.1.Final released
+tags: [release]
+---
+:linkattrs:
+
+The development of *Weld 3* (CDI 2) is underway.
+However, we don't forget about the maintenance of the stable branch of Weld!
+So I am very pleased to announce the first bugfix version of *Weld 2.4* (CDI 1.2).
+See also https://issues.jboss.org/projects/WELD/versions/12331553[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+Notable fixes and improvements:
+
+* removed false positive warning about Jandex version used (link:https://issues.jboss.org/browse/WELD-2231[WELD-2231, window="_blank"])
+* fixed Groovy support - only filter out relevant methods from Groovy objects when generating bean proxies (link:https://issues.jboss.org/browse/WELD-2255[WELD-2255, window="_blank"])
+* optimized proxy class generation for "large classes" (link:https://issues.jboss.org/browse/WELD-2244[WELD-2244, window="_blank"])
+* improved the way Weld configuration info is logged (link:https://issues.jboss.org/browse/WELD-2238[WELD-2238, window="_blank"])
+* Weld SE
+** added support for nested directories in uber jars, e.g. Spring Boot jar (link:https://issues.jboss.org/browse/WELD-2254[WELD-2254, window="_blank"])
+** allow to use `CDI.getBeanManager()` after `BeforeBeanDiscovery` is fired (link:https://issues.jboss.org/browse/WELD-2256[WELD-2256, window="_blank"])
+** don't abort container initialization if `JandexClassFileServices` is unable to load an annotation (link:https://issues.jboss.org/browse/WELD-2232[WELD-2232, window="_blank"])
+* Weld Servlet - document the usage of `org.jboss.weld.environment.container.class` init param (link:https://issues.jboss.org/browse/WELD-2236[WELD-2236, window="_blank"])
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.1.Final/wildfly-10.1.0.Final-weld-2.4.1.Final-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.1.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:http://docs.jboss.org/cdi/api/1.2/[CDI 1.2 API, window="_blank"] &#93;
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12331553[Release notes, window="_blank"] &#93;
