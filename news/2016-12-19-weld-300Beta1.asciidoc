@@ -1,0 +1,41 @@
+---
+layout: news
+title: Weld 3.0.0.Beta1
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.0.0.Beta1 (CDI 2.0.Beta1) done. We're almost there!
+desc: Weld 3.0.0.Beta1 released
+tags: [release]
+---
+:linkattrs:
+
+I am very pleased to announce the first *Beta* version of Weld *3.0.0* (CDI 2.0).
+See also https://issues.jboss.org/projects/WELD/versions/12331387[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+This is an important milestone.
+CDI 2.0 is now considered "feature complete" and so the next Weld 3 versions should be mostly dedicated to cleanup and optimization.
+The next version will be Weld *3.0.0.CR1* (ETA in mid January).
+Finally, we would like to release Weld *3.0.0.Final* in early February.
+
+== New and noteworthy
+
+* `javax.enterprise.inject.spi.InterceptionFactory` implementation (link:https://issues.jboss.org/browse/WELD-2257[WELD-2257, window="_blank"])
+* `ProcessSyntheticObserverMethod` container lifecycle event (link:https://issues.jboss.org/browse/WELD-2279[WELD-2279, window="_blank"])
+* `BeforeDestroyed` event fired before a context is actually destroyed (link:https://issues.jboss.org/browse/WELD-2269[WELD-2269, window="_blank"])
+* "trimmed" bean archives (link:https://issues.jboss.org/browse/WELD-2268[WELD-2268, window="_blank"])
+* context control - `ActivateRequestContext` interceptor binding (link:https://issues.jboss.org/browse/WELD-2267[WELD-2267, window="_blank"]) and `RequestContextController` built-in bean (link:https://issues.jboss.org/browse/WELD-2266[WELD-2266, window="_blank"])
+* `ProcessSyntheticBean` container lifecycle event (link:https://issues.jboss.org/browse/WELD-2265[WELD-2265, window="_blank"])
+* few proposals did not make it into CDI 2.0 and so we enhanced the Weld API:
+** `org.jboss.weld.inject.WeldInstance` (already part of Weld 2.4 API)
+** `org.jboss.weld.interceptor.WeldInvocationContext` allows to obtain a set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor (see also link:https://issues.jboss.org/browse/CDI-468[CDI-468, window="_blank"])
+** `org.jboss.weld.bootstrap.event.WeldAfterBeanDiscovery` allows to obtain an `InterceptorConfigurator` to configure a new `Interceptor` bean
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.Beta1/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip[patch for WildFly, window="_blank"] is available. This time the target platform is *WildFly 10.1.0.Final*.  If you’re not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial, window="_blank"].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.0.Beta1/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/projects/WELD/versions/12331387[Release notes, window="_blank"] &#93;

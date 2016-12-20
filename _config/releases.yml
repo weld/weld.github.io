@@ -1,3 +1,7 @@
+- version: '3.0.0.Beta1'
+  category: Preview
+  date: 19.12.2016
+  versionId: 12331387
 - version: '2.4.1.Final'
   category: Final
   date: 18.11.2016
