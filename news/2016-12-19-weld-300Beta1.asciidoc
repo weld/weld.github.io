@@ -14,6 +14,8 @@ I am very pleased to announce the first *Beta* version of Weld *3.0.0* (CDI 2.0)
 See also https://issues.jboss.org/projects/WELD/versions/12331387[the release details, window="_blank"].
 Thanks to everyone involved in this release!
 
+NOTE: There are some sync problems and so the artifacts are currently only available in JBoss Maven repository.
+
 This is an important milestone.
 CDI 2.0 is now considered "feature complete" and so the next Weld 3 versions should be mostly dedicated to cleanup and optimization.
 The next version will be Weld *3.0.0.CR1* (ETA in mid January).
