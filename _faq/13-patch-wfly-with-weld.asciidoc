@@ -1,0 +1,27 @@
+= How to patch WildFly with newer Weld version?
+
+Each version of WildFly is shipped with given version of Weld.
+However, for every Weld release we also prepare a patch for WildFly which allows you to easily upgrade Weld version.
+The patch has a form of `.zip` file with name such as `wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip`.
+The above indicates that the patch is meant for WildFly version 10.1.0.Final and applies Weld in version 3.0.0.Beta1.
+Using this patch for other WildFly versions is not guaranteed to work.
+
+Here is an example how to apply the patch for Weld 3.0.0.Beta1 onto WildFly 10.1.0.Final:
+
+* Download WildFly (10.1.0.Final) and unzip it to desired location.
+* Download Weld patch.
+* Navigate to the WildFly folder.
+* Run the following command to apply the patch.
+[source]
+----
+$>/{$WILDFLY_FOLDER}/bin/jboss-cli.bat|sh --command="patch apply /path/to/patch/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip"
+----
+* You should now see an outcome such as this one. 
+[source]
+----
+{
+    "outcome" : "success",
+    "result" : {}
+}
+----
+* That's it! Now you can start your WildFly and try out new Weld.
