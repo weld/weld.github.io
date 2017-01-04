@@ -1,0 +1,151 @@
+---
+layout: news
+title: Weld Tip 4 - Testing Weld apps
+author: Tomas Remes, Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Taking a dive into CDI/Weld application testing.
+desc: Weld Tip 4 - Testing Weld apps
+tags: [tips]
+---
+:linkattrs:
+:toc: macro
+:toc-title: Contents
+:icons: font
+
+toc::[]
+
+In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
+Let's discover options for unit testing in the first part and then continue with integration testing.
+To set things straight - by integration testing we mean testing in some kind of container and hence in certain environment (SE, servlet, full EE server).
+However, no matter the environment we always make use of link:http://arquillian.org/[Arquillian] integration testing framework.
+
+== Using Weld in JUnit tests
+
+Recently we created Weld JUnit extension which uses JUnit @Rule to initialize Weld SE container before each unit test. For further information please check following link:https://developer.jboss.org/people/mkouba/blog/2017/01/24/easy-testing-of-cdi-components-with-weld-and-junit4/[blogpost].
+
+== Arquillian as the chosen framework for testing
+While Arquillian may look complex at first, it is certainly worth it. Here are some of the advantages it gives you:
+
+* Allows usage of CDI `@javax.inject.Inject` directly in test classes
+* Works well with ShrinkWrap making archive creation and deployment a breeze
+** link:http://arquillian.org/guides/shrinkwrap_introduction/[ShrinkWrap] can create any type of deployment archive (WAR, JAR, even infamous EAR) with exactly the capabilities you wish it to have
+** You can use dedicated `beans.xml` or `@Alternatives` for given test case
+* Portability - allows to write one test and run it on any container
+** Arquillian only needs correct adapter; therefore, combined with Maven profiles this gives you some nice fire power for matrix testing
+* Allows for very complex testing scenarios
+** For instance you can create several deployments which you then manually (if you so wish) deploy/undeploy
+** This makes it viable even for cluster testing (session replication, failover scenarios, ...)
+* Can start the application server itself or can just connect to running one
+
+In fact writing tests with Arquillian is quite straightforward. It's basically about right usage of right annotations. Basic test could like this:
+[ source, java ]
+----
+ package org.arquillian.example;
+
+ import javax.inject.Inject;
+ import org.jboss.arquillian.container.test.api.Deployment;
+ import org.jboss.arquillian.junit.Arquillian;
+ import org.jboss.shrinkwrap.api.ShrinkWrap;
+ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+ import org.jboss.shrinkwrap.api.spec.JavaArchive;
+ import org.junit.Assert;
+ import org.junit.Test;
+ import org.junit.runner.RunWith;
+
+ @RunWith(Arquillian.class)
+ public class GreeterTest {
+
+     // This static method builds the virtual test deployment archive
+     @Deployment
+     public static JavaArchive createDeployment() {
+         return ShrinkWrap.create(JavaArchive.class)
+             .addClass(Greeter.class)
+             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+     }
+
+     @Inject
+     Greeter greeter;
+
+     @Test
+     public void should_create_greeting() {
+        Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));
+     }
+ }
+----
+
+If you are a complete Arquillian rookie, you might want to look at their link:http://arquillian.org/guides/getting_started_rinse_and_repeat/[Getting started guide].
+Should you just need an inspiration, you needn't look any further than our link:https://github.com/weld/core/tree/master/tests-arquillian/src/test/java/org/jboss/weld/tests[testsuite].
+To support the though of Arquillian usefulness for CDI/Weld testing, we may also point out that even link:https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests[CDI TCK tests] use it.
+
+
+Now, let's take a look at different environments and then round it up with link:https://github.com/arquillian/arquillian-container-weld[Arquillian Weld Embedded container], which can be used in each and every environment.
+
+== Java EE application server
+When you want to test your application in Java EE application server you basically need to create your test deployment archive, deploy it, execute the test and undeploy the archive.
+As stated above, link:http://arquillian.org/modules/shrinkwrap-shrinkwrap/[ShrinkWrap] covers the archive creation (typically WAR or EAR).
+When it comes to deployment/undeployment, Arquillian controls that, unless you take the reins and control it yourself - just keep an eye for dangling deployments.
+You also get to chose between using so called managed container, where Arquillian starts and stops the desired container for you, and remote container where Arquillian tries to connect to already running container.
+Since we are talking Java EE application server, you can use CDI out of the box.
+Just pay attention to link:https://docs.jboss.org/author/display/ARQ/Test+run+modes[test mode] you are using.
+You can check available Arquillian container adapters link:http://arquillian.org/modules/[here].
+
+For example to use Arquillian WildFly Managed container you need to define following dependency:
+[ source, xml ]
+----
+               <dependency>
+                   <groupId>org.wildfly.arquillian</groupId>
+                   <artifactId>wildfly-arquillian-container-managed</artifactId>
+                   <version>1.1.0.Final</version>
+                   <scope>test</scope>
+               </dependency>
+----
+
+== Servlet environment
+In basic Servlet environment you need to deploy all the dependencies of Weld Servlet integration (as CDI API, Interceptors API, etc.) to your Servlet container and thus embedded container option could be sufficient.
+As you can link:http://arquillian.org/modules/[see] Arquillian offers embedded container adapters for all well known Servlet containers such as Tomcat, Jetty and Undertow.
+
+For example to use Arquillian Embedded Tomcat container you need to define following dependency:
+[ source, xml ]
+----
+               <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-tomcat-embedded-8</artifactId>
+                    <version>1.0.0.CR8</version>
+                    <scope>test</scope>
+                </dependency>
+----
+
+== Java SE environment
+Java SE is not effectively a container, however it could be very handy to have an option to easily configure classpath elements of your test.
+This is exactly what link:https://github.com/arquillian/arquillian-container-se[Arquillian container SE] offers.
+With this extension you can build your test classpath and the test executes remotely over JMX in new isolated JVM process.
+You can find basic information in link:https://github.com/arquillian/arquillian-container-se/blob/master/README.adoc[README] or you can take look into already mentioned link:https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests[CDI TCK tests] where you can find link:https://github.com/cdi-spec/cdi-tck/blob/master/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L100[SE testgroup] which involves all SE related tests.
+
+The maven dependency for this extension looks like this:
+[ source, xml ]
+----
+               <dependency>
+                   <groupId>org.jboss.arquillian.container</groupId>
+                   <artifactId>container-se-managed</artifactId>
+                   <version>1.0.1.Final</version>
+               </dependency>
+----
+
+== Arquillian Weld Embedded container
+First of all - this test container is suitable in situations when you know you don't need to work with full Java EE application server and you are OK with dummy mock EJB, JTA, JPA etc. services.
+As stated in the beginning of this article, you can use it for any environment but you have to keep it mind, that other technologies/services will be mocked only.
+By default, this container operates in SE mode, as you don't need to mock anything there, but you can use a system property (`Denvironment=EE`) or a programmatic approach in order to make it work in other environments.
+For full list of supported environments, see link:https://github.com/weld/api/blob/master/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environments.java[`Environments.java`].
+We recommend you to take a glance at link:https://github.com/arquillian/arquillian-container-weld/blob/master/README.adoc[README] file - especially those few lines about flat deployment structure (this means this container is not very suitable for testing EAR deployments) and configuration property for setting testing environment.
+
+The maven dependency for this container could look like this:
+[ source, xml ]
+----
+               <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-weld-embedded</artifactId>
+                    <version>2.0.0.Beta4</version>
+                    <scope>test</scope>
+                </dependency>
+----
