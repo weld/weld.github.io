@@ -1,3 +1,7 @@
+- version: '3.0.0.CR1'
+  category: Preview
+  date: 23.01.2017
+  versionId: 12331714
 - version: '3.0.0.Beta1'
   category: Preview
   date: 19.12.2016
