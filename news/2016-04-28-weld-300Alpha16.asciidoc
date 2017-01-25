@@ -11,7 +11,7 @@ tags: [release, cdi2]
 :linkattrs:
 
 The next experimental Weld version has been released!
-See also https://issues.jboss.org/projects/WELD/versions/12327858[the release details, window="_blank"].
+See also https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327858[the release details, window="_blank"].
 Thanks to everyone involved in this release!
 
 This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: link:/news/2016/04/22/weld-234Final/[Weld 2.3.4.Final]).
@@ -129,4 +129,4 @@ As usual, a link:http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Fin
 
 &#91; link:/download/[Download] &#93;
 &#91; link:http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/[Documentation, window="_blank"] &#93;
-&#91; link:https://issues.jboss.org/projects/WELD/versions/12327858[Release notes, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327858[Release notes, window="_blank"] &#93;

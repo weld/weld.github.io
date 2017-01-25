@@ -10,7 +10,7 @@ tags: [release, cdi2]
 ---
 
 Weld 3.0.0.Alpha15 the next experimental Weld version has been released.
-See also https://issues.jboss.org/projects/WELD/versions/12327857[the release details].
+See also https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327857[the release details].
 
 The `CompletionStage` used to bind actions to the completion of the asynchronous delivery is now using `org.jboss.weld.manager.api.ExecutorServices` SPI as the default asynchronous execution facility.
 Previously, the `ForkJoinPool#commonPool()` (a default executor of the underlying `CompletableFuture`) was used.

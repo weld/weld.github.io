@@ -26,5 +26,5 @@ Notable features and changes:
 
 In addition, Weld 2.2.16.SP1 has been also released. It's a bugfix release for 2.2 branch.
 
-&#91; link:https://issues.jboss.org/projects/WELD/versions/12327594[Weld 2.2.16.Final Release notes] &#93;
-&#91; link:https://issues.jboss.org/projects/WELD/versions/12328216[Weld 2.2.16.SP1 Release notes] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12327594[Weld 2.2.16.Final Release notes] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12328216[Weld 2.2.16.SP1 Release notes] &#93;
