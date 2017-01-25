@@ -143,6 +143,58 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2016/06/21/update-on-weld-vertx/">Update on weld-vertx</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2016-6-21
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/vertx">vertx</a>
+                    ,
+                    <a href="/news/tags/integration">integration</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank">Weld meets Vert.x</a>.
+                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank">Maven Central</a>).
+                  Since the last time we talked about <code>weld-vertx</code> two new features were added.
+                  First, it&#8217;s possible to inject the relevant <code>io.vertx.core.Vertx</code> and <code>io.vertx.core.Context</code> instances direcly into beans.
+                  Also there is a new module called <code>weld-vertx-web</code> which extends functionality of <code>weld-vertx-core</code> and <code>io.vertx:vertx-web</code> and allows to register <code>Route</code> handlers discovered during container initialization.
+                  In other words, it&#8217;s possible to configure a <code>Route</code> in a declarative way:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">import javax.inject.Inject;&#x000A;    &#x000A;    import org.jboss.weld.vertx.web.WebRoute;&#x000A;    &#x000A;    import io.vertx.core.Handler;&#x000A;    import io.vertx.ext.web.RoutingContext;&#x000A;    &#x000A;    // This annotation is used to configure a Route&#x000A;    @WebRoute("/hello")&#x000A;    public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;    &#x000A;        @Inject&#x000A;        SayHelloService service;&#x000A;    &#x000A;        @Override&#x000A;        public void handle(RoutingContext ctx) {&#x000A;            ctx.response().setStatusCode(200).end(service.hello());&#x000A;        }&#x000A;    &#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>The registered handler instances are NOT real bean instances, i.e. they&#8217;re not managed by the CDI container (similarly as <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#javaee_components">Java EE components</a>).
+                  However, the <strong>dependency injection</strong> is supported.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The central point of integration is the <code>org.jboss.weld.vertx.web.WeldWebVerticle</code>.
+                  This Verticle extends <code>org.jboss.weld.vertx.WeldVerticle</code> and provides the <code>WeldWebVerticle.registerRoutes(Router)</code> method:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java"> class MyApp {&#x000A;    &#x000A;         public static void main(String[] args) {&#x000A;             final Vertx vertx = Vertx.vertx();&#x000A;             final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;    &#x000A;             vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;    &#x000A;                 if (result.succeeded()) {&#x000A;                     // Configure the router after Weld bootstrap finished&#x000A;                     Router router = Router.router(vertx);&#x000A;                     router.route().handler(BodyHandler.create());&#x000A;                     weldVerticle.registerRoutes(router);&#x000A;                     vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;                 }&#x000A;             });&#x000A;         }&#x000A;     }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Give it a try and let us know if you have any idea how to extend the functionality of <code>weld-vertx</code>.
+                  Any feedback is appreciated!</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2016/05/18/enhanced-instance/">Programmatic lookup improvements</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -581,88 +633,6 @@
                   <div class="paragraph">
                   <p>If you want to try it out, you&#8217;ll have to clone the <a href="https://github.com/weld/weld-vertx" class="bare">https://github.com/weld/weld-vertx</a> repository and build it from source (i.e. run <code>mvn clean install</code>).
                   And if you find it useful feel free to add comments to this blog post. Any feedback is appreciated!</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2016/02/12/weld-233Final/">Weld 2.3.3.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2016-2-12
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
-                  See also <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">the release details</a>.
-                  Thanks to everyone involved in this release!
-                  Notable improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>allow to proxy classes with non-static non-private final methods</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>this is a non-portable way to get around the <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable" target="_blank">CDI spec restrictions</a>, see also <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods" target="_blank">Proxying classes with final methods</a> and <a href="https://issues.jboss.org/browse/CDI-527" target="_blank">CDI-527</a></p>
-                  </li>
-                  <li>
-                  <p><strong>use with caution!</strong></p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>other enhancements and bug-fixes around proxies:</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>better support for DeltaSpike partial beans (<a href="https://issues.jboss.org/browse/WELD-2084" target="_blank">WELD-2084</a>)</p>
-                  </li>
-                  <li>
-                  <p>better support for Camel CDI (<a href="https://issues.jboss.org/browse/WELD-2089" target="_blank">WELD-2089</a>)</p>
-                  </li>
-                  <li>
-                  <p>better support for proxies with non public classes (<a href="https://issues.jboss.org/browse/WELD-2091" target="_blank">WELD-2091</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Probe has a slightly redesigned menu and a new <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe" target="_blank">Dashboard</a> view with some basic stats</p>
-                  </li>
-                  <li>
-                  <p>the decorator validation was improved (<a href="https://issues.jboss.org/browse/WELD-2085" target="_blank">WELD-2085</a>, <a href="https://issues.jboss.org/browse/WELD-1811" target="_blank">WELD-1811</a>, <a href="https://issues.jboss.org/browse/WELD-2039" target="_blank">WELD-2039</a>)</p>
-                  </li>
-                  <li>
-                  <p>minor SPI cleanup was performed  (<a href="https://issues.jboss.org/browse/WELD-2077" target="_blank">WELD-2077</a>, <a href="https://issues.jboss.org/browse/WELD-2079" target="_blank">WELD-2079</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.3.Final/wildfly-10.0.0.Final-weld-2.3.3.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
-                  &#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/projects/WELD/versions/12328954" target="_blank">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
                   </div>
                 </div>
                 <hr>
