@@ -1,11 +1,11 @@
 ---
 layout: news
-title: Weld Tip 4 - Testing Weld apps
+title: Weld Tip 4 - Testing CDI/Weld apps
 author: Tomas Remes, Matej Novotny
 priority: 1
 change_frequency: weekly
 excerpt: Taking a dive into CDI/Weld application testing.
-desc: Weld Tip 4 - Testing Weld apps
+desc: Weld Tip 4 - Testing CDI/Weld apps
 tags: [tips]
 ---
 :linkattrs:
@@ -22,7 +22,7 @@ However, no matter the environment we always make use of link:http://arquillian.
 
 == Using Weld in JUnit tests
 
-Recently we created Weld JUnit extension which uses JUnit @Rule to initialize Weld SE container before each unit test. For further information please check following link:https://developer.jboss.org/people/mkouba/blog/2017/01/24/easy-testing-of-cdi-components-with-weld-and-junit4/[blogpost].
+Recently we created Weld JUnit extension which uses JUnit4 `@Rule` to initialize a Weld SE container before each test method execution. For further information please check following link:https://developer.jboss.org/people/mkouba/blog/2017/01/24/easy-testing-of-cdi-components-with-weld-and-junit4/[blogpost].
 
 == Arquillian as the chosen framework for testing
 While Arquillian may look complex at first, it is certainly worth it. Here are some of the advantages it gives you:
