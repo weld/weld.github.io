@@ -333,21 +333,26 @@ div.toc {
 
 /* line 339, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc div.title {
-  background-color: #eee;
+  background-color: #4a5860;
   padding: 5px;
-  border-radius: 5px 5px 0px 0px; }
+  border-radius: 5px 5px 0px 0px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase; }
 
-/* line 345, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 348, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 {
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
   padding-top: 5px;
-  padding-bottom: 5px; }
-
-/* line 352, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
-div.toc ul.sectlevel1 li {
-  padding: 5px; }
+  padding-bottom: 5px;
+  padding-left: 30px; }
 
 /* line 356, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.toc ul.sectlevel1 li {
+  padding: 5px;
+  padding-right: 10px; }
+
+/* line 361, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
   padding: 2px; }

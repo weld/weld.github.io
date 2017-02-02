@@ -2,13 +2,272 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2017-01-25T08:55:45+01:00</updated>
+  <updated>2017-02-02T11:15:21+01:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</id>
+    <title>Weld Tip 4 - Testing CDI/Weld apps</title>
+    <updated>2017-02-02T11:15:21+01:00</updated>
+    <published>2017-02-01T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/" rel="alternate" type="text/html" />
+    <author>
+      <name>Tomas Remes, Matej Novotny</name>
+    </author>
+    <category term="tips"></category>
+    <summary>
+      
+      Contents
+      
+      Using Weld in JUnit tests
+      Arquillian as the chosen framework for testing
+      Java EE application server
+      Servlet environment
+      Java SE environment
+      Arquillian Weld Embedded container
+      
+      
+      
+      In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
+      Let&#8217;s discover options for unit testing in the first part and then continue with integration testing.
+      To set things straight - by integration testing we mean testing in some kind of container and hence in certain environment (SE, servlet, full EE server).
+      However, no matter the environment we always make use of Arquillian integration testing framework.
+      
+      
+      Using Weld in JUnit tests
+      
+      
+      Recently we created Weld JUnit extension...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;toc&quot; id=&quot;toc&quot;&gt;
+      &lt;div class=&quot;title&quot; id=&quot;toctitle&quot;&gt;Contents&lt;/div&gt;
+      &lt;ul class=&quot;sectlevel1&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#_using_weld_in_junit_tests&quot;&gt;Using Weld in JUnit tests&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#_arquillian_as_the_chosen_framework_for_testing&quot;&gt;Arquillian as the chosen framework for testing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#_java_ee_application_server&quot;&gt;Java EE application server&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#_servlet_environment&quot;&gt;Servlet environment&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#_java_se_environment&quot;&gt;Java SE environment&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#_arquillian_weld_embedded_container&quot;&gt;Arquillian Weld Embedded container&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
+      Let’s discover options for unit testing in the first part and then continue with integration testing.
+      To set things straight - by integration testing we mean testing in some kind of container and hence in certain environment (SE, servlet, full EE server).
+      However, no matter the environment we always make use of &lt;a href=&quot;http://arquillian.org/&quot;&gt;Arquillian&lt;/a&gt; integration testing framework.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_using_weld_in_junit_tests&quot;&gt;Using Weld in JUnit tests&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Recently we created Weld JUnit extension which uses JUnit4 &lt;code&gt;@Rule&lt;/code&gt; to initialize a Weld SE container before each test method execution. For further information please check following &lt;a href=&quot;https://developer.jboss.org/people/mkouba/blog/2017/01/24/easy-testing-of-cdi-components-with-weld-and-junit4/&quot;&gt;blogpost&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_arquillian_as_the_chosen_framework_for_testing&quot;&gt;Arquillian as the chosen framework for testing&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;While Arquillian may look complex at first, it is certainly worth it. Here are some of the advantages it gives you:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Allows usage of CDI &lt;code&gt;@javax.inject.Inject&lt;/code&gt; directly in test classes&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Works well with ShrinkWrap making archive creation and deployment a breeze&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;&lt;a href=&quot;http://arquillian.org/guides/shrinkwrap_introduction/&quot;&gt;ShrinkWrap&lt;/a&gt; can create any type of deployment archive (WAR, JAR, even infamous EAR) with exactly the capabilities you wish it to have&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;You can use dedicated &lt;code&gt;beans.xml&lt;/code&gt; or &lt;code&gt;@Alternatives&lt;/code&gt; for given test case&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Portability - allows to write one test and run it on any container&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Arquillian only needs correct adapter; therefore, combined with Maven profiles this gives you some nice fire power for matrix testing&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Allows for very complex testing scenarios&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;For instance you can create several deployments which you then manually (if you so wish) deploy/undeploy&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;This makes it viable even for cluster testing (session replication, failover scenarios, …​)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Can start the application server itself or can just connect to running one&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In fact writing tests with Arquillian is quite straightforward. It’s basically about right usage of right annotations. Basic test could like this:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt; package org.arquillian.example;
+      
+       import javax.inject.Inject;
+       import org.jboss.arquillian.container.test.api.Deployment;
+       import org.jboss.arquillian.junit.Arquillian;
+       import org.jboss.shrinkwrap.api.ShrinkWrap;
+       import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+       import org.jboss.shrinkwrap.api.spec.JavaArchive;
+       import org.junit.Assert;
+       import org.junit.Test;
+       import org.junit.runner.RunWith;
+      
+       @RunWith(Arquillian.class)
+       public class GreeterTest {
+      
+           // This static method builds the virtual test deployment archive
+           @Deployment
+           public static JavaArchive createDeployment() {
+               return ShrinkWrap.create(JavaArchive.class)
+                   .addClass(Greeter.class)
+                   .addAsManifestResource(EmptyAsset.INSTANCE, &quot;beans.xml&quot;);
+           }
+      
+           @Inject
+           Greeter greeter;
+      
+           @Test
+           public void should_create_greeting() {
+              Assert.assertEquals(&quot;Hello, Earthling!&quot;, greeter.createGreeting(&quot;Earthling&quot;));
+           }
+       }&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;If you are a complete Arquillian rookie, you might want to look at their &lt;a href=&quot;http://arquillian.org/guides/getting_started_rinse_and_repeat/&quot;&gt;Getting started guide&lt;/a&gt;.
+      Should you just need an inspiration, you needn’t look any further than our &lt;a href=&quot;https://github.com/weld/core/tree/master/tests-arquillian/src/test/java/org/jboss/weld/tests&quot;&gt;testsuite&lt;/a&gt;.
+      To support the though of Arquillian usefulness for CDI/Weld testing, we may also point out that even &lt;a href=&quot;https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests&quot;&gt;CDI TCK tests&lt;/a&gt; use it.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Now, let’s take a look at different environments and then round it up with &lt;a href=&quot;https://github.com/arquillian/arquillian-container-weld&quot;&gt;Arquillian Weld Embedded container&lt;/a&gt;, which can be used in each and every environment.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_java_ee_application_server&quot;&gt;Java EE application server&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;When you want to test your application in Java EE application server you basically need to create your test deployment archive, deploy it, execute the test and undeploy the archive.
+      As stated above, &lt;a href=&quot;http://arquillian.org/modules/shrinkwrap-shrinkwrap/&quot;&gt;ShrinkWrap&lt;/a&gt; covers the archive creation (typically WAR or EAR).
+      When it comes to deployment/undeployment, Arquillian controls that, unless you take the reins and control it yourself - just keep an eye for dangling deployments.
+      You also get to chose between using so called managed container, where Arquillian starts and stops the desired container for you, and remote container where Arquillian tries to connect to already running container.
+      Since we are talking Java EE application server, you can use CDI out of the box.
+      Just pay attention to &lt;a href=&quot;https://docs.jboss.org/author/display/ARQ/Test+run+modes&quot;&gt;test mode&lt;/a&gt; you are using.
+      You can check available Arquillian container adapters &lt;a href=&quot;http://arquillian.org/modules/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;For example to use Arquillian WildFly Managed container you need to define following dependency:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;               &amp;lt;dependency&amp;gt;
+                         &amp;lt;groupId&amp;gt;org.wildfly.arquillian&amp;lt;/groupId&amp;gt;
+                         &amp;lt;artifactId&amp;gt;wildfly-arquillian-container-managed&amp;lt;/artifactId&amp;gt;
+                         &amp;lt;version&amp;gt;1.1.0.Final&amp;lt;/version&amp;gt;
+                         &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+                     &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_servlet_environment&quot;&gt;Servlet environment&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;In basic Servlet environment you need to deploy all the dependencies of Weld Servlet integration (as CDI API, Interceptors API, etc.) to your Servlet container and thus embedded container option could be sufficient.
+      As you can &lt;a href=&quot;http://arquillian.org/modules/&quot;&gt;see&lt;/a&gt; Arquillian offers embedded container adapters for all well known Servlet containers such as Tomcat, Jetty and Undertow.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;For example to use Arquillian Embedded Tomcat container you need to define following dependency:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;               &amp;lt;dependency&amp;gt;
+                          &amp;lt;groupId&amp;gt;org.jboss.arquillian.container&amp;lt;/groupId&amp;gt;
+                          &amp;lt;artifactId&amp;gt;arquillian-tomcat-embedded-8&amp;lt;/artifactId&amp;gt;
+                          &amp;lt;version&amp;gt;1.0.0.CR8&amp;lt;/version&amp;gt;
+                          &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+                      &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_java_se_environment&quot;&gt;Java SE environment&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Java SE is not effectively a container, however it could be very handy to have an option to easily configure classpath elements of your test.
+      This is exactly what &lt;a href=&quot;https://github.com/arquillian/arquillian-container-se&quot;&gt;Arquillian container SE&lt;/a&gt; offers.
+      With this extension you can build your test classpath and the test executes remotely over JMX in new isolated JVM process.
+      You can find basic information in &lt;a href=&quot;https://github.com/arquillian/arquillian-container-se/blob/master/README.adoc&quot;&gt;README&lt;/a&gt; or you can take look into already mentioned &lt;a href=&quot;https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests&quot;&gt;CDI TCK tests&lt;/a&gt; where you can find &lt;a href=&quot;https://github.com/cdi-spec/cdi-tck/blob/master/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L100&quot;&gt;SE testgroup&lt;/a&gt; which involves all SE related tests.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The maven dependency for this extension looks like this:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;               &amp;lt;dependency&amp;gt;
+                         &amp;lt;groupId&amp;gt;org.jboss.arquillian.container&amp;lt;/groupId&amp;gt;
+                         &amp;lt;artifactId&amp;gt;container-se-managed&amp;lt;/artifactId&amp;gt;
+                         &amp;lt;version&amp;gt;1.0.1.Final&amp;lt;/version&amp;gt;
+                     &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_arquillian_weld_embedded_container&quot;&gt;Arquillian Weld Embedded container&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;First of all - this test container is suitable in situations when you know you don’t need to work with full Java EE application server and you are OK with dummy mock EJB, JTA, JPA etc. services.
+      As stated in the beginning of this article, you can use it for any environment but you have to keep it mind, that other technologies/services will be mocked only.
+      By default, this container operates in SE mode, as you don’t need to mock anything there, but you can use a system property (&lt;code&gt;Denvironment=EE&lt;/code&gt;) or a programmatic approach in order to make it work in other environments.
+      For full list of supported environments, see &lt;a href=&quot;https://github.com/weld/api/blob/master/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environments.java&quot;&gt;&lt;code&gt;Environments.java&lt;/code&gt;&lt;/a&gt;.
+      We recommend you to take a glance at &lt;a href=&quot;https://github.com/arquillian/arquillian-container-weld/blob/master/README.adoc&quot;&gt;README&lt;/a&gt; file - especially those few lines about flat deployment structure (this means this container is not very suitable for testing EAR deployments) and configuration property for setting testing environment.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;The maven dependency for this container could look like this:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;listingblock&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;               &amp;lt;dependency&amp;gt;
+                          &amp;lt;groupId&amp;gt;org.jboss.arquillian.container&amp;lt;/groupId&amp;gt;
+                          &amp;lt;artifactId&amp;gt;arquillian-weld-embedded&amp;lt;/artifactId&amp;gt;
+                          &amp;lt;version&amp;gt;2.0.0.Beta4&amp;lt;/version&amp;gt;
+                          &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+                      &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</id>
     <title>Weld 3.0.0.CR1</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2017-01-23T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/" rel="alternate" type="text/html" />
     <author>
@@ -61,7 +320,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</id>
     <title>Weld 3.0.0.Beta1</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-12-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -173,7 +432,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</id>
     <title>Weld 2.4.1.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-11-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/" rel="alternate" type="text/html" />
     <author>
@@ -277,7 +536,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</id>
     <title>Weld Tip 3 - Boost performance of Weld apps</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-10-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/" rel="alternate" type="text/html" />
     <author>
@@ -630,7 +889,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</id>
     <title>Weld Tip 2 - Development Mode</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-10-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/" rel="alternate" type="text/html" />
     <author>
@@ -923,7 +1182,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</id>
     <title>Weld Tip 1 - Logging</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-10-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/" rel="alternate" type="text/html" />
     <author>
@@ -1158,7 +1417,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</id>
     <title>Weld 2.4.0.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-09-13T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/" rel="alternate" type="text/html" />
     <author>
@@ -1274,7 +1533,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</id>
     <title>First release candidate of Weld 2.4</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-08-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/" rel="alternate" type="text/html" />
     <author>
@@ -1486,7 +1745,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</id>
     <title>Arquillian container Weld 2.0.0.Beta1 released!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-07-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/" rel="alternate" type="text/html" />
     <author>
@@ -1541,7 +1800,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</id>
     <title>Weld 2.3.5.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-07-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/" rel="alternate" type="text/html" />
     <author>
@@ -1682,7 +1941,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</id>
     <title>Update on weld-vertx</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-06-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -1784,7 +2043,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</id>
     <title>Programmatic lookup improvements</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-05-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/" rel="alternate" type="text/html" />
     <author>
@@ -2001,7 +2260,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</id>
     <title>Weld 3.0.0.Alpha16</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-04-28T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/" rel="alternate" type="text/html" />
     <author>
@@ -2206,7 +2465,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</id>
     <title>Weld 2.3.4.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-04-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/" rel="alternate" type="text/html" />
     <author>
@@ -2332,7 +2591,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</id>
     <title>Weld meets Vert.x</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-04-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -2442,7 +2701,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</id>
     <title>Weld 2.3.3.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-02-12T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/" rel="alternate" type="text/html" />
     <author>
@@ -2561,7 +2820,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</id>
     <title>Weld SE and synthetic container lifecycle event observers</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-02-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/" rel="alternate" type="text/html" />
     <author>
@@ -2625,7 +2884,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</id>
     <title>Weld 3.0.0.Alpha15</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2016-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/" rel="alternate" type="text/html" />
     <author>
@@ -2716,7 +2975,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</id>
     <title>Weld 2.3.2.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/" rel="alternate" type="text/html" />
     <author>
@@ -2812,7 +3071,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</id>
     <title>Weld 3.0.0.Alpha14</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-12-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/" rel="alternate" type="text/html" />
     <author>
@@ -2862,7 +3121,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</id>
     <title>Arquillian container SE 1.0.0.CR1 released!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-11-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/" rel="alternate" type="text/html" />
     <author>
@@ -2919,7 +3178,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/</id>
     <title>Weld development mode and JMX support</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-11-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/" rel="alternate" type="text/html" />
     <author>
@@ -3082,7 +3341,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/</id>
     <title>Weld 2.3.1.Final arrives...</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-10-27T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/" rel="alternate" type="text/html" />
     <author>
@@ -3179,7 +3438,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/</id>
     <title>Weld 2.3.0.Final released!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/" rel="alternate" type="text/html" />
     <author>
@@ -3250,7 +3509,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</id>
     <title>JDK 8u60 reveals a problem in Weld</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-09-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/" rel="alternate" type="text/html" />
     <author>
@@ -3335,7 +3594,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-09-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -3379,7 +3638,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</id>
     <title>Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-08-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/" rel="alternate" type="text/html" />
     <author>
@@ -3600,7 +3859,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</id>
     <title>Weld 3.0.0.Alpha8</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-04-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/" rel="alternate" type="text/html" />
     <author>
@@ -3789,7 +4048,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</id>
     <title>Weld 3.0.0.Alpha5</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-02-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
     <author>
@@ -3944,7 +4203,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
     <title>Weld 3.0.0.Alpha4</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2015-02-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
     <author>
@@ -4109,7 +4368,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -4436,7 +4695,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -4673,7 +4932,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -4758,7 +5017,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
     <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-04-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
     <author>
@@ -4940,7 +5199,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</id>
     <title>CDI 1.2 and Weld 2.2</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -5048,7 +5307,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</id>
     <title>Three new Weld releases</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2014-01-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/01/14/weld-212-final/" rel="alternate" type="text/html" />
     <author>
@@ -5111,7 +5370,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</id>
     <title>Weld 2.1.1.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-12-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/12/11/weld-211-final/" rel="alternate" type="text/html" />
     <author>
@@ -5143,7 +5402,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</id>
     <title>Weld 2.1.0.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-10-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/10/22/weld-210-final/" rel="alternate" type="text/html" />
     <author>
@@ -5291,7 +5550,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</id>
     <title>Weld 2.1.0.Beta2 tip</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-09-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/" rel="alternate" type="text/html" />
     <author>
@@ -5311,7 +5570,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</id>
     <title>Weld has a new web site!</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-06-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/20/new-weld-site/" rel="alternate" type="text/html" />
     <author>
@@ -5331,7 +5590,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</id>
     <title>Weld 2.0.1.Final</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-06-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/06/06/weld-201-final/" rel="alternate" type="text/html" />
     <author>
@@ -5369,7 +5628,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</id>
     <title>Weld 2.0.0.Final released</title>
-    <updated>2017-01-25T08:55:45+01:00</updated>
+    <updated>2017-01-25T16:10:39+01:00</updated>
     <published>2013-04-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2013/04/25/weld-200-final/" rel="alternate" type="text/html" />
     <author>
