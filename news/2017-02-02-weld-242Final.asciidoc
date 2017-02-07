@@ -16,6 +16,8 @@ But for now, I am very pleased to announce another production-ready version of *
 See also https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12332808[the release details, window="_blank"].
 Thanks to everyone involved in this release!
 
+WARNING: There is a link:https://issues.jboss.org/browse/WELD-2328[regression, window="_blank"] in Weld *2.4.2.Final*. The problem only occurs if a link:https://docs.oracle.com/javase/tutorial/essential/environment/security.html[Security Manager, window="_blank"] is used. However, users are encouraged to upgrade to *2.4.2.SP1* which contains a fix for the issue.
+
 Notable fixes and improvements:
 
 * Added *trimmed bean archives* support (CDI 2.0, link:https://issues.jboss.org/browse/WELD-2314[WELD-2314, window="_blank"])
