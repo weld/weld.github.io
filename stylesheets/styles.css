@@ -291,16 +291,21 @@ div.note {
   background-color: #dff0d8; }
 
 /* line 298, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+div.warning {
+  border: 1px solid #faebcc;
+  background-color: #fcf8e3; }
+
+/* line 303, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .content {
   padding: 15px; }
 
-/* line 302, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 307, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock {
   border-radius: 4px 4px 4px 4px;
   margin-top: 15px;
   margin-bottom: 15px; }
 
-/* line 308, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 313, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .icon .title {
   font-weight: bold;
   color: #404040;
@@ -308,7 +313,7 @@ div.admonitionblock .icon .title {
   padding: 10px;
   text-transform: uppercase; }
 
-/* line 316, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 321, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
   color: #111;
@@ -316,22 +321,22 @@ div.admonitionblock td.icon .icon-tip:before {
   border-right: 1px solid silver;
   padding: 10px; }
 
-/* line 324, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 329, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 span.tags a {
   color: #e5eaec; }
 
-/* line 328, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 333, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul li p {
   margin: 0px; }
 
-/* line 332, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 337, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc {
   float: right;
   margin-left: 30px;
   padding: 15px;
   border-radius: 10px; }
 
-/* line 339, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 344, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc div.title {
   background-color: #4a5860;
   padding: 5px;
@@ -340,7 +345,7 @@ div.toc div.title {
   font-weight: bold;
   text-transform: uppercase; }
 
-/* line 348, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 353, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 {
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
@@ -348,11 +353,11 @@ div.toc ul.sectlevel1 {
   padding-bottom: 5px;
   padding-left: 30px; }
 
-/* line 356, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 361, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li {
   padding: 5px;
   padding-right: 10px; }
 
-/* line 361, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+/* line 366, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
   padding: 2px; }
