@@ -1,0 +1,46 @@
+---
+layout: news
+title: Weld 3.0.0.CR2
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Please welcome the second candidate release for Weld 3 (CDI 2.0-PFD)!
+desc: Please welcome the second candidate release for Weld 3 (CDI 2.0-PFD)!
+tags: [release]
+---
+:linkattrs:
+
+I am very pleased to announce the release of Weld *3.0.0.CR2* (*CDI 2.0-PFD*).
+The intention is to provide the latest updates so that early adopters and reviewers can work with up-to-date reference implementation during the JCP review process.
+
+Notable fixes and improvements:
+
+* `InterceptionFactory` handles interface correctly (link:https://issues.jboss.org/browse/WELD-2335[WELD-2335, window="_blank"])
+* Enable to obtain `InjectionPoint` metadata from within `BeanConfigurator#produceWith()` (link:https://issues.jboss.org/browse/WELD-2333[WELD-2333, window="_blank"])
+* `ObserverMethodConfigurator.beanClass()` should be preset to the extension class (link:https://issues.jboss.org/browse/WELD-2324[WELD-2324, window="_blank"])
+* Performance improvements in `javax.enterprise.inject.Instance` implementation (link:https://issues.jboss.org/browse/WELD-2322[WELD-2322, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2323[WELD-2323, window="_blank"])
+* Don't include built-in session and conversation scoped beans in the bean identifier index (link:https://issues.jboss.org/browse/WELD-2343[WELD-2343, window="_blank"])
+* Support `InjectionPoint` metadata injected into dependent singleton session bean (link:https://issues.jboss.org/browse/WELD-2341[WELD-2341, window="_blank"])
+* Logging
+** Log DEBUG info about important phases during bootstrap (link:https://issues.jboss.org/browse/WELD-2336[WELD-2336, window="_blank"])
+** Fix the error message when an extension observer method is static (link:https://issues.jboss.org/browse/WELD-2331[WELD-2331, window="_blank"])
+** Improved transactional observer methods logging in case of failure (link:https://issues.jboss.org/browse/WELD-2330[WELD-2330, window="_blank"])
+* Weld SE - `ContainerInitialized` should be fired after the container is initialized and shutdown hook is registered (link:https://issues.jboss.org/browse/WELD-2340[WELD-2340, window="_blank"])
+* Probe development tool
+** Extended bean archive info
+** Monitor bean instance creation
+** Do not mark a bean as unused if only injected into an observer method or disposer method
+** `org.jboss.weld.probe` package is vetoed
+
+See also https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12333159[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/3.0.0.CR2/wildfly-10.1.0.Final-weld-3.0.0.CR2-patch.zip[patch for WildFly, window="_blank"] is available.
+This time the target platform is *WildFly 10.1.0.Final*.
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12333159[Release notes, window="_blank"] &#93;
