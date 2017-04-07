@@ -1,0 +1,45 @@
+---
+layout: news
+title: Weld 2.4.3.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Make way for Weld 2.4.3.Final!
+desc: Weld 2.4.3.Final released
+tags: [release]
+---
+:linkattrs:
+
+Even as we get ever closer to CDI 2.0 final version, we shan't forget about our stable 2.4 branch.
+Ladies and gentlemen, here comes the next-in-line 2.4 release - Weld 2.4.3.Final!
+
+Notable fixes and improvements:
+
+* Weld now shares proxy classes for built-in beans of the same type (link:https://issues.jboss.org/browse/WELD-2344[WELD-2344, window="_blank"])
+* Fixed usage of Jandex on Tomcat when using `unpackWars=false` (link:https://issues.jboss.org/browse/WELD-2357[WELD-2357, window="_blank"])
+* Weld now supports wider variety of non-portable extension observer methods (link:https://issues.jboss.org/browse/WELD-2338[WELD-2338, window="_blank"])
+* There is now new debug level logging during bootstrap which allows to monitor name, start, end and duration of all bootstrap phases (link:https://issues.jboss.org/browse/WELD-2336[WELD-2336, window="_blank"])
+* Session replication
+** Built-in session and conversation scoped beans are not part of the bean identifier index anymore (link:https://issues.jboss.org/browse/WELD-2343[WELD-2343, window="_blank"])
+** Handle situation when `HTTPSessionBean` might not be serializable (link:https://issues.jboss.org/browse/WELD-2346[WELD-2346, window="_blank"]) 
+* Weld SE
+** You can now easily register new `org.jboss.weld.bootstrap.api.Service` during container bootstrap (link:https://issues.jboss.org/browse/WELD-2360[WELD-2360, window="_blank"])
+** Any `javax.enterprise.inject.spi.CDI` method can now be called during `AfterDeploymentValidation` (link:https://issues.jboss.org/browse/WELD-2371[WELD-2371, window="_blank"])
+** `ContainerInitialized` event is now correctly fired after registration of shutdown hook (link:https://issues.jboss.org/browse/WELD-2340[WELD-2340, window="_blank"])
+** `ContainerInitialized` and `ContainerShutdown` now implement `toString()` (link:https://issues.jboss.org/browse/WELD-2354[WELD-2354, window="_blank"])
+* Probe development tool
+** Allow monitoring of bean instance creation using `AroundConstruct` (link:https://issues.jboss.org/browse/WELD-2332[WELD-2332, window="_blank"])
+** Fixed a situation when bean was wrongly marked as unused when injected as parameter (link:https://issues.jboss.org/browse/WELD-2342[WELD-2342, window="_blank"])
+
+See also https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12333607[the release details, window="_blank"].
+Thanks to everyone involved in this release!
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.3.Final/wildfly-10.1.0.Final-weld-2.4.3.Final-patch.zip[patch for WildFly, window="_blank"] is available.
+This time the target platform is *WildFly 10.1.0.Final*.
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.3.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12333607[Release notes, window="_blank"] &#93;
