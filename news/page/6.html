@@ -143,6 +143,140 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2015/11/10/weld-probe-jmx/">Weld development mode and JMX support</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2015-11-10
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/probe">probe</a>
+                    ,
+                    <a href="/news/tags/jmx">jmx</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld comes with a special mode for application development.
+                  When enabled, some interesting data are collected so that it&#8217;s possible to inspect and monitor application components at runtime (see also <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe">the demo application hosted on OpenShift</a>).
+                  Data in JSON format are available through the REST API,  eventually through the MXBean of name <code>org.jboss.weld.probe:type=JsonData,context=ID</code> where ID should be replaced with an identifier of an application.
+                  The JMX support might be especially useful for environments and applications which do not utilize a web container (Java SE, OSGi, etc.).</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_how_to_enable_jmx_support">How to enable JMX support</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Simply use the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration">Weld configuration facility</a> and <code>org.jboss.weld.probe.jmxSupport</code> configuration property. If set to <code>true</code> one or more MBean components may be registered so that it is possible to use JMX to access the Probe development tool data.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_jmx_client">JMX client</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>So for example if using Weld SE without a web container it&#8217;s still possible to access the Probe data.
+                  There is a lot of JMX clients out there (for example jconsole or jvisualvm from the Oracle JDK).
+                  The problem is not all of us prefer reading JSON data.
+                  Hey wait! Weld Probe already has an HTML client, right?
+                  Yes, but this client works with REST API.
+                  We would have to embed a web container (e.g. Undertow) and add Weld Servlet or do some configuration manually.
+                  But what if there are multiple Weld instances in the same JVM? The configuration might become quite complex.
+                  Luckily, there is another solution - a <strong>working prototype</strong> of <a href="https://github.com/weld/weld-probe-jmx">JMX client reusing the default HTML GUI</a>.</p>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_clone_build_and_run">Clone, build and run</h3>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code>    # Clone the git repo&#x000A;        git clone git@github.com:weld/weld-probe-jmx.git&#x000A;        # Specify the weld version used in your application and run the build&#x000A;        mvn clean package -Dversion.weld=2.3.1.Final&#x000A;        # Run the client&#x000A;        java -jar target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_how_does_it_work">How does it work?</h3>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>First, the client attempts to connect to a JMX server (your application)</p>
+                  </li>
+                  <li>
+                  <p>User may select a Weld container to inspect</p>
+                  </li>
+                  <li>
+                  <p>Then the client starts an Undertow instance locally, HTML client is available at: <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a></p>
+                  </li>
+                  <li>
+                  <p>Data are fetched remotely through JMX</p>
+                  </li>
+                  <li>
+                  <p>User may reconnect at any time</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>See also the JBoss Forge example below to see an example output.</p>
+                  </div>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_configuration">Configuration</h3>
+                  <div class="paragraph">
+                  <p>Moreover, it&#8217;s also possible to configure the JMX server URL, Undertow host and port - used to expose the HTML client. E.g. for WildFly (standalone mode) a different jmxServiceUrl must be specified and jboss-client.jar must be also on the class path, e.g.:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code>java -Dorg.jboss.weld.probe.jmxServiceUrl="service:jmx:http-remoting-jmx://127.0.0.1:9990" -cp '/opt/jboss/wildfly/bin/client/jboss-client.jar:target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar' org.jboss.weld.probe.ProbeJmx</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_jboss_forge_example">JBoss Forge example</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>An interesting use case would be to inspect JBoss Forge addons powered by CDI (works with <strong>Forge 2.20.1.Final</strong> and later).
+                  Before we start Forge we need to set some extra system properties:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code>export FORGE_OPTS="-Dorg.jboss.weld.development=true -Dorg.jboss.weld.probe.jmxSupport=true -Dorg.jboss.weld.probe.eventMonitor.containerLifecycleEvents=true -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>System properties starting with <code>com.sun.management</code> simply allow to connect to JMX remotely.
+                  <code>org.jboss.weld.development</code> enables the development mode.
+                  <code>org.jboss.weld.probe.jmxSupport</code> enables the JMX support.
+                  Finally, If <code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> is set to <code>true</code> all the container lifecycle events are monitored during bootstrap.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Then start the Forge as usually and run the prototype. You should see a similar output:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>Connecting to a remote JMX server: service:jmx:rmi:///jndi/rmi://127.0.0.1:9999/jmxrmi&#x000A;    Select a Weld container (JSON data provider):&#x000A;    [0] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:shell_1447145001728"&#x000A;    [1] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:configuration_1447145001592"&#x000A;    [2] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:parser-java_1447145002037"&#x000A;    [3] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:bean-validation_1447145001526"&#x000A;    [4] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:javaee_1447145003135"&#x000A;    [5] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"&#x000A;    [6] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:convert_1447145001526"&#x000A;    &#x000A;    [disconnected]$</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Now select a Weld container to inspect, e.g. <code>5</code>:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>[disconnected]$ 5&#x000A;    Connecting to the Weld container [5]: org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"&#x000A;    Starting Undertow...&#x000A;    Lis 10, 2015 9:44:16 DOP. org.xnio.Xnio &lt;clinit&gt;&#x000A;    INFO: XNIO version 3.3.1.Final&#x000A;    Lis 10, 2015 9:44:16 DOP. org.xnio.nio.NioXnio &lt;clinit&gt;&#x000A;    INFO: XNIO NIO Implementation Version 3.3.1.Final&#x000A;    Weld Probe HTML client available at: http://127.0.0.1:8181/probe-jmx/weld-probe&#x000A;    &#x000A;    [connected #5]$</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>The HTML client is available at <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a>. It&#8217;s also possible to reconnect or exit. Type <code>help</code> to get a list of all possible commands.</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2015/10/27/weld-231Final/">Weld 2.3.1.Final arrives...</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -374,190 +508,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/08/05/weld-300Alpha12/">Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2015-8-5
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                    ,
-                    <a href="/news/tags/cdi2">cdi2</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it&#8217;s a reference implementation of <a href="http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html">CDI 2.0 Early Draft</a> (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: <a href="http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/">CDI 2.0 Early Draft Review 1 released</a>.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_bootstrapping_a_cdi_container_in_java_se">Bootstrapping a CDI container in Java SE</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Starting a CDI container is now really that easy:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public static void main(String... args) {&#x000A;        try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;            ComputingService service = cdi.select(ComputingService.class).get();&#x000A;            service.compute();&#x000A;        }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p><code>javax.enterprise.inject.spi.CDI</code> now implements <code>AutoCloseable</code> and can therefore be used in a <code>try-with-resources</code> block.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Note that the specification of the bean discovery process in Java SE is not finished yet. Therefore, bean archives which don&#8217;t contain a beans.xml file are not supported. The main reason is that we don&#8217;t want to implement a feature which is being discussed and will likely undergo some important changes. Nevertheless, the feature will be implemented in one of the next alpha versions.</p>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_weld_se_bootstrap_api">Weld SE bootstrap API</h3>
-                  <div class="paragraph">
-                  <p>How does it compare to Weld SE bootstrap API? Weld has provided support for the Java SE environment for a long time. Recently, the <code>org.jboss.weld.environment.se.Weld</code> class was turned into a powerful builder which allows to configure the Weld container before it is initialized.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Typical usage of the Weld SE API looks like this:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;        ComputingService service = container.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>This looks very similar to CDI SE, right? However, there are several advanced feratures available:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>automatic scanning can be disabled, classes or packages can be selected explicitly</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();</code></p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>WeldContainer allows to fire events easily</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>container.event().select(Bar.class).fire(new Bar());</code></p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld-specific <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration">configuration options</a> can be specified using the builder</p>
-                  </li>
-                  <li>
-                  <p>it is possible to start multiple independent Weld instances (specification does not require this)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>See also <a href="http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/">Weld 3.0.0.Alpha8 announcement</a> for more information.</p>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_asynchronous_events">Asynchronous Events</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>An experimental support of asynchronous events is implemented in Weld since 3.0.0.Alpha3. However, in this release the API was aligned with CDI 2.0 EDR1:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class OrderProcessor {&#x000A;    &#x000A;        @Inject Event&lt;Order&gt; orderEvent;&#x000A;    &#x000A;        public void process(Order order) {&#x000A;            orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;        }&#x000A;    &#x000A;        public void processingOrder(@Observes Order event) {&#x000A;            // This observer is notified synchronously, before the fireAsync() method returns&#x000A;        }&#x000A;    &#x000A;        public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;            // This observer is notified asynchronously, in a different thread&#x000A;        }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>There are few important things to notice:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>the event was triggered with <code>fireAsync()</code></p>
-                  </li>
-                  <li>
-                  <p>the asynchronous observer is defined by <code>@ObservesAsync</code></p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>this is required because of backward compatibilty with previous versions of CDI, see also <a href="http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/#_why_this_double_activation_is_needed">Why this double activation is needed?</a></p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>synchronous observers defined by <code>@Observes</code> are also notified!</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>To sum it up:</p>
-                  </div>
-                  <table class="tableblock frame-all grid-all spread">
-                  <colgroup>
-                  <col style="width: 33%;">
-                  <col style="width: 33%;">
-                  <col style="width: 33%;">
-                  </colgroup>
-                  <thead>
-                  <tr>
-                  <th class="tableblock halign-left valign-top">Event method</th>
-                  <th class="tableblock halign-left valign-top"><code>@Observes</code> notified</th>
-                  <th class="tableblock halign-left valign-top"><code>@ObservesAsync</code> notified</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock"><code>fire()</code></p></td>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock">yes, in the same thread</p></td>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-                  </tr>
-                  <tr>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock"><code>fireAsync()</code></p></td>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock">yes, in the same thread</p></td>
-                  <td class="tableblock halign-left valign-top"><p class="tableblock">yes, in a different thread</p></td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  <div class="sect2">
-                  <h3 id="_observers_spi_changes">Observers SPI Changes</h3>
-                  <div class="paragraph">
-                  <p><code>javax.enterprise.inject.spi.ObserverMethod</code> now extends <code>javax.enterprise.inject.spi.Prioritized</code> and overrides the <code>ObserverMethod.getPriority()</code> method which is used to determine the notification order in which the event observer methods are invoked. <code>Prioritized</code> interface is currently only used for observers. However, the Weld team is working on a prototype where <code>Prioritized</code> can be used to globally select/enable custom alternative beans, interceptors and decorators, see also <a href="https://issues.jboss.org/browse/WELD-2000">WELD-2000</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Furthermore, <code>ObserverMethod.isAsync()</code> method was added to determine whether an observer method is asynchronous or not.</p>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip">patch for WildFly</a> is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is <strong>WildFly 10.0.0.Alpha6</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327471">Release notes</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha12/weld-3.0.0.Alpha12.zip">Distribution</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip">Patch for Wildfly 10 Alpha</a>
-                  &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/5.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/5.html" class="page-link">5</a> <span class="current-page">6</span> <a href="/news/page/7.html" class="page-link">7</a> <a href="/news/page/8.html" class="page-link">8</a> <a href="/news/page/9.html" class="page-link">9</a> <a href="/news/page/7.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><a href="/news/page/5.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/5.html" class="page-link">5</a> <span class="current-page">6</span> <a href="/news/page/7.html" class="page-link">7</a> <span class="skip">...</span><a href="/news/page/9.html" class="page-link">9</a> <a href="/news/page/10.html" class="page-link">10</a> <a href="/news/page/7.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
