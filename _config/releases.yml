@@ -1,9 +1,11 @@
 - version: '2.4.3.Final'
   category: Final
   date: 07.04.2017
+  versionId: 12333607
 - version: '3.0.0.CR2'
   category: Preview
   date: 03.03.2017
+  versionId: 12333159
 - version: '2.4.2.SP1'
   category: Final
   date: 08.02.2017
