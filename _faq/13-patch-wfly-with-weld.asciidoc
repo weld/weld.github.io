@@ -12,11 +12,13 @@ Here is an example how to apply the patch for Weld 3.0.0.Beta1 onto WildFly 10.1
 * Download Weld patch.
 * Navigate to the WildFly folder.
 * Run the following command to apply the patch.
+
 [source]
 ----
 $>/{$WILDFLY_FOLDER}/bin/jboss-cli.bat|sh --command="patch apply /path/to/patch/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip"
 ----
-* You should now see an outcome such as this one. 
+* You should now see an outcome such as this one.
+
 [source]
 ----
 {
