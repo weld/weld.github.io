@@ -1,0 +1,71 @@
+---
+layout: news
+title: Weld 3.0.0.Final - the first implementation of CDI 2.0!
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3 finally comes to the party. Try it out!
+desc: Weld 3.0.0.Final released. Try out the first implementation of the CDI 2.0 spec!
+tags: [release]
+---
+:linkattrs:
+
+I am very pleased to announce the release of Weld *3.0.0.Final* - the first implementation of *CDI 2.0*!
+I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!
+
+[ source, java ]
+----
+/**
+ * TODO: Continue to deliver bugfixes and improvements
+ */
+public class WeldTeam extends OpenSourceCommunity {
+
+  @Inject
+  @AwesomeNews
+  Event<String> event;
+
+  public void release() {
+    // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!
+    event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");
+    celebrate();
+  }
+
+}
+----
+
+NOTE: Weld 3 is an IMPORTANT MILESTONE.
+Therefore, we're preparing a special blogpost summarizing all the important stuff that was added.
+Expect the *Tour around Weld 3* blogpost within a few days.
+
+Let's sum up the notable fixes and improvements since *3.0.0.CR2*:
+
+* Weld defines two non-portable *notification options* to configure the notification of asynchronous observer methods (see also link:http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options[Notification options, window="_blank"] for more info):
+** `weld.async.notification.mode` - the notification mode, possible values are: `SERIAL` (default) and `PARALLEL`
+** `weld.async.notification.timeout` - the notification timeout (in milliseconds) after which the returned completion stage must be completed.
+*** If the time expires the stage is completed exceptionally with a `CompletionException` holding the `java.util.concurrent.TimeoutException` as its cause
+*** The expiration does not abort the notification of the observers
+* Session replication - handle situation when `HTTPSessionBean` might not be serializable (link:https://issues.jboss.org/browse/WELD-2346[WELD-2346, window="_blank"])
+* Fire `@Initialied(RequestScoped.class)`/`@Destroyed(RequestScoped.class)` events for a `@PostConstruct` callback if the request context was activated for the specific callback
+* Weld SE
+** It's possible to easily register a `org.jboss.weld.bootstrap.api.Service` during container bootstrap (link:https://issues.jboss.org/browse/WELD-2360[WELD-2360, window="_blank"])
+** Any `javax.enterprise.inject.spi.CDI` method can now be called during `AfterDeploymentValidation` (link:https://issues.jboss.org/browse/WELD-2371[WELD-2371, window="_blank"])
+** `ContainerInitialized` and `ContainerShutdown` now implement `toString()` (link:https://issues.jboss.org/browse/WELD-2354[WELD-2354, window="_blank"])
+* Weld Servlet
+** Fixed usage of Jandex on Tomcat when using `unpackWars=false` (link:https://issues.jboss.org/browse/WELD-2357[WELD-2357, window="_blank"])
+* Added option to disable Jandex in Weld SE and Weld Servlet (link:https://issues.jboss.org/browse/WELD-2374[WELD-2374, window="_blank"])
+* Development tools
+** If a deployment validation fails and the development mode is enabled a simple *validation HTML report* (which contains a lot of useful information) is generated
+*** Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel
+* Updated documentation and migration notes for integrators
+* Examples cleanup (dropped GAE support, etc.)
+
+
+== WildFly Patch
+
+As usual, a link:http://wildfly.org/[patch for WildFly, window="_blank"] is available.
+This time the target platforms are link:http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip[WildFly 10.1.0.Final, window="_blank"] and link:http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip[WildFly 11.0.0.Alpha1, window="_blank"].
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12333608[Release notes, window="_blank"] &#93;

@@ -149,12 +149,18 @@ pre {
     font-family: "Lucida Console", monospace;
 }
 
+pre.highlight, pre.highlightjs, pre.code {
+    border: 0px solid #AAAAAA;
+    background: none;
+}
+
 pre code {
     border: 0px solid #AAAAAA;
     font-size: 1.1em;
     padding: 5px;
     overflow: auto;
-    background-color: #f0f0f0;
+    background: none;
+    border-radius: 4px;
 }
 
 footer {

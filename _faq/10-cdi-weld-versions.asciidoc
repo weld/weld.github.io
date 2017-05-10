@@ -39,10 +39,10 @@ An overview is provided in the following table:
 |The stable version of Weld.
 
 
-|3.0{set:cellbgcolor:none}
-|2.0 (Under development)
+|3.0{set:cellbgcolor:#eee}
+|2.0
 |8+
 |8
-|Prototype releases for the upcoming CDI 2.0 (still under development).
+|The stable version of Weld.
 
 |======================
