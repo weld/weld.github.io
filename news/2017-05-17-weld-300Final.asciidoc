@@ -4,7 +4,7 @@ title: Weld 3.0.0.Final - the first implementation of CDI 2.0!
 author: Martin Kouba
 priority: 1
 change_frequency: weekly
-excerpt: Weld 3 finally comes to the party. Try it out!
+excerpt: Weld 3 finally comes to the party. CDI 1.2 is dead, long live CDI 2.0!
 desc: Weld 3.0.0.Final released. Try out the first implementation of the CDI 2.0 spec!
 tags: [release]
 ---
@@ -37,7 +37,7 @@ NOTE: Weld 3 is an IMPORTANT MILESTONE.
 Therefore, we're preparing a special blogpost summarizing all the important stuff that was added.
 Expect the *Tour around Weld 3* blogpost within a few days.
 
-Let's sum up the notable fixes and improvements since *3.0.0.CR2*:
+Let's sum up the notable changes since *3.0.0.CR2*:
 
 * Weld defines two non-portable *notification options* to configure the notification of asynchronous observer methods (see also link:http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options[Notification options, window="_blank"] for more info):
 ** `weld.async.notification.mode` - the notification mode, possible values are: `SERIAL` (default) and `PARALLEL`
