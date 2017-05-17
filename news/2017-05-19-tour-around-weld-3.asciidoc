@@ -1,0 +1,207 @@
+---
+layout: news
+title: Tour around Weld 3
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Tour around the new stuff in Weld 3
+desc: A summary of CDI 2.0 features coated with Weld and sprinkled with code samples
+---
+:linkattrs:
+:toc: macro
+:toc-title: Contents
+:icons: font
+
+toc::[]
+
+This post briefly describes all the main CDI 2.0 features and elaborates on Weld-specific features we added on top of that.
+It is not intended as a deep-dive but rather to give you the overall idea of what is going on and what can the new release offer.
+So, enough talk, let's get the show on the road!
+
+== Async Events and Notification Options
+
+Up until now, the only way to send events was to do so synchronously.
+That meant stopping the work of your current thread to instead occupy it with observer resolution and subsequent notification of observer methods.
+Once all that was done, the thread resumed it's work.
+
+With CDI 2.0 there are asynchronous events - a 'fire & forget' way of handling things.
+Here is how to fire such and event and how to observe it:
+
+[ source, java ]
+----
+// nothing new here, plain old Event is used
+@Inject Event<Payload> event;
+
+public void sendAsyncEvent() {
+    // we use a new fireAsync method for asynchronous events
+    CompletionStage<Payload> eventResult = event.fireAsync(new Payload()).thenAccept(...); 
+}
+
+public void asyncObserver (@ObservesAsync Payload payload){ … }
+----
+
+Few things to note here - first of all, the return value of `fireAsync` is `CompletionStage` allowing you to chain the work for when the event is done.
+You can follow-up with more tasks, react on exceptional return value and so on.
+Another noticeable detail is that observers which are to be notified have to have `@ObservesAsync` annotation.
+As you might have guessed, an observer can be notified of either synchronous (`@Observes`) or asynchronous (`@ObservesAsync`) events but never both!
+
+Apart from this very basic usage, async events allow you to specify `NotificationOptions` - an option allowing you to tweak the way notification works.
+From CDI perspective, there is currently only one standardized option and that enables usage of custom executors which will be used for notifications.
+But the API was designed in a generic way so that implementation can enrich it with its own options.
+Weld currently offers two more options - timeout and parallel execution - both of which are well described in link:http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options[Weld docs, window="_blank"].
+And here is a snippet showing it in action:
+
+[ source, java ]
+----
+public void sendAsyncEventWithOptions() {
+    // we use a secondary version of fireAsync method with NotificationOptions parameter
+    event.fireAsync(new Payload(), NotificationOptions.of("weld.async.notification.timeout", 2000)); 
+}
+----
+
+
+== Configurators API
+
+Another of the key features are link:http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#configurators[`Configurators`, window="blank"].
+They are here to ease our work when doing small tweaks in extensions.
+Here is a snippet showing how easy it can be to register a new bean in `AfterBeanDiscovery` using configurator.
+You don't have to create a new class implementing `Bean<X>` anymore:
+
+[ source, java ]
+----
+public void addABean(@Observes AfterBeanDiscovery event) {
+    // get an instance of BeanConfigurator
+    event.addBean()
+      // set the desired data
+      .types(Foo.class)
+      .scope(RequestScoped.class)
+      .addQualifier(Custom.CustomLiteral.INSTANCE);
+      //finally, add a callback to tell CDI how to instantiate this bean
+      .produceWith(obj -> new Foo());
+}
+----
+
+Following configurators were added:
+
+* `AnnotatedTypeConfigurator`
+* `InjectionPointConfigurator`
+* `BeanAttributesConfigurator`
+* `BeanConfigurator`
+* `ObserverMethodConfigurator`
+* `ProducerConfigurator`
+
+On top of that, Weld adds one additional configurator - link:http://docs.jboss.org/weld/reference/latest-master/en-US/html_single/#_weld_enriched_container_lifecycle_events[`InterceptorConfigurator`, window="_blank"].
+This one allows you to observe `WeldAfterBeanDiscovery` and then use this configurator to create and register a custom interceptor from scratch.
+
+== SE Bootstrap API
+
+A big change in CDI 2.0 is the SE support.
+Of course, Weld fans have had this for years now, but it has gone official, so that still counts, right?
+
+The official CDI API is very similar to that of Weld, here is how it looks like:
+
+[ source, java ]
+----
+public void bootBasicContainer() {
+    SeContainerInitializer initializer = SeContainerInitializer.newInstance();
+    try (SeContainer container = initializer.initialize()) {
+        Assert.assertTrue(container.isRunning());
+    }
+}
+----
+
+This is the very basic way; you can also opt to use synthetic bean archive where you cherry-pick all the beans/interceptors/... in your archive.
+link:http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#se_bootstrap[CDI spec, window="_blank"] describes this fairly well, so how about we instead shift our attention to what Weld SE offers on top of that?
+
+A small reminder of how to boot SE container using pure Weld API:
+
+[ source, java ]
+----
+public void bootWeldSeContainer() {
+    Weld weld = new Weld();
+    try (WeldContainer container = weld.initialize()) {
+        container.select(FooBean.class).get();
+    }
+}
+----
+
+One of the things Weld makes easier, is when you want to create a quick extension, but don't really want to write a whole new class which you then need to place in `META-INF/services` or register on bootstrap.
+You can easily create a 'synthetic extension' programatically:
+
+[ source, java ]
+----
+Extension testExtension = ContainerLifecycleObserver.extensionBuilder()
+    .add(afterBeanDiscovery((e) -> System.out.println("Bean discovery completed!")))
+    .add(processAnnotatedType().notify((e) -> {
+            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {
+                e.veto();
+            }
+        })).build();
+
+try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {
+    // Use the container...
+}
+----
+
+What we just did was to create an extension with two container lifecycle observer methods.
+It follows a familiar builder pattern and the body of the observer methods is specified as lambda expression.
+Before booting SE container, we register this extension as we would any other.
+For more information about this, don't hesitate to check our older link:http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/[news post].
+
+== On-demand Request Context Activation
+
+Especially in SE (although not only there) you might want to activate a `RequestContext` manually for certain period of time.
+There are two ways to achieve that, first of which is an interceptor - `@ActivateRequestContext`.
+You can use that on either a method or a type (enabling it for all methods).
+As you might expect, it will activate the context before executing your method and shut it down afterwards.
+The other way is through means of built-in bean named `RequestContextController`.
+This bean can be injected as any other CDI bean and offers to self-explanatory methods: `activate` and `deactivate`.
+The obvious advantage of this approach is that you can enable the context for an extended period of time.
+
+== Observer Method Ordering
+
+A small but noteworthy improvement to observer methods.
+You can not leverage `@Priority` annotation in observer methods hence ordering them as you wish.
+
+[ source, java ]
+----
+public void observeFirst (@Observes @Priority(1) EventPayload payload) {...}
+
+public void observeSecond (@Observes @Priority(2) EventPayload payload) {...}
+----
+
+== Intercepting Produced Beans
+
+Up until now, anything you created using producers could not be easily intercepted.
+CDI 2.0 allows this for `@AroundInvoke` interceptors in two ways.
+There is a new method on `BeanManager` named `createInterceptionFactory` but most of the time you will rather use a built-in bean `InterceptionFactory` which can be injected as a producer method parameter.
+Here is a snippet:
+
+[ source, java ]
+----
+
+@Produces
+@Dependent
+public ProducedBean produceFoo(InterceptionFactory<ProducedBean> factory) {
+    factory.configure().add(Counter.Literal.INSTANCE);
+    return factory.createInterceptedInstance(new ProducedBean());
+}
+
+----
+
+To explain this a bit, we first inject the built-in bean with the type equal to the produced type we wish to intercept.
+Then we `configure()` it, which returns an `AnnotatedTypeConfigurator` allowing us to add interceptor binding.
+Finally, we invoke `InterceptionFactory.createInterceptedInstance()` which takes a the object we produce as a parameter.
+
+You can read more about this in link:http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#interception_factory[this CDI spec chapter, window="_blank"].
+
+== Trimmed Bean Archives
+
+Last but not least feature we will mention are so called 'trimmed' bean archives.
+You can mark an explicit bean archive as trimmed in `beans.xml` by adding the `</trim>` element.
+Such bean archive will perform an annotated type discovery as with `bean-discovery-mode="all"` but all types that don't have a bean defining annotation or any scope annotation are then removed from the set of discovered types.
+
+Even in this case, Weld allows you to go one step further and link:http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#veto-types-without-bean-defining-annotation[veto types based on regular expression].
+It works on a similar principle but affects your whole application - it processess all types from all bean archives.
+Your archives will be scanned as they would be with bean discovery mode `all` and `ProcessAnnotatedType` will be fired for all found annotated types.
+Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.
