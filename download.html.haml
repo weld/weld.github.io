@@ -26,24 +26,28 @@ desc: Download links to Weld distribution bundles, Weld jars and CDI API jars
 %h2 Maven
 %ul
   %li
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C1.1%7Cjar"}
+    %a{:href=>"http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22javax.enterprise%22%20AND%20a%3A%22cdi-api%22",:target=>'_blank'}
       CDI API
   %li
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{site.releases[0].version}%7Cjar"}Weld Core
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-core-impl%22",:target=>'_blank'}Weld Core
   %li
     Weld Servlet (
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet-core%7C#{site.releases[0].version}%7Cjar"}Core
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-core%22",:target=>'_blank'}Core
+    , Shaded jar with dependencies
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet%22",:target=>'_blank'} Weld 2
     ,
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.servlet%7Cweld-servlet%7C#{site.releases[0].version}%7Cjar"}With dependencies
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-shaded%22",:target=>'_blank'} Weld 3
     )
   %li
     Weld SE (
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se-core%7C#{site.releases[0].version}%7Cjar"}Core
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-core%22",:target=>'_blank'}Core
+    , Shaded jar with dependencies
+    %a{:href=>"http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se%22",:target=>'_blank'}Weld 2
     ,
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld.se%7Cweld-se%7C#{site.releases[0].version}%7Cjar"}With dependencies
+    %a{:href=>"http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-shaded%22",:target=>'_blank'}Weld 3
     )
   %li
-    %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-osgi-bundle%7C#{site.releases[0].version}%7Cjar"}
+    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-osgi-bundle%22",:target=>'_blank'}
       Weld OSGi bundle
 
 
