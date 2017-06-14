@@ -1,0 +1,43 @@
+---
+layout: news
+title: Weld 2.4.4.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Watch out, Weld 2.4.4.Final coming through!
+desc: Weld 2.4.4.Final released
+tags: [release]
+---
+:linkattrs:
+
+We have been busy chasing down some annoying little bugs and it's high time you got the fruits of those efforts into your hands.
+Say hello to Weld 2.4.4.Final.
+
+Notable fixes and improvements:
+
+* Weld Core
+** Fixed bean discovery event ordering when processing producers (link:https://issues.jboss.org/browse/WELD-2393[WELD-2393, window="_blank"])
+** Eliminated an NPE for a corner case with abstract decorator (link:https://issues.jboss.org/browse/WELD-2273[WELD-2273, window="_blank"])
+** Corrected `@Initialized(RequestScoped.class)` event firing in `@PostConstruct` callbacks (link:https://issues.jboss.org/browse/WELD-2372[WELD-2372, window="_blank"])
+** Fixed `BeanManager.isStereotype()` behavior when checking a qualifier annotated with yet another qualifier (link:https://issues.jboss.org/browse/WELD-2390[WELD-2390, window="_blank"])
+* Weld SE
+** Added a convenience static method `WeldContainer.current()`, a shortcut for `CDI.current()` with no need to cast the result (link:https://issues.jboss.org/browse/WELD-2399[WELD-2399, window="_blank"])
+** Allowed to specify bean discovery mode for synthetic archives (link:https://issues.jboss.org/browse/WELD-2386[WELD-2386, window="_blank"])
+** Fixed bean class discovery problem when adding whole packages (link:https://issues.jboss.org/browse/WELD-2395[WELD-2395, window="_blank"])
+* Weld Servlet
+** Improved logging and make checks more lenient in case the container is not yet bootstrapped (link:https://issues.jboss.org/browse/WELD-2382[WELD-2382, window="_blank"])
+* Configuration options
+** In SE and Servlet environments, Jandex can now be forcibly prohibited from processing your archives. This is useful when a third-party dependecy brings in some unsupported Jandex version (link:https://issues.jboss.org/browse/WELD-2374[WELD-2374, window="_blank"])
+* Development tools
+** If a deployment validation fails and the development mode is enabled, a simple *validation HTML report* (which contains a lot of useful information) is generated
+*** Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.4.Final/wildfly-10.1.0.Final-weld-2.4.4.Final-patch.zip[patch for WildFly, window="_blank"] is available.
+Target platform is *WildFly 10.1.0.Final*.
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.4.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334296&styleName=Html&projectId=12310891[Release notes, window="_blank"] &#93;
