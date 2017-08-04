@@ -3,7 +3,7 @@
 Weld versions do not match CDI versioning.
 An overview is provided in the following table:
 
-[cols="5*", options="header"]
+[cols="5*^", options="header"]
 |======================
 
 |Weld version|CDI version|Java version|Java EE version|Description
