@@ -1,0 +1,149 @@
+---
+layout: news
+title: Weld Vert.x Next?
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+excerpt: Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
+desc: Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
+tags: [vertx, integration]
+---
+:linkattrs:
+:toc: macro
+:toc-title: Contents
+:icons: font
+
+toc::[]
+
+Last year Weld team announced the link:https://github.com/weld/weld-vertx[weld-vertx, window="_blank"] project (see also link:/news/2016/04/11/weld-meets-vertx/[Weld meets Vert.x, window="_blank"] and link:/news/2016/06/21/update-on-weld-vertx/[Update on weld-vertx, window="_blank"] articles).
+The goal was clear - bring the CDI programming model into the Vert.x ecosystem.
+Since then, several things have changed.
+Two new modules were added, *CDI 2* and *Weld 3* is now used by default, and link:http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx[two final versions, window="_blank"] were released.
+I think it's a good time to summarize the features and plans for future.
+
+== What Is It Good For?
+
+First of all, it offers a mature component model for business logic in your Vert.x applications.
+A reasonable component model helps making your applications maintainable and scalable in terms of development and reusability.
+So the primary intention is to _implement the business logic as CDI beans and use Vert.x APIs for everything else_.
+
+=== Modules
+
+So far there are four modules available:
+
+1. The _Core_ module starts/stops the Weld SE container and to notifies CDI observer methods when a message is sent via Vert.x event bus. Also you can inject `io.vertx.core.Vertx` and `io.vertx.core.Context` in any CDI bean.
+2. The _Web_ module allows to configure the router (a component responsible to find the "logic" to handle an HTTP request) in a declarative way, using `@org.jboss.weld.vertx.web.WebRoute` annotation. Of course, you can register routes programatically. But what if there are hundreds of routes? The more complicated the REST API is the more difficult it is to maintain the code.
+3. The _Service Proxy_ module makes it possible to inject and invoke service proxies (as defined in https://github.com/vert-x3/vertx-service-proxy).
+4. The _Probe_ module enables Weld Probe development tool in a Vert.x application.
+
+== How Do I Use It In My Vert.x Webapp?
+
+Let's enhance an existing webapp in four simple steps.
+
+=== 1. POM Configuration
+
+Jus add the following dependency:
+
+[source, xml]
+----
+<dependency>
+  <groupId>org.jboss.weld.vertx</groupId>
+  <artifactId>weld-vertx-web</artifactId>
+  <version>${version.weld-vertx}</version>
+</dependency>
+----
+
+NOTE: This also brings in `org.jboss.weld.vertx:weld-vertx-core` and Weld dependencies.
+
+=== 2. Start CDI Container
+
+Deploy `WeldWebVerticle` and configure router:
+
+[source,java]
+----
+class MyVertxApp {
+
+     public static void main(String[] args) {
+         final Vertx vertx = Vertx.vertx();
+         // ...deploy other existing verticles
+         final WeldWebVerticle weldVerticle = new WeldWebVerticle();
+         vertx.deployVerticle(weldVerticle, result -> {
+             if (result.succeeded()) {
+                 vertx.createHttpServer().requestHandler(weldVerticle.createRouter()::accept).listen(8080);
+             }
+         });
+     }
+ }
+----
+
+=== 3. Observe Events
+
+Create a CDI observer method to consume messages from the Vert.x event bus.
+`@VertxConsumer` qualifier is used to specify the address the consumer will be registered to.
+`VertxEvent` is a wrapper of a Vert.x message.
+
+[source,java]
+----
+@ApplicationScoped
+class HelloBean {
+
+  void consumerWithDependencies(@Observes @VertxConsumer("hello.address") VertxEvent event, HelloService service) {
+    // Reply to the message - io.vertx.core.eventbus.Message.reply(Object)
+    event.setReply(service.hello());
+  }
+}
+----
+
+NOTE: Since we’re working with regular observer methods, additional parameters may be declared (next to the event parameter) - these parameters are injection points.
+
+
+=== 4. Declare Routes
+
+Annotate a class implementing `Handler<RoutingContext>` with `@org.jboss.weld.vertx.web.WebRoute`:
+
+[source,java]
+----
+@WebRoute("/hello") // Matches all HTTP methods
+class HelloHandler implements Handler<RoutingContext> {
+
+    @Inject
+    HelloService service;
+
+    @Override
+    public void handle(RoutingContext ctx) {
+        ctx.response().setStatusCode(200).end(service.hello());
+    }
+}
+----
+
+This will be translated into something like:
+
+[source,java]
+----
+void integrationPseudoCode() {
+  HelloHandler hello = produceInjectedInstanceOfHelloHandler();
+  Router router = obtainRouterInstance();
+  router.route("/hello").handler(hello);
+}
+----
+
+NOTE: `@WebRoute` is repeatable, i.e. if multiple annotations are declared on a handler class a single handler instance is used for multiple routes.
+
+=== 5. Enjoy and Celebrate
+
+And that's it.
+Fairly straightforward, isn't it?
+
+== Future and Plans
+
+So far there are no new features on the roadmap.
+The plan is to provide bugfix releases as needed.
+But `weld-vertx` is an open source project and so the future is in hands of the community.
+Feel free to link:https://github.com/weld/weld-vertx/issues[create issues, share ideas, throw feature requests] and send pull requests!
+
+
+
+
+
+
+
