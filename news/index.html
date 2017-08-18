@@ -170,7 +170,7 @@
                   </li>
                   <li><a href="#_how_do_i_use_it_in_my_vert_x_webapp">How Do I Use It In My Vert.x Webapp?</a>
                   <ul class="sectlevel2">
-                  <li><a href="#_1_pom_configuration">1. POM Configuration</a></li>
+                  <li><a href="#_1_project_configuration">1. Project Configuration</a></li>
                   <li><a href="#_2_start_cdi_container">2. Start CDI Container</a></li>
                   <li><a href="#_3_observe_events">3. Observe Events</a></li>
                   <li><a href="#_4_declare_routes">4. Declare Routes</a></li>
@@ -226,9 +226,9 @@
                   <p>Let&#8217;s enhance an existing webapp in four simple steps.</p>
                   </div>
                   <div class="sect2">
-                  <h3 id="_1_pom_configuration">1. POM Configuration</h3>
+                  <h3 id="_1_project_configuration">1. Project Configuration</h3>
                   <div class="paragraph">
-                  <p>Jus add the following dependency:</p>
+                  <p>Jus add the following dependency to your <code>pom.xml</code> and <a href="https://github.com/weld/weld-vertx/blob/master/examples/hello/src/main/resources/META-INF/beans.xml">beans.xml</a> into <code>src/main/resources/META-INF</code> (this will enable CDI).</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
@@ -239,10 +239,10 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="fa icon-note" title="Note"></i>
+                  <div class="title">Note</div>
                   </td>
                   <td class="content">
-                  This also brings in <code>org.jboss.weld.vertx:weld-vertx-core</code> and Weld dependencies.
+                  This also brings in <code>org.jboss.weld.vertx:weld-vertx-core</code>, Vert.x and Weld dependencies.
                   </td>
                   </tr>
                   </table>
@@ -275,7 +275,7 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="fa icon-note" title="Note"></i>
+                  <div class="title">Note</div>
                   </td>
                   <td class="content">
                   Since we’re working with regular observer methods, additional parameters may be declared (next to the event parameter) - these parameters are injection points.
@@ -306,7 +306,7 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="fa icon-note" title="Note"></i>
+                  <div class="title">Note</div>
                   </td>
                   <td class="content">
                   <code>@WebRoute</code> is repeatable, i.e. if multiple annotations are declared on a handler class a single handler instance is used for multiple routes.
