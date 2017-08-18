@@ -11,7 +11,6 @@ tags: [vertx, integration]
 :linkattrs:
 :toc: macro
 :toc-title: Contents
-:icons: font
 
 toc::[]
 
@@ -40,9 +39,9 @@ So far there are four modules available:
 
 Let's enhance an existing webapp in four simple steps.
 
-=== 1. POM Configuration
+=== 1. Project Configuration
 
-Jus add the following dependency:
+Jus add the following dependency to your `pom.xml` and link:https://github.com/weld/weld-vertx/blob/master/examples/hello/src/main/resources/META-INF/beans.xml[beans.xml] into `src/main/resources/META-INF` (this will enable CDI).
 
 [source, xml]
 ----
@@ -53,7 +52,7 @@ Jus add the following dependency:
 </dependency>
 ----
 
-NOTE: This also brings in `org.jboss.weld.vertx:weld-vertx-core` and Weld dependencies.
+NOTE: This also brings in `org.jboss.weld.vertx:weld-vertx-core`, Vert.x and Weld dependencies.
 
 === 2. Start CDI Container
 
