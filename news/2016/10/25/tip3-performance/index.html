@@ -180,7 +180,7 @@
                   <p>In this article we&#8217;re going to dive into various performance aspects of CDI applications.
                   As you&#8217;ve probably noticed performance testing is sometimes tricky.
                   First of all, it&#8217;s difficult to create a meaningful benchmark.
-                  One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. <a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank">JMH</a> for microbenchmarks) accordingly.
+                  One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. <a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank" rel="noopener">JMH</a> for microbenchmarks) accordingly.
                   But even that usually proves to be unsufficient.
                   One should also run the test in a relevant context (data, load, etc.).
                   Performance specialists also say that&#8217;s it&#8217;s good to avoid premature optimizations but keep performance aspects in mind when tuning the "final" code.
@@ -204,7 +204,7 @@
                   Needless to say, this might be a performance problem for large applications with thousands of classes.
                   In CDI 1.1+ we call this mode <code>all</code> and a bean archive with this mode is called <strong>EXPLICIT</strong>.
                   Since CDI 1.1+ a new discovery mode - <code>annotated</code> - can be used.
-                  The difference is that if this mode is used only classes with a <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations" target="_blank">bean defining annotation</a> are considered.
+                  The difference is that if this mode is used only classes with a <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations" target="_blank" rel="noopener">bean defining annotation</a> are considered.
                   In other words, a component must be explicitly designated.
                   A bean archive with this mode is called <strong>IMPLICIT</strong>.
                   To make things a little bit more complicated, an implicit bean archive does not have to contain a <code>beans.xml</code> file at all.
@@ -251,8 +251,8 @@
                   <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
-                  If it&#8217;s not possible to use <code>annotated</code> mode, you can try a Weld-specific feature to conserve memory used: <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation" target="_blank">Veto types without bean defining annotation</a>.
-                  A similar solution is going to be standardized in CDI 2.0 (see also <a href="https://issues.jboss.org/browse/CDI-420" target="_blank">CDI-420</a>).
+                  If it&#8217;s not possible to use <code>annotated</code> mode, you can try a Weld-specific feature to conserve memory used: <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation" target="_blank" rel="noopener">Veto types without bean defining annotation</a>.
+                  A similar solution is going to be standardized in CDI 2.0 (see also <a href="https://issues.jboss.org/browse/CDI-420" target="_blank" rel="noopener">CDI-420</a>).
                   </td>
                   </tr>
                   </table>
@@ -286,7 +286,7 @@
                   </div>
                   <div class="paragraph">
                   <p><strong>CONCLUSION</strong>: Pay attention to extensions used in your application.
-                  If you wonder what extensions are in service, use for example Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION" target="_blank">observers view</a> or <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank">fired events view</a> together with <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank"><code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> enabled</a>.</p>
+                  If you wonder what extensions are in service, use for example Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION" target="_blank" rel="noopener">observers view</a> or <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank" rel="noopener">fired events view</a> together with <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener"><code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> enabled</a>.</p>
                   </div>
                   <div class="admonitionblock tip">
                   <table>
@@ -296,7 +296,7 @@
                   </td>
                   <td class="content">
                   If possible, don&#8217;t use the extensions which observe all the annotated types from your application, i.e. which defined something like <code>void observe(@Observes ProcessAnnotatedType&lt;?&gt; event)</code>.
-                  Since CDI 1.1 <code>@WithAnnotations</code> should be used to restrict the set of types an extension is going to process. <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION&amp;observedType=javax.enterprise.inject.spi.ProcessAnnotatedType" target="_blank">Weld Probe</a> warns you about these extensions.
+                  Since CDI 1.1 <code>@WithAnnotations</code> should be used to restrict the set of types an extension is going to process. <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION&amp;observedType=javax.enterprise.inject.spi.ProcessAnnotatedType" target="_blank" rel="noopener">Weld Probe</a> warns you about these extensions.
                   </td>
                   </tr>
                   </table>
@@ -306,7 +306,7 @@
                   <h3 id="jandex">Jandex</h3>
                   <div class="paragraph">
                   <p>In some environments (WildFly, Weld SE, and more) Weld can leverage an "offline reflection library", such as <a href="https://github.com/wildfly/jandex" target="<em>blank">Jandex</a>, to speed up the scanning process.
-                  These libraries allow to effectively filter classes <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans" target="_blank">which are not beans</a> and vetoed classes.
+                  These libraries allow to effectively filter classes <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans" target="_blank" rel="noopener">which are not beans</a> and vetoed classes.
                   It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
                   As a result Weld does not even have to _load the classes</em> or use <em>reflection API</em> to detect types which should be ignored.</p>
                   </div>
@@ -317,7 +317,7 @@
                   <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
-                  In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the <a href="https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project" target="_blank">Ant task</a>.
+                  In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the <a href="https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project" target="_blank" rel="noopener">Ant task</a>.
                   </td>
                   </tr>
                   </table>
@@ -338,7 +338,7 @@
                   <div class="paragraph">
                   <p>Before you start a profiler or a similar tool, it&#8217;s a good idea to identify all the CDI components involved in a problematic "request".
                   This means all the beans, observer methods, interceptors and decorators.
-                  The good start might be the Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations" target="_blank">invocation trees</a> view.
+                  The good start might be the Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations" target="_blank" rel="noopener">invocation trees</a> view.
                   An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
                   Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
                   Sometimes profilers are just an overkill.</p>
@@ -369,7 +369,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@ApplicationScoped&#x000A;class OrderProcessor {&#x000A;  @PostConstruct&#x000A;  void init() {&#x000A;    // Do some expensive initialization logic&#x000A;  }&#x000A;  void process() {&#x000A;    // Business logic&#x000A;  }&#x000A;}&#x000A;@RequestScoped&#x000A;class OrderService {&#x000A;  @Inject&#x000A;  OrderProcessor processor; // A shared client proxy is injected&#x000A;&#x000A;  void create(Order order) {&#x000A;    if (order.isValid()) {&#x000A;        // Processor is not initialized unless we have a valid order&#x000A;        processor.process(order);&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;class OrderProcessor {&#x000A;  @PostConstruct&#x000A;  void init() {&#x000A;    // Do some expensive initialization logic&#x000A;  }&#x000A;  void process() {&#x000A;    // Business logic&#x000A;  }&#x000A;}&#x000A;@RequestScoped&#x000A;class OrderService {&#x000A;  @Inject&#x000A;  OrderProcessor processor; // A shared client proxy is injected&#x000A;&#x000A;  void create(Order order) {&#x000A;    if (order.isValid()) {&#x000A;        // Processor is not initialized unless we have a valid order&#x000A;        processor.process(order);&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock tip">
@@ -420,7 +420,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"&#x000A;    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.context.mapping&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;.*\.html&lt;/param-value&gt; &lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"&#x000A;    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.context.mapping&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;.*\.html&lt;/param-value&gt; &lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
                   </div>
                   </div>
                   </div>
