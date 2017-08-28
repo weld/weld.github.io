@@ -158,7 +158,7 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p><a href="http://vertx.io/" target="_blank" rel="noopener">Vert.x</a> defines itself as "a toolkit for building reactive applications on the JVM".
+                  <p><a href="http://vertx.io/" target="_blank">Vert.x</a> defines itself as "a toolkit for building reactive applications on the JVM".
                   Sounds cool and trendy.
                   Weld, on the other hand, comes from the Java EE world, based on standards and traditional concepts.
                   But wait, what if we try to combine the two worlds to get the best of them?</p>
@@ -171,7 +171,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jboss.weld.vertx.VertxConsumer;&#x000A;import org.jboss.weld.vertx.VertxEvent;&#x000A;&#x000A;class Foo {&#x000A;    public void echoConsumer(@Observes @VertxConsumer("test.echo.address") VertxEvent event) {&#x000A;        event.setReply(event.getMessageBody());&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">import org.jboss.weld.vertx.VertxConsumer;&#x000A;import org.jboss.weld.vertx.VertxEvent;&#x000A;&#x000A;class Foo {&#x000A;    public void echoConsumer(@Observes @VertxConsumer("test.echo.address") VertxEvent event) {&#x000A;        event.setReply(event.getMessageBody());&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="ulist">
@@ -190,7 +190,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerWithDependencies(@Observes @VertxConsumer("test.dependencies.address") VertxEvent event, CoolService coolService, StatsService statsService) {&#x000A;    coolService.process(event.getMessageBody());&#x000A;    statsService.log(event);&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public void consumerWithDependencies(@Observes @VertxConsumer("test.dependencies.address") VertxEvent event, CoolService coolService, StatsService statsService) {&#x000A;    coolService.process(event.getMessageBody());&#x000A;    statsService.log(event);&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock note">
@@ -210,7 +210,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerStrikesBack(@Observes @VertxConsumer("test.publish.address") VertxEvent event) {&#x000A;    event.messageTo("test.huhu.address").publish("huhu");&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public void consumerStrikesBack(@Observes @VertxConsumer("test.publish.address") VertxEvent event) {&#x000A;    event.messageTo("test.huhu.address").publish("huhu");&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">

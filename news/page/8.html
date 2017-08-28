@@ -171,7 +171,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static void main(String... args) {&#x000A;        try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;            ComputingService service = cdi.select(ComputingService.class).get();&#x000A;            service.compute();&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public static void main(String... args) {&#x000A;        try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;            ComputingService service = cdi.select(ComputingService.class).get();&#x000A;            service.compute();&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -190,7 +190,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;        ComputingService service = container.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;        ComputingService service = container.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -240,7 +240,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class OrderProcessor {&#x000A;    &#x000A;        @Inject Event&lt;Order&gt; orderEvent;&#x000A;    &#x000A;        public void process(Order order) {&#x000A;            orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;        }&#x000A;    &#x000A;        public void processingOrder(@Observes Order event) {&#x000A;            // This observer is notified synchronously, before the fireAsync() method returns&#x000A;        }&#x000A;    &#x000A;        public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;            // This observer is notified asynchronously, in a different thread&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class OrderProcessor {&#x000A;    &#x000A;        @Inject Event&lt;Order&gt; orderEvent;&#x000A;    &#x000A;        public void process(Order order) {&#x000A;            orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;        }&#x000A;    &#x000A;        public void processingOrder(@Observes Order event) {&#x000A;            // This observer is notified synchronously, before the fireAsync() method returns&#x000A;        }&#x000A;    &#x000A;        public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;            // This observer is notified asynchronously, in a different thread&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -271,9 +271,9 @@
                   </div>
                   <table class="tableblock frame-all grid-all spread">
                   <colgroup>
-                  <col style="width: 33.3333%;">
-                  <col style="width: 33.3333%;">
-                  <col style="width: 33.3334%;">
+                  <col style="width: 33%;">
+                  <col style="width: 33%;">
+                  <col style="width: 33%;">
                   </colgroup>
                   <thead>
                   <tr>
@@ -364,7 +364,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Weld builder = new Weld()&#x000A;        .disableDiscovery()&#x000A;        .packages(Main.class, Utils.class)&#x000A;        .interceptors(TransactionalInterceptor.class)&#x000A;        .property("org.jboss.weld.construction.relaxed", true);&#x000A;    &#x000A;    try (WeldContainer weld = builder.initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Weld builder = new Weld()&#x000A;        .disableDiscovery()&#x000A;        .packages(Main.class, Utils.class)&#x000A;        .interceptors(TransactionalInterceptor.class)&#x000A;        .property("org.jboss.weld.construction.relaxed", true);&#x000A;    &#x000A;    try (WeldContainer weld = builder.initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -394,7 +394,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();&#x000A;    new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();&#x000A;    &#x000A;    MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;    &#x000A;    WeldContainer.instance("one").shutdown();&#x000A;    WeldContainer.instance("two").shutdown();</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();&#x000A;    new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();&#x000A;    &#x000A;    MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;    &#x000A;    WeldContainer.instance("one").shutdown();&#x000A;    WeldContainer.instance("two").shutdown();</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -409,7 +409,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;        MyBean bean = weld.select(MyBean.class).get();&#x000A;        System.out.println(bean.computeResult());&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -420,7 +420,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -442,7 +442,7 @@
                   </div>
                   <div class="imageblock">
                   <div class="content">
-                  <img src="/images/blog/probe-bar.png" alt="Weld Probe information bar embedded in application&#8217;s HTML output">
+                  <img src="/images/blog/probe-bar.png" alt="Weld Probe information bar embedded in application's HTML output">
                   </div>
                   </div>
                   <div class="paragraph">
@@ -524,7 +524,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;        event.addBean()&#x000A;            .addType(Integer.class)&#x000A;            .addQualifier(Random.LITERAL)&#x000A;            .produceWith(() -&gt; new java.util.Random().nextInt(1000));&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;        event.addBean()&#x000A;            .addType(Integer.class)&#x000A;            .addQualifier(Random.LITERAL)&#x000A;            .produceWith(() -&gt; new java.util.Random().nextInt(1000));&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -533,7 +533,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;        event.addBean()&#x000A;            .addType(Connection.class)&#x000A;            .produceWith(this::newConnection)&#x000A;            .disposeWith(connection -&gt; connection.close());&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;        event.addBean()&#x000A;            .addType(Connection.class)&#x000A;            .produceWith(this::newConnection)&#x000A;            .disposeWith(connection -&gt; connection.close());&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -854,7 +854,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject&#x000A;    private ExperimentalEvent&lt;Configuration&gt; event;&#x000A;    …&#x000A;    event.fireAsync(new Configuration());</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Inject&#x000A;    private ExperimentalEvent&lt;Configuration&gt; event;&#x000A;    …&#x000A;    event.fireAsync(new Configuration());</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -918,7 +918,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration()).thenAccept(config -&gt; master.compute(config));</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">event.fireAsync(new Configuration()).thenAccept(config -&gt; master.compute(config));</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -931,7 +931,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration())&#x000A;        .exceptionally(throwable -&gt; DEFAULT_CONFIGURATION)&#x000A;        .thenAccept((config) -&gt; master.compute(config));</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">event.fireAsync(new Configuration())&#x000A;        .exceptionally(throwable -&gt; DEFAULT_CONFIGURATION)&#x000A;        .thenAccept((config) -&gt; master.compute(config));</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -939,7 +939,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration()).whenComplete((config, throwable) -&gt; {&#x000A;        if (throwable != null) {&#x000A;            System.err.println("Oops. Failed because of " + throwable.getMessage());&#x000A;        } else {&#x000A;            master.compute(config);&#x000A;        }&#x000A;    });</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">event.fireAsync(new Configuration()).whenComplete((config, throwable) -&gt; {&#x000A;        if (throwable != null) {&#x000A;            System.err.println("Oops. Failed because of " + throwable.getMessage());&#x000A;        } else {&#x000A;            master.compute(config);&#x000A;        }&#x000A;    });</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -963,7 +963,7 @@
                   <p>Add dependency on Weld</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha3&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha3&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   </li>
@@ -971,7 +971,7 @@
                   <p>Create an empty <code>beans.xml</code> file, e.g.</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mkdir src/main/resources/META-INF&#x000A;    touch src/main/resources/META-INF/beans.xml</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-shell" data-lang="shell">mkdir src/main/resources/META-INF&#x000A;    touch src/main/resources/META-INF/beans.xml</code></pre>
                   </div>
                   </div>
                   </li>
@@ -979,7 +979,7 @@
                   <p>Launch Weld and fire an event asynchronously</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static void main(String[] args) {&#x000A;        WeldContainer weld = new Weld().initialize();&#x000A;        Event&lt;String&gt; evnt = weld.event().select(String.class);&#x000A;        ExperimentalEvent&lt;String&gt; event = (ExperimentalEvent&lt;String&gt;) evnt;&#x000A;    &#x000A;        event.fireAsync("message");&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public static void main(String[] args) {&#x000A;        WeldContainer weld = new Weld().initialize();&#x000A;        Event&lt;String&gt; evnt = weld.event().select(String.class);&#x000A;        ExperimentalEvent&lt;String&gt; event = (ExperimentalEvent&lt;String&gt;) evnt;&#x000A;    &#x000A;        event.fireAsync("message");&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </li>

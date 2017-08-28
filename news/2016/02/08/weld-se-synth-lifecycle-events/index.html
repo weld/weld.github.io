@@ -181,7 +181,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">

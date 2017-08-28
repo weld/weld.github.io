@@ -184,7 +184,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;        .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;        .add(processAnnotatedType().notify((e) -&gt; {&#x000A;                if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                    e.veto();&#x000A;                }&#x000A;            })).build();&#x000A;    &#x000A;    try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;        // Use the container...&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;        .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;        .add(processAnnotatedType().notify((e) -&gt; {&#x000A;                if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                    e.veto();&#x000A;                }&#x000A;            })).build();&#x000A;    &#x000A;    try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;        // Use the container...&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -230,7 +230,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension {&#x000A;      void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -&gt; {&#x000A;                long start = System.currentTimeMillis();&#x000A;                try {&#x000A;                    return c.proceed();&#x000A;                } finally {&#x000A;                    System.out.println("Time: " + System.currentTimeMillis() - start);&#x000A;                }&#x000A;            }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class MyExtension {&#x000A;      void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -&gt; {&#x000A;                long start = System.currentTimeMillis();&#x000A;                try {&#x000A;                    return c.proceed();&#x000A;                } finally {&#x000A;                    System.out.println("Time: " + System.currentTimeMillis() - start);&#x000A;                }&#x000A;            }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -410,7 +410,7 @@
                   <div class="listingblock">
                   <div class="title">Maven Coordinates:</div>
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;        &lt;version&gt;1.0.0.CR1&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;        &lt;version&gt;1.0.0.CR1&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                 </div>

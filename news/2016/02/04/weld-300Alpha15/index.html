@@ -174,7 +174,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension {&#x000A;  void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;    event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -&gt; {&#x000A;            long start = System.currentTimeMillis();&#x000A;            try {&#x000A;                return c.proceed();&#x000A;            } finally {&#x000A;                System.out.println("Time: " + System.currentTimeMillis() - start);&#x000A;            }&#x000A;        }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);&#x000A;  }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class MyExtension {&#x000A;  void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;    event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -&gt; {&#x000A;            long start = System.currentTimeMillis();&#x000A;            try {&#x000A;                return c.proceed();&#x000A;            } finally {&#x000A;                System.out.println("Time: " + System.currentTimeMillis() - start);&#x000A;            }&#x000A;        }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);&#x000A;  }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">

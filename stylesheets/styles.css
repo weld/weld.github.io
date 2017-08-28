@@ -1,43 +1,43 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
-/* line 3, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 3, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.navbar {
   background-color: transparent;
   border: 0 none;
   border-bottom: 1px solid #ddd; }
 
-/* line 9, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 9, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li {
   margin-bottom: -1px; }
 
-/* line 13, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 13, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li > a {
   color: #0088cc;
   border: 1px solid #ddd; }
 
-/* line 18, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 18, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li > a:hover {
   background-color: #eee; }
 
-/* line 22, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 22, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li:last-child > a {
   border-radius: 0 0 6px 6px; }
 
-/* line 26, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 26, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li:first-child > a {
   border-radius: 6px 6px 0 0;
   background-color: #eee;
   border: 0 none; }
 
-/* line 32, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 32, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .navbar-default .navbar-nav > li:first-child > a:hover {
   color: black; }
 
-/* line 36, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 36, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 code {
   background-color: inherit;
   font-family: "Lucida Console", monospace; }
 
-/* line 41, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 41, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 p code {
   background-color: #efefef;
   border-radius: 3px;
@@ -46,66 +46,66 @@ p code {
   font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 95%; }
 
-/* line 50, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 50, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .first-in-row {
   margin-left: 0 !important; }
 
-/* line 53, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 53, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-home-logo {
   margin: 40px 0 15px 20px;
   float: left; }
 
-/* line 58, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 58, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.cdi-background {
   float: right; }
 
-/* line 62, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 62, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 html {
   font-size: small; }
 
-/* line 67, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 67, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 body {
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 110%;
   height: 100%; }
 
-/* line 73, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 73, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 p {
   margin: 0 0 15px; }
 
-/* line 77, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 77, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .container-fluid div.jumbotron {
   padding: 35px;
   line-height: 25px;
   margin: 15px 0px 15px 0px; }
 
-/* line 83, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 83, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.jumbotron p {
   font-size: 120%; }
 
-/* line 87, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 87, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.jumbotron h1 {
   font-size: 400%; }
 
-/* line 91, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 91, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1, h2, h3 {
   font-weight: bold;
   text-rendering: optimizelegibility;
   color: #333333; }
 
-/* line 97, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 97, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1 {
   font-size: 170%; }
 
-/* line 101, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 101, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h2 {
   font-size: 140%; }
 
-/* line 105, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 105, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h3 {
   font-size: 110%; }
 
-/* line 109, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 109, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .content .btn-primary {
   background-color: #48678D;
   background-image: linear-gradient(to bottom, #4f729d, #3e5776);
@@ -114,46 +114,46 @@ h3 {
   color: #FFFFFF;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
 
-/* line 118, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 118, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn {
   margin-left: 0px;
   padding-left: 0px; }
 
-/* line 123, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 123, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn li {
   list-style-type: none;
   padding-bottom: 10px; }
 
-/* line 128, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 128, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn strong {
   color: #666;
   font-size: .8em;
   margin-top: -8px; }
 
-/* line 134, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 134, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads {
   width: 100%; }
-/* line 136, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 136, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads th {
   border-bottom: 1px solid;
   text-align: left; }
-/* line 140, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 140, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.downloads td {
   vertical-align: top;
   border-bottom: 1px solid;
   text-align: left; }
 
-/* line 147, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 147, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 pre {
   background-color: #f0f0f0;
   font-family: "Lucida Console", monospace; }
 
-/* line 152, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 152, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 pre.highlight, pre.highlightjs, pre.code {
   border: 0px solid #AAAAAA;
   background: none; }
 
-/* line 157, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 157, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 pre code {
   border: 0px solid #AAAAAA;
   font-size: 1.1em;
@@ -162,127 +162,127 @@ pre code {
   background: none;
   border-radius: 4px; }
 
-/* line 166, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 166, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 footer {
   background-color: #E8EDEE;
   font-size: 80%;
   text-align: center;
   margin-top: 30px; }
 
-/* line 173, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 173, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div#preamble {
   margin-bottom: 30px; }
 
-/* line 177, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 177, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 .tabnavclearfix {
   padding: 0px 50px 0px 50px; }
 
-/* line 181, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 181, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 #tabnav-panel.tabnav-opened {
   border-bottom: initial; }
 
-/* line 185, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 185, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 table.tableblock, tr.tableblock, th.tableblock, td.tableblock {
   border: 1px solid;
   border-collapse: collapse;
   vertical-align: middle; }
 
-/* line 191, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 191, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 td.halign-center {
   text-align: center; }
 
-/* line 195, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 195, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div#book-box {
   text-align: center; }
 
-/* line 199, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 199, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-nav-logo {
   margin: 40px 0 15px 20px; }
 
-/* line 203, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 203, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 img.weld-book-img {
   box-shadow: 10px 10px silver; }
 
 @media (min-width: 768px) {
-  /* line 209, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 209, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav {
     position: fixed;
     top: 35px; }
 
-  /* line 214, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 214, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none; }
 
-  /* line 218, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 218, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar ul {
     float: none; }
 
-  /* line 221, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 221, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar ul:not {
     display: block; }
 
-  /* line 224, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 224, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar li {
     float: none;
     display: block; }
 
-  /* line 228, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 228, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav .navbar li a {
     padding-top: 8px;
     padding-bottom: 8px; } }
 @media (min-width: 1280px) {
-  /* line 237, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+  /* line 237, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
   .sidebar-nav {
     min-width: 15em;
     left: 35px; } }
-/* line 244, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 244, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.row {
   margin: 0px; }
 
-/* line 248, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 248, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 p.tableblock {
   margin: 5px; }
 
-/* line 252, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 252, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 hr {
   margin: 10px 0px; }
 
-/* line 256, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 256, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul.newsColumn li {
   padding: 0px; }
 
-/* line 260, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 260, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.search-box {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5em;
   width: 30%; }
 
-/* line 267, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 267, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.search-hits {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
-/* line 272, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 272, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.search-results ol li {
   color: #656565;
   margin-top: 0.2em;
   margin-bottom: 0.5em; }
 
-/* line 278, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 278, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.search-results ol li i {
   color: #191919; }
 
-/* line 282, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 282, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.search-results ol li p.search-desc {
   font-size: 85%; }
 
-/* line 286, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 286, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.news-date {
   background-color: #4a5860; }
 
-/* line 290, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 290, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.news-boxed {
   text-align: center;
   display: inline-block;
@@ -294,27 +294,27 @@ div.news-boxed {
   font-size: 90%;
   margin-bottom: 5px; }
 
-/* line 302, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 302, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.note {
   border: 1px solid #7dcf7d;
   background-color: #dff0d8; }
 
-/* line 307, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 307, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.warning {
   border: 1px solid #faebcc;
   background-color: #fcf8e3; }
 
-/* line 312, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 312, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .content {
   padding: 15px; }
 
-/* line 316, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 316, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock {
   border-radius: 4px 4px 4px 4px;
   margin-top: 15px;
   margin-bottom: 15px; }
 
-/* line 322, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 322, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock .icon .title {
   font-weight: bold;
   color: #404040;
@@ -322,7 +322,7 @@ div.admonitionblock .icon .title {
   padding: 10px;
   text-transform: uppercase; }
 
-/* line 330, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 330, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
   color: #111;
@@ -330,22 +330,22 @@ div.admonitionblock td.icon .icon-tip:before {
   border-right: 1px solid silver;
   padding: 10px; }
 
-/* line 338, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 338, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 span.tags a {
   color: #e5eaec; }
 
-/* line 342, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 342, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 ul li p {
   margin: 0px; }
 
-/* line 346, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 346, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc {
   float: right;
   margin-left: 30px;
   padding: 15px;
   border-radius: 10px; }
 
-/* line 353, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 353, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc div.title {
   background-color: #4a5860;
   padding: 5px;
@@ -354,7 +354,7 @@ div.toc div.title {
   font-weight: bold;
   text-transform: uppercase; }
 
-/* line 362, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 362, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 {
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
@@ -362,11 +362,11 @@ div.toc ul.sectlevel1 {
   padding-bottom: 5px;
   padding-left: 30px; }
 
-/* line 370, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 370, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li {
   padding: 5px;
   padding-right: 10px; }
 
-/* line 375, /home/manovotn/GitRepo/weld.github.io/stylesheets/styles.scss */
+/* line 375, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
   padding: 2px; }
