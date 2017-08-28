@@ -13,7 +13,7 @@ tags: [release]
 Weld 3.0.1.Final is out and it brings some bugfixes as well as new version of Weld API - 3.0.SP1.
 Among the new things you can find sweet stuff such as an expansion to CDI 2 `BeanConfigurator` API or the ability to detect that injected object is Weld proxy.
 Wait, not only detect - you can also use it do get `Metadata` or even retrieve the actual contextual instance hidden beneath.
-So let's see the summary of fixes and improvements, shall we?	
+So let's see the summary of fixes and improvements, shall we?
 
 
 Notable fixes and improvements:
@@ -22,7 +22,7 @@ Notable fixes and improvements:
 ** Revised support for Java 8 default methods (link:https://issues.jboss.org/browse/WELD-1914[WELD-1914, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2405[WELD-2405, window="_blank"])
 ** Corrected MIME types for all POMs in Weld core - Nexus 3 will love us now! (link:https://issues.jboss.org/browse/WELD-2417[WELD-2417, window="_blank"])
 ** Fixed how proxies are created for signed packages (link:https://issues.jboss.org/browse/WELD-2402[WELD-2402, window="_blank"])
-** Portable extension events should now be fired in accordance with specification link:https://issues.jboss.org/browse/WELD-2393[WELD-2393, window="_blank"] 
+** Portable extension events should now be fired in accordance with specification link:https://issues.jboss.org/browse/WELD-2393[WELD-2393, window="_blank"]
 
 * Weld SE
 ** Synthetic bean archive can now have discovery mode `annotated` (link:https://issues.jboss.org/browse/WELD-2386[WELD-2386, window="_blank"])
@@ -31,7 +31,7 @@ Notable fixes and improvements:
 
 * Weld API/SPI
 ** Added a way to detect proxies and subclasses (link:https://issues.jboss.org/browse/WELD-2407[WELD-2407, window="_blank"])
-*** Every Weld-enhanced object (subclass/proxy) will not implement link:https://github.com/weld/api/tree/3.0.SP1/weld/src/main/java/org/jboss/weld/proxy[new marker interface(s)] which grant access to additional data about the bean
+*** Every Weld-enhanced object (subclass/proxy) will now implement link:https://github.com/weld/api/tree/3.0.SP1/weld/src/main/java/org/jboss/weld/proxy[new marker interface(s)] which grant access to additional data about the bean
 *** This also allows to retrieve the underlying contextual instance
 ** Added `WeldBeanConfigurator` to API - allows to select an `@Alternative` which was created using `BeanConfigurator` (link:https://issues.jboss.org/browse/WELD-2412[WELD-2412, window="_blank"])
 ** We have enhanced the `Environment` in Weld SPI so that integrators define whether their bean archives are "EE module aware" or not (link:https://issues.jboss.org/browse/WELD-2398[WELD-2398, window="_blank"])
@@ -47,7 +47,7 @@ As usual, there is a link:http://download.jboss.org/weld/3.0.1.Final/wildfly-10.
 
 But, for those of you who like to stay sharp, we have also created a link:http://download.jboss.org/weld/3.0.1.Final/wildfly-10.1.0.Final-weld-3.0.1.Final-patch.zip[patch for WildFly 11.0.0.Beta1, window="_blank"].
 
-Please note that there is currently a link:https://issues.jboss.org/browse/WFLY-9240[known issue] with security context propagation in Weld 3 for WildFly 11. 
+Please note that there is currently a link:https://issues.jboss.org/browse/WFLY-9240[known issue] with security context propagation in Weld 3 for WildFly 11.
 Though this should only concern people who use the combination of Elytron subsystem and asynchronous CDI events.
 
 If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
