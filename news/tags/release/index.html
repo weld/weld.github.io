@@ -143,6 +143,101 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2017/09/11/weld-245Final/">Weld 2.4.5.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2017-9-11
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>It&#8217;s about time we delivered another regular bugfix release for Weld 2.
+                  And while the list of fixes isn&#8217;t exhausting, some of them are quite crucial.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Notable fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld Core:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Revise Java 8 default methods plus proxies/sublasing behaviour (<a href="https://issues.jboss.org/browse/WELD-2407" target="_blank">WELD-2407</a> and <a href="https://issues.jboss.org/browse/WELD-2405" target="_blank">WELD-2405</a>)</p>
+                  </li>
+                  <li>
+                  <p>All POMs in Weld core project should now have correct MIME types; this corrects issues with Nexus 3 (<a href="https://issues.jboss.org/browse/WELD-2417" target="_blank">WELD-2417</a>)</p>
+                  </li>
+                  <li>
+                  <p>Proxies for signed packages should now be generated in custom packages (<a href="https://issues.jboss.org/browse/WELD-2402" target="_blank">WELD-2402</a>)</p>
+                  </li>
+                  <li>
+                  <p>The behaviour of Weld Core and integrator provided implementation of <code>org.jboss.weld.bootstrap.api.Environment</code> is back to what it was in Weld 2.4.3.Final (<a href="https://issues.jboss.org/browse/WELD-2401" target="_blank">WELD-2401</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>We found out this change could cause serious headaches to integrators so we will leave it as it is - sorry for the mess</p>
+                  </li>
+                  <li>
+                  <p>For Weld 3, we already have a better solution in <a href="https://issues.jboss.org/browse/WELD-2398" target="_blank">place</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld SE and Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Both, Weld SE and Weld Servlet, will now explicitly bring in dependency on jboss-classfilewriter 1.2+ (<a href="https://issues.jboss.org/browse/WELD-2406" target="_blank">WELD-2406</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Under the <code>jboss-as</code> directory of Weld source code, you can now make use of new profiles to create WildFly patches yourself <a href="https://issues.jboss.org/browse/WELD-2397" target="_blank">WELD-2397</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-10.1.0.Final-weld-2.4.5.Final-patch.zip" target="_blank">patch for WildFly 10.1.0.Final</a> is available.
+                  But since WildFly 11 has already reached CR stage, we have decided to also provide you with <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-11.0.0.CR1-weld-2.4.5.Final-patch.zip" target="_blank">patch for WildFly 11.0.0.CR1</a>.
+                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.5.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&amp;styleName=Html&amp;projectId=12310891" target="_blank">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2017/08/25/weld-301Final/">Weld 3.0.1.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -174,7 +269,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Revised support for Java 8 default methods (<a href="https://issues.jboss.org/browse/WELD-1914" target="_blank">WELD-1914</a> and <a href="https://issues.jboss.org/browse/WELD-2405" target="_blank">WELD-2405</a>)</p>
+                  <p>Revised support for Java 8 default methods (<a href="https://issues.jboss.org/browse/WELD-2407" target="_blank">WELD-2407</a> and <a href="https://issues.jboss.org/browse/WELD-2405" target="_blank">WELD-2405</a>)</p>
                   </li>
                   <li>
                   <p>Corrected MIME types for all POMs in Weld core - Nexus 3 will love us now! (<a href="https://issues.jboss.org/browse/WELD-2417" target="_blank">WELD-2417</a>)</p>
@@ -1050,89 +1145,6 @@
                   &#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2016/09/13/weld-240Final/">Weld 2.4.0.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2016-9-13
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am very pleased to announce the <strong>first stable version of Weld 2.4</strong> (CDI 1.2).
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331363" target="_blank">the release details</a>.
-                  From now on, 2.4 is the current stable version of Weld and 2.3 is not actively developed anymore.
-                  Thanks to everyone involved in this release!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Most of the new features were already introduced in <a href="/news/2016/08/19/weld-240CR1" target="_blank">First release candidate of Weld 2.4</a>.
-                  To sum it up:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Removed dependency on <code>com.google.guava:guava</code></p>
-                  </li>
-                  <li>
-                  <p>Enhanced version of <code>javax.enterprise.inject.Instance</code></p>
-                  </li>
-                  <li>
-                  <p>Veto <code>AnnotatedType</code> not annotated with a bean defining annotation</p>
-                  </li>
-                  <li>
-                  <p><code>@ActivateRequestScope</code> interceptor binding moved to Weld API and renamed to <code>@ActivateRequestContext</code></p>
-                  </li>
-                  <li>
-                  <p>Improved rolling upgrades support</p>
-                  </li>
-                  <li>
-                  <p>Events - reflect the output of CDI-494</p>
-                  </li>
-                  <li>
-                  <p>Probe - allow to filter unused beans</p>
-                  </li>
-                  <li>
-                  <p>Cleanup, cleanup, cleanup&#8230;&#8203;</p>
-                  </li>
-                  <li>
-                  <p>Initial Java 9 support</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Moreover, 2.4.0.Final allows to export the Probe development tool data (to be discussed in one of the following blog posts) and fixes a minor problem in non-EE environments (see also <a href="https://issues.jboss.org/browse/WELD-2227">WELD-2227</a>).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>In the coming weeks, the Weld team is also going to publish <strong>"Weld tips"</strong> - a series of concise articles.
-                  The intention is to familiarize developers with less known Weld features.
-                  There will be no hot news, just useful existing features (repetition is the mother of wisdom ;-).</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.0.Final/wildfly-10.1.0.Final-weld-2.4.0.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
-                  &#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331363" target="_blank">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
