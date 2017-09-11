@@ -19,7 +19,7 @@ So let's see the summary of fixes and improvements, shall we?
 Notable fixes and improvements:
 
 * Weld Core
-** Revised support for Java 8 default methods (link:https://issues.jboss.org/browse/WELD-1914[WELD-1914, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2405[WELD-2405, window="_blank"])
+** Revised support for Java 8 default methods (link:https://issues.jboss.org/browse/WELD-2407[WELD-2407, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2405[WELD-2405, window="_blank"])
 ** Corrected MIME types for all POMs in Weld core - Nexus 3 will love us now! (link:https://issues.jboss.org/browse/WELD-2417[WELD-2417, window="_blank"])
 ** Fixed how proxies are created for signed packages (link:https://issues.jboss.org/browse/WELD-2402[WELD-2402, window="_blank"])
 ** Portable extension events should now be fired in accordance with specification link:https://issues.jboss.org/browse/WELD-2393[WELD-2393, window="_blank"]

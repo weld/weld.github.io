@@ -1,0 +1,38 @@
+---
+layout: news
+title: Weld 2.4.5.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 2.4.5.Final released
+desc: Weld 2.4.5.Final released
+tags: [release]
+---
+:linkattrs:
+
+It's about time we delivered another regular bugfix release for Weld 2.
+And while the list of fixes isn't exhausting, some of them are quite crucial.
+
+Notable fixes and improvements:
+
+* Weld Core:
+** Revise Java 8 default methods plus proxies/sublasing behaviour (link:https://issues.jboss.org/browse/WELD-2407[WELD-2407, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2405[WELD-2405, window="_blank"])
+** All POMs in Weld core project should now have correct MIME types; this corrects issues with Nexus 3 (link:https://issues.jboss.org/browse/WELD-2417[WELD-2417, window="_blank"])
+** Proxies for signed packages should now be generated in custom packages (link:https://issues.jboss.org/browse/WELD-2402[WELD-2402, window="_blank"])
+** The behaviour of Weld Core and integrator provided implementation of `org.jboss.weld.bootstrap.api.Environment` is back to what it was in Weld 2.4.3.Final (link:https://issues.jboss.org/browse/WELD-2401[WELD-2401, window="_blank"])
+*** We found out this change could cause serious headaches to integrators so we will leave it as it is - sorry for the mess
+*** For Weld 3, we already have a better solution in link:https://issues.jboss.org/browse/WELD-2398[place, window="_blank"]
+* Weld SE and Servlet
+** Both, Weld SE and Weld Servlet, will now explicitly bring in dependency on jboss-classfilewriter 1.2+ (link:https://issues.jboss.org/browse/WELD-2406[WELD-2406, window="_blank"])
+* Other
+** Under the `jboss-as` directory of Weld source code, you can now make use of new profiles to create WildFly patches yourself link:https://issues.jboss.org/browse/WELD-2397[WELD-2397, window="_blank"]
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.5.Final/wildfly-10.1.0.Final-weld-2.4.5.Final-patch.zip[patch for WildFly 10.1.0.Final, window="_blank"] is available.
+But since WildFly 11 has already reached CR stage, we have decided to also provide you with link:http://download.jboss.org/weld/2.4.5.Final/wildfly-11.0.0.CR1-weld-2.4.5.Final-patch.zip[ patch for WildFly 11.0.0.CR1, window="_blank"].
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.5.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&styleName=Html&projectId=12310891[Release notes, window="_blank"] &#93;
