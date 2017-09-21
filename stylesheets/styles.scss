@@ -85,7 +85,7 @@ div.jumbotron p {
 }
 
 div.jumbotron h1 {
-    font-size: 400%;
+    font-size: 300%;
 }
 
 h1, h2, h3 {
@@ -374,4 +374,9 @@ div.toc ul.sectlevel1 li {
 
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
     padding: 2px;
+}
+
+.equal-height {
+  display: flex;
+  flex-wrap: wrap;
 }
