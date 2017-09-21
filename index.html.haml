@@ -5,25 +5,22 @@ priority: 0.5
 change_frequency: weekly
 desc: Weld - CDI Reference Implementation
 ---
-.row.hidden-xs
-  .col-md-12
-    %div.jumbotron
+.row.equal-height
+  .col-md-7
+    %div.jumbotron.hidden-xs
       %h1 @Inject for the Java Platform.
       %p Runs on Java EE application servers, servlet containers, Java SE, Ceylon, Vert.x ...
       -# %div.search-box
       -#  %i.fa.fa-search.fa-lg
       -#  %input{:placeholder=>"Search issues, site, docs...",:size=>"25"}
-.row
-  .col-md-8
     %div
       -# %h2 About
       %p
         Weld is the reference implementation of
         %a{:href=>"http://cdi-spec.org",:target=>'_blank'} CDI: Contexts and Dependency Injection for the Java EE Platform
-        which is a
+        \- a
         %a{:href=>"https://jcp.org/en/home/index",:target=>'_blank'} JCP
         standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE.
-      %p
         Weld is integrated into many Java EE application servers such as
         = succeed ',' do
           %a{:href=>"http://www.wildfly.org/",:target=>'_blank'}WildFly
@@ -63,15 +60,79 @@ desc: Weld - CDI Reference Implementation
           or the
           %a{:href=>"http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html"}reference documentation.
       %div
-        %h2 Weld Book
-        %p The latest book on Weld is now available:
-        %div#book-box
-          %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
-            %img{:src=>"images/book.jpg", :width=>"250", :height=>"307", :class=>"weld-book-img"}
-  .col-md-1
-    %div
-  .col-md-4
-    %div.well
+        %h2 Latest Patches for WildFly
+        %p
+          Each version of WildFly is shipped with given version of Weld.
+          However, WildFly and Weld have different release cadences.
+          Therefore, with every Weld release we also create a patch which allows you to easily upgrade:
+        %table{:class=>"table table-bordered",:style=>"width:100%;"}
+          %colgroup
+            %col{:style=>"width: 33%;"}
+            %col{:style=>"width: 33%;"}
+            %col{:style=>"width: 33%;"}
+          %thead
+            %tr{:class=>"active"}
+              %th
+                WildFly
+              %th
+                Ships with Weld
+              %th
+                Available Patches
+          %tbody
+            %tr
+              %td
+                WildFly 11.0.0.CR1
+              %td
+                Weld 2.4.3.Final
+                %span{:class=>"label label-primary"}
+                  CDI 1.2
+              %td
+                %ul
+                  %li
+                    %a{:href=>"http://download.jboss.org/weld/2.4.5.Final/wildfly-11.0.0.CR1-weld-2.4.5.Final-patch.zip"}Weld 2.4.5.Final
+                    %span{:class=>"label label-primary"}
+                      CDI 1.2
+            %tr
+              %td
+                WildFly 11.0.0.Beta1
+              %td
+                Weld 2.4.3.Final
+                %span{:class=>"label label-primary"}
+                  CDI 1.2
+              %td
+                %ul
+                  %li
+                    %a{:href=>"http://download.jboss.org/weld/3.0.1.Final/wildfly-11.0.0.Beta1-weld-3.0.1.Final-patch.zip"}Weld 3.0.1.Final
+                    %span{:class=>"label label-info"}
+                      CDI 2.0
+            %tr
+              %td
+                WildFly 10.1.0.Final
+              %td
+                Weld 2.3.5.Final
+                %span{:class=>"label label-primary"}
+                  CDI 1.2
+              %td
+                %ul
+                  %li
+                    %a{:href=>"http://download.jboss.org/weld/2.4.5.Final/wildfly-10.1.0.Final-weld-2.4.5.Final-patch.zip"}Weld 2.4.5.Final
+                    %span{:class=>"label label-primary"}
+                      CDI 1.2
+                  %li
+                    %a{:href=>"http://download.jboss.org/weld/3.0.1.Final/wildfly-11.0.0.Beta1-weld-3.0.1.Final-patch.zip"}Weld 3.0.1.Final
+                    %span{:class=>"label label-info"}
+                      CDI 2.0
+        %div{:class=>"admonitionblock tip"}
+          %table
+            %tbody
+              %tr
+                %td{:class=>"icon"}
+                  %i{:class=>"fa icon-tip",title=>"Tip"}
+                %td{:class=>"content"}
+                  If you’re not familiar with patching WildFly, check the
+                  %a{:href=>"/documentation/#12"}FAQ.
+  .col-md-3
+    %div.well{:style=>"height:100%;"}
       %h2
         Latest News
         %a{:href=>"http://weld.cdi-spec.org/news.atom"}
@@ -98,5 +159,7 @@ desc: Weld - CDI Reference Implementation
                         =", "
               %p
                 = post.excerpt || summarize(html_to_text(post.content), 20)
-                %a{:href=>post.url} more
               %hr
+        %div#book-box
+          %a{:href=>"http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book"}
+            %img{:src=>"images/book.jpg", :width=>"250", :height=>"307", :class=>"weld-book-img"}

@@ -45,7 +45,7 @@ Notable fixes and improvements:
 
 As usual, there is a link:http://download.jboss.org/weld/3.0.1.Final/wildfly-10.1.0.Final-weld-3.0.1.Final-patch.zip[patch for WildFly 10.1.0.Final, window="_blank"] is available.
 
-But, for those of you who like to stay sharp, we have also created a link:http://download.jboss.org/weld/3.0.1.Final/wildfly-10.1.0.Final-weld-3.0.1.Final-patch.zip[patch for WildFly 11.0.0.Beta1, window="_blank"].
+But, for those of you who like to stay sharp, we have also created a link:http://download.jboss.org/weld/3.0.1.Final/wildfly-11.0.0.Beta1-weld-3.0.1.Final-patch.zip[patch for WildFly 11.0.0.Beta1, window="_blank"].
 
 Please note that there is currently a link:https://issues.jboss.org/browse/WFLY-9240[known issue] with security context propagation in Weld 3 for WildFly 11.
 Though this should only concern people who use the combination of Elytron subsystem and asynchronous CDI events.
