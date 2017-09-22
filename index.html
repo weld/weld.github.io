@@ -134,26 +134,20 @@
             </div>
           </div>
           <div class="row content-wrapper">
-            <div class="col-md-10">
-              <div class="row hidden-xs">
-                <div class="col-md-12">
-                  <div class="jumbotron">
+            <div class="col-md-12">
+              <div class="row equal-height">
+                <div class="col-md-7">
+                  <div class="jumbotron hidden-xs">
                     <h1>@Inject for the Java Platform.</h1>
                     <p>Runs on Java EE application servers, servlet containers, Java SE, Ceylon, Vert.x ...</p>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8">
                   <div>
                     <p>
                       Weld is the reference implementation of
                       <a href="http://cdi-spec.org" target="_blank">CDI: Contexts and Dependency Injection for the Java EE Platform</a>
-                      which is a
+                      - a
                       <a href="https://jcp.org/en/home/index" target="_blank">JCP</a>
                       standard for dependency injection and contextual lifecycle management and one of the most important and popular parts of the Java EE.
-                    </p>
-                    <p>
                       Weld is integrated into many Java EE application servers such as
                       <a href="http://www.wildfly.org/" target="_blank">WildFly</a>,
                       <a href="http://www.jboss.org/products/eap.html" target="_blank">JBoss Enterprise Application Platform</a>,
@@ -183,21 +177,123 @@
                       </p>
                     </div>
                     <div>
-                      <h2>Weld Book</h2>
-                      <p>The latest book on Weld is now available:</p>
-                      <div id="book-box">
-                        <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
-                          <img class="weld-book-img" height="307" src="images/book.jpg" width="250">
-                        </a>
+                      <h2>Latest Patches for WildFly</h2>
+                      <p>
+                        Each version of WildFly is shipped with given version of Weld.
+                        However, WildFly and Weld have different release cadences.
+                        Therefore, with every Weld release we also create a patch which allows you to easily upgrade:
+                      </p>
+                      <table class="table table-bordered" style="width:100%;">
+                        <colgroup>
+                          <col style="width: 33%;">
+                          <col style="width: 33%;">
+                          <col style="width: 33%;">
+                        </colgroup>
+                        <thead>
+                          <tr class="active">
+                            <th>
+                              WildFly
+                            </th>
+                            <th>
+                              Ships with Weld
+                            </th>
+                            <th>
+                              Available Patches
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              WildFly 11.0.0.CR1
+                            </td>
+                            <td>
+                              Weld 2.4.3.Final
+                              <span class="label label-primary">
+                                CDI 1.2
+                              </span>
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-11.0.0.CR1-weld-2.4.5.Final-patch.zip">Weld 2.4.5.Final</a>
+                                  <span class="label label-primary">
+                                    CDI 1.2
+                                  </span>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              WildFly 11.0.0.Beta1
+                            </td>
+                            <td>
+                              Weld 2.4.3.Final
+                              <span class="label label-primary">
+                                CDI 1.2
+                              </span>
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://download.jboss.org/weld/3.0.1.Final/wildfly-11.0.0.Beta1-weld-3.0.1.Final-patch.zip">Weld 3.0.1.Final</a>
+                                  <span class="label label-info">
+                                    CDI 2.0
+                                  </span>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              WildFly 10.1.0.Final
+                            </td>
+                            <td>
+                              Weld 2.3.5.Final
+                              <span class="label label-primary">
+                                CDI 1.2
+                              </span>
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-10.1.0.Final-weld-2.4.5.Final-patch.zip">Weld 2.4.5.Final</a>
+                                  <span class="label label-primary">
+                                    CDI 1.2
+                                  </span>
+                                </li>
+                                <li>
+                                  <a href="http://download.jboss.org/weld/3.0.1.Final/wildfly-11.0.0.Beta1-weld-3.0.1.Final-patch.zip">Weld 3.0.1.Final</a>
+                                  <span class="label label-info">
+                                    CDI 2.0
+                                  </span>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="admonitionblock tip">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="icon">
+                                <i ="Tip" class="fa icon-tip"></i>
+                              </td>
+                              <td class="content">
+                                If you’re not familiar with patching WildFly, check the
+                                <a href="/documentation/#12">FAQ.</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-1">
-                  <div></div>
-                </div>
-                <div class="col-md-4">
-                  <div class="well">
+                <div class="col-md-3">
+                  <div class="well" style="height:100%;">
                     <h2>
                       Latest News
                       <a href="http://weld.cdi-spec.org/news.atom">
@@ -220,7 +316,6 @@
                         </div>
                         <p>
                           Weld 2.4.5.Final released
-                          <a href="/news/2017/09/11/weld-245Final/">more</a>
                         </p>
                         <hr>
                       </li>
@@ -238,7 +333,6 @@
                         </div>
                         <p>
                           First round of bug smashing for Weld 3!
-                          <a href="/news/2017/08/25/weld-301Final/">more</a>
                         </p>
                         <hr>
                       </li>
@@ -258,7 +352,6 @@
                         </div>
                         <p>
                           Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
-                          <a href="/news/2017/08/07/weld-vertx-next/">more</a>
                         </p>
                         <hr>
                       </li>
@@ -276,7 +369,6 @@
                         </div>
                         <p>
                           Watch out, Weld 2.4.4.Final coming through!
-                          <a href="/news/2017/06/14/weld-244Final/">more</a>
                         </p>
                         <hr>
                       </li>
@@ -289,10 +381,14 @@
                         </div>
                         <p>
                           Tour around the new stuff in Weld 3
-                          <a href="/news/2017/05/19/tour-around-weld-3/">more</a>
                         </p>
                         <hr>
                       </li>
+                      <div id="book-box">
+                        <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
+                          <img class="weld-book-img" height="307" src="images/book.jpg" width="250">
+                        </a>
+                      </div>
                     </ul>
                   </div>
                 </div>

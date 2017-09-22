@@ -85,7 +85,7 @@ div.jumbotron p {
 
 /* line 87, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.jumbotron h1 {
-  font-size: 400%; }
+  font-size: 300%; }
 
 /* line 91, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 h1, h2, h3 {
@@ -370,3 +370,8 @@ div.toc ul.sectlevel1 li {
 /* line 375, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
   padding: 2px; }
+
+/* line 379, /opt/source/weld/weld.github.io/stylesheets/styles.scss */
+.equal-height {
+  display: flex;
+  flex-wrap: wrap; }
