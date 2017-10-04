@@ -100,6 +100,9 @@ h1 {
 
 h2 {
     font-size: 140%;
+    border-bottom: 2px solid #efefef;
+    display: inline-block;
+    padding-bottom: 4px;
 }
 
 h3 {
@@ -351,25 +354,30 @@ div.toc {
 }
 
 div.toc div.title {
-    background-color: #4a5860;
+    font-size: 130%;
     padding: 5px;
-    border-radius: 5px 5px 0px 0px;
-    color: white;
+    color: darkgray;
     font-weight: bold;
     text-transform: uppercase;
+    border-bottom: 2px solid #efefef;
+    display: inline-block;
+    color: #808080;
 }
 
 div.toc ul.sectlevel1 {
-    border: 1px solid #ddd;
-    border-radius: 0 0 5px 5px;
+    border-left: 1px solid #ddd;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 div.toc ul.sectlevel1 li {
     padding: 5px;
     padding-right: 10px;
+}
+
+div.toc ul.sectlevel1 li ul.sectlevel2 {
+    padding-left: 10px;
 }
 
 div.toc ul.sectlevel1 li ul.sectlevel2 li {
