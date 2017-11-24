@@ -1,0 +1,49 @@
+---
+layout: news
+title: Weld 3.0.2.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Watch out, Weld 3 release is coming your way!
+desc: Weld 3.0.2.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.0.2.Final is out and targetting WildFly 11!
+Ever wished you could select events and instances in a truly generic way using just `java.lang.reflect.Type`?
+Looking for easier way to configure SE container?
+We have a bunch of bugfixes and improvements for you, so read on...
+
+Notable fixes and improvements:
+
+* Weld Core
+** Improved subclass generation mechanism for generic interceptors (link:https://issues.jboss.org/browse/WELD-2414[WELD-2414, window="_blank"])
+** Fixed OSGi bundling, we missed out one package on last release (link:https://issues.jboss.org/browse/WELD-2421[WELD-2421, window="_blank"])
+** Improved behaviour with no-interface EJB view with non-public methods (link:https://issues.jboss.org/browse/WELD-2430[WELD-2430, window="_blank"])
+** Corrected proxy creation for signed classes (link:https://issues.jboss.org/browse/WELD-2425[WELD-2425, window="_blank"])
+
+* Weld SE
+** There are now multiple convenient error-proof methods to quickly configure SE container (link:https://issues.jboss.org/browse/WELD-2426[WELD-2426, window="_blank"])
+*** `Weld.enableDevMode()`, `Weld.scanClasspathEntries()`, ...
+
+* Weld API/SPI
+** `WeldInstance` has several improvements
+*** It now allows you to `select()` beans based on `java.lang.reflect.Type` (link:https://issues.jboss.org/browse/WELD-2427[WELD-2427, window="_blank"])
+*** `WeldInstance.Handler` had become lazy which means you can now iterate/filter/sort `WeldInstance` without actually instantiating beans (link:https://issues.jboss.org/browse/WELD-2258[WELD-2258, window="_blank"])
+** There is new interface in the API - `WeldEvent` - which can be used in place of well known `Event` but allows you narrow down event type by using `select()` with `java.lang.reflect.Type` (link:https://issues.jboss.org/browse/WELD-2427[WELD-2427, window="_blank"])
+** API now contains a `String` key used to obtain interceptors binding from `InvocationContext` (link:https://issues.jboss.org/browse/WELD-2436[WELD-2436, window="_blank"])
+
+* Other
+** Probe now correctly recognizes beans which have `@Priority` but aren't alternatives (link:https://issues.jboss.org/browse/WELD-2432[WELD-2432, window="_blank"])
+** Multiple documentation improvements regarding all things, old and new (link:https://issues.jboss.org/browse/WELD-2440[WELD-2440, window="_blank"], link:https://issues.jboss.org/browse/WELD-2431[WELD-2431, window="_blank"], link:https://issues.jboss.org/browse/WELD-2434[WELD-2434, window="_blank"])
+
+== WildFly Patch
+
+As usual, there is a link:http://download.jboss.org/weld/3.0.2.Final/wildfly-11.0.0.Final-weld-3.0.2.Final-patch.zip[patch for WildFly 11.0.0.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.2.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12335442[Release notes, window="_blank"] &#93;
