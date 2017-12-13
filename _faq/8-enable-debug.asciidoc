@@ -1,18 +1,12 @@
 = How do I enable debug logging for Weld in a specific container?
 
-When things do not work as expected, more information might be helpful in solving the problem. For this reason, you might want to enable the debug (fine) log level for Weld.
-
+When things do not work as expected, more information might be helpful in solving the problem.
+For this reason, you might want to enable the debug (fine) log level for Weld.
 Each container has its own way to do this:
 
-**GlassFish** (more info: http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html[Setting Log Levels - GlassFish])
+=== WildFly
 
-global configuration - add the following line to ++_domain-dir_/config/logging.properties++
-[source]
-----
-org.jboss.weld.level=FINE
-----
-
-**WildFly** (more info: https://docs.jboss.org/author/display/WFLY8/Logging+Configuration[Logging Configuration - WildFly])
+(more info: https://docs.jboss.org/author/display/WFLY8/Logging+Configuration[Logging Configuration - WildFly])
 
 global configuration - add the following content to the logging subsystem in ++$JBOSS_HOME/standalone/configuration/standalone-full.xml++
 [source]
@@ -28,6 +22,27 @@ org.jboss.weld.level=DEBUG
 ----
 TIP: If you want to see the debug messages also in the console, make sure the console handler's level is set to at least DEBUG.
 
+=== WildFly Swarm
+
+(more info: http://docs.wildfly-swarm.io/2017.11.0/#_logging_2[Logging Fraction])
+
+run the uberjar with the following system property:
+[source]
+----
+-Dswarm.logging.loggers.[org.jboss.weld].level=DEBUG
+----
+
+TIP: You can also use categories to filter messages - see also link:/news/2016/10/01/tip1-logging/[Weld Tip 1 - Logging].
+
+=== GlassFish
+
+(more info: http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html[Setting Log Levels - GlassFish])
+
+global configuration - add the following line to ++_domain-dir_/config/logging.properties++
+[source]
+----
+org.jboss.weld.level=FINE
+----
 
 **Tomcat** (more info: http://tomcat.apache.org/tomcat-7.0-doc/logging.html[Logging in Tomcat])
 
