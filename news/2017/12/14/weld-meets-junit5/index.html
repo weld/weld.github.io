@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News - tagged as &quot;testing&quot;
+      Weld: Weld meets JUnit 5
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Latest news about Weld." name="description">
+    <meta content="What if you could easily write JUnit 5 tests for Weld beans?" name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -135,16 +135,13 @@
           </div>
           <div class="row content-wrapper">
             <div class="col-md-12">
-              <h1>
-                News - tagged as &quot;testing&quot;
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                </a>
-              </h1>
               <div class="post">
-                <h2>
-                  <a href="/news/2017/12/14/weld-meets-junit5/">Weld meets JUnit 5</a>
-                </h2>
+                <h1>
+                  Weld meets JUnit 5
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
                 <div class="news-date news-boxed">
                   2017-12-14
                   &nbsp;
@@ -186,7 +183,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;      &lt;groupId&gt;org.jboss.weld&lt;/groupId&gt;&#x000A;      &lt;artifactId&gt;weld-junit-parent&lt;/artifactId&gt;&#x000A;      &lt;version&gt;${weld.junit.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-junit-parent&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${weld.junit.version}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   </div>
@@ -204,7 +201,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@EnableWeld&#x000A;    public class InjectionWithWeldTest {&#x000A;    &#x000A;      @Inject&#x000A;      BarBean beanAsField;&#x000A;    &#x000A;      @Test&#x000A;      public void testThatItWorks(FooBean beanAsParam) {&#x000A;        assertNotNull(beanAsParam);&#x000A;        beanAsParam.ping();&#x000A;        assertNotNull(beanAsField);&#x000A;        beanAsField.ping();&#x000A;      }&#x000A;    &#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@EnableWeld&#x000A;public class InjectionWithWeldTest {&#x000A;&#x000A;  @Inject&#x000A;  BarBean beanAsField;&#x000A;&#x000A;  @Test&#x000A;  public void testThatItWorks(FooBean beanAsParam) {&#x000A;    assertNotNull(beanAsParam);&#x000A;    beanAsParam.ping();&#x000A;    assertNotNull(beanAsField);&#x000A;    beanAsField.ping();&#x000A;  }&#x000A;&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -232,7 +229,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@ExtendWith(WeldJUnit5Extension.class)&#x000A;    public class WeldJUnit5CustomizedTest {&#x000A;    &#x000A;      @WeldSetup&#x000A;      public WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()&#x000A;                                               .alternatives(FooAlternative.class)&#x000A;                                               .beanClasses(Foo.class, FooAlternative.class)&#x000A;                                               .enableInterceptors(MyInterceptor.class));&#x000A;    &#x000A;      @Inject&#x000A;      Foo bean; // this will be FooAlternative in the end&#x000A;    &#x000A;      @Test&#x000A;      public void testWeldContainerUsage() {&#x000A;        weld.event().select(MyPayload.class).fire(new MyPayload());&#x000A;        weld.select(Foo.class).isResolvable();&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@ExtendWith(WeldJUnit5Extension.class)&#x000A;public class WeldJUnit5CustomizedTest {&#x000A;&#x000A;  @WeldSetup&#x000A;  public WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()&#x000A;                                           .alternatives(FooAlternative.class)&#x000A;                                           .beanClasses(Foo.class, FooAlternative.class)&#x000A;                                           .enableInterceptors(MyInterceptor.class));&#x000A;&#x000A;  @Inject&#x000A;  Foo bean; // this will be FooAlternative in the end&#x000A;&#x000A;  @Test&#x000A;  public void testWeldContainerUsage() {&#x000A;    weld.event().select(MyPayload.class).fire(new MyPayload());&#x000A;    weld.select(Foo.class).isResolvable();&#x000A;  }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -262,103 +259,20 @@
                   </div>
                   </div>
                 </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2016/07/21/arq-container-weld-releasel/">Arquillian container Weld 2.0.0.Beta1 released!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2016-7-21
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/arquillian">arquillian</a>
-                    ,
-                    <a href="/news/tags/testing">testing</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Tomas Remes
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>We are pleased to announce a release of embedded Arquillian container adapter for Weld.
-                  This container has deserved some love for really long time.
-                  We tried to refactor it and introduced new master branch which now corresponds to the 2.0.0.x version stream.
-                  The original master was branched in 1.0.
-                  There is no more any <code>arquillian-weld-ee-embedded-1.1</code> or <code>arquillian-weld-se-embedded</code>.
-                  It&#8217;s squashed to one <code>arquillian-weld-embedded</code> and you can configure environments either programmatically or using configuration properties.
-                  See link:https://github.com/arquillian/arquillian-container-weld
-                  This new version is going to be used in Weld as soon as possible.</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="title">Maven Coordinates:</div>
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;&#x000A;            &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.0.0.Beta1&lt;/version&gt;&#x000A;        &lt;/dependency&gt;</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>We would really appreciate if you can try it and let us know your experience!</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/11/25/arq-container-se-CR1/">Arquillian container SE 1.0.0.CR1 released!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2015-11-25
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/arquillian">arquillian</a>
-                    ,
-                    <a href="/news/tags/testing">testing</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Tomas Remes
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>We are pleased to announce a new release of Arquillian container SE.
-                  If you are looking for a reliable way to test your application in Java SE then this is the right tool to try out!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This managed SE container launches new JVM process for each of your test archives.
-                  This standalone process with isolated classpath is also the main reason why we introduced such tool  (and also the difference e.g to <code>arquillian-weld-se-embedded</code>).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>You can manage your classpath dependencies by using <a href="https://github.com/shrinkwrap/resolver">ShrinkWrap resolver</a>.
-                  Another option is to provide path to your directory containing your dependencies jars via container property.
-                  You can get ready your dependencies jars by using e.g Maven dependency plugin. Another options which you would expect as debugging, setting system properties or exporting deployment archive are also available.
-                  Test execution is managed by Arquillian JMX protocol.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Finally you can find some basic tests using Arquillian
-                  container SE in <a href="https://github.com/weld/core/tree/2.3/environments/se/tests">Weld SE tests</a> or in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/se">CDI TCK</a>.
-                  Feedback is more than welcomed and if you have any questions don&#8217;t hesitate to ask!</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="title">Maven Coordinates:</div>
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;        &lt;version&gt;1.0.0.CR1&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><span class="current-page">1</span> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                  Subscribe to Weld news
-                </a>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "http://weld.cdi-spec.org/news/2017/12/14/weld-meets-junit5/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "d4fa082a615c4e289474db09a308b13c29980c1a";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = "http://weld-cdi.disqus.com/embed.js";
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>

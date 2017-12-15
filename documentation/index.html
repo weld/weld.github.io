@@ -429,25 +429,19 @@
                 <h2>
                   How do I enable debug logging for Weld in a specific container?
                 </h2>
+                <div id="preamble">
+                <div class="sectionbody">
                 <div class="paragraph">
-                <p>When things do not work as expected, more information might be helpful in solving the problem. For this reason, you might want to enable the debug (fine) log level for Weld.</p>
+                <p>When things do not work as expected, more information might be helpful in solving the problem.
+                For this reason, you might want to enable the debug (fine) log level for Weld.
+                Each container has its own way to do this:</p>
                 </div>
+                </div>
+                </div>
+                <div class="sect2">
+                <h3 id="_wildfly">WildFly</h3>
                 <div class="paragraph">
-                <p>Each container has its own way to do this:</p>
-                </div>
-                <div class="paragraph">
-                <p><strong>GlassFish</strong> (more info: <a href="http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html">Setting Log Levels - GlassFish</a>)</p>
-                </div>
-                <div class="paragraph">
-                <p>global configuration - add the following line to _domain-dir_/config/logging.properties</p>
-                </div>
-                <div class="listingblock">
-                <div class="content">
-                <pre class="highlight"><code>org.jboss.weld.level=FINE</code></pre>
-                </div>
-                </div>
-                <div class="paragraph">
-                <p><strong>WildFly</strong> (more info: <a href="https://docs.jboss.org/author/display/WFLY8/Logging+Configuration">Logging Configuration - WildFly</a>)</p>
+                <p>(more info: <a href="https://docs.jboss.org/author/display/WFLY8/Logging+Configuration">Logging Configuration - WildFly</a>)</p>
                 </div>
                 <div class="paragraph">
                 <p>global configuration - add the following content to the logging subsystem in $JBOSS_HOME/standalone/configuration/standalone-full.xml</p>
@@ -477,6 +471,46 @@
                 </tr>
                 </table>
                 </div>
+                </div>
+                <div class="sect2">
+                <h3 id="_wildfly_swarm">WildFly Swarm</h3>
+                <div class="paragraph">
+                <p>(more info: <a href="http://docs.wildfly-swarm.io/2017.11.0/#_logging_2">Logging Fraction</a>)</p>
+                </div>
+                <div class="paragraph">
+                <p>run the uberjar with the following system property:</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>-Dswarm.logging.loggers.[org.jboss.weld].level=DEBUG</code></pre>
+                </div>
+                </div>
+                <div class="admonitionblock tip">
+                <table>
+                <tr>
+                <td class="icon">
+                <div class="title">Tip</div>
+                </td>
+                <td class="content">
+                You can also use categories to filter messages - see also <a href="/news/2016/10/01/tip1-logging/">Weld Tip 1 - Logging</a>.
+                </td>
+                </tr>
+                </table>
+                </div>
+                </div>
+                <div class="sect2">
+                <h3 id="_glassfish">GlassFish</h3>
+                <div class="paragraph">
+                <p>(more info: <a href="http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html">Setting Log Levels - GlassFish</a>)</p>
+                </div>
+                <div class="paragraph">
+                <p>global configuration - add the following line to _domain-dir_/config/logging.properties</p>
+                </div>
+                <div class="listingblock">
+                <div class="content">
+                <pre class="highlight"><code>org.jboss.weld.level=FINE</code></pre>
+                </div>
+                </div>
                 <div class="paragraph">
                 <p><strong>Tomcat</strong> (more info: <a href="http://tomcat.apache.org/tomcat-7.0-doc/logging.html">Logging in Tomcat</a>)</p>
                 </div>
@@ -501,6 +535,7 @@
                 </div>
                 <div class="paragraph">
                 <p>For enabling debug logging on Jetty, see <a href="http://www.eclipse.org/jetty/documentation/current/configuring-logging.html">Jetty Logging</a></p>
+                </div>
                 </div>
                 <a href="#faq_contents">
                   <i class="fa fa-arrow-circle-o-up fa-lg"></i>
