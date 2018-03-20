@@ -50,8 +50,7 @@ desc: Weld - CDI Reference Implementation
                 <dependency>
                    <groupId>javax.enterprise</groupId>
                    <artifactId>cdi-api</artifactId>
-                   <!-- Use version 2.0 for Weld 3 -->
-                   <version>1.2</version>
+                   <version>2.0</version>
                    <scope>provided</scope>
                 </dependency>
         %p
@@ -67,9 +66,9 @@ desc: Weld - CDI Reference Implementation
           Therefore, with every Weld release we also create a patch which allows you to easily upgrade:
         %table{:class=>"table table-bordered",:style=>"width:100%;"}
           %colgroup
-            %col{:style=>"width: 33%;"}
-            %col{:style=>"width: 33%;"}
-            %col{:style=>"width: 33%;"}
+            %col{:style=>"width: 20%;"}
+            %col{:style=>"width: 50%;"}
+            %col{:style=>"width: 30%;"}
           %thead
             %tr{:class=>"active"}
               %th
@@ -79,6 +78,23 @@ desc: Weld - CDI Reference Implementation
               %th
                 Available Patches
           %tbody
+            %tr
+              %td
+                WildFly 12.0.0.Final
+              %td
+                Weld 3.0.3.Final
+                %span{:class=>"label label-primary"}
+                  CDI 1.2
+                &nbsp;and
+                %span{:class=>"label label-info"}
+                  CDI 2.0
+                &nbsp;
+                %a{:href=>"http://wildfly.org/news/2018/02/28/WildFly12-Final-Released/",:target=>'_blank'}
+                  (opt-in via property)
+              %td
+                %ul
+                  %li
+                    Up-to-date version used
             %tr
               %td
                 WildFly 11.0.0.Final
