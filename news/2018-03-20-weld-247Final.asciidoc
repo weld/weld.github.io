@@ -1,0 +1,51 @@
+---
+layout: news
+title: Weld 2.4.7.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 2.4.7.Final released
+desc: Weld 2.4.7.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 2.4.7.Final is now available.
+It includes multiple important bugfixes, many of them focused around proxy generation and/or invocation.
+
+NOTE: Weld 2.4 now enters maintenance mode - there will be no further active development on Weld 2. We will be channeling our efforts into Weld 3 instead.
+
+Notable fixes and improvements:
+
+* Weld Core:
+** Proxy-related issues:
+*** Fixed possible NPE with multiple deployments one of which uses `relaxed construction` configuration (link:https://issues.jboss.org/browse/WELD-2448[WELD-2448, window="_blank"])
+*** `BeanManager.getInjectableReference` was using unnecessarily strict checks for proxyability (link:https://issues.jboss.org/browse/WELD-2466[WELD-2466, window="_blank"])
+*** Proxy serialization is now container agnostic (link:https://issues.jboss.org/browse/WELD-2447[WELD-2447, window="_blank"])
+*** Fix invocation of private observer method (link:https://issues.jboss.org/browse/WELD-2443[WELD-2443, window="_blank"])
+**** This only applies to private observer method which is not intercepted but is declared on a bean which has some other intercepted methods
+*** Correct proxy generation for class hierarchy with abstract class and generics (link:https://issues.jboss.org/browse/WELD-2470[WELD-2470, window="_blank"])
+** Other issues:
+*** Minor optimization in internal structures of `InterceptionModel` (link:https://issues.jboss.org/browse/WELD-2455[WELD-2455, window="_blank"])
+*** Improve exception logging for `DeploymentException` (link:https://issues.jboss.org/browse/WELD-2453[WELD-2453, window="_blank"])
+*** Prevent NPE if `ProtectionDomain.getPermissions()` returns `null` (link:https://issues.jboss.org/browse/WELD-2464[WELD-2464, window="_blank"])
+
+* Weld SE
+** Fields in `org.jboss.weld.environment.se.Weld` are now `protected` (link:https://issues.jboss.org/browse/WELD-2451[WELD-2451, window="_blank"])
+** Allow to register custom `BeanArchiveHandler` using `ServiceLoader` mechanism (link:https://issues.jboss.org/browse/WELD-2450[WELD-2450, window="_blank"])
+*** This applies to SE and Servlet environments
+
+
+* Other
+** With OSGi, `javax.ejb` is now imported optionally (link:https://issues.jboss.org/browse/WELD-2458[WELD-2458, window="_blank"])
+** Weld now uses SpotBugs (a successor to FindBugs) (link:https://issues.jboss.org/browse/WELD-2462[WELD-2462, window="_blank"])
+** `module-info`, if present, is now correctly ignored during bean discovery phase (link:https://issues.jboss.org/browse/WELD-2459[WELD-2459, window="_blank"])
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.7.Final/wildfly-11.0.0.Final-weld-2.4.7.Final-patch.zip[patch for WildFly 11.0.0.Final, window="_blank"] is available.
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.7.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12336351[Release notes, window="_blank"] &#93;
