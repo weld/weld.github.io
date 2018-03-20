@@ -143,6 +143,101 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2017/09/11/weld-245Final/">Weld 2.4.5.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2017-9-11
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>It&#8217;s about time we delivered another regular bugfix release for Weld 2.
+                  And while the list of fixes isn&#8217;t exhausting, some of them are quite crucial.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Notable fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld Core:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Revise Java 8 default methods plus proxies/sublasing behaviour (<a href="https://issues.jboss.org/browse/WELD-2407" target="_blank">WELD-2407</a> and <a href="https://issues.jboss.org/browse/WELD-2405" target="_blank">WELD-2405</a>)</p>
+                  </li>
+                  <li>
+                  <p>All POMs in Weld core project should now have correct MIME types; this corrects issues with Nexus 3 (<a href="https://issues.jboss.org/browse/WELD-2417" target="_blank">WELD-2417</a>)</p>
+                  </li>
+                  <li>
+                  <p>Proxies for signed packages should now be generated in custom packages (<a href="https://issues.jboss.org/browse/WELD-2402" target="_blank">WELD-2402</a>)</p>
+                  </li>
+                  <li>
+                  <p>The behaviour of Weld Core and integrator provided implementation of <code>org.jboss.weld.bootstrap.api.Environment</code> is back to what it was in Weld 2.4.3.Final (<a href="https://issues.jboss.org/browse/WELD-2401" target="_blank">WELD-2401</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>We found out this change could cause serious headaches to integrators so we will leave it as it is - sorry for the mess</p>
+                  </li>
+                  <li>
+                  <p>For Weld 3, we already have a better solution in <a href="https://issues.jboss.org/browse/WELD-2398" target="_blank">place</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld SE and Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Both, Weld SE and Weld Servlet, will now explicitly bring in dependency on jboss-classfilewriter 1.2+ (<a href="https://issues.jboss.org/browse/WELD-2406" target="_blank">WELD-2406</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Under the <code>jboss-as</code> directory of Weld source code, you can now make use of new profiles to create WildFly patches yourself <a href="https://issues.jboss.org/browse/WELD-2397" target="_blank">WELD-2397</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-10.1.0.Final-weld-2.4.5.Final-patch.zip" target="_blank">patch for WildFly 10.1.0.Final</a> is available.
+                  But since WildFly 11 has already reached CR stage, we have decided to also provide you with <a href="http://download.jboss.org/weld/2.4.5.Final/wildfly-11.0.0.CR1-weld-2.4.5.Final-patch.zip" target="_blank">patch for WildFly 11.0.0.CR1</a>.
+                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.5.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&amp;styleName=Html&amp;projectId=12310891" target="_blank">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2017/08/25/weld-301Final/">Weld 3.0.1.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -813,152 +908,6 @@
                   It works on a similar principle but affects your whole application - it processess all types from all bean archives.
                   Your archives will be scanned as they would be with bean discovery mode <code>all</code> and <code>ProcessAnnotatedType</code> will be fired for all found annotated types.
                   Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/05/15/weld-300Final/">Weld 3.0.0.Final - the first implementation of CDI 2.0!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-5-15
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am very pleased to announce the release of Weld <strong>3.0.0.Final</strong> - the first implementation of <strong>CDI 2.0</strong>!
-                  I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">/**&#x000A;     * TODO: Continue to deliver bugfixes and improvements&#x000A;     */&#x000A;    public class WeldTeam extends OpenSourceCommunity {&#x000A;    &#x000A;      @Inject&#x000A;      @AwesomeNews&#x000A;      Event&lt;String&gt; event;&#x000A;    &#x000A;      public void release() {&#x000A;        // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;        event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;        celebrate();&#x000A;      }&#x000A;    &#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="admonitionblock note">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Note</div>
-                  </td>
-                  <td class="content">
-                  Weld 3 is an IMPORTANT MILESTONE.
-                  Therefore, we&#8217;re preparing a special blogpost summarizing all the important stuff that was added.
-                  Expect the <strong>Tour around Weld 3</strong> blogpost within a few days.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Let&#8217;s sum up the notable changes since <strong>3.0.0.CR2</strong>:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank">Notification options</a> for more info):</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>weld.async.notification.mode</code> - the notification mode, possible values are: <code>SERIAL</code> (default) and <code>PARALLEL</code></p>
-                  </li>
-                  <li>
-                  <p><code>weld.async.notification.timeout</code> - the notification timeout (in milliseconds) after which the returned completion stage must be completed.</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If the time expires the stage is completed exceptionally with a <code>CompletionException</code> holding the <code>java.util.concurrent.TimeoutException</code> as its cause</p>
-                  </li>
-                  <li>
-                  <p>The expiration does not abort the notification of the observers</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank">WELD-2346</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fire <code>@Initialied(RequestScoped.class)</code>/<code>@Destroyed(RequestScoped.class)</code> events for a <code>@PostConstruct</code> callback if the request context was activated for the specific callback</p>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank">WELD-2360</a>)</p>
-                  </li>
-                  <li>
-                  <p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank">WELD-2371</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank">WELD-2354</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank">WELD-2357</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank">WELD-2374</a>)</p>
-                  </li>
-                  <li>
-                  <p>Development tools</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If a deployment validation fails and the development mode is enabled a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Updated documentation and migration notes for integrators</p>
-                  </li>
-                  <li>
-                  <p>Examples cleanup (dropped GAE support, etc.)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://wildfly.org/" target="_blank">patch for WildFly</a> is available.
-                  This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank">WildFly 11.0.0.Alpha1</a>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
