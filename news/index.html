@@ -143,6 +143,47 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2018/07/10/weld-team-changes/">Weld team changes</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2018-7-10
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/team">team</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>I&#8217;m pleased to announce a couple of changes coming to the Weld team.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>First of all, <a href="https://github.com/manovotn">Matěj Novotný</a> will be taking over the leadership of the project.
+                  Matěj has proven himself to be an excellent engineer, contributing not only to Weld projects but also to the CDI specification and TCK development.
+                  I&#8217;m really happy that I can hand over the leadership to this guy!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Matěj&#8217;s primary task is leading the project towards "Java 11 world" and to meet the other challenges such as reactive programming model enhancements.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Secondly, <a href="https://github.com/nziakova">Nikoleta Žiaková</a> is joining the team as a quality engineer.
+                  She’s going to work on expanding our testsuites and improving our continuous integration.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Last but not least, I&#8217;m not going to leave the project but stay as a contributor focused on related technologies such as <a href="http://wildfly.org/">WildFly</a>, <a href="https://github.com/thorntail/thorntail">Thorntail</a> and MicroProfile.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Martin</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2018/04/26/weld-304Final/">Weld 3.0.4.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -697,136 +738,6 @@
                   <div class="paragraph">
                   <p>It might also be the case that we forgot about something quite important, so don&#8217;t hesitate to reach to us through those channels, or open a GitHub issue straight away.
                   We are happy for any kind of feedback we can get.</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/12/18/weld-246Final/">Weld 2.4.6.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-12-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Time has come for another round of Weld 2.4 bugfix release.
-                  But that&#8217;s not all - this time there is also new API to go along with this release - Weld API 2.4.SP2.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Among other things you can now obtain interceptor binding from <code>javax.interceptor.InvocationContext</code>, use enriched version of <code>javax.enterprise.event.Event</code> or select <code>javax.enterprise.inject.Instance</code> based on <code>java.lang.reflect.Type</code>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core:</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Improved subclass generation mechanism for generic interceptors (<a href="https://issues.jboss.org/browse/WELD-2414" target="_blank">WELD-2414</a>)</p>
-                  </li>
-                  <li>
-                  <p>Corrected proxy creation for signed classes (<a href="https://issues.jboss.org/browse/WELD-2425" target="_blank">WELD-2425</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct <code>InjectionPoint</code> bean behaviour when used within <code>AfterBeanDiscovery</code> observer (<a href="https://issues.jboss.org/browse/WELD-2429" target="_blank">WELD-2429</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>There are now multiple convenient error-proof methods to quickly configure SE container (<a href="https://issues.jboss.org/browse/WELD-2426" target="_blank">WELD-2426</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>Weld.enableDevMode()</code>, <code>Weld.scanClasspathEntries()</code>, &#8230;&#8203;</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld API/SPI</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>WeldInstance</code> has several improvements</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>It now allows you to <code>select()</code> beans based on <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank">WELD-2427</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldInstance.Handler</code> had become lazy which means you can now iterate/filter/sort <code>WeldInstance</code> without actually instantiating beans (<a href="https://issues.jboss.org/browse/WELD-2258" target="_blank">WELD-2258</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>There is new interface in the API - <code>WeldEvent</code> - which can be used in place of well known <code>Event</code> but allows you narrow down event type by using <code>select()</code> with <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank">WELD-2427</a>)</p>
-                  </li>
-                  <li>
-                  <p>API now contains <code>WeldInvocationContext</code>, an enriched version of <code>javax.interceptor.InvocationContext</code> which allows to obtain interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2433" target="_blank">WELD-2433</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>There is also a <code>String</code> key used to obtain interceptors binding directly from <code>InvocationContext</code> (<a href="https://issues.jboss.org/browse/WELD-2436" target="_blank">WELD-2436</a>)</p>
-                  </li>
-                  <li>
-                  <p>In order to learn more, please refer to (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_enhanced_version_of_literal_javax_interceptor_invocationcontext_literal" target="_blank">our documentation</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Probe - fixed NPE which might occur when bean had <code>@Priority</code> but no other annotation (<a href="https://issues.jboss.org/browse/WELD-2432" target="_blank">WELD-2432</a>)</p>
-                  </li>
-                  <li>
-                  <p>All the API changes should now be documented within Weld docs</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.6.Final/wildfly-11.0.0.Final-weld-2.4.6.Final-patch.zip" target="_blank">patch for WildFly 11.0.0.Final</a> is available.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.6.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&amp;styleName=Html&amp;projectId=12310891" target="_blank">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

@@ -2,13 +2,63 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2018-04-26T17:00:47+02:00</updated>
+  <updated>2018-07-10T17:20:15+02:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</id>
+    <title>Weld team changes</title>
+    <updated>2018-07-10T17:20:15+02:00</updated>
+    <published>2018-07-10T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/" rel="alternate" type="text/html" />
+    <author>
+      <name>Martin Kouba</name>
+    </author>
+    <category term="team"></category>
+    <summary>
+      
+      I&#8217;m pleased to announce a couple of changes coming to the Weld team.
+      
+      
+      First of all, Matěj Novotný will be taking over the leadership of the project.
+      Matěj has proven himself to be an excellent engineer, contributing not only to Weld projects but also to the CDI specification and TCK development.
+      I&#8217;m really happy that I can hand over the leadership to this guy!
+      
+      
+      Matěj&#8217;s primary task is leading the project towards "Java 11 world" and to meet the other challenges such as reactive programming model enhancements.
+      
+      
+      Secondly, Nikoleta Žiaková is joining the team as a quality engineer.
+      She’s going to work on expanding our testsuites...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;I’m pleased to announce a couple of changes coming to the Weld team.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;First of all, &lt;a href=&quot;https://github.com/manovotn&quot;&gt;Matěj Novotný&lt;/a&gt; will be taking over the leadership of the project.
+      Matěj has proven himself to be an excellent engineer, contributing not only to Weld projects but also to the CDI specification and TCK development.
+      I’m really happy that I can hand over the leadership to this guy!&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Matěj’s primary task is leading the project towards &quot;Java 11 world&quot; and to meet the other challenges such as reactive programming model enhancements.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Secondly, &lt;a href=&quot;https://github.com/nziakova&quot;&gt;Nikoleta Žiaková&lt;/a&gt; is joining the team as a quality engineer.
+      She’s going to work on expanding our testsuites and improving our continuous integration.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Last but not least, I’m not going to leave the project but stay as a contributor focused on related technologies such as &lt;a href=&quot;http://wildfly.org/&quot;&gt;WildFly&lt;/a&gt;, &lt;a href=&quot;https://github.com/thorntail/thorntail&quot;&gt;Thorntail&lt;/a&gt; and MicroProfile.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Martin&lt;/p&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</id>
     <title>Weld 3.0.4.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2018-04-26T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/04/26/weld-304Final/" rel="alternate" type="text/html" />
     <author>
@@ -208,7 +258,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</id>
     <title>Weld 2.4.7.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2018-03-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/03/20/weld-247Final/" rel="alternate" type="text/html" />
     <author>
@@ -392,7 +442,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</id>
     <title>Weld 3.0.3.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2018-02-09T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/02/09/weld-303Final/" rel="alternate" type="text/html" />
     <author>
@@ -528,7 +578,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</id>
     <title>Weld meets JUnit 5</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-12-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/" rel="alternate" type="text/html" />
     <author>
@@ -700,7 +750,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</id>
     <title>Weld 2.4.6.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-12-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/12/18/weld-246Final/" rel="alternate" type="text/html" />
     <author>
@@ -880,7 +930,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</id>
     <title>Weld 3.0.2.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-11-23T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/11/23/weld-302Final/" rel="alternate" type="text/html" />
     <author>
@@ -1056,7 +1106,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</id>
     <title>Weld 2.4.5.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-09-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/09/11/weld-245Final/" rel="alternate" type="text/html" />
     <author>
@@ -1174,7 +1224,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</id>
     <title>Weld 3.0.1.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-08-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/08/25/weld-301Final/" rel="alternate" type="text/html" />
     <author>
@@ -1326,7 +1376,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</id>
     <title>Weld Vert.x Next?</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-08-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/" rel="alternate" type="text/html" />
     <author>
@@ -1586,7 +1636,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</id>
     <title>Weld 2.4.4.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-06-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/06/14/weld-244Final/" rel="alternate" type="text/html" />
     <author>
@@ -1739,7 +1789,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</id>
     <title>Tour around Weld 3</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-05-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -2034,7 +2084,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</id>
     <title>Weld 3.0.0.Final - the first implementation of CDI 2.0!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-05-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/05/15/weld-300Final/" rel="alternate" type="text/html" />
     <author>
@@ -2207,7 +2257,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</id>
     <title>Weld 2.4.3.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-04-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/04/07/weld-243Final/" rel="alternate" type="text/html" />
     <author>
@@ -2336,7 +2386,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</id>
     <title>Weld 3.0.0.CR2</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-03-03T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/" rel="alternate" type="text/html" />
     <author>
@@ -2473,7 +2523,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</id>
     <title>Weld 2.4.2.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-02-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/02/02/weld-242Final/" rel="alternate" type="text/html" />
     <author>
@@ -2592,7 +2642,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</id>
     <title>Weld Tip 4 - Testing CDI/Weld apps</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-02-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/" rel="alternate" type="text/html" />
     <author>
@@ -2851,7 +2901,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</id>
     <title>Weld 3.0.0.CR1</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2017-01-23T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/" rel="alternate" type="text/html" />
     <author>
@@ -2904,7 +2954,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</id>
     <title>Weld 3.0.0.Beta1</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-12-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -3016,7 +3066,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</id>
     <title>Weld 2.4.1.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-11-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/" rel="alternate" type="text/html" />
     <author>
@@ -3120,7 +3170,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</id>
     <title>Weld Tip 3 - Boost performance of Weld apps</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-10-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/" rel="alternate" type="text/html" />
     <author>
@@ -3473,7 +3523,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</id>
     <title>Weld Tip 2 - Development Mode</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-10-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/" rel="alternate" type="text/html" />
     <author>
@@ -3766,7 +3816,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</id>
     <title>Weld Tip 1 - Logging</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-10-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/" rel="alternate" type="text/html" />
     <author>
@@ -4001,7 +4051,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</id>
     <title>Weld 2.4.0.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-09-13T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/" rel="alternate" type="text/html" />
     <author>
@@ -4117,7 +4167,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</id>
     <title>First release candidate of Weld 2.4</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-08-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/" rel="alternate" type="text/html" />
     <author>
@@ -4329,7 +4379,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</id>
     <title>Arquillian container Weld 2.0.0.Beta1 released!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-07-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/" rel="alternate" type="text/html" />
     <author>
@@ -4384,7 +4434,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</id>
     <title>Weld 2.3.5.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-07-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/" rel="alternate" type="text/html" />
     <author>
@@ -4525,7 +4575,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</id>
     <title>Update on weld-vertx</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-06-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -4627,7 +4677,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</id>
     <title>Programmatic lookup improvements</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-05-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/" rel="alternate" type="text/html" />
     <author>
@@ -4844,7 +4894,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</id>
     <title>Weld 3.0.0.Alpha16</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-04-28T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/" rel="alternate" type="text/html" />
     <author>
@@ -5049,7 +5099,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</id>
     <title>Weld 2.3.4.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-04-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/" rel="alternate" type="text/html" />
     <author>
@@ -5175,7 +5225,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</id>
     <title>Weld meets Vert.x</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-04-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -5285,7 +5335,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</id>
     <title>Weld 2.3.3.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-02-12T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/" rel="alternate" type="text/html" />
     <author>
@@ -5404,7 +5454,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</id>
     <title>Weld SE and synthetic container lifecycle event observers</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-02-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/" rel="alternate" type="text/html" />
     <author>
@@ -5468,7 +5518,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</id>
     <title>Weld 3.0.0.Alpha15</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2016-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/" rel="alternate" type="text/html" />
     <author>
@@ -5559,7 +5609,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</id>
     <title>Weld 2.3.2.Final</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/" rel="alternate" type="text/html" />
     <author>
@@ -5655,7 +5705,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</id>
     <title>Weld 3.0.0.Alpha14</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-12-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/" rel="alternate" type="text/html" />
     <author>
@@ -5705,7 +5755,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</id>
     <title>Arquillian container SE 1.0.0.CR1 released!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-11-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/" rel="alternate" type="text/html" />
     <author>
@@ -5762,7 +5812,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/</id>
     <title>Weld development mode and JMX support</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-11-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/" rel="alternate" type="text/html" />
     <author>
@@ -5925,7 +5975,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/</id>
     <title>Weld 2.3.1.Final arrives...</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-10-27T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/" rel="alternate" type="text/html" />
     <author>
@@ -6022,7 +6072,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/</id>
     <title>Weld 2.3.0.Final released!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/" rel="alternate" type="text/html" />
     <author>
@@ -6093,7 +6143,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</id>
     <title>JDK 8u60 reveals a problem in Weld</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-09-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/" rel="alternate" type="text/html" />
     <author>
@@ -6178,7 +6228,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-09-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -6222,7 +6272,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</id>
     <title>Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-08-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/" rel="alternate" type="text/html" />
     <author>
@@ -6443,7 +6493,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</id>
     <title>Weld 3.0.0.Alpha8</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-04-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/" rel="alternate" type="text/html" />
     <author>
@@ -6632,7 +6682,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</id>
     <title>Weld 3.0.0.Alpha5</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-02-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/" rel="alternate" type="text/html" />
     <author>
@@ -6787,7 +6837,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</id>
     <title>Weld 3.0.0.Alpha4</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2015-02-05T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/" rel="alternate" type="text/html" />
     <author>
@@ -6952,7 +7002,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</id>
     <title>An update on Weld 3</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2014-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -7279,7 +7329,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</id>
     <title>Weld 3.0.0.Alpha1 released!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2014-10-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -7516,7 +7566,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2014/09/18/weld-next/</id>
     <title>Weld.Next</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
+    <updated>2018-07-10T17:20:15+02:00</updated>
     <published>2014-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2014/09/18/weld-next/" rel="alternate" type="text/html" />
     <author>
@@ -7593,188 +7643,6 @@
       &lt;/div&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Weld 3.0 will also be a good opportunity to get involved in the development of this open-source project. &lt;strong&gt;Interested?&lt;/strong&gt; See our &lt;a href=&quot;http://weld.cdi-spec.org/community/&quot;&gt;community web page&lt;/a&gt; for more details.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-    </content>
-  </entry>
-  <entry>
-    <id>http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</id>
-    <title>Weld 2.2 (CDI 1.2 reference implementation) released!</title>
-    <updated>2018-04-26T17:00:47+02:00</updated>
-    <published>2014-04-15T00:00:00+00:00</published>
-    <link href="http://weld.cdi-spec.org/news/2014/04/15/weld-220-final/" rel="alternate" type="text/html" />
-    <author>
-      <name>Jozef Hartinger</name>
-    </author>
-    <summary>
-      
-      Today we released Weld 2.2.0.Final - the reference implementation of Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2).
-      Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.
-      
-      
-      CDI 1.2
-      
-      
-      CDI 1.2 is a maintenance release of the CDI specification. It contains a number of small fixes and clarifications as well as several enhancements.
-      Most notable changes for application developers are related to the definition of bean defining annotations.
-      
-      
-      In CDI 1.2, the set of bean defining annotations now contains:
-      
-      
-      
-      
-      all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;&#8203;)
-      
-      
-      the built-in @Dependent scope
-      
-      
-      @Interceptor...
-    </summary>
-    <content type="html">
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Today we released Weld 2.2.0.Final - the reference implementation of &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html&quot;&gt;Contexts and Dependency Injection for Java EE 1.2 (CDI 1.2)&lt;/a&gt;.
-      Besides implementing the changes in the specification, this release comes with several new features, performance improvements and more than 50 bug fixes.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_cdi_1_2&quot;&gt;CDI 1.2&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;CDI 1.2 is a maintenance release of the &lt;a href=&quot;https://jcp.org/en/jsr/detail?id=346&quot;&gt;CDI specification&lt;/a&gt;. It contains a number of small fixes and clarifications as well as several enhancements.
-      Most notable changes for application developers are related to the definition of &lt;em&gt;bean defining annotations&lt;/em&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations&quot;&gt;CDI 1.2&lt;/a&gt;, the set of bean defining annotations now contains:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, …​)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;the built-in @Dependent scope&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;@Interceptor and @Decorator annotations&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;stereotype annotations&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;As a result, any class annotated with a &lt;em&gt;bean defining annotation&lt;/em&gt; is by default recognized by the application server and registered as a CDI bean. The beans.xml file is optional.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In addition, there are other fixes, clarifications and minor enhancements in this maintenance release of the CDI specification.
-      See &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12311062&amp;amp;version=12323655&quot;&gt;the release notes&lt;/a&gt; for the complete list of changes.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_performance&quot;&gt;Performance&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld is now capable of using bytecode-scanning utilities, such as the &lt;a href=&quot;https://github.com/wildfly/jandex&quot;&gt;Jandex&lt;/a&gt; tool, to speed up deployment.
-      This is especially notable in extra large deployments (e.g. 5000+ classes) where we observed up to &lt;strong&gt;20% faster deployment&lt;/strong&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In addition, there are noticeable improvements in the following areas:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;runtime performance of observers, interceptors and decorators&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;session replication overhead (failover)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;memory consumption&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_weld_2_2_on_wildfly&quot;&gt;Weld 2.2 on WildFly&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://wildfly.org&quot;&gt;WildFly&lt;/a&gt; does not come with Weld 2.2 support yet. It is however easy to patch an existing WildFly installation to use Weld 2.2.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;To do so, follow these steps:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;olist arabic&quot;&gt;
-      &lt;ol class=&quot;arabic&quot;&gt;
-      &lt;li&gt;
-      &lt;p&gt;Download a patch appropriate for the WildFly version (e.g. 8.0.0.Final) from the &lt;a href=&quot;http://sourceforge.net/projects/jboss/files/Weld/2.2.0.Final/&quot;&gt;download section&lt;/a&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;In the WildFly installation, run the CLI console&lt;/p&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre&gt;sh jboss-cli.sh&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;From the console run the following command:&lt;/p&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre&gt;patch apply /path/to/wildfly-8.0.0.Final-weld-2.2.0.Final-patch.zip&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;/ol&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Your installation is now patched!&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_weld_se_and_servlet&quot;&gt;Weld SE and Servlet&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld comes with the SE module which allows CDI to be used in plain Java SE environment. In Weld 2.2 we added partial support for implicit bean archives.
-      Partial support here means that the beans.xml file is still required, but &lt;strong&gt;bean-discovery-mode=”annotated”&lt;/strong&gt; can be specified for Weld to only discover classes explicitly annotated with bean defining annotations (see above).&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In addition to the Weld SE module, Weld also provides the Weld Servlet module which makes it possible to use Weld on top of a plain Servlet container, such as Apache Tomcat or Jetty.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In this release we simplified configuration by bootstrapping Weld using the &lt;em&gt;ServletContainerInitializer&lt;/em&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Furthermore, Weld Servlet now supports &lt;strong&gt;Jetty 9.1&lt;/strong&gt;. At the same time, the support for &lt;strong&gt;Tomcat 6 was dropped&lt;/strong&gt;. To summarize, Weld Servlet is currently supported on the following Servlet containers:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;Tomcat 7, 8&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Jetty 7, 8, 9.0, 9.1&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;We greatly appreciate your contributions to this release.
-      Big thanks go to: Martin Kouba, Matúš Abaffy, Matej Briškár, Ron Šmeral, Marek Schmidt, Marko Lukša, Tomáš Remeš, Stuart Douglas, Radoslav Husár, Max Pimm, Alexandre Gattiker, Antonin Stefanutti and Steve Moyer.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/cdi/api/1.2/&quot;&gt;CDI 1.2 API&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.2.0.Final/en-US/html/&quot;&gt;Documentation&lt;/a&gt; ]
-      [ &lt;a href=&quot;https://issues.jboss.org/issues/?filter=12321473&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;/div&gt;
