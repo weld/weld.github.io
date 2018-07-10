@@ -1,0 +1,23 @@
+---
+layout: news
+title: Weld team changes
+author: Martin Kouba
+priority: 1
+change_frequency: weekly
+tags: [team]
+---
+
+I'm pleased to announce a couple of changes coming to the Weld team.
+
+First of all, link:https://github.com/manovotn[Matěj Novotný] will be taking over the leadership of the project.
+Matěj has proven himself to be an excellent engineer, contributing not only to Weld projects but also to the CDI specification and TCK development.
+I'm really happy that I can hand over the leadership to this guy!
+
+Matěj's primary task is leading the project towards "Java 11 world" and to meet the other challenges such as reactive programming model enhancements.
+
+Secondly, link:https://github.com/nziakova[Nikoleta Žiaková] is joining the team as a quality engineer.
+She’s going to work on expanding our testsuites and improving our continuous integration.
+
+Last but not least, I'm not going to leave the project but stay as a contributor focused on related technologies such as link:http://wildfly.org/[WildFly], link:https://github.com/thorntail/thorntail[Thorntail] and MicroProfile.
+
+Martin
