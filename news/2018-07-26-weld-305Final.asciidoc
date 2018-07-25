@@ -1,0 +1,60 @@
+---
+layout: news
+title: Weld 3.0.5.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.0.5.Final released
+desc: Weld 3.0.5.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.0.5.Final is here and hand in hand with it comes Weld API 3.0.SP4.
+And in case you missed it, there was link:https://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C2.0.SP1%7Cjar[CDI 2.0.SP1 release] as well.
+It comes with few link:https://issues.jboss.org/issues/?jql=project%20%3D%20CDI%20AND%20fixVersion%20%3D%202.0.SP1[security manager related fixes] and Weld is of course compliant with it.
+If you are running on a servlet or in SE, you may need to update it yourself, in case of EE it usually falls to the server to update this dependency for you.
+
+NOTE: This time around we are not providing a patch for WildFly 13 as there were major changes blocking us from doing so.
+However, Wildfly 14 will contain all of the above updates - Weld core, Weld API, CDI API - so keep an eye out for its release!
+
+As for updates and fixes, we keep looking at JDK 11 and have done another round of fixing to keep up with adjustments and removals going on in JDK.
+There is a bunch of interceptor/decorator fixes for those of you who indulge in using complex class hierarchies with abstractions, generics and default methods.
+So let's take a look at them all, shall we?
+
+Fixes and improvements:
+
+* Weld Core
+** Fixed possible race condition appearing during bean index creation (link:https://issues.jboss.org/browse/WELD-2492[WELD-2492, window="_blank"])
+** Avoid creating unnecessary bean metatada for anonymous and local classes (link:https://issues.jboss.org/browse/WELD-2498[WELD-2498, window="_blank"])
+** Corrected decorator subclass creation when said decorator overrides only default method (link:https://issues.jboss.org/browse/WELD-2501[WELD-2501, window="_blank"])
+** Avoid optimizing self invocation of private methods in order to avoid `IllegalAccessError` (link:https://issues.jboss.org/browse/WELD-2506[WELD-2506, window="_blank"])
+** Allow interception of abstract, package-private classes with public methods (link:https://issues.jboss.org/browse/WELD-2507[WELD-2507, window="_blank"])
+** Fix interception of overriden generic methods invoked via superclass (link:https://issues.jboss.org/browse/WELD-2514[WELD-2514, window="_blank"])
+** Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (link:https://issues.jboss.org/browse/WELD-2250[WELD-2250, window="_blank"])
+** Make conversation ID parameter detection more robust (link:https://issues.jboss.org/browse/WELD-2512[WELD-2512, window="_blank"]) 
+
+* Weld SE
+** Make default `StartMain` more container friendly by exiting with error code should an exception appear (link:https://issues.jboss.org/browse/WELD-2502[WELD-2502, window="_blank"])
+*** There is also a follow-up custom exception handling proposal if you want to glance at it (link:https://issues.jboss.org/browse/WELD-2503[WELD-2503, window="_blank"])
+** Fix possible NPE coming from `beans.xml` merging in complex Weld SE deployment scenarios (link:https://issues.jboss.org/browse/WELD-2515[WELD-2515, window="_blank"]) 
+
+* JDK 9/10 and onwards
+** `WeldProvider` moved to servlet core module to align it with how Jigsaw handles services (link:https://issues.jboss.org/browse/WELD-2435[WELD-2435, window="_blank"])
+** Fixed SE/Servlet resource loading behavior when `ForkJoinPool` is used on JDK 9+ (link:https://issues.jboss.org/browse/WELD-2494[WELD-2494, window="_blank"])
+** Review executability of Weld examples on JDK 10+ (link:https://issues.jboss.org/browse/WELD-2495[WELD-2495, window="_blank"])
+** Update to JBoss Classfilewriter 1.2.3.Final which is JDK 11 compliant (link:https://issues.jboss.org/browse/WELD-2509[WELD-2509, window="_blank"])
+** If running in JPMS, remove dependency on `java.desktop` to shrink the footprint (link:https://issues.jboss.org/browse/WELD-2504[WELD-2504, window="_blank"])
+
+
+* Probe development tool
+** Probe now recognizes `BeforeDestroyed` event (link:https://issues.jboss.org/browse/WELD-2500[WELD-2500, window="_blank"])
+
+* Other
+** We are now looking at testing Weld with JDK 11 on a regular basis and have taken steps to ensure it works (link:https://issues.jboss.org/browse/WELD-2516[WELD-2516, window="_blank"])
+** Updated patching profiles for Weld 3 and WFLY, the process is now more automated and configurable (link:https://issues.jboss.org/browse/WELD-2491[WELD-2491, window="_blank"])
+** OSGi bundle now import BCEL only optionally (link:https://issues.jboss.org/browse/WELD-2499[WELD-2499, window="_blank"])
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.0.5.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12337420[Release notes, window="_blank"] &#93;
