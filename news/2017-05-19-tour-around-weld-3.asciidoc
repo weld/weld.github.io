@@ -90,7 +90,7 @@ Following configurators were added:
 * `ObserverMethodConfigurator`
 * `ProducerConfigurator`
 
-On top of that, Weld adds one additional configurator - link:http://docs.jboss.org/weld/reference/latest-master/en-US/html_single/#_weld_enriched_container_lifecycle_events[`InterceptorConfigurator`, window="_blank"].
+On top of that, Weld adds one additional configurator - link:http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_weld_enriched_container_lifecycle_events[`InterceptorConfigurator`, window="_blank"].
 This one allows you to observe `WeldAfterBeanDiscovery` and then use this configurator to create and register a custom interceptor from scratch.
 
 == SE Bootstrap API
@@ -201,7 +201,7 @@ Last but not least feature we will mention are so called 'trimmed' bean archives
 You can mark an explicit bean archive as trimmed in `beans.xml` by adding the `</trim>` element.
 Such bean archive will perform an annotated type discovery as with `bean-discovery-mode="all"` but all types that don't have a bean defining annotation or any scope annotation are then removed from the set of discovered types.
 
-Even in this case, Weld allows you to go one step further and link:http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#veto-types-without-bean-defining-annotation[veto types based on regular expression].
+Even in this case, Weld allows you to go one step further and link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation[veto types based on regular expression].
 It works on a similar principle but affects your whole application - it processess all types from all bean archives.
 Your archives will be scanned as they would be with bean discovery mode `all` and `ProcessAnnotatedType` will be fired for all found annotated types.
 Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.
