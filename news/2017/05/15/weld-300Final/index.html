@@ -159,9 +159,12 @@
                   <p>I am very pleased to announce the release of Weld <strong>3.0.0.Final</strong> - the first implementation of <strong>CDI 2.0</strong>!
                   I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!</p>
                   </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">/**&#x000A; * TODO: Continue to deliver bugfixes and improvements&#x000A; */&#x000A;public class WeldTeam extends OpenSourceCommunity {&#x000A;&#x000A;  @Inject&#x000A;  @AwesomeNews&#x000A;  Event&lt;String&gt; event;&#x000A;&#x000A;  public void release() {&#x000A;    // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;    event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;    celebrate();&#x000A;  }&#x000A;&#x000A;}</code></pre>
+                  <pre>/**&#x000A; * TODO: Continue to deliver bugfixes and improvements&#x000A; */&#x000A;public class WeldTeam extends OpenSourceCommunity {&#x000A;&#x000A;  @Inject&#x000A;  @AwesomeNews&#x000A;  Event&lt;String&gt; event;&#x000A;&#x000A;  public void release() {&#x000A;    // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;    event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;    celebrate();&#x000A;  }&#x000A;&#x000A;}</pre>
                   </div>
                   </div>
                   <div class="admonitionblock note">
@@ -184,7 +187,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank">Notification options</a> for more info):</p>
+                  <p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Notification options</a> for more info):</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -207,7 +210,7 @@
                   </div>
                   </li>
                   <li>
-                  <p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank">WELD-2346</a>)</p>
+                  <p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
                   </li>
                   <li>
                   <p>Fire <code>@Initialied(RequestScoped.class)</code>/<code>@Destroyed(RequestScoped.class)</code> events for a <code>@PostConstruct</code> callback if the request context was activated for the specific callback</p>
@@ -217,13 +220,13 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank">WELD-2360</a>)</p>
+                  <p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
                   </li>
                   <li>
-                  <p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank">WELD-2371</a>)</p>
+                  <p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
                   </li>
                   <li>
-                  <p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank">WELD-2354</a>)</p>
+                  <p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -233,13 +236,13 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank">WELD-2357</a>)</p>
+                  <p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
                   </li>
                   </ul>
                   </div>
                   </li>
                   <li>
-                  <p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank">WELD-2374</a>)</p>
+                  <p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
                   </li>
                   <li>
                   <p>Development tools</p>
@@ -270,14 +273,14 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://wildfly.org/" target="_blank">patch for WildFly</a> is available.
-                  This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank">WildFly 11.0.0.Alpha1</a>.
+                  <p>As usual, a <a href="http://wildfly.org/" target="_blank" rel="noopener">patch for WildFly</a> is available.
+                  This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 11.0.0.Alpha1</a>.
                   If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -317,15 +320,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

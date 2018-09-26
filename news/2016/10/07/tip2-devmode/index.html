@@ -172,7 +172,7 @@
                   </ul>
                   </div>
                   <div class="paragraph">
-                  <p>In this article we&#8217;re going to cover the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html" target="_blank">special mode for application development</a>.
+                  <p>In this article we&#8217;re going to cover the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html" target="_blank" rel="noopener">special mode for application development</a>.
                   When enabled, a built-in tool called <strong>Probe</strong> provides a detailed insight into internals of a CDI application.
                   Probe makes it easy to inspect:</p>
                   </div>
@@ -214,7 +214,7 @@
                   </ul>
                   </div>
                   <div class="paragraph">
-                  <p>Before you start reading, you might want to check the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe" target="_blank">live demo hosted on OpenShift</a> and see what Probe can offer.
+                  <p>Before you start reading, you might want to check the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe" target="_blank" rel="noopener">live demo hosted on OpenShift</a> and see what Probe can offer.
                   Ok, now let&#8217;s get it working!</p>
                   </div>
                   <div class="sect1">
@@ -233,7 +233,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;web-app&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.development&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;true&lt;/param-value&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;web-app&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.development&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;true&lt;/param-value&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
                   </div>
                   </div>
                   </div>
@@ -248,7 +248,7 @@
                   </div>
                   </div>
                   <div class="paragraph">
-                  <p>See also <a href="https://docs.jboss.org/author/display/WFLY10/CDI+Reference" target="_blank">WildFly CDI Reference</a>.</p>
+                  <p>See also <a href="https://docs.jboss.org/author/display/WFLY10/CDI+Reference" target="_blank" rel="noopener">WildFly CDI Reference</a>.</p>
                   </div>
                   </div>
                   <div class="sect2">
@@ -266,7 +266,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">org.jboss.weld.environment.se.Weld;&#x000A;&#x000A;public static void main(String[] args) {&#x000A;   Weld weld = new Weld().property("org.jboss.weld.development", true);&#x000A;   try (WeldContainer container = weld.initialize()) {&#x000A;      ...&#x000A;   }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">org.jboss.weld.environment.se.Weld;&#x000A;&#x000A;public static void main(String[] args) {&#x000A;   Weld weld = new Weld().property("org.jboss.weld.development", true);&#x000A;   try (WeldContainer container = weld.initialize()) {&#x000A;      ...&#x000A;   }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -292,13 +292,13 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>The best place to start is probably the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/beans" target="_blank">Beans view</a></p>
+                  <p>The best place to start is probably the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/beans" target="_blank" rel="noopener">Beans view</a></p>
                   </li>
                   <li>
-                  <p>You may also discover the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;beanClass=ValidationExtension" target="_blank">observer methods declared by an extension</a></p>
+                  <p>You may also discover the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;beanClass=ValidationExtension" target="_blank" rel="noopener">observer methods declared by an extension</a></p>
                   </li>
                   <li>
-                  <p>Monitor all the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank">fired events</a> and track which observer methods a particular event was delivered to</p>
+                  <p>Monitor all the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank" rel="noopener">fired events</a> and track which observer methods a particular event was delivered to</p>
                   </li>
                   <li>
                   <p>And more&#8230;&#8203;</p>
@@ -315,7 +315,7 @@
                   <div class="title">Tip</div>
                   </td>
                   <td class="content">
-                  There are some configuration properties which allow to tune or disable Probe features, e.g. to restrict the set of components which will be monitored. See also <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank">Development Mode Configuration</a>.
+                  There are some configuration properties which allow to tune or disable Probe features, e.g. to restrict the set of components which will be monitored. See also <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>.
                   </td>
                   </tr>
                   </table>
@@ -327,9 +327,9 @@
                   <div class="sectionbody">
                   <div class="paragraph">
                   <p>Nothing is lost!
-                  JMX and <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank">weld-probe-client-adapter</a> come to rescue.
+                  JMX and <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> come to rescue.
                   This "adapter" allows to reuse the default HTML UI even if there is no REST API available (non-web environments).
-                  The adapter either connects to a JMX server (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank">Probe JMX support must be enabled</a>) or loads data from an exported file (see also <a href="#probe-offline">Does it work offline?</a>), then starts an embedded Undertow webserver instance and exposes the default HTML client but using the data from the first step.</p>
+                  The adapter either connects to a JMX server (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Probe JMX support must be enabled</a>) or loads data from an exported file (see also <a href="#probe-offline">Does it work offline?</a>), then starts an embedded Undertow webserver instance and exposes the default HTML client but using the data from the first step.</p>
                   </div>
                   </div>
                   </div>
@@ -347,12 +347,12 @@
                   <p>Using REST API: HTTP GET <code>{webapp-context-path}/weld-probe/export</code></p>
                   </li>
                   <li>
-                  <p>Configure Probe to export data after deployment (see also <code>org.jboss.weld.probe.exportDataAfterDeployment</code> property in <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank">Development Mode Configuration</a>)</p>
+                  <p>Configure Probe to export data after deployment (see also <code>org.jboss.weld.probe.exportDataAfterDeployment</code> property in <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>)</p>
                   </li>
                   </ol>
                   </div>
                   <div class="paragraph">
-                  <p>And now use the <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank">weld-probe-client-adapter</a> again:</p>
+                  <p>And now use the <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> again:</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
@@ -397,15 +397,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

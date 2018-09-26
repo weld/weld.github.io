@@ -227,7 +227,7 @@
                   <div class="title">Tip</div>
                   </td>
                   <td class="content">
-                  A system property <code>org.jboss.logging.provider</code> can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also <a href="https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java" target="_blank">LoggerProviders</a>.
+                  A system property <code>org.jboss.logging.provider</code> can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also <a href="https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java" target="_blank" rel="noopener">LoggerProviders</a>.
                   </td>
                   </tr>
                   </table>
@@ -267,13 +267,13 @@
                   <p><code>org.jboss.weld.El</code></p>
                   </li>
                   <li>
-                  <p>and others (see also <a href="https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java" target="_blank">org.jboss.weld.logging.Category</a>)</p>
+                  <p>and others (see also <a href="https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java" target="_blank" rel="noopener">org.jboss.weld.logging.Category</a>)</p>
                   </li>
                   </ul>
                   </div>
                   <div class="paragraph">
                   <p>So for example, if you&#8217;re only interested in log messages related to <strong>EL resolution</strong> set the log level for the <code>org.jboss.weld.El</code> category to <code>TRACE</code> (or level with corresponding priority).
-                  Another useful example is the check of <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration" target="_blank">Weld configuration</a>.
+                  Another useful example is the check of <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration" target="_blank" rel="noopener">Weld configuration</a>.
                   Simply set the log level to <code>DEBUG</code> and filter the <code>org.jboss.weld.Configuration</code> category:</p>
                   </div>
                   <div class="listingblock">
@@ -370,15 +370,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

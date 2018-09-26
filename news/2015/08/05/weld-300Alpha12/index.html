@@ -168,7 +168,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public static void main(String... args) {&#x000A;    try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;        ComputingService service = cdi.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static void main(String... args) {&#x000A;    try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;        ComputingService service = cdi.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -187,7 +187,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;    ComputingService service = container.select(ComputingService.class).get();&#x000A;    service.compute();&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;    ComputingService service = container.select(ComputingService.class).get();&#x000A;    service.compute();&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -216,7 +216,7 @@
                   </div>
                   </li>
                   <li>
-                  <p>Weld-specific <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration">configuration options</a> can be specified using the builder</p>
+                  <p>Weld-specific <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration">configuration options</a> can be specified using the builder</p>
                   </li>
                   <li>
                   <p>it is possible to start multiple independent Weld instances (specification does not require this)</p>
@@ -237,7 +237,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">class OrderProcessor {&#x000A;&#x000A;    @Inject Event&lt;Order&gt; orderEvent;&#x000A;&#x000A;    public void process(Order order) {&#x000A;        orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;    }&#x000A;&#x000A;    public void processingOrder(@Observes Order event) {&#x000A;        // This observer is notified synchronously, before the fireAsync() method returns&#x000A;    }&#x000A;&#x000A;    public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;        // This observer is notified asynchronously, in a different thread&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class OrderProcessor {&#x000A;&#x000A;    @Inject Event&lt;Order&gt; orderEvent;&#x000A;&#x000A;    public void process(Order order) {&#x000A;        orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;    }&#x000A;&#x000A;    public void processingOrder(@Observes Order event) {&#x000A;        // This observer is notified synchronously, before the fireAsync() method returns&#x000A;    }&#x000A;&#x000A;    public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;        // This observer is notified asynchronously, in a different thread&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -268,9 +268,9 @@
                   </div>
                   <table class="tableblock frame-all grid-all spread">
                   <colgroup>
-                  <col style="width: 33%;">
-                  <col style="width: 33%;">
-                  <col style="width: 33%;">
+                  <col style="width: 33.3333%;">
+                  <col style="width: 33.3333%;">
+                  <col style="width: 33.3334%;">
                   </colgroup>
                   <thead>
                   <tr>
@@ -354,15 +354,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

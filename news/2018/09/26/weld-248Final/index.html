@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: Weld.Next
+      Weld: Weld 2.4.8.Final
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description">
+    <meta content="Weld 2.4.8.Final released" name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -137,57 +137,104 @@
             <div class="col-md-12">
               <div class="post">
                 <h1>
-                  Weld.Next
+                  Weld 2.4.8.Final
                   <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
                     <i class="fa fa-rss"></i>
                   </a>
                 </h1>
                 <div class="news-date news-boxed">
-                  2014-9-18
+                  2018-9-26
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
                   &nbsp;
                   <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
+                  Matej Novotny
                 </div>
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Today, we released Weld 2.2.5.Final. The fifth mostly bug-fixing release in the series addresses <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12325389">23 issues</a>.
-                  In addition, the Servlet module got an update and among other things now supports:</p>
+                  <p>Weld 2 has entered maintenance mode with its 2.4.7.Final release earlier this year.
+                  Now we are coming with a maintenance release containing fixes to several nuisances you might have come across.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Notable fixes and improvements:</p>
                   </div>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>all three bean discovery modes (e.g. only explicitly annotated classes will be loaded as CDI beans)</p>
-                  </li>
+                  <p>Weld Core:</p>
+                  <div class="ulist">
+                  <ul>
                   <li>
-                  <p>bean archive isolation</p>
-                  </li>
+                  <p>Opt-in enhancement in HTTP session replication, more eager approach (<a href="https://issues.jboss.org/browse/WELD-1130" target="_blank" rel="noopener">WELD-1130</a>)</p>
+                  <div class="ulist">
+                  <ul>
                   <li>
-                  <p>using Jandex for faster deployment discovery</p>
+                  <p>Note that WildFly does not need to use this</p>
                   </li>
                   </ul>
                   </div>
-                  <div class="paragraph">
-                  <p>See the <a href="http://docs.jboss.org/weld/reference/2.2.5.Final/en-US/html/_application_servers_and_environments_supported_by_weld.html#_servlet_containers_such_as_tomcat_or_jetty">reference documentation </a>
-                  for details.</p>
+                  </li>
+                  <li>
+                  <p><code>AfterTypeDiscovery</code> did not allow to remove declared interceptors/decorators/alternatives correctly (<a href="https://issues.jboss.org/browse/WELD-2479" target="_blank" rel="noopener">WELD-2479</a>)</p>
+                  </li>
+                  <li>
+                  <p>Corrected decorator subclass creation when said decorator overrides only default method (<a href="https://issues.jboss.org/browse/WELD-2501" target="_blank" rel="noopener">WELD-2501</a>)</p>
+                  </li>
+                  <li>
+                  <p>Avoid optimizing self invocation of private methods in order to avoid <code>IllegalAccessError</code>(<a href="https://issues.jboss.org/browse/WELD-2506" target="_blank" rel="noopener">WELD-2506</a>)</p>
+                  </li>
+                  <li>
+                  <p>Allow interception of abstract, package-private classes with public methods (<a href="https://issues.jboss.org/browse/WELD-2507" target="_blank" rel="noopener">WELD-2507</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix interception of overriden generic methods invoked via superclass (<a href="https://issues.jboss.org/browse/WELD-2514" target="_blank" rel="noopener">WELD-2514</a>)</p>
+                  </li>
+                  <li>
+                  <p>Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (<a href="https://issues.jboss.org/browse/WELD-2531" target="_blank" rel="noopener">WELD-2531</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fixed possible race condition appearing during bean index creation (<a href="https://issues.jboss.org/browse/WELD-2532" target="_blank" rel="noopener">WELD-2532</a>)</p>
+                  </li>
+                  </ul>
                   </div>
-                  <div class="paragraph">
-                  <p>Talking about documentation we are grateful to <a href="http://www.next-presso.com/author/antoine/">Antoine Sabot-Durand</a> for migrating our reference documentation to <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a>.
-                  We also thank our community contributors <strong>Antonin Stefanutti</strong> and <strong>Stefan Grossmann</strong> who contributed with pull requests.</p>
+                  </li>
+                  <li>
+                  <p>Weld SE</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fix NPE which could occur if trying to intercept a method called by constructor (<a href="https://issues.jboss.org/browse/WELD-2473" target="_blank" rel="noopener">WELD-2473</a> and <a href="https://issues.jboss.org/browse/WELD-2478" target="_blank" rel="noopener">WELD-2478</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Correction to licenses in Probe (<a href="https://issues.jboss.org/browse/WELD-2480" target="_blank" rel="noopener">WELD-2480</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
                   </div>
                   <div class="sect1">
-                  <h2 id="_weld_3_0">Weld 3.0</h2>
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>In the coming months, our focus will be shifting towards <strong>Weld 3.0</strong> - the future reference implementation of <a href="http://cdi-spec.org/">CDI 2.0</a>.
-                  Initially, we plan on releasing Alpha releases every two weeks starting in early October.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.8.Final/wildfly-11.0.0.Final-weld-2.4.8.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.
+                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>The Alpha releases are likely to break compatibility from time to time and will often contain bleeding edge or prototype code.
-                  The goals is however to give the CDI community a chance to test drive the proposed changes in the CDI specification as soon as possible and give quick feedback to the CDI expert group.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Weld 3.0 will also be a good opportunity to get involved in the development of this open-source project. <strong>Interested?</strong> See our <a href="http://weld.cdi-spec.org/community/">community web page</a> for more details.</p>
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.8.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12337222" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -196,9 +243,9 @@
                             <div id="disqus_thread"></div>
                             <script type="text/javascript">
                             var disqus_shortname = 'weld-cdi';
-                            var disqus_url = "http://weld.cdi-spec.org/news/2014/09/18/weld-next/";
+                            var disqus_url = "http://weld.cdi-spec.org/news/2018/09/26/weld-248Final/";
                             var disqus_developer = null;
-                            var disqus_identifier = "c312a07a0c612b0a32fc375cceaaaa63ecb7c8dd";
+                            var disqus_identifier = "ee29dccf7ddb441ab703fca5757cfc565bb8e607";
                             (function() {
                               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
                               dsq.src = "http://weld-cdi.disqus.com/embed.js";

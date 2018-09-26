@@ -178,7 +178,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Weld builder = new Weld()&#x000A;    .disableDiscovery()&#x000A;    .packages(Main.class, Utils.class)&#x000A;    .interceptors(TransactionalInterceptor.class)&#x000A;    .property("org.jboss.weld.construction.relaxed", true);&#x000A;&#x000A;try (WeldContainer weld = builder.initialize()) {&#x000A;    MyBean bean = weld.select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Weld builder = new Weld()&#x000A;    .disableDiscovery()&#x000A;    .packages(Main.class, Utils.class)&#x000A;    .interceptors(TransactionalInterceptor.class)&#x000A;    .property("org.jboss.weld.construction.relaxed", true);&#x000A;&#x000A;try (WeldContainer weld = builder.initialize()) {&#x000A;    MyBean bean = weld.select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -208,7 +208,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();&#x000A;new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();&#x000A;&#x000A;MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();&#x000A;System.out.println(bean.computeResult());&#x000A;&#x000A;WeldContainer.instance("one").shutdown();&#x000A;WeldContainer.instance("two").shutdown();</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">new Weld().disableDiscovery().containerId("one").beanClasses(MyBean.class).initialize();&#x000A;new Weld().disableDiscovery().containerId("two").beanClasses(OtherBean.class).initialize();&#x000A;&#x000A;MyBean bean = WeldContainer.instance("one").select(MyBean.class).get();&#x000A;System.out.println(bean.computeResult());&#x000A;&#x000A;WeldContainer.instance("one").shutdown();&#x000A;WeldContainer.instance("two").shutdown();</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -223,7 +223,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;    MyBean bean = weld.select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (WeldContainer weld = new Weld().enableDiscovery().initialize()) {&#x000A;    MyBean bean = weld.select(MyBean.class).get();&#x000A;    System.out.println(bean.computeResult());&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -234,7 +234,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;&#x000A;    &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;    &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;&#x000A;    &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;    &lt;version&gt;3.0.0.Alpha8&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -256,7 +256,7 @@
                   </div>
                   <div class="imageblock">
                   <div class="content">
-                  <img src="/images/blog/probe-bar.png" alt="Weld Probe information bar embedded in application's HTML output">
+                  <img src="/images/blog/probe-bar.png" alt="Weld Probe information bar embedded in application&#8217;s HTML output">
                   </div>
                   </div>
                   <div class="paragraph">
@@ -328,15 +328,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

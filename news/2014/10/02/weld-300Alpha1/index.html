@@ -193,7 +193,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {&#x000A;    // ...&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {&#x000A;    // ...&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -212,7 +212,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class SimpleExtension implements Extension {&#x000A;&#x000A;    void observe(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;        ExperimentalObserverMethod&lt;User&gt; observerMethod = event.getObserverMethod();&#x000A;        this.priority = observerMethod.getPriority();&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SimpleExtension implements Extension {&#x000A;&#x000A;    void observe(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;        ExperimentalObserverMethod&lt;User&gt; observerMethod = event.getObserverMethod();&#x000A;        this.priority = observerMethod.getPriority();&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -232,7 +232,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&lt;?, Debug&gt; event) {&#x000A;    if (projectStage != ProjectStage.Development) {&#x000A;        event.veto();&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&lt;?, Debug&gt; event) {&#x000A;    if (projectStage != ProjectStage.Development) {&#x000A;        event.veto();&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -241,7 +241,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">void alterObserver(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;    event.setObserverMethod(new ForwardingExperimentalObserverMethod&lt;User&gt;(event.getObserverMethod()) {&#x000A;        @Override&#x000A;        public TransactionPhase getTransactionPhase() {&#x000A;            return TransactionPhase.AFTER_SUCCESS;&#x000A;        }&#x000A;    });&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void alterObserver(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;    event.setObserverMethod(new ForwardingExperimentalObserverMethod&lt;User&gt;(event.getObserverMethod()) {&#x000A;        @Override&#x000A;        public TransactionPhase getTransactionPhase() {&#x000A;            return TransactionPhase.AFTER_SUCCESS;&#x000A;        }&#x000A;    });&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -255,7 +255,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class School {&#x000A;&#x000A;    @Produces&#x000A;    @Speaks("English")&#x000A;    @Speaks("French")&#x000A;    public Student graduate() {&#x000A;        // ...&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class School {&#x000A;&#x000A;    @Produces&#x000A;    @Speaks("English")&#x000A;    @Speaks("French")&#x000A;    public Student graduate() {&#x000A;        // ...&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -284,7 +284,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Interceptor&#x000A;@Secure&#x000A;public class SecurityInterceptor {&#x000A;&#x000A;    @Inject&#x000A;    private User user;&#x000A;&#x000A;    @AroundInvoke&#x000A;    public Object intercept(ExperimentalInvocationContext ctx) throws Exception {&#x000A;        Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();&#x000A;        if (!user.getRoles().contains(binding.requireRole())) {&#x000A;            throw new SecurityException();&#x000A;        }&#x000A;        return ctx.proceed();&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Interceptor&#x000A;@Secure&#x000A;public class SecurityInterceptor {&#x000A;&#x000A;    @Inject&#x000A;    private User user;&#x000A;&#x000A;    @AroundInvoke&#x000A;    public Object intercept(ExperimentalInvocationContext ctx) throws Exception {&#x000A;        Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();&#x000A;        if (!user.getRoles().contains(binding.requireRole())) {&#x000A;            throw new SecurityException();&#x000A;        }&#x000A;        return ctx.proceed();&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -357,15 +357,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

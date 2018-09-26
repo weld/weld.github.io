@@ -155,9 +155,9 @@
                       <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html" target="_blank">Oracle WebLogic Server</a>,
                       <a href="https://developer.ibm.com/wasdev/downloads/" target="_blank">WebSphere Application Server</a>
                       and others. Weld can also be used in plain
-                      <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-servlet" target="_blank">servlet containers (Tomcat, Jetty)</a>
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html#weld-servlet" target="_blank">servlet containers (Tomcat, Jetty)</a>
                       or
-                      <a href="http://docs.jboss.org/weld/reference/latest-master/en-US/html/environments.html#weld-se" target="_blank">Java SE.</a>
+                      <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html#weld-se" target="_blank">Java SE.</a>
                     </p>
                     <h2>Try Weld Today</h2>
                     <div>
@@ -205,6 +205,24 @@
                         <tbody>
                           <tr>
                             <td>
+                              WildFly 14.0.0.Final
+                            </td>
+                            <td>
+                              Weld 3.0.5.Final
+                              <span class="label label-primary">
+                                CDI 2.0
+                              </span>
+                            </td>
+                            <td>
+                              <ul>
+                                <li>
+                                  None available
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
                               WildFly 13.0.0.Final
                             </td>
                             <td>
@@ -228,9 +246,6 @@
                                 </li>
                               </ul>
                             </td>
-                          </tr>
-                          <tr>
-                            <td></td>
                           </tr>
                           <tr>
                             <td>
@@ -271,7 +286,7 @@
                             <td>
                               <ul>
                                 <li>
-                                  <a href="http://download.jboss.org/weld/2.4.7.Final/wildfly-11.0.0.Final-weld-2.4.7.Final-patch.zip">Weld 2.4.7.Final</a>
+                                  <a href="http://download.jboss.org/weld/2.4.8.Final/wildfly-11.0.0.Final-weld-2.4.8.Final-patch.zip">Weld 2.4.8.Final</a>
                                   <span class="label label-primary">
                                     CDI 1.2
                                   </span>
@@ -344,6 +359,23 @@
                     <ul class="newsColumn">
                       <li>
                         <h3>
+                          <a href="/news/2018/09/26/weld-248Final/">Weld 2.4.8.Final</a>
+                        </h3>
+                        <div class="news-date news-boxed">
+                          2018-9-26
+                          &nbsp;
+                          <span class="tags">
+                            <i class="fa fa-tags"></i>
+                            <a href="/news/tags/release">release</a>
+                          </span>
+                        </div>
+                        <p>
+                          Weld 2.4.8.Final released
+                        </p>
+                        <hr>
+                      </li>
+                      <li>
+                        <h3>
                           <a href="/news/2018/07/26/weld-305Final/">Weld 3.0.5.Final</a>
                         </h3>
                         <div class="news-date news-boxed">
@@ -414,23 +446,6 @@
                         </p>
                         <hr>
                       </li>
-                      <li>
-                        <h3>
-                          <a href="/news/2018/02/09/weld-303Final/">Weld 3.0.3.Final</a>
-                        </h3>
-                        <div class="news-date news-boxed">
-                          2018-2-9
-                          &nbsp;
-                          <span class="tags">
-                            <i class="fa fa-tags"></i>
-                            <a href="/news/tags/release">release</a>
-                          </span>
-                        </div>
-                        <p>
-                          Weld 3.0.3.Final released
-                        </p>
-                        <hr>
-                      </li>
                       <div id="book-box">
                         <a href="http://www.packtpub.com/jboss-weld-cdi-for-java-platform/book">
                           <img class="weld-book-img" height="307" src="images/book.jpg" width="250">
@@ -460,15 +475,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

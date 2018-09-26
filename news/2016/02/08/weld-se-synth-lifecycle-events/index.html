@@ -181,7 +181,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -224,15 +224,14 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
   </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-45187401-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){
