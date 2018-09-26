@@ -1,0 +1,43 @@
+---
+layout: news
+title: Weld 2.4.8.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 2.4.8.Final released
+desc: Weld 2.4.8.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 2 has entered maintenance mode with its 2.4.7.Final release earlier this year.
+Now we are coming with a maintenance release containing fixes to several nuisances you might have come across.
+
+Notable fixes and improvements:
+
+* Weld Core:
+** Opt-in enhancement in HTTP session replication, more eager approach (link:https://issues.jboss.org/browse/WELD-1130[WELD-1130, window="_blank"])
+*** Note that WildFly does not need to use this
+** `AfterTypeDiscovery` did not allow to remove declared interceptors/decorators/alternatives correctly (link:https://issues.jboss.org/browse/WELD-2479[WELD-2479, window="_blank"])
+** Corrected decorator subclass creation when said decorator overrides only default method (link:https://issues.jboss.org/browse/WELD-2501[WELD-2501, window="_blank"])
+** Avoid optimizing self invocation of private methods in order to avoid `IllegalAccessError`(link:https://issues.jboss.org/browse/WELD-2506[WELD-2506, window="_blank"])
+** Allow interception of abstract, package-private classes with public methods (link:https://issues.jboss.org/browse/WELD-2507[WELD-2507, window="_blank"])
+** Fix interception of overriden generic methods invoked via superclass (link:https://issues.jboss.org/browse/WELD-2514[WELD-2514, window="_blank"])
+** Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (link:https://issues.jboss.org/browse/WELD-2531[WELD-2531, window="_blank"])
+** Fixed possible race condition appearing during bean index creation (link:https://issues.jboss.org/browse/WELD-2532[WELD-2532, window="_blank"])
+
+* Weld SE
+** Fix NPE which could occur if trying to intercept a method called by constructor (link:https://issues.jboss.org/browse/WELD-2473[WELD-2473, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2478[WELD-2478, window="_blank"])
+
+
+* Other
+** Correction to licenses in Probe (link:https://issues.jboss.org/browse/WELD-2480[WELD-2480, window="_blank"])
+
+== WildFly Patch
+
+As usual, a link:http://download.jboss.org/weld/2.4.8.Final/wildfly-11.0.0.Final-weld-2.4.8.Final-patch.zip[patch for WildFly 11.0.0.Final, window="_blank"] is available.
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/2.4.8.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12337222[Release notes, window="_blank"] &#93;

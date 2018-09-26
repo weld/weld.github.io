@@ -47,7 +47,7 @@ This looks very similar to CDI SE, right? However, there are several advanced fe
 ** `WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();`
 * WeldContainer allows to fire events easily
 ** `container.event().select(Bar.class).fire(new Bar());`
-* Weld-specific link:http://docs.jboss.org/weld/reference/latest-master/en-US/html/configure.html#_weld_configuration[configuration options] can be specified using the builder
+* Weld-specific link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration[configuration options] can be specified using the builder
 * it is possible to start multiple independent Weld instances (specification does not require this)
 
 See also link:http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/[Weld 3.0.0.Alpha8 announcement] for more information.
