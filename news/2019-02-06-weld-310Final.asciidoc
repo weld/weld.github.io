@@ -1,0 +1,81 @@
+---
+layout: news
+title: Weld 3.1.0.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.0.Final released
+desc: Weld 3.1.0.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.0.Final and Weld API 3.1.Final are now up for grabs. What's in it for you?
+
+There are quite a few new things in the mix - `InterceptionFactory` improvements, new API clases and methods, improvements to class defining for integrators in preparation for JDK 12.
+We now also support CDI context propagation between threads; there is a whole new SPI that allows users and/or frameworks to propagate request, session or conversation contexts.
+Last but no least, there are bug fixes, so let's get right into it!
+
+NOTE: Integrators (WildFly, Liberty, GlassFish, ...) will have to adjust to the changes made in SPI. Those are, most notably, the removal of long deprecated methods (link:https://issues.jboss.org/browse/WELD-2558[WELD-2558, window="_blank"]) and reworked `ProxyServices` which now delegate class defining responsibility to the integrator (link:https://issues.jboss.org/browse/WELD-2556[WELD-2556, window="_blank"]). This is crucial for Weld to operate on newer JDKs (12) and while Weld will work with the old approach for now, we will eventually fully swap to this new SPI. 
+
+Fixes and improvements:
+
+* Weld API/SPI
+** Added API to allow for CDI context propagation between threads (link:https://issues.jboss.org/browse/WELD-2497[WELD-2497, window="_blank"])
+*** New API class was introduced (`WeldAlterableContext`), this class offers methods to manipulate context state
+*** You can now propagate `Request`, `Session` and `Conversation` contexts between threads as they all implement `WeldAlterableContext`
+*** This comes with certain limitations and is mostly designed for frameworks which would do this for you (such as MicroProfile Concurrency) but anyone can use it
+*** For more information, please glance at link:http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_propagating_built_in_contexts[this part of Weld documentation]
+** `WeldManager`, providing extra methods over what `BeanManager` offers, is now an injectable bean (link:https://issues.jboss.org/browse/WELD-2538[WELD-2538, window="_blank"])
+** `WeldManager` now offers new util methods allowing you to easily grab active contexts
+*** This is mainly for the purpose of context propagation as it also allows you to grab all active contexts that support it
+** `WeldManager` can now be used to check if any given context is active without having to care about exceptions (link:https://issues.jboss.org/browse/WELD-2537[WELD-2537, window="_blank"])
+** Added new SPI for class defining, deprecated old approach in `ProxyServices` (link:https://issues.jboss.org/browse/WELD-2556[WELD-2556, window="_blank"])
+*** Integrators will have to implement this new API to be able to operate on JDK 12+
+*** Weld now delegates class defining to integrators in order to avoid having to crack open `ClassLoader` methods
+*** Previously, integrators provided `ClassLoader` instance which Weld then used to invoke `defineClass()` methods
+*** We now ask integrators to invoke those methods themselves while providing them with all the necessary bits for doing so
+** Remove deprecated parts of API/SPI (link:https://issues.jboss.org/browse/WELD-2558[WELD-2558, window="_blank"])
+*** Lots of unused and long deprecated methods were removed, should have no effect on code as those weren't used anyway (most of them since Weld 3.0.0)
+
+* Weld Core
+** Weld will now log a `WARNING` if you try to register an invalid qualifier (link:https://issues.jboss.org/browse/WELD-2522[WELD-2522, window="_blank"])
+** You can now use `InterceptionFactory` with an interface as a parameter (link:https://issues.jboss.org/browse/WELD-2550[WELD-2550, window="_blank"], link:https://issues.jboss.org/browse/WELD-2533[WELD-2533, window="_blank"])
+*** This means the proxy class will be based off an interface which is by definition always proxyable
+*** You can therefore even supply an unproxyable implementation and it will still work
+*** Note that this is experimental feature with some limitations to it, see link:http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_loosening_the_limitations_of_literal_interceptionfactory_literal[Weld docs] for more details
+** Correct atomic behaviour in `RequestContextController` (link:https://issues.jboss.org/browse/WELD-2536[WELD-2536, window="_blank"])
+** Fix rare race condition in `ConcurrentValidator` (link:https://issues.jboss.org/browse/WELD-2545[WELD-2545, window="_blank"])
+** Small correction to interceptor resolution when they have no bindings (link:https://issues.jboss.org/browse/WELD-2521[WELD-2521, window="_blank"])
+** Enforce consistent behaviour between `AnnotatedType` and `WithAnnotations` in regards to default methods (link:https://issues.jboss.org/browse/WELD-2551[WELD-2551, window="_blank"])
+** All proxy-specific methods added by Weld now have more complex names to avoid (very rare) method clashes (link:https://issues.jboss.org/browse/WELD-2508[WELD-2508, window="_blank"])
+** Lower logging level of `InterceptorLogger.unableToDetermineInterceptedBean()` from `WARN` to `INFO` (link:https://issues.jboss.org/browse/WELD-2546[WELD-2546, window="_blank"])
+
+* Weld SE
+** You can now extend the set of bean defining annotations in Weld SE (link:https://issues.jboss.org/browse/WELD-2523[WELD-2523, window="_blank"])
+*** This is handy for when you have discovery on and want custom beans automatically picked up while still avoiding the `all` discovery mode
+** Fix bug in handling JAR dependencies added onto classpath where you could accidentally add more packages than desired (link:https://issues.jboss.org/browse/WELD-2535[WELD-2535, window="_blank"])
+** Correct `ALLOW_OPTIMIZED_CLEANUP` configuration key value (link:https://issues.jboss.org/browse/WELD-2547[WELD-2547, window="_blank"])
+** When running with `SecurityManager` enabled, Weld will now refuse to use `ForkJoinPool` for startup and will pick different pool instead (link:https://issues.jboss.org/browse/WELD-2517[WELD-2517, window="_blank"])
+
+* Probe development tool
+** Make sure `ProbeExtension` has priority over any other existing extensions (link:https://issues.jboss.org/browse/WELD-2524[WELD-2524, window="_blank"])
+
+* Other
+** Stabilize testsuite and make sure dependencies are EE 8 based (link:https://issues.jboss.org/browse/WELD-2519[WELD-2519, window="_blank"], link:https://issues.jboss.org/browse/WELD-2553[WELD-2553, window="_blank"])
+** Documentation has been updated to reflects EE 8 versions of servers (link:https://issues.jboss.org/browse/WELD-2529[WELD-2529, window="_blank"])
+** Documented all changes coming to Weld API in 3.1 update (link:https://issues.jboss.org/browse/WELD-2540[WELD-2540, window="_blank"])
+** Re-enable SpotBugs code quality checking on JDK 11+ (link:https://issues.jboss.org/browse/WELD-2544[WELD-2544, window="_blank"])
+** Upgraded WildFly Arquillian adapter to 2.1.1.Final (link:https://issues.jboss.org/browse/WELD-2543[WELD-2543, window="_blank"])
+** Revisit testing on Jetty (link:https://issues.jboss.org/browse/WELD-2528[WELD-2528, window="_blank"])
+** We are now regularly testing with JDK 11 and looking into JDK 12 testing
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.0.Final/wildfly-15.0.1.Final-weld-3.1.0.Final-patch.zip[patch for WildFly 15.0.1.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.0.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12339977[Release notes, window="_blank"] &#93;
