@@ -48,7 +48,7 @@ Here is how you run it:
 
 > docker run -v /home/your/path/to/weld.github.io/:/home/$(whoami)/weld.github.io -p 4242:4242 -it weld-deps-container
 
-Again, let's look what it really does:
+Again, let's look at what it really does:
 
  * `-it` means you will run in interactive mode; that means landing in terminal under the same user you are now (which we have added to Docker during build)
  * `-v /what:/where` is an argument meaning you want to mount something from your local filesystem under certain path in Docker container

@@ -67,6 +67,7 @@ RUN gem install awestruct -v 0.5.3
 RUN gem install uglifier -v 4.1.20
 RUN gem install coffee-script -v 2.4.1
 RUN gem install htmlcompressor -v 0.4.0
+RUN gem install redcarpet -v 3.4.0
 
 #expose port where app is deployed for viewing in browser on host machine
 EXPOSE 4242
