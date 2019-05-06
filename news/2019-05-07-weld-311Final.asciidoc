@@ -1,0 +1,46 @@
+---
+layout: news
+title: Weld 3.1.1.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.1.Final released
+desc: Weld 3.1.1.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.1.Final is out, it is a rather small nonetheless important maintenance release.
+There is bunch of fixes present here; notably one for context propagation API that could cause some headaches with context seemingly not propagating.
+Moving on, we also have some improvements to asynchronous events on default executors or ordering on `ProcessAnnotatedType` events.
+
+Fixes and improvements:
+
+* Weld API/SPI
+
+* Weld Core
+** `WeldAlterableContext#clearAndSet()` was incorrectly leaving some caches behind (link:https://issues.jboss.org/browse/WELD-2566[WELD-2566, window="_blank"])
+** Fix serializability issue with intercepted session beans having private methods (link:https://issues.jboss.org/browse/WELD-2574[WELD-2574, window="_blank"])
+** Asynchronous event notification on default executor should preserve TCCL (link:https://issues.jboss.org/browse/WELD-2573[WELD-2573, window="_blank"])
+** Fix ordering of `ProcessAnnotatedType` events via `@Priority` (link:https://issues.jboss.org/browse/WELD-2568[WELD-2568, window="_blank"])
+** Small optimization for distributed environment when bean index is empty (link:https://issues.jboss.org/browse/WELD-2577[WELD-2577, window="_blank"])
+** Custom `InjectionTarget` now invokes any present `dispose()` (link:https://issues.jboss.org/browse/WELD-2580[WELD-2580, window="_blank"])
+** Align behaviour of self-invocation of otherwise intercepted method from within private final observer method (link:https://issues.jboss.org/browse/WELD-2571[WELD-2571, window="_blank"])
+
+* Weld SE
+** Allow to specify custom `DiscoveryStrategy` via service loader mechanism (link:https://issues.jboss.org/browse/WELD-2578[WELD-2578, window="_blank"])
+
+* Other
+** Update tooling around documentation builds (link:https://issues.jboss.org/browse/WELD-2564[WELD-2564, window="_blank"])
+** Update JBoss classfilewriter to newer version working on JDK 12 (link:https://issues.jboss.org/browse/WELD-2572[WELD-2572, window="_blank"])
+** Fix Probe functional tests on latest Firefox (link:https://issues.jboss.org/browse/WELD-2579[WELD-2579, window="_blank"])
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.1.Final/wildfly-16.0.0.Final-weld-3.1.1.Final-patch.zip[patch for WildFly 16.0.0.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.1.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12340657[Release notes, window="_blank"] &#93;
