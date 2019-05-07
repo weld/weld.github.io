@@ -176,7 +176,7 @@
                   <h2 id="_symptoms">Symptoms</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>You may get <code>WELD-000409: Observer method for container lifecycle event can only&#8230;&#8203;</code> if using such a lambda in an extension or even <code>WELD-001408 Unsatisfied dependencies for type&#8230;&#8203;</code> if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.</p>
+                  <p>You may get <code>WELD-000409: Observer method for container lifecycle event can only...</code> if using such a lambda in an extension or even <code>WELD-001408 Unsatisfied dependencies for type...</code> if using such a lambda in a regular observer and the lambda is using more references (i.e. not only event/disposed parameter) - these are also the method parameters of the synthetic method, and in CDI these additional parameters are injection points.</p>
                   </div>
                   </div>
                   </div>
@@ -185,7 +185,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class Foo {&#x000A;  void observe(@Observes @Juicy String payload) {&#x000A;    Arrays.asList("foo").stream().filter((s) -&gt; s.equals(payload));&#x000A;  }&#x000A;}</code></pre>
+                  <pre class="highlight"><code class="java language-java">class Foo {&#x000A;  void observe(@Observes @Juicy String payload) {&#x000A;    Arrays.asList("foo").stream().filter((s) -&gt; s.equals(payload));&#x000A;  }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -202,7 +202,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void observe(@Observes @Juicy String payload) {&#x000A;   String p = payload;&#x000A;   Arrays.asList("foo").stream().filter((s) -&gt; s.equals(p));&#x000A;}</code></pre>
+                  <pre class="highlight"><code class="java language-java">public void observe(@Observes @Juicy String payload) {&#x000A;   String p = payload;&#x000A;   Arrays.asList("foo").stream().filter((s) -&gt; s.equals(p));&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>

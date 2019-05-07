@@ -158,8 +158,8 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank" rel="noopener">Weld meets Vert.x</a>.
-                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank" rel="noopener">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank" rel="noopener">Maven Central</a>).
+                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank">Weld meets Vert.x</a>.
+                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank">Maven Central</a>).
                   Since the last time we talked about <code>weld-vertx</code> two new features were added.
                   First, it&#8217;s possible to inject the relevant <code>io.vertx.core.Vertx</code> and <code>io.vertx.core.Context</code> instances direcly into beans.
                   Also there is a new module called <code>weld-vertx-web</code> which extends functionality of <code>weld-vertx-core</code> and <code>io.vertx:vertx-web</code> and allows to register <code>Route</code> handlers discovered during container initialization.
@@ -167,7 +167,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import javax.inject.Inject;&#x000A;&#x000A;import org.jboss.weld.vertx.web.WebRoute;&#x000A;&#x000A;import io.vertx.core.Handler;&#x000A;import io.vertx.ext.web.RoutingContext;&#x000A;&#x000A;// This annotation is used to configure a Route&#x000A;@WebRoute("/hello")&#x000A;public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    SayHelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;&#x000A;}</code></pre>
+                  <pre class="highlight"><code class="java language-java">import javax.inject.Inject;&#x000A;&#x000A;import org.jboss.weld.vertx.web.WebRoute;&#x000A;&#x000A;import io.vertx.core.Handler;&#x000A;import io.vertx.ext.web.RoutingContext;&#x000A;&#x000A;// This annotation is used to configure a Route&#x000A;@WebRoute("/hello")&#x000A;public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    SayHelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -180,7 +180,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"> class MyApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;&#x000A;             if (result.succeeded()) {&#x000A;                 // Configure the router after Weld bootstrap finished&#x000A;                 Router router = Router.router(vertx);&#x000A;                 router.route().handler(BodyHandler.create());&#x000A;                 weldVerticle.registerRoutes(router);&#x000A;                 vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
+                  <pre class="highlight"><code class="java language-java"> class MyApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;&#x000A;             if (result.succeeded()) {&#x000A;                 // Configure the router after Weld bootstrap finished&#x000A;                 Router router = Router.router(vertx);&#x000A;                 router.route().handler(BodyHandler.create());&#x000A;                 weldVerticle.registerRoutes(router);&#x000A;                 vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">

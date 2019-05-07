@@ -143,6 +143,123 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2016/07/01/weld-235Final/">Weld 2.3.5.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2016-7-1
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                    ,
+                    <a href="/news/tags/plans">plans</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>The next version of the stable 2.3 branch has been released!
+                  See also <a href="https://issues.jboss.org/projects/WELD/versions/12330052" target="_blank">the release details</a>.
+                  Thanks to everyone involved in this release!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>We plan to create the <strong>2.4 branch</strong> of Weld within a few weeks.
+                  Weld 2.4 will remain a <strong>CDI 1.2</strong> implementation.
+                  We would like to do some cleanup (e.g. remove deprecated classes from Weld SE), enhance the API and also add some new features.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12330683" target="_blank">the list of issues for 2.4.0.CR1</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Notable bugfixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>fixed static disposer method invocation (<a href="https://issues.jboss.org/browse/WELD-2176" target="_blank">WELD-2176</a>)</p>
+                  </li>
+                  <li>
+                  <p>fixed private observer/producer/disposer invocation on a bean with decorator (<a href="https://issues.jboss.org/browse/WELD-2179" target="_blank">WELD-2179</a>)</p>
+                  </li>
+                  <li>
+                  <p>fixed <code>Instance.destroy()</code> for dependent session beans (<a href="https://issues.jboss.org/browse/WELD-2148" target="_blank">WELD-2148</a>)</p>
+                  </li>
+                  <li>
+                  <p>fixed <code>ArraySet.hashCode()</code> to comply with <code>java.util.Set.hashCode()</code> contract (<a href="https://issues.jboss.org/browse/WELD-2185" target="_blank">WELD-2185</a>)</p>
+                  </li>
+                  <li>
+                  <p>log veto actions and modifications of lists returned by <code>AfterTypeDiscovery</code> (<a href="https://issues.jboss.org/browse/WELD-2170" target="_blank">WELD-2170</a>, <a href="https://issues.jboss.org/browse/WELD-2171" target="_blank">WELD-2171</a>)</p>
+                  </li>
+                  <li>
+                  <p>log a warning when a class is annotated with a scope but does not declare an appropriate constructor (<a href="https://issues.jboss.org/browse/WELD-2178" target="_blank">WELD-2178</a>)</p>
+                  </li>
+                  <li>
+                  <p>support extension deployed in multiple WARs in an EAR (<a href="https://issues.jboss.org/browse/WELD-2143" target="_blank">WELD-2143</a>)</p>
+                  </li>
+                  <li>
+                  <p>detect non-unique <code>BeanDeploymentArchive</code> identifier (<a href="https://issues.jboss.org/browse/WELD-2165" target="_blank">WELD-2165</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>fixed extraction of bean archive id - problem occures with embedded Jetty (<a href="https://issues.jboss.org/browse/WELD-2161" target="_blank">WELD-2161</a>)</p>
+                  </li>
+                  <li>
+                  <p>improve the way <code>JandexDiscoveryStrategy</code> identifies an annotation annotated with <code>@NormalScope</code> (<a href="https://issues.jboss.org/browse/WELD-2160" target="_blank">WELD-2160</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>weld-servlet-core</code> declares dependency on <code>weld-core-jsf</code></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld SE</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>do not pass system properties to Weld configuration (<a href="https://issues.jboss.org/browse/WELD-2146" target="_blank">WELD-2146</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Probe - allow to test bean availability in a given bean archive</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>check for example the availability of an alternative in the <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/availableBeans?bda=2b32e9d8-9a3c-34e9-b3f6-49753fedc76e&amp;requiredType=org.jboss.weld.examples.numberguess.AnotherGameBean" target="_blank">demo application</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>many documentation and reference guide updates</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.5.Final/wildfly-10.0.0.Final-weld-2.3.5.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
+                  &#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.5.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12330052" target="_blank">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2016/06/21/update-on-weld-vertx/">Update on weld-vertx</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -161,8 +278,8 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank" rel="noopener">Weld meets Vert.x</a>.
-                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank" rel="noopener">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank" rel="noopener">Maven Central</a>).
+                  <p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank">Weld meets Vert.x</a>.
+                  Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank">Maven Central</a>).
                   Since the last time we talked about <code>weld-vertx</code> two new features were added.
                   First, it&#8217;s possible to inject the relevant <code>io.vertx.core.Vertx</code> and <code>io.vertx.core.Context</code> instances direcly into beans.
                   Also there is a new module called <code>weld-vertx-web</code> which extends functionality of <code>weld-vertx-core</code> and <code>io.vertx:vertx-web</code> and allows to register <code>Route</code> handlers discovered during container initialization.
@@ -170,7 +287,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import javax.inject.Inject;&#x000A;    &#x000A;    import org.jboss.weld.vertx.web.WebRoute;&#x000A;    &#x000A;    import io.vertx.core.Handler;&#x000A;    import io.vertx.ext.web.RoutingContext;&#x000A;    &#x000A;    // This annotation is used to configure a Route&#x000A;    @WebRoute("/hello")&#x000A;    public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;    &#x000A;        @Inject&#x000A;        SayHelloService service;&#x000A;    &#x000A;        @Override&#x000A;        public void handle(RoutingContext ctx) {&#x000A;            ctx.response().setStatusCode(200).end(service.hello());&#x000A;        }&#x000A;    &#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">import javax.inject.Inject;&#x000A;    &#x000A;    import org.jboss.weld.vertx.web.WebRoute;&#x000A;    &#x000A;    import io.vertx.core.Handler;&#x000A;    import io.vertx.ext.web.RoutingContext;&#x000A;    &#x000A;    // This annotation is used to configure a Route&#x000A;    @WebRoute("/hello")&#x000A;    public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;    &#x000A;        @Inject&#x000A;        SayHelloService service;&#x000A;    &#x000A;        @Override&#x000A;        public void handle(RoutingContext ctx) {&#x000A;            ctx.response().setStatusCode(200).end(service.hello());&#x000A;        }&#x000A;    &#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -183,7 +300,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"> class MyApp {&#x000A;    &#x000A;         public static void main(String[] args) {&#x000A;             final Vertx vertx = Vertx.vertx();&#x000A;             final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;    &#x000A;             vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;    &#x000A;                 if (result.succeeded()) {&#x000A;                     // Configure the router after Weld bootstrap finished&#x000A;                     Router router = Router.router(vertx);&#x000A;                     router.route().handler(BodyHandler.create());&#x000A;                     weldVerticle.registerRoutes(router);&#x000A;                     vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;                 }&#x000A;             });&#x000A;         }&#x000A;     }</code></pre>
+                  <pre class="highlight"><code class="java language-java"> class MyApp {&#x000A;    &#x000A;         public static void main(String[] args) {&#x000A;             final Vertx vertx = Vertx.vertx();&#x000A;             final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;    &#x000A;             vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;    &#x000A;                 if (result.succeeded()) {&#x000A;                     // Configure the router after Weld bootstrap finished&#x000A;                     Router router = Router.router(vertx);&#x000A;                     router.route().handler(BodyHandler.create());&#x000A;                     weldVerticle.registerRoutes(router);&#x000A;                     vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;                 }&#x000A;             });&#x000A;         }&#x000A;     }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -219,7 +336,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">interface OrderProcessor {&#x000A;      void process(Order order);&#x000A;      int getPriority();&#x000A;    }&#x000A;    &#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (!instance.isUnsatisfied() &amp;&amp; !instance.isAmbiguous()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">interface OrderProcessor {&#x000A;      void process(Order order);&#x000A;      int getPriority();&#x000A;    }&#x000A;    &#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (!instance.isUnsatisfied() &amp;&amp; !instance.isAmbiguous()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -229,7 +346,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            if (processor.getPriority() &gt; 10) {&#x000A;                processor.process(order);&#x000A;            }&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            if (processor.getPriority() &gt; 10) {&#x000A;                processor.process(order);&#x000A;            }&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -237,7 +354,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        List&lt;OrderProcessor&gt; processors = new ArrayList&lt;&gt;();&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            processors.add(processor);&#x000A;        }&#x000A;        Collections.sort(processors, Comparator.&lt;OrderProcessor&gt; comparingInt(p -&gt; p.getPriority()).reversed());&#x000A;        // Use the processor with highest priority&#x000A;        processors.get(0).ping();&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        List&lt;OrderProcessor&gt; processors = new ArrayList&lt;&gt;();&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            processors.add(processor);&#x000A;        }&#x000A;        Collections.sort(processors, Comparator.&lt;OrderProcessor&gt; comparingInt(p -&gt; p.getPriority()).reversed());&#x000A;        // Use the processor with highest priority&#x000A;        processors.get(0).ping();&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -260,7 +377,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jboss.weld.inject.WeldInstance;&#x000A;    &#x000A;    class Foo {&#x000A;    &#x000A;      @Inject&#x000A;      WeldInstance&lt;Bar&gt; instance;&#x000A;    &#x000A;      void doWork() {&#x000A;        try (Handler&lt;Bar&gt; bar = instance.getHandler()) {&#x000A;            bar.get().doBusiness();&#x000A;            // Note that Bar will be automatically destroyed at the end of the try-with-resources statement&#x000A;        }&#x000A;    &#x000A;        Handler&lt;Bar&gt; bar = instance.getHandler()&#x000A;        bar.get().doBusiness();&#x000A;        // Calls Instance.destroy()&#x000A;        bar.destroy();&#x000A;      }&#x000A;    &#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">import org.jboss.weld.inject.WeldInstance;&#x000A;    &#x000A;    class Foo {&#x000A;    &#x000A;      @Inject&#x000A;      WeldInstance&lt;Bar&gt; instance;&#x000A;    &#x000A;      void doWork() {&#x000A;        try (Handler&lt;Bar&gt; bar = instance.getHandler()) {&#x000A;            bar.get().doBusiness();&#x000A;            // Note that Bar will be automatically destroyed at the end of the try-with-resources statement&#x000A;        }&#x000A;    &#x000A;        Handler&lt;Bar&gt; bar = instance.getHandler()&#x000A;        bar.get().doBusiness();&#x000A;        // Calls Instance.destroy()&#x000A;        bar.destroy();&#x000A;      }&#x000A;    &#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -268,7 +385,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      WeldInstance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (Iterator&lt;Handler&lt;OrderProcessor&gt;&gt; iterator = instance.handlerIterator(); iterator.hasNext();) {&#x000A;                Handler&lt;OrderProcessor&gt; processor = iterator.next();&#x000A;                processor.get().process(order);&#x000A;                if (processor.getBean().getScope().equals(Dependent.class)) {&#x000A;                    // Destroy only dependent processors&#x000A;                    processor.destroy();&#x000A;                }&#x000A;            }&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      WeldInstance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (Iterator&lt;Handler&lt;OrderProcessor&gt;&gt; iterator = instance.handlerIterator(); iterator.hasNext();) {&#x000A;                Handler&lt;OrderProcessor&gt; processor = iterator.next();&#x000A;                processor.get().process(order);&#x000A;                if (processor.getBean().getScope().equals(Dependent.class)) {&#x000A;                    // Destroy only dependent processors&#x000A;                    processor.destroy();&#x000A;                }&#x000A;            }&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -276,7 +393,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (instance.isResolvable()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (instance.isResolvable()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -285,7 +402,7 @@
                   It would be also available in Weld-powered EE containers - in this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use <code>provided</code> scope in Maven).</p>
                   </div>
                   <div class="paragraph">
-                  <p>See also <a href="https://issues.jboss.org/browse/WELD-2151" target="_blank" rel="noopener">WELD-2151</a> and the work in progress: <a href="https://github.com/mkouba/core/tree/WELD-2151" class="bare">https://github.com/mkouba/core/tree/WELD-2151</a>.
+                  <p>See also <a href="https://issues.jboss.org/browse/WELD-2151" target="_blank">WELD-2151</a> and the work in progress: <a href="https://github.com/mkouba/core/tree/WELD-2151">https://github.com/mkouba/core/tree/WELD-2151</a>.
                   And feel free to add comments to this blog post.
                   Any feedback is appreciated!</p>
                   </div>
@@ -313,12 +430,12 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>The next experimental Weld version has been released!
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank">the release details</a>.
                   Thanks to everyone involved in this release!</p>
                   </div>
                   <div class="paragraph">
                   <p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
-                  However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
+                  However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank">CDI-558</a>).
                   So that everyone can play with the API, discover possibilities and find potential issues.
                   Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
                   So it should be even easier to get started - no extension class is needed in Weld SE.</p>
@@ -357,7 +474,7 @@
                   <p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
                   </li>
                   <li>
-                  <p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
+                  <p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank">CDI-596</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -382,7 +499,7 @@
                   </div>
                   <div class="paragraph">
                   <p>We have prepared some simple examples - see below.
-                  More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
+                  More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank">the TCK test cases</a>.
                   And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
                   </div>
                   </div>
@@ -392,7 +509,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Singleton&#x000A;    class MyService {&#x000A;        // This class is not placed in a bean archive&#x000A;    }&#x000A;    &#x000A;    class MyExtension implements Extension {&#x000A;    &#x000A;        void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;            // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;            event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;                   .remove(Singleton.class)&#x000A;                   .add(ApplicationScoped.Literal.INSTANCE);&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">@Singleton&#x000A;    class MyService {&#x000A;        // This class is not placed in a bean archive&#x000A;    }&#x000A;    &#x000A;    class MyExtension implements Extension {&#x000A;    &#x000A;        void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;            // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;            event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;                   .remove(Singleton.class)&#x000A;                   .add(ApplicationScoped.Literal.INSTANCE);&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -402,7 +519,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;    &#x000A;        void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;            // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;            event.configureAnnotatedType()&#x000A;                    .filterMethods(MyExtension::isObserver)&#x000A;                    .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;        }&#x000A;    &#x000A;        static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;            return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;    &#x000A;        void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;            // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;            event.configureAnnotatedType()&#x000A;                    .filterMethods(MyExtension::isObserver)&#x000A;                    .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;        }&#x000A;    &#x000A;        static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;            return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -412,7 +529,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;    &#x000A;        void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;            // For all beans remove the IllegalBeanType from the set of bean types&#x000A;            if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;                Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;                legalTypes.remove(IllegalBeanType.class);&#x000A;                event.configureBeanAttributes().types(legalTypes);&#x000A;            }&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;    &#x000A;        void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;            // For all beans remove the IllegalBeanType from the set of bean types&#x000A;            if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;                Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;                legalTypes.remove(IllegalBeanType.class);&#x000A;                event.configureBeanAttributes().types(legalTypes);&#x000A;            }&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -422,7 +539,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;    &#x000A;        void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;            //  Add a new synthetic observer method - no need to use the fluent API&#x000A;            ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;            configurator.observedType(Foo.class);&#x000A;            configurator.reception(Reception.ALWAYS);&#x000A;            configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;            configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;    &#x000A;            // Add dependent bean - Integer between 0 and 999&#x000A;            event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                    .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;    &#x000A;        void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;            //  Add a new synthetic observer method - no need to use the fluent API&#x000A;            ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;            configurator.observedType(Foo.class);&#x000A;            configurator.reception(Reception.ALWAYS);&#x000A;            configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;            configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;    &#x000A;            // Add dependent bean - Integer between 0 and 999&#x000A;            event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                    .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -431,12 +548,12 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -462,7 +579,7 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>Weld 2.3.4.Final the next version of the stable 2.3 branch has been released!
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12329779" target="_blank" rel="noopener">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12329779" target="_blank">the release details</a>.
                   Thanks to everyone involved in this release!</p>
                   </div>
                   <div class="paragraph">
@@ -471,36 +588,36 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>log important actions performed by extensions (<a href="https://issues.jboss.org/browse/WELD-2134" target="_blank" rel="noopener">WELD-2134</a>)</p>
+                  <p>log important actions performed by extensions (<a href="https://issues.jboss.org/browse/WELD-2134" target="_blank">WELD-2134</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>for example, if you want to track down all extensions modifying <code>AnnotatedType</code> definitions, then <a href="/documentation/#7" target="_blank" rel="noopener">enable the debug logging for Weld</a> and look for messages containing <code>ProcessAnnotatedType.setAnnotatedType() called by &#8230;&#8203;</code></p>
+                  <p>for example, if you want to track down all extensions modifying <code>AnnotatedType</code> definitions, then <a href="/documentation/#7" target="_blank">enable the debug logging for Weld</a> and look for messages containing <code>ProcessAnnotatedType.setAnnotatedType() called by ...</code></p>
                   </li>
                   </ul>
                   </div>
                   </li>
                   <li>
-                  <p>Conversations - allow to configure the default timeout and the concurrent access timeout (<a href="https://issues.jboss.org/browse/WELD-2113" target="_blank" rel="noopener">WELD-2113</a>)</p>
+                  <p>Conversations - allow to configure the default timeout and the concurrent access timeout (<a href="https://issues.jboss.org/browse/WELD-2113" target="_blank">WELD-2113</a>)</p>
                   </li>
                   <li>
-                  <p>recover if a transaction is in progress but a JTA Synchronization callback cannot be registered (<a href="https://issues.jboss.org/browse/WELD-2120" target="_blank" rel="noopener">WELD-2120</a>)</p>
+                  <p>recover if a transaction is in progress but a JTA Synchronization callback cannot be registered (<a href="https://issues.jboss.org/browse/WELD-2120" target="_blank">WELD-2120</a>)</p>
                   </li>
                   <li>
-                  <p>EJB proxies do not implement private methods anymore (<a href="https://issues.jboss.org/browse/WELD-2119" target="_blank" rel="noopener">WELD-2119</a>)</p>
+                  <p>EJB proxies do not implement private methods anymore (<a href="https://issues.jboss.org/browse/WELD-2119" target="_blank">WELD-2119</a>)</p>
                   </li>
                   <li>
-                  <p>interceptor instances used for @AroundConstruct are now reused for other types of interception (<a href="https://issues.jboss.org/browse/WELD-2131" target="_blank" rel="noopener">WELD-2131</a>)</p>
+                  <p>interceptor instances used for @AroundConstruct are now reused for other types of interception (<a href="https://issues.jboss.org/browse/WELD-2131" target="_blank">WELD-2131</a>)</p>
                   </li>
                   <li>
                   <p>Weld Servlet</p>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>fixed handling of archives from <code>WEB-INF/lib</code> on Tomcat 8 with <code>unpackWARs=false</code> (<a href="https://issues.jboss.org/browse/WELD-2122" target="_blank" rel="noopener">WELD-2122</a>)</p>
+                  <p>fixed handling of archives from <code>WEB-INF/lib</code> on Tomcat 8 with <code>unpackWARs=false</code> (<a href="https://issues.jboss.org/browse/WELD-2122" target="_blank">WELD-2122</a>)</p>
                   </li>
                   <li>
-                  <p><code>WeldTerminalListener</code> should not throw NPE if injection into listeners is not supported (<a href="https://issues.jboss.org/browse/WELD-2123" target="_blank" rel="noopener">WELD-2123</a>)</p>
+                  <p><code>WeldTerminalListener</code> should not throw NPE if injection into listeners is not supported (<a href="https://issues.jboss.org/browse/WELD-2123" target="_blank">WELD-2123</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -510,16 +627,16 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>improved support of <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_implicit_bean_archive_support_2">implicit bean archives</a> (<a href="https://issues.jboss.org/browse/WELD-2129" target="_blank" rel="noopener">WELD-2129</a>)</p>
+                  <p>improved support of <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_implicit_bean_archive_support_2">implicit bean archives</a> (<a href="https://issues.jboss.org/browse/WELD-2129" target="_blank">WELD-2129</a>)</p>
                   </li>
                   <li>
-                  <p>there are two new built-in interceptor bindings - <code>@ActivateRequestScope</code> and <code>@ActivateThreadScope</code> - to activate the <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_request_context" target="_blank" rel="noopener">request scope</a> or the <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_thread_context" target="_blank" rel="noopener">thread scope</a> within a business method invocation</p>
+                  <p>there are two new built-in interceptor bindings - <code>@ActivateRequestScope</code> and <code>@ActivateThreadScope</code> - to activate the <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_request_context" target="_blank">request scope</a> or the <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/environments.html#_thread_context" target="_blank">thread scope</a> within a business method invocation</p>
                   </li>
                   <li>
-                  <p>Weld builder allows to configure bean archive isolation, development mode and registration of shutdown hook manually (<a href="https://issues.jboss.org/browse/WELD-2135" target="_blank" rel="noopener">WELD-2135</a>)</p>
+                  <p>Weld builder allows to configure bean archive isolation, development mode and registration of shutdown hook manually (<a href="https://issues.jboss.org/browse/WELD-2135" target="_blank">WELD-2135</a>)</p>
                   </li>
                   <li>
-                  <p>a basic nested archive support was added (<a href="https://issues.jboss.org/browse/WELD-1930" target="_blank" rel="noopener">WELD-1930</a>)</p>
+                  <p>a basic nested archive support was added (<a href="https://issues.jboss.org/browse/WELD-1930" target="_blank">WELD-1930</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -530,109 +647,15 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.4.Final/wildfly-10.0.0.Final-weld-2.3.4.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.3.4.Final/wildfly-10.0.0.Final-weld-2.3.4.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
                   &#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12329779" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.3.4.Final/en-US/html/" target="_blank">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12329779" target="_blank">Release notes</a> &#93;</p>
                   </div>
                   </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2016/04/11/weld-meets-vertx/">Weld meets Vert.x</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2016-4-11
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/vertx">vertx</a>
-                    ,
-                    <a href="/news/tags/integration">integration</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p><a href="http://vertx.io/" target="_blank" rel="noopener">Vert.x</a> defines itself as "a toolkit for building reactive applications on the JVM".
-                  Sounds cool and trendy.
-                  Weld, on the other hand, comes from the Java EE world, based on standards and traditional concepts.
-                  But wait, what if we try to combine the two worlds to get the best of them?</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Vert.x makes use of a light-weight distributed messaging system to allow application components to communicate in a loosely coupled way.
-                  This should sound familiar to all CDI users where beans may produce and consume events as well.
-                  Weld team developed a <a href="https://github.com/weld/weld-vertx">working prototype</a> of Weld/Vert.x integration that allows to automatically register certain observer methods as Vert.x message consumers.
-                  A simple echo message consumer could look like this:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jboss.weld.vertx.VertxConsumer;&#x000A;    import org.jboss.weld.vertx.VertxEvent;&#x000A;    &#x000A;    class Foo {&#x000A;        public void echoConsumer(@Observes @VertxConsumer("test.echo.address") VertxEvent event) {&#x000A;            event.setReply(event.getMessageBody());&#x000A;        }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>@VertxConsumer</code> - a qualifier used to specify the address the consumer will be registered to: <code>test.echo.address</code></p>
-                  </li>
-                  <li>
-                  <p><code>VertxEvent</code> - a wrapper of a Vert.x message</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Since we&#8217;re working with a regular observer method, additional parameters may be declared (next to the event parameter).
-                  These parameters are injection points. So it&#8217;s easy to <strong>declare a message consumer dependencies</strong>:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerWithDependencies(@Observes @VertxConsumer("test.dependencies.address") VertxEvent event, CoolService coolService, StatsService statsService) {&#x000A;        coolService.process(event.getMessageBody());&#x000A;        statsService.log(event);&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="admonitionblock note">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Note</div>
-                  </td>
-                  <td class="content">
-                  If you inject a dependent bean, it will be destroyed when the invocation completes.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Last but not least - an observer may also <strong>send/publish messages using the Vert.x event bus</strong>:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerStrikesBack(@Observes @VertxConsumer("test.publish.address") VertxEvent event) {&#x000A;        event.messageTo("test.huhu.address").publish("huhu");&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>And how does it work under the hood?
-                  First of all, it&#8217;s necessary to deploy <code>org.jboss.weld.vertx.WeldVerticle</code>.
-                  This <code>Verticle</code> starts Weld SE container and automatically registers <code>org.jboss.weld.vertx.VertxExtension</code> to process all observer methods and detect observers which should become message consumers.
-                  Then a special handler is registered for each address to bridge the event bus to the CDI world.
-                  Handlers use <code>Vertx.executeBlocking()</code> since we expect the code to be blocking.
-                  Later on, whenever a new message is delivered to the handler, <code>Event.fire()</code> is used to notify all relevant observers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The prototype is surely missing some features. Nevertheless, it shows the CDI programming model might be applicable to the "reactive" world even if not a first class citizen.
-                  Moreover, the prototype demonstrates the flexibility of the CDI extension mechanism.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you want to try it out, you&#8217;ll have to clone the <a href="https://github.com/weld/weld-vertx" class="bare">https://github.com/weld/weld-vertx</a> repository and build it from source (i.e. run <code>mvn clean install</code>).
-                  And if you find it useful feel free to add comments to this blog post. Any feedback is appreciated!</p>
                   </div>
                 </div>
                 <hr>

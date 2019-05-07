@@ -143,6 +143,83 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2014/02/04/weld-220-alpha1/">CDI 1.2 and Weld 2.2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2014-2-4
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Jozef Hartinger
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Work on a maintenance release of the CDI specification (CDI 1.2) has started recently. Now is the best time to add feedback on <a href="http://www.cdi-spec.org/news/2013/12/16/CDI-1-2-issues-list/">issues being addressed</a>. Most of the discussion happens in the <a href="https://lists.jboss.org/mailman/listinfo/cdi-dev">cdi-dev mailing list</a> or the <a href="http://webchat.freenode.net/?channels=jsr346">IRC channel</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p><strong>Weld 2.2</strong> is going to be the reference implementation of CDI 1.2. Besides implementing the changes introduced in the maintenance release, we are going to focus on improving non-functional characteristics in this release of Weld:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>bootstrap time</p>
+                  </li>
+                  <li>
+                  <p>memory footprint</p>
+                  </li>
+                  <li>
+                  <p>throughput</p>
+                  </li>
+                  <li>
+                  <p>maximum number of concurrent clients</p>
+                  </li>
+                  <li>
+                  <p>session replication overhead</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Today, we released <strong>Weld 2.2.0.Alpha1</strong>. The most significant changes include:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Added <a href="http://docs.jboss.org/weld/javadoc/2.2/weld-spi/org/jboss/weld/resources/spi/ClassFileInfo.html">new SPI</a> that allows bytecode-scanning frameworks (such as <a href="https://github.com/wildfly/jandex">jandex</a>) to be integrated. This yields improved bootstrap time especially with large deployments.</p>
+                  </li>
+                  <li>
+                  <p>Reduced memory consumption (our tests show 6-12% less memory used after bootstrap with large deployments)</p>
+                  </li>
+                  <li>
+                  <p>Improved event/observer performance</p>
+                  </li>
+                  <li>
+                  <p>Java Web Start support finally got in (thanks to Alexandre Gattiker for the patch!)</p>
+                  </li>
+                  <li>
+                  <p>Improved Servlet container support (Jetty 9.1, ServletContainerInitializer used to bootstrap Weld, Tomcat 8 support)</p>
+                  </li>
+                  <li>
+                  <p>A new Groovy example (groovy-numberguess) was added</p>
+                  </li>
+                  <li>
+                  <p>Many other bug fixes and improvements. See the <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322332">release notes</a> for a complete list of changes</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Now, we continue to work on Weld 2.2. Expect the final version in late March. In the meantime, try this release and let us know what you think in the <a href="https://community.jboss.org/en/weld">forum</a>. If you are interested in Weld make sure you check our <a href="http://weld.cdi-spec.org/community/">community page</a> or the <a href="https://issues.jboss.org/issues/?filter=12320398">list of open issues awaiting contribution</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.2.0.Alpha1">Distribution</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12322332">Release notes</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.2.0.Alpha1/en-US/html/">Documentation</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2014/01/14/weld-212-final/">Three new Weld releases</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -298,7 +375,7 @@
                   <div class="paragraph">
                   <p>In Weld 2.1.0 we optimized the component that handles context activation/deactivation and cut down the overhead.
                   In addition, it is now possible to completely suppress CDI context activation on certain types of HTTP requests should this minimized overhead still be undesired.
-                  See <a href="https://community.jboss.org/people/mkouba/blog/2013/09/18/weld&#8212;&#8203;skip-cdi-context-activation-for-some-http-requests">Martin’s blog post</a> or
+                  See <a href="https://community.jboss.org/people/mkouba/blog/2013/09/18/weld&#8212;skip-cdi-context-activation-for-some-http-requests">Martin’s blog post</a> or
                   <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#d0e6194">the reference documentation</a> for more details.</p>
                   </div>
                   </div>
@@ -333,25 +410,7 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>A tip how to configure a new feature introduced in Weld 2.1.0.Beta2 which allows to skip CDI context activation for some HTTP requests: <a href="http://goo.gl/PAiwBS" class="bare">http://goo.gl/PAiwBS</a></p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-6-20
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld has a new web site and it&#8217;s built with Awestruct!</p>
+                  <p>A tip how to configure a new feature introduced in Weld 2.1.0.Beta2 which allows to skip CDI context activation for some HTTP requests: <a href="http://goo.gl/PAiwBS">http://goo.gl/PAiwBS</a></p>
                   </div>
                 </div>
                 <hr>

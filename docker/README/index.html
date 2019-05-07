@@ -1,0 +1,74 @@
+<h1>Dockerized environment for website builds</h1>
+
+<p>The Dockerfile in this repository allows you to build a reusable Docker image in which you can play around with the website and once satisfied, make commits.
+This removes the need to have Ruby and all its gems installed locally, all that&#39;s needed is working Docker.
+The resulting image is not meant to be published as it&#39;s tailored to whoever built it.
+Once built, you can reuse the same container over and over without the need to re-build it.</p>
+
+<h2>Workflow</h2>
+
+<p>Here is the general idea of how this works:</p>
+
+<ul>
+<li>Build the Docker container once</li>
+<li>Run the container every time you want to make some website changes</li>
+<li>Perform any changes you wish to</li>
+<li>You can deploy website and check it in your browser</li>
+<li>Make commit to the <code>devel</code> branch once satisfied</li>
+<li>Perform deployment command
+
+<ul>
+<li>This step switches to <code>master</code> and performs commit with all the needed changes</li>
+<li>It will attempt to proceed with push, but will fail since you have no credentials in container, this is expected</li>
+</ul></li>
+<li>Close the container and from your local machine push both, <code>devel</code> and <code>master</code> branches</li>
+<li>Enjoy updated website live</li>
+</ul>
+
+<h2>How to build</h2>
+
+<p>To build the image, make sure you are in the directory with the Dockerfile and run</p>
+
+<blockquote>
+<p>docker build --tag=weld-deps-container --build-arg GIT<em>NAME=&quot;Average Joe&quot; --build-arg GIT</em>MAIL=&quot;average@joe.com&quot; --build-arg USER<em>NAME=$(whoami) --build-arg USER</em>ID=$UID .</p>
+</blockquote>
+
+<p>Now, what does that command mean:
+ * <code>--tag</code> is just the name you give to your image, you will need to know this name later on in order to run the container
+ * <code>--build-arg</code> those are all arguments that the container takes during build, make sure you specify all of them so that the container works correctly
+  * <code>GIT_MAIL</code> and <code>GIT_NAME</code> are your Git email and name that you want to have displayed along with any commits you make
+   * Required in order to be able to perform commits inside container without the need to set credentials after each login
+  * <code>USER_NAME</code> is the result of <code>whoami</code> command; simply a currently logged-in user
+  * <code>USER_ID</code> is the ID of currently logged-in user; obtainable via environment variable <code>$UID</code>
+   * These are required in order to perform file system changes on mounted volume without messing with permissions</p>
+
+<h2>How to run the container</h2>
+
+<p>Assuming you built the container, you now have an environment with all the dependencies and which knows your user and Git information for commits.
+Here is how you run it:</p>
+
+<blockquote>
+<p>docker run -v /home/your/path/to/weld.github.io/:/home/$(whoami)/weld.github.io -p 4242:4242 -it weld-deps-container</p>
+</blockquote>
+
+<p>Again, let&#39;s look at what it really does:</p>
+
+<ul>
+<li><code>-it</code> means you will run in interactive mode; that means landing in terminal under the same user you are now (which we have added to Docker during build)</li>
+<li><code>-v /what:/where</code> is an argument meaning you want to mount something from your local filesystem under certain path in Docker container
+
+<ul>
+<li>Here, we want to mount website GitHub repository under the <code>/home</code> of the added user</li>
+</ul></li>
+<li><code>-p 4242:4242</code> this is port mapping, it says that port 4242 within the container should be exposed at port 4242 on your local machine
+
+<ul>
+<li>Thanks to this bit, we can deploy from container and view from browser</li>
+</ul></li>
+</ul>
+
+<p>If, for some reason, you need to get into the container as <code>root</code> user, add the following bit into the previous command</p>
+
+<blockquote>
+<p>-u root</p>
+</blockquote>
