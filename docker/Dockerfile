@@ -38,11 +38,14 @@ RUN apt-get install libxslt-dev -y
 RUN apt-get install libxml2-dev -y
 RUN apt-get install build-essential -y
 
+#install some JS executable
+RUN apt-get install nodejs -y
+
 #ruby gems, we want to be specific about these old versions
 RUN gem install rake -v 12.3.1
 RUN gem install bundler -v 1.16.1
-RUN gem install asciidoctor -v 0.1.4
-RUN gem install sass -v 3.2.19
+RUN gem install asciidoctor -v 1.5.8
+RUN gem install sass -v 3.6.0
 RUN gem install bootstrap-sass -v 2.3.2.2
 RUN gem install chunky_png -v 1.3.1
 RUN gem install fssm -v 0.2.10
@@ -51,9 +54,9 @@ RUN gem install compass-960-plugin -v 0.10.4
 RUN gem install git -v 1.2.7
 RUN gem install tilt -v 2.0.1
 RUN gem install haml  -v 4.0.5
-RUN gem install rb-fsevent -v 0.9.4
-RUN gem install ffi  -v 1.9.3
-RUN gem install rb-inotify -v 0.9.5
+RUN gem install rb-fsevent -v 0.10.3
+RUN gem install ffi  -v 1.9.25
+RUN gem install rb-inotify -v 0.10.0
 RUN gem install rb-kqueue -v 0.2.3
 RUN gem install listen -v 1.3.1
 RUN gem install nokogiri -v 1.5.10
