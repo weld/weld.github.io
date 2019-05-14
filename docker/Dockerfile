@@ -81,7 +81,7 @@ ENV LANG en_US.UTF-8
 
 #set the GH user and email and do so under correct system user
 RUN git config --global user.email $GIT_MAIL
-RUN git config --global user.name $GIT_NAME
+RUN git config --global user.name "$GIT_NAME"
 
 # if you run this image in -it mode, then you get into bash as current user
 CMD ["bash","--login"]
