@@ -181,7 +181,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Integer.class)&#x000A;        .addQualifier(Random.LITERAL)&#x000A;        .produceWith(() -&gt; new java.util.Random().nextInt(1000));&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Integer.class)&#x000A;        .addQualifier(Random.LITERAL)&#x000A;        .produceWith(() -&gt; new java.util.Random().nextInt(1000));&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -190,7 +190,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Connection.class)&#x000A;        .produceWith(this::newConnection)&#x000A;        .disposeWith(connection -&gt; connection.close());&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Connection.class)&#x000A;        .produceWith(this::newConnection)&#x000A;        .disposeWith(connection -&gt; connection.close());&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">

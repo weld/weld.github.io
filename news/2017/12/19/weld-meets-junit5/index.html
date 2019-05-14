@@ -159,19 +159,18 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
                   <li><a href="#_gav_coordinates">GAV Coordinates</a></li>
                   <li><a href="#_first_steps">First Steps</a></li>
                   <li><a href="#_dude_where_is_my_container">Dude, Where Is My Container?</a></li>
                   <li><a href="#_help_i_am_stuck_with_junit_4">Help, I Am Stuck With JUnit 4</a></li>
-                  <li><a href="#_what_if_i_would_like_to">What If I Would Like To&#8230;</a></li>
+                  <li><a href="#_what_if_i_would_like_to">What If I Would Like To&#8230;&#8203;</a></li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
-                  <p>In this article I want to bring <a href="https://github.com/weld/weld-junit" target="_blank">weld-junit</a> into light.
+                  <p>In this article I want to bring <a href="https://github.com/weld/weld-junit" target="_blank" rel="noopener">weld-junit</a> into light.
                   You might have heard about or, better still, used our extension for JUnit 4 which has been around for some time now.
                   But after getting ourselves acquainted with JUnit 5, we decided we should create another one for JUnit 5.
                   In the sections below I will try to introduce the basic usage and ideas behind it, for more in depth information, you can glance the <a href="https://github.com/weld/weld-junit/blob/master/junit5/README.md">readme file</a> residing directly in the repository.</p>
@@ -184,7 +183,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-junit-parent&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${weld.junit.version}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-junit-parent&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${weld.junit.version}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   </div>
@@ -200,9 +199,12 @@
                   <div class="paragraph">
                   <p>Hence your test could look like this:</p>
                   </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@EnableWeld&#x000A;public class InjectionWithWeldTest {&#x000A;&#x000A;  @Inject&#x000A;  BarBean beanAsField;&#x000A;&#x000A;  @Test&#x000A;  public void testThatItWorks(FooBean beanAsParam) {&#x000A;    assertNotNull(beanAsParam);&#x000A;    beanAsParam.ping();&#x000A;    assertNotNull(beanAsField);&#x000A;    beanAsField.ping();&#x000A;  }&#x000A;&#x000A;}</code></pre>
+                  <pre>@EnableWeld&#x000A;public class InjectionWithWeldTest {&#x000A;&#x000A;  @Inject&#x000A;  BarBean beanAsField;&#x000A;&#x000A;  @Test&#x000A;  public void testThatItWorks(FooBean beanAsParam) {&#x000A;    assertNotNull(beanAsParam);&#x000A;    beanAsParam.ping();&#x000A;    assertNotNull(beanAsField);&#x000A;    beanAsField.ping();&#x000A;  }&#x000A;&#x000A;}</pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -228,9 +230,12 @@
                   <div class="paragraph">
                   <p>Too much talk, not enough code, so here we go:</p>
                   </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@ExtendWith(WeldJUnit5Extension.class)&#x000A;public class WeldJUnit5CustomizedTest {&#x000A;&#x000A;  @WeldSetup&#x000A;  public WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()&#x000A;                                           .alternatives(FooAlternative.class)&#x000A;                                           .beanClasses(Foo.class, FooAlternative.class)&#x000A;                                           .enableInterceptors(MyInterceptor.class));&#x000A;&#x000A;  @Inject&#x000A;  Foo bean; // this will be FooAlternative in the end&#x000A;&#x000A;  @Test&#x000A;  public void testWeldContainerUsage() {&#x000A;    weld.event().select(MyPayload.class).fire(new MyPayload());&#x000A;    weld.select(Foo.class).isResolvable();&#x000A;  }&#x000A;}</code></pre>
+                  <pre>@ExtendWith(WeldJUnit5Extension.class)&#x000A;public class WeldJUnit5CustomizedTest {&#x000A;&#x000A;  @WeldSetup&#x000A;  public WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()&#x000A;                                           .alternatives(FooAlternative.class)&#x000A;                                           .beanClasses(Foo.class, FooAlternative.class)&#x000A;                                           .enableInterceptors(MyInterceptor.class));&#x000A;&#x000A;  @Inject&#x000A;  Foo bean; // this will be FooAlternative in the end&#x000A;&#x000A;  @Test&#x000A;  public void testWeldContainerUsage() {&#x000A;    weld.event().select(MyPayload.class).fire(new MyPayload());&#x000A;    weld.select(Foo.class).isResolvable();&#x000A;  }&#x000A;}</pre>
                   </div>
                   </div>
                   </div>
@@ -248,7 +253,7 @@
                   </div>
                   </div>
                   <div class="sect1">
-                  <h2 id="_what_if_i_would_like_to">What If I Would Like To&#8230;</h2>
+                  <h2 id="_what_if_i_would_like_to">What If I Would Like To&#8230;&#8203;</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
                   <p>If you&#8217;re stuck and need a helping hand, we are listening on the usual channels - mailing list, Stack Overflow, Gitter, IRC, GitHub.</p>

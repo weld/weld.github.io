@@ -170,7 +170,7 @@
                   <div class="title">Note</div>
                   </td>
                   <td class="content">
-                  Integrators (WildFly, Liberty, GlassFish, &#8230;) will have to adjust to the changes made in SPI. Those are, most notably, the removal of long deprecated methods (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank">WELD-2558</a>) and reworked <code>ProxyServices</code> which now delegate class defining responsibility to the integrator (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank">WELD-2556</a>). This is crucial for Weld to operate on newer JDKs (12) and while Weld will work with the old approach for now, we will eventually fully swap to this new SPI.
+                  Integrators (WildFly, Liberty, GlassFish, &#8230;&#8203;) will have to adjust to the changes made in SPI. Those are, most notably, the removal of long deprecated methods (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank" rel="noopener">WELD-2558</a>) and reworked <code>ProxyServices</code> which now delegate class defining responsibility to the integrator (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank" rel="noopener">WELD-2556</a>). This is crucial for Weld to operate on newer JDKs (12) and while Weld will work with the old approach for now, we will eventually fully swap to this new SPI.
                   </td>
                   </tr>
                   </table>
@@ -185,7 +185,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Added API to allow for CDI context propagation between threads (<a href="https://issues.jboss.org/browse/WELD-2497" target="_blank">WELD-2497</a>)</p>
+                  <p>Added API to allow for CDI context propagation between threads (<a href="https://issues.jboss.org/browse/WELD-2497" target="_blank" rel="noopener">WELD-2497</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -204,7 +204,7 @@
                   </div>
                   </li>
                   <li>
-                  <p><code>WeldManager</code>, providing extra methods over what <code>BeanManager</code> offers, is now an injectable bean (<a href="https://issues.jboss.org/browse/WELD-2538" target="_blank">WELD-2538</a>)</p>
+                  <p><code>WeldManager</code>, providing extra methods over what <code>BeanManager</code> offers, is now an injectable bean (<a href="https://issues.jboss.org/browse/WELD-2538" target="_blank" rel="noopener">WELD-2538</a>)</p>
                   </li>
                   <li>
                   <p><code>WeldManager</code> now offers new util methods allowing you to easily grab active contexts</p>
@@ -217,10 +217,10 @@
                   </div>
                   </li>
                   <li>
-                  <p><code>WeldManager</code> can now be used to check if any given context is active without having to care about exceptions (<a href="https://issues.jboss.org/browse/WELD-2537" target="_blank">WELD-2537</a>)</p>
+                  <p><code>WeldManager</code> can now be used to check if any given context is active without having to care about exceptions (<a href="https://issues.jboss.org/browse/WELD-2537" target="_blank" rel="noopener">WELD-2537</a>)</p>
                   </li>
                   <li>
-                  <p>Added new SPI for class defining, deprecated old approach in <code>ProxyServices</code> (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank">WELD-2556</a>)</p>
+                  <p>Added new SPI for class defining, deprecated old approach in <code>ProxyServices</code> (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank" rel="noopener">WELD-2556</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -239,7 +239,7 @@
                   </div>
                   </li>
                   <li>
-                  <p>Remove deprecated parts of API/SPI (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank">WELD-2558</a>)</p>
+                  <p>Remove deprecated parts of API/SPI (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank" rel="noopener">WELD-2558</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -256,10 +256,10 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Weld will now log a <code>WARNING</code> if you try to register an invalid qualifier (<a href="https://issues.jboss.org/browse/WELD-2522" target="_blank">WELD-2522</a>)</p>
+                  <p>Weld will now log a <code>WARNING</code> if you try to register an invalid qualifier (<a href="https://issues.jboss.org/browse/WELD-2522" target="_blank" rel="noopener">WELD-2522</a>)</p>
                   </li>
                   <li>
-                  <p>You can now use <code>InterceptionFactory</code> with an interface as a parameter (<a href="https://issues.jboss.org/browse/WELD-2550" target="_blank">WELD-2550</a>, <a href="https://issues.jboss.org/browse/WELD-2533" target="_blank">WELD-2533</a>)</p>
+                  <p>You can now use <code>InterceptionFactory</code> with an interface as a parameter (<a href="https://issues.jboss.org/browse/WELD-2550" target="_blank" rel="noopener">WELD-2550</a>, <a href="https://issues.jboss.org/browse/WELD-2533" target="_blank" rel="noopener">WELD-2533</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -275,22 +275,22 @@
                   </div>
                   </li>
                   <li>
-                  <p>Correct atomic behaviour in <code>RequestContextController</code> (<a href="https://issues.jboss.org/browse/WELD-2536" target="_blank">WELD-2536</a>)</p>
+                  <p>Correct atomic behaviour in <code>RequestContextController</code> (<a href="https://issues.jboss.org/browse/WELD-2536" target="_blank" rel="noopener">WELD-2536</a>)</p>
                   </li>
                   <li>
-                  <p>Fix rare race condition in <code>ConcurrentValidator</code> (<a href="https://issues.jboss.org/browse/WELD-2545" target="_blank">WELD-2545</a>)</p>
+                  <p>Fix rare race condition in <code>ConcurrentValidator</code> (<a href="https://issues.jboss.org/browse/WELD-2545" target="_blank" rel="noopener">WELD-2545</a>)</p>
                   </li>
                   <li>
-                  <p>Small correction to interceptor resolution when they have no bindings (<a href="https://issues.jboss.org/browse/WELD-2521" target="_blank">WELD-2521</a>)</p>
+                  <p>Small correction to interceptor resolution when they have no bindings (<a href="https://issues.jboss.org/browse/WELD-2521" target="_blank" rel="noopener">WELD-2521</a>)</p>
                   </li>
                   <li>
-                  <p>Enforce consistent behaviour between <code>AnnotatedType</code> and <code>WithAnnotations</code> in regards to default methods (<a href="https://issues.jboss.org/browse/WELD-2551" target="_blank">WELD-2551</a>)</p>
+                  <p>Enforce consistent behaviour between <code>AnnotatedType</code> and <code>WithAnnotations</code> in regards to default methods (<a href="https://issues.jboss.org/browse/WELD-2551" target="_blank" rel="noopener">WELD-2551</a>)</p>
                   </li>
                   <li>
-                  <p>All proxy-specific methods added by Weld now have more complex names to avoid (very rare) method clashes (<a href="https://issues.jboss.org/browse/WELD-2508" target="_blank">WELD-2508</a>)</p>
+                  <p>All proxy-specific methods added by Weld now have more complex names to avoid (very rare) method clashes (<a href="https://issues.jboss.org/browse/WELD-2508" target="_blank" rel="noopener">WELD-2508</a>)</p>
                   </li>
                   <li>
-                  <p>Lower logging level of <code>InterceptorLogger.unableToDetermineInterceptedBean()</code> from <code>WARN</code> to <code>INFO</code> (<a href="https://issues.jboss.org/browse/WELD-2546" target="_blank">WELD-2546</a>)</p>
+                  <p>Lower logging level of <code>InterceptorLogger.unableToDetermineInterceptedBean()</code> from <code>WARN</code> to <code>INFO</code> (<a href="https://issues.jboss.org/browse/WELD-2546" target="_blank" rel="noopener">WELD-2546</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -300,7 +300,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>You can now extend the set of bean defining annotations in Weld SE (<a href="https://issues.jboss.org/browse/WELD-2523" target="_blank">WELD-2523</a>)</p>
+                  <p>You can now extend the set of bean defining annotations in Weld SE (<a href="https://issues.jboss.org/browse/WELD-2523" target="_blank" rel="noopener">WELD-2523</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
@@ -310,13 +310,13 @@
                   </div>
                   </li>
                   <li>
-                  <p>Fix bug in handling JAR dependencies added onto classpath where you could accidentally add more packages than desired (<a href="https://issues.jboss.org/browse/WELD-2535" target="_blank">WELD-2535</a>)</p>
+                  <p>Fix bug in handling JAR dependencies added onto classpath where you could accidentally add more packages than desired (<a href="https://issues.jboss.org/browse/WELD-2535" target="_blank" rel="noopener">WELD-2535</a>)</p>
                   </li>
                   <li>
-                  <p>Correct <code>ALLOW_OPTIMIZED_CLEANUP</code> configuration key value (<a href="https://issues.jboss.org/browse/WELD-2547" target="_blank">WELD-2547</a>)</p>
+                  <p>Correct <code>ALLOW_OPTIMIZED_CLEANUP</code> configuration key value (<a href="https://issues.jboss.org/browse/WELD-2547" target="_blank" rel="noopener">WELD-2547</a>)</p>
                   </li>
                   <li>
-                  <p>When running with <code>SecurityManager</code> enabled, Weld will now refuse to use <code>ForkJoinPool</code> for startup and will pick different pool instead (<a href="https://issues.jboss.org/browse/WELD-2517" target="_blank">WELD-2517</a>)</p>
+                  <p>When running with <code>SecurityManager</code> enabled, Weld will now refuse to use <code>ForkJoinPool</code> for startup and will pick different pool instead (<a href="https://issues.jboss.org/browse/WELD-2517" target="_blank" rel="noopener">WELD-2517</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -326,7 +326,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Make sure <code>ProbeExtension</code> has priority over any other existing extensions (<a href="https://issues.jboss.org/browse/WELD-2524" target="_blank">WELD-2524</a>)</p>
+                  <p>Make sure <code>ProbeExtension</code> has priority over any other existing extensions (<a href="https://issues.jboss.org/browse/WELD-2524" target="_blank" rel="noopener">WELD-2524</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -336,22 +336,22 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Stabilize testsuite and make sure dependencies are EE 8 based (<a href="https://issues.jboss.org/browse/WELD-2519" target="_blank">WELD-2519</a>, <a href="https://issues.jboss.org/browse/WELD-2553" target="_blank">WELD-2553</a>)</p>
+                  <p>Stabilize testsuite and make sure dependencies are EE 8 based (<a href="https://issues.jboss.org/browse/WELD-2519" target="_blank" rel="noopener">WELD-2519</a>, <a href="https://issues.jboss.org/browse/WELD-2553" target="_blank" rel="noopener">WELD-2553</a>)</p>
                   </li>
                   <li>
-                  <p>Documentation has been updated to reflects EE 8 versions of servers (<a href="https://issues.jboss.org/browse/WELD-2529" target="_blank">WELD-2529</a>)</p>
+                  <p>Documentation has been updated to reflects EE 8 versions of servers (<a href="https://issues.jboss.org/browse/WELD-2529" target="_blank" rel="noopener">WELD-2529</a>)</p>
                   </li>
                   <li>
-                  <p>Documented all changes coming to Weld API in 3.1 update (<a href="https://issues.jboss.org/browse/WELD-2540" target="_blank">WELD-2540</a>)</p>
+                  <p>Documented all changes coming to Weld API in 3.1 update (<a href="https://issues.jboss.org/browse/WELD-2540" target="_blank" rel="noopener">WELD-2540</a>)</p>
                   </li>
                   <li>
-                  <p>Re-enable SpotBugs code quality checking on JDK 11+ (<a href="https://issues.jboss.org/browse/WELD-2544" target="_blank">WELD-2544</a>)</p>
+                  <p>Re-enable SpotBugs code quality checking on JDK 11+ (<a href="https://issues.jboss.org/browse/WELD-2544" target="_blank" rel="noopener">WELD-2544</a>)</p>
                   </li>
                   <li>
-                  <p>Upgraded WildFly Arquillian adapter to 2.1.1.Final (<a href="https://issues.jboss.org/browse/WELD-2543" target="_blank">WELD-2543</a>)</p>
+                  <p>Upgraded WildFly Arquillian adapter to 2.1.1.Final (<a href="https://issues.jboss.org/browse/WELD-2543" target="_blank" rel="noopener">WELD-2543</a>)</p>
                   </li>
                   <li>
-                  <p>Revisit testing on Jetty (<a href="https://issues.jboss.org/browse/WELD-2528" target="_blank">WELD-2528</a>)</p>
+                  <p>Revisit testing on Jetty (<a href="https://issues.jboss.org/browse/WELD-2528" target="_blank" rel="noopener">WELD-2528</a>)</p>
                   </li>
                   <li>
                   <p>We are now regularly testing with JDK 11 and looking into JDK 12 testing</p>
@@ -365,15 +365,15 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.0.Final/wildfly-15.0.1.Final-weld-3.1.0.Final-patch.zip" target="_blank">patch for WildFly 15.0.1.Final</a> is available.</p>
+                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.0.Final/wildfly-15.0.1.Final-weld-3.1.0.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 15.0.1.Final</a> is available.</p>
                   </div>
                   <div class="paragraph">
                   <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12339977" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12339977" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

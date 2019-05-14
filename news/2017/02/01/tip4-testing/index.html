@@ -155,7 +155,7 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
                   <li><a href="#_using_weld_in_junit_tests">Using Weld in JUnit tests</a></li>
@@ -166,7 +166,6 @@
                   <li><a href="#_arquillian_weld_embedded_container">Arquillian Weld Embedded container</a></li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
                   <p>In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
                   Let&#8217;s discover options for unit testing in the first part and then continue with integration testing.
@@ -223,7 +222,7 @@
                   <p>For instance you can create several deployments which you then manually (if you so wish) deploy/undeploy</p>
                   </li>
                   <li>
-                  <p>This makes it viable even for cluster testing (session replication, failover scenarios, &#8230;)</p>
+                  <p>This makes it viable even for cluster testing (session replication, failover scenarios, &#8230;&#8203;)</p>
                   </li>
                   </ul>
                   </div>
@@ -234,11 +233,12 @@
                   </ul>
                   </div>
                   <div class="paragraph">
-                  <p>In fact writing tests with Arquillian is quite straightforward. It&#8217;s basically about right usage of right annotations. Basic test could like this:</p>
+                  <p>In fact writing tests with Arquillian is quite straightforward. It&#8217;s basically about right usage of right annotations. Basic test could like this:
+                  [ source, java ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java"> package org.arquillian.example;&#x000A;&#x000A; import javax.inject.Inject;&#x000A; import org.jboss.arquillian.container.test.api.Deployment;&#x000A; import org.jboss.arquillian.junit.Arquillian;&#x000A; import org.jboss.shrinkwrap.api.ShrinkWrap;&#x000A; import org.jboss.shrinkwrap.api.asset.EmptyAsset;&#x000A; import org.jboss.shrinkwrap.api.spec.JavaArchive;&#x000A; import org.junit.Assert;&#x000A; import org.junit.Test;&#x000A; import org.junit.runner.RunWith;&#x000A;&#x000A; @RunWith(Arquillian.class)&#x000A; public class GreeterTest {&#x000A;&#x000A;     // This static method builds the virtual test deployment archive&#x000A;     @Deployment&#x000A;     public static JavaArchive createDeployment() {&#x000A;         return ShrinkWrap.create(JavaArchive.class)&#x000A;             .addClass(Greeter.class)&#x000A;             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");&#x000A;     }&#x000A;&#x000A;     @Inject&#x000A;     Greeter greeter;&#x000A;&#x000A;     @Test&#x000A;     public void should_create_greeting() {&#x000A;        Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));&#x000A;     }&#x000A; }</code></pre>
+                  <pre> package org.arquillian.example;&#x000A;&#x000A; import javax.inject.Inject;&#x000A; import org.jboss.arquillian.container.test.api.Deployment;&#x000A; import org.jboss.arquillian.junit.Arquillian;&#x000A; import org.jboss.shrinkwrap.api.ShrinkWrap;&#x000A; import org.jboss.shrinkwrap.api.asset.EmptyAsset;&#x000A; import org.jboss.shrinkwrap.api.spec.JavaArchive;&#x000A; import org.junit.Assert;&#x000A; import org.junit.Test;&#x000A; import org.junit.runner.RunWith;&#x000A;&#x000A; @RunWith(Arquillian.class)&#x000A; public class GreeterTest {&#x000A;&#x000A;     // This static method builds the virtual test deployment archive&#x000A;     @Deployment&#x000A;     public static JavaArchive createDeployment() {&#x000A;         return ShrinkWrap.create(JavaArchive.class)&#x000A;             .addClass(Greeter.class)&#x000A;             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");&#x000A;     }&#x000A;&#x000A;     @Inject&#x000A;     Greeter greeter;&#x000A;&#x000A;     @Test&#x000A;     public void should_create_greeting() {&#x000A;        Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));&#x000A;     }&#x000A; }</pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -264,11 +264,12 @@
                   You can check available Arquillian container adapters <a href="http://arquillian.org/modules/">here</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>For example to use Arquillian WildFly Managed container you need to define following dependency:</p>
+                  <p>For example to use Arquillian WildFly Managed container you need to define following dependency:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                   &lt;groupId&gt;org.wildfly.arquillian&lt;/groupId&gt;&#x000A;                   &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;&#x000A;                   &lt;version&gt;1.1.0.Final&lt;/version&gt;&#x000A;                   &lt;scope&gt;test&lt;/scope&gt;&#x000A;               &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                   &lt;groupId&gt;org.wildfly.arquillian&lt;/groupId&gt;&#x000A;                   &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;&#x000A;                   &lt;version&gt;1.1.0.Final&lt;/version&gt;&#x000A;                   &lt;scope&gt;test&lt;/scope&gt;&#x000A;               &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -281,11 +282,12 @@
                   As you can <a href="http://arquillian.org/modules/">see</a> Arquillian offers embedded container adapters for all well known Servlet containers such as Tomcat, Jetty and Undertow.</p>
                   </div>
                   <div class="paragraph">
-                  <p>For example to use Arquillian Embedded Tomcat container you need to define following dependency:</p>
+                  <p>For example to use Arquillian Embedded Tomcat container you need to define following dependency:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;arquillian-tomcat-embedded-8&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;1.0.0.CR8&lt;/version&gt;&#x000A;                    &lt;scope&gt;test&lt;/scope&gt;&#x000A;                &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;arquillian-tomcat-embedded-8&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;1.0.0.CR8&lt;/version&gt;&#x000A;                    &lt;scope&gt;test&lt;/scope&gt;&#x000A;                &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -300,11 +302,12 @@
                   You can find basic information in <a href="https://github.com/arquillian/arquillian-container-se/blob/master/README.adoc">README</a> or you can take look into already mentioned <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests">CDI TCK tests</a> where you can find <a href="https://github.com/cdi-spec/cdi-tck/blob/master/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L100">SE testgroup</a> which involves all SE related tests.</p>
                   </div>
                   <div class="paragraph">
-                  <p>The maven dependency for this extension looks like this:</p>
+                  <p>The maven dependency for this extension looks like this:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                   &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                   &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;                   &lt;version&gt;1.0.1.Final&lt;/version&gt;&#x000A;               &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                   &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                   &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;                   &lt;version&gt;1.0.1.Final&lt;/version&gt;&#x000A;               &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -320,11 +323,12 @@
                   We recommend you to take a glance at <a href="https://github.com/arquillian/arquillian-container-weld/blob/master/README.adoc">README</a> file - especially those few lines about flat deployment structure (this means this container is not very suitable for testing EAR deployments) and configuration property for setting testing environment.</p>
                   </div>
                   <div class="paragraph">
-                  <p>The maven dependency for this container could look like this:</p>
+                  <p>The maven dependency for this container could look like this:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;2.0.0.Beta4&lt;/version&gt;&#x000A;                    &lt;scope&gt;test&lt;/scope&gt;&#x000A;                &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;2.0.0.Beta4&lt;/version&gt;&#x000A;                    &lt;scope&gt;test&lt;/scope&gt;&#x000A;                &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>

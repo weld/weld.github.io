@@ -191,7 +191,7 @@
                   <h3 id="_clone_build_and_run">Clone, build and run</h3>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code>    # Clone the git repo&#x000A;        git clone git@github.com:weld/weld-probe-jmx.git&#x000A;        # Specify the weld version used in your application and run the build&#x000A;        mvn clean package -Dversion.weld=2.3.1.Final&#x000A;        # Run the client&#x000A;        java -jar target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar</code></pre>
+                  <pre class="highlightjs highlight"><code>    # Clone the git repo&#x000A;        git clone git@github.com:weld/weld-probe-jmx.git&#x000A;        # Specify the weld version used in your application and run the build&#x000A;        mvn clean package -Dversion.weld=2.3.1.Final&#x000A;        # Run the client&#x000A;        java -jar target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar</code></pre>
                   </div>
                   </div>
                   </div>
@@ -206,7 +206,7 @@
                   <p>User may select a Weld container to inspect</p>
                   </li>
                   <li>
-                  <p>Then the client starts an Undertow instance locally, HTML client is available at: <a href="http://127.0.0.1:8181/probe-jmx/weld-probe">http://127.0.0.1:8181/probe-jmx/weld-probe</a></p>
+                  <p>Then the client starts an Undertow instance locally, HTML client is available at: <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a></p>
                   </li>
                   <li>
                   <p>Data are fetched remotely through JMX</p>
@@ -227,7 +227,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code>java -Dorg.jboss.weld.probe.jmxServiceUrl="service:jmx:http-remoting-jmx://127.0.0.1:9990" -cp '/opt/jboss/wildfly/bin/client/jboss-client.jar:target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar' org.jboss.weld.probe.ProbeJmx</code></pre>
+                  <pre class="highlightjs highlight"><code>java -Dorg.jboss.weld.probe.jmxServiceUrl="service:jmx:http-remoting-jmx://127.0.0.1:9990" -cp '/opt/jboss/wildfly/bin/client/jboss-client.jar:target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar' org.jboss.weld.probe.ProbeJmx</code></pre>
                   </div>
                   </div>
                   </div>
@@ -242,7 +242,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code>export FORGE_OPTS="-Dorg.jboss.weld.development=true -Dorg.jboss.weld.probe.jmxSupport=true -Dorg.jboss.weld.probe.eventMonitor.containerLifecycleEvents=true -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"</code></pre>
+                  <pre class="highlightjs highlight"><code>export FORGE_OPTS="-Dorg.jboss.weld.development=true -Dorg.jboss.weld.probe.jmxSupport=true -Dorg.jboss.weld.probe.eventMonitor.containerLifecycleEvents=true -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -268,7 +268,7 @@
                   </div>
                   </div>
                   <div class="paragraph">
-                  <p>The HTML client is available at <a href="http://127.0.0.1:8181/probe-jmx/weld-probe">http://127.0.0.1:8181/probe-jmx/weld-probe</a>. It&#8217;s also possible to reconnect or exit. Type <code>help</code> to get a list of all possible commands.</p>
+                  <p>The HTML client is available at <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a>. It&#8217;s also possible to reconnect or exit. Type <code>help</code> to get a list of all possible commands.</p>
                   </div>
                   </div>
                   </div>

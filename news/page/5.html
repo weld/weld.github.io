@@ -158,7 +158,7 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
                   <li><a href="#_using_weld_in_junit_tests">Using Weld in JUnit tests</a></li>
@@ -169,7 +169,6 @@
                   <li><a href="#_arquillian_weld_embedded_container">Arquillian Weld Embedded container</a></li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
                   <p>In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
                   Let&#8217;s discover options for unit testing in the first part and then continue with integration testing.
@@ -226,7 +225,7 @@
                   <p>For instance you can create several deployments which you then manually (if you so wish) deploy/undeploy</p>
                   </li>
                   <li>
-                  <p>This makes it viable even for cluster testing (session replication, failover scenarios, &#8230;)</p>
+                  <p>This makes it viable even for cluster testing (session replication, failover scenarios, &#8230;&#8203;)</p>
                   </li>
                   </ul>
                   </div>
@@ -237,11 +236,12 @@
                   </ul>
                   </div>
                   <div class="paragraph">
-                  <p>In fact writing tests with Arquillian is quite straightforward. It&#8217;s basically about right usage of right annotations. Basic test could like this:</p>
+                  <p>In fact writing tests with Arquillian is quite straightforward. It&#8217;s basically about right usage of right annotations. Basic test could like this:
+                  [ source, java ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java"> package org.arquillian.example;&#x000A;    &#x000A;     import javax.inject.Inject;&#x000A;     import org.jboss.arquillian.container.test.api.Deployment;&#x000A;     import org.jboss.arquillian.junit.Arquillian;&#x000A;     import org.jboss.shrinkwrap.api.ShrinkWrap;&#x000A;     import org.jboss.shrinkwrap.api.asset.EmptyAsset;&#x000A;     import org.jboss.shrinkwrap.api.spec.JavaArchive;&#x000A;     import org.junit.Assert;&#x000A;     import org.junit.Test;&#x000A;     import org.junit.runner.RunWith;&#x000A;    &#x000A;     @RunWith(Arquillian.class)&#x000A;     public class GreeterTest {&#x000A;    &#x000A;         // This static method builds the virtual test deployment archive&#x000A;         @Deployment&#x000A;         public static JavaArchive createDeployment() {&#x000A;             return ShrinkWrap.create(JavaArchive.class)&#x000A;                 .addClass(Greeter.class)&#x000A;                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");&#x000A;         }&#x000A;    &#x000A;         @Inject&#x000A;         Greeter greeter;&#x000A;    &#x000A;         @Test&#x000A;         public void should_create_greeting() {&#x000A;            Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));&#x000A;         }&#x000A;     }</code></pre>
+                  <pre> package org.arquillian.example;&#x000A;    &#x000A;     import javax.inject.Inject;&#x000A;     import org.jboss.arquillian.container.test.api.Deployment;&#x000A;     import org.jboss.arquillian.junit.Arquillian;&#x000A;     import org.jboss.shrinkwrap.api.ShrinkWrap;&#x000A;     import org.jboss.shrinkwrap.api.asset.EmptyAsset;&#x000A;     import org.jboss.shrinkwrap.api.spec.JavaArchive;&#x000A;     import org.junit.Assert;&#x000A;     import org.junit.Test;&#x000A;     import org.junit.runner.RunWith;&#x000A;    &#x000A;     @RunWith(Arquillian.class)&#x000A;     public class GreeterTest {&#x000A;    &#x000A;         // This static method builds the virtual test deployment archive&#x000A;         @Deployment&#x000A;         public static JavaArchive createDeployment() {&#x000A;             return ShrinkWrap.create(JavaArchive.class)&#x000A;                 .addClass(Greeter.class)&#x000A;                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");&#x000A;         }&#x000A;    &#x000A;         @Inject&#x000A;         Greeter greeter;&#x000A;    &#x000A;         @Test&#x000A;         public void should_create_greeting() {&#x000A;            Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));&#x000A;         }&#x000A;     }</pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -267,11 +267,12 @@
                   You can check available Arquillian container adapters <a href="http://arquillian.org/modules/">here</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>For example to use Arquillian WildFly Managed container you need to define following dependency:</p>
+                  <p>For example to use Arquillian WildFly Managed container you need to define following dependency:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.wildfly.arquillian&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.1.0.Final&lt;/version&gt;&#x000A;                       &lt;scope&gt;test&lt;/scope&gt;&#x000A;                   &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.wildfly.arquillian&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.1.0.Final&lt;/version&gt;&#x000A;                       &lt;scope&gt;test&lt;/scope&gt;&#x000A;                   &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -284,11 +285,12 @@
                   As you can <a href="http://arquillian.org/modules/">see</a> Arquillian offers embedded container adapters for all well known Servlet containers such as Tomcat, Jetty and Undertow.</p>
                   </div>
                   <div class="paragraph">
-                  <p>For example to use Arquillian Embedded Tomcat container you need to define following dependency:</p>
+                  <p>For example to use Arquillian Embedded Tomcat container you need to define following dependency:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-tomcat-embedded-8&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;1.0.0.CR8&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-tomcat-embedded-8&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;1.0.0.CR8&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -303,11 +305,12 @@
                   You can find basic information in <a href="https://github.com/arquillian/arquillian-container-se/blob/master/README.adoc">README</a> or you can take look into already mentioned <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests">CDI TCK tests</a> where you can find <a href="https://github.com/cdi-spec/cdi-tck/blob/master/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L100">SE testgroup</a> which involves all SE related tests.</p>
                   </div>
                   <div class="paragraph">
-                  <p>The maven dependency for this extension looks like this:</p>
+                  <p>The maven dependency for this extension looks like this:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.0.1.Final&lt;/version&gt;&#x000A;                   &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.0.1.Final&lt;/version&gt;&#x000A;                   &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -323,11 +326,12 @@
                   We recommend you to take a glance at <a href="https://github.com/arquillian/arquillian-container-weld/blob/master/README.adoc">README</a> file - especially those few lines about flat deployment structure (this means this container is not very suitable for testing EAR deployments) and configuration property for setting testing environment.</p>
                   </div>
                   <div class="paragraph">
-                  <p>The maven dependency for this container could look like this:</p>
+                  <p>The maven dependency for this container could look like this:
+                  [ source, xml ]</p>
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;2.0.0.Beta4&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</code></pre>
+                  <pre>               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;2.0.0.Beta4&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</pre>
                   </div>
                   </div>
                   </div>
@@ -354,9 +358,9 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>I am very pleased to announce the release of Weld <strong>3.0.0.CR1</strong> (aligned with <strong>CDI 2.0-PFD</strong>).
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331714" target="_blank">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331714" target="_blank" rel="noopener">the release details</a>.
                   Thanks to everyone involved in this release!
-                  This version of Weld will be part of the JSR 365 Approval Ballot (watch <a href="http://cdi-spec.org/" target="_blank">CDI spec website</a> for news).
+                  This version of Weld will be part of the JSR 365 Approval Ballot (watch <a href="http://cdi-spec.org/" target="_blank" rel="noopener">CDI spec website</a> for news).
                   The Beta1 version of Weld 3 turned out to be sufficiently stable and so the first release candidate is mostly dedicated to cleanup and minor optimizations.
                   We would like to release Weld <strong>3.0.0.Final</strong> (stable version of CDI 2.0) in early February.</p>
                   </div>
@@ -364,14 +368,14 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.CR1/wildfly-10.1.0.Final-weld-3.0.0.CR1-patch.zip" target="_blank">patch for WildFly</a> is available.
+                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.CR1/wildfly-10.1.0.Final-weld-3.0.0.CR1-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
                   This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
                   If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR1/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331714" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR1/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331714" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -397,7 +401,7 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>I am very pleased to announce the first <strong>Beta</strong> version of Weld <strong>3.0.0</strong> (CDI 2.0).
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">the release details</a>.
                   Thanks to everyone involved in this release!</p>
                   </div>
                   <div class="paragraph">
@@ -412,22 +416,22 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p><code>javax.enterprise.inject.spi.InterceptionFactory</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2257" target="_blank">WELD-2257</a>)</p>
+                  <p><code>javax.enterprise.inject.spi.InterceptionFactory</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2257" target="_blank" rel="noopener">WELD-2257</a>)</p>
                   </li>
                   <li>
-                  <p><code>ProcessSyntheticObserverMethod</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2279" target="_blank">WELD-2279</a>)</p>
+                  <p><code>ProcessSyntheticObserverMethod</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2279" target="_blank" rel="noopener">WELD-2279</a>)</p>
                   </li>
                   <li>
-                  <p><code>BeforeDestroyed</code> event fired before a context is actually destroyed (<a href="https://issues.jboss.org/browse/WELD-2269" target="_blank">WELD-2269</a>)</p>
+                  <p><code>BeforeDestroyed</code> event fired before a context is actually destroyed (<a href="https://issues.jboss.org/browse/WELD-2269" target="_blank" rel="noopener">WELD-2269</a>)</p>
                   </li>
                   <li>
-                  <p>"trimmed" bean archives (<a href="https://issues.jboss.org/browse/WELD-2268" target="_blank">WELD-2268</a>)</p>
+                  <p>"trimmed" bean archives (<a href="https://issues.jboss.org/browse/WELD-2268" target="_blank" rel="noopener">WELD-2268</a>)</p>
                   </li>
                   <li>
-                  <p>context control - <code>ActivateRequestContext</code> interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2267" target="_blank">WELD-2267</a>) and <code>RequestContextController</code> built-in bean (<a href="https://issues.jboss.org/browse/WELD-2266" target="_blank">WELD-2266</a>)</p>
+                  <p>context control - <code>ActivateRequestContext</code> interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2267" target="_blank" rel="noopener">WELD-2267</a>) and <code>RequestContextController</code> built-in bean (<a href="https://issues.jboss.org/browse/WELD-2266" target="_blank" rel="noopener">WELD-2266</a>)</p>
                   </li>
                   <li>
-                  <p><code>ProcessSyntheticBean</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2265" target="_blank">WELD-2265</a>)</p>
+                  <p><code>ProcessSyntheticBean</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2265" target="_blank" rel="noopener">WELD-2265</a>)</p>
                   </li>
                   <li>
                   <p>few proposals did not make it into CDI 2.0 and so we enhanced the Weld API:</p>
@@ -437,7 +441,7 @@
                   <p><code>org.jboss.weld.inject.WeldInstance</code> (already part of Weld 2.4 API)</p>
                   </li>
                   <li>
-                  <p><code>org.jboss.weld.interceptor.WeldInvocationContext</code> allows to obtain a set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor (see also <a href="https://issues.jboss.org/browse/CDI-468" target="_blank">CDI-468</a>)</p>
+                  <p><code>org.jboss.weld.interceptor.WeldInvocationContext</code> allows to obtain a set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor (see also <a href="https://issues.jboss.org/browse/CDI-468" target="_blank" rel="noopener">CDI-468</a>)</p>
                   </li>
                   <li>
                   <p><code>org.jboss.weld.bootstrap.event.WeldAfterBeanDiscovery</code> allows to obtain an <code>InterceptorConfigurator</code> to configure a new <code>Interceptor</code> bean</p>
@@ -453,12 +457,12 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Beta1/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Beta1/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Beta1/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Beta1/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -486,7 +490,7 @@
                   <p>The development of <strong>Weld 3</strong> (CDI 2) is underway.
                   However, we don&#8217;t forget about the maintenance of the stable branch of Weld!
                   So I am very pleased to announce the first bugfix version of <strong>Weld 2.4</strong> (CDI 1.2).
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank" rel="noopener">the release details</a>.
                   Thanks to everyone involved in this release!</p>
                   </div>
                   <div class="paragraph">
@@ -495,35 +499,35 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>removed false positive warning about Jandex version used (<a href="https://issues.jboss.org/browse/WELD-2231" target="_blank">WELD-2231</a>)</p>
+                  <p>removed false positive warning about Jandex version used (<a href="https://issues.jboss.org/browse/WELD-2231" target="_blank" rel="noopener">WELD-2231</a>)</p>
                   </li>
                   <li>
-                  <p>fixed Groovy support - only filter out relevant methods from Groovy objects when generating bean proxies (<a href="https://issues.jboss.org/browse/WELD-2255" target="_blank">WELD-2255</a>)</p>
+                  <p>fixed Groovy support - only filter out relevant methods from Groovy objects when generating bean proxies (<a href="https://issues.jboss.org/browse/WELD-2255" target="_blank" rel="noopener">WELD-2255</a>)</p>
                   </li>
                   <li>
-                  <p>optimized proxy class generation for "large classes" (<a href="https://issues.jboss.org/browse/WELD-2244" target="_blank">WELD-2244</a>)</p>
+                  <p>optimized proxy class generation for "large classes" (<a href="https://issues.jboss.org/browse/WELD-2244" target="_blank" rel="noopener">WELD-2244</a>)</p>
                   </li>
                   <li>
-                  <p>improved the way Weld configuration info is logged (<a href="https://issues.jboss.org/browse/WELD-2238" target="_blank">WELD-2238</a>)</p>
+                  <p>improved the way Weld configuration info is logged (<a href="https://issues.jboss.org/browse/WELD-2238" target="_blank" rel="noopener">WELD-2238</a>)</p>
                   </li>
                   <li>
                   <p>Weld SE</p>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>added support for nested directories in uber jars, e.g. Spring Boot jar (<a href="https://issues.jboss.org/browse/WELD-2254" target="_blank">WELD-2254</a>)</p>
+                  <p>added support for nested directories in uber jars, e.g. Spring Boot jar (<a href="https://issues.jboss.org/browse/WELD-2254" target="_blank" rel="noopener">WELD-2254</a>)</p>
                   </li>
                   <li>
-                  <p>allow to use <code>CDI.getBeanManager()</code> after <code>BeforeBeanDiscovery</code> is fired (<a href="https://issues.jboss.org/browse/WELD-2256" target="_blank">WELD-2256</a>)</p>
+                  <p>allow to use <code>CDI.getBeanManager()</code> after <code>BeforeBeanDiscovery</code> is fired (<a href="https://issues.jboss.org/browse/WELD-2256" target="_blank" rel="noopener">WELD-2256</a>)</p>
                   </li>
                   <li>
-                  <p>don&#8217;t abort container initialization if <code>JandexClassFileServices</code> is unable to load an annotation (<a href="https://issues.jboss.org/browse/WELD-2232" target="_blank">WELD-2232</a>)</p>
+                  <p>don&#8217;t abort container initialization if <code>JandexClassFileServices</code> is unable to load an annotation (<a href="https://issues.jboss.org/browse/WELD-2232" target="_blank" rel="noopener">WELD-2232</a>)</p>
                   </li>
                   </ul>
                   </div>
                   </li>
                   <li>
-                  <p>Weld Servlet - document the usage of <code>org.jboss.weld.environment.container.class</code> init param (<a href="https://issues.jboss.org/browse/WELD-2236" target="_blank">WELD-2236</a>)</p>
+                  <p>Weld Servlet - document the usage of <code>org.jboss.weld.environment.container.class</code> init param (<a href="https://issues.jboss.org/browse/WELD-2236" target="_blank" rel="noopener">WELD-2236</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -531,13 +535,13 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.1.Final/wildfly-10.1.0.Final-weld-2.4.1.Final-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.1.Final/wildfly-10.1.0.Final-weld-2.4.1.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank">CDI 1.2 API</a> &#93;
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
                   &#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -561,35 +565,32 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
-                  <li><a href="#_bootstrap">Bootstrap</a></li>
-                  <li>
+                  <li><a href="#_bootstrap">Bootstrap</a>
                   <ul class="sectlevel2">
                   <li><a href="#_discovery_mode">Discovery mode</a></li>
                   <li><a href="#_extensions">Extensions</a></li>
                   <li><a href="#jandex">Jandex</a></li>
                   </ul>
                   </li>
-                  <li><a href="#_runtime">Runtime</a></li>
-                  <li>
+                  <li><a href="#_runtime">Runtime</a>
                   <ul class="sectlevel2">
                   <li><a href="#_identify_problematic_components_easily">Identify problematic components easily</a></li>
                   <li><a href="#_lazy_initialization_of_bean_instances">Lazy initialization of bean instances</a></li>
-                  <li><a href="#_drawbacks_of_code_dependent_code_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</a></li>
+                  <li><a href="#_drawbacks_of_dependent_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</a></li>
                   <li><a href="#_mapping_cdi_contexts_to_http_requests">Mapping CDI contexts to HTTP requests</a></li>
                   <li><a href="#_bean_identifier_index_optimization">Bean identifier index optimization</a></li>
                   </ul>
                   </li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
                   <p>In this article we&#8217;re going to dive into various performance aspects of CDI applications.
                   As you&#8217;ve probably noticed performance testing is sometimes tricky.
                   First of all, it&#8217;s difficult to create a meaningful benchmark.
-                  One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. <a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank">JMH</a> for microbenchmarks) accordingly.
+                  One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. <a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank" rel="noopener">JMH</a> for microbenchmarks) accordingly.
                   But even that usually proves to be unsufficient.
                   One should also run the test in a relevant context (data, load, etc.).
                   Performance specialists also say that&#8217;s it&#8217;s good to avoid premature optimizations but keep performance aspects in mind when tuning the "final" code.
@@ -613,7 +614,7 @@
                   Needless to say, this might be a performance problem for large applications with thousands of classes.
                   In CDI 1.1+ we call this mode <code>all</code> and a bean archive with this mode is called <strong>EXPLICIT</strong>.
                   Since CDI 1.1+ a new discovery mode - <code>annotated</code> - can be used.
-                  The difference is that if this mode is used only classes with a <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations" target="_blank">bean defining annotation</a> are considered.
+                  The difference is that if this mode is used only classes with a <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations" target="_blank" rel="noopener">bean defining annotation</a> are considered.
                   In other words, a component must be explicitly designated.
                   A bean archive with this mode is called <strong>IMPLICIT</strong>.
                   To make things a little bit more complicated, an implicit bean archive does not have to contain a <code>beans.xml</code> file at all.
@@ -625,16 +626,16 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-o-up"></i></span> saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-o-up"></i></span> saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)</p>
                   </li>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-o-up"></i></span> speeds up the bootstrap (the container does not have to process all the types, fire events like <code>ProcessBean</code>, etc.)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-o-up"></i></span> speeds up the bootstrap (the container does not have to process all the types, fire events like <code>ProcessBean</code>, etc.)</p>
                   </li>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-down"></i></span> does not fire <code>ProcessAnnotatedType</code> for all types from the bean archive; this breaks some extensions (e.g. <code>MessageBundleExtension</code> from DeltaSpike)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-down"></i></span> does not fire <code>ProcessAnnotatedType</code> for all types from the bean archive; this breaks some extensions (e.g. <code>MessageBundleExtension</code> from DeltaSpike)</p>
                   </li>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-down"></i></span> does not pick up <code>@javax.inject.Singleton</code> beans (it&#8217;s not a bean defining annotation)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-down"></i></span> does not pick up <code>@javax.inject.Singleton</code> beans (it&#8217;s not a bean defining annotation)</p>
                   </li>
                   </ul>
                   </div>
@@ -645,7 +646,7 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
                   Most Weld-based runtimes allow to suppress implicit bean archives without <code>beans.xml</code>, i.e. to require the <code>beans.xml</code> file in bean archives so that it&#8217;s not necessary to scan all the parts of the application. See also <a href="/documentation/#4">FAQ</a>.
@@ -657,11 +658,11 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
-                  If it&#8217;s not possible to use <code>annotated</code> mode, you can try a Weld-specific feature to conserve memory used: <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation" target="_blank">Veto types without bean defining annotation</a>.
-                  A similar solution is going to be standardized in CDI 2.0 (see also <a href="https://issues.jboss.org/browse/CDI-420" target="_blank">CDI-420</a>).
+                  If it&#8217;s not possible to use <code>annotated</code> mode, you can try a Weld-specific feature to conserve memory used: <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation" target="_blank" rel="noopener">Veto types without bean defining annotation</a>.
+                  A similar solution is going to be standardized in CDI 2.0 (see also <a href="https://issues.jboss.org/browse/CDI-420" target="_blank" rel="noopener">CDI-420</a>).
                   </td>
                   </tr>
                   </table>
@@ -695,17 +696,17 @@
                   </div>
                   <div class="paragraph">
                   <p><strong>CONCLUSION</strong>: Pay attention to extensions used in your application.
-                  If you wonder what extensions are in service, use for example Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION" target="_blank">observers view</a> or <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank">fired events view</a> together with <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank"><code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> enabled</a>.</p>
+                  If you wonder what extensions are in service, use for example Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION" target="_blank" rel="noopener">observers view</a> or <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events" target="_blank" rel="noopener">fired events view</a> together with <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener"><code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> enabled</a>.</p>
                   </div>
                   <div class="admonitionblock tip">
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
                   If possible, don&#8217;t use the extensions which observe all the annotated types from your application, i.e. which defined something like <code>void observe(@Observes ProcessAnnotatedType&lt;?&gt; event)</code>.
-                  Since CDI 1.1 <code>@WithAnnotations</code> should be used to restrict the set of types an extension is going to process. <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION&amp;observedType=javax.enterprise.inject.spi.ProcessAnnotatedType" target="_blank">Weld Probe</a> warns you about these extensions.
+                  Since CDI 1.1 <code>@WithAnnotations</code> should be used to restrict the set of types an extension is going to process. <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;kind=EXTENSION&amp;observedType=javax.enterprise.inject.spi.ProcessAnnotatedType" target="_blank" rel="noopener">Weld Probe</a> warns you about these extensions.
                   </td>
                   </tr>
                   </table>
@@ -715,7 +716,7 @@
                   <h3 id="jandex">Jandex</h3>
                   <div class="paragraph">
                   <p>In some environments (WildFly, Weld SE, and more) Weld can leverage an "offline reflection library", such as <a href="https://github.com/wildfly/jandex" target="<em>blank">Jandex</a>, to speed up the scanning process.
-                  These libraries allow to effectively filter classes <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans" target="_blank">which are not beans</a> and vetoed classes.
+                  These libraries allow to effectively filter classes <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans" target="_blank" rel="noopener">which are not beans</a> and vetoed classes.
                   It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
                   As a result Weld does not even have to _load the classes</em> or use <em>reflection API</em> to detect types which should be ignored.</p>
                   </div>
@@ -723,10 +724,10 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
-                  In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the <a href="https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project" target="_blank">Ant task</a>.
+                  In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the <a href="https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project" target="_blank" rel="noopener">Ant task</a>.
                   </td>
                   </tr>
                   </table>
@@ -747,7 +748,7 @@
                   <div class="paragraph">
                   <p>Before you start a profiler or a similar tool, it&#8217;s a good idea to identify all the CDI components involved in a problematic "request".
                   This means all the beans, observer methods, interceptors and decorators.
-                  The good start might be the Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations" target="_blank">invocation trees</a> view.
+                  The good start might be the Weld Probe <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations" target="_blank" rel="noopener">invocation trees</a> view.
                   An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
                   Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
                   Sometimes profilers are just an overkill.</p>
@@ -765,7 +766,7 @@
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
                   Having many injection points resolving to normal scoped beans does not necessarily mean additional overhead associated with bean instance creation.
@@ -778,14 +779,14 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@ApplicationScoped&#x000A;    class OrderProcessor {&#x000A;      @PostConstruct&#x000A;      void init() {&#x000A;        // Do some expensive initialization logic&#x000A;      }&#x000A;      void process() {&#x000A;        // Business logic&#x000A;      }&#x000A;    }&#x000A;    @RequestScoped&#x000A;    class OrderService {&#x000A;      @Inject&#x000A;      OrderProcessor processor; // A shared client proxy is injected&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (order.isValid()) {&#x000A;            // Processor is not initialized unless we have a valid order&#x000A;            processor.process(order);&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderProcessor {&#x000A;      @PostConstruct&#x000A;      void init() {&#x000A;        // Do some expensive initialization logic&#x000A;      }&#x000A;      void process() {&#x000A;        // Business logic&#x000A;      }&#x000A;    }&#x000A;    @RequestScoped&#x000A;    class OrderService {&#x000A;      @Inject&#x000A;      OrderProcessor processor; // A shared client proxy is injected&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (order.isValid()) {&#x000A;            // Processor is not initialized unless we have a valid order&#x000A;            processor.process(order);&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock tip">
                   <table>
                   <tr>
                   <td class="icon">
-                  <i class="icon-tip" title="Tip"></i>
+                  <i class="fa icon-tip" title="Tip"></i>
                   </td>
                   <td class="content">
                   Weld&#8217;s session context is also initilized lazily and doesn&#8217;t require an HTTP session to actually exist until a bean instance must be written (i.e. until a method of a <code>@SessionScoped</code> bean is invoked).
@@ -795,20 +796,20 @@
                   </div>
                   </div>
                   <div class="sect2">
-                  <h3 id="_drawbacks_of_code_dependent_code_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</h3>
+                  <h3 id="_drawbacks_of_dependent_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</h3>
                   <div class="paragraph">
                   <p>From performance point of view <code>@Dependent</code> is NOT a best fit for:</p>
                   </div>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-down"></i></span> a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)</p>
                   </li>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-down"></i></span> a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)</p>
                   </li>
                   <li>
-                  <p><span class="icon"><i class="icon-thumbs-down"></i></span> a bean which is used in EL expressions</p>
+                  <p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean which is used in EL expressions</p>
                   </li>
                   </ul>
                   </div>
@@ -829,7 +830,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">&lt;web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"&#x000A;        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;&#x000A;        &lt;context-param&gt;&#x000A;            &lt;param-name&gt;org.jboss.weld.context.mapping&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;.*\.html&lt;/param-value&gt; &lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&gt;&#x000A;        &lt;/context-param&gt;&#x000A;    &lt;/web-app&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"&#x000A;        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;&#x000A;        &lt;context-param&gt;&#x000A;            &lt;param-name&gt;org.jboss.weld.context.mapping&lt;/param-name&gt;&#x000A;            &lt;param-value&gt;.*\.html&lt;/param-value&gt; &lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&gt;&#x000A;        &lt;/context-param&gt;&#x000A;    &lt;/web-app&gt;</code></pre>
                   </div>
                   </div>
                   </div>

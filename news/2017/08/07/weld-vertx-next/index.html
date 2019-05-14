@@ -157,17 +157,15 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
-                  <li><a href="#_what_is_it_good_for">What Is It Good For?</a></li>
-                  <li>
+                  <li><a href="#_what_is_it_good_for">What Is It Good For?</a>
                   <ul class="sectlevel2">
                   <li><a href="#_modules">Modules</a></li>
                   </ul>
                   </li>
-                  <li><a href="#_how_do_i_use_it_in_my_vert_x_webapp">How Do I Use It In My Vert.x Webapp?</a></li>
-                  <li>
+                  <li><a href="#_how_do_i_use_it_in_my_vert_x_webapp">How Do I Use It In My Vert.x Webapp?</a>
                   <ul class="sectlevel2">
                   <li><a href="#_1_project_configuration">1. Project Configuration</a></li>
                   <li><a href="#_2_start_cdi_container">2. Start CDI Container</a></li>
@@ -179,12 +177,11 @@
                   <li><a href="#_future_and_plans">Future and Plans</a></li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
-                  <p>Last year Weld team announced the <a href="https://github.com/weld/weld-vertx" target="_blank">weld-vertx</a> project (see also <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank">Weld meets Vert.x</a> and <a href="/news/2016/06/21/update-on-weld-vertx/" target="_blank">Update on weld-vertx</a> articles).
+                  <p>Last year Weld team announced the <a href="https://github.com/weld/weld-vertx" target="_blank" rel="noopener">weld-vertx</a> project (see also <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank" rel="noopener">Weld meets Vert.x</a> and <a href="/news/2016/06/21/update-on-weld-vertx/" target="_blank" rel="noopener">Update on weld-vertx</a> articles).
                   The goal was clear - bring the CDI programming model into the Vert.x ecosystem.
                   Since then, several things have changed.
-                  Two new modules were added, <strong>CDI 2</strong> and <strong>Weld 3</strong> is now used by default, and <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank">two final versions</a> were released.
+                  Two new modules were added, <strong>CDI 2</strong> and <strong>Weld 3</strong> is now used by default, and <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank" rel="noopener">two final versions</a> were released.
                   I think it&#8217;s a good time to summarize the features and plans for future.</p>
                   </div>
                   <div class="sect1">
@@ -209,7 +206,7 @@
                   <p>The <em>Web</em> module allows to configure the router (a component responsible to find the "logic" to handle an HTTP request) in a declarative way, using <code>@org.jboss.weld.vertx.web.WebRoute</code> annotation. Of course, you can register routes programatically. But what if there are hundreds of routes? The more complicated the REST API is the more difficult it is to maintain the code.</p>
                   </li>
                   <li>
-                  <p>The <em>Service Proxy</em> module makes it possible to inject and invoke service proxies (as defined in <a href="https://github.com/vert-x3/vertx-service-proxy)">https://github.com/vert-x3/vertx-service-proxy)</a>.</p>
+                  <p>The <em>Service Proxy</em> module makes it possible to inject and invoke service proxies (as defined in <a href="https://github.com/vert-x3/vertx-service-proxy" class="bare">https://github.com/vert-x3/vertx-service-proxy</a>).</p>
                   </li>
                   <li>
                   <p>The <em>Probe</em> module enables Weld Probe development tool in a Vert.x application.</p>
@@ -232,7 +229,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="xml language-xml">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld.vertx&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-vertx-web&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${version.weld-vertx}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld.vertx&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-vertx-web&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${version.weld-vertx}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock note">
@@ -255,7 +252,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">class MyVertxApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         // ...deploy other existing verticles&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;             if (result.succeeded()) {&#x000A;                 vertx.createHttpServer().requestHandler(weldVerticle.createRouter()::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyVertxApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         // ...deploy other existing verticles&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;             if (result.succeeded()) {&#x000A;                 vertx.createHttpServer().requestHandler(weldVerticle.createRouter()::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -268,7 +265,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@ApplicationScoped&#x000A;class HelloBean {&#x000A;&#x000A;  void consumerWithDependencies(@Observes @VertxConsumer("hello.address") VertxEvent event, HelloService service) {&#x000A;    // Reply to the message - io.vertx.core.eventbus.Message.reply(Object)&#x000A;    event.setReply(service.hello());&#x000A;  }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;class HelloBean {&#x000A;&#x000A;  void consumerWithDependencies(@Observes @VertxConsumer("hello.address") VertxEvent event, HelloService service) {&#x000A;    // Reply to the message - io.vertx.core.eventbus.Message.reply(Object)&#x000A;    event.setReply(service.hello());&#x000A;  }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock note">
@@ -291,7 +288,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@WebRoute("/hello") // Matches all HTTP methods&#x000A;class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    HelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@WebRoute("/hello") // Matches all HTTP methods&#x000A;class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    HelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -299,7 +296,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">void integrationPseudoCode() {&#x000A;  HelloHandler hello = produceInjectedInstanceOfHelloHandler();&#x000A;  Router router = obtainRouterInstance();&#x000A;  router.route("/hello").handler(hello);&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void integrationPseudoCode() {&#x000A;  HelloHandler hello = produceInjectedInstanceOfHelloHandler();&#x000A;  Router router = obtainRouterInstance();&#x000A;  router.route("/hello").handler(hello);&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="admonitionblock note">
@@ -331,7 +328,7 @@
                   <p>So far there are no new features on the roadmap.
                   The plan is to provide bugfix releases as needed.
                   But <code>weld-vertx</code> is an open source project and so the future is in hands of the community.
-                  Feel free to <a href="https://github.com/weld/weld-vertx/issues">create issues</a> and send pull requests!</p>
+                  Feel free to <a href="https://github.com/weld/weld-vertx/issues">create issues, share ideas, throw feature requests</a> and send pull requests!</p>
                   </div>
                   </div>
                   </div>

@@ -168,7 +168,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">public static void main(String... args) {&#x000A;    try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;        ComputingService service = cdi.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static void main(String... args) {&#x000A;    try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {&#x000A;        ComputingService service = cdi.select(ComputingService.class).get();&#x000A;        service.compute();&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -187,7 +187,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">try (WeldContainer container = new Weld().initialize()) {&#x000A;    ComputingService service = container.select(ComputingService.class).get();&#x000A;    service.compute();&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (WeldContainer container = new Weld().initialize()) {&#x000A;    ComputingService service = container.select(ComputingService.class).get();&#x000A;    service.compute();&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -237,7 +237,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">class OrderProcessor {&#x000A;&#x000A;    @Inject Event&lt;Order&gt; orderEvent;&#x000A;&#x000A;    public void process(Order order) {&#x000A;        orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;    }&#x000A;&#x000A;    public void processingOrder(@Observes Order event) {&#x000A;        // This observer is notified synchronously, before the fireAsync() method returns&#x000A;    }&#x000A;&#x000A;    public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;        // This observer is notified asynchronously, in a different thread&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class OrderProcessor {&#x000A;&#x000A;    @Inject Event&lt;Order&gt; orderEvent;&#x000A;&#x000A;    public void process(Order order) {&#x000A;        orderEvent.fireAsync(order).thenAccept((o)-&gt;System.out.println("Asynchronous processing finished: " + o.getId()));&#x000A;    }&#x000A;&#x000A;    public void processingOrder(@Observes Order event) {&#x000A;        // This observer is notified synchronously, before the fireAsync() method returns&#x000A;    }&#x000A;&#x000A;    public void asyncProcessingOrder(@ObservesAsync Order event) {&#x000A;        // This observer is notified asynchronously, in a different thread&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -266,11 +266,11 @@
                   <div class="paragraph">
                   <p>To sum it up:</p>
                   </div>
-                  <table class="tableblock frame-all grid-all" style="width:100%; ">
+                  <table class="tableblock frame-all grid-all stretch">
                   <colgroup>
-                  <col style="width:33%;">
-                  <col style="width:33%;">
-                  <col style="width:33%;"> 
+                  <col style="width: 33.3333%;">
+                  <col style="width: 33.3333%;">
+                  <col style="width: 33.3334%;">
                   </colgroup>
                   <thead>
                   <tr>
@@ -292,7 +292,6 @@
                   </tr>
                   </tbody>
                   </table>
-                  
                   <div class="sect2">
                   <h3 id="_observers_spi_changes">Observers SPI Changes</h3>
                   <div class="paragraph">

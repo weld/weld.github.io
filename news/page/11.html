@@ -378,7 +378,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@Inject&#x000A;    private ExperimentalEvent&lt;Configuration&gt; event;&#x000A;    …&#x000A;    event.fireAsync(new Configuration());</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject&#x000A;    private ExperimentalEvent&lt;Configuration&gt; event;&#x000A;    …&#x000A;    event.fireAsync(new Configuration());</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -442,7 +442,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">event.fireAsync(new Configuration()).thenAccept(config -&gt; master.compute(config));</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration()).thenAccept(config -&gt; master.compute(config));</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -455,7 +455,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">event.fireAsync(new Configuration())&#x000A;        .exceptionally(throwable -&gt; DEFAULT_CONFIGURATION)&#x000A;        .thenAccept((config) -&gt; master.compute(config));</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration())&#x000A;        .exceptionally(throwable -&gt; DEFAULT_CONFIGURATION)&#x000A;        .thenAccept((config) -&gt; master.compute(config));</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -463,7 +463,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">event.fireAsync(new Configuration()).whenComplete((config, throwable) -&gt; {&#x000A;        if (throwable != null) {&#x000A;            System.err.println("Oops. Failed because of " + throwable.getMessage());&#x000A;        } else {&#x000A;            master.compute(config);&#x000A;        }&#x000A;    });</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">event.fireAsync(new Configuration()).whenComplete((config, throwable) -&gt; {&#x000A;        if (throwable != null) {&#x000A;            System.err.println("Oops. Failed because of " + throwable.getMessage());&#x000A;        } else {&#x000A;            master.compute(config);&#x000A;        }&#x000A;    });</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -487,7 +487,7 @@
                   <p>Add dependency on Weld</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha3&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">&lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.jboss.weld.se&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;weld-se-core&lt;/artifactId&gt;&#x000A;        &lt;version&gt;3.0.0.Alpha3&lt;/version&gt;&#x000A;    &lt;/dependency&gt;</code></pre>
                   </div>
                   </div>
                   </li>
@@ -495,7 +495,7 @@
                   <p>Create an empty <code>beans.xml</code> file, e.g.</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="shell language-shell">mkdir src/main/resources/META-INF&#x000A;    touch src/main/resources/META-INF/beans.xml</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mkdir src/main/resources/META-INF&#x000A;    touch src/main/resources/META-INF/beans.xml</code></pre>
                   </div>
                   </div>
                   </li>
@@ -503,7 +503,7 @@
                   <p>Launch Weld and fire an event asynchronously</p>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">public static void main(String[] args) {&#x000A;        WeldContainer weld = new Weld().initialize();&#x000A;        Event&lt;String&gt; evnt = weld.event().select(String.class);&#x000A;        ExperimentalEvent&lt;String&gt; event = (ExperimentalEvent&lt;String&gt;) evnt;&#x000A;    &#x000A;        event.fireAsync("message");&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static void main(String[] args) {&#x000A;        WeldContainer weld = new Weld().initialize();&#x000A;        Event&lt;String&gt; evnt = weld.event().select(String.class);&#x000A;        ExperimentalEvent&lt;String&gt; event = (ExperimentalEvent&lt;String&gt;) evnt;&#x000A;    &#x000A;        event.fireAsync("message");&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </li>
@@ -538,7 +538,7 @@
                   </div>
                   </div>
                   <div class="sect1">
-                  <h2 id="_what_s_next">What’s next?</h2>
+                  <h2 id="_whats_next">What’s next?</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
                   <p>We are going to continue releasing early prototypes of features currently proposed for
@@ -633,7 +633,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {&#x000A;        // ...&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void sendWelcome(@Observes @Priority(APPLICATION + 800) @Registered User user) {&#x000A;        // ...&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -652,7 +652,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">public class SimpleExtension implements Extension {&#x000A;    &#x000A;        void observe(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;            ExperimentalObserverMethod&lt;User&gt; observerMethod = event.getObserverMethod();&#x000A;            this.priority = observerMethod.getPriority();&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SimpleExtension implements Extension {&#x000A;    &#x000A;        void observe(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;            ExperimentalObserverMethod&lt;User&gt; observerMethod = event.getObserverMethod();&#x000A;            this.priority = observerMethod.getPriority();&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -672,7 +672,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&lt;?, Debug&gt; event) {&#x000A;        if (projectStage != ProjectStage.Development) {&#x000A;            event.veto();&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void disableDebuggingObservers(@Observes ExperimentalProcessObserverMethod&lt;?, Debug&gt; event) {&#x000A;        if (projectStage != ProjectStage.Development) {&#x000A;            event.veto();&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -681,7 +681,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">void alterObserver(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;        event.setObserverMethod(new ForwardingExperimentalObserverMethod&lt;User&gt;(event.getObserverMethod()) {&#x000A;            @Override&#x000A;            public TransactionPhase getTransactionPhase() {&#x000A;                return TransactionPhase.AFTER_SUCCESS;&#x000A;            }&#x000A;        });&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void alterObserver(@Observes ExperimentalProcessObserverMethod&lt;User, ?&gt; event) {&#x000A;        event.setObserverMethod(new ForwardingExperimentalObserverMethod&lt;User&gt;(event.getObserverMethod()) {&#x000A;            @Override&#x000A;            public TransactionPhase getTransactionPhase() {&#x000A;                return TransactionPhase.AFTER_SUCCESS;&#x000A;            }&#x000A;        });&#x000A;    }</code></pre>
                   </div>
                   </div>
                   </div>
@@ -695,7 +695,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">public class School {&#x000A;    &#x000A;        @Produces&#x000A;        @Speaks("English")&#x000A;        @Speaks("French")&#x000A;        public Student graduate() {&#x000A;            // ...&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class School {&#x000A;    &#x000A;        @Produces&#x000A;        @Speaks("English")&#x000A;        @Speaks("French")&#x000A;        public Student graduate() {&#x000A;            // ...&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -724,7 +724,7 @@
                   </div>
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@Interceptor&#x000A;    @Secure&#x000A;    public class SecurityInterceptor {&#x000A;    &#x000A;        @Inject&#x000A;        private User user;&#x000A;    &#x000A;        @AroundInvoke&#x000A;        public Object intercept(ExperimentalInvocationContext ctx) throws Exception {&#x000A;            Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();&#x000A;            if (!user.getRoles().contains(binding.requireRole())) {&#x000A;                throw new SecurityException();&#x000A;            }&#x000A;            return ctx.proceed();&#x000A;        }&#x000A;    }</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Interceptor&#x000A;    @Secure&#x000A;    public class SecurityInterceptor {&#x000A;    &#x000A;        @Inject&#x000A;        private User user;&#x000A;    &#x000A;        @AroundInvoke&#x000A;        public Object intercept(ExperimentalInvocationContext ctx) throws Exception {&#x000A;            Secure binding = ctx.getInterceptorBindingsByType(Secure.class).iterator().next();&#x000A;            if (!user.getRoles().contains(binding.requireRole())) {&#x000A;                throw new SecurityException();&#x000A;            }&#x000A;            return ctx.proceed();&#x000A;        }&#x000A;    }</code></pre>
                   </div>
                   </div>
                   <div class="paragraph">
@@ -849,7 +849,7 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;)</p>
+                  <p>all the normal scope annotations (e.g. @RequestScoped, @ApplicationScoped, &#8230;&#8203;)</p>
                   </li>
                   <li>
                   <p>the built-in @Dependent scope</p>

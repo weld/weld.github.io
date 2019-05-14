@@ -159,12 +159,12 @@
                 <div class="content">
                   <div class="paragraph">
                   <p>The next experimental Weld version has been released!
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank">the release details</a>.
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
                   Thanks to everyone involved in this release!</p>
                   </div>
                   <div class="paragraph">
                   <p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
-                  However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank">CDI-558</a>).
+                  However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
                   So that everyone can play with the API, discover possibilities and find potential issues.
                   Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
                   So it should be even easier to get started - no extension class is needed in Weld SE.</p>
@@ -203,7 +203,7 @@
                   <p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
                   </li>
                   <li>
-                  <p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank">CDI-596</a>)</p>
+                  <p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -228,7 +228,7 @@
                   </div>
                   <div class="paragraph">
                   <p>We have prepared some simple examples - see below.
-                  More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank">the TCK test cases</a>.
+                  More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
                   And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
                   </div>
                   </div>
@@ -238,7 +238,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -248,7 +248,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -258,7 +258,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -268,7 +268,7 @@
                   <div class="sectionbody">
                   <div class="listingblock">
                   <div class="content">
-                  <pre class="highlight"><code class="java language-java">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
                   </div>
                   </div>
                   </div>
@@ -277,12 +277,12 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank">Markus&#8217;s tutorial</a>.</p>
+                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

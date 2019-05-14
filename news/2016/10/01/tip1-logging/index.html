@@ -155,14 +155,13 @@
                 </div>
                 <p></p>
                 <div class="content">
-                  <div id="toc" class="toc2">
+                  <div id="toc" class="toc">
                   <div id="toctitle" class="title">Contents</div>
                   <ul class="sectlevel1">
                   <li><a href="#_motivation">Motivation</a></li>
                   <li><a href="#under_the_hood">Under the hood</a></li>
                   <li><a href="#filter">Set the log level and use categories to filter messages</a></li>
-                  <li><a href="#bootstrap">Monitoring bootstrap</a></li>
-                  <li>
+                  <li><a href="#bootstrap">Monitoring bootstrap</a>
                   <ul class="sectlevel2">
                   <li><a href="#_registered_beans">Registered beans</a></li>
                   <li><a href="#_actions_performed_by_extensions">Actions performed by extensions</a></li>
@@ -170,7 +169,6 @@
                   </li>
                   </ul>
                   </div>
-                  
                   <div class="paragraph">
                   <p>This is the first article from a series of short articles covering some useful Weld features.
                   In this article we talk about logging.
@@ -229,7 +227,7 @@
                   <div class="title">Tip</div>
                   </td>
                   <td class="content">
-                  A system property <code>org.jboss.logging.provider</code> can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also <a href="https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java" target="_blank">LoggerProviders</a>.
+                  A system property <code>org.jboss.logging.provider</code> can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also <a href="https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java" target="_blank" rel="noopener">LoggerProviders</a>.
                   </td>
                   </tr>
                   </table>
@@ -269,13 +267,13 @@
                   <p><code>org.jboss.weld.El</code></p>
                   </li>
                   <li>
-                  <p>and others (see also <a href="https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java" target="_blank">org.jboss.weld.logging.Category</a>)</p>
+                  <p>and others (see also <a href="https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java" target="_blank" rel="noopener">org.jboss.weld.logging.Category</a>)</p>
                   </li>
                   </ul>
                   </div>
                   <div class="paragraph">
                   <p>So for example, if you&#8217;re only interested in log messages related to <strong>EL resolution</strong> set the log level for the <code>org.jboss.weld.El</code> category to <code>TRACE</code> (or level with corresponding priority).
-                  Another useful example is the check of <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration" target="_blank">Weld configuration</a>.
+                  Another useful example is the check of <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration" target="_blank" rel="noopener">Weld configuration</a>.
                   Simply set the log level to <code>DEBUG</code> and filter the <code>org.jboss.weld.Configuration</code> category:</p>
                   </div>
                   <div class="listingblock">
@@ -313,7 +311,7 @@
                   That&#8217;s great for framework/libraries developers.
                   On the other hand, this may cause problems when looking for a bug.
                   There is an application class provided by a developer but what does the CDI container actually see?
-                  Well, it depends&#8230; because portable extensions are allowed to redefine this.
+                  Well, it depends&#8230;&#8203; because portable extensions are allowed to redefine this.
                   And that&#8217;s why Weld logs all the <em>"modification"</em> operations performed by extensions, such as <code>ProcessAnnotatedType.veto()</code>:</p>
                   </div>
                   <div class="listingblock">
