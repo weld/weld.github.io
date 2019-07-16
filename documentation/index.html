@@ -224,6 +224,11 @@
                     How to patch WildFly with newer Weld version?
                   </a>
                 </li>
+                <li>
+                  <a href="#13">
+                    What&#8217;s the difference between <code>@ApplicationScoped</code> and <code>@Singleton</code>?
+                  </a>
+                </li>
               </ul>
               <hr>
               <div id="0">
@@ -785,6 +790,76 @@
                 <p>That&#8217;s it! Now you can start your WildFly and try out new Weld.</p>
                 </li>
                 </ul>
+                </div>
+                <a href="#faq_contents">
+                  <i class="fa fa-arrow-circle-o-up fa-lg"></i>
+                  Top
+                </a>
+                <hr>
+              </div>
+              <div id="13">
+                <h2>
+                  What&#8217;s the difference between <code>@ApplicationScoped</code> and <code>@Singleton</code>?
+                </h2>
+                <div id="preamble">
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>Both these contexts behave very similarly.
+                A single bean instance is created and shared across the application.
+                However, there are some important differences.</p>
+                </div>
+                </div>
+                </div>
+                <div class="sect1">
+                <h2 id="_client_proxy">Client Proxy</h2>
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>First of all, <code>@ApplicationScoped</code> is a <strong>normal</strong> scope whereas <code>@Singleton</code> is a <strong>pseudo-scope</strong> (using the CDI terminology).
+                What does it mean?
+                In the first place, for normal scopes a <a href="https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#client_proxies">client proxy</a> is always injected.
+                This is a container construct that delegates all method calls to the current bean instance.
+                While this may seem as an unnecessary overhead, it allows the container to to the following:</p>
+                </div>
+                </div>
+                </div>
+                <div class="sect1">
+                <h2 id="_serialization">Serialization</h2>
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>The client proxies are serializable even when the bean itself may not be.
+                Therefore, you can <code>@Inject</code> a normal-scoped bean into a bean with a passivating scope (such as <code>@SessionScoped</code>).
+                See <a href="https://docs.jboss.org/weld/reference/latest/en-US/html/scopescontexts.html#_the_singleton_pseudo_scope">Weld Reference Guide</a> for more information.</p>
+                </div>
+                </div>
+                </div>
+                <div class="sect1">
+                <h2 id="_lazy_creation">Lazy Creation</h2>
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>The container initializes the bean instances of normal scoped beans lazily.
+                In other words, when injecting an <code>@ApplicationScoped</code> bean a new instance is not created until actually used.
+                Instead, a shared client proxy is injected.
+                See <a href="http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/#_lazy_initialization_of_bean_instances">Weld Tip 3 - Boost performance of Weld apps</a> for more information.</p>
+                </div>
+                </div>
+                </div>
+                <div class="sect1">
+                <h2 id="_circular_dependencies">Circular Dependencies</h2>
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>Client proxies make it possible to <a href="https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#injection_and_resolution">support circularities</a> in the bean dependency graph.</p>
+                </div>
+                </div>
+                </div>
+                <div class="sect1">
+                <h2 id="_manual_bean_destruction">Manual Bean Destruction</h2>
+                <div class="sectionbody">
+                <div class="paragraph">
+                <p>There are also some use cases where it&#8217;s desirable to destroy/recreate a bean instance via <code>Instance.destroy()</code> or <code>AlterableContext.destroy()</code>.
+                With client proxy in place, all injection points operate on proxy objects that can lookup the contextual instance on demand therefore making it simple and safe to replace the contextual instance for a new one.
+                On the other hand injecting a direct reference and attempting the same would lead to stale bean instances or working with outdated states of those instances.</p>
+                </div>
+                </div>
                 </div>
                 <a href="#faq_contents">
                   <i class="fa fa-arrow-circle-o-up fa-lg"></i>
