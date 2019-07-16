@@ -1,4 +1,4 @@
-= What's the difference between `@ApplicationScoped` and `@Singleton`
+= What's the difference between `@ApplicationScoped` and `@Singleton`?
 
 Both these contexts behave very similarly.
 A single bean instance is created and shared across the application.
@@ -10,28 +10,27 @@ First of all, `@ApplicationScoped` is a *normal* scope whereas `@Singleton` is a
 What does it mean?
 In the first place, for normal scopes a https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#client_proxies[client proxy] is always injected.
 This is a container construct that delegates all method calls to the current bean instance.
-Looks like some unnecessary overhead but in fact allows the container to do some useful stuff.
+While this may seem as an unnecessary overhead, it allows the container to to the following:
 
 == Serialization
 
 The client proxies are serializable even when the bean itself may not be.
-And so you can `@Inject` a normal-scoped bean into a bean with a passivating scope (such as `@SessionScoped`).
+Therefore, you can `@Inject` a normal-scoped bean into a bean with a passivating scope (such as `@SessionScoped`).
 See https://docs.jboss.org/weld/reference/latest/en-US/html/scopescontexts.html#_the_singleton_pseudo_scope[Weld Reference Guide] for more information.
 
 == Lazy Creation
 
-The container may initialize the bean instances of normal scoped beans lazily. 
+The container initializes the bean instances of normal scoped beans lazily. 
 In other words, when injecting an `@ApplicationScoped` bean a new instance is not created until actually used. 
 Instead, a shared client proxy is injected.
 See http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/#_lazy_initialization_of_bean_instances[Weld Tip 3 - Boost performance of Weld apps] for more information.
 
 == Circular Dependencies
 
-Client proxies make it possible to support circularities in the bean dependency graph.
+Client proxies make it possible to https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#injection_and_resolution[support circularities] in the bean dependency graph.
 
-== Bean Destruction
+== Manual Bean Destruction
 
-There are also some use cases where it's desirable to destroy/recreate a bean instance.
-This is possible since CDI 1.1 using the programmatic lookup API -`Instance.destroy()` or `AlterableContext.destroy()`. 
-If a client proxy was not used a direct reference would be injected. 
-Which means that the bean which injected a bean that was removed afterwards would work with outdated state and possibly prevent the stale bean instance from being garbage collected.
+There are also some use cases where it's desirable to destroy/recreate a bean instance via `Instance.destroy()` or `AlterableContext.destroy()`. 
+With client proxy in place, all injection points operate on proxy objects that can lookup the contextual instance on demand therefore making it simple and safe to replace the contextual instance for a new one. 
+On the other hand injecting a direct reference and attempting the same would lead to stale bean instances or working with outdated states of those instances.
