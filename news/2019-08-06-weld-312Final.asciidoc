@@ -1,0 +1,48 @@
+---
+layout: news
+title: Weld 3.1.2.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.2.Final released
+desc: Weld 3.1.2.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.2.Final is coming along with Weld API 3.1.SP1. It is another small release bringing in mainly bugfixes.
+One notable thing is that thanks to guys from Jetty, Weld 3.1.2.Final is ready to operate with lastest Jetty 9 as well as upcoming Jetty 10.
+Other than that we have tried to address some dodgy issues with possible race conditions and leaks - see for yourself!
+
+Fixes and improvements:
+
+* Weld API/SPI
+** Fixed possible leak in Jandex index through `SimpleServiceRegistry` (link:https://issues.jboss.org/browse/WELD-2592[WELD-2592, window="_blank"])
+*** This could only happen on application server supporting Jandex index and was only noticeable with a lot of application deployed at the same time
+
+* Weld Core
+** Fixed a case where some context event notification wouldn't trigger observers due to race condition (link:https://issues.jboss.org/browse/WELD-2557[WELD-2557, window="_blank"])
+** Fixed rare `IllegalAccessError` problem during interception when methods had (package) private parameters from different methods (link:https://issues.jboss.org/browse/WELD-2583[WELD-2583, window="_blank"])
+*** Such methods are now automatically ignored when creating intercepted subclasses
+** Attempted to fix a race condition that could happen when trying to concurrently initiate conversation ID generator (link:https://issues.jboss.org/browse/WELD-2585[WELD-2585, window="_blank"])
+** Weld now correctly disregards synthetic methods when considering proxyability (link:https://issues.jboss.org/browse/WELD-2586[WELD-2586, window="_blank"])
+** Correction to `beans.xml` parses when using Weld namespace (link:https://issues.jboss.org/browse/WELD-2591[WELD-2591, window="_blank"])
+
+* Weld SE
+** Improved classpath scanning to account for manifest file entries (link:https://issues.jboss.org/browse/WELD-2589[WELD-2589, window="_blank"])
+** `javax.enterprise.inject.scan.implicit=true` and `org.jboss.weld.se.archive.isolation=false` now work together correctly (link:https://issues.jboss.org/browse/WELD-2590[WELD-2590, window="_blank"])
+
+* Weld Servlet
+** Update Weld to new Jetty integration model prior to Jetty release (link:https://issues.jboss.org/browse/WELD-2587[WELD-2587, window="_blank"])
+*** Weld 3.1.2.Final is ready to roll with to-be-released Jetty 9.4.x as well as Jetty 10.x
+*** Of course we also kept legacy support in place, so even older version will still run
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.2.Final/wildfly-17.0.1.Final-weld-3.1.2.Final-patch.zip[patch for WildFly 17.0.1.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.2.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12341958[Release notes, window="_blank"] &#93;
