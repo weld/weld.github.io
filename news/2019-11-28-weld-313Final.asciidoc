@@ -1,0 +1,41 @@
+---
+layout: news
+title: Weld 3.1.3.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.3.Final released
+desc: Weld 3.1.3.Final released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.3.Final arrives along with Weld API 3.1.SP2.
+This is a minor update which had a main goal of swapping whole Weld internals from Java EE 8 to Jakarta EE 8.
+
+Fixes and improvements:
+
+* Weld API/SPI
+** API was transferred to Jakarta EE GAVs (link:https://issues.jboss.org/browse/WELD-2598[WELD-2598, window="_blank"])
+
+* Weld Core
+** Core and whole testing was transferred to Jakarta EE GAvs (link:https://issues.jboss.org/browse/WELD-2598[WELD-2598, window="_blank"])
+** Properties inside `beans.xml` now support spec-descriptor-property-replacement on WildFly (link:https://issues.jboss.org/browse/WELD-2600[WELD-2600, window="_blank"])
+** Rolling updates delimiter is now correctly ignored for external bean archives (link:https://issues.jboss.org/browse/WELD-2596[WELD-2596, window="_blank"])
+** Allow for `private final` method in intercepted beans, these methods are then ignored during interception but Weld no longer blows up (link:https://issues.jboss.org/browse/WELD-2595[WELD-2595, window="_blank"])
+
+* Weld Servlet
+** Adjust Jetty attributes accordingly to how they were renamed (link:https://issues.jboss.org/browse/WELD-2597[WELD-2597, window="_blank"])
+
+* Other
+** Fix several misplaced licenses that were causing confusion (link:https://issues.jboss.org/browse/WELD-2599[WELD-2599, window="_blank"])
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.3.Final/wildfly-18.0.1.Final-weld-3.1.3.Final-patch.zip[patch for WildFly 18.0.1.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.3.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12342783[Release notes, window="_blank"] &#93;
