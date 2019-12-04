@@ -10,7 +10,7 @@ First of all, `@ApplicationScoped` is a *normal* scope whereas `@Singleton` is a
 What does it mean?
 In the first place, for normal scopes a https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#client_proxies[client proxy] is always injected.
 This is a container construct that delegates all method calls to the current bean instance.
-While this may seem as an unnecessary overhead, it allows the container to to the following:
+While this may seem as an unnecessary overhead, it allows the container to do the following:
 
 == Serialization
 
