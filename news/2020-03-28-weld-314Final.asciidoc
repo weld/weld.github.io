@@ -1,0 +1,39 @@
+---
+layout: news
+title: Weld 3.1.4.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.4.Final released
+desc: Weld 3.1.4.Final released
+tags: [release]
+---
+:linkattrs:
+
+New Weld version is here, say hello to Weld 3.1.4.Final.
+There are only few issues included in this release, so let's take a look at them.
+
+Fixes and improvements:
+
+* Weld Core
+** `ObserverMethodConfigurator` initialized by reading an `AnnotatedType` previously didn't set the method as async when it should (link:https://issues.jboss.org/browse/WELD-2609[WELD-2609, window="_blank"])
+** Fixed observability of `@Destroyed` events for Conversation context when there are multiple WARs deployed (link:https://issues.jboss.org/browse/WELD-2610[WELD-2610, window="_blank"])
+** After a failed attempt to restore a conversation, Weld could omit firing `@Initialized` event; this is now working properly (link:https://issues.jboss.org/browse/WELD-2611[WELD-2611, window="_blank"])
+** Cleanup of stored conversations required unnecessarily many locks simultaneously which could lead to deadlock on some servers (link:https://issues.jboss.org/browse/WELD-2612[WELD-2612, window="_blank"])
+** Removed `Unsafe` usage as means of cracking open `ClassLoader` for proxy definition (link:https://issues.jboss.org/browse/WELD-2613[WELD-2613, window="_blank"])
+*** This only helped to hide `IllegalAccess` warning on JDK 11 (which will now show again)
+*** Starting with JDK 12 and newer, `Unsafe` doesn't work at all making this solution obsolete
+*** We've created (link:https://issues.jboss.org/browse/WELD-2619[WELD-2619, window="_blank"]) in order to search for better solution that would work across all JDK versions
+** Using `HttpSessionContext.destroy()` could sometimes not destroy the instance if it wasn't used in current request (link:https://issues.jboss.org/browse/WELD-2615[WELD-2615, window="_blank"])
+** Fix OSGi versions for EE dependencies (link:https://issues.jboss.org/browse/WELD-2616[WELD-2616, window="_blank"])
+** Properly close stream after reading `weld.properties` (link:https://issues.jboss.org/browse/WELD-2606[WELD-2606, window="_blank"])
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.4.Final/wildfly-19.0.0.Final-weld-3.1.4.Final-patch.zip[patch for WildFly 19.0.0.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12343306[Release notes, window="_blank"] &#93;
