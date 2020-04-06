@@ -17,7 +17,7 @@ Here is the general idea of how this works:
 * Perform any changes you wish to inside the repository
   * You will want to be in the `devel` branch for that
 * You can deploy website and check it in your browser
-  * Website deployment is done via `awestruct -d`
+  * Website deployment is done via `awestruct -d -b 0.0.0.0`
   * The website is deployed at `localhost:4242`
 * Make commit to the `devel` branch once satisfied
 * Perform deployment command - `rm -rf _site && awestruct -P production && awestruct -P production --deploy`
