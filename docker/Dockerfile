@@ -19,6 +19,7 @@ RUN apt-get install maven -y
 #few things needed for manual Git installation
 RUN apt-get install make autoconf libcurl4-gnutls-dev gettext gcc zlib1g-dev -y
 
+#TODO this could be removed if we move to newer deps altogether
 #get Git from source in order to have older version
 #we need something older than 2.16 due to Ruby git gem; 2.15.3 is the latest we can pick
 RUN wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.15.3.tar.gz -O git-2.15.3.tar.gz
@@ -46,7 +47,7 @@ RUN gem install rake -v 12.3.1
 RUN gem install bundler -v 1.16.1
 RUN gem install asciidoctor -v 1.5.8
 RUN gem install sass -v 3.6.0
-RUN gem install bootstrap-sass -v 2.3.2.2
+RUN gem install bootstrap-sass -v 3.4.1
 RUN gem install chunky_png -v 1.3.1
 RUN gem install fssm -v 0.2.10
 RUN gem install compass -v 0.12.7
@@ -58,7 +59,7 @@ RUN gem install rb-fsevent -v 0.10.3
 RUN gem install ffi  -v 1.9.25
 RUN gem install rb-inotify -v 0.10.0
 RUN gem install rb-kqueue -v 0.2.3
-RUN gem install listen -v 1.3.1
+RUN gem install listen -v 3.1.5
 RUN gem install nokogiri -v 1.5.10
 RUN gem install rack -v 1.5.2
 RUN gem install mime-types -v 2.3
@@ -66,7 +67,7 @@ RUN gem install netrc -v 0.7.7
 RUN gem install rest-client -v 1.7.2
 RUN gem install ruby-s3cmd -v 0.1.5
 RUN gem install zurb-foundation -v 4.3.2
-RUN gem install awestruct -v 0.5.3
+RUN gem install awestruct -v 0.6.0
 RUN gem install uglifier -v 4.1.20
 RUN gem install coffee-script -v 2.4.1
 RUN gem install htmlcompressor -v 0.4.0
