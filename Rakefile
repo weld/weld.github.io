@@ -41,7 +41,7 @@
 # Now you're Awestruct with rake!
 
 $use_bundle_exec = true
-$install_gems = ['awestruct -v "~> 0.5.0"', 'rb-inotify -v "~> 0.9.0"']
+$install_gems = ['awestruct -v "~> 0.6.0"', 'rb-inotify -v "~> 0.10.1"']
 $awestruct_cmd = nil
 task :default => :preview
 
@@ -89,7 +89,7 @@ end
 
 desc 'Build and preview the site locally in development mode'
 task :preview => :check do
-  run_awestruct '-d'
+  run_awestruct '-d -b 0.0.0.0'
 end
 
 # provide a serve task for those used to Jekyll commands
