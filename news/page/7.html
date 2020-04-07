@@ -143,6 +143,89 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2016/09/13/weld-240Final/">Weld 2.4.0.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2016-9-13
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>I am very pleased to announce the <strong>first stable version of Weld 2.4</strong> (CDI 1.2).
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331363" target="_blank" rel="noopener">the release details</a>.
+                  From now on, 2.4 is the current stable version of Weld and 2.3 is not actively developed anymore.
+                  Thanks to everyone involved in this release!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Most of the new features were already introduced in <a href="/news/2016/08/19/weld-240CR1" target="_blank" rel="noopener">First release candidate of Weld 2.4</a>.
+                  To sum it up:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Removed dependency on <code>com.google.guava:guava</code></p>
+                  </li>
+                  <li>
+                  <p>Enhanced version of <code>javax.enterprise.inject.Instance</code></p>
+                  </li>
+                  <li>
+                  <p>Veto <code>AnnotatedType</code> not annotated with a bean defining annotation</p>
+                  </li>
+                  <li>
+                  <p><code>@ActivateRequestScope</code> interceptor binding moved to Weld API and renamed to <code>@ActivateRequestContext</code></p>
+                  </li>
+                  <li>
+                  <p>Improved rolling upgrades support</p>
+                  </li>
+                  <li>
+                  <p>Events - reflect the output of CDI-494</p>
+                  </li>
+                  <li>
+                  <p>Probe - allow to filter unused beans</p>
+                  </li>
+                  <li>
+                  <p>Cleanup, cleanup, cleanup&#8230;&#8203;</p>
+                  </li>
+                  <li>
+                  <p>Initial Java 9 support</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Moreover, 2.4.0.Final allows to export the Probe development tool data (to be discussed in one of the following blog posts) and fixes a minor problem in non-EE environments (see also <a href="https://issues.jboss.org/browse/WELD-2227">WELD-2227</a>).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>In the coming weeks, the Weld team is also going to publish <strong>"Weld tips"</strong> - a series of concise articles.
+                  The intention is to familiarize developers with less known Weld features.
+                  There will be no hot news, just useful existing features (repetition is the mother of wisdom ;-).</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.0.Final/wildfly-10.1.0.Final-weld-2.4.0.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
+                  &#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331363" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2016/08/19/weld-240CR1/">First release candidate of Weld 2.4</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -529,106 +612,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2016/05/18/enhanced-instance/">Programmatic lookup improvements</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2016-5-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/api">api</a>
-                    ,
-                    <a href="/news/tags/draft">draft</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p><code>javax.enterprise.inject.Instance</code> is sometimes invaluable companion.
-                  For example, <code>Instance</code> allows you to handle unsatisfied and ambiguous dependencies gracefully.
-                  E.g. it&#8217;s possible to avoid unnecessary deployment problems:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">interface OrderProcessor {&#x000A;      void process(Order order);&#x000A;      int getPriority();&#x000A;    }&#x000A;    &#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (!instance.isUnsatisfied() &amp;&amp; !instance.isAmbiguous()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>It is less known that <code>Instance</code> extends <code>Iterable</code> and so it allows to iterate through contextual references of beans with the specified combination of required type and qualifiers.
-                  This might be useful if the set of beans satisfying the given type and qualifiers is not known beforehand.
-                  We may also need to resolve ambiguities manually, e.g. inspect all the instances and choose only those matching our needs.</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            if (processor.getPriority() &gt; 10) {&#x000A;                processor.process(order);&#x000A;            }&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>Another interesting use case might be selecting exactly one implementation:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        List&lt;OrderProcessor&gt; processors = new ArrayList&lt;&gt;();&#x000A;        for (OrderProcessor processor : instance) {&#x000A;            processors.add(processor);&#x000A;        }&#x000A;        Collections.sort(processors, Comparator.&lt;OrderProcessor&gt; comparingInt(p -&gt; p.getPriority()).reversed());&#x000A;        // Use the processor with highest priority&#x000A;        processors.get(0).ping();&#x000A;      }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>This works nice.
-                  But we have to pay extra attention to the scopes.
-                  If a <code>Processor</code> implementation is <code>@Dependent</code> a similar usage results in memory leaks.
-                  What&#8217;s the reason?
-                  The <code>Processor</code> instance is the dependent object of <code>Instance&lt;OrderProcessor&gt;</code> which is the dependent object of <code>OrderService</code>.
-                  And so each <code>Instance.get()</code> will produce a new <code>Processor</code> bound to the lifecycle of the <code>OrderService</code>.
-                  To avoid the leak we should always call <code>Instance.destroy()</code> method in similar cases.
-                  However, <code>Instance.destroy()</code> always destroys the underlying contextual instance!
-                  Even if you pass e.g. a client proxy of an <code>@ApplicationScoped</code> bean.
-                  This is not always desirable.
-                  Currently, it&#8217;s quite complicated to detect a dependent bean inside the loop.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>To extend the possibilities the Weld team is experimenting with <code>org.jboss.weld.inject.WeldInstance</code> - an enhanced version of <code>javax.enterprise.inject.Instance</code>.
-                  There are three new methods we find useful. The first one - <code>getHandler()</code> - allows to obtain a contextual reference handler which not only holds the contextual reference but also allows to inspect the metadata of the relevant bean and to destroy the underlying contextual instance.
-                  Moreover, the handler implements <code>AutoCloseable</code>:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jboss.weld.inject.WeldInstance;&#x000A;    &#x000A;    class Foo {&#x000A;    &#x000A;      @Inject&#x000A;      WeldInstance&lt;Bar&gt; instance;&#x000A;    &#x000A;      void doWork() {&#x000A;        try (Handler&lt;Bar&gt; bar = instance.getHandler()) {&#x000A;            bar.get().doBusiness();&#x000A;            // Note that Bar will be automatically destroyed at the end of the try-with-resources statement&#x000A;        }&#x000A;    &#x000A;        Handler&lt;Bar&gt; bar = instance.getHandler()&#x000A;        bar.get().doBusiness();&#x000A;        // Calls Instance.destroy()&#x000A;        bar.destroy();&#x000A;      }&#x000A;    &#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>The next method - <code>handlerIterator()</code> - returns an iterator over contextual reference handlers. This might be useful if you need more control over contextual references inside the loop:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped&#x000A;    class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      @Any&#x000A;      WeldInstance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        for (Iterator&lt;Handler&lt;OrderProcessor&gt;&gt; iterator = instance.handlerIterator(); iterator.hasNext();) {&#x000A;                Handler&lt;OrderProcessor&gt; processor = iterator.next();&#x000A;                processor.get().process(order);&#x000A;                if (processor.getBean().getScope().equals(Dependent.class)) {&#x000A;                    // Destroy only dependent processors&#x000A;                    processor.destroy();&#x000A;                }&#x000A;            }&#x000A;      }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>The last one is just a convenient method - <code>isResolvable()</code> - a replacement for <code>!isUnsatisfied() &amp;&amp; !isAmbiguous()</code> which is the expression most users are interested in:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class OrderService {&#x000A;    &#x000A;      @Inject&#x000A;      Instance&lt;OrderProcessor&gt; instance;&#x000A;    &#x000A;      void create(Order order) {&#x000A;        if (instance.isResolvable()) {&#x000A;            instance.get().process(order);&#x000A;        } else {&#x000A;            // Log a warning or throw an exception&#x000A;        }&#x000A;      }&#x000A;    }</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>Weld team is considering adding <code>org.jboss.weld.inject.WeldInstance</code> to the Weld API (2.4 and 3.0).
-                  <code>WeldInstance</code> would be automatically available in Weld SE and Weld Servlet where the Weld API is always on the class path.
-                  It would be also available in Weld-powered EE containers - in this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use <code>provided</code> scope in Maven).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>See also <a href="https://issues.jboss.org/browse/WELD-2151" target="_blank" rel="noopener">WELD-2151</a> and the work in progress: <a href="https://github.com/mkouba/core/tree/WELD-2151" class="bare">https://github.com/mkouba/core/tree/WELD-2151</a>.
-                  And feel free to add comments to this blog post.
-                  Any feedback is appreciated!</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/6.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/6.html" class="page-link">6</a> <span class="current-page">7</span> <a href="/news/page/8.html" class="page-link">8</a> <span class="skip">...</span><a href="/news/page/12.html" class="page-link">12</a> <a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/8.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><a href="/news/page/6.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/6.html" class="page-link">6</a> <span class="current-page">7</span> <a href="/news/page/8.html" class="page-link">8</a> <span class="skip">...</span><a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/8.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
@@ -656,14 +640,15 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
   </script>
-  <script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-45187401-1");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

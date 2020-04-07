@@ -143,6 +143,59 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE and synthetic container lifecycle event observers</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2016-2-8
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/api">api</a>
+                    ,
+                    <a href="/news/tags/draft">draft</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Last week Weld 3.0.0.Alpha15 was released and so it&#8217;s time to reveal the features that should go into the next experimental release.
+                  The main goal of Weld 3.0.0.Alpha16 is to reflect the output of <a href="https://issues.jboss.org/browse/CDI-558">CDI-558</a>.
+                  However, we would also like to continue to deliver experimental prototypes so that users could test a new functionality (that we find interesting and useful) and the CDI EG could eventually include this into CDI 2.0.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>It should be easier to start playing with extensions in Weld SE. Right now, it&#8217;s possible to pass an <code>Extension</code> instance to the <code>Weld</code> builder so that it&#8217;s not necessary to configure service providers (i.e. <code>META-INF/services/javax.enterprise.inject.spi.Extension</code> file).
+                  In such case, the extension class is automatically scanned for observer methods and the instance is used as the receiver of the notifications.
+                  We would like to make this even easier.
+                  It is now possible to add a <strong>synthetic container lifecycle event observer</strong> without declaring an extension class.
+                  The observer logic is represented as a lambda expression.
+                  This might be especially useful for prototyping and/or for discovering how extensions work.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The starting point is the <code>org.jboss.weld.environment.se.ContainerLifecycleObserver</code> class.
+                  There are few static methods, each corresponding to a specific container lifecycle event (e.g. <code>beforeBeanDiscovery()</code>).
+                  Some variants return a builder so that it&#8217;s possible to customize the observer (observed type, priority, etc.).
+                  Others accept a lambda and return an observer instance direcly.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>A synthetic observer may be added to the builder directly - see <code>Weld.addContainerLifecycleObserver()</code> - or grouped in a synthetic extension - see <code>ContainerLifecycleObserver.extensionBuilder()</code>.</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;        .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;        .add(processAnnotatedType().notify((e) -&gt; {&#x000A;                if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                    e.veto();&#x000A;                }&#x000A;            })).build();&#x000A;    &#x000A;    try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;        // Use the container...&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>This feature is merged in the master branch. If you want to try it out, you&#8217;ll have to use a <strong>3.0.0-SNAPSHOT</strong> version or build the Weld from source: <code>mvn clean install</code>.
+                  Do you find it useful? Any feedback is appreciated! Feel free to add comments to this blog post or to the corresponding issue: <a href="https://issues.jboss.org/browse/WELD-2102">WELD-2012</a>.</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2016/02/04/weld-300Alpha15/">Weld 3.0.0.Alpha15</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -363,141 +416,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/11/10/weld-probe-jmx/">Weld development mode and JMX support</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2015-11-10
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/probe">probe</a>
-                    ,
-                    <a href="/news/tags/jmx">jmx</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld comes with a special mode for application development.
-                  When enabled, some interesting data are collected so that it&#8217;s possible to inspect and monitor application components at runtime (see also <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe">the demo application hosted on OpenShift</a>).
-                  Data in JSON format are available through the REST API,  eventually through the MXBean of name <code>org.jboss.weld.probe:type=JsonData,context=ID</code> where ID should be replaced with an identifier of an application.
-                  The JMX support might be especially useful for environments and applications which do not utilize a web container (Java SE, OSGi, etc.).</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_how_to_enable_jmx_support">How to enable JMX support</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Simply use the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration">Weld configuration facility</a> and <code>org.jboss.weld.probe.jmxSupport</code> configuration property. If set to <code>true</code> one or more MBean components may be registered so that it is possible to use JMX to access the Probe development tool data.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_jmx_client">JMX client</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>So for example if using Weld SE without a web container it&#8217;s still possible to access the Probe data.
-                  There is a lot of JMX clients out there (for example jconsole or jvisualvm from the Oracle JDK).
-                  The problem is not all of us prefer reading JSON data.
-                  Hey wait! Weld Probe already has an HTML client, right?
-                  Yes, but this client works with REST API.
-                  We would have to embed a web container (e.g. Undertow) and add Weld Servlet or do some configuration manually.
-                  But what if there are multiple Weld instances in the same JVM? The configuration might become quite complex.
-                  Luckily, there is another solution - a <strong>working prototype</strong> of <a href="https://github.com/weld/weld-probe-jmx">JMX client reusing the default HTML GUI</a>.</p>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_clone_build_and_run">Clone, build and run</h3>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code>    # Clone the git repo&#x000A;        git clone git@github.com:weld/weld-probe-jmx.git&#x000A;        # Specify the weld version used in your application and run the build&#x000A;        mvn clean package -Dversion.weld=2.3.1.Final&#x000A;        # Run the client&#x000A;        java -jar target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar</code></pre>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_how_does_it_work">How does it work?</h3>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>First, the client attempts to connect to a JMX server (your application)</p>
-                  </li>
-                  <li>
-                  <p>User may select a Weld container to inspect</p>
-                  </li>
-                  <li>
-                  <p>Then the client starts an Undertow instance locally, HTML client is available at: <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a></p>
-                  </li>
-                  <li>
-                  <p>Data are fetched remotely through JMX</p>
-                  </li>
-                  <li>
-                  <p>User may reconnect at any time</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>See also the JBoss Forge example below to see an example output.</p>
-                  </div>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_configuration">Configuration</h3>
-                  <div class="paragraph">
-                  <p>Moreover, it&#8217;s also possible to configure the JMX server URL, Undertow host and port - used to expose the HTML client. E.g. for WildFly (standalone mode) a different jmxServiceUrl must be specified and jboss-client.jar must be also on the class path, e.g.:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code>java -Dorg.jboss.weld.probe.jmxServiceUrl="service:jmx:http-remoting-jmx://127.0.0.1:9990" -cp '/opt/jboss/wildfly/bin/client/jboss-client.jar:target/weld-probe-jmx-1.0.0-SNAPSHOT-shaded.jar' org.jboss.weld.probe.ProbeJmx</code></pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_jboss_forge_example">JBoss Forge example</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>An interesting use case would be to inspect JBoss Forge addons powered by CDI (works with <strong>Forge 2.20.1.Final</strong> and later).
-                  Before we start Forge we need to set some extra system properties:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre class="highlightjs highlight"><code>export FORGE_OPTS="-Dorg.jboss.weld.development=true -Dorg.jboss.weld.probe.jmxSupport=true -Dorg.jboss.weld.probe.eventMonitor.containerLifecycleEvents=true -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"</code></pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>System properties starting with <code>com.sun.management</code> simply allow to connect to JMX remotely.
-                  <code>org.jboss.weld.development</code> enables the development mode.
-                  <code>org.jboss.weld.probe.jmxSupport</code> enables the JMX support.
-                  Finally, If <code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> is set to <code>true</code> all the container lifecycle events are monitored during bootstrap.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Then start the Forge as usually and run the prototype. You should see a similar output:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>Connecting to a remote JMX server: service:jmx:rmi:///jndi/rmi://127.0.0.1:9999/jmxrmi&#x000A;    Select a Weld container (JSON data provider):&#x000A;    [0] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:shell_1447145001728"&#x000A;    [1] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:configuration_1447145001592"&#x000A;    [2] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:parser-java_1447145002037"&#x000A;    [3] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:bean-validation_1447145001526"&#x000A;    [4] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:javaee_1447145003135"&#x000A;    [5] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"&#x000A;    [6] org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:convert_1447145001526"&#x000A;    &#x000A;    [disconnected]$</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>Now select a Weld container to inspect, e.g. <code>5</code>:</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>[disconnected]$ 5&#x000A;    Connecting to the Weld container [5]: org.jboss.weld.probe:type=JsonData,context="org.jboss.forge.addon:ui_1447145001709"&#x000A;    Starting Undertow...&#x000A;    Lis 10, 2015 9:44:16 DOP. org.xnio.Xnio &lt;clinit&gt;&#x000A;    INFO: XNIO version 3.3.1.Final&#x000A;    Lis 10, 2015 9:44:16 DOP. org.xnio.nio.NioXnio &lt;clinit&gt;&#x000A;    INFO: XNIO NIO Implementation Version 3.3.1.Final&#x000A;    Weld Probe HTML client available at: http://127.0.0.1:8181/probe-jmx/weld-probe&#x000A;    &#x000A;    [connected #5]$</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>The HTML client is available at <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a>. It&#8217;s also possible to reconnect or exit. Type <code>help</code> to get a list of all possible commands.</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/8.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/8.html" class="page-link">8</a> <span class="current-page">9</span> <a href="/news/page/10.html" class="page-link">10</a> <span class="skip">...</span><a href="/news/page/12.html" class="page-link">12</a> <a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/10.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><a href="/news/page/8.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/8.html" class="page-link">8</a> <span class="current-page">9</span> <a href="/news/page/10.html" class="page-link">10</a> <span class="skip">...</span><a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/10.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
@@ -525,14 +444,15 @@
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
   </script>
-  <script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-45187401-1");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>
   <script>
     $(document).ready(function() {
       $('#toggle_menu').click(function(){

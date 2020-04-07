@@ -2,13 +2,125 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2019-12-04T14:31:16+00:00</updated>
+  <updated>2020-04-07T15:49:04+00:00</updated>
   <link href="http://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</id>
+    <title>Weld 3.1.4.Final</title>
+    <updated>2020-04-07T15:49:04+00:00</updated>
+    <published>2020-03-28T00:00:00+00:00</published>
+    <link href="http://weld.cdi-spec.org/news/2020/03/28/weld-314Final/" rel="alternate" type="text/html" />
+    <author>
+      <name>Matej Novotny</name>
+    </author>
+    <category term="release"></category>
+    <summary>
+      New Weld version is here, say hello to Weld 3.1.4.Final.
+      There are only few issues included in this release, so let&#8217;s take a look at them.
+      
+      
+      Fixes and improvements:
+      
+      
+      
+      
+      Weld Core
+      
+      
+      
+      ObserverMethodConfigurator initialized by reading an AnnotatedType previously didn&#8217;t set the method as async when it should (WELD-2609)
+      
+      
+      Fixed observability of @Destroyed events for Conversation context when there are multiple WARs deployed (WELD-2610)
+      
+      
+      After a failed attempt to restore a conversation, Weld could omit firing @Initialized event; this is now working properly (WELD-2611)
+      
+      
+      Cleanup of stored conversations required unnecessarily many locks simultaneously which could lead to deadlock on some servers (WELD-2612)
+      
+      
+      Removed Unsafe usage as means of cracking...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;New Weld version is here, say hello to Weld 3.1.4.Final.
+      There are only few issues included in this release, so let’s take a look at them.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Fixes and improvements:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Weld Core&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;&lt;code&gt;ObserverMethodConfigurator&lt;/code&gt; initialized by reading an &lt;code&gt;AnnotatedType&lt;/code&gt; previously didn’t set the method as async when it should (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2609&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2609&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Fixed observability of &lt;code&gt;@Destroyed&lt;/code&gt; events for Conversation context when there are multiple WARs deployed (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2610&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2610&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;After a failed attempt to restore a conversation, Weld could omit firing &lt;code&gt;@Initialized&lt;/code&gt; event; this is now working properly (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2611&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2611&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Cleanup of stored conversations required unnecessarily many locks simultaneously which could lead to deadlock on some servers (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2612&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2612&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Removed &lt;code&gt;Unsafe&lt;/code&gt; usage as means of cracking open &lt;code&gt;ClassLoader&lt;/code&gt; for proxy definition (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2613&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2613&lt;/a&gt;)&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;This only helped to hide &lt;code&gt;IllegalAccess&lt;/code&gt; warning on JDK 11 (which will now show again)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Starting with JDK 12 and newer, &lt;code&gt;Unsafe&lt;/code&gt; doesn’t work at all making this solution obsolete&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;We’ve created (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2619&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2619&lt;/a&gt;) in order to search for better solution that would work across all JDK versions&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Using &lt;code&gt;HttpSessionContext.destroy()&lt;/code&gt; could sometimes not destroy the instance if it wasn’t used in current request (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2615&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2615&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Fix OSGi versions for EE dependencies (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2616&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2616&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Properly close stream after reading &lt;code&gt;weld.properties&lt;/code&gt; (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2606&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2606&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;sect1&quot;&gt;
+      &lt;h2 id=&quot;_wildfly_patch&quot;&gt;WildFly Patch&lt;/h2&gt;
+      &lt;div class=&quot;sectionbody&quot;&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;This time around, the &lt;a href=&quot;http://download.jboss.org/weld/3.1.4.Final/wildfly-19.0.0.Final-weld-3.1.4.Final-patch.zip&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;patch for WildFly 19.0.0.Final&lt;/a&gt; is available.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;If you’re not familiar with patching WildFly, check the &lt;a href=&quot;http://weld.cdi-spec.org/documentation/#12&quot;&gt;FAQ&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;http://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
+      [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12343306&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</id>
     <title>Weld 3.1.3.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2019-11-28T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2019/11/28/weld-313Final/" rel="alternate" type="text/html" />
     <author>
@@ -16,7 +128,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.1.3.Final arrives along with Weld API 3.1.SP2.
       This is a minor update which had a main goal of swapping whole Weld internals from Java EE 8 to Jakarta EE 8.
       
@@ -143,7 +254,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</id>
     <title>Weld 3.1.2.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2019-08-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2019/08/06/weld-312Final/" rel="alternate" type="text/html" />
     <author>
@@ -151,7 +262,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.1.2.Final is coming along with Weld API 3.1.SP1. It is another small release bringing in mainly bugfixes.
       One notable thing is that thanks to guys from Jetty, Weld 3.1.2.Final is ready to operate with lastest Jetty 9 as well as upcoming Jetty 10.
       Other than that we have tried to address some dodgy issues with possible race conditions and leaks - see for yourself!
@@ -298,7 +408,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</id>
     <title>Weld 3.1.1.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2019-05-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2019/05/07/weld-311Final/" rel="alternate" type="text/html" />
     <author>
@@ -306,7 +416,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.1.1.Final is out, it is a rather small nonetheless important maintenance release.
       There is bunch of fixes present here; notably one for context propagation API that could cause some headaches with context seemingly not propagating.
       Moving on, we also have some improvements to asynchronous events on default executors or ordering on ProcessAnnotatedType events.
@@ -432,7 +541,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</id>
     <title>Weld 3.1.0.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2019-02-06T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2019/02/06/weld-310Final/" rel="alternate" type="text/html" />
     <author>
@@ -440,7 +549,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.1.0.Final and Weld API 3.1.Final are now up for grabs. What&#8217;s in it for you?
       
       
@@ -685,7 +793,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</id>
     <title>Weld 2.4.8.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-09-26T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/09/26/weld-248Final/" rel="alternate" type="text/html" />
     <author>
@@ -693,7 +801,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2 has entered maintenance mode with its 2.4.7.Final release earlier this year.
       Now we are coming with a maintenance release containing fixes to several nuisances you might have come across.
       
@@ -823,7 +930,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</id>
     <title>Weld 3.0.5.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-07-26T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/07/26/weld-305Final/" rel="alternate" type="text/html" />
     <author>
@@ -831,7 +938,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.0.5.Final is here and hand in hand with it comes Weld API 3.0.SP4.
       And in case you missed it, there was CDI 2.0.SP1 release as well.
       It comes with few security manager related fixes and Weld is of course compliant with it.
@@ -988,7 +1094,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-07-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -996,7 +1102,6 @@
     </author>
     <category term="team"></category>
     <summary>
-      
       I&#8217;m pleased to announce a couple of changes coming to the Weld team.
       
       
@@ -1038,7 +1143,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</id>
     <title>Weld 3.0.4.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-04-26T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/04/26/weld-304Final/" rel="alternate" type="text/html" />
     <author>
@@ -1046,7 +1151,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.0.4.Final is here along with Weld API 3.0.SP3 - make sure you update both.
       
       
@@ -1238,7 +1342,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</id>
     <title>Weld 2.4.7.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-03-20T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/03/20/weld-247Final/" rel="alternate" type="text/html" />
     <author>
@@ -1246,7 +1350,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.4.7.Final is now available.
       It includes multiple important bugfixes, many of them focused around proxy generation and/or invocation.
       
@@ -1422,7 +1525,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</id>
     <title>Weld 3.0.3.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2018-02-09T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2018/02/09/weld-303Final/" rel="alternate" type="text/html" />
     <author>
@@ -1430,7 +1533,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       How do you cook Weld 3.0.3.Final?
       You start with a speck of bug fixes add some proxy generation improvements top it off with adjustments for integrators.
       
@@ -1558,7 +1660,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</id>
     <title>Weld meets JUnit 5</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-12-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/" rel="alternate" type="text/html" />
     <author>
@@ -1568,7 +1670,6 @@
     <category term="testing"></category>
     <category term="weld-se"></category>
     <summary>
-      
       Contents
       
       GAV Coordinates
@@ -1736,7 +1837,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</id>
     <title>Weld 2.4.6.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-12-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/12/18/weld-246Final/" rel="alternate" type="text/html" />
     <author>
@@ -1744,7 +1845,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Time has come for another round of Weld 2.4 bugfix release.
       But that&#8217;s not all - this time there is also new API to go along with this release - Weld API 2.4.SP2.
       
@@ -1916,7 +2016,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</id>
     <title>Weld 3.0.2.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-11-23T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/11/23/weld-302Final/" rel="alternate" type="text/html" />
     <author>
@@ -1924,7 +2024,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.0.2.Final is out and targetting WildFly 11!
       Ever wished you could select events and instances in a truly generic way using just java.lang.reflect.Type?
       Looking for easier way to configure SE container?
@@ -2092,7 +2191,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</id>
     <title>Weld 2.4.5.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-09-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/09/11/weld-245Final/" rel="alternate" type="text/html" />
     <author>
@@ -2100,7 +2199,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       It&#8217;s about time we delivered another regular bugfix release for Weld 2.
       And while the list of fixes isn&#8217;t exhausting, some of them are quite crucial.
       
@@ -2210,7 +2308,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</id>
     <title>Weld 3.0.1.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-08-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/08/25/weld-301Final/" rel="alternate" type="text/html" />
     <author>
@@ -2218,7 +2316,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 3.0.1.Final is out and it brings some bugfixes as well as new version of Weld API - 3.0.SP1.
       Among the new things you can find sweet stuff such as an expansion to CDI 2 BeanConfigurator API or the ability to detect that injected object is Weld proxy.
       Wait, not only detect - you can also use it do get Metadata or even retrieve the actual contextual instance hidden beneath.
@@ -2362,7 +2459,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</id>
     <title>Weld Vert.x Next?</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-08-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/" rel="alternate" type="text/html" />
     <author>
@@ -2371,7 +2468,6 @@
     <category term="vertx"></category>
     <category term="integration"></category>
     <summary>
-      
       Contents
       
       What Is It Good For?
@@ -2408,14 +2504,12 @@
       &lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
       &lt;div id=&quot;toctitle&quot; class=&quot;title&quot;&gt;Contents&lt;/div&gt;
       &lt;ul class=&quot;sectlevel1&quot;&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#_what_is_it_good_for&quot;&gt;What Is It Good For?&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#_what_is_it_good_for&quot;&gt;What Is It Good For?&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_modules&quot;&gt;Modules&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#_how_do_i_use_it_in_my_vert_x_webapp&quot;&gt;How Do I Use It In My Vert.x Webapp?&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#_how_do_i_use_it_in_my_vert_x_webapp&quot;&gt;How Do I Use It In My Vert.x Webapp?&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_1_project_configuration&quot;&gt;1. Project Configuration&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#_2_start_cdi_container&quot;&gt;2. Start CDI Container&lt;/a&gt;&lt;/li&gt;
@@ -2624,7 +2718,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</id>
     <title>Weld 2.4.4.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-06-14T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/06/14/weld-244Final/" rel="alternate" type="text/html" />
     <author>
@@ -2632,7 +2726,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       We have been busy chasing down some annoying little bugs and it&#8217;s high time you got the fruits of those efforts into your hands.
       Say hello to Weld 2.4.4.Final.
       
@@ -2777,14 +2870,13 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</id>
     <title>Tour around Weld 3</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-05-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/" rel="alternate" type="text/html" />
     <author>
       <name>Matej Novotny</name>
     </author>
     <summary>
-      
       Contents
       
       Async Events and Notification Options
@@ -3096,7 +3188,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</id>
     <title>Weld 3.0.0.Final - the first implementation of CDI 2.0!</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-05-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/05/15/weld-300Final/" rel="alternate" type="text/html" />
     <author>
@@ -3104,7 +3196,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       I am very pleased to announce the release of Weld 3.0.0.Final - the first implementation of CDI 2.0!
       I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!
       
@@ -3275,7 +3366,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</id>
     <title>Weld 2.4.3.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-04-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/04/07/weld-243Final/" rel="alternate" type="text/html" />
     <author>
@@ -3283,7 +3374,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Even as we get ever closer to CDI 2.0 final version, we shan&#8217;t forget about our stable 2.4 branch.
       Ladies and gentlemen, here comes the next-in-line 2.4 release - Weld 2.4.3.Final!
       
@@ -3404,7 +3494,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</id>
     <title>Weld 3.0.0.CR2</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-03-03T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/" rel="alternate" type="text/html" />
     <author>
@@ -3412,7 +3502,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       I am very pleased to announce the release of Weld 3.0.0.CR2 (CDI 2.0-PFD).
       The intention is to provide the latest updates so that early adopters and reviewers can work with up-to-date reference implementation during the JCP review process.
       
@@ -3541,7 +3630,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</id>
     <title>Weld 2.4.2.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-02-02T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/02/02/weld-242Final/" rel="alternate" type="text/html" />
     <author>
@@ -3549,7 +3638,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       As you may know, CDI 2 (JSR 365) is in Public Review phase.
       That&#8217;s great news for early adopters.
       But for now, I am very pleased to announce another production-ready version of Weld 2.4 (CDI 1.2).
@@ -3660,7 +3748,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</id>
     <title>Weld Tip 4 - Testing CDI/Weld apps</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-02-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/02/01/tip4-testing/" rel="alternate" type="text/html" />
     <author>
@@ -3668,7 +3756,6 @@
     </author>
     <category term="tips"></category>
     <summary>
-      
       Contents
       
       Using Weld in JUnit tests
@@ -3924,7 +4011,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</id>
     <title>Weld 3.0.0.CR1</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2017-01-23T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/" rel="alternate" type="text/html" />
     <author>
@@ -3932,7 +4019,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       I am very pleased to announce the release of Weld 3.0.0.CR1 (aligned with CDI 2.0-PFD).
       See also the release details.
       Thanks to everyone involved in this release!
@@ -3977,7 +4063,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</id>
     <title>Weld 3.0.0.Beta1</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-12-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -3985,7 +4071,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       I am very pleased to announce the first Beta version of Weld 3.0.0 (CDI 2.0).
       See also the release details.
       Thanks to everyone involved in this release!
@@ -4089,7 +4174,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</id>
     <title>Weld 2.4.1.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-11-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/11/18/weld-241Final/" rel="alternate" type="text/html" />
     <author>
@@ -4097,7 +4182,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       The development of Weld 3 (CDI 2) is underway.
       However, we don&#8217;t forget about the maintenance of the stable branch of Weld!
       So I am very pleased to announce the first bugfix version of Weld 2.4 (CDI 1.2).
@@ -4193,7 +4277,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</id>
     <title>Weld Tip 3 - Boost performance of Weld apps</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-10-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/" rel="alternate" type="text/html" />
     <author>
@@ -4201,7 +4285,6 @@
     </author>
     <category term="tips"></category>
     <summary>
-      
       Contents
       
       Bootstrap
@@ -4235,16 +4318,14 @@
       &lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
       &lt;div id=&quot;toctitle&quot; class=&quot;title&quot;&gt;Contents&lt;/div&gt;
       &lt;ul class=&quot;sectlevel1&quot;&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#_bootstrap&quot;&gt;Bootstrap&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#_bootstrap&quot;&gt;Bootstrap&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_discovery_mode&quot;&gt;Discovery mode&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#_extensions&quot;&gt;Extensions&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#jandex&quot;&gt;Jandex&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#_runtime&quot;&gt;Runtime&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#_runtime&quot;&gt;Runtime&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_identify_problematic_components_easily&quot;&gt;Identify problematic components easily&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#_lazy_initialization_of_bean_instances&quot;&gt;Lazy initialization of bean instances&lt;/a&gt;&lt;/li&gt;
@@ -4295,16 +4376,16 @@
       &lt;div class=&quot;ulist&quot;&gt;
       &lt;ul&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/i&gt;&lt;/span&gt; saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot; /&gt;&lt;/span&gt; saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/i&gt;&lt;/span&gt; speeds up the bootstrap (the container does not have to process all the types, fire events like &lt;code&gt;ProcessBean&lt;/code&gt;, etc.)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot; /&gt;&lt;/span&gt; speeds up the bootstrap (the container does not have to process all the types, fire events like &lt;code&gt;ProcessBean&lt;/code&gt;, etc.)&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt;&lt;/span&gt; does not fire &lt;code&gt;ProcessAnnotatedType&lt;/code&gt; for all types from the bean archive; this breaks some extensions (e.g. &lt;code&gt;MessageBundleExtension&lt;/code&gt; from DeltaSpike)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; does not fire &lt;code&gt;ProcessAnnotatedType&lt;/code&gt; for all types from the bean archive; this breaks some extensions (e.g. &lt;code&gt;MessageBundleExtension&lt;/code&gt; from DeltaSpike)&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt;&lt;/span&gt; does not pick up &lt;code&gt;@javax.inject.Singleton&lt;/code&gt; beans (it’s not a bean defining annotation)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; does not pick up &lt;code&gt;@javax.inject.Singleton&lt;/code&gt; beans (it’s not a bean defining annotation)&lt;/p&gt;
       &lt;/li&gt;
       &lt;/ul&gt;
       &lt;/div&gt;
@@ -4315,7 +4396,7 @@
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       Most Weld-based runtimes allow to suppress implicit bean archives without &lt;code&gt;beans.xml&lt;/code&gt;, i.e. to require the &lt;code&gt;beans.xml&lt;/code&gt; file in bean archives so that it’s not necessary to scan all the parts of the application. See also &lt;a href=&quot;http://weld.cdi-spec.org/documentation/#4&quot;&gt;FAQ&lt;/a&gt;.
@@ -4327,7 +4408,7 @@
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       If it’s not possible to use &lt;code&gt;annotated&lt;/code&gt; mode, you can try a Weld-specific feature to conserve memory used: &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Veto types without bean defining annotation&lt;/a&gt;.
@@ -4371,7 +4452,7 @@
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       If possible, don’t use the extensions which observe all the annotated types from your application, i.e. which defined something like &lt;code&gt;void observe(@Observes ProcessAnnotatedType&amp;lt;?&amp;gt; event)&lt;/code&gt;.
@@ -4387,13 +4468,13 @@
       &lt;p&gt;In some environments (WildFly, Weld SE, and more) Weld can leverage an &quot;offline reflection library&quot;, such as &lt;a href=&quot;https://github.com/wildfly/jandex&quot; target=&quot;&amp;lt;em&amp;gt;blank&quot;&gt;Jandex&lt;/a&gt;, to speed up the scanning process.
       These libraries allow to effectively filter classes &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;which are not beans&lt;/a&gt; and vetoed classes.
       It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
-      As a result Weld does not even have to _load the classes or use &lt;em&gt;reflection API&lt;/em&gt; to detect types which should be ignored.&lt;/p&gt;
+      As a result Weld does not even have to _load the classes&lt;/p&gt; or use &lt;em&gt;reflection API&lt;/em&gt; to detect types which should be ignored.&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;admonitionblock tip&quot;&gt;
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the &lt;a href=&quot;https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ant task&lt;/a&gt;.
@@ -4403,7 +4484,7 @@
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;/div&gt;
-      &lt;/div&gt;
+      
       &lt;div class=&quot;sect1&quot;&gt;
       &lt;h2 id=&quot;_runtime&quot;&gt;Runtime&lt;/h2&gt;
       &lt;div class=&quot;sectionbody&quot;&gt;
@@ -4435,7 +4516,7 @@
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       Having many injection points resolving to normal scoped beans does not necessarily mean additional overhead associated with bean instance creation.
@@ -4476,7 +4557,7 @@
       &lt;table&gt;
       &lt;tr&gt;
       &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
       &lt;/td&gt;
       &lt;td class=&quot;content&quot;&gt;
       Weld’s session context is also initilized lazily and doesn’t require an HTTP session to actually exist until a bean instance must be written (i.e. until a method of a &lt;code&gt;@SessionScoped&lt;/code&gt; bean is invoked).
@@ -4493,13 +4574,13 @@
       &lt;div class=&quot;ulist&quot;&gt;
       &lt;ul&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt;&lt;/span&gt; a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt;&lt;/span&gt; a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt;&lt;/span&gt; a bean which is used in EL expressions&lt;/p&gt;
+      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean which is used in EL expressions&lt;/p&gt;
       &lt;/li&gt;
       &lt;/ul&gt;
       &lt;/div&gt;
@@ -4548,7 +4629,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</id>
     <title>Weld Tip 2 - Development Mode</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-10-07T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/" rel="alternate" type="text/html" />
     <author>
@@ -4556,7 +4637,6 @@
     </author>
     <category term="tips"></category>
     <summary>
-      
       Contents
       
       How to enable the development mode
@@ -4621,8 +4701,7 @@
       &lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
       &lt;div id=&quot;toctitle&quot; class=&quot;title&quot;&gt;Contents&lt;/div&gt;
       &lt;ul class=&quot;sectlevel1&quot;&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#_how_to_enable_the_development_mode&quot;&gt;How to enable the development mode&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#_how_to_enable_the_development_mode&quot;&gt;How to enable the development mode&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_web_application&quot;&gt;Web application&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#_wildfly&quot;&gt;WildFly&lt;/a&gt;&lt;/li&gt;
@@ -4842,7 +4921,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</id>
     <title>Weld Tip 1 - Logging</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-10-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/10/01/tip1-logging/" rel="alternate" type="text/html" />
     <author>
@@ -4850,7 +4929,6 @@
     </author>
     <category term="tips"></category>
     <summary>
-      
       Contents
       
       Motivation
@@ -4895,8 +4973,7 @@
       &lt;li&gt;&lt;a href=&quot;#_motivation&quot;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#under_the_hood&quot;&gt;Under the hood&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#filter&quot;&gt;Set the log level and use categories to filter messages&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;
-      &lt;a href=&quot;#bootstrap&quot;&gt;Monitoring bootstrap&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#bootstrap&quot;&gt;Monitoring bootstrap&lt;/a&gt;
       &lt;ul class=&quot;sectlevel2&quot;&gt;
       &lt;li&gt;&lt;a href=&quot;#_registered_beans&quot;&gt;Registered beans&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#_actions_performed_by_extensions&quot;&gt;Actions performed by extensions&lt;/a&gt;&lt;/li&gt;
@@ -5078,7 +5155,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</id>
     <title>Weld 2.4.0.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-09-13T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/09/13/weld-240Final/" rel="alternate" type="text/html" />
     <author>
@@ -5086,7 +5163,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       I am very pleased to announce the first stable version of Weld 2.4 (CDI 1.2).
       See also the release details.
       From now on, 2.4 is the current stable version of Weld and 2.3 is not actively developed anymore.
@@ -5194,7 +5270,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</id>
     <title>First release candidate of Weld 2.4</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-08-19T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/" rel="alternate" type="text/html" />
     <author>
@@ -5202,7 +5278,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Contents
       
       Removed dependency on com.google.guava:guava
@@ -5254,8 +5329,7 @@
       Thanks to everyone involved in this release!&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_removed_dependency_on_com_google_guavaguava&quot;&gt;Removed dependency on &lt;code&gt;com.google.guava:guava&lt;/code&gt;
-      &lt;/h2&gt;
+      &lt;h2 id=&quot;_removed_dependency_on_com_google_guavaguava&quot;&gt;Removed dependency on &lt;code&gt;com.google.guava:guava&lt;/code&gt;&lt;/h2&gt;
       &lt;div class=&quot;sectionbody&quot;&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Weld does not depend on &lt;code&gt;com.google.guava:guava&lt;/code&gt; anymore (actually, Weld 3 does not depend on guava since 3.0.0.Alpha2).
@@ -5265,8 +5339,7 @@
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_enhanced_version_of_javax_enterprise_inject_instance&quot;&gt;Enhanced version of &lt;code&gt;javax.enterprise.inject.Instance&lt;/code&gt;
-      &lt;/h2&gt;
+      &lt;h2 id=&quot;_enhanced_version_of_javax_enterprise_inject_instance&quot;&gt;Enhanced version of &lt;code&gt;javax.enterprise.inject.Instance&lt;/code&gt;&lt;/h2&gt;
       &lt;div class=&quot;sectionbody&quot;&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Weld now provides &lt;code&gt;org.jboss.weld.inject.WeldInstance&lt;/code&gt; - an enhanced version of &lt;code&gt;javax.enterprise.inject.Instance&lt;/code&gt;.
@@ -5305,8 +5378,7 @@
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_activaterequestscope_moved_to_weld_api&quot;&gt;
-      &lt;code&gt;@ActivateRequestScope&lt;/code&gt; moved to Weld API&lt;/h2&gt;
+      &lt;h2 id=&quot;_activaterequestscope_moved_to_weld_api&quot;&gt;&lt;code&gt;@ActivateRequestScope&lt;/code&gt; moved to Weld API&lt;/h2&gt;
       &lt;div class=&quot;sectionbody&quot;&gt;
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;This interceptor binding can be used to activate the request scope within a business method invocation.
@@ -5409,7 +5481,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</id>
     <title>Arquillian container Weld 2.0.0.Beta1 released!</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-07-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/" rel="alternate" type="text/html" />
     <author>
@@ -5418,7 +5490,6 @@
     <category term="arquillian"></category>
     <category term="testing"></category>
     <summary>
-      
       We are pleased to announce a release of embedded Arquillian container adapter for Weld.
       This container has deserved some love for really long time.
       We tried to refactor it and introduced new master branch which now corresponds to the 2.0.0.x version stream.
@@ -5464,7 +5535,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</id>
     <title>Weld 2.3.5.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-07-01T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/07/01/weld-235Final/" rel="alternate" type="text/html" />
     <author>
@@ -5473,7 +5544,6 @@
     <category term="release"></category>
     <category term="plans"></category>
     <summary>
-      
       The next version of the stable 2.3 branch has been released!
       See also the release details.
       Thanks to everyone involved in this release!
@@ -5605,7 +5675,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</id>
     <title>Update on weld-vertx</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-06-21T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -5614,7 +5684,6 @@
     <category term="vertx"></category>
     <category term="integration"></category>
     <summary>
-      
       This is a follow-up on the article Weld meets Vert.x.
       Weld team has just released the first alpha version of weld-vertx (artifacts are available in Maven Central).
       Since the last time we talked about weld-vertx two new features were added.
@@ -5707,7 +5776,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</id>
     <title>Programmatic lookup improvements</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-05-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/" rel="alternate" type="text/html" />
     <author>
@@ -5716,7 +5785,6 @@
     <category term="api"></category>
     <category term="draft"></category>
     <summary>
-      
       javax.enterprise.inject.Instance is sometimes invaluable companion.
       For example, Instance allows you to handle unsatisfied and ambiguous dependencies gracefully.
       E.g. it&#8217;s possible to avoid unnecessary deployment problems:
@@ -5924,7 +5992,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</id>
     <title>Weld 3.0.0.Alpha16</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-04-28T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/" rel="alternate" type="text/html" />
     <author>
@@ -5933,7 +6001,6 @@
     <category term="release"></category>
     <category term="cdi2"></category>
     <summary>
-      
       The next experimental Weld version has been released!
       See also the release details.
       Thanks to everyone involved in this release!
@@ -6129,7 +6196,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</id>
     <title>Weld 2.3.4.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-04-22T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/22/weld-234Final/" rel="alternate" type="text/html" />
     <author>
@@ -6137,7 +6204,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.3.4.Final the next version of the stable 2.3 branch has been released!
       See also the release details.
       Thanks to everyone involved in this release!
@@ -6255,7 +6321,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</id>
     <title>Weld meets Vert.x</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-04-11T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/" rel="alternate" type="text/html" />
     <author>
@@ -6264,7 +6330,6 @@
     <category term="vertx"></category>
     <category term="integration"></category>
     <summary>
-      
       Vert.x defines itself as "a toolkit for building reactive applications on the JVM".
       Sounds cool and trendy.
       Weld, on the other hand, comes from the Java EE world, based on standards and traditional concepts.
@@ -6365,7 +6430,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</id>
     <title>Weld 2.3.3.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-02-12T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/12/weld-233Final/" rel="alternate" type="text/html" />
     <author>
@@ -6373,7 +6438,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
       See also the release details.
       Thanks to everyone involved in this release!
@@ -6484,7 +6548,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</id>
     <title>Weld SE and synthetic container lifecycle event observers</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-02-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/" rel="alternate" type="text/html" />
     <author>
@@ -6493,7 +6557,6 @@
     <category term="api"></category>
     <category term="draft"></category>
     <summary>
-      
       Last week Weld 3.0.0.Alpha15 was released and so it&#8217;s time to reveal the features that should go into the next experimental release.
       The main goal of Weld 3.0.0.Alpha16 is to reflect the output of CDI-558.
       However, we would also like to continue to deliver experimental prototypes so that users could test a new functionality (that we find interesting and useful) and the CDI EG could eventually include this into CDI 2.0.
@@ -6548,7 +6611,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</id>
     <title>Weld 3.0.0.Alpha15</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2016-02-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/" rel="alternate" type="text/html" />
     <author>
@@ -6557,7 +6620,6 @@
     <category term="release"></category>
     <category term="cdi2"></category>
     <summary>
-      
       Weld 3.0.0.Alpha15 the next experimental Weld version has been released.
       See also the release details.
       
@@ -6639,7 +6701,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</id>
     <title>Weld 2.3.2.Final</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-12-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/10/weld-232Final/" rel="alternate" type="text/html" />
     <author>
@@ -6647,7 +6709,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.3.2.Final the last version for this year has been released! It is a bug-fixing release with 15 issues resolved. See also the release details. Thanks to everyone involved in this release!
       
       
@@ -6735,7 +6796,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</id>
     <title>Weld 3.0.0.Alpha14</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-12-04T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/" rel="alternate" type="text/html" />
     <author>
@@ -6744,7 +6805,6 @@
     <category term="release"></category>
     <category term="cdi2"></category>
     <summary>
-      
       Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
       It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
       Moreover, this release also contains quite a lot of enhancements and bugfixes. See also the release details.
@@ -6785,7 +6845,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</id>
     <title>Arquillian container SE 1.0.0.CR1 released!</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-11-25T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/" rel="alternate" type="text/html" />
     <author>
@@ -6794,7 +6854,6 @@
     <category term="arquillian"></category>
     <category term="testing"></category>
     <summary>
-      
       We are pleased to announce a new release of Arquillian container SE.
       If you are looking for a reliable way to test your application in Java SE then this is the right tool to try out!
       
@@ -6842,7 +6901,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/</id>
     <title>Weld development mode and JMX support</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-11-10T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/" rel="alternate" type="text/html" />
     <author>
@@ -6851,7 +6910,6 @@
     <category term="probe"></category>
     <category term="jmx"></category>
     <summary>
-      
       Weld comes with a special mode for application development.
       When enabled, some interesting data are collected so that it&#8217;s possible to inspect and monitor application components at runtime (see also the demo application hosted on OpenShift).
       Data in JSON format are available through the REST API,  eventually through the MXBean of name org.jboss.weld.probe:type=JsonData,context=ID where ID should be replaced with an identifier of an application.
@@ -7005,7 +7063,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/</id>
     <title>Weld 2.3.1.Final arrives...</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-10-27T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/10/27/weld-231Final/" rel="alternate" type="text/html" />
     <author>
@@ -7013,7 +7071,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.3.1.Final has been released! The delivery: a few killed bugs, couple of Weld SE enhancements and several Weld Probe improvements.
       
       
@@ -7052,8 +7109,7 @@
       &#91; CDI 1.2 API &#93;
       &#91; Download &#93;
       &#91; Documentation &#93;
-      &#91; Release notes &#93;
-      ...
+      &#91; Release notes &#93;...
     </summary>
     <content type="html">
       &lt;div class=&quot;paragraph&quot;&gt;
@@ -7102,7 +7158,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/</id>
     <title>Weld 2.3.0.Final released!</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-09-18T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/18/weld-230Final/" rel="alternate" type="text/html" />
     <author>
@@ -7110,7 +7166,6 @@
     </author>
     <category term="release"></category>
     <summary>
-      
       Weld 2.3.0.Final has been just released! From now on, 2.3 is the current stable version of Weld and 2.2 is not actively developed anymore - i.e. no new features are added, only bugs will be fixed. Weld 2.3 will remain a CDI 1.2 implementation. We are incrementing the minor version due to several new features added. Weld 2.3 is also included in WildFly 10 application server.
       
       
@@ -7173,7 +7228,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</id>
     <title>JDK 8u60 reveals a problem in Weld</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-09-15T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/" rel="alternate" type="text/html" />
     <author>
@@ -7182,7 +7237,6 @@
     <category term="bug"></category>
     <category term="jdk"></category>
     <summary>
-      
       Recently released JDK 8u60 has revealed a problem in Weld where not all synthetic members were ignored correctly.
       This has been fixed in 2.2.16.Final, 2.3.0.CR2 and 3.0.0.Alpha14 (not released yet).
       However, if not using a lambda referencing an event/disposed parameter inside an observer/disposer method, your application is most probably not affected.
@@ -7258,7 +7312,7 @@
   <entry>
     <id>http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
+    <updated>2020-04-07T15:49:04+00:00</updated>
     <published>2015-09-08T00:00:00+00:00</published>
     <link href="http://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -7266,7 +7320,6 @@
     </author>
     <category term="team"></category>
     <summary>
-      
       I am pleased to announce a couple of changes coming to the Weld team:
       
       
@@ -7296,229 +7349,6 @@
       &lt;div class=&quot;paragraph&quot;&gt;
       &lt;p&gt;Last but not least, Matěj Novotný is joining the team as a quality engineer.
       He’s going to work on expanding our testsuites and making sure Weld releases do not break anything :-)&lt;/p&gt;
-      &lt;/div&gt;
-    </content>
-  </entry>
-  <entry>
-    <id>http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</id>
-    <title>Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!</title>
-    <updated>2019-12-04T14:31:16+00:00</updated>
-    <published>2015-08-05T00:00:00+00:00</published>
-    <link href="http://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/" rel="alternate" type="text/html" />
-    <author>
-      <name>Martin Kouba</name>
-    </author>
-    <category term="release"></category>
-    <category term="cdi2"></category>
-    <summary>
-      
-      Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it&#8217;s a reference implementation of CDI 2.0 Early Draft (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: CDI 2.0 Early Draft Review 1 released.
-      
-      
-      Bootstrapping a CDI container in Java SE
-      
-      
-      Starting a CDI container is now really that easy:
-      
-      
-      
-      public static void main(String... args) {
-          try(CDI&lt;Object&gt; cdi = CDI.getCDIProvider().initialize()) {
-              ComputingService service = cdi.select(ComputingService.class).get();
-              service.compute();
-          }
-      }
-      
-      
-      
-      javax.enterprise.inject.spi.CDI now implements AutoCloseable and can...
-    </summary>
-    <content type="html">
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld 3.0.0.Alpha12 has been released. Compared to previous alpha releases this is an important milestone - it’s a reference implementation of &lt;a href=&quot;http://docs.jboss.org/cdi/spec/2.0.EDR1/cdi-spec.html&quot;&gt;CDI 2.0 Early Draft&lt;/a&gt; (EDR1). You can read more about CDI 2.0 EDR1 on the official blog: &lt;a href=&quot;http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/&quot;&gt;CDI 2.0 Early Draft Review 1 released&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_bootstrapping_a_cdi_container_in_java_se&quot;&gt;Bootstrapping a CDI container in Java SE&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Starting a CDI container is now really that easy:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java hljs&quot; data-lang=&quot;java&quot;&gt;public static void main(String... args) {
-          try(CDI&amp;lt;Object&amp;gt; cdi = CDI.getCDIProvider().initialize()) {
-              ComputingService service = cdi.select(ComputingService.class).get();
-              service.compute();
-          }
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;code&gt;javax.enterprise.inject.spi.CDI&lt;/code&gt; now implements &lt;code&gt;AutoCloseable&lt;/code&gt; and can therefore be used in a &lt;code&gt;try-with-resources&lt;/code&gt; block.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Note that the specification of the bean discovery process in Java SE is not finished yet. Therefore, bean archives which don’t contain a beans.xml file are not supported. The main reason is that we don’t want to implement a feature which is being discussed and will likely undergo some important changes. Nevertheless, the feature will be implemented in one of the next alpha versions.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_weld_se_bootstrap_api&quot;&gt;Weld SE bootstrap API&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;How does it compare to Weld SE bootstrap API? Weld has provided support for the Java SE environment for a long time. Recently, the &lt;code&gt;org.jboss.weld.environment.se.Weld&lt;/code&gt; class was turned into a powerful builder which allows to configure the Weld container before it is initialized.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Typical usage of the Weld SE API looks like this:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java hljs&quot; data-lang=&quot;java&quot;&gt;try (WeldContainer container = new Weld().initialize()) {
-          ComputingService service = container.select(ComputingService.class).get();
-          service.compute();
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;This looks very similar to CDI SE, right? However, there are several advanced feratures available:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;automatic scanning can be disabled, classes or packages can be selected explicitly&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;code&gt;WeldContainer container = new Weld().disableDiscovery().beanClasses(Foo.class, Bar.class).alternatives(Bar.class).interceptors(FooInterceptor.class).initialize();&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;WeldContainer allows to fire events easily&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;code&gt;container.event().select(Bar.class).fire(new Bar());&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Weld-specific &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration&quot;&gt;configuration options&lt;/a&gt; can be specified using the builder&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;it is possible to start multiple independent Weld instances (specification does not require this)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;See also &lt;a href=&quot;http://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/&quot;&gt;Weld 3.0.0.Alpha8 announcement&lt;/a&gt; for more information.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_asynchronous_events&quot;&gt;Asynchronous Events&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;An experimental support of asynchronous events is implemented in Weld since 3.0.0.Alpha3. However, in this release the API was aligned with CDI 2.0 EDR1:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java hljs&quot; data-lang=&quot;java&quot;&gt;class OrderProcessor {
-      
-          @Inject Event&amp;lt;Order&amp;gt; orderEvent;
-      
-          public void process(Order order) {
-              orderEvent.fireAsync(order).thenAccept((o)-&amp;gt;System.out.println(&quot;Asynchronous processing finished: &quot; + o.getId()));
-          }
-      
-          public void processingOrder(@Observes Order event) {
-              // This observer is notified synchronously, before the fireAsync() method returns
-          }
-      
-          public void asyncProcessingOrder(@ObservesAsync Order event) {
-              // This observer is notified asynchronously, in a different thread
-          }
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;There are few important things to notice:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;the event was triggered with &lt;code&gt;fireAsync()&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;the asynchronous observer is defined by &lt;code&gt;@ObservesAsync&lt;/code&gt;&lt;/p&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;this is required because of backward compatibilty with previous versions of CDI, see also &lt;a href=&quot;http://www.cdi-spec.org/news/2015/07/03/CDI-2_0-EDR1-released/#_why_this_double_activation_is_needed&quot;&gt;Why this double activation is needed?&lt;/a&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;synchronous observers defined by &lt;code&gt;@Observes&lt;/code&gt; are also notified!&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;To sum it up:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;table class=&quot;tableblock frame-all grid-all stretch&quot;&gt;
-      &lt;colgroup&gt;
-      &lt;col style=&quot;width: 33.3333%;&quot;&gt;
-      &lt;col style=&quot;width: 33.3333%;&quot;&gt;
-      &lt;col style=&quot;width: 33.3334%;&quot;&gt;
-      &lt;/colgroup&gt;
-      &lt;thead&gt;
-      &lt;tr&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Event method&lt;/th&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;
-      &lt;code&gt;@Observes&lt;/code&gt; notified&lt;/th&gt;
-      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;
-      &lt;code&gt;@ObservesAsync&lt;/code&gt; notified&lt;/th&gt;
-      &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;code&gt;fire()&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in the same thread&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;no&lt;/p&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;code&gt;fireAsync()&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in the same thread&lt;/p&gt;&lt;/td&gt;
-      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;yes, in a different thread&lt;/p&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/tbody&gt;
-      &lt;/table&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_observers_spi_changes&quot;&gt;Observers SPI Changes&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;code&gt;javax.enterprise.inject.spi.ObserverMethod&lt;/code&gt; now extends &lt;code&gt;javax.enterprise.inject.spi.Prioritized&lt;/code&gt; and overrides the &lt;code&gt;ObserverMethod.getPriority()&lt;/code&gt; method which is used to determine the notification order in which the event observer methods are invoked. &lt;code&gt;Prioritized&lt;/code&gt; interface is currently only used for observers. However, the Weld team is working on a prototype where &lt;code&gt;Prioritized&lt;/code&gt; can be used to globally select/enable custom alternative beans, interceptors and decorators, see also &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2000&quot;&gt;WELD-2000&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Furthermore, &lt;code&gt;ObserverMethod.isAsync()&lt;/code&gt; method was added to determine whether an observer method is asynchronous or not.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_wildfly_patch&quot;&gt;WildFly Patch&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;As usual, a &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip&quot;&gt;patch for WildFly&lt;/a&gt; is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is &lt;strong&gt;WildFly 10.0.0.Alpha6&lt;/strong&gt;.  If you’re not familiar with patching WildFly, check &lt;a href=&quot;http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html&quot;&gt;Markus’s tutorial&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html&quot;&gt;Experimental API documentation&lt;/a&gt; ]
-      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12327471&quot;&gt;Release notes&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/weld-3.0.0.Alpha12.zip&quot;&gt;Distribution&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://download.jboss.org/weld/3.0.0.Alpha12/wildfly-10.0.0.Alpha6-weld-3.0.0.Alpha12-patch.zip&quot;&gt;Patch for Wildfly 10 Alpha&lt;/a&gt;
-      ]&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
       &lt;/div&gt;
     </content>
   </entry>

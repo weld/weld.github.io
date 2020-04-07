@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: Weld 3.1.2.Final
+      Weld: Weld 3.1.4.Final
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Weld 3.1.2.Final released" name="description">
+    <meta content="Weld 3.1.4.Final released" name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -137,13 +137,13 @@
             <div class="col-md-12">
               <div class="post">
                 <h1>
-                  Weld 3.1.2.Final
+                  Weld 3.1.4.Final
                   <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
                     <i class="fa fa-rss"></i>
                   </a>
                 </h1>
                 <div class="news-date news-boxed">
-                  2019-8-6
+                  2020-3-28
                   &nbsp;
                   <span class="tags">
                     <i class="fa fa-tags"></i>
@@ -156,9 +156,8 @@
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld 3.1.2.Final is coming along with Weld API 3.1.SP1. It is another small release bringing in mainly bugfixes.
-                  One notable thing is that thanks to guys from Jetty, Weld 3.1.2.Final is ready to operate with lastest Jetty 9 as well as upcoming Jetty 10.
-                  Other than that we have tried to address some dodgy issues with possible race conditions and leaks - see for yourself!</p>
+                  <p>New Weld version is here, say hello to Weld 3.1.4.Final.
+                  There are only few issues included in this release, so let&#8217;s take a look at them.</p>
                   </div>
                   <div class="paragraph">
                   <p>Fixes and improvements:</p>
@@ -166,80 +165,45 @@
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Weld API/SPI</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed possible leak in Jandex index through <code>SimpleServiceRegistry</code> (<a href="https://issues.jboss.org/browse/WELD-2592" target="_blank" rel="noopener">WELD-2592</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This could only happen on application server supporting Jandex index and was only noticeable with a lot of application deployed at the same time</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
                   <p>Weld Core</p>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Fixed a case where some context event notification wouldn&#8217;t trigger observers due to race condition (<a href="https://issues.jboss.org/browse/WELD-2557" target="_blank" rel="noopener">WELD-2557</a>)</p>
+                  <p><code>ObserverMethodConfigurator</code> initialized by reading an <code>AnnotatedType</code> previously didn&#8217;t set the method as async when it should (<a href="https://issues.jboss.org/browse/WELD-2609" target="_blank" rel="noopener">WELD-2609</a>)</p>
                   </li>
                   <li>
-                  <p>Fixed rare <code>IllegalAccessError</code> problem during interception when methods had (package) private parameters from different methods (<a href="https://issues.jboss.org/browse/WELD-2583" target="_blank" rel="noopener">WELD-2583</a>)</p>
+                  <p>Fixed observability of <code>@Destroyed</code> events for Conversation context when there are multiple WARs deployed (<a href="https://issues.jboss.org/browse/WELD-2610" target="_blank" rel="noopener">WELD-2610</a>)</p>
+                  </li>
+                  <li>
+                  <p>After a failed attempt to restore a conversation, Weld could omit firing <code>@Initialized</code> event; this is now working properly (<a href="https://issues.jboss.org/browse/WELD-2611" target="_blank" rel="noopener">WELD-2611</a>)</p>
+                  </li>
+                  <li>
+                  <p>Cleanup of stored conversations required unnecessarily many locks simultaneously which could lead to deadlock on some servers (<a href="https://issues.jboss.org/browse/WELD-2612" target="_blank" rel="noopener">WELD-2612</a>)</p>
+                  </li>
+                  <li>
+                  <p>Removed <code>Unsafe</code> usage as means of cracking open <code>ClassLoader</code> for proxy definition (<a href="https://issues.jboss.org/browse/WELD-2613" target="_blank" rel="noopener">WELD-2613</a>)</p>
                   <div class="ulist">
                   <ul>
                   <li>
-                  <p>Such methods are now automatically ignored when creating intercepted subclasses</p>
+                  <p>This only helped to hide <code>IllegalAccess</code> warning on JDK 11 (which will now show again)</p>
+                  </li>
+                  <li>
+                  <p>Starting with JDK 12 and newer, <code>Unsafe</code> doesn&#8217;t work at all making this solution obsolete</p>
+                  </li>
+                  <li>
+                  <p>We&#8217;ve created (<a href="https://issues.jboss.org/browse/WELD-2619" target="_blank" rel="noopener">WELD-2619</a>) in order to search for better solution that would work across all JDK versions</p>
                   </li>
                   </ul>
                   </div>
                   </li>
                   <li>
-                  <p>Attempted to fix a race condition that could happen when trying to concurrently initiate conversation ID generator (<a href="https://issues.jboss.org/browse/WELD-2585" target="_blank" rel="noopener">WELD-2585</a>)</p>
+                  <p>Using <code>HttpSessionContext.destroy()</code> could sometimes not destroy the instance if it wasn&#8217;t used in current request (<a href="https://issues.jboss.org/browse/WELD-2615" target="_blank" rel="noopener">WELD-2615</a>)</p>
                   </li>
                   <li>
-                  <p>Weld now correctly disregards synthetic methods when considering proxyability (<a href="https://issues.jboss.org/browse/WELD-2586" target="_blank" rel="noopener">WELD-2586</a>)</p>
+                  <p>Fix OSGi versions for EE dependencies (<a href="https://issues.jboss.org/browse/WELD-2616" target="_blank" rel="noopener">WELD-2616</a>)</p>
                   </li>
                   <li>
-                  <p>Correction to <code>beans.xml</code> parses when using Weld namespace (<a href="https://issues.jboss.org/browse/WELD-2591" target="_blank" rel="noopener">WELD-2591</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Improved classpath scanning to account for manifest file entries (<a href="https://issues.jboss.org/browse/WELD-2589" target="_blank" rel="noopener">WELD-2589</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>javax.enterprise.inject.scan.implicit=true</code> and <code>org.jboss.weld.se.archive.isolation=false</code> now work together correctly (<a href="https://issues.jboss.org/browse/WELD-2590" target="_blank" rel="noopener">WELD-2590</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Update Weld to new Jetty integration model prior to Jetty release (<a href="https://issues.jboss.org/browse/WELD-2587" target="_blank" rel="noopener">WELD-2587</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld 3.1.2.Final is ready to roll with to-be-released Jetty 9.4.x as well as Jetty 10.x</p>
-                  </li>
-                  <li>
-                  <p>Of course we also kept legacy support in place, so even older version will still run</p>
-                  </li>
-                  </ul>
-                  </div>
+                  <p>Properly close stream after reading <code>weld.properties</code> (<a href="https://issues.jboss.org/browse/WELD-2606" target="_blank" rel="noopener">WELD-2606</a>)</p>
                   </li>
                   </ul>
                   </div>
@@ -250,15 +214,15 @@
                   <h2 id="_wildfly_patch">WildFly Patch</h2>
                   <div class="sectionbody">
                   <div class="paragraph">
-                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.2.Final/wildfly-17.0.1.Final-weld-3.1.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 17.0.1.Final</a> is available.</p>
+                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.4.Final/wildfly-19.0.0.Final-weld-3.1.4.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 19.0.0.Final</a> is available.</p>
                   </div>
                   <div class="paragraph">
                   <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
                   </div>
                   <div class="paragraph">
                   <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.2.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12341958" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12343306" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
@@ -267,9 +231,9 @@
                             <div id="disqus_thread"></div>
                             <script type="text/javascript">
                             var disqus_shortname = 'weld-cdi';
-                            var disqus_url = "http://weld.cdi-spec.org/news/2019/08/06/weld-312Final/";
+                            var disqus_url = "http://weld.cdi-spec.org/news/2020/03/28/weld-314Final/";
                             var disqus_developer = null;
-                            var disqus_identifier = "ded50c3956cd39c2aeba372a2da06cb878d7f5bd";
+                            var disqus_identifier = "6f7e9b8aa8558b1569b1bd14a117127a1c5ec315";
                             (function() {
                               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
                               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
