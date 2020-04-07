@@ -8,7 +8,7 @@ layout: base
       %i.fa.fa-rss
   %div.news-date.news-boxed
     #{page.date.year}-#{page.date.month}-#{page.date.day}
-    - if (page.tags.length > 0)
+    - if (page.tags != nil && page.tags.length > 0)
       &nbsp;
       %span.tags
         %i.fa.fa-tags
