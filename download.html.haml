@@ -86,6 +86,8 @@ desc: Download links to Weld distribution bundles, Weld jars and CDI API jars
           1.2
         - if release["version"].index("3.0") == 0 || release["version"].index("3.1") == 0
           2.0
+        - if release["version"].index("4.0") == 0 || release["version"].index("4.1") == 0
+          3.0
       %td
         =release["date"]
       %td
@@ -108,9 +110,3 @@ desc: Download links to Weld distribution bundles, Weld jars and CDI API jars
 %a{ :href=>"/dist" }
   %i.fa.fa-download
   &nbsp;Binary distribution archive
-
-%h2 Snapshots
-%p
-  Nightly snapshots are produced regularly by our continuous integration server and available from the
-  %a{:href=>"https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/weld/"}
-    snapshots repository.
