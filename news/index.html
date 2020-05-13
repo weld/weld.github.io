@@ -143,6 +143,136 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2020/05/13/weld-jakarta-ee-9/">Weld 4 and Jakarta EE 9</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2020-5-13
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                    ,
+                    <a href="/news/tags/jakarta">jakarta</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="sect1">
+                  <h2 id="_weld_meets_jakarta_ee_9">Weld Meets Jakarta EE 9</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Most of you surely know that Jakarta EE 9 is on the horizon; slowly but steadily it is making its way into Java world.
+                  And we are not far behind, in fact we have just released <strong>Weld 4.0.0.Alpha2</strong> which is an implementation of CDI 3.0!
+                  You heard that right, in Jakarta EE 9, all APIs have bumped their major versions; CDI turned 3.0 and so Weld version implementing that became 4.0.
+                  Hand in hand with it goes Weld API 4.0.Alpha1, also adapted to EE 9.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Some basic information about the release:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>All the bits should be available in Maven Central at this point.</p>
+                  </li>
+                  <li>
+                  <p>There is also <code>.zip</code> distribution as usual, see <a href="/download/">download page</a> for more information.</p>
+                  </li>
+                  <li>
+                  <p>No WildFly patch is provided this time around because WildFly does not yet have an EE 9 branch.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_working_and_broken_parts">Working and Broken Parts</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>The only, yet considerably huge, change in APIs is (or at least should be) the swap from <code>javax</code> to <code>jakarta</code> packages.
+                  This comes with bunch of problems, for instance there is no EE server that could run on EE 9 with new packages yet.
+                  GlassFish is going to be first and they are working on integrating all the EE 9 reference implementations.
+                  There are some chicken-egg problems such as Weld requiring EE 9 server to execute CDI TCKs, but at the same time there is GlassFish needing Weld 4.0 to start operating with EE 9 in the first place.
+                  For this reason, our first few 4.0 releases are going to be marked as <code>Alpha</code> or <code>Beta</code>, they will not be fully tested and might be missing some parts that previous releases contained.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Here&#8217;s what&#8217;s working:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>All testing that doesn&#8217;t require full EE container</p>
+                  </li>
+                  <li>
+                  <p>Weld core implementation and API works as usual and is fully released</p>
+                  </li>
+                  <li>
+                  <p>Weld examples work only partially, all those needing EE container have nowhere to be deployed</p>
+                  </li>
+                  <li>
+                  <p>Weld SE works fully</p>
+                  </li>
+                  <li>
+                  <p>Weld Probe should work so long as you are in SE</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>And here are the missing parts:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>We cannot execute CDI TCKs until there are stable GlassFish build</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>We should be able to renew this pretty soon</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other in-container tests that we have (running on WildFly) are now disabled</p>
+                  </li>
+                  <li>
+                  <p>Servlet parts of Weld are <strong>completely excluded</strong> from early releases</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This is because there is currently no servlet working on EE 9, therefore we have nothing to adapt our internals to, yet</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>One big and sadly unanswered question is that of backward compatibility.
+                  In Jakarta itself, there seems to be a consensus of EE 9 not being backward compatible with EE 8.
+                  Weld 4 on its own will not work with applications written for Java EE 8 - basically with anything requiring old <code>javax</code> namespace packages.
+                  However, EE servers will be forced to adapt somehow, so I expect a tooling might eventually emerge that will allow to run legacy applications on newer servers.
+                  But that is yet to be seen and surely no sooner than after EE 9 release when other big servers start to adopt it.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_development_plans">Development Plans</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Just to make things clear - we are planning on actively developing both, Weld 3 and Weld 4.
+                  We understand that EE server will need to take their time switching to Jakarta EE 9, all the more due to the aforementioned circumstances around backward compatibility.
+                  Therefore, both our versions will get their share of updates and bug fixes in the future!</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2020/03/28/weld-314Final/">Weld 3.1.4.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -554,248 +684,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/3.1.1.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12340657" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2019/02/06/weld-310Final/">Weld 3.1.0.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2019-2-6
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.1.0.Final and Weld API 3.1.Final are now up for grabs. What&#8217;s in it for you?</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>There are quite a few new things in the mix - <code>InterceptionFactory</code> improvements, new API clases and methods, improvements to class defining for integrators in preparation for JDK 12.
-                  We now also support CDI context propagation between threads; there is a whole new SPI that allows users and/or frameworks to propagate request, session or conversation contexts.
-                  Last but no least, there are bug fixes, so let&#8217;s get right into it!</p>
-                  </div>
-                  <div class="admonitionblock note">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Note</div>
-                  </td>
-                  <td class="content">
-                  Integrators (WildFly, Liberty, GlassFish, &#8230;&#8203;) will have to adjust to the changes made in SPI. Those are, most notably, the removal of long deprecated methods (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank" rel="noopener">WELD-2558</a>) and reworked <code>ProxyServices</code> which now delegate class defining responsibility to the integrator (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank" rel="noopener">WELD-2556</a>). This is crucial for Weld to operate on newer JDKs (12) and while Weld will work with the old approach for now, we will eventually fully swap to this new SPI.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld API/SPI</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Added API to allow for CDI context propagation between threads (<a href="https://issues.jboss.org/browse/WELD-2497" target="_blank" rel="noopener">WELD-2497</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>New API class was introduced (<code>WeldAlterableContext</code>), this class offers methods to manipulate context state</p>
-                  </li>
-                  <li>
-                  <p>You can now propagate <code>Request</code>, <code>Session</code> and <code>Conversation</code> contexts between threads as they all implement <code>WeldAlterableContext</code></p>
-                  </li>
-                  <li>
-                  <p>This comes with certain limitations and is mostly designed for frameworks which would do this for you (such as MicroProfile Concurrency) but anyone can use it</p>
-                  </li>
-                  <li>
-                  <p>For more information, please glance at <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_propagating_built_in_contexts">this part of Weld documentation</a></p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p><code>WeldManager</code>, providing extra methods over what <code>BeanManager</code> offers, is now an injectable bean (<a href="https://issues.jboss.org/browse/WELD-2538" target="_blank" rel="noopener">WELD-2538</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldManager</code> now offers new util methods allowing you to easily grab active contexts</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This is mainly for the purpose of context propagation as it also allows you to grab all active contexts that support it</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p><code>WeldManager</code> can now be used to check if any given context is active without having to care about exceptions (<a href="https://issues.jboss.org/browse/WELD-2537" target="_blank" rel="noopener">WELD-2537</a>)</p>
-                  </li>
-                  <li>
-                  <p>Added new SPI for class defining, deprecated old approach in <code>ProxyServices</code> (<a href="https://issues.jboss.org/browse/WELD-2556" target="_blank" rel="noopener">WELD-2556</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Integrators will have to implement this new API to be able to operate on JDK 12+</p>
-                  </li>
-                  <li>
-                  <p>Weld now delegates class defining to integrators in order to avoid having to crack open <code>ClassLoader</code> methods</p>
-                  </li>
-                  <li>
-                  <p>Previously, integrators provided <code>ClassLoader</code> instance which Weld then used to invoke <code>defineClass()</code> methods</p>
-                  </li>
-                  <li>
-                  <p>We now ask integrators to invoke those methods themselves while providing them with all the necessary bits for doing so</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Remove deprecated parts of API/SPI (<a href="https://issues.jboss.org/browse/WELD-2558" target="_blank" rel="noopener">WELD-2558</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Lots of unused and long deprecated methods were removed, should have no effect on code as those weren&#8217;t used anyway (most of them since Weld 3.0.0)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Core</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld will now log a <code>WARNING</code> if you try to register an invalid qualifier (<a href="https://issues.jboss.org/browse/WELD-2522" target="_blank" rel="noopener">WELD-2522</a>)</p>
-                  </li>
-                  <li>
-                  <p>You can now use <code>InterceptionFactory</code> with an interface as a parameter (<a href="https://issues.jboss.org/browse/WELD-2550" target="_blank" rel="noopener">WELD-2550</a>, <a href="https://issues.jboss.org/browse/WELD-2533" target="_blank" rel="noopener">WELD-2533</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This means the proxy class will be based off an interface which is by definition always proxyable</p>
-                  </li>
-                  <li>
-                  <p>You can therefore even supply an unproxyable implementation and it will still work</p>
-                  </li>
-                  <li>
-                  <p>Note that this is experimental feature with some limitations to it, see <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_loosening_the_limitations_of_literal_interceptionfactory_literal">Weld docs</a> for more details</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Correct atomic behaviour in <code>RequestContextController</code> (<a href="https://issues.jboss.org/browse/WELD-2536" target="_blank" rel="noopener">WELD-2536</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix rare race condition in <code>ConcurrentValidator</code> (<a href="https://issues.jboss.org/browse/WELD-2545" target="_blank" rel="noopener">WELD-2545</a>)</p>
-                  </li>
-                  <li>
-                  <p>Small correction to interceptor resolution when they have no bindings (<a href="https://issues.jboss.org/browse/WELD-2521" target="_blank" rel="noopener">WELD-2521</a>)</p>
-                  </li>
-                  <li>
-                  <p>Enforce consistent behaviour between <code>AnnotatedType</code> and <code>WithAnnotations</code> in regards to default methods (<a href="https://issues.jboss.org/browse/WELD-2551" target="_blank" rel="noopener">WELD-2551</a>)</p>
-                  </li>
-                  <li>
-                  <p>All proxy-specific methods added by Weld now have more complex names to avoid (very rare) method clashes (<a href="https://issues.jboss.org/browse/WELD-2508" target="_blank" rel="noopener">WELD-2508</a>)</p>
-                  </li>
-                  <li>
-                  <p>Lower logging level of <code>InterceptorLogger.unableToDetermineInterceptedBean()</code> from <code>WARN</code> to <code>INFO</code> (<a href="https://issues.jboss.org/browse/WELD-2546" target="_blank" rel="noopener">WELD-2546</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>You can now extend the set of bean defining annotations in Weld SE (<a href="https://issues.jboss.org/browse/WELD-2523" target="_blank" rel="noopener">WELD-2523</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This is handy for when you have discovery on and want custom beans automatically picked up while still avoiding the <code>all</code> discovery mode</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Fix bug in handling JAR dependencies added onto classpath where you could accidentally add more packages than desired (<a href="https://issues.jboss.org/browse/WELD-2535" target="_blank" rel="noopener">WELD-2535</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct <code>ALLOW_OPTIMIZED_CLEANUP</code> configuration key value (<a href="https://issues.jboss.org/browse/WELD-2547" target="_blank" rel="noopener">WELD-2547</a>)</p>
-                  </li>
-                  <li>
-                  <p>When running with <code>SecurityManager</code> enabled, Weld will now refuse to use <code>ForkJoinPool</code> for startup and will pick different pool instead (<a href="https://issues.jboss.org/browse/WELD-2517" target="_blank" rel="noopener">WELD-2517</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Probe development tool</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Make sure <code>ProbeExtension</code> has priority over any other existing extensions (<a href="https://issues.jboss.org/browse/WELD-2524" target="_blank" rel="noopener">WELD-2524</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Stabilize testsuite and make sure dependencies are EE 8 based (<a href="https://issues.jboss.org/browse/WELD-2519" target="_blank" rel="noopener">WELD-2519</a>, <a href="https://issues.jboss.org/browse/WELD-2553" target="_blank" rel="noopener">WELD-2553</a>)</p>
-                  </li>
-                  <li>
-                  <p>Documentation has been updated to reflects EE 8 versions of servers (<a href="https://issues.jboss.org/browse/WELD-2529" target="_blank" rel="noopener">WELD-2529</a>)</p>
-                  </li>
-                  <li>
-                  <p>Documented all changes coming to Weld API in 3.1 update (<a href="https://issues.jboss.org/browse/WELD-2540" target="_blank" rel="noopener">WELD-2540</a>)</p>
-                  </li>
-                  <li>
-                  <p>Re-enable SpotBugs code quality checking on JDK 11+ (<a href="https://issues.jboss.org/browse/WELD-2544" target="_blank" rel="noopener">WELD-2544</a>)</p>
-                  </li>
-                  <li>
-                  <p>Upgraded WildFly Arquillian adapter to 2.1.1.Final (<a href="https://issues.jboss.org/browse/WELD-2543" target="_blank" rel="noopener">WELD-2543</a>)</p>
-                  </li>
-                  <li>
-                  <p>Revisit testing on Jetty (<a href="https://issues.jboss.org/browse/WELD-2528" target="_blank" rel="noopener">WELD-2528</a>)</p>
-                  </li>
-                  <li>
-                  <p>We are now regularly testing with JDK 11 and looking into JDK 12 testing</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.0.Final/wildfly-15.0.1.Final-weld-3.1.0.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 15.0.1.Final</a> is available.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12339977" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
