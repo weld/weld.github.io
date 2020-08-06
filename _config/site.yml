@@ -5,7 +5,7 @@ asciidoctor:
     source-highlighter: highlight.js
 profiles:
   production:
-    base_url: http://weld.cdi-spec.org
+    base_url: https://weld.cdi-spec.org
     google_analytics: UA-45187401-1
     disqus_generate_id: true
     disqus: weld-cdi
@@ -13,7 +13,7 @@ profiles:
       host: github_pages
       branch: master
   github:
-    base_url: http://weld.github.io
+    base_url: https://weld.github.io
     deploy:
       host: github_pages
       branch: master
