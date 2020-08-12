@@ -1,3 +1,7 @@
+- version: '3.1.5.Final'
+  category: Final
+  date: 12.08.2020
+  versionId: 12345341
 - version: '4.0.0.Alpha3'
   category: Experimental
   date: 23.07.2020

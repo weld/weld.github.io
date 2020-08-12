@@ -1,0 +1,48 @@
+---
+layout: news
+title: Weld 3.1.5.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.5.Final released
+desc: Weld 3.1.5.Final released
+tags: [release]
+---
+:linkattrs:
+
+New maintenance release is now out - Weld 3.1.5.Final.
+It comes along with Weld API 3.1.SP3 although there are no significant changes in the API.
+The release was mainly to update to a new parent project version, allowing us to consume newer plugins and prepare ground for MR JAR support.
+As for core artifacts, there are some bugfixes as usual, so let's take a look at those.
+
+Fixes and improvements:
+
+* Weld Core
+** Allow to aggressively invoke `setAttribute()` when manipulating with conversation map in session (link:https://issues.jboss.org/browse/WELD-2626[WELD-2626, window="_blank"])
+*** This behaviour is gated behind a property; it doesn't affect standard Weld behaviour
+** Automatically cleanup leftover `HttpSessionDestructionContext` when starting new session context on a thread (link:https://issues.jboss.org/browse/WELD-2631[WELD-2631, window="_blank"])
+** Fix a rare case where an integer overflow could happen during alternative priority ordering (link:https://issues.jboss.org/browse/WELD-2628[WELD-2628, window="_blank"])
+
+* Weld Servlet Support
+** Change `WebAppBeanArchiveScanner` to allow serving modules without publishing (link:https://issues.jboss.org/browse/WELD-2570[WELD-2570, window="_blank"])
+
+* Other bits
+** `ObserverMethodConfigurator` initialized by reading an `AnnotatedType` previously didn't set the method as async when it should (link:https://issues.jboss.org/browse/WELD-2609[WELD-2609, window="_blank"])
+** Fix up generation of javadoc (especially with JDK 11) for shaded artifacts and make it include Weld API/SPI as well as CDI API javadoc
+** Prepare ground for MR JAR releases which are a likely solution to JDK 11 class defining for SE (link:https://issues.jboss.org/browse/WELD-2619[WELD-2619, window="_blank"])
+*** This is hopefully coming in the very next release
+** Updates to website tooling (Docker image, Ruby dependencies) and updates to some old `http` references which should now be `https`
+** Re-enable testing of CDI TCK 1.2 with Weld 3.x; this was broken sometime during migration to Jakarta artifacts (link:https://issues.jboss.org/browse/WELD-2624[WELD-2624, window="_blank"])
+** A test that assumed an order in between conversation context lifecycle and session timeouts was found to be wrong (`ConversationContextDestroyedOnSessionTimeoutTest`) and was re-written to remove the erroneous assumption (link:https://issues.jboss.org/browse/WELD-2629[WELD-2629, window="_blank"])
+** Correct JaCoCo TCK execution (link:https://issues.jboss.org/browse/WELD-2625[WELD-2625, window="_blank"])
+
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.5.Final/wildfly-20.0.1.Final-weld-3.1.5.Final-patch.zip[patch for WildFly 20.0.1.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12343306[Release notes, window="_blank"] &#93;
