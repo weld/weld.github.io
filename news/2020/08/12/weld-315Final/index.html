@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News
+      Weld: Weld 3.1.5.Final
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Latest news about Weld." name="description">
+    <meta content="Weld 3.1.5.Final released" name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -135,100 +135,138 @@
           </div>
           <div class="row content-wrapper">
             <div class="col-md-12">
-              <h1>
-                News
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                </a>
-              </h1>
               <div class="post">
-                <h2>
-                  <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
-                </h2>
+                <h1>
+                  Weld 3.1.5.Final
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
                 <div class="news-date news-boxed">
-                  2013-6-20
+                  2020-8-12
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
                   &nbsp;
                   <i class="fa fa-pencil"></i>
-                  Martin Kouba
+                  Matej Novotny
                 </div>
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>Weld has a new web site and it&#8217;s built with Awestruct!</p>
+                  <p>New maintenance release is now out - Weld 3.1.5.Final.
+                  It comes along with Weld API 3.1.SP3 although there are no significant changes in the API.
+                  The release was mainly to update to a new parent project version, allowing us to consume newer plugins and prepare ground for MR JAR support.
+                  As for core artifacts, there are some bugfixes as usual, so let&#8217;s take a look at those.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld Core</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Allow to aggressively invoke <code>setAttribute()</code> when manipulating with conversation map in session (<a href="https://issues.jboss.org/browse/WELD-2626" target="_blank" rel="noopener">WELD-2626</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This behaviour is gated behind a property; it doesn&#8217;t affect standard Weld behaviour</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Automatically cleanup leftover <code>HttpSessionDestructionContext</code> when starting new session context on a thread (<a href="https://issues.jboss.org/browse/WELD-2631" target="_blank" rel="noopener">WELD-2631</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix a rare case where an integer overflow could happen during alternative priority ordering (<a href="https://issues.jboss.org/browse/WELD-2628" target="_blank" rel="noopener">WELD-2628</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Servlet Support</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Change <code>WebAppBeanArchiveScanner</code> to allow serving modules without publishing (<a href="https://issues.jboss.org/browse/WELD-2570" target="_blank" rel="noopener">WELD-2570</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other bits</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>ObserverMethodConfigurator</code> initialized by reading an <code>AnnotatedType</code> previously didn&#8217;t set the method as async when it should (<a href="https://issues.jboss.org/browse/WELD-2609" target="_blank" rel="noopener">WELD-2609</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix up generation of javadoc (especially with JDK 11) for shaded artifacts and make it include Weld API/SPI as well as CDI API javadoc</p>
+                  </li>
+                  <li>
+                  <p>Prepare ground for MR JAR releases which are a likely solution to JDK 11 class defining for SE (<a href="https://issues.jboss.org/browse/WELD-2619" target="_blank" rel="noopener">WELD-2619</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This is hopefully coming in the very next release</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Updates to website tooling (Docker image, Ruby dependencies) and updates to some old <code>http</code> references which should now be <code>https</code></p>
+                  </li>
+                  <li>
+                  <p>Re-enable testing of CDI TCK 1.2 with Weld 3.x; this was broken sometime during migration to Jakarta artifacts (<a href="https://issues.jboss.org/browse/WELD-2624" target="_blank" rel="noopener">WELD-2624</a>)</p>
+                  </li>
+                  <li>
+                  <p>A test that assumed an order in between conversation context lifecycle and session timeouts was found to be wrong (<code>ConversationContextDestroyedOnSessionTimeoutTest</code>) and was re-written to remove the erroneous assumption (<a href="https://issues.jboss.org/browse/WELD-2629" target="_blank" rel="noopener">WELD-2629</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correct JaCoCo TCK execution (<a href="https://issues.jboss.org/browse/WELD-2625" target="_blank" rel="noopener">WELD-2625</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.5.Final/wildfly-20.0.1.Final-weld-3.1.5.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 20.0.1.Final</a> is available.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12343306" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
                   </div>
                 </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-6-6
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-4-25
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (<a href="http://www.jcp.org/en/jsr/detail?id=346">JSR 346</a>). For a list of major changes in CDI 1.1 see the <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes">specification</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The reference implementation will soon be available in <a href="https://glassfish.java.net/">GlassFish 4</a> and <a href="http://wildfly.org/">WildFly</a> (formerly JBoss Application Server). In the meantime you can check snapshots of the application servers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, Weld artifacts can be obtained from maven or you can use a distribution bundle.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along with the Weld release comes the final release of the Technology Compatibility Kit (TCK) for CDI 1.1. Martin Kouba did an excellent job writing new tests and keeping the TCK in sync with the almost never-ending stream of specification changes. The TCK splits the specification into 1550 testable assertions out of which 96.71% is covered by TCK tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I would like to thank to everyone who lent a hand and helped delivering these releases, especially: Martin Kouba, Pete Muir, Marko Lukša, Stuart Douglas, Marek Schmidt, Ron Šmeral, Tomáš Remeš, JJ Snyder, Phil Zampino, Tomaž Cerar, Hardy Ferentschik, Lincoln Baxter III, Matúš Abaffy and others.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; Distribution (<a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.0.Final/">Weld</a>, <a href="https://sourceforge.net/projects/jboss/files/CDI-TCK/1.1.0.Final/">CDITCK</a>) &#93;
-                  &#91; Documentation (<a href="http://docs.jboss.org/weld/reference/2.0.0.Final/en-US/">Weld</a>, <a href="http://docs.jboss.org/cdi/tck/reference/1.1.0.Final/doc/">CDITCK</a>) &#93;
-                  &#91; Javadoc (<a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1</a>, <a href="http://docs.jboss.org/weld/javadoc/2.0/">Weld SPI</a>) &#93;
-                  &#91; <a href="https://issues.jboss.org/browse/WELD">Issue tracker</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/13.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/13.html" class="page-link">13</a> <span class="current-page">14</span> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                  Subscribe to Weld news
-                </a>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "e9b8e9ce9714898b2151e52f76bdb8ebfd290bcd";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>
