@@ -1,364 +1,366 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>
-      Weld: Community
-    </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Useful links to source code repository, issue tracker, user forum, mailing list, IRC channel reference and basic contribution guide." name="description">
-    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 col-sm-3">
-          <div class="sidebar-nav">
-            <div class="navbar navbar-default" role="navigation">
-              <div class="navbar-header">
-                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-                  <span class="sr-only">
-                    Toggle navigation
-                  </span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a ="#" class="visible-xs navbar-brand">
-                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
-                </a>
-              </div>
-              <div class="collapse navbar-collapse sidebar-navbar-collapse">
-                <ul class="nav navbar-nav">
-                  <li>
-                    <a href="/">
-                      <i class="fa fa-home"></i>
-                      &nbsp;Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/download">
-                      <i class="fa fa-download"></i>
-                      &nbsp;Download
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/news">
-                      <i class="fa fa-newspaper-o"></i>
-                      &nbsp;News
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-                      <i class="fa fa-road"></i>
-                      &nbsp;Road Map
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/documentation">
-                      <i class="fa fa-book"></i>
-                      &nbsp;Docs &amp; FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/news/tags/tips">
-                      <i class="fa fa-lightbulb-o"></i>
-                      &nbsp;Tips and Tricks
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/community">
-                      <i class="fa fa-group"></i>
-                      &nbsp;Community
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://github.com/weld" target="_blank">
-                      <i class="fa fa-github-alt"></i>
-                      &nbsp;Source Code
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-                      <i class="fa fa-tasks"></i>
-                      &nbsp;Bug Tracker
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://twitter.com/jbossweld" target="_blank">
-                      <i class="fa fa-twitter"></i>
-                      &nbsp;Follow @jbossweld
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-10 col-sm-9">
-          <div class="row hidden-xs">
-            <div class="dropup">
-              <div id="ajbossproject">
-                A JBoss Project
-              </div>
-              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-              <script>
-                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-              </script>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <a href="/">
-                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-            </div>
-          </div>
-          <div class="row content-wrapper">
-            <div class="col-md-12">
-              <div style="float: right;">
-                <script src="http://www.ohloh.net/p/77325/widgets/project_factoids.js" type="text/javascript"></script>
-              </div>
-              <h1>Community</h1>
-              <p>Weld is an open-source project. Contributions and participation is welcome.</p>
-              <h2>Quick links:</h2>
-              <ul style="list-style-type: none; margin-left: 0px;">
-                <li>
-                  <a href="https://issues.jboss.org/browse/WELD" target="_blank">
-                    <i class="fa fa-bug"></i>
-                    issue tracker
-                  </a>
-                  (
-                  <a href="/bug" target="_blank">
-                    how to report a bug
-                  </a>
-                  )
-                </li>
-                <li>
-                  <a href="http://github.com/weld" target="_blank">
-                    <i class="fa fa-github"></i>
-                    source code repository
-                  </a>
-                </li>
-                <li>
-                  <a href="https://community.jboss.org/en/weld?view=discussions" target="_blank">
-                    <i class="fa fa-comment"></i>
-                    user forum
-                  </a>
-                </li>
-                <li>
-                  <a href="http://webchat.freenode.net/?channels=weld-dev" target="_blank">
-                    <i class="fa fa-comments"></i>
-                    #weld-dev
-                  </a>
-                  IRC channel hosted on
-                  <code>freenode.net</code>
-                  (
-                  <a href="http://transcripts.jboss.org/channel/irc.freenode.org/%23weld-dev/index.html" target="_blank">
-                    log
-                  </a>
-                  )
-                </li>
-                <li>
-                  <a href="http://gitter.im/weld/user" target="_blank">
-                    <i class="fa fa-comments"></i>
-                    weld/user
-                  </a>
-                  on Gitter
-                </li>
-                <li>
-                  <a href="https://lists.jboss.org/mailman/listinfo/weld-dev" target="_blank">
-                    <i class="fa fa-envelope"></i>
-                    weld-dev mailing list
-                  </a>
-                </li>
-                <li>
-                  <a href="https://issues.jboss.org/issues/?filter=12329941" target="_blank">
-                    <i class="fa fa-tasks"></i>
-                    list of starter issues
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/weld/core/graphs/contributors" target="_blank">
-                    <i class="fa fa-user"></i>
-                    contributors
-                  </a>
-                </li>
-              </ul>
-              <h2>How to contribute</h2>
-              <p>
-                Want to join the group of
-                <a href="https://github.com/weld/core/graphs/contributors">
-                  Weld contributors
-                </a>
-                ?
-                It's easy. A great way to start is to check out our
-                <a href="https://issues.jboss.org/issues/?filter=12320398">
-                  list of starter issues.
-                </a>
-                Besides, there are other ways to contribute, for example:
-                <ul>
-                  <li>
-                    reporting bugs in our
-                    <a href="https://issues.jboss.org/browse/WELD">
-                      issue tracker
-                    </a>
-                    (please read
-                    <a href="/bug" target="_blank">
-                      how to report a bug
-                    </a>
-                    first ;-)
-                  </li>
-                  <li>
-                    fix or expand our
-                    <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/">
-                      reference documentation
-                    </a>
-                  </li>
-                  <li>
-                    expand our
-                    <a href="https://github.com/weld/core/tree/master/tests-arquillian">
-                      test suite
-                    </a>
-                    by writing a test case
-                  </li>
-                  <li>
-                    implement a new feature or enhancement
-                  </li>
-                </ul>
-              </p>
-              <h3>
-                1. Fork and clone source code repository from
-                <a href="https://github.com/weld">
-                  GitHub
-                </a>
-              </h3>
-              <p>
-                If you are new to GitHub you can find help
-                <a href="https://help.github.com/categories/bootcamp/">
-                  here.
-                </a>
-                Weld implementation resides in
-                <a href="https://github.com/weld/core">
-                  core repository.
-                </a>
-                To clone your new fork execute following command in your command line:
-              </p>
-              <span>
-                <code>git clone git@github.com:<your_account_name>/core.git</code>
-              </span>
-              <h3>2. Explore Weld source code structure</h3>
-              <p>
-                You can import Weld source as Maven project to your favourite IDE. Before you start coding we ask you to setup code formatting. You can find neccessary files for your IDE in
-                <b>ide-configs</b>
-                directory in your local clone directory structure. If you are new to CDI/Weld then the
-                <b>examples</b>
-                and
-                <b>probe</b>
-                directories could be good starting point for you.
-              </p>
-              <h3>3. Choose a topic of your interest</h3>
-              <p>
-                You can check open issues, tasks, feature requests and bugs at
-                <a href="https://issues.jboss.org/browse/WELD/">
-                  Weld Jira.
-                </a>
-                Alternatively, feel free to come up with new ideas.
-              </p>
-              <p>
-                If you are new to Weld and need help, use
-                <a href="https://developer.jboss.org/en/weld?view=discussions">
-                  user forum
-                </a>
-                or
-                <a href="http://webchat.freenode.net/?channels=weld-dev">
-                  #weld-dev IRC channel.
-                </a>
-                For discussing Weld development use our
-                <a href="https://lists.jboss.org/mailman/listinfo/weld-dev">
-                  development mailing list.
-                </a>
-                When working on a new feature or bug it's very helpful to also provide tests case covering the related area.
-              </p>
-              <h3>4. Submit a pull request</h3>
-              <p>
-                We follow the
-                <a href="http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow">
-                  Integration Manager Workflow
-                </a>
-                for managing changes to the Weld source code. If you are new to using GitHub we recommend that you read this
-                <a href="https://help.github.com/articles/using-pull-requests">
-                  tutorial.
-                </a>
-              </p>
-              <p>
-                Before submitting a pull request make sure your branch can be built without any errors and the tests are passing
-                (running "mvn clean install" in Weld core root directory could be sufficient). Commit your work to your branch
-                with a suitable commit message (it's good idea to include Jira issue key if any exists) and submit a pull request
-                to the related upstream branch at GitHub. Pull request will trigger CI job at
-                <a href="http://hudson.jboss.org/hudson/job/Weld-2.x-pull-player-executor-osprey/">
-                  Jenkins
-                </a>
-                where you can check your results. Once the request passes tests and is verified by an integration manager (Weld core developers)
-                you become a Weld
-                <a href="https://github.com/weld/core/graphs/contributors">
-                  contributor
-                </a>
-                :-).
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="row">
-        <div class="container" id="companyfooter">
-          <div class="redhatlogo" style="text-align:center;">
-            <div class="logospacer" style="height:10px;"></div>
-            <a href="http://www.redhat.com/">
-              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
-  <script>
-    $(document).ready(function() {
-      $('#toggle_menu').click(function(){
-        $("#mobile_menu").toggle();
-      });
+<head>
+<meta charset="utf-8">
+<title>
+Weld: Community
+</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Useful links to source code repository, issue tracker, user forum, mailing list, IRC channel reference and basic contribution guide." name="description">
+<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2 col-sm-3">
+<div class="sidebar-nav">
+<div class="navbar navbar-default" role="navigation">
+<div class="navbar-header">
+<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+<span class="sr-only">
+Toggle navigation
+</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a ="#" class="visible-xs navbar-brand">
+<img alt="Weld Logo" src="/images/weld_logo_100x.png">
+</a>
+</div>
+<div class="collapse navbar-collapse sidebar-navbar-collapse">
+<ul class="nav navbar-nav">
+<li>
+<a href="/">
+<i class="fa fa-home"></i>
+&nbsp;Home
+</a>
+</li>
+<li>
+<a href="/download">
+<i class="fa fa-download"></i>
+&nbsp;Download
+</a>
+</li>
+<li>
+<a href="/news">
+<i class="fa fa-newspaper-o"></i>
+&nbsp;News
+</a>
+</li>
+<li>
+<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+<i class="fa fa-road"></i>
+&nbsp;Road Map
+</a>
+</li>
+<li>
+<a href="/documentation">
+<i class="fa fa-book"></i>
+&nbsp;Docs &amp; FAQ
+</a>
+</li>
+<li>
+<a href="/news/tags/tips">
+<i class="fa fa-lightbulb-o"></i>
+&nbsp;Tips and Tricks
+</a>
+</li>
+<li>
+<a href="/community">
+<i class="fa fa-group"></i>
+&nbsp;Community
+</a>
+</li>
+<li>
+<a href="http://github.com/weld" target="_blank">
+<i class="fa fa-github-alt"></i>
+&nbsp;Source Code
+</a>
+</li>
+<li>
+<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+<i class="fa fa-tasks"></i>
+&nbsp;Bug Tracker
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jbossweld" target="_blank">
+<i class="fa fa-twitter"></i>
+&nbsp;Follow @jbossweld
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-10 col-sm-9">
+<div class="row hidden-xs">
+<div class="dropup">
+<div id="ajbossproject">
+A JBoss Project
+</div>
+<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+<script>
+window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+</script>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<a href="/">
+<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+</a>
+</div>
+<div class="col-md-8">
+<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+</div>
+</div>
+<div class="row content-wrapper">
+<div class="col-md-12">
+<div style="float: right;">
+<script src="http://www.ohloh.net/p/77325/widgets/project_factoids.js" type="text/javascript"></script>
+</div>
+<h1>Community</h1>
+<p>Weld is an open-source project. Contributions and participation is welcome.</p>
+<h2>Quick links:</h2>
+<ul style="list-style-type: none; margin-left: 0px;">
+<li>
+<a href="https://issues.jboss.org/browse/WELD" target="_blank">
+<i class="fa fa-bug"></i>
+issue tracker
+</a>
+(
+<a href="/bug" target="_blank">
+how to report a bug
+</a>
+)
+</li>
+<li>
+<a href="http://github.com/weld" target="_blank">
+<i class="fa fa-github"></i>
+source code repository
+</a>
+</li>
+<li>
+<a href="https://community.jboss.org/en/weld?view=discussions" target="_blank">
+<i class="fa fa-comment"></i>
+user forum
+</a>
+</li>
+<li>
+<a href="http://webchat.freenode.net/?channels=weld-dev" target="_blank">
+<i class="fa fa-comments"></i>
+#weld-dev
+</a>
+IRC channel hosted on
+<code>freenode.net</code>
+(
+<a href="http://transcripts.jboss.org/channel/irc.freenode.org/%23weld-dev/index.html" target="_blank">
+log
+</a>
+)
+</li>
+<li>
+<a href="http://gitter.im/weld/user" target="_blank">
+<i class="fa fa-comments"></i>
+weld/user
+</a>
+on Gitter
+</li>
+<li>
+<a href="https://lists.jboss.org/mailman/listinfo/weld-dev" target="_blank">
+<i class="fa fa-envelope"></i>
+weld-dev mailing list
+</a>
+</li>
+<li>
+<a href="https://issues.jboss.org/issues/?filter=12329941" target="_blank">
+<i class="fa fa-tasks"></i>
+list of starter issues
+</a>
+</li>
+<li>
+<a href="https://github.com/weld/core/graphs/contributors" target="_blank">
+<i class="fa fa-user"></i>
+contributors
+</a>
+</li>
+</ul>
+<h2>How to contribute</h2>
+<p>
+Want to join the group of
+<a href="https://github.com/weld/core/graphs/contributors">
+Weld contributors
+</a>
+?
+It's easy. A great way to start is to check out our
+<a href="https://issues.jboss.org/issues/?filter=12320398">
+list of starter issues.
+</a>
+Besides, there are other ways to contribute, for example:
+<ul>
+<li>
+reporting bugs in our
+<a href="https://issues.jboss.org/browse/WELD">
+issue tracker
+</a>
+(please read
+<a href="/bug" target="_blank">
+how to report a bug
+</a>
+first ;-)
+</li>
+<li>
+fix or expand our
+<a href="http://docs.jboss.org/weld/reference/latest/en-US/html/">
+reference documentation
+</a>
+</li>
+<li>
+expand our
+<a href="https://github.com/weld/core/tree/master/tests-arquillian">
+test suite
+</a>
+by writing a test case
+</li>
+<li>
+implement a new feature or enhancement
+</li>
+</ul>
+</p>
+<h3>
+1. Fork and clone source code repository from
+<a href="https://github.com/weld">
+GitHub
+</a>
+</h3>
+<p>
+If you are new to GitHub you can find help
+<a href="https://help.github.com/categories/bootcamp/">
+here.
+</a>
+Weld implementation resides in
+<a href="https://github.com/weld/core">
+core repository.
+</a>
+To clone your new fork execute following command in your command line:
+</p>
+<span>
+<code>git clone git@github.com:<your_account_name>/core.git</code>
+</span>
+<h3>2. Explore Weld source code structure</h3>
+<p>
+You can import Weld source as Maven project to your favourite IDE. Before you start coding we ask you to setup code formatting. You can find neccessary files for your IDE in
+<b>ide-configs</b>
+directory in your local clone directory structure. If you are new to CDI/Weld then the
+<b>examples</b>
+and
+<b>probe</b>
+directories could be good starting point for you.
+</p>
+<h3>3. Choose a topic of your interest</h3>
+<p>
+You can check open issues, tasks, feature requests and bugs at
+<a href="https://issues.jboss.org/browse/WELD/">
+Weld Jira.
+</a>
+Alternatively, feel free to come up with new ideas.
+</p>
+<p>
+If you are new to Weld and need help, use
+<a href="https://developer.jboss.org/en/weld?view=discussions">
+user forum
+</a>
+or
+<a href="http://webchat.freenode.net/?channels=weld-dev">
+#weld-dev IRC channel.
+</a>
+For discussing Weld development use our
+<a href="https://lists.jboss.org/mailman/listinfo/weld-dev">
+development mailing list.
+</a>
+When working on a new feature or bug it's very helpful to also provide tests case covering the related area.
+</p>
+<h3>4. Submit a pull request</h3>
+<p>
+We follow the
+<a href="http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow">
+Integration Manager Workflow
+</a>
+for managing changes to the Weld source code. If you are new to using GitHub we recommend that you read this
+<a href="https://help.github.com/articles/using-pull-requests">
+tutorial.
+</a>
+</p>
+<p>
+Before submitting a pull request make sure your branch can be built without any errors and the tests are passing
+(running "mvn clean install" in Weld core root directory could be sufficient). Commit your work to your branch
+with a suitable commit message (it's good idea to include Jira issue key if any exists) and submit a pull request
+to the related upstream branch at GitHub. Pull request will trigger CI job at
+<a href="http://hudson.jboss.org/hudson/job/Weld-2.x-pull-player-executor-osprey/">
+Jenkins
+</a>
+where you can check your results. Once the request passes tests and is verified by an integration manager (Weld core developers)
+you become a Weld
+<a href="https://github.com/weld/core/graphs/contributors">
+contributor
+</a>
+:-).
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="row">
+<div class="container" id="companyfooter">
+<div class="redhatlogo" style="text-align:center;">
+<div class="logospacer" style="height:10px;"></div>
+<a href="http://www.redhat.com/">
+<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-45187401-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#toggle_menu').click(function(){
+      $("#mobile_menu").toggle();
     });
-  </script>
+  });
+</script>
 </html>

@@ -1,918 +1,920 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>
-      Weld: News
-    </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Latest news about Weld." name="description">
-    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 col-sm-3">
-          <div class="sidebar-nav">
-            <div class="navbar navbar-default" role="navigation">
-              <div class="navbar-header">
-                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-                  <span class="sr-only">
-                    Toggle navigation
-                  </span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a ="#" class="visible-xs navbar-brand">
-                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
-                </a>
-              </div>
-              <div class="collapse navbar-collapse sidebar-navbar-collapse">
-                <ul class="nav navbar-nav">
-                  <li>
-                    <a href="/">
-                      <i class="fa fa-home"></i>
-                      &nbsp;Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/download">
-                      <i class="fa fa-download"></i>
-                      &nbsp;Download
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/news">
-                      <i class="fa fa-newspaper-o"></i>
-                      &nbsp;News
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-                      <i class="fa fa-road"></i>
-                      &nbsp;Road Map
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/documentation">
-                      <i class="fa fa-book"></i>
-                      &nbsp;Docs &amp; FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/news/tags/tips">
-                      <i class="fa fa-lightbulb-o"></i>
-                      &nbsp;Tips and Tricks
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/community">
-                      <i class="fa fa-group"></i>
-                      &nbsp;Community
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://github.com/weld" target="_blank">
-                      <i class="fa fa-github-alt"></i>
-                      &nbsp;Source Code
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-                      <i class="fa fa-tasks"></i>
-                      &nbsp;Bug Tracker
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://twitter.com/jbossweld" target="_blank">
-                      <i class="fa fa-twitter"></i>
-                      &nbsp;Follow @jbossweld
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-10 col-sm-9">
-          <div class="row hidden-xs">
-            <div class="dropup">
-              <div id="ajbossproject">
-                A JBoss Project
-              </div>
-              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-              <script>
-                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-              </script>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <a href="/">
-                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-            </div>
-          </div>
-          <div class="row content-wrapper">
-            <div class="col-md-12">
-              <h1>
-                News
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                </a>
-              </h1>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/06/14/weld-244Final/">Weld 2.4.4.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-6-14
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>We have been busy chasing down some annoying little bugs and it&#8217;s high time you got the fruits of those efforts into your hands.
-                  Say hello to Weld 2.4.4.Final.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed bean discovery event ordering when processing producers (<a href="https://issues.jboss.org/browse/WELD-2393" target="_blank" rel="noopener">WELD-2393</a>)</p>
-                  </li>
-                  <li>
-                  <p>Eliminated an NPE for a corner case with abstract decorator (<a href="https://issues.jboss.org/browse/WELD-2273" target="_blank" rel="noopener">WELD-2273</a>)</p>
-                  </li>
-                  <li>
-                  <p>Corrected <code>@Initialized(RequestScoped.class)</code> event firing in <code>@PostConstruct</code> callbacks (<a href="https://issues.jboss.org/browse/WELD-2372" target="_blank" rel="noopener">WELD-2372</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed <code>BeanManager.isStereotype()</code> behavior when checking a qualifier annotated with yet another qualifier (<a href="https://issues.jboss.org/browse/WELD-2390" target="_blank" rel="noopener">WELD-2390</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Added a convenience static method <code>WeldContainer.current()</code>, a shortcut for <code>CDI.current()</code> with no need to cast the result (<a href="https://issues.jboss.org/browse/WELD-2399" target="_blank" rel="noopener">WELD-2399</a>)</p>
-                  </li>
-                  <li>
-                  <p>Allowed to specify bean discovery mode for synthetic archives (<a href="https://issues.jboss.org/browse/WELD-2386" target="_blank" rel="noopener">WELD-2386</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed bean class discovery problem when adding whole packages (<a href="https://issues.jboss.org/browse/WELD-2395" target="_blank" rel="noopener">WELD-2395</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Improved logging and make checks more lenient in case the container is not yet bootstrapped (<a href="https://issues.jboss.org/browse/WELD-2382" target="_blank" rel="noopener">WELD-2382</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Configuration options</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>In SE and Servlet environments, Jandex can now be forcibly prohibited from processing your archives. This is useful when a third-party dependecy brings in some unsupported Jandex version (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Development tools</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If a deployment validation fails and the development mode is enabled, a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.4.Final/wildfly-10.1.0.Final-weld-2.4.4.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
-                  Target platform is <strong>WildFly 10.1.0.Final</strong>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334296&amp;styleName=Html&amp;projectId=12310891" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/05/19/tour-around-weld-3/">Tour around Weld 3</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-5-19
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div id="toc" class="toc">
-                  <div id="toctitle" class="title">Contents</div>
-                  <ul class="sectlevel1">
-                  <li><a href="#_async_events_and_notification_options">Async Events and Notification Options</a></li>
-                  <li><a href="#_configurators_api">Configurators API</a></li>
-                  <li><a href="#_se_bootstrap_api">SE Bootstrap API</a></li>
-                  <li><a href="#_on_demand_request_context_activation">On-demand Request Context Activation</a></li>
-                  <li><a href="#_observer_method_ordering">Observer Method Ordering</a></li>
-                  <li><a href="#_intercepting_produced_beans">Intercepting Produced Beans</a></li>
-                  <li><a href="#_trimmed_bean_archives">Trimmed Bean Archives</a></li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>This post briefly describes all the main CDI 2.0 features and elaborates on Weld-specific features we added on top of that.
-                  It is not intended as a deep-dive but rather to give you the overall idea of what is going on and what can the new release offer.
-                  So, enough talk, let&#8217;s get the show on the road!</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_async_events_and_notification_options">Async Events and Notification Options</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Up until now, the only way to send events was to do so synchronously.
-                  That meant stopping the work of your current thread to instead occupy it with observer resolution and subsequent notification of observer methods.
-                  Once all that was done, the thread resumed it&#8217;s work.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>With CDI 2.0 there are asynchronous events - a 'fire &amp; forget' way of handling things.
-                  Here is how to fire such and event and how to observe it:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>// nothing new here, plain old Event is used&#x000A;    @Inject Event&lt;Payload&gt; event;&#x000A;    &#x000A;    public void sendAsyncEvent() {&#x000A;        // we use a new fireAsync method for asynchronous events&#x000A;        CompletionStage&lt;Payload&gt; eventResult = event.fireAsync(new Payload()).thenAccept(...);&#x000A;    }&#x000A;    &#x000A;    public void asyncObserver (@ObservesAsync Payload payload){ … }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>Few things to note here - first of all, the return value of <code>fireAsync</code> is <code>CompletionStage</code> allowing you to chain the work for when the event is done.
-                  You can follow-up with more tasks, react on exceptional return value and so on.
-                  Another noticeable detail is that observers which are to be notified have to have <code>@ObservesAsync</code> annotation.
-                  As you might have guessed, an observer can be notified of either synchronous (<code>@Observes</code>) or asynchronous (<code>@ObservesAsync</code>) events but never both!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Apart from this very basic usage, async events allow you to specify <code>NotificationOptions</code> - an option allowing you to tweak the way notification works.
-                  From CDI perspective, there is currently only one standardized option and that enables usage of custom executors which will be used for notifications.
-                  But the API was designed in a generic way so that implementation can enrich it with its own options.
-                  Weld currently offers two more options - timeout and parallel execution - both of which are well described in <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Weld docs</a>.
-                  And here is a snippet showing it in action:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>public void sendAsyncEventWithOptions() {&#x000A;        // we use a secondary version of fireAsync method with NotificationOptions parameter&#x000A;        event.fireAsync(new Payload(), NotificationOptions.of("weld.async.notification.timeout", 2000));&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_configurators_api">Configurators API</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Another of the key features are <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#configurators" target="blank"><code>Configurators</code></a>.
-                  They are here to ease our work when doing small tweaks in extensions.
-                  Here is a snippet showing how easy it can be to register a new bean in <code>AfterBeanDiscovery</code> using configurator.
-                  You don&#8217;t have to create a new class implementing <code>Bean&lt;X&gt;</code> anymore:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>public void addABean(@Observes AfterBeanDiscovery event) {&#x000A;        // get an instance of BeanConfigurator&#x000A;        event.addBean()&#x000A;          // set the desired data&#x000A;          .types(Foo.class)&#x000A;          .scope(RequestScoped.class)&#x000A;          .addQualifier(Custom.CustomLiteral.INSTANCE);&#x000A;          //finally, add a callback to tell CDI how to instantiate this bean&#x000A;          .produceWith(obj -&gt; new Foo());&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>Following configurators were added:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>AnnotatedTypeConfigurator</code></p>
-                  </li>
-                  <li>
-                  <p><code>InjectionPointConfigurator</code></p>
-                  </li>
-                  <li>
-                  <p><code>BeanAttributesConfigurator</code></p>
-                  </li>
-                  <li>
-                  <p><code>BeanConfigurator</code></p>
-                  </li>
-                  <li>
-                  <p><code>ObserverMethodConfigurator</code></p>
-                  </li>
-                  <li>
-                  <p><code>ProducerConfigurator</code></p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>On top of that, Weld adds one additional configurator - <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_weld_enriched_container_lifecycle_events" target="_blank" rel="noopener"><code>InterceptorConfigurator</code></a>.
-                  This one allows you to observe <code>WeldAfterBeanDiscovery</code> and then use this configurator to create and register a custom interceptor from scratch.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_se_bootstrap_api">SE Bootstrap API</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>A big change in CDI 2.0 is the SE support.
-                  Of course, Weld fans have had this for years now, but it has gone official, so that still counts, right?</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The official CDI API is very similar to that of Weld, here is how it looks like:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>public void bootBasicContainer() {&#x000A;        SeContainerInitializer initializer = SeContainerInitializer.newInstance();&#x000A;        try (SeContainer container = initializer.initialize()) {&#x000A;            Assert.assertTrue(container.isRunning());&#x000A;        }&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>This is the very basic way; you can also opt to use synthetic bean archive where you cherry-pick all the beans/interceptors/&#8230;&#8203; in your archive.
-                  <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#se_bootstrap" target="_blank" rel="noopener">CDI spec</a> describes this fairly well, so how about we instead shift our attention to what Weld SE offers on top of that?</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>A small reminder of how to boot SE container using pure Weld API:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>public void bootWeldSeContainer() {&#x000A;        Weld weld = new Weld();&#x000A;        try (WeldContainer container = weld.initialize()) {&#x000A;            container.select(FooBean.class).get();&#x000A;        }&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>One of the things Weld makes easier, is when you want to create a quick extension, but don&#8217;t really want to write a whole new class which you then need to place in <code>META-INF/services</code> or register on bootstrap.
-                  You can easily create a 'synthetic extension' programatically:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;        .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;        .add(processAnnotatedType().notify((e) -&gt; {&#x000A;                if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                    e.veto();&#x000A;                }&#x000A;            })).build();&#x000A;    &#x000A;    try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;        // Use the container...&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>What we just did was to create an extension with two container lifecycle observer methods.
-                  It follows a familiar builder pattern and the body of the observer methods is specified as lambda expression.
-                  Before booting SE container, we register this extension as we would any other.
-                  For more information about this, don&#8217;t hesitate to check our older <a href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/">news post</a>.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_on_demand_request_context_activation">On-demand Request Context Activation</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Especially in SE (although not only there) you might want to activate a <code>RequestContext</code> manually for certain period of time.
-                  There are two ways to achieve that, first of which is an interceptor - <code>@ActivateRequestContext</code>.
-                  You can use that on either a method or a type (enabling it for all methods).
-                  As you might expect, it will activate the context before executing your method and shut it down afterwards.
-                  The other way is through means of built-in bean named <code>RequestContextController</code>.
-                  This bean can be injected as any other CDI bean and offers to self-explanatory methods: <code>activate</code> and <code>deactivate</code>.
-                  The obvious advantage of this approach is that you can enable the context for an extended period of time.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_observer_method_ordering">Observer Method Ordering</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>A small but noteworthy improvement to observer methods.
-                  You can not leverage <code>@Priority</code> annotation in observer methods hence ordering them as you wish.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>public void observeFirst (@Observes @Priority(1) EventPayload payload) {...}&#x000A;    &#x000A;    public void observeSecond (@Observes @Priority(2) EventPayload payload) {...}</pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_intercepting_produced_beans">Intercepting Produced Beans</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Up until now, anything you created using producers could not be easily intercepted.
-                  CDI 2.0 allows this for <code>@AroundInvoke</code> interceptors in two ways.
-                  There is a new method on <code>BeanManager</code> named <code>createInterceptionFactory</code> but most of the time you will rather use a built-in bean <code>InterceptionFactory</code> which can be injected as a producer method parameter.
-                  Here is a snippet:</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>@Produces&#x000A;    @Dependent&#x000A;    public ProducedBean produceFoo(InterceptionFactory&lt;ProducedBean&gt; factory) {&#x000A;        factory.configure().add(Counter.Literal.INSTANCE);&#x000A;        return factory.createInterceptedInstance(new ProducedBean());&#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>To explain this a bit, we first inject the built-in bean with the type equal to the produced type we wish to intercept.
-                  Then we <code>configure()</code> it, which returns an <code>AnnotatedTypeConfigurator</code> allowing us to add interceptor binding.
-                  Finally, we invoke <code>InterceptionFactory.createInterceptedInstance()</code> which takes a the object we produce as a parameter.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>You can read more about this in <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#interception_factory" target="_blank" rel="noopener">this CDI spec chapter</a>.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_trimmed_bean_archives">Trimmed Bean Archives</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Last but not least feature we will mention are so called 'trimmed' bean archives.
-                  You can mark an explicit bean archive as trimmed in <code>beans.xml</code> by adding the <code>&lt;/trim&gt;</code> element.
-                  Such bean archive will perform an annotated type discovery as with <code>bean-discovery-mode="all"</code> but all types that don&#8217;t have a bean defining annotation or any scope annotation are then removed from the set of discovered types.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Even in this case, Weld allows you to go one step further and <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation">veto types based on regular expression</a>.
-                  It works on a similar principle but affects your whole application - it processess all types from all bean archives.
-                  Your archives will be scanned as they would be with bean discovery mode <code>all</code> and <code>ProcessAnnotatedType</code> will be fired for all found annotated types.
-                  Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/05/15/weld-300Final/">Weld 3.0.0.Final - the first implementation of CDI 2.0!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-5-15
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am very pleased to announce the release of Weld <strong>3.0.0.Final</strong> - the first implementation of <strong>CDI 2.0</strong>!
-                  I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>[ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>/**&#x000A;     * TODO: Continue to deliver bugfixes and improvements&#x000A;     */&#x000A;    public class WeldTeam extends OpenSourceCommunity {&#x000A;    &#x000A;      @Inject&#x000A;      @AwesomeNews&#x000A;      Event&lt;String&gt; event;&#x000A;    &#x000A;      public void release() {&#x000A;        // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;        event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;        celebrate();&#x000A;      }&#x000A;    &#x000A;    }</pre>
-                  </div>
-                  </div>
-                  <div class="admonitionblock note">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Note</div>
-                  </td>
-                  <td class="content">
-                  Weld 3 is an IMPORTANT MILESTONE.
-                  Therefore, we&#8217;re preparing a special blogpost summarizing all the important stuff that was added.
-                  Expect the <strong>Tour around Weld 3</strong> blogpost within a few days.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Let&#8217;s sum up the notable changes since <strong>3.0.0.CR2</strong>:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Notification options</a> for more info):</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>weld.async.notification.mode</code> - the notification mode, possible values are: <code>SERIAL</code> (default) and <code>PARALLEL</code></p>
-                  </li>
-                  <li>
-                  <p><code>weld.async.notification.timeout</code> - the notification timeout (in milliseconds) after which the returned completion stage must be completed.</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If the time expires the stage is completed exceptionally with a <code>CompletionException</code> holding the <code>java.util.concurrent.TimeoutException</code> as its cause</p>
-                  </li>
-                  <li>
-                  <p>The expiration does not abort the notification of the observers</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fire <code>@Initialied(RequestScoped.class)</code>/<code>@Destroyed(RequestScoped.class)</code> events for a <code>@PostConstruct</code> callback if the request context was activated for the specific callback</p>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
-                  </li>
-                  <li>
-                  <p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
-                  </li>
-                  <li>
-                  <p>Development tools</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If a deployment validation fails and the development mode is enabled a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Updated documentation and migration notes for integrators</p>
-                  </li>
-                  <li>
-                  <p>Examples cleanup (dropped GAE support, etc.)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://wildfly.org/" target="_blank" rel="noopener">patch for WildFly</a> is available.
-                  This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 11.0.0.Alpha1</a>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/04/07/weld-243Final/">Weld 2.4.3.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-4-7
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Even as we get ever closer to CDI 2.0 final version, we shan&#8217;t forget about our stable 2.4 branch.
-                  Ladies and gentlemen, here comes the next-in-line 2.4 release - Weld 2.4.3.Final!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld now shares proxy classes for built-in beans of the same type (<a href="https://issues.jboss.org/browse/WELD-2344" target="_blank" rel="noopener">WELD-2344</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld now supports wider variety of non-portable extension observer methods (<a href="https://issues.jboss.org/browse/WELD-2338" target="_blank" rel="noopener">WELD-2338</a>)</p>
-                  </li>
-                  <li>
-                  <p>There is now new debug level logging during bootstrap which allows to monitor name, start, end and duration of all bootstrap phases (<a href="https://issues.jboss.org/browse/WELD-2336" target="_blank" rel="noopener">WELD-2336</a>)</p>
-                  </li>
-                  <li>
-                  <p>Session replication</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Built-in session and conversation scoped beans are not part of the bean identifier index anymore (<a href="https://issues.jboss.org/browse/WELD-2343" target="_blank" rel="noopener">WELD-2343</a>)</p>
-                  </li>
-                  <li>
-                  <p>Handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>You can now easily register new <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
-                  </li>
-                  <li>
-                  <p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ContainerInitialized</code> event is now correctly fired after registration of shutdown hook (<a href="https://issues.jboss.org/browse/WELD-2340" target="_blank" rel="noopener">WELD-2340</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Probe development tool</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Allow monitoring of bean instance creation using <code>AroundConstruct</code> (<a href="https://issues.jboss.org/browse/WELD-2332" target="_blank" rel="noopener">WELD-2332</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed a situation when bean was wrongly marked as unused when injected as parameter (<a href="https://issues.jboss.org/browse/WELD-2342" target="_blank" rel="noopener">WELD-2342</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333607" target="_blank" rel="noopener">the release details</a>.
-                  Thanks to everyone involved in this release!</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.3.Final/wildfly-10.1.0.Final-weld-2.4.3.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
-                  This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333607" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/03/03/weld-300CR2/">Weld 3.0.0.CR2</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-3-3
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am very pleased to announce the release of Weld <strong>3.0.0.CR2</strong> (<strong>CDI 2.0-PFD</strong>).
-                  The intention is to provide the latest updates so that early adopters and reviewers can work with up-to-date reference implementation during the JCP review process.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>InterceptionFactory</code> handles interface correctly (<a href="https://issues.jboss.org/browse/WELD-2335" target="_blank" rel="noopener">WELD-2335</a>)</p>
-                  </li>
-                  <li>
-                  <p>Enable to obtain <code>InjectionPoint</code> metadata from within <code>BeanConfigurator#produceWith()</code> (<a href="https://issues.jboss.org/browse/WELD-2333" target="_blank" rel="noopener">WELD-2333</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ObserverMethodConfigurator.beanClass()</code> should be preset to the extension class (<a href="https://issues.jboss.org/browse/WELD-2324" target="_blank" rel="noopener">WELD-2324</a>)</p>
-                  </li>
-                  <li>
-                  <p>Performance improvements in <code>javax.enterprise.inject.Instance</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2322" target="_blank" rel="noopener">WELD-2322</a> and <a href="https://issues.jboss.org/browse/WELD-2323" target="_blank" rel="noopener">WELD-2323</a>)</p>
-                  </li>
-                  <li>
-                  <p>Don&#8217;t include built-in session and conversation scoped beans in the bean identifier index (<a href="https://issues.jboss.org/browse/WELD-2343" target="_blank" rel="noopener">WELD-2343</a>)</p>
-                  </li>
-                  <li>
-                  <p>Support <code>InjectionPoint</code> metadata injected into dependent singleton session bean (<a href="https://issues.jboss.org/browse/WELD-2341" target="_blank" rel="noopener">WELD-2341</a>)</p>
-                  </li>
-                  <li>
-                  <p>Logging</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Log DEBUG info about important phases during bootstrap (<a href="https://issues.jboss.org/browse/WELD-2336" target="_blank" rel="noopener">WELD-2336</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix the error message when an extension observer method is static (<a href="https://issues.jboss.org/browse/WELD-2331" target="_blank" rel="noopener">WELD-2331</a>)</p>
-                  </li>
-                  <li>
-                  <p>Improved transactional observer methods logging in case of failure (<a href="https://issues.jboss.org/browse/WELD-2330" target="_blank" rel="noopener">WELD-2330</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE - <code>ContainerInitialized</code> should be fired after the container is initialized and shutdown hook is registered (<a href="https://issues.jboss.org/browse/WELD-2340" target="_blank" rel="noopener">WELD-2340</a>)</p>
-                  </li>
-                  <li>
-                  <p>Probe development tool</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Extended bean archive info</p>
-                  </li>
-                  <li>
-                  <p>Monitor bean instance creation</p>
-                  </li>
-                  <li>
-                  <p>Do not mark a bean as unused if only injected into an observer method or disposer method</p>
-                  </li>
-                  <li>
-                  <p><code>org.jboss.weld.probe</code> package is vetoed</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333159" target="_blank" rel="noopener">the release details</a>.
-                  Thanks to everyone involved in this release!</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.CR2/wildfly-10.1.0.Final-weld-3.0.0.CR2-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
-                  This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333159" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/4.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/4.html" class="page-link">4</a> <span class="current-page">5</span> <a href="/news/page/6.html" class="page-link">6</a> <span class="skip">...</span><a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/6.html" class="next-link">Next</a> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                  Subscribe to Weld news
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="row">
-        <div class="container" id="companyfooter">
-          <div class="redhatlogo" style="text-align:center;">
-            <div class="logospacer" style="height:10px;"></div>
-            <a href="http://www.redhat.com/">
-              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount','UA-45187401-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
-  <script>
-    $(document).ready(function() {
-      $('#toggle_menu').click(function(){
-        $("#mobile_menu").toggle();
-      });
+<head>
+<meta charset="utf-8">
+<title>
+Weld: News
+</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Latest news about Weld." name="description">
+<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2 col-sm-3">
+<div class="sidebar-nav">
+<div class="navbar navbar-default" role="navigation">
+<div class="navbar-header">
+<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+<span class="sr-only">
+Toggle navigation
+</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a ="#" class="visible-xs navbar-brand">
+<img alt="Weld Logo" src="/images/weld_logo_100x.png">
+</a>
+</div>
+<div class="collapse navbar-collapse sidebar-navbar-collapse">
+<ul class="nav navbar-nav">
+<li>
+<a href="/">
+<i class="fa fa-home"></i>
+&nbsp;Home
+</a>
+</li>
+<li>
+<a href="/download">
+<i class="fa fa-download"></i>
+&nbsp;Download
+</a>
+</li>
+<li>
+<a href="/news">
+<i class="fa fa-newspaper-o"></i>
+&nbsp;News
+</a>
+</li>
+<li>
+<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+<i class="fa fa-road"></i>
+&nbsp;Road Map
+</a>
+</li>
+<li>
+<a href="/documentation">
+<i class="fa fa-book"></i>
+&nbsp;Docs &amp; FAQ
+</a>
+</li>
+<li>
+<a href="/news/tags/tips">
+<i class="fa fa-lightbulb-o"></i>
+&nbsp;Tips and Tricks
+</a>
+</li>
+<li>
+<a href="/community">
+<i class="fa fa-group"></i>
+&nbsp;Community
+</a>
+</li>
+<li>
+<a href="http://github.com/weld" target="_blank">
+<i class="fa fa-github-alt"></i>
+&nbsp;Source Code
+</a>
+</li>
+<li>
+<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+<i class="fa fa-tasks"></i>
+&nbsp;Bug Tracker
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jbossweld" target="_blank">
+<i class="fa fa-twitter"></i>
+&nbsp;Follow @jbossweld
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-10 col-sm-9">
+<div class="row hidden-xs">
+<div class="dropup">
+<div id="ajbossproject">
+A JBoss Project
+</div>
+<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+<script>
+window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+</script>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<a href="/">
+<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+</a>
+</div>
+<div class="col-md-8">
+<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+</div>
+</div>
+<div class="row content-wrapper">
+<div class="col-md-12">
+<h1>
+News
+<a href="http://weld.cdi-spec.org/news.atom">
+<i class="fa fa-rss"></i>
+</a>
+</h1>
+<div class="post">
+<h2>
+<a href="/news/2017/06/14/weld-244Final/">Weld 2.4.4.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2017-6-14
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>We have been busy chasing down some annoying little bugs and it&#8217;s high time you got the fruits of those efforts into your hands.
+Say hello to Weld 2.4.4.Final.</p>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld Core</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed bean discovery event ordering when processing producers (<a href="https://issues.jboss.org/browse/WELD-2393" target="_blank" rel="noopener">WELD-2393</a>)</p>
+</li>
+<li>
+<p>Eliminated an NPE for a corner case with abstract decorator (<a href="https://issues.jboss.org/browse/WELD-2273" target="_blank" rel="noopener">WELD-2273</a>)</p>
+</li>
+<li>
+<p>Corrected <code>@Initialized(RequestScoped.class)</code> event firing in <code>@PostConstruct</code> callbacks (<a href="https://issues.jboss.org/browse/WELD-2372" target="_blank" rel="noopener">WELD-2372</a>)</p>
+</li>
+<li>
+<p>Fixed <code>BeanManager.isStereotype()</code> behavior when checking a qualifier annotated with yet another qualifier (<a href="https://issues.jboss.org/browse/WELD-2390" target="_blank" rel="noopener">WELD-2390</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a convenience static method <code>WeldContainer.current()</code>, a shortcut for <code>CDI.current()</code> with no need to cast the result (<a href="https://issues.jboss.org/browse/WELD-2399" target="_blank" rel="noopener">WELD-2399</a>)</p>
+</li>
+<li>
+<p>Allowed to specify bean discovery mode for synthetic archives (<a href="https://issues.jboss.org/browse/WELD-2386" target="_blank" rel="noopener">WELD-2386</a>)</p>
+</li>
+<li>
+<p>Fixed bean class discovery problem when adding whole packages (<a href="https://issues.jboss.org/browse/WELD-2395" target="_blank" rel="noopener">WELD-2395</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld Servlet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved logging and make checks more lenient in case the container is not yet bootstrapped (<a href="https://issues.jboss.org/browse/WELD-2382" target="_blank" rel="noopener">WELD-2382</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Configuration options</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In SE and Servlet environments, Jandex can now be forcibly prohibited from processing your archives. This is useful when a third-party dependecy brings in some unsupported Jandex version (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Development tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If a deployment validation fails and the development mode is enabled, a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.4.4.Final/wildfly-10.1.0.Final-weld-2.4.4.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
+Target platform is <strong>WildFly 10.1.0.Final</strong>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.4.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334296&amp;styleName=Html&amp;projectId=12310891" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
+<a href="/news/2017/05/19/tour-around-weld-3/">Tour around Weld 3</a>
+</h2>
+<div class="news-date news-boxed">
+2017-5-19
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_async_events_and_notification_options">Async Events and Notification Options</a></li>
+<li><a href="#_configurators_api">Configurators API</a></li>
+<li><a href="#_se_bootstrap_api">SE Bootstrap API</a></li>
+<li><a href="#_on_demand_request_context_activation">On-demand Request Context Activation</a></li>
+<li><a href="#_observer_method_ordering">Observer Method Ordering</a></li>
+<li><a href="#_intercepting_produced_beans">Intercepting Produced Beans</a></li>
+<li><a href="#_trimmed_bean_archives">Trimmed Bean Archives</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This post briefly describes all the main CDI 2.0 features and elaborates on Weld-specific features we added on top of that.
+It is not intended as a deep-dive but rather to give you the overall idea of what is going on and what can the new release offer.
+So, enough talk, let&#8217;s get the show on the road!</p>
+</div>
+<div class="sect1">
+<h2 id="_async_events_and_notification_options">Async Events and Notification Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Up until now, the only way to send events was to do so synchronously.
+That meant stopping the work of your current thread to instead occupy it with observer resolution and subsequent notification of observer methods.
+Once all that was done, the thread resumed it&#8217;s work.</p>
+</div>
+<div class="paragraph">
+<p>With CDI 2.0 there are asynchronous events - a 'fire &amp; forget' way of handling things.
+Here is how to fire such and event and how to observe it:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// nothing new here, plain old Event is used&#x000A;@Inject Event&lt;Payload&gt; event;&#x000A;&#x000A;public void sendAsyncEvent() {&#x000A;    // we use a new fireAsync method for asynchronous events&#x000A;    CompletionStage&lt;Payload&gt; eventResult = event.fireAsync(new Payload()).thenAccept(...);&#x000A;}&#x000A;&#x000A;public void asyncObserver (@ObservesAsync Payload payload){ … }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Few things to note here - first of all, the return value of <code>fireAsync</code> is <code>CompletionStage</code> allowing you to chain the work for when the event is done.
+You can follow-up with more tasks, react on exceptional return value and so on.
+Another noticeable detail is that observers which are to be notified have to have <code>@ObservesAsync</code> annotation.
+As you might have guessed, an observer can be notified of either synchronous (<code>@Observes</code>) or asynchronous (<code>@ObservesAsync</code>) events but never both!</p>
+</div>
+<div class="paragraph">
+<p>Apart from this very basic usage, async events allow you to specify <code>NotificationOptions</code> - an option allowing you to tweak the way notification works.
+From CDI perspective, there is currently only one standardized option and that enables usage of custom executors which will be used for notifications.
+But the API was designed in a generic way so that implementation can enrich it with its own options.
+Weld currently offers two more options - timeout and parallel execution - both of which are well described in <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Weld docs</a>.
+And here is a snippet showing it in action:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void sendAsyncEventWithOptions() {&#x000A;    // we use a secondary version of fireAsync method with NotificationOptions parameter&#x000A;    event.fireAsync(new Payload(), NotificationOptions.of("weld.async.notification.timeout", 2000));&#x000A;}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configurators_api">Configurators API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another of the key features are <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#configurators" target="blank"><code>Configurators</code></a>.
+They are here to ease our work when doing small tweaks in extensions.
+Here is a snippet showing how easy it can be to register a new bean in <code>AfterBeanDiscovery</code> using configurator.
+You don&#8217;t have to create a new class implementing <code>Bean&lt;X&gt;</code> anymore:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void addABean(@Observes AfterBeanDiscovery event) {&#x000A;    // get an instance of BeanConfigurator&#x000A;    event.addBean()&#x000A;      // set the desired data&#x000A;      .types(Foo.class)&#x000A;      .scope(RequestScoped.class)&#x000A;      .addQualifier(Custom.CustomLiteral.INSTANCE);&#x000A;      //finally, add a callback to tell CDI how to instantiate this bean&#x000A;      .produceWith(obj -&gt; new Foo());&#x000A;}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Following configurators were added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AnnotatedTypeConfigurator</code></p>
+</li>
+<li>
+<p><code>InjectionPointConfigurator</code></p>
+</li>
+<li>
+<p><code>BeanAttributesConfigurator</code></p>
+</li>
+<li>
+<p><code>BeanConfigurator</code></p>
+</li>
+<li>
+<p><code>ObserverMethodConfigurator</code></p>
+</li>
+<li>
+<p><code>ProducerConfigurator</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On top of that, Weld adds one additional configurator - <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_weld_enriched_container_lifecycle_events" target="_blank" rel="noopener"><code>InterceptorConfigurator</code></a>.
+This one allows you to observe <code>WeldAfterBeanDiscovery</code> and then use this configurator to create and register a custom interceptor from scratch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_se_bootstrap_api">SE Bootstrap API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A big change in CDI 2.0 is the SE support.
+Of course, Weld fans have had this for years now, but it has gone official, so that still counts, right?</p>
+</div>
+<div class="paragraph">
+<p>The official CDI API is very similar to that of Weld, here is how it looks like:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void bootBasicContainer() {&#x000A;    SeContainerInitializer initializer = SeContainerInitializer.newInstance();&#x000A;    try (SeContainer container = initializer.initialize()) {&#x000A;        Assert.assertTrue(container.isRunning());&#x000A;    }&#x000A;}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the very basic way; you can also opt to use synthetic bean archive where you cherry-pick all the beans/interceptors/&#8230;&#8203; in your archive.
+<a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#se_bootstrap" target="_blank" rel="noopener">CDI spec</a> describes this fairly well, so how about we instead shift our attention to what Weld SE offers on top of that?</p>
+</div>
+<div class="paragraph">
+<p>A small reminder of how to boot SE container using pure Weld API:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void bootWeldSeContainer() {&#x000A;    Weld weld = new Weld();&#x000A;    try (WeldContainer container = weld.initialize()) {&#x000A;        container.select(FooBean.class).get();&#x000A;    }&#x000A;}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One of the things Weld makes easier, is when you want to create a quick extension, but don&#8217;t really want to write a whole new class which you then need to place in <code>META-INF/services</code> or register on bootstrap.
+You can easily create a 'synthetic extension' programatically:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What we just did was to create an extension with two container lifecycle observer methods.
+It follows a familiar builder pattern and the body of the observer methods is specified as lambda expression.
+Before booting SE container, we register this extension as we would any other.
+For more information about this, don&#8217;t hesitate to check our older <a href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/">news post</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_on_demand_request_context_activation">On-demand Request Context Activation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Especially in SE (although not only there) you might want to activate a <code>RequestContext</code> manually for certain period of time.
+There are two ways to achieve that, first of which is an interceptor - <code>@ActivateRequestContext</code>.
+You can use that on either a method or a type (enabling it for all methods).
+As you might expect, it will activate the context before executing your method and shut it down afterwards.
+The other way is through means of built-in bean named <code>RequestContextController</code>.
+This bean can be injected as any other CDI bean and offers to self-explanatory methods: <code>activate</code> and <code>deactivate</code>.
+The obvious advantage of this approach is that you can enable the context for an extended period of time.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observer_method_ordering">Observer Method Ordering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A small but noteworthy improvement to observer methods.
+You can not leverage <code>@Priority</code> annotation in observer methods hence ordering them as you wish.</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void observeFirst (@Observes @Priority(1) EventPayload payload) {...}&#x000A;&#x000A;public void observeSecond (@Observes @Priority(2) EventPayload payload) {...}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_intercepting_produced_beans">Intercepting Produced Beans</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Up until now, anything you created using producers could not be easily intercepted.
+CDI 2.0 allows this for <code>@AroundInvoke</code> interceptors in two ways.
+There is a new method on <code>BeanManager</code> named <code>createInterceptionFactory</code> but most of the time you will rather use a built-in bean <code>InterceptionFactory</code> which can be injected as a producer method parameter.
+Here is a snippet:</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Produces&#x000A;@Dependent&#x000A;public ProducedBean produceFoo(InterceptionFactory&lt;ProducedBean&gt; factory) {&#x000A;    factory.configure().add(Counter.Literal.INSTANCE);&#x000A;    return factory.createInterceptedInstance(new ProducedBean());&#x000A;}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To explain this a bit, we first inject the built-in bean with the type equal to the produced type we wish to intercept.
+Then we <code>configure()</code> it, which returns an <code>AnnotatedTypeConfigurator</code> allowing us to add interceptor binding.
+Finally, we invoke <code>InterceptionFactory.createInterceptedInstance()</code> which takes a the object we produce as a parameter.</p>
+</div>
+<div class="paragraph">
+<p>You can read more about this in <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#interception_factory" target="_blank" rel="noopener">this CDI spec chapter</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_trimmed_bean_archives">Trimmed Bean Archives</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Last but not least feature we will mention are so called 'trimmed' bean archives.
+You can mark an explicit bean archive as trimmed in <code>beans.xml</code> by adding the <code>&lt;/trim&gt;</code> element.
+Such bean archive will perform an annotated type discovery as with <code>bean-discovery-mode="all"</code> but all types that don&#8217;t have a bean defining annotation or any scope annotation are then removed from the set of discovered types.</p>
+</div>
+<div class="paragraph">
+<p>Even in this case, Weld allows you to go one step further and <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation">veto types based on regular expression</a>.
+It works on a similar principle but affects your whole application - it processess all types from all bean archives.
+Your archives will be scanned as they would be with bean discovery mode <code>all</code> and <code>ProcessAnnotatedType</code> will be fired for all found annotated types.
+Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
+<a href="/news/2017/05/15/weld-300Final/">Weld 3.0.0.Final - the first implementation of CDI 2.0!</a>
+</h2>
+<div class="news-date news-boxed">
+2017-5-15
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>I am very pleased to announce the release of Weld <strong>3.0.0.Final</strong> - the first implementation of <strong>CDI 2.0</strong>!
+I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/**&#x000A; * TODO: Continue to deliver bugfixes and improvements&#x000A; */&#x000A;public class WeldTeam extends OpenSourceCommunity {&#x000A;&#x000A;  @Inject&#x000A;  @AwesomeNews&#x000A;  Event&lt;String&gt; event;&#x000A;&#x000A;  public void release() {&#x000A;    // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;    event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;    celebrate();&#x000A;  }&#x000A;&#x000A;}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Weld 3 is an IMPORTANT MILESTONE.
+Therefore, we&#8217;re preparing a special blogpost summarizing all the important stuff that was added.
+Expect the <strong>Tour around Weld 3</strong> blogpost within a few days.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s sum up the notable changes since <strong>3.0.0.CR2</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Notification options</a> for more info):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>weld.async.notification.mode</code> - the notification mode, possible values are: <code>SERIAL</code> (default) and <code>PARALLEL</code></p>
+</li>
+<li>
+<p><code>weld.async.notification.timeout</code> - the notification timeout (in milliseconds) after which the returned completion stage must be completed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the time expires the stage is completed exceptionally with a <code>CompletionException</code> holding the <code>java.util.concurrent.TimeoutException</code> as its cause</p>
+</li>
+<li>
+<p>The expiration does not abort the notification of the observers</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
+</li>
+<li>
+<p>Fire <code>@Initialied(RequestScoped.class)</code>/<code>@Destroyed(RequestScoped.class)</code> events for a <code>@PostConstruct</code> callback if the request context was activated for the specific callback</p>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
+</li>
+<li>
+<p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
+</li>
+<li>
+<p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld Servlet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
+</li>
+<li>
+<p>Development tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If a deployment validation fails and the development mode is enabled a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Updated documentation and migration notes for integrators</p>
+</li>
+<li>
+<p>Examples cleanup (dropped GAE support, etc.)</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://wildfly.org/" target="_blank" rel="noopener">patch for WildFly</a> is available.
+This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 11.0.0.Alpha1</a>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
+<a href="/news/2017/04/07/weld-243Final/">Weld 2.4.3.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2017-4-7
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Even as we get ever closer to CDI 2.0 final version, we shan&#8217;t forget about our stable 2.4 branch.
+Ladies and gentlemen, here comes the next-in-line 2.4 release - Weld 2.4.3.Final!</p>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld now shares proxy classes for built-in beans of the same type (<a href="https://issues.jboss.org/browse/WELD-2344" target="_blank" rel="noopener">WELD-2344</a>)</p>
+</li>
+<li>
+<p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
+</li>
+<li>
+<p>Weld now supports wider variety of non-portable extension observer methods (<a href="https://issues.jboss.org/browse/WELD-2338" target="_blank" rel="noopener">WELD-2338</a>)</p>
+</li>
+<li>
+<p>There is now new debug level logging during bootstrap which allows to monitor name, start, end and duration of all bootstrap phases (<a href="https://issues.jboss.org/browse/WELD-2336" target="_blank" rel="noopener">WELD-2336</a>)</p>
+</li>
+<li>
+<p>Session replication</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Built-in session and conversation scoped beans are not part of the bean identifier index anymore (<a href="https://issues.jboss.org/browse/WELD-2343" target="_blank" rel="noopener">WELD-2343</a>)</p>
+</li>
+<li>
+<p>Handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You can now easily register new <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
+</li>
+<li>
+<p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
+</li>
+<li>
+<p><code>ContainerInitialized</code> event is now correctly fired after registration of shutdown hook (<a href="https://issues.jboss.org/browse/WELD-2340" target="_blank" rel="noopener">WELD-2340</a>)</p>
+</li>
+<li>
+<p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Probe development tool</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow monitoring of bean instance creation using <code>AroundConstruct</code> (<a href="https://issues.jboss.org/browse/WELD-2332" target="_blank" rel="noopener">WELD-2332</a>)</p>
+</li>
+<li>
+<p>Fixed a situation when bean was wrongly marked as unused when injected as parameter (<a href="https://issues.jboss.org/browse/WELD-2342" target="_blank" rel="noopener">WELD-2342</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333607" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!</p>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.4.3.Final/wildfly-10.1.0.Final-weld-2.4.3.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
+This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.4.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333607" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
+<a href="/news/2017/03/03/weld-300CR2/">Weld 3.0.0.CR2</a>
+</h2>
+<div class="news-date news-boxed">
+2017-3-3
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>I am very pleased to announce the release of Weld <strong>3.0.0.CR2</strong> (<strong>CDI 2.0-PFD</strong>).
+The intention is to provide the latest updates so that early adopters and reviewers can work with up-to-date reference implementation during the JCP review process.</p>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>InterceptionFactory</code> handles interface correctly (<a href="https://issues.jboss.org/browse/WELD-2335" target="_blank" rel="noopener">WELD-2335</a>)</p>
+</li>
+<li>
+<p>Enable to obtain <code>InjectionPoint</code> metadata from within <code>BeanConfigurator#produceWith()</code> (<a href="https://issues.jboss.org/browse/WELD-2333" target="_blank" rel="noopener">WELD-2333</a>)</p>
+</li>
+<li>
+<p><code>ObserverMethodConfigurator.beanClass()</code> should be preset to the extension class (<a href="https://issues.jboss.org/browse/WELD-2324" target="_blank" rel="noopener">WELD-2324</a>)</p>
+</li>
+<li>
+<p>Performance improvements in <code>javax.enterprise.inject.Instance</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2322" target="_blank" rel="noopener">WELD-2322</a> and <a href="https://issues.jboss.org/browse/WELD-2323" target="_blank" rel="noopener">WELD-2323</a>)</p>
+</li>
+<li>
+<p>Don&#8217;t include built-in session and conversation scoped beans in the bean identifier index (<a href="https://issues.jboss.org/browse/WELD-2343" target="_blank" rel="noopener">WELD-2343</a>)</p>
+</li>
+<li>
+<p>Support <code>InjectionPoint</code> metadata injected into dependent singleton session bean (<a href="https://issues.jboss.org/browse/WELD-2341" target="_blank" rel="noopener">WELD-2341</a>)</p>
+</li>
+<li>
+<p>Logging</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Log DEBUG info about important phases during bootstrap (<a href="https://issues.jboss.org/browse/WELD-2336" target="_blank" rel="noopener">WELD-2336</a>)</p>
+</li>
+<li>
+<p>Fix the error message when an extension observer method is static (<a href="https://issues.jboss.org/browse/WELD-2331" target="_blank" rel="noopener">WELD-2331</a>)</p>
+</li>
+<li>
+<p>Improved transactional observer methods logging in case of failure (<a href="https://issues.jboss.org/browse/WELD-2330" target="_blank" rel="noopener">WELD-2330</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE - <code>ContainerInitialized</code> should be fired after the container is initialized and shutdown hook is registered (<a href="https://issues.jboss.org/browse/WELD-2340" target="_blank" rel="noopener">WELD-2340</a>)</p>
+</li>
+<li>
+<p>Probe development tool</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Extended bean archive info</p>
+</li>
+<li>
+<p>Monitor bean instance creation</p>
+</li>
+<li>
+<p>Do not mark a bean as unused if only injected into an observer method or disposer method</p>
+</li>
+<li>
+<p><code>org.jboss.weld.probe</code> package is vetoed</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333159" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!</p>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.CR2/wildfly-10.1.0.Final-weld-3.0.0.CR2-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
+This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333159" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="pagination-links"><a href="/news/page/4.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/4.html" class="page-link">4</a> <span class="current-page">5</span> <a href="/news/page/6.html" class="page-link">6</a> <span class="skip">...</span><a href="/news/page/13.html" class="page-link">13</a> <a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/6.html" class="next-link">Next</a> </div>
+<hr>
+<div>
+<a href="http://weld.cdi-spec.org/news.atom">
+<i class="fa fa-rss"></i>
+Subscribe to Weld news
+</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="row">
+<div class="container" id="companyfooter">
+<div class="redhatlogo" style="text-align:center;">
+<div class="logospacer" style="height:10px;"></div>
+<a href="http://www.redhat.com/">
+<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-45187401-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#toggle_menu').click(function(){
+      $("#mobile_menu").toggle();
     });
-  </script>
+  });
+</script>
 </html>
