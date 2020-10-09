@@ -1,3 +1,7 @@
+- version: '4.0.0.Beta3'
+  category: Experimental
+  date: 09.10.2020
+  versionId: 12351359
 - version: '4.0.0.Beta2'
   category: Experimental
   date: 07.10.2020
