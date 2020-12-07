@@ -1,3 +1,7 @@
+- version: '4.0.0.CR1'
+  category: Preview
+  date: 04.12.2020
+  versionId: 12350979
 - version: '4.0.0.Beta5'
   category: Experimental
   date: 14.10.2020
