@@ -143,6 +143,73 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/02/04/weld-300Alpha15/">Weld 3.0.0.Alpha15</a>
+</h2>
+<div class="news-date news-boxed">
+2016-2-4
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+, 
+<a href="/news/tags/cdi2">cdi2</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 3.0.0.Alpha15 the next experimental Weld version has been released.
+See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327857">the release details</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CompletionStage</code> used to bind actions to the completion of the asynchronous delivery is now using <code>org.jboss.weld.manager.api.ExecutorServices</code> SPI as the default asynchronous execution facility.
+Previously, the <code>ForkJoinPool#commonPool()</code> (a default executor of the underlying <code>CompletableFuture</code>) was used.
+It&#8217;s an important change because the <code>ForkJoinPool#commonPool()</code> is not a good fit for Java EE.
+See also <a href="https://issues.jboss.org/browse/WELD-2073">WELD-2073</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ExperimentalAfterBeanDiscovery</code> receives two more methods: <code>interceptorBuilder()</code> and <code>addInterceptor()</code>.
+An interceptor builder allows you to create an interceptor bean without the need to create an interceptor class.
+This might be handy for simple use cases:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension {&#x000A;  void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;    event.addInterceptor().intercept(InterceptionType.AROUND_INVOKE, (c) -&gt; {&#x000A;            long start = System.currentTimeMillis();&#x000A;            try {&#x000A;                return c.proceed();&#x000A;            } finally {&#x000A;                System.out.println("Time: " + System.currentTimeMillis() - start);&#x000A;            }&#x000A;        }).priority(2600).addBinding(MonitoringBinding.Literal.INSTANCE);&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See also <a href="https://issues.jboss.org/browse/WELD-2008">WELD-2008</a>.</p>
+</div>
+<div class="paragraph">
+<p>This release also contains some enhancements and bugfixes around proxies.
+E.g. better support for DeltaSpike partial beans (<a href="https://issues.jboss.org/browse/WELD-2084">WELD-2084</a>), better support for Camel CDI (<a href="https://issues.jboss.org/browse/WELD-2089">WELD-2089</a>) and better support for proxies with non public classes (<a href="https://issues.jboss.org/browse/WELD-2091">WELD-2091</a>).
+Furthermore, we are going to drop Jetty 7,8, 9.0, 9.1 and 9.2 support in Weld 3 (<a href="https://issues.jboss.org/browse/WELD-2032">WELD-2032</a>).
+Also the decorator validation was improved (<a href="https://issues.jboss.org/browse/WELD-2085">WELD-2085</a>, <a href="https://issues.jboss.org/browse/WELD-1811">WELD-1811</a>, <a href="https://issues.jboss.org/browse/WELD-2039">WELD-2039</a>).
+Last but not least, we have performed some SPI cleanup (<a href="https://issues.jboss.org/browse/WELD-2077">WELD-2077</a>, <a href="https://issues.jboss.org/browse/WELD-2079">WELD-2079</a>).</p>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha15/wildfly-10.0.0.Final-weld-3.0.0.Alpha15-patch.zip">patch for WildFly</a> is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327857">Release notes</a> &#93;
+&#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha15/weld-3.0.0.Alpha15.zip">Distribution</a> &#93;
+&#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha15/wildfly-10.0.0.Final-weld-3.0.0.Alpha15-patch.zip">Patch for Wildfly 10.0.0.Final</a>
+&#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2015/12/10/weld-232Final/">Weld 2.3.2.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -426,67 +493,6 @@ Finally, If <code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</co
 <p>The HTML client is available at <a href="http://127.0.0.1:8181/probe-jmx/weld-probe" class="bare">http://127.0.0.1:8181/probe-jmx/weld-probe</a>. It&#8217;s also possible to reconnect or exit. Type <code>help</code> to get a list of all possible commands.</p>
 </div>
 </div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2015/10/27/weld-231Final/">Weld 2.3.1.Final arrives...</a>
-</h2>
-<div class="news-date news-boxed">
-2015-10-27
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Weld 2.3.1.Final has been released! The delivery: a few killed bugs, couple of Weld SE enhancements and several Weld Probe improvements.</p>
-</div>
-<div class="paragraph">
-<p>Notable bug-fixes and enhancements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Private producer, disposer and observer methods should be intercepted (<a href="https://issues.jboss.org/browse/WELD-2043">WELD-2043</a>)</p>
-</li>
-<li>
-<p>Specializing bean - remove @Default qualifier unless explicitly declared (<a href="https://issues.jboss.org/browse/WELD-2043">WELD-2046</a>)</p>
-</li>
-<li>
-<p>Weld SE</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fix the development mode enablement</p>
-</li>
-<li>
-<p>Allow to pass a ResourceLoader to be used for scanning (<a href="https://issues.jboss.org/browse/WELD-2043">WELD-2044</a>)</p>
-</li>
-<li>
-<p>Allow to skip the registration of a shutdown hook (<a href="https://issues.jboss.org/browse/WELD-2043">WELD-2051</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld Probe now supports monitoring of container lifecycle events during bootstrap (see also <a href="http://docs.jboss.org/weld/reference/latest/html/configure.html#config-dev-mode">supported configuration properties</a>)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/">CDI 1.2 API</a> &#93;
-&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/2.3.1.Final/en-US/html/">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327517">Release notes</a> &#93;</p>
 </div>
 </div>
 <hr>
