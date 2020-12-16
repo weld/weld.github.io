@@ -1,0 +1,44 @@
+---
+layout: news
+title: Weld 4.0.0.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 4.0.0.Final released
+desc: Weld 4.0.0.Final released
+tags: [release]
+---
+:linkattrs:
+
+An early Xmas present for CDI lovers is here - `Final` release for Weld 4 is now available!
+You can pick your Xmas jar-packaged present from Maven Central right away.
+
+Since there were no new reported issues after integrating Weld `4.0.0.CR1` version into GlassFish and WildFly EE 9 preview, we have promoted Weld to `Final` release.
+Latest core version is now `4.0.0.Final` and Weld API that ships with it is `4.0.Final`.
+
+Functionally, Weld 3 and 4 remain identical and both are getting the same treatment and doses of bugfixes.
+The main difference is that Weld 4 operates with EE 9, meaning it expects you to use it with CDI 3.0 along with the new `jakarta` package names.
+
+Given that most changes poured into this version were more about dependecy updates, structural changes etc., I won't list them all here.
+However, if you are still curious, you could take a peek at link:https://issues.redhat.com/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&status=all[JIRA release page] and browse various Weld 4 releases that we did over time.
+
+What's more important is that we are keen on hearing from you should you find any issues with this version.
+Whether you are an integrator or user, we realize no project is ever bug-free and we want to smack those bugs!
+So if you hit any problems that you think are bugs, let us know via one of the usual channels:
+
+* Ask on mailing list `weld-dev@lists.jboss.org`
+* Create link:https://issues.redhat.com/projects/WELD/summary[JIRA] issues
+* Drop the question on link:https://gitter.im/weld/user[Weld Gitter]
+
+Last but not least, the Weld team wishes you Merry Christmas and Happy New Year.
+
+== WildFly Patch
+
+Sorry to disappoint, but we cannot provide a patch yet.
+WildFly link:https://github.com/wildfly/wildfly/tree/master/ee-9[source code] already contains the needed bits for EE 9 server variant, but there wasn't a release yet.
+Good news is, once there is a release, it will already contain Weld 4 Final!
+From there on, we can then deliver patches as we used to.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12352570[Release notes, window="_blank"] &#93;
