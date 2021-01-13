@@ -1,0 +1,46 @@
+---
+layout: news
+title: Weld 3.1.6.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 3.1.6.Final has been released
+desc: Weld 3.1.6.Final has been released
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.6.Final is now available and brings a dosage of bug fixes and updates with it.
+Without further due, let's dive straight into it!
+
+Fixes and improvements:
+
+* Weld Core
+** Fix for decorators operating on interfaces with default methods (link:https://issues.jboss.org/browse/WELD-2647[WELD-2647, window="_blank"])
+** Weld will no longer try to load classes for specific JDK version when using multi-release JARs (link:https://issues.jboss.org/browse/WELD-2652[WELD-2652, window="_blank"])
+** `ProxyFactory` was changed to produce more deterministic and sensible names when based off interfaces (link:https://issues.jboss.org/browse/WELD-2618[WELD-2618, window="_blank"])
+*** NOTE: this slightly changes names of generated proxy classes but has no effect on the functionality itself
+
+* Weld Servlet
+** Detect Jetty server in GWT 2.8+ test environment (link:https://issues.jboss.org/browse/WELD-2635[WELD-2635, window="_blank"])
+** Injection into Undertow servlet listener now works as intended (link:https://issues.jboss.org/browse/WELD-2636[WELD-2636, window="_blank"])
+*** This should work from Undertow 2.2.0.Final onwards
+
+* Weld SE 
+** Bean defining annotation can be specified as generic `SeContainerInitializer` property (link:https://issues.jboss.org/browse/WELD-2639[WELD-2639, window="_blank"])
+
+* Other bits
+** Fixed issue preventing upgrade of surefire plugin in our testsuite (link:https://issues.jboss.org/browse/WELD-2634[WELD-2634, window="_blank"])
+** Several corrections to OSGi package configuration (link:https://issues.jboss.org/browse/WELD-2642[WELD-2642, window="_blank"], link:https://issues.jboss.org/browse/WELD-2644[WELD-2644, window="_blank"], link:https://issues.jboss.org/browse/WELD-2645[WELD-2645, window="_blank"], link:https://issues.jboss.org/browse/WELD-2646[WELD-2646, window="_blank"])
+** Re-introduce multi HTML documentation output in best-effort mode; this is mainly to keep old links working (link:https://issues.jboss.org/browse/WELD-2640[WELD-2640, window="_blank"])
+** Fix intermittent test failure in `DispatchingTest` caused by race condition (link:https://issues.jboss.org/browse/WELD-2650[WELD-2650, window="_blank"])
+
+== WildFly Patch
+
+This time around, the link:http://download.jboss.org/weld/3.1.6.Final/wildfly-21.0.2.Final-weld-3.1.6.Final-patch.zip[patch for WildFly 21.0.2.Final, window="_blank"] is available.
+
+If you’re not familiar with patching WildFly, check the link:/documentation/#12[FAQ].
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.6.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12346955[Release notes, window="_blank"] &#93;
