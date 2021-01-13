@@ -48,9 +48,9 @@ desc: Weld - CDI Reference Implementation
             = preserve do
               :escaped
                 <dependency>
-                   <groupId>javax.enterprise</groupId>
-                   <artifactId>cdi-api</artifactId>
-                   <version>2.0</version>
+                   <groupId>jakarta.enterprise</groupId>
+                   <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                   <version>2.0.2</version>
                    <scope>provided</scope>
                 </dependency>
         %p
@@ -78,6 +78,33 @@ desc: Weld - CDI Reference Implementation
               %th
                 Available Patches
           %tbody
+            %tr
+              %td
+                WildFly 21.0.2.Final
+              %td
+                Weld 3.1.5.Final
+                %span{:class=>"label label-primary"}
+                  CDI 2.0
+              %td
+                %ul
+                  %li
+                    %a{:href=>"http://download.jboss.org/weld/3.1.6.Final/wildfly-21.0.2.Final-weld-3.1.6.Final-patch.zip"}Weld 3.1.6.Final
+                    %span{:class=>"label label-info"}
+                      CDI 2.0
+            %tr
+              %td
+                WildFly 22.0.0.Beta1
+                %br
+                %span{:class=>"label label-warning"}
+                  Preview EE 9
+              %td
+                Weld 4.0.0.CR1
+                %span{:class=>"label label-warning"}
+                  CDI 3.0
+              %td
+                %ul
+                  %li
+                    None available
             %tr
               %td
                 WildFly 20.0.1.Final
