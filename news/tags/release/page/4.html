@@ -143,6 +143,157 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/04/28/weld-300Alpha16/">Weld 3.0.0.Alpha16</a>
+</h2>
+<div class="news-date news-boxed">
+2016-4-28
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+, 
+<a href="/news/tags/cdi2">cdi2</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>The next experimental Weld version has been released!
+See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!</p>
+</div>
+<div class="paragraph">
+<p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
+However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
+So that everyone can play with the API, discover possibilities and find potential issues.
+Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
+So it should be even easier to get started - no extension class is needed in Weld SE.</p>
+</div>
+<div class="sect1">
+<h2 id="_metadata_configurators_basic_ideas">Metadata configurators - basic ideas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Note that we don&#8217;t use the term "builder" because there is no <code>build()</code> method in the API.
+Also note that the API is not intended to cover every possible case.
+Instead, we would like to help with common tasks.
+And if necessary, an extension developer can always use the original replacement methods for more complicated stuff.</p>
+</div>
+<div class="paragraph">
+<p>IMPORTANT POINTS:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>an extension developer receives a configurator instance from a container lifecycle event</p>
+</li>
+<li>
+<p>a configurator instance is always automatically processed at the end of the observer invocation</p>
+</li>
+<li>
+<p>for <strong>bean discovery events</strong> (all events starting with <code>Process</code>):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>configureX()</code> methods return the same configurator instance (for the given observer method invocation)</p>
+</li>
+<li>
+<p>the configurator is initialized/preconfigured with the component being processed, e.g. <code>ProcessAnnotatedType.configureAnnotatedType()</code> returns a configurator initialized with <code>ProcessAnnotatedType.getAnnotatedType()</code></p>
+</li>
+<li>
+<p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
+</li>
+<li>
+<p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>for <strong>application lifecycle events</strong> (e.g. <code>AfterBeanDiscovery</code>):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addX()</code> methods always return a new configurator instance</p>
+</li>
+<li>
+<p>the configurator is always uninitialized/empty, but we should probably define some default values wherever it makes sense (e.g. <code>Reception</code> for observer methods)</p>
+</li>
+<li>
+<p>the result of the configurator will be automatically added (e.g. <code>Bean</code> in case of <code>AfterBeanDiscovery.addBean()</code>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have prepared some simple examples - see below.
+More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
+And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_beforebeandiscovery_example">BeforeBeanDiscovery example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_processannotatedtype_example">ProcessAnnotatedType example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_processbeanattributes_example">ProcessBeanAttributes example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_afterbeandiscovery_example">AfterBeanDiscovery example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -955,142 +1106,6 @@ Furthermore, if invocation tracking is enabled, the information bar helps naviga
 &#91; Patch for Wildfly
 (<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-8.2.0.Final-weld-3.0.0.Alpha8-patch.zip/download">8.2</a>,
 <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8/wildfly-9.0.0.Beta2-weld-3.0.0.Alpha8-patch.zip/download">9 Beta</a>)
-&#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2015/02/25/weld-300Alpha5/">Weld 3.0.0.Alpha5</a>
-</h2>
-<div class="news-date news-boxed">
-2015-2-25
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-, 
-<a href="/news/tags/cdi2">cdi2</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Jozef Hartinger
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Weld 3.0.0.Alpha5, the latest release in the series of CDI 2.0 prototypes, has been released.
-The highlights of the release include new Bean builder API and many improvements to Weld Probe.</p>
-</div>
-<div class="sect1">
-<h2 id="_bean_builder_api">Bean Builder API</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The common way for frameworks and libraries to expose their API to applications via CDI is by using producer methods.
-An alternative approach is a custom implementation of the <code>javax.enterprise.inject.spi.Bean</code> interface that is registered by a CDI portable extension.
-This latter approach gives the extension more control but is also less straightforward.</p>
-</div>
-<div class="paragraph">
-<p>One of the goals of CDI 2.0 is to fill this gap and simplify extension development.
-This Weld release comes with a preview of the <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/BeanBuilder.html">Bean builder API</a>.
-The API is inspired by Bean builder
-<a href="http://deltaspike.apache.org/javadoc/1.2.1/org/apache/deltaspike/core/util/bean/BeanBuilder.html">API provided by DeltaSpike</a>.
-In addition, Java 8 lambdas are used in the API to simplify the entire process even further.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example of a simple extension that builds and registers a bean:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Integer.class)&#x000A;        .addQualifier(Random.LITERAL)&#x000A;        .produceWith(() -&gt; new java.util.Random().nextInt(1000));&#x000A;}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>That&#8217;s it!
-Likewise, it is easy to can define a bean with custom disposal logic using a lambda expression:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">void register(@Observes ExperimentalAfterBeanDiscovery event) {&#x000A;    event.addBean()&#x000A;        .addType(Connection.class)&#x000A;        .produceWith(this::newConnection)&#x000A;        .disposeWith(connection -&gt; connection.close());&#x000A;}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>See the <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/BeanBuilder.html">BeanBuilder Javadoc</a> for more information.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_event_monitoring_with_probe">Event monitoring with Probe</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We introduced Probe in the <a href="http://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/">previous blog post</a>.
-This release adds event monitoring view to Probe.
-In this view both system and application events are displayed.
-The events can be filtered by type and qualifiers.
-It is also possible to track which observer methods a particular event was delivered to.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/blog/probe-events.png" alt="Weld Probe event monitoring">
-</div>
-</div>
-<div class="sect2">
-<h3 id="_further_improvements">Further improvements</h3>
-<div class="paragraph">
-<p>In addition, there were a couple of minor improvements to Probe, namely:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>better filtering of invocation trees - Probe now searches the whole tree, not just the entry points</p>
-</li>
-<li>
-<p>the context view now displays the conversation context</p>
-</li>
-<li>
-<p>Probe is now more careful and does not try to bind interceptors to classes that are not proxyable</p>
-</li>
-<li>
-<p>all the configuration options for Probe are now <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#config-dev-mode">documented</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>If you haven&#8217;t tried Probe yet check this <a href="http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events">demo running on OpenShift</a>.
-The easiest way to get Probe to run locally is to patch WildFly with a <a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5">Weld patch</a>.
-If you&#8217;re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_relaxed_construction">Relaxed construction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>CDI requires that beans that are normal-scoped, intercepted or decorated always define a no-argument constructor.
-This requirement applies even if the bean already defines an @Inject annotated constructor with parameters.
-This is purely a technical requirement implied by how Java allocates class instances.</p>
-</div>
-<div class="paragraph">
-<p>Weld is however able to operate fine even if this requirement is not met.
-Weld uses special non-portable JVM APIs that allow it to allocate proxy instances without calling proxy’s constructor.
-This mode is non-portable and needs to be <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#relaxedConstruction">explicitly enabled using a configuration option</a>.</p>
-</div>
-<div class="paragraph">
-<p>This mode is not new but has been neglected in the past.
-For this release we added a bunch of tests for this mode, fixed a lot of bugs and enabled it by default in Weld-SE.
-Any feedback on this mode is appreciated.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12326167">Release notes</a> &#93;
-&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5">Distribution</a> &#93;
-&#91; Patch for Wildfly
-(<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-8.2.0.Final-weld-3.0.0.Alpha5-patch.zip/download">8.2</a>,
-<a href="http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5/wildfly-9.0.0.Alpha1-weld-3.0.0.Alpha5-patch.zip/download">9 Alpha</a>)
 &#93;</p>
 </div>
 </div>
