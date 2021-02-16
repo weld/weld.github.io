@@ -22,7 +22,7 @@ Notable improvements:
 ** better support for DeltaSpike partial beans (link:https://issues.jboss.org/browse/WELD-2084[WELD-2084, window="_blank"])
 ** better support for Camel CDI (link:https://issues.jboss.org/browse/WELD-2089[WELD-2089, window="_blank"])
 ** better support for proxies with non public classes (link:https://issues.jboss.org/browse/WELD-2091[WELD-2091, window="_blank"])
-* Weld Probe has a slightly redesigned menu and a new link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[Dashboard, window="_blank"] view with some basic stats
+* Weld Probe has a slightly redesigned menu and a new Dashboard view with some basic stats
 * the decorator validation was improved (link:https://issues.jboss.org/browse/WELD-2085[WELD-2085, window="_blank"], link:https://issues.jboss.org/browse/WELD-1811[WELD-1811, window="_blank"], link:https://issues.jboss.org/browse/WELD-2039[WELD-2039, window="_blank"])
 * minor SPI cleanup was performed  (link:https://issues.jboss.org/browse/WELD-2077[WELD-2077, window="_blank"], link:https://issues.jboss.org/browse/WELD-2079[WELD-2079, window="_blank"])
 

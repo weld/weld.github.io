@@ -36,7 +36,7 @@ Notable bugfixes and improvements:
 * Weld SE
 ** do not pass system properties to Weld configuration (link:https://issues.jboss.org/browse/WELD-2146[WELD-2146, window="_blank"])
 * Probe - allow to test bean availability in a given bean archive
-** check for example the availability of an alternative in the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/availableBeans?bda=2b32e9d8-9a3c-34e9-b3f6-49753fedc76e&requiredType=org.jboss.weld.examples.numberguess.AnotherGameBean[demo application, window="_blank"]
+** check for example the availability of an alternative in the demo application
 * many documentation and reference guide updates
 
 == WildFly Patch
