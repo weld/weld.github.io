@@ -30,7 +30,6 @@ Probe makes it easy to inspect:
 * Weld configuration
 * and more!
 
-Before you start reading, you might want to check the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[live demo hosted on OpenShift, window="_blank"] and see what Probe can offer.
 Ok, now let's get it working!
 
 == How to enable the development mode
@@ -93,9 +92,9 @@ By default, Probe also embeds a tiny information bar directly into the applicati
 That makes it easy to navigate to Probe directly from the application anytime.
 Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.
 
-* The best place to start is probably the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/beans[Beans view, window="_blank"]
-* You may also discover the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&beanClass=ValidationExtension[observer methods declared by an extension, window="_blank"]
-* Monitor all the link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[fired events, window="_blank"] and track which observer methods a particular event was delivered to
+* The best place to start is probably the `Beans` view
+* You may also discover the observer methods declared by an extension
+* Monitor all the fired events and track which observer methods a particular event was delivered to
 * And more...
 
 We believe the UI is quite intuitive but feel free to ask questions on any channel (irc, gitter, mailing list, etc.).

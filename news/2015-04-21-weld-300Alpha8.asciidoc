@@ -105,8 +105,6 @@ Additionally, the following Probe improvements were implemented:
 * a special type of edges is now used in the overview graph to represent a "declared by" relation (when a bean declares a producer method or field)
 * Instance<?> injection points are now treated specially - a resolved bean is show as injection point's dependency
 
-See this link:http://probe-weld.itos.redhat.com/weld-numberguess[live demo] and try Weld Probe yourself.
-
 &#91; link:http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html[Experimental API documentation] &#93;
 &#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12326881[Release notes] &#93;
 &#91; link:https://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha8[Distribution] &#93;

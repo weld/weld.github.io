@@ -77,10 +77,10 @@ And if there are three similar extensions, the CDI container will have to create
 This should be ok unless the observer logic is overly complex.
 
 *CONCLUSION*: Pay attention to extensions used in your application.
-If you wonder what extensions are in service, use for example Weld Probe link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&kind=EXTENSION[observers view, window="_blank"] or link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[fired events view, window="_blank"] together with link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[`org.jboss.weld.probe.eventMonitor.containerLifecycleEvents` enabled, window="_blank"].
+If you wonder what extensions are in service, use for example Weld Probe observers view or fired events view together with link:http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode[`org.jboss.weld.probe.eventMonitor.containerLifecycleEvents` enabled, window="_blank"].
 
 TIP: If possible, don't use the extensions which observe all the annotated types from your application, i.e. which defined something like `void observe(@Observes ProcessAnnotatedType<?> event)`.
-Since CDI 1.1 `@WithAnnotations` should be used to restrict the set of types an extension is going to process. link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&kind=EXTENSION&observedType=javax.enterprise.inject.spi.ProcessAnnotatedType[Weld Probe, window="_blank"] warns you about these extensions.
+Since CDI 1.1 `@WithAnnotations` should be used to restrict the set of types an extension is going to process. Weld Probe warns you about these extensions.
 
 
 [[jandex]]
@@ -103,7 +103,7 @@ The following sections describe what could be done to minimize the impact.
 
 Before you start a profiler or a similar tool, it's a good idea to identify all the CDI components involved in a problematic "request".
 This means all the beans, observer methods, interceptors and decorators.
-The good start might be the Weld Probe link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations[invocation trees, window="_blank"] view.
+The good start might be the Weld Probe invocation trees view.
 An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
 Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
 Sometimes profilers are just an overkill.

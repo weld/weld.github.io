@@ -47,11 +47,6 @@ of your CDI application plus `/weld-probe` suffix.
 For more thorough overview of what Probe provides see
 link:http://goo.gl/ICQrRA[Martin's blog post] or the
 link:http://docs.jboss.org/weld/reference/3.0.0.Alpha4/en-US/html/devmode.html#_probe[reference documentation].
-You can play with Probe using this
-link:http://probe-weld.itos.redhat.com/weld-numberguess[simple CDI application]
-hosted on link:https://www.openshift.com/[OpenShift]. Just append
-link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe[/weld-probe]
-to the URL.
 
 Bear in mind that Probe is still work in progress and that this early preview may have defects
 here and there.

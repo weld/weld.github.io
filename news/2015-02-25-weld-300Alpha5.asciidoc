@@ -68,7 +68,6 @@ In addition, there were a couple of minor improvements to Probe, namely:
 * Probe is now more careful and does not try to bind interceptors to classes that are not proxyable
 * all the configuration options for Probe are now link:http://docs.jboss.org/weld/reference/3.0.0.Alpha5/en-US/html/configure.html#config-dev-mode[documented]
 
-If you haven't tried Probe yet check this link:http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events[demo running on OpenShift].
 The easiest way to get Probe to run locally is to patch WildFly with a link:http://sourceforge.net/projects/jboss/files/Weld/3.0.0.Alpha5[Weld patch].
 If you're not familiar with patching WildFly, check link:http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html[Markus's tutorial].
 
