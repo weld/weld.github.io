@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://weld.cdi-spec.org/</id>
 <title>Weld</title>
-<updated>2021-01-13T11:06:14+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <link href="https://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
 <link href="https://weld.cdi-spec.org/" rel="alternate" type="text/html" />
 <entry>
 <id>https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/</id>
 <title>Weld 3.1.6.Final</title>
-<updated>2021-01-13T11:06:14+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2021-01-13T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/" rel="alternate" type="text/html" />
 <author>
@@ -166,7 +166,7 @@ Without further due, let’s dive straight into it!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/</id>
 <title>Weld 4.0.0.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2020-12-16T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/" rel="alternate" type="text/html" />
 <author>
@@ -244,7 +244,7 @@ From there on, we can then deliver patches as we used to.&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/</id>
 <title>Weld 4.0.0.Beta1</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2020-09-18T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/" rel="alternate" type="text/html" />
 <author>
@@ -361,7 +361,7 @@ As soon as there is one, we will surely follow up with Weld patch!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/</id>
 <title>Weld 3.1.5.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2020-08-12T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/" rel="alternate" type="text/html" />
 <author>
@@ -499,7 +499,7 @@ As for core artifacts, there are some bugfixes as usual, so let’s take a look 
 <entry>
 <id>https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/</id>
 <title>Weld 4 and Jakarta EE 9</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2020-05-13T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/" rel="alternate" type="text/html" />
 <author>
@@ -638,7 +638,7 @@ Therefore, both our versions will get their share of updates and bug fixes in th
 <entry>
 <id>https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</id>
 <title>Weld 3.1.4.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2020-03-28T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/" rel="alternate" type="text/html" />
 <author>
@@ -750,7 +750,7 @@ There are only few issues included in this release, so let’s take a look at th
 <entry>
 <id>https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</id>
 <title>Weld 3.1.3.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2019-11-28T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/" rel="alternate" type="text/html" />
 <author>
@@ -884,7 +884,7 @@ This is a minor update which had a main goal of swapping whole Weld internals fr
 <entry>
 <id>https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</id>
 <title>Weld 3.1.2.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2019-08-06T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/" rel="alternate" type="text/html" />
 <author>
@@ -1038,7 +1038,7 @@ Other than that we have tried to address some dodgy issues with possible race co
 <entry>
 <id>https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</id>
 <title>Weld 3.1.1.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2019-05-07T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/" rel="alternate" type="text/html" />
 <author>
@@ -1171,7 +1171,7 @@ Moving on, we also have some improvements to asynchronous events on default exec
 <entry>
 <id>https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</id>
 <title>Weld 3.1.0.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2019-02-06T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/" rel="alternate" type="text/html" />
 <author>
@@ -1423,7 +1423,7 @@ Integrators (WildFly, Liberty, GlassFish, …​) will have to adjust to the cha
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</id>
 <title>Weld 2.4.8.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-09-26T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/" rel="alternate" type="text/html" />
 <author>
@@ -1560,7 +1560,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</id>
 <title>Weld 3.0.5.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-07-26T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/" rel="alternate" type="text/html" />
 <author>
@@ -1724,7 +1724,7 @@ So let’s take a look at them all, shall we?&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</id>
 <title>Weld team changes</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-07-10T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/" rel="alternate" type="text/html" />
 <author>
@@ -1773,7 +1773,7 @@ She’s going to work on expanding our testsuites and improving our continuous i
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</id>
 <title>Weld 3.0.4.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-04-26T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/" rel="alternate" type="text/html" />
 <author>
@@ -1972,7 +1972,7 @@ Please note that Weld 3.0.4.Final will still allow you to boot up WildFly in eit
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</id>
 <title>Weld 2.4.7.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-03-20T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/" rel="alternate" type="text/html" />
 <author>
@@ -2155,7 +2155,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</id>
 <title>Weld 3.0.3.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2018-02-09T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/" rel="alternate" type="text/html" />
 <author>
@@ -2290,7 +2290,7 @@ You start with a speck of bug fixes add some proxy generation improvements top i
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</id>
 <title>Weld meets JUnit 5</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-12-19T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/" rel="alternate" type="text/html" />
 <author>
@@ -2467,7 +2467,7 @@ We are happy for any kind of feedback we can get.&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</id>
 <title>Weld 2.4.6.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-12-18T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/" rel="alternate" type="text/html" />
 <author>
@@ -2646,7 +2646,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</id>
 <title>Weld 3.0.2.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-11-23T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/" rel="alternate" type="text/html" />
 <author>
@@ -2821,7 +2821,7 @@ We have a bunch of bugfixes and improvements for you, so read on…​&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</id>
 <title>Weld 2.4.5.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-09-11T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/" rel="alternate" type="text/html" />
 <author>
@@ -2938,7 +2938,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</id>
 <title>Weld 3.0.1.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-08-25T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/" rel="alternate" type="text/html" />
 <author>
@@ -3089,7 +3089,7 @@ Though this should only concern people who use the combination of Elytron subsys
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</id>
 <title>Weld Vert.x Next?</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-08-07T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/" rel="alternate" type="text/html" />
 <author>
@@ -3348,7 +3348,7 @@ Feel free to &lt;a href=&quot;https://github.com/weld/weld-vertx/issues&quot;&gt
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</id>
 <title>Weld 2.4.4.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-06-14T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/" rel="alternate" type="text/html" />
 <author>
@@ -3500,7 +3500,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</id>
 <title>Tour around Weld 3</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-05-19T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/" rel="alternate" type="text/html" />
 <author>
@@ -3818,7 +3818,7 @@ Then, based on the regular expression you provide, annotated types which do not 
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</id>
 <title>Weld 3.0.0.Final - the first implementation of CDI 2.0!</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-05-15T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/" rel="alternate" type="text/html" />
 <author>
@@ -3996,7 +3996,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</id>
 <title>Weld 2.4.3.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-04-07T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/" rel="alternate" type="text/html" />
 <author>
@@ -4124,7 +4124,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</id>
 <title>Weld 3.0.0.CR2</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-03-03T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/" rel="alternate" type="text/html" />
 <author>
@@ -4260,7 +4260,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</id>
 <title>Weld 2.4.2.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-02-02T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/" rel="alternate" type="text/html" />
 <author>
@@ -4378,7 +4378,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</id>
 <title>Weld Tip 4 - Testing CDI/Weld apps</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-02-01T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/" rel="alternate" type="text/html" />
 <author>
@@ -4641,7 +4641,7 @@ We recommend you to take a glance at &lt;a href=&quot;https://github.com/arquill
 <entry>
 <id>https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</id>
 <title>Weld 3.0.0.CR1</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2017-01-23T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/" rel="alternate" type="text/html" />
 <author>
@@ -4693,7 +4693,7 @@ If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</id>
 <title>Weld 3.0.0.Beta1</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/" rel="alternate" type="text/html" />
 <author>
@@ -4804,7 +4804,7 @@ Finally, we would like to release Weld &lt;strong&gt;3.0.0.Final&lt;/strong&gt; 
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</id>
 <title>Weld 2.4.1.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-11-18T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/" rel="alternate" type="text/html" />
 <author>
@@ -4907,7 +4907,7 @@ Thanks to everyone involved in this release!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</id>
 <title>Weld Tip 3 - Boost performance of Weld apps</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-02-17T10:02:49+01:00</updated>
 <published>2016-10-25T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/" rel="alternate" type="text/html" />
 <author>
@@ -5076,7 +5076,7 @@ This should be ok unless the observer logic is overly complex.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;strong&gt;CONCLUSION&lt;/strong&gt;: Pay attention to extensions used in your application.
-If you wonder what extensions are in service, use for example Weld Probe &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;amp;kind=EXTENSION&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;observers view&lt;/a&gt; or &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;fired events view&lt;/a&gt; together with &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;org.jboss.weld.probe.eventMonitor.containerLifecycleEvents&lt;/code&gt; enabled&lt;/a&gt;.&lt;/p&gt;
+If you wonder what extensions are in service, use for example Weld Probe observers view or fired events view together with &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;org.jboss.weld.probe.eventMonitor.containerLifecycleEvents&lt;/code&gt; enabled&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock tip&quot;&gt;
 &lt;table&gt;
@@ -5086,7 +5086,7 @@ If you wonder what extensions are in service, use for example Weld Probe &lt;a h
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 If possible, don’t use the extensions which observe all the annotated types from your application, i.e. which defined something like &lt;code&gt;void observe(@Observes ProcessAnnotatedType&amp;lt;?&amp;gt; event)&lt;/code&gt;.
-Since CDI 1.1 &lt;code&gt;@WithAnnotations&lt;/code&gt; should be used to restrict the set of types an extension is going to process. &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;amp;kind=EXTENSION&amp;amp;observedType=javax.enterprise.inject.spi.ProcessAnnotatedType&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Weld Probe&lt;/a&gt; warns you about these extensions.
+Since CDI 1.1 &lt;code&gt;@WithAnnotations&lt;/code&gt; should be used to restrict the set of types an extension is going to process. Weld Probe warns you about these extensions.
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -5128,7 +5128,7 @@ The following sections describe what could be done to minimize the impact.&lt;/p
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Before you start a profiler or a similar tool, it’s a good idea to identify all the CDI components involved in a problematic &quot;request&quot;.
 This means all the beans, observer methods, interceptors and decorators.
-The good start might be the Weld Probe &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/invocations&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;invocation trees&lt;/a&gt; view.
+The good start might be the Weld Probe invocation trees view.
 An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
 Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
 Sometimes profilers are just an overkill.&lt;/p&gt;
@@ -5259,7 +5259,7 @@ See also the &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</id>
 <title>Weld Tip 2 - Development Mode</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-02-17T10:02:49+01:00</updated>
 <published>2016-10-07T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/" rel="alternate" type="text/html" />
 <author>
@@ -5325,7 +5325,10 @@ and more!
 
 
 
-Before you start reading, you might want...
+Ok, now let&#8217;s get it working!
+
+
+How to...
 </summary>
 <content type="html">
 &lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
@@ -5387,8 +5390,7 @@ Probe makes it easy to inspect:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Before you start reading, you might want to check the &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;live demo hosted on OpenShift&lt;/a&gt; and see what Probe can offer.
-Ok, now let’s get it working!&lt;/p&gt;
+&lt;p&gt;Ok, now let’s get it working!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;_how_to_enable_the_development_mode&quot;&gt;How to enable the development mode&lt;/h2&gt;
@@ -5477,13 +5479,13 @@ Furthermore, if invocation tracking is enabled, the information bar helps naviga
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;The best place to start is probably the &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/beans&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Beans view&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The best place to start is probably the &lt;code&gt;Beans&lt;/code&gt; view&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;You may also discover the &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/observers?bda=undefined&amp;amp;beanClass=ValidationExtension&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;observer methods declared by an extension&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You may also discover the observer methods declared by an extension&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Monitor all the &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/events&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;fired events&lt;/a&gt; and track which observer methods a particular event was delivered to&lt;/p&gt;
+&lt;p&gt;Monitor all the fired events and track which observer methods a particular event was delivered to&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;And more…​&lt;/p&gt;
@@ -5551,7 +5553,7 @@ There are two ways to export the data:&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</id>
 <title>Weld Tip 1 - Logging</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-10-01T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/10/01/tip1-logging/" rel="alternate" type="text/html" />
 <author>
@@ -5785,7 +5787,7 @@ If your application deploys successfully, you can use &lt;a href=&quot;http://do
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</id>
 <title>Weld 2.4.0.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-09-13T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/09/13/weld-240Final/" rel="alternate" type="text/html" />
 <author>
@@ -5900,7 +5902,7 @@ There will be no hot news, just useful existing features (repetition is the moth
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</id>
 <title>First release candidate of Weld 2.4</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-08-19T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/" rel="alternate" type="text/html" />
 <author>
@@ -6111,7 +6113,7 @@ Invocation of a JDK8 default method should be intercepted (this only works if us
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</id>
 <title>Arquillian container Weld 2.0.0.Beta1 released!</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-07-21T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/" rel="alternate" type="text/html" />
 <author>
@@ -6165,7 +6167,7 @@ This new version is going to be used in Weld as soon as possible.&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</id>
 <title>Weld 2.3.5.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-02-17T10:02:49+01:00</updated>
 <published>2016-07-01T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/07/01/weld-235Final/" rel="alternate" type="text/html" />
 <author>
@@ -6276,7 +6278,7 @@ See also &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?proje
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;check for example the availability of an alternative in the &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe#/availableBeans?bda=2b32e9d8-9a3c-34e9-b3f6-49753fedc76e&amp;amp;requiredType=org.jboss.weld.examples.numberguess.AnotherGameBean&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;demo application&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;check for example the availability of an alternative in the demo application&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -6305,7 +6307,7 @@ See also &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?proje
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</id>
 <title>Update on weld-vertx</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-06-21T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/" rel="alternate" type="text/html" />
 <author>
@@ -6406,7 +6408,7 @@ Any feedback is appreciated!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</id>
 <title>Programmatic lookup improvements</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-05-18T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/" rel="alternate" type="text/html" />
 <author>
@@ -6622,7 +6624,7 @@ Any feedback is appreciated!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</id>
 <title>Weld 3.0.0.Alpha16</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-04-28T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/" rel="alternate" type="text/html" />
 <author>
@@ -6826,7 +6828,7 @@ class MyExtension implements Extension {
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</id>
 <title>Weld 2.3.4.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-04-22T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/04/22/weld-234Final/" rel="alternate" type="text/html" />
 <author>
@@ -6951,7 +6953,7 @@ Thanks to everyone involved in this release!&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</id>
 <title>Weld meets Vert.x</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-04-11T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/" rel="alternate" type="text/html" />
 <author>
@@ -7060,7 +7062,7 @@ And if you find it useful feel free to add comments to this blog post. Any feedb
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</id>
 <title>Weld 2.3.3.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-02-17T10:02:49+01:00</updated>
 <published>2016-02-12T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/02/12/weld-233Final/" rel="alternate" type="text/html" />
 <author>
@@ -7149,7 +7151,7 @@ Notable improvements:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Weld Probe has a slightly redesigned menu and a new &lt;a href=&quot;http://probe-weld.itos.redhat.com/weld-numberguess/weld-probe&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Dashboard&lt;/a&gt; view with some basic stats&lt;/p&gt;
+&lt;p&gt;Weld Probe has a slightly redesigned menu and a new Dashboard view with some basic stats&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;the decorator validation was improved (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2085&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2085&lt;/a&gt;, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-1811&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-1811&lt;/a&gt;, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2039&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2039&lt;/a&gt;)&lt;/p&gt;
@@ -7178,7 +7180,7 @@ Notable improvements:&lt;/p&gt;
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</id>
 <title>Weld SE and synthetic container lifecycle event observers</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-02-08T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/" rel="alternate" type="text/html" />
 <author>
@@ -7241,7 +7243,7 @@ Do you find it useful? Any feedback is appreciated! Feel free to add comments to
 <entry>
 <id>https://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</id>
 <title>Weld 3.0.0.Alpha15</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2016-02-04T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/" rel="alternate" type="text/html" />
 <author>
@@ -7331,7 +7333,7 @@ Last but not least, we have performed some SPI cleanup (&lt;a href=&quot;https:/
 <entry>
 <id>https://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</id>
 <title>Weld 2.3.2.Final</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2015-12-10T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2015/12/10/weld-232Final/" rel="alternate" type="text/html" />
 <author>
@@ -7426,7 +7428,7 @@ Probe development tool is now...
 <entry>
 <id>https://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</id>
 <title>Weld 3.0.0.Alpha14</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2015-12-04T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/" rel="alternate" type="text/html" />
 <author>
@@ -7475,7 +7477,7 @@ Moreover, this release also contains quite a lot of enhancements and bugfixes. S
 <entry>
 <id>https://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</id>
 <title>Arquillian container SE 1.0.0.CR1 released!</title>
-<updated>2020-12-16T16:05:11+01:00</updated>
+<updated>2021-01-13T11:06:28+01:00</updated>
 <published>2015-11-25T00:00:00+00:00</published>
 <link href="https://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/" rel="alternate" type="text/html" />
 <author>
