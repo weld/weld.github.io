@@ -12,7 +12,7 @@ tags: [release]
 
 Weld 3.1.7.Final along with API 3.1.SP4 is now up for grabs!
 
-Along a few bugfixes, the flagship of this release is a rework of Weld's default class defining utilities which should eliminate those pesky JDK 11+ warning about illegal reflective access.
+Along a few bugfixes, the flagship of this release is a rework of Weld's default class defining utilities which should eliminate those pesky JDK 11+ warnings about illegal reflective access.
 You can find more details on it below or in the JIRA ticket; in case you encounter any issue with it, please don't hesitate to reach out to us.
 
 So, let's take a closer look:
