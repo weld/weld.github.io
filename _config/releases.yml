@@ -1,6 +1,10 @@
+- version: '3.1.7.Final'
+  category: Final
+  date: 18.03.2021
+  versionId: 12353263
 - version: '3.1.6.Final'
   category: Final
-  date: 13.01.2020
+  date: 13.01.2021
   versionId: 12346955
 - version: '4.0.0.Final'
   category: Final
