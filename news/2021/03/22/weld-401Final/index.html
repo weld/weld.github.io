@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>
-Weld: Weld 3.1.7.Final
+Weld: Weld 4.0.1.Final
 </title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld 3.1.7.Final has been released" name="description">
+<meta content="Weld 4.0.1.Final has been released" name="description">
 <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -137,13 +137,13 @@ window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false
 <div class="col-md-12">
 <div class="post">
 <h1>
-Weld 3.1.7.Final
+Weld 4.0.1.Final
 <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
 <i class="fa fa-rss"></i>
 </a>
 </h1>
 <div class="news-date news-boxed">
-2021-3-18
+2021-3-22
 &nbsp;
 <span class="tags">
 <i class="fa fa-tags"></i>
@@ -156,11 +156,12 @@ Matej Novotny
 <p></p>
 <div class="content">
 <div class="paragraph">
-<p>Weld 3.1.7.Final along with API 3.1.SP4 is now up for grabs!</p>
+<p>First maintainance release of Weld 4 is now available along with API version 4.0.SP1.</p>
 </div>
 <div class="paragraph">
-<p>Along a few bugfixes, the flagship of this release is a rework of Weld&#8217;s default class defining utilities which should eliminate those pesky JDK 11+ warnings about illegal reflective access.
-You can find more details on it below or in the <a href="https://issues.redhat.com/browse/WELD-2581">JIRA ticket</a>; in case you encounter any issue with it, please don&#8217;t hesitate to reach out to us.</p>
+<p>The crux of this release is (much like 3.1.7.Final) a rework of Weld&#8217;s default class defining capabilities.
+With 4.0.1.Final you should no longer see illegal reflective access warning so long as you are on JDK 11 or newer.
+More details on this are below or in the respective <a href="https://issues.redhat.com/browse/WELD-2581">JIRA ticket</a>; in case you encounter any issue with it, please don&#8217;t hesitate to reach out to us.</p>
 </div>
 <div class="paragraph">
 <p>So, let&#8217;s take a closer look:</p>
@@ -175,11 +176,11 @@ You can find more details on it below or in the <a href="https://issues.redhat.c
 <p>Weld Core is now a Multi-Release JAR providing two different implementations for JDK 8 and JDK 11 or newer</p>
 </li>
 <li>
-<p>Integrators are still encouraged to implement <a href="https://github.com/weld/api/blob/3.1.SP4/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java"><code>ProxyServices</code></a> class from our API</p>
+<p>Integrators are still encouraged to implement <a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java"><code>ProxyServices</code></a> class from our API</p>
 <div class="ulist">
 <ul>
 <li>
-<p>All implementations of this interface are now presumed to support class defining (<a href="https://github.com/weld/api/blob/3.1.SP4/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java#L138-L150"><code>ProxyServices#supportsClassDefining()</code></a> is now deprecated and not used)</p>
+<p>All implementations of this interface are now presumed to support class defining (<a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java#L138-L150"><code>ProxyServices#supportsClassDefining()</code></a> is now deprecated and not used)</p>
 </li>
 </ul>
 </div>
@@ -216,6 +217,12 @@ You can find more details on it below or in the <a href="https://issues.redhat.c
 <li>
 <p>Fixed a corner case scenario where a hierarchy of classes with bridge methods would not get correctly intercepted (<a href="https://issues.jboss.org/browse/WELD-2656" target="_blank" rel="noopener">WELD-2656</a>)</p>
 </li>
+<li>
+<p><code>ProxyFactory</code> now creates determininistic proxy names (<a href="https://issues.jboss.org/browse/WELD-2618" target="_blank" rel="noopener">WELD-2618</a>)</p>
+</li>
+<li>
+<p>Decorators for interfaces with non-decorated default method now work properly (<a href="https://issues.jboss.org/browse/WELD-2647" target="_blank" rel="noopener">WELD-2647</a>)</p>
+</li>
 </ul>
 </div>
 </li>
@@ -229,8 +236,8 @@ You can find more details on it below or in the <a href="https://issues.redhat.c
 </div>
 <div class="paragraph">
 <p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12353263" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+&#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352776" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
 </div>
@@ -239,9 +246,9 @@ You can find more details on it below or in the <a href="https://issues.redhat.c
             <div id="disqus_thread"></div>
             <script type="text/javascript">
             var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/";
+            var disqus_url = "https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/";
             var disqus_developer = null;
-            var disqus_identifier = "6f7af9274883a469edbca3ad66eeddb0281752ff";
+            var disqus_identifier = "09efc13ebae657dddce3c3998b6110b0a9192c66";
             (function() {
               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
