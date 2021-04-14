@@ -1,0 +1,29 @@
+---
+layout: news
+title: Weld 4.0.1.SP1 and 3.1.7.SP1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 4.0.1.SP1 and 3.1.7.SP1 are now available
+desc: Class defining fixes for Weld 3 and 4
+tags: [release]
+---
+:linkattrs:
+
+Thanks to your reports, several flaws were discovered in the new class defining for JDK 11+.
+We have addressed those issues and because we reckon they are potentially blocking, we have released Weld 3.1.7.SP1 and 4.0.1.SP1.
+
+Two main issues were:
+
+* Producers returning an interface type could sometimes try to define a proxy class with invalid name (link:https://issues.jboss.org/browse/WELD-2662[WELD-2662, window="_blank"])
+** Similar thing could happen for inner classes which should now work as well
+* Proxy class names for hierarchical type structures of interfaces could lead to a jumbled combination of package and name (link:https://issues.jboss.org/browse/WELD-2666[WELD-2666, window="_blank"])
+** Part of this fix is also an improvement wherein Weld actively tries to define new proxies into non-java packages making sure it uses `MethodHandles.Lookup` whenever applicable
+
+Apart from that, this release also addresses a problem with Undertow servlet integration in which (link:https://issues.redhat.com/browse/WELD-2664[Weld tried too eagerly to provide it's own instances of `Listener`, window="_blank]).
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/4.0.1.SP1/en-US/html_single/[Documentation Weld 4.0.1.SP1, window="_blank"] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.7.SP1/en-US/html_single/[Documentation Weld 3.1.7.SP1, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12354546[Release notes for Weld 4.0.1.SP1, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12354545[Release notes for Weld 3.1.7.SP1, window="_blank"] &#93;
