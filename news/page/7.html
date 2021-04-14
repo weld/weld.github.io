@@ -143,6 +143,98 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2017/02/02/weld-242Final/">Weld 2.4.2.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2017-2-2
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>As you may know, CDI 2 (JSR 365) is in Public Review phase.
+That&#8217;s great news for early adopters.
+But for now, I am very pleased to announce another production-ready version of <strong>Weld 2.4</strong> (CDI 1.2).
+See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12332808" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+There is a <a href="https://issues.jboss.org/browse/WELD-2328" target="_blank" rel="noopener">regression</a> in Weld <strong>2.4.2.Final</strong>. The problem only occurs if a <a href="https://docs.oracle.com/javase/tutorial/essential/environment/security.html" target="_blank" rel="noopener">Security Manager</a> is used. However, users are encouraged to upgrade to <strong>2.4.2.SP1</strong> which contains a fix for the issue.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Added <strong>trimmed bean archives</strong> support (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2314" target="_blank" rel="noopener">WELD-2314</a>)</p>
+</li>
+<li>
+<p>Fixed Weld SE and Weld Servlet cooperation (<a href="https://issues.jboss.org/browse/WELD-2260" target="_blank" rel="noopener">WELD-2260</a> and <a href="https://issues.jboss.org/browse/WELD-2262" target="_blank" rel="noopener">WELD-2262</a>)</p>
+</li>
+<li>
+<p>Fixed <code>ActivateRequestContextInterceptor</code> - align the priority with CDI 2.0, fire <code>@Initialized</code> and <code>@Destroyed</code> events (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2281" target="_blank" rel="noopener">WELD-2281</a>)</p>
+</li>
+<li>
+<p>Fixed JDK9 build problems (<a href="https://issues.jboss.org/browse/WELD-2303" target="_blank" rel="noopener">WELD-2303</a> and <a href="https://issues.jboss.org/browse/WELD-2301" target="_blank" rel="noopener">WELD-2301</a>)</p>
+</li>
+<li>
+<p>Validation - allow to use CDI 2 rules when validating selected alternatives in <code>bean.xml</code> (<a href="https://issues.jboss.org/browse/WELD-2313" target="_blank" rel="noopener">WELD-2313</a>)</p>
+</li>
+<li>
+<p>Performance improvements in <code>javax.enterprise.inject.Instance</code> implementation (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2323" target="_blank" rel="noopener">WELD-2323</a>)</p>
+</li>
+<li>
+<p>Illegal bean types ignored for a session bean (<a href="https://issues.jboss.org/browse/WELD-2315" target="_blank" rel="noopener">WELD-2315</a>)</p>
+</li>
+<li>
+<p>Dependency upgrade - <code>jboss-classfilewriter</code> to 1.2.1.Final (enables interception of default methods, see also <a href="https://issues.jboss.org/browse/WELD-2093" target="_blank" rel="noopener">WELD-2093</a>)</p>
+</li>
+<li>
+<p>Weld SE - addded useful methods from <code>SeContainerInitializer</code> (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2316" target="_blank" rel="noopener">WELD-2316</a>)</p>
+</li>
+<li>
+<p>Probe development tool - extended bean archive info</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.4.2.Final/wildfly-10.1.0.Final-weld-2.4.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
+This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
+&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12332808" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2017/02/01/tip4-testing/">Weld Tip 4 - Testing CDI/Weld apps</a>
 </h2>
 <div class="news-date news-boxed">
@@ -542,307 +634,6 @@ Thanks to everyone involved in this release!</p>
 &#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331553" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2016/10/25/tip3-performance/">Weld Tip 3 - Boost performance of Weld apps</a>
-</h2>
-<div class="news-date news-boxed">
-2016-10-25
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/tips">tips</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div id="toc" class="toc">
-<div id="toctitle" class="title">Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_bootstrap">Bootstrap</a>
-<ul class="sectlevel2">
-<li><a href="#_discovery_mode">Discovery mode</a></li>
-<li><a href="#_extensions">Extensions</a></li>
-<li><a href="#jandex">Jandex</a></li>
-</ul>
-</li>
-<li><a href="#_runtime">Runtime</a>
-<ul class="sectlevel2">
-<li><a href="#_identify_problematic_components_easily">Identify problematic components easily</a></li>
-<li><a href="#_lazy_initialization_of_bean_instances">Lazy initialization of bean instances</a></li>
-<li><a href="#_drawbacks_of_dependent_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</a></li>
-<li><a href="#_mapping_cdi_contexts_to_http_requests">Mapping CDI contexts to HTTP requests</a></li>
-<li><a href="#_bean_identifier_index_optimization">Bean identifier index optimization</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In this article we&#8217;re going to dive into various performance aspects of CDI applications.
-As you&#8217;ve probably noticed performance testing is sometimes tricky.
-First of all, it&#8217;s difficult to create a meaningful benchmark.
-One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. <a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank" rel="noopener">JMH</a> for microbenchmarks) accordingly.
-But even that usually proves to be unsufficient.
-One should also run the test in a relevant context (data, load, etc.).
-Performance specialists also say that&#8217;s it&#8217;s good to avoid premature optimizations but keep performance aspects in mind when tuning the "final" code.
-But all these considerations are out of scope of this article.
-Let&#8217;s go through several areas where CDI affects the performance of your application and discuss the possibilities.</p>
-</div>
-<div class="sect1">
-<h2 id="_bootstrap">Bootstrap</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>During bootstrap the overhead of a framework should be minimal so that it does not <em>slow down</em> the application startup and also does not eat all the memory available.
-However, CDI needs to do all that magic behind the scenes - read annotations, build and validate metadata, etc.
-The following sections describe what could be done to minimize the impact.</p>
-</div>
-<div class="sect2">
-<h3 id="_discovery_mode">Discovery mode</h3>
-<div class="paragraph">
-<p>In CDI 1.0 there was only one <em>"discovery mode"</em>.
-How does it work?
-Simply put: find all bean archives (containing <code>beans.xml</code>), discover and process all the found classes (identify beans, etc.).
-Needless to say, this might be a performance problem for large applications with thousands of classes.
-In CDI 1.1+ we call this mode <code>all</code> and a bean archive with this mode is called <strong>EXPLICIT</strong>.
-Since CDI 1.1+ a new discovery mode - <code>annotated</code> - can be used.
-The difference is that if this mode is used only classes with a <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations" target="_blank" rel="noopener">bean defining annotation</a> are considered.
-In other words, a component must be explicitly designated.
-A bean archive with this mode is called <strong>IMPLICIT</strong>.
-To make things a little bit more complicated, an implicit bean archive does not have to contain a <code>beans.xml</code> file at all.
-One class with a bean defining annotation or a session bean is enough.</p>
-</div>
-<div class="paragraph">
-<p>Implicit bean archive has pros and cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-o-up"></i></span> saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)</p>
-</li>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-o-up"></i></span> speeds up the bootstrap (the container does not have to process all the types, fire events like <code>ProcessBean</code>, etc.)</p>
-</li>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-down"></i></span> does not fire <code>ProcessAnnotatedType</code> for all types from the bean archive; this breaks some extensions (e.g. <code>MessageBundleExtension</code> from DeltaSpike)</p>
-</li>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-down"></i></span> does not pick up <code>@javax.inject.Singleton</code> beans (it&#8217;s not a bean defining annotation)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>CONCLUSION</strong>: If possible, use the <code>annotated</code> discovery mode.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Most Weld-based runtimes allow to suppress implicit bean archives without <code>beans.xml</code>, i.e. to require the <code>beans.xml</code> file in bean archives so that it&#8217;s not necessary to scan all the parts of the application. See also <a href="/documentation/#4">FAQ</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If it&#8217;s not possible to use <code>annotated</code> mode, you can try a Weld-specific feature to conserve memory used: <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation" target="_blank" rel="noopener">Veto types without bean defining annotation</a>.
-A similar solution is going to be standardized in CDI 2.0 (see also <a href="https://issues.jboss.org/browse/CDI-420" target="_blank" rel="noopener">CDI-420</a>).
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_extensions">Extensions</h3>
-<div class="paragraph">
-<p>CDI portable extensions are essential integration points.
-And users love integrated technologies.
-However, the more extensions the more work must be done during bootstrap.
-For example, there is a <code>ProcessAnnotatedType</code> container lifecycle event.
-This event is fired:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>for every type in an EXPLICIT bean archive,</p>
-</li>
-<li>
-<p>for every session bean and every type with a bean defining annotation in an IMPLICIT bean archive.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The delivery might be restricted by means of type arguments, e.g. for observer <code>void observeNumbers(@Observes ProcessAnnotatedType&lt;? extends Number&gt; event)</code> an extension will be notified for every class assignable to <code>Number</code>.
-However, if you do <code>&lt;T&gt; void observe(@Observes ProcessAnnotatedType&lt;T&gt; event)</code> your extension will be notified for every class that is discovered.
-Now if we have an application with one EXPLICIT bean archive with 2000 classes, then a specific observer method on such extesion will be called 2000x.
-And if there are three similar extensions, the CDI container will have to create 2000 events and notify 6000 observers.
-This should be ok unless the observer logic is overly complex.</p>
-</div>
-<div class="paragraph">
-<p><strong>CONCLUSION</strong>: Pay attention to extensions used in your application.
-If you wonder what extensions are in service, use for example Weld Probe observers view or fired events view together with <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener"><code>org.jboss.weld.probe.eventMonitor.containerLifecycleEvents</code> enabled</a>.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If possible, don&#8217;t use the extensions which observe all the annotated types from your application, i.e. which defined something like <code>void observe(@Observes ProcessAnnotatedType&lt;?&gt; event)</code>.
-Since CDI 1.1 <code>@WithAnnotations</code> should be used to restrict the set of types an extension is going to process. Weld Probe warns you about these extensions.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="jandex">Jandex</h3>
-<div class="paragraph">
-<p>In some environments (WildFly, Weld SE, and more) Weld can leverage an "offline reflection library", such as <a href="https://github.com/wildfly/jandex" target="<em>blank">Jandex</a>, to speed up the scanning process.
-These libraries allow to effectively filter classes <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans" target="_blank" rel="noopener">which are not beans</a> and vetoed classes.
-It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
-As a result Weld does not even have to _load the classes</em> or use <em>reflection API</em> to detect types which should be ignored.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the <a href="https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project" target="_blank" rel="noopener">Ant task</a>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_runtime">Runtime</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In runtime the overhead of a framework should be minimal so that it&#8217;s not an application bottleneck.
-However, CDI needs to do all that magic behind the scenes - create bean instances, manage contexts, intercept and decorate invocations, etc.
-The following sections describe what could be done to minimize the impact.</p>
-</div>
-<div class="sect2">
-<h3 id="_identify_problematic_components_easily">Identify problematic components easily</h3>
-<div class="paragraph">
-<p>Before you start a profiler or a similar tool, it&#8217;s a good idea to identify all the CDI components involved in a problematic "request".
-This means all the beans, observer methods, interceptors and decorators.
-The good start might be the Weld Probe invocation trees view.
-An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
-Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
-Sometimes profilers are just an overkill.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_lazy_initialization_of_bean_instances">Lazy initialization of bean instances</h3>
-<div class="paragraph">
-<p>Weld initializes bean instances of normal scoped beans lazily.
-In other words, when injecting a normal scoped bean (<code>@RequestScoped</code>, <code>@ApplicationScoped</code>, etc.) a new instance is not created until actually used.
-Instead, a shared client proxy is injected.
-This proxy invokes a method upon the correct bean instance (created if necessary).</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Having many injection points resolving to normal scoped beans does not necessarily mean additional overhead associated with bean instance creation.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>In the following example, an <code>OrderProcessor</code> instance is not created until its <code>OrderProcess.process()</code> method is called:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped&#x000A;class OrderProcessor {&#x000A;  @PostConstruct&#x000A;  void init() {&#x000A;    // Do some expensive initialization logic&#x000A;  }&#x000A;  void process() {&#x000A;    // Business logic&#x000A;  }&#x000A;}&#x000A;@RequestScoped&#x000A;class OrderService {&#x000A;  @Inject&#x000A;  OrderProcessor processor; // A shared client proxy is injected&#x000A;&#x000A;  void create(Order order) {&#x000A;    if (order.isValid()) {&#x000A;        // Processor is not initialized unless we have a valid order&#x000A;        processor.process(order);&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Weld&#8217;s session context is also initilized lazily and doesn&#8217;t require an HTTP session to actually exist until a bean instance must be written (i.e. until a method of a <code>@SessionScoped</code> bean is invoked).
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_drawbacks_of_dependent_pseudo_scope">Drawbacks of <code>@Dependent</code> pseudo-scope</h3>
-<div class="paragraph">
-<p>From performance point of view <code>@Dependent</code> is NOT a best fit for:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)</p>
-</li>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)</p>
-</li>
-<li>
-<p><span class="icon"><i class="fa fa-thumbs-down"></i></span> a bean which is used in EL expressions</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For all these cases, a new <code>@Dependent</code> bean instance is created to handle the logic and destroyed when the invocation/evaluation completes.
-In other words, the bean instances are not reused.
-That&#8217;s not necessarily a problem if a bean does not have an "expensive" initialization or depends on others "heavyweight" components.
-But very often, a wider scope is more suitable.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_mapping_cdi_contexts_to_http_requests">Mapping CDI contexts to HTTP requests</h3>
-<div class="paragraph">
-<p>By default, bult-in CDI contexts are activated at the beginning of an HTTP request processing and deactivated once the processing finishes.
-This might be an unnecessary overhead in certain situations, e.g. when serving static resources (images, JavaScript, etc.).
-Weld allows to activate the contexts only for a subset of requests only.
-A regular expression may be used for filtering HTTP requests that should have contexts active during their processing.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee/"&#x000A;    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&#x000A;    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.context.mapping&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;.*\.html&lt;/param-value&gt; &lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_bean_identifier_index_optimization">Bean identifier index optimization</h3>
-<div class="paragraph">
-<p>This optimization is used to <strong>reduce the HTTP session replication overhead</strong> (clustering use case).
-Simply put: Weld tries to minimize the amount of bytes send over the network.
-However, the inconsistency detection mechanism may cause problems in environments where application stop does not imply HTTP session destruction.
-Thus it&#8217;s disabled by default in Servlet containers.
-See also the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_bean_identifier_index_optimization">reference guide</a> for more info.</p>
-</div>
 </div>
 </div>
 </div>

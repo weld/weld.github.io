@@ -143,6 +143,67 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2021/04/14/weld-401SP1-317SP1/">Weld 4.0.1.SP1 and 3.1.7.SP1</a>
+</h2>
+<div class="news-date news-boxed">
+2021-4-14
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Thanks to your reports, several flaws were discovered in the new class defining for JDK 11+.
+We have addressed those issues and because we reckon they are potentially blocking, we have released Weld 3.1.7.SP1 and 4.0.1.SP1.</p>
+</div>
+<div class="paragraph">
+<p>Two main issues were:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Producers returning an interface type could sometimes try to define a proxy class with invalid name (<a href="https://issues.jboss.org/browse/WELD-2662" target="_blank" rel="noopener">WELD-2662</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar thing could happen for inner classes which should now work as well</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Proxy class names for hierarchical type structures of interfaces could lead to a jumbled combination of package and name (<a href="https://issues.jboss.org/browse/WELD-2666" target="_blank" rel="noopener">WELD-2666</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Part of this fix is also an improvement wherein Weld actively tries to define new proxies into non-java packages making sure it uses <code>MethodHandles.Lookup</code> whenever applicable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Apart from that, this release also addresses a problem with Undertow servlet integration in which (<a href="https://issues.redhat.com/browse/WELD-2664" target=""_blank">Weld tried too eagerly to provide it&#8217;s own instances of <code>Listener</code></a>).</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.1.SP1</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.7.SP1</a> &#93;
+&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354546" target="_blank" rel="noopener">Release notes for Weld 4.0.1.SP1</a> &#93;
+&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354545" target="_blank" rel="noopener">Release notes for Weld 3.1.7.SP1</a> &#93;</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2021/03/22/weld-401Final/">Weld 4.0.1.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1064,133 +1125,6 @@ This is a minor update which had a main goal of swapping whole Weld internals fr
 <p>&#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/3.1.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12342783" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2019/08/06/weld-312Final/">Weld 3.1.2.Final</a>
-</h2>
-<div class="news-date news-boxed">
-2019-8-6
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Weld 3.1.2.Final is coming along with Weld API 3.1.SP1. It is another small release bringing in mainly bugfixes.
-One notable thing is that thanks to guys from Jetty, Weld 3.1.2.Final is ready to operate with lastest Jetty 9 as well as upcoming Jetty 10.
-Other than that we have tried to address some dodgy issues with possible race conditions and leaks - see for yourself!</p>
-</div>
-<div class="paragraph">
-<p>Fixes and improvements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld API/SPI</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed possible leak in Jandex index through <code>SimpleServiceRegistry</code> (<a href="https://issues.jboss.org/browse/WELD-2592" target="_blank" rel="noopener">WELD-2592</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This could only happen on application server supporting Jandex index and was only noticeable with a lot of application deployed at the same time</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld Core</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed a case where some context event notification wouldn&#8217;t trigger observers due to race condition (<a href="https://issues.jboss.org/browse/WELD-2557" target="_blank" rel="noopener">WELD-2557</a>)</p>
-</li>
-<li>
-<p>Fixed rare <code>IllegalAccessError</code> problem during interception when methods had (package) private parameters from different methods (<a href="https://issues.jboss.org/browse/WELD-2583" target="_blank" rel="noopener">WELD-2583</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Such methods are now automatically ignored when creating intercepted subclasses</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Attempted to fix a race condition that could happen when trying to concurrently initiate conversation ID generator (<a href="https://issues.jboss.org/browse/WELD-2585" target="_blank" rel="noopener">WELD-2585</a>)</p>
-</li>
-<li>
-<p>Weld now correctly disregards synthetic methods when considering proxyability (<a href="https://issues.jboss.org/browse/WELD-2586" target="_blank" rel="noopener">WELD-2586</a>)</p>
-</li>
-<li>
-<p>Correction to <code>beans.xml</code> parses when using Weld namespace (<a href="https://issues.jboss.org/browse/WELD-2591" target="_blank" rel="noopener">WELD-2591</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld SE</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Improved classpath scanning to account for manifest file entries (<a href="https://issues.jboss.org/browse/WELD-2589" target="_blank" rel="noopener">WELD-2589</a>)</p>
-</li>
-<li>
-<p><code>javax.enterprise.inject.scan.implicit=true</code> and <code>org.jboss.weld.se.archive.isolation=false</code> now work together correctly (<a href="https://issues.jboss.org/browse/WELD-2590" target="_blank" rel="noopener">WELD-2590</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld Servlet</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Update Weld to new Jetty integration model prior to Jetty release (<a href="https://issues.jboss.org/browse/WELD-2587" target="_blank" rel="noopener">WELD-2587</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld 3.1.2.Final is ready to roll with to-be-released Jetty 9.4.x as well as Jetty 10.x</p>
-</li>
-<li>
-<p>Of course we also kept legacy support in place, so even older version will still run</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This time around, the <a href="http://download.jboss.org/weld/3.1.2.Final/wildfly-17.0.1.Final-weld-3.1.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 17.0.1.Final</a> is available.</p>
-</div>
-<div class="paragraph">
-<p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.1.2.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12341958" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
 </div>
