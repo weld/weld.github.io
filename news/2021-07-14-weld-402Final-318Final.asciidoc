@@ -1,0 +1,30 @@
+---
+layout: news
+title: Weld 4.0.2.Final and 3.1.8.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 4.0.2.Final and 3.1.8.Final are now available
+desc: Maintenance releases for Weld 3 and 4
+tags: [release]
+---
+:linkattrs:
+
+New maintenance releases for Weld 3 and 4 have been rolled out.
+
+There is only a handful of changes this time so let's skid across them:
+
+* Prevent `WeldInvocationContext` from ever returning `null` when queried for interceptor bindings (link:https://issues.jboss.org/browse/WELD-2675[WELD-2675, window="_blank"])
+* Fix an NPE if there is an EJB bean with default package present (link:https://issues.jboss.org/browse/WELD-2674[WELD-2674, window="_blank"])
+* Weld wasn't working on JDK 17 due to `jboss-classfilewriter` issue; this should no longer be the case (link:https://issues.jboss.org/browse/WELD-2671[WELD-2671, window="_blank"])
+* Correction to proxy name creation for producers based on interfaces - Weld should now use package and class of the most specific interface (link:https://issues.jboss.org/browse/WELD-2675[WELD-2675, window="_blank"])
+* Weld now provides correct metadata (via `@Decorated`) in cases where more than one decorator is applied to a single bean (link:https://issues.jboss.org/browse/WELD-2673[WELD-2673, window="_blank"])
+* We have decided to no longer provide WildFly patches for each release (link:https://issues.jboss.org/browse/WELD-2660[WELD-2660, window="_blank"])
+** After discussion with WildFly team, we figured the current way is not going to work for anything beyond Weld 3
+** And we aren't even certain this feature is requested and/or used anymore; if you feel otherwise, please create a JIRA to let us know
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/4.0.2.Final/en-US/html_single/[Documentation Weld 4.0.2.Final, window="_blank"] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.8.Final/en-US/html_single/[Documentation Weld 3.1.8.Final, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12356277[Release notes for Weld 4.0.2.Final, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12356276[Release notes for Weld 3.1.8.Final, window="_blank"] &#93;
