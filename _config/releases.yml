@@ -1,3 +1,11 @@
+- version: '3.1.8.Final'
+  category: Final
+  date: 14.07.2021
+  versionId: 12356276
+- version: '4.0.2.Finak'
+  category: Final
+  date: 14.07.2021
+  versionId: 12356277
 - version: '3.1.7.SP1'
   category: Final
   date: 14.04.2021
