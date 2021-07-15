@@ -143,6 +143,161 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2018/07/26/weld-305Final/">Weld 3.0.5.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2018-7-26
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 3.0.5.Final is here and hand in hand with it comes Weld API 3.0.SP4.
+And in case you missed it, there was <a href="https://search.maven.org/#artifactdetails%7Cjavax.enterprise%7Ccdi-api%7C2.0.SP1%7Cjar">CDI 2.0.SP1 release</a> as well.
+It comes with few <a href="https://issues.jboss.org/issues/?jql=project%20%3D%20CDI%20AND%20fixVersion%20%3D%202.0.SP1">security manager related fixes</a> and Weld is of course compliant with it.
+If you are running on a servlet or in SE, you may need to update it yourself, in case of EE it usually falls to the server to update this dependency for you.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This time around we are not providing a patch for WildFly 13 as there were major changes blocking us from doing so.
+However, Wildfly 14 will contain all of the above updates - Weld core, Weld API, CDI API - so keep an eye out for its release!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As for updates and fixes, we keep looking at JDK 11 and have done another round of fixing to keep up with adjustments and removals going on in JDK.
+There is a bunch of interceptor/decorator fixes for those of you who indulge in using complex class hierarchies with abstractions, generics and default methods.
+So let&#8217;s take a look at them all, shall we?</p>
+</div>
+<div class="paragraph">
+<p>Fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld Core</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed possible race condition appearing during bean index creation (<a href="https://issues.jboss.org/browse/WELD-2492" target="_blank" rel="noopener">WELD-2492</a>)</p>
+</li>
+<li>
+<p>Avoid creating unnecessary bean metatada for anonymous and local classes (<a href="https://issues.jboss.org/browse/WELD-2498" target="_blank" rel="noopener">WELD-2498</a>)</p>
+</li>
+<li>
+<p>Corrected decorator subclass creation when said decorator overrides only default method (<a href="https://issues.jboss.org/browse/WELD-2501" target="_blank" rel="noopener">WELD-2501</a>)</p>
+</li>
+<li>
+<p>Avoid optimizing self invocation of private methods in order to avoid <code>IllegalAccessError</code> (<a href="https://issues.jboss.org/browse/WELD-2506" target="_blank" rel="noopener">WELD-2506</a>)</p>
+</li>
+<li>
+<p>Allow interception of abstract, package-private classes with public methods (<a href="https://issues.jboss.org/browse/WELD-2507" target="_blank" rel="noopener">WELD-2507</a>)</p>
+</li>
+<li>
+<p>Fix interception of overriden generic methods invoked via superclass (<a href="https://issues.jboss.org/browse/WELD-2514" target="_blank" rel="noopener">WELD-2514</a>)</p>
+</li>
+<li>
+<p>Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (<a href="https://issues.jboss.org/browse/WELD-2250" target="_blank" rel="noopener">WELD-2250</a>)</p>
+</li>
+<li>
+<p>Make conversation ID parameter detection more robust (<a href="https://issues.jboss.org/browse/WELD-2512" target="_blank" rel="noopener">WELD-2512</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Make default <code>StartMain</code> more container friendly by exiting with error code should an exception appear (<a href="https://issues.jboss.org/browse/WELD-2502" target="_blank" rel="noopener">WELD-2502</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is also a follow-up custom exception handling proposal if you want to glance at it (<a href="https://issues.jboss.org/browse/WELD-2503" target="_blank" rel="noopener">WELD-2503</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Fix possible NPE coming from <code>beans.xml</code> merging in complex Weld SE deployment scenarios (<a href="https://issues.jboss.org/browse/WELD-2515" target="_blank" rel="noopener">WELD-2515</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>JDK 9/10 and onwards</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WeldProvider</code> moved to servlet core module to align it with how Jigsaw handles services (<a href="https://issues.jboss.org/browse/WELD-2435" target="_blank" rel="noopener">WELD-2435</a>)</p>
+</li>
+<li>
+<p>Fixed SE/Servlet resource loading behavior when <code>ForkJoinPool</code> is used on JDK 9+ (<a href="https://issues.jboss.org/browse/WELD-2494" target="_blank" rel="noopener">WELD-2494</a>)</p>
+</li>
+<li>
+<p>Review executability of Weld examples on JDK 10+ (<a href="https://issues.jboss.org/browse/WELD-2495" target="_blank" rel="noopener">WELD-2495</a>)</p>
+</li>
+<li>
+<p>Update to JBoss Classfilewriter 1.2.3.Final which is JDK 11 compliant (<a href="https://issues.jboss.org/browse/WELD-2509" target="_blank" rel="noopener">WELD-2509</a>)</p>
+</li>
+<li>
+<p>If running in JPMS, remove dependency on <code>java.desktop</code> to shrink the footprint (<a href="https://issues.jboss.org/browse/WELD-2504" target="_blank" rel="noopener">WELD-2504</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Probe development tool</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Probe now recognizes <code>BeforeDestroyed</code> event (<a href="https://issues.jboss.org/browse/WELD-2500" target="_blank" rel="noopener">WELD-2500</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other</p>
+<div class="ulist">
+<ul>
+<li>
+<p>We are now looking at testing Weld with JDK 11 on a regular basis and have taken steps to ensure it works (<a href="https://issues.jboss.org/browse/WELD-2516" target="_blank" rel="noopener">WELD-2516</a>)</p>
+</li>
+<li>
+<p>Updated patching profiles for Weld 3 and WFLY, the process is now more automated and configurable (<a href="https://issues.jboss.org/browse/WELD-2491" target="_blank" rel="noopener">WELD-2491</a>)</p>
+</li>
+<li>
+<p>OSGi bundle now import BCEL only optionally (<a href="https://issues.jboss.org/browse/WELD-2499" target="_blank" rel="noopener">WELD-2499</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.5.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12337420" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2018/07/10/weld-team-changes/">Weld team changes</a>
 </h2>
 <div class="news-date news-boxed">
@@ -615,135 +770,6 @@ You start with a speck of bug fixes add some proxy generation improvements top i
 <p>&#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/3.0.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12336197" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2017/12/19/weld-meets-junit5/">Weld meets JUnit 5</a>
-</h2>
-<div class="news-date news-boxed">
-2017-12-19
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/junit">junit</a>
-, 
-<a href="/news/tags/testing">testing</a>
-, 
-<a href="/news/tags/weld-se">weld-se</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div id="toc" class="toc">
-<div id="toctitle" class="title">Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_gav_coordinates">GAV Coordinates</a></li>
-<li><a href="#_first_steps">First Steps</a></li>
-<li><a href="#_dude_where_is_my_container">Dude, Where Is My Container?</a></li>
-<li><a href="#_help_i_am_stuck_with_junit_4">Help, I Am Stuck With JUnit 4</a></li>
-<li><a href="#_what_if_i_would_like_to">What If I Would Like To&#8230;&#8203;</a></li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In this article I want to bring <a href="https://github.com/weld/weld-junit" target="_blank" rel="noopener">weld-junit</a> into light.
-You might have heard about or, better still, used our extension for JUnit 4 which has been around for some time now.
-But after getting ourselves acquainted with JUnit 5, we decided we should create another one for JUnit 5.
-In the sections below I will try to introduce the basic usage and ideas behind it, for more in depth information, you can glance the <a href="https://github.com/weld/weld-junit/blob/master/junit5/README.md">readme file</a> residing directly in the repository.</p>
-</div>
-<div class="sect1">
-<h2 id="_gav_coordinates">GAV Coordinates</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Here are group and artifact IDs you need to grab the artifact for Maven projects:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;&#x000A;  &lt;groupId&gt;org.jboss.weld&lt;/groupId&gt;&#x000A;  &lt;artifactId&gt;weld-junit-parent&lt;/artifactId&gt;&#x000A;  &lt;version&gt;${weld.junit.version}&lt;/version&gt;&#x000A;&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_first_steps">First Steps</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can use the extension as you would any other in JUnit 5, via <code>@ExtendWith</code> from JUnit library along with the name of our extension - <code>org.jboss.weld.junit5.WeldJunit5Extension</code>.
-Alternatively, there is a shorter annotation <code>@org.jboss.weld.junit5.EnableWeld</code>.
-Both of these can be used on class and method level.</p>
-</div>
-<div class="paragraph">
-<p>Hence your test could look like this:</p>
-</div>
-<div class="paragraph">
-<p>[ source, java ]</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>@EnableWeld&#x000A;public class InjectionWithWeldTest {&#x000A;&#x000A;  @Inject&#x000A;  BarBean beanAsField;&#x000A;&#x000A;  @Test&#x000A;  public void testThatItWorks(FooBean beanAsParam) {&#x000A;    assertNotNull(beanAsParam);&#x000A;    beanAsParam.ping();&#x000A;    assertNotNull(beanAsField);&#x000A;    beanAsField.ping();&#x000A;  }&#x000A;&#x000A;}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Behind the scenes, Weld will bootstrap SE container for each test container invocation and tear it down afterwards (works for both, per-method and per-class lifecycle).
-As you might have guessed, Weld will also automatically inject into any fields within the test class which you annotated with <code>@Inject</code>.
-Furthermore, it will attempt to resolve parameters in your test methods in very much the same way.
-But beware, by default Weld will only scan classes from within the test package!
-With this in mind, you can play around with beans to your liking.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_dude_where_is_my_container">Dude, Where Is My Container?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Good point, when working with Weld SE you normally have the power to customize container bootstrap and, once running, to query it for beans, fire events and so on.
-And you shall retain that right!</p>
-</div>
-<div class="paragraph">
-<p>Only you are going to need a public field with type <code>org.jboss.weld.junit5.WeldInitiator</code> which you annotate with <code>@org.jboss.weld.junit5.WeldSetup</code>.
-This class has a bunch of static method which will allow you to customize the boostrap and it also works as a handle to grasp the <code>WeldContainer</code> running below.</p>
-</div>
-<div class="paragraph">
-<p>Too much talk, not enough code, so here we go:</p>
-</div>
-<div class="paragraph">
-<p>[ source, java ]</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>@ExtendWith(WeldJUnit5Extension.class)&#x000A;public class WeldJUnit5CustomizedTest {&#x000A;&#x000A;  @WeldSetup&#x000A;  public WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()&#x000A;                                           .alternatives(FooAlternative.class)&#x000A;                                           .beanClasses(Foo.class, FooAlternative.class)&#x000A;                                           .enableInterceptors(MyInterceptor.class));&#x000A;&#x000A;  @Inject&#x000A;  Foo bean; // this will be FooAlternative in the end&#x000A;&#x000A;  @Test&#x000A;  public void testWeldContainerUsage() {&#x000A;    weld.event().select(MyPayload.class).fire(new MyPayload());&#x000A;    weld.select(Foo.class).isResolvable();&#x000A;  }&#x000A;}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_help_i_am_stuck_with_junit_4">Help, I Am Stuck With JUnit 4</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>No problems, we got you covered, check out our <a href="https://github.com/weld/weld-junit/blob/master/junit4/README.md">JUnit 4 extension</a>.</p>
-</div>
-<div class="paragraph">
-<p>They are both very similar and easy to master.
-The only notable difference is that in JUnit 4 you always need the initiator class - <code>org.jboss.weld.junit4.WeldInitiator</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_if_i_would_like_to">What If I Would Like To&#8230;&#8203;</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you&#8217;re stuck and need a helping hand, we are listening on the usual channels - mailing list, Stack Overflow, Gitter, IRC, GitHub.</p>
-</div>
-<div class="paragraph">
-<p>It might also be the case that we forgot about something quite important, so don&#8217;t hesitate to reach to us through those channels, or open a GitHub issue straight away.
-We are happy for any kind of feedback we can get.</p>
 </div>
 </div>
 </div>
