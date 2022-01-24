@@ -1,3 +1,7 @@
+- version: '5.0.0.Beta1'
+  category: Experimental
+  date: 24.01.2022
+  versionId: 12378495
 - version: '3.1.8.Final'
   category: Final
   date: 14.07.2021
