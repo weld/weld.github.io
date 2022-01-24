@@ -9,45 +9,39 @@ desc: Download links to Weld distribution bundles, Weld jars and CDI API jars
 %h1 Download
 %h2 Java EE Application Server
 %p
-  The easiest way to use Weld is with a Java EE Application Server. Weld is used by the following application servers:
+  The easiest way to use Weld is with a Java EE Application Server. Here are some examples of EE servers using Weld:
   %ul
     %li
-      %a{:href=>"http://www.wildfly.org/"}WildFly
+      %a{:href=>"https://www.wildfly.org/"}WildFly
     %li
-      %a{:href=>"http://www.jboss.org/products/eap.html"}JBoss Enterprise Application Platform 6
+      %a{:href=>"https://glassfish.org/"}Eclipse GlassFish
     %li
-      %a{:href=>"https://www.jboss.org/jbossas/"}JBoss AS 7
-    %li
-      %a{:href=>"http://glassfish.java.net/"}GlassFish
-    %li
-      %a{:href=>"http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html"}Oracle WebLogic Server
-    %li
-      %a{:href=>"https://developer.ibm.com/wasdev/downloads/"}WebSphere Application Server Liberty Profile
+      %a{:href=>"https://developer.ibm.com/wasdev/downloads/"}WebSphere Liberty
 %h2 Maven
 %ul
   %li
-    %a{:href=>"http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22javax.enterprise%22%20AND%20a%3A%22cdi-api%22",:target=>'_blank'}
+    %a{:href=>"https://search.maven.org/search?q=g:jakarta.enterprise%20AND%20a:jakarta.enterprise.cdi-api",:target=>'_blank'}
       CDI API
   %li
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-core-impl%22",:target=>'_blank'}Weld Core
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-core-impl%22",:target=>'_blank'}Weld Core
   %li
     Weld Servlet (
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-core%22",:target=>'_blank'}Core
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-core%22",:target=>'_blank'}Core
     , Shaded jar with dependencies
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet%22",:target=>'_blank'} Weld 2
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet%22",:target=>'_blank'} Weld 2
     ,
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-shaded%22",:target=>'_blank'} Weld 3
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-shaded%22",:target=>'_blank'} Weld 3 and newer
     )
   %li
     Weld SE (
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-core%22",:target=>'_blank'}Core
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-core%22",:target=>'_blank'}Core
     , Shaded jar with dependencies
-    %a{:href=>"http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se%22",:target=>'_blank'}Weld 2
+    %a{:href=>"https://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se%22",:target=>'_blank'}Weld 2
     ,
-    %a{:href=>"http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-shaded%22",:target=>'_blank'}Weld 3
+    %a{:href=>"https://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-shaded%22",:target=>'_blank'}Weld 3 and newer
     )
   %li
-    %a{:href=>"http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-osgi-bundle%22",:target=>'_blank'}
+    %a{:href=>"https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-osgi-bundle%22",:target=>'_blank'}
       Weld OSGi bundle
 
 
@@ -97,14 +91,14 @@ desc: Download links to Weld distribution bundles, Weld jars and CDI API jars
           Changelog
       %td
         - if release.download == "sf"
-          %a{:href=>"http://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
+          %a{:href=>"https://sourceforge.net/projects/jboss/files/Weld/#{release.version}"}
             Download
         - elsif release.download == "maven"
           Available in
-          %a{:href=>"http://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{release.version}%7Cjar"}
+          %a{:href=>"https://search.maven.org/#artifactdetails%7Corg.jboss.weld%7Cweld-core%7C#{release.version}%7Cjar"}
             Maven
         - else
-          %a{:href=>"http://download.jboss.org/weld/#{release.version}"}
+          %a{:href=>"https://download.jboss.org/weld/#{release.version}"}
             Download
 
 %p
