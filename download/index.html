@@ -138,58 +138,49 @@ window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false
 <h1>Download</h1>
 <h2>Java EE Application Server</h2>
 <p>
-The easiest way to use Weld is with a Java EE Application Server. Weld is used by the following application servers:
+The easiest way to use Weld is with a Java EE Application Server. Here are some examples of EE servers using Weld:
 <ul>
 <li>
-<a href="http://www.wildfly.org/">WildFly</a>
+<a href="https://www.wildfly.org/">WildFly</a>
 </li>
 <li>
-<a href="http://www.jboss.org/products/eap.html">JBoss Enterprise Application Platform 6</a>
+<a href="https://glassfish.org/">Eclipse GlassFish</a>
 </li>
 <li>
-<a href="https://www.jboss.org/jbossas/">JBoss AS 7</a>
-</li>
-<li>
-<a href="http://glassfish.java.net/">GlassFish</a>
-</li>
-<li>
-<a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">Oracle WebLogic Server</a>
-</li>
-<li>
-<a href="https://developer.ibm.com/wasdev/downloads/">WebSphere Application Server Liberty Profile</a>
+<a href="https://developer.ibm.com/wasdev/downloads/">WebSphere Liberty</a>
 </li>
 </ul>
 </p>
 <h2>Maven</h2>
 <ul>
 <li>
-<a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22javax.enterprise%22%20AND%20a%3A%22cdi-api%22" target="_blank">
+<a href="https://search.maven.org/search?q=g:jakarta.enterprise%20AND%20a:jakarta.enterprise.cdi-api" target="_blank">
 CDI API
 </a>
 </li>
 <li>
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-core-impl%22" target="_blank">Weld Core</a>
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-core-impl%22" target="_blank">Weld Core</a>
 </li>
 <li>
 Weld Servlet (
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-core%22" target="_blank">Core</a>
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-core%22" target="_blank">Core</a>
 , Shaded jar with dependencies
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet%22" target="_blank">Weld 2</a>
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet%22" target="_blank">Weld 2</a>
 ,
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-shaded%22" target="_blank">Weld 3</a>
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.servlet%22%20AND%20a%3A%22weld-servlet-shaded%22" target="_blank">Weld 3 and newer</a>
 )
 </li>
 <li>
 Weld SE (
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-core%22" target="_blank">Core</a>
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-core%22" target="_blank">Core</a>
 , Shaded jar with dependencies
-<a href="http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se%22" target="_blank">Weld 2</a>
+<a href="https://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se%22" target="_blank">Weld 2</a>
 ,
-<a href="http://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-shaded%22" target="_blank">Weld 3</a>
+<a href="https://search.maven.org/#search|ga|1|g%3A%22org.jboss.weld.se%22%20AND%20a%3A%22weld-se-shaded%22" target="_blank">Weld 3 and newer</a>
 )
 </li>
 <li>
-<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-osgi-bundle%22" target="_blank">
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.weld%22%20AND%20a%3A%22weld-osgi-bundle%22" target="_blank">
 Weld OSGi bundle
 </a>
 </li>
@@ -218,6 +209,32 @@ Download
 </tr>
 <tr>
 <td class="version">
+5.0.0.Beta1
+</td>
+<td>
+<strong>
+Experimental
+</strong>
+</td>
+<td>
+4.0
+</td>
+<td>
+24.01.2022
+</td>
+<td>
+<a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495">
+Changelog
+</a>
+</td>
+<td>
+<a href="https://download.jboss.org/weld/5.0.0.Beta1">
+Download
+</a>
+</td>
+</tr>
+<tr>
+<td class="version">
 3.1.8.Final
 </td>
 <td>
@@ -235,7 +252,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/3.1.8.Final">
+<a href="https://download.jboss.org/weld/3.1.8.Final">
 Download
 </a>
 </td>
@@ -259,7 +276,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/4.0.2.Final">
+<a href="https://download.jboss.org/weld/4.0.2.Final">
 Download
 </a>
 </td>
@@ -283,7 +300,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/3.1.7.SP1">
+<a href="https://download.jboss.org/weld/3.1.7.SP1">
 Download
 </a>
 </td>
@@ -307,7 +324,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/4.0.1.SP1">
+<a href="https://download.jboss.org/weld/4.0.1.SP1">
 Download
 </a>
 </td>
@@ -331,7 +348,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/4.0.1.Final">
+<a href="https://download.jboss.org/weld/4.0.1.Final">
 Download
 </a>
 </td>
@@ -355,7 +372,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/3.1.7.Final">
+<a href="https://download.jboss.org/weld/3.1.7.Final">
 Download
 </a>
 </td>
@@ -379,7 +396,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/3.1.6.Final">
+<a href="https://download.jboss.org/weld/3.1.6.Final">
 Download
 </a>
 </td>
@@ -403,7 +420,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/4.0.0.Final">
+<a href="https://download.jboss.org/weld/4.0.0.Final">
 Download
 </a>
 </td>
@@ -427,33 +444,7 @@ Changelog
 </a>
 </td>
 <td>
-<a href="http://download.jboss.org/weld/4.0.0.CR1">
-Download
-</a>
-</td>
-</tr>
-<tr>
-<td class="version">
-4.0.0.Beta5
-</td>
-<td>
-<strong>
-Experimental
-</strong>
-</td>
-<td>
-3.0
-</td>
-<td>
-14.10.2020
-</td>
-<td>
-<a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12351450">
-Changelog
-</a>
-</td>
-<td>
-<a href="http://download.jboss.org/weld/4.0.0.Beta5">
+<a href="https://download.jboss.org/weld/4.0.0.CR1">
 Download
 </a>
 </td>

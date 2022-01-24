@@ -143,6 +143,93 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/12/19/weld-300Beta1/">Weld 3.0.0.Beta1</a>
+</h2>
+<div class="news-date news-boxed">
+2016-12-19
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>I am very pleased to announce the first <strong>Beta</strong> version of Weld <strong>3.0.0</strong> (CDI 2.0).
+See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!</p>
+</div>
+<div class="paragraph">
+<p>This is an important milestone.
+CDI 2.0 is now considered "feature complete" and so the next Weld 3 versions should be mostly dedicated to cleanup and optimization.
+The next version will be Weld <strong>3.0.0.CR1</strong> (ETA in mid January).
+Finally, we would like to release Weld <strong>3.0.0.Final</strong> in early February.</p>
+</div>
+<div class="sect1">
+<h2 id="_new_and_noteworthy">New and noteworthy</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>javax.enterprise.inject.spi.InterceptionFactory</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2257" target="_blank" rel="noopener">WELD-2257</a>)</p>
+</li>
+<li>
+<p><code>ProcessSyntheticObserverMethod</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2279" target="_blank" rel="noopener">WELD-2279</a>)</p>
+</li>
+<li>
+<p><code>BeforeDestroyed</code> event fired before a context is actually destroyed (<a href="https://issues.jboss.org/browse/WELD-2269" target="_blank" rel="noopener">WELD-2269</a>)</p>
+</li>
+<li>
+<p>"trimmed" bean archives (<a href="https://issues.jboss.org/browse/WELD-2268" target="_blank" rel="noopener">WELD-2268</a>)</p>
+</li>
+<li>
+<p>context control - <code>ActivateRequestContext</code> interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2267" target="_blank" rel="noopener">WELD-2267</a>) and <code>RequestContextController</code> built-in bean (<a href="https://issues.jboss.org/browse/WELD-2266" target="_blank" rel="noopener">WELD-2266</a>)</p>
+</li>
+<li>
+<p><code>ProcessSyntheticBean</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2265" target="_blank" rel="noopener">WELD-2265</a>)</p>
+</li>
+<li>
+<p>few proposals did not make it into CDI 2.0 and so we enhanced the Weld API:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.jboss.weld.inject.WeldInstance</code> (already part of Weld 2.4 API)</p>
+</li>
+<li>
+<p><code>org.jboss.weld.interceptor.WeldInvocationContext</code> allows to obtain a set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor (see also <a href="https://issues.jboss.org/browse/CDI-468" target="_blank" rel="noopener">CDI-468</a>)</p>
+</li>
+<li>
+<p><code>org.jboss.weld.bootstrap.event.WeldAfterBeanDiscovery</code> allows to obtain an <code>InterceptorConfigurator</code> to configure a new <code>Interceptor</code> bean</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Beta1/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Beta1/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2016/11/18/weld-241Final/">Weld 2.4.1.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1058,48 +1145,6 @@ Martin Kouba
 &#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/2.3.2.Final/en-US/html/">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12328625">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
-</h2>
-<div class="news-date news-boxed">
-2015-12-4
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-, 
-<a href="/news/tags/cdi2">cdi2</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
-It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
-Moreover, this release also contains quite a lot of enhancements and bugfixes. See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327856">the release details</a>.</p>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">patch for WildFly</a> is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is <strong>WildFly 10.0.0.CR4</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327856">Release notes</a> &#93;
-&#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/weld-3.0.0.Alpha14.zip">Distribution</a> &#93;
-&#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">Patch for Wildfly 10 CR4</a>
-&#93;</p>
 </div>
 </div>
 </div>

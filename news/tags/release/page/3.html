@@ -143,6 +143,136 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2017/12/18/weld-246Final/">Weld 2.4.6.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2017-12-18
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Time has come for another round of Weld 2.4 bugfix release.
+But that&#8217;s not all - this time there is also new API to go along with this release - Weld API 2.4.SP2.</p>
+</div>
+<div class="paragraph">
+<p>Among other things you can now obtain interceptor binding from <code>javax.interceptor.InvocationContext</code>, use enriched version of <code>javax.enterprise.event.Event</code> or select <code>javax.enterprise.inject.Instance</code> based on <code>java.lang.reflect.Type</code>.</p>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld Core:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved subclass generation mechanism for generic interceptors (<a href="https://issues.jboss.org/browse/WELD-2414" target="_blank" rel="noopener">WELD-2414</a>)</p>
+</li>
+<li>
+<p>Corrected proxy creation for signed classes (<a href="https://issues.jboss.org/browse/WELD-2425" target="_blank" rel="noopener">WELD-2425</a>)</p>
+</li>
+<li>
+<p>Correct <code>InjectionPoint</code> bean behaviour when used within <code>AfterBeanDiscovery</code> observer (<a href="https://issues.jboss.org/browse/WELD-2429" target="_blank" rel="noopener">WELD-2429</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There are now multiple convenient error-proof methods to quickly configure SE container (<a href="https://issues.jboss.org/browse/WELD-2426" target="_blank" rel="noopener">WELD-2426</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Weld.enableDevMode()</code>, <code>Weld.scanClasspathEntries()</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld API/SPI</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WeldInstance</code> has several improvements</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It now allows you to <code>select()</code> beans based on <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank" rel="noopener">WELD-2427</a>)</p>
+</li>
+<li>
+<p><code>WeldInstance.Handler</code> had become lazy which means you can now iterate/filter/sort <code>WeldInstance</code> without actually instantiating beans (<a href="https://issues.jboss.org/browse/WELD-2258" target="_blank" rel="noopener">WELD-2258</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>There is new interface in the API - <code>WeldEvent</code> - which can be used in place of well known <code>Event</code> but allows you narrow down event type by using <code>select()</code> with <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank" rel="noopener">WELD-2427</a>)</p>
+</li>
+<li>
+<p>API now contains <code>WeldInvocationContext</code>, an enriched version of <code>javax.interceptor.InvocationContext</code> which allows to obtain interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2433" target="_blank" rel="noopener">WELD-2433</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is also a <code>String</code> key used to obtain interceptors binding directly from <code>InvocationContext</code> (<a href="https://issues.jboss.org/browse/WELD-2436" target="_blank" rel="noopener">WELD-2436</a>)</p>
+</li>
+<li>
+<p>In order to learn more, please refer to (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_enhanced_version_of_literal_javax_interceptor_invocationcontext_literal" target="_blank" rel="noopener">our documentation</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Probe - fixed NPE which might occur when bean had <code>@Priority</code> but no other annotation (<a href="https://issues.jboss.org/browse/WELD-2432" target="_blank" rel="noopener">WELD-2432</a>)</p>
+</li>
+<li>
+<p>All the API changes should now be documented within Weld docs</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.4.6.Final/wildfly-11.0.0.Final-weld-2.4.6.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.4.6.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&amp;styleName=Html&amp;projectId=12310891" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2017/11/23/weld-302Final/">Weld 3.0.2.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1106,93 +1236,6 @@ If you’re not familiar with patching WildFly, check the <a href="/documentatio
 <p>&#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR1/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331714" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2016/12/19/weld-300Beta1/">Weld 3.0.0.Beta1</a>
-</h2>
-<div class="news-date news-boxed">
-2016-12-19
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>I am very pleased to announce the first <strong>Beta</strong> version of Weld <strong>3.0.0</strong> (CDI 2.0).
-See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">the release details</a>.
-Thanks to everyone involved in this release!</p>
-</div>
-<div class="paragraph">
-<p>This is an important milestone.
-CDI 2.0 is now considered "feature complete" and so the next Weld 3 versions should be mostly dedicated to cleanup and optimization.
-The next version will be Weld <strong>3.0.0.CR1</strong> (ETA in mid January).
-Finally, we would like to release Weld <strong>3.0.0.Final</strong> in early February.</p>
-</div>
-<div class="sect1">
-<h2 id="_new_and_noteworthy">New and noteworthy</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><code>javax.enterprise.inject.spi.InterceptionFactory</code> implementation (<a href="https://issues.jboss.org/browse/WELD-2257" target="_blank" rel="noopener">WELD-2257</a>)</p>
-</li>
-<li>
-<p><code>ProcessSyntheticObserverMethod</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2279" target="_blank" rel="noopener">WELD-2279</a>)</p>
-</li>
-<li>
-<p><code>BeforeDestroyed</code> event fired before a context is actually destroyed (<a href="https://issues.jboss.org/browse/WELD-2269" target="_blank" rel="noopener">WELD-2269</a>)</p>
-</li>
-<li>
-<p>"trimmed" bean archives (<a href="https://issues.jboss.org/browse/WELD-2268" target="_blank" rel="noopener">WELD-2268</a>)</p>
-</li>
-<li>
-<p>context control - <code>ActivateRequestContext</code> interceptor binding (<a href="https://issues.jboss.org/browse/WELD-2267" target="_blank" rel="noopener">WELD-2267</a>) and <code>RequestContextController</code> built-in bean (<a href="https://issues.jboss.org/browse/WELD-2266" target="_blank" rel="noopener">WELD-2266</a>)</p>
-</li>
-<li>
-<p><code>ProcessSyntheticBean</code> container lifecycle event (<a href="https://issues.jboss.org/browse/WELD-2265" target="_blank" rel="noopener">WELD-2265</a>)</p>
-</li>
-<li>
-<p>few proposals did not make it into CDI 2.0 and so we enhanced the Weld API:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>org.jboss.weld.inject.WeldInstance</code> (already part of Weld 2.4 API)</p>
-</li>
-<li>
-<p><code>org.jboss.weld.interceptor.WeldInvocationContext</code> allows to obtain a set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor (see also <a href="https://issues.jboss.org/browse/CDI-468" target="_blank" rel="noopener">CDI-468</a>)</p>
-</li>
-<li>
-<p><code>org.jboss.weld.bootstrap.event.WeldAfterBeanDiscovery</code> allows to obtain an <code>InterceptorConfigurator</code> to configure a new <code>Interceptor</code> bean</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Beta1/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.1.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Beta1/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12331387" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
 </div>

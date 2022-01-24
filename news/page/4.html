@@ -143,6 +143,109 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2018/09/26/weld-248Final/">Weld 2.4.8.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2018-9-26
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 2 has entered maintenance mode with its 2.4.7.Final release earlier this year.
+Now we are coming with a maintenance release containing fixes to several nuisances you might have come across.</p>
+</div>
+<div class="paragraph">
+<p>Notable fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld Core:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Opt-in enhancement in HTTP session replication, more eager approach (<a href="https://issues.jboss.org/browse/WELD-1130" target="_blank" rel="noopener">WELD-1130</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that WildFly does not need to use this</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>AfterTypeDiscovery</code> did not allow to remove declared interceptors/decorators/alternatives correctly (<a href="https://issues.jboss.org/browse/WELD-2479" target="_blank" rel="noopener">WELD-2479</a>)</p>
+</li>
+<li>
+<p>Corrected decorator subclass creation when said decorator overrides only default method (<a href="https://issues.jboss.org/browse/WELD-2501" target="_blank" rel="noopener">WELD-2501</a>)</p>
+</li>
+<li>
+<p>Avoid optimizing self invocation of private methods in order to avoid <code>IllegalAccessError</code>(<a href="https://issues.jboss.org/browse/WELD-2506" target="_blank" rel="noopener">WELD-2506</a>)</p>
+</li>
+<li>
+<p>Allow interception of abstract, package-private classes with public methods (<a href="https://issues.jboss.org/browse/WELD-2507" target="_blank" rel="noopener">WELD-2507</a>)</p>
+</li>
+<li>
+<p>Fix interception of overriden generic methods invoked via superclass (<a href="https://issues.jboss.org/browse/WELD-2514" target="_blank" rel="noopener">WELD-2514</a>)</p>
+</li>
+<li>
+<p>Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (<a href="https://issues.jboss.org/browse/WELD-2531" target="_blank" rel="noopener">WELD-2531</a>)</p>
+</li>
+<li>
+<p>Fixed possible race condition appearing during bean index creation (<a href="https://issues.jboss.org/browse/WELD-2532" target="_blank" rel="noopener">WELD-2532</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix NPE which could occur if trying to intercept a method called by constructor (<a href="https://issues.jboss.org/browse/WELD-2473" target="_blank" rel="noopener">WELD-2473</a> and <a href="https://issues.jboss.org/browse/WELD-2478" target="_blank" rel="noopener">WELD-2478</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Correction to licenses in Probe (<a href="https://issues.jboss.org/browse/WELD-2480" target="_blank" rel="noopener">WELD-2480</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.4.8.Final/wildfly-11.0.0.Final-weld-2.4.8.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.4.8.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12337222" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2018/07/26/weld-305Final/">Weld 3.0.5.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -675,108 +778,7 @@ If you’re not familiar with patching WildFly, check the <a href="/documentatio
 </div>
 <hr>
 </div>
-<div class="post">
-<h2>
-<a href="/news/2018/02/09/weld-303Final/">Weld 3.0.3.Final</a>
-</h2>
-<div class="news-date news-boxed">
-2018-2-9
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>How do you cook Weld 3.0.3.Final?
-You start with a speck of bug fixes add some proxy generation improvements top it off with adjustments for integrators.</p>
-</div>
-<div class="paragraph">
-<p>Notable fixes and improvements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld Core</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed invocation of private observer method in some very specific cases (<a href="https://issues.jboss.org/browse/WELD-2443" target="_blank" rel="noopener">WELD-2443</a>)</p>
-</li>
-<li>
-<p>Container agnostic proxy serialization (<a href="https://issues.jboss.org/browse/WELD-2447" target="_blank" rel="noopener">WELD-2447</a>)</p>
-</li>
-<li>
-<p>Improve shared proxy class instantiation for multiple deployments with relaxed construction enabled (<a href="https://issues.jboss.org/browse/WELD-2448" target="_blank" rel="noopener">WELD-2448</a>)</p>
-</li>
-<li>
-<p><code>beans_1_1.xsd</code> is now known to Weld once again (<a href="https://issues.jboss.org/browse/WELD-2445" target="_blank" rel="noopener">WELD-2445</a>)</p>
-</li>
-<li>
-<p><code>module-info</code> is now ignored during discovery and won&#8217;t give you warnings in log (<a href="https://issues.jboss.org/browse/WELD-2459" target="_blank" rel="noopener">WELD-2459</a>)</p>
-</li>
-<li>
-<p>Enhanced logging of <code>DeploymentException</code>, it should now be possible to glance more from suppressed exceptions (<a href="https://issues.jboss.org/browse/WELD-2453" target="_blank" rel="noopener">WELD-2453</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld SE &amp;&amp; Servlet</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You can now register additional <code>BeanArchiveHandler</code> via <code>ServiceLoader</code> (<a href="https://issues.jboss.org/browse/WELD-2450" target="_blank" rel="noopener">WELD-2450</a>)</p>
-</li>
-<li>
-<p>Multitude of fields/method in <code>Weld</code> SE builder are now <code>protected</code> and hence extendable (<a href="https://issues.jboss.org/browse/WELD-2451" target="_blank" rel="noopener">WELD-2451</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Other</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Improvements in documentation (<a href="https://issues.jboss.org/browse/WELD-2449" target="_blank" rel="noopener">WELD-2449</a>)</p>
-</li>
-<li>
-<p>Weld project now uses SpotBugs instead of FindBugs (<a href="https://issues.jboss.org/browse/WELD-2462" target="_blank" rel="noopener">WELD-2462</a>)</p>
-</li>
-<li>
-<p>OSGi now requires <code>javax.ejb</code> only optionally (<a href="https://issues.jboss.org/browse/WELD-2458" target="_blank" rel="noopener">WELD-2458</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, there is a <a href="http://download.jboss.org/weld/3.0.3.Final/wildfly-11.0.0.Final-weld-3.0.3.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.</p>
-</div>
-<div class="paragraph">
-<p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.0.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12336197" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="pagination-links"><a href="/news/page/3.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <a href="/news/page/3.html" class="page-link">3</a> <span class="current-page">4</span> <a href="/news/page/5.html" class="page-link">5</a> <span class="skip">...</span><a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/15.html" class="page-link">15</a> <a href="/news/page/5.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><a href="/news/page/3.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <a href="/news/page/3.html" class="page-link">3</a> <span class="current-page">4</span> <a href="/news/page/5.html" class="page-link">5</a> <span class="skip">...</span><a href="/news/page/15.html" class="page-link">15</a> <a href="/news/page/16.html" class="page-link">16</a> <a href="/news/page/5.html" class="next-link">Next</a> </div>
 <hr>
 <div>
 <a href="http://weld.cdi-spec.org/news.atom">

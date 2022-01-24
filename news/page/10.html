@@ -143,6 +143,105 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/05/18/enhanced-instance/">Programmatic lookup improvements</a>
+</h2>
+<div class="news-date news-boxed">
+2016-5-18
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/api">api</a>
+, 
+<a href="/news/tags/draft">draft</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p><code>javax.enterprise.inject.Instance</code> is sometimes invaluable companion.
+For example, <code>Instance</code> allows you to handle unsatisfied and ambiguous dependencies gracefully.
+E.g. it&#8217;s possible to avoid unnecessary deployment problems:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">interface OrderProcessor {&#x000A;  void process(Order order);&#x000A;  int getPriority();&#x000A;}&#x000A;&#x000A;class OrderService {&#x000A;&#x000A;  @Inject&#x000A;  Instance&lt;OrderProcessor&gt; instance;&#x000A;&#x000A;  void create(Order order) {&#x000A;    if (!instance.isUnsatisfied() &amp;&amp; !instance.isAmbiguous()) {&#x000A;        instance.get().process(order);&#x000A;    } else {&#x000A;        // Log a warning or throw an exception&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is less known that <code>Instance</code> extends <code>Iterable</code> and so it allows to iterate through contextual references of beans with the specified combination of required type and qualifiers.
+This might be useful if the set of beans satisfying the given type and qualifiers is not known beforehand.
+We may also need to resolve ambiguities manually, e.g. inspect all the instances and choose only those matching our needs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped&#x000A;class OrderService {&#x000A;&#x000A;  @Inject&#x000A;  @Any&#x000A;  Instance&lt;OrderProcessor&gt; instance;&#x000A;&#x000A;  void create(Order order) {&#x000A;    for (OrderProcessor processor : instance) {&#x000A;        if (processor.getPriority() &gt; 10) {&#x000A;            processor.process(order);&#x000A;        }&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another interesting use case might be selecting exactly one implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped&#x000A;class OrderService {&#x000A;&#x000A;  @Inject&#x000A;  @Any&#x000A;  Instance&lt;OrderProcessor&gt; instance;&#x000A;&#x000A;  void create(Order order) {&#x000A;    List&lt;OrderProcessor&gt; processors = new ArrayList&lt;&gt;();&#x000A;    for (OrderProcessor processor : instance) {&#x000A;        processors.add(processor);&#x000A;    }&#x000A;    Collections.sort(processors, Comparator.&lt;OrderProcessor&gt; comparingInt(p -&gt; p.getPriority()).reversed());&#x000A;    // Use the processor with highest priority&#x000A;    processors.get(0).ping();&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This works nice.
+But we have to pay extra attention to the scopes.
+If a <code>Processor</code> implementation is <code>@Dependent</code> a similar usage results in memory leaks.
+What&#8217;s the reason?
+The <code>Processor</code> instance is the dependent object of <code>Instance&lt;OrderProcessor&gt;</code> which is the dependent object of <code>OrderService</code>.
+And so each <code>Instance.get()</code> will produce a new <code>Processor</code> bound to the lifecycle of the <code>OrderService</code>.
+To avoid the leak we should always call <code>Instance.destroy()</code> method in similar cases.
+However, <code>Instance.destroy()</code> always destroys the underlying contextual instance!
+Even if you pass e.g. a client proxy of an <code>@ApplicationScoped</code> bean.
+This is not always desirable.
+Currently, it&#8217;s quite complicated to detect a dependent bean inside the loop.</p>
+</div>
+<div class="paragraph">
+<p>To extend the possibilities the Weld team is experimenting with <code>org.jboss.weld.inject.WeldInstance</code> - an enhanced version of <code>javax.enterprise.inject.Instance</code>.
+There are three new methods we find useful. The first one - <code>getHandler()</code> - allows to obtain a contextual reference handler which not only holds the contextual reference but also allows to inspect the metadata of the relevant bean and to destroy the underlying contextual instance.
+Moreover, the handler implements <code>AutoCloseable</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">import org.jboss.weld.inject.WeldInstance;&#x000A;&#x000A;class Foo {&#x000A;&#x000A;  @Inject&#x000A;  WeldInstance&lt;Bar&gt; instance;&#x000A;&#x000A;  void doWork() {&#x000A;    try (Handler&lt;Bar&gt; bar = instance.getHandler()) {&#x000A;        bar.get().doBusiness();&#x000A;        // Note that Bar will be automatically destroyed at the end of the try-with-resources statement&#x000A;    }&#x000A;&#x000A;    Handler&lt;Bar&gt; bar = instance.getHandler()&#x000A;    bar.get().doBusiness();&#x000A;    // Calls Instance.destroy()&#x000A;    bar.destroy();&#x000A;  }&#x000A;&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next method - <code>handlerIterator()</code> - returns an iterator over contextual reference handlers. This might be useful if you need more control over contextual references inside the loop:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped&#x000A;class OrderService {&#x000A;&#x000A;  @Inject&#x000A;  @Any&#x000A;  WeldInstance&lt;OrderProcessor&gt; instance;&#x000A;&#x000A;  void create(Order order) {&#x000A;    for (Iterator&lt;Handler&lt;OrderProcessor&gt;&gt; iterator = instance.handlerIterator(); iterator.hasNext();) {&#x000A;            Handler&lt;OrderProcessor&gt; processor = iterator.next();&#x000A;            processor.get().process(order);&#x000A;            if (processor.getBean().getScope().equals(Dependent.class)) {&#x000A;                // Destroy only dependent processors&#x000A;                processor.destroy();&#x000A;            }&#x000A;        }&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last one is just a convenient method - <code>isResolvable()</code> - a replacement for <code>!isUnsatisfied() &amp;&amp; !isAmbiguous()</code> which is the expression most users are interested in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class OrderService {&#x000A;&#x000A;  @Inject&#x000A;  Instance&lt;OrderProcessor&gt; instance;&#x000A;&#x000A;  void create(Order order) {&#x000A;    if (instance.isResolvable()) {&#x000A;        instance.get().process(order);&#x000A;    } else {&#x000A;        // Log a warning or throw an exception&#x000A;    }&#x000A;  }&#x000A;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Weld team is considering adding <code>org.jboss.weld.inject.WeldInstance</code> to the Weld API (2.4 and 3.0).
+<code>WeldInstance</code> would be automatically available in Weld SE and Weld Servlet where the Weld API is always on the class path.
+It would be also available in Weld-powered EE containers - in this case, users would have to compile their application against the Weld API and exclude the Weld API artifact from the deployment (e.g. use <code>provided</code> scope in Maven).</p>
+</div>
+<div class="paragraph">
+<p>See also <a href="https://issues.jboss.org/browse/WELD-2151" target="_blank" rel="noopener">WELD-2151</a> and the work in progress: <a href="https://github.com/mkouba/core/tree/WELD-2151" class="bare">https://github.com/mkouba/core/tree/WELD-2151</a>.
+And feel free to add comments to this blog post.
+Any feedback is appreciated!</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2016/04/28/weld-300Alpha16/">Weld 3.0.0.Alpha16</a>
 </h2>
 <div class="news-date news-boxed">
@@ -568,60 +667,7 @@ Notable improvements:</p>
 </div>
 <hr>
 </div>
-<div class="post">
-<h2>
-<a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE and synthetic container lifecycle event observers</a>
-</h2>
-<div class="news-date news-boxed">
-2016-2-8
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/api">api</a>
-, 
-<a href="/news/tags/draft">draft</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Last week Weld 3.0.0.Alpha15 was released and so it&#8217;s time to reveal the features that should go into the next experimental release.
-The main goal of Weld 3.0.0.Alpha16 is to reflect the output of <a href="https://issues.jboss.org/browse/CDI-558">CDI-558</a>.
-However, we would also like to continue to deliver experimental prototypes so that users could test a new functionality (that we find interesting and useful) and the CDI EG could eventually include this into CDI 2.0.</p>
-</div>
-<div class="paragraph">
-<p>It should be easier to start playing with extensions in Weld SE. Right now, it&#8217;s possible to pass an <code>Extension</code> instance to the <code>Weld</code> builder so that it&#8217;s not necessary to configure service providers (i.e. <code>META-INF/services/javax.enterprise.inject.spi.Extension</code> file).
-In such case, the extension class is automatically scanned for observer methods and the instance is used as the receiver of the notifications.
-We would like to make this even easier.
-It is now possible to add a <strong>synthetic container lifecycle event observer</strong> without declaring an extension class.
-The observer logic is represented as a lambda expression.
-This might be especially useful for prototyping and/or for discovering how extensions work.</p>
-</div>
-<div class="paragraph">
-<p>The starting point is the <code>org.jboss.weld.environment.se.ContainerLifecycleObserver</code> class.
-There are few static methods, each corresponding to a specific container lifecycle event (e.g. <code>beforeBeanDiscovery()</code>).
-Some variants return a builder so that it&#8217;s possible to customize the observer (observed type, priority, etc.).
-Others accept a lambda and return an observer instance direcly.</p>
-</div>
-<div class="paragraph">
-<p>A synthetic observer may be added to the builder directly - see <code>Weld.addContainerLifecycleObserver()</code> - or grouped in a synthetic extension - see <code>ContainerLifecycleObserver.extensionBuilder()</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;    .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;    .add(processAnnotatedType().notify((e) -&gt; {&#x000A;            if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                e.veto();&#x000A;            }&#x000A;        })).build();&#x000A;&#x000A;try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;    // Use the container...&#x000A;}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This feature is merged in the master branch. If you want to try it out, you&#8217;ll have to use a <strong>3.0.0-SNAPSHOT</strong> version or build the Weld from source: <code>mvn clean install</code>.
-Do you find it useful? Any feedback is appreciated! Feel free to add comments to this blog post or to the corresponding issue: <a href="https://issues.jboss.org/browse/WELD-2102">WELD-2012</a>.</p>
-</div>
-</div>
-<hr>
-</div>
-<div class="pagination-links"><a href="/news/page/9.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/9.html" class="page-link">9</a> <span class="current-page">10</span> <a href="/news/page/11.html" class="page-link">11</a> <span class="skip">...</span><a href="/news/page/14.html" class="page-link">14</a> <a href="/news/page/15.html" class="page-link">15</a> <a href="/news/page/11.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><a href="/news/page/9.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/9.html" class="page-link">9</a> <span class="current-page">10</span> <a href="/news/page/11.html" class="page-link">11</a> <span class="skip">...</span><a href="/news/page/15.html" class="page-link">15</a> <a href="/news/page/16.html" class="page-link">16</a> <a href="/news/page/11.html" class="next-link">Next</a> </div>
 <hr>
 <div>
 <a href="http://weld.cdi-spec.org/news.atom">
