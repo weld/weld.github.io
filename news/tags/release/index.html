@@ -143,6 +143,78 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2022/02/16/weld-403Final-319Final/">Weld 4.0.3.Final and 3.1.9.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2022-2-16
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 3.1.9.Final for Jakarta EE 8 and Weld 4.0.3.Final for Jakarta EE 9 are now available.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Weld 3.1 and Weld 4.0 now enter a maintenance mode - there will be no further active development on these branches. Instead, the focus will be on Weld 5/EE 10 and beyond.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is a brief list of notable changes; all of these are present in both Weld versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gracefully handle non-existing classpath entries in SE (<a href="https://issues.jboss.org/browse/WELD-2605" target="_blank" rel="noopener">WELD-2605</a>)</p>
+</li>
+<li>
+<p>Proxies for classes starting with <code>jakarta.*</code> now have Weld proxy prefix instead (<a href="https://issues.jboss.org/browse/WELD-2684" target="_blank" rel="noopener">WELD-2684</a>)</p>
+</li>
+<li>
+<p><code>WeldInstance.Handle#get()</code> could incorrectly return the same instance even after destroying underlying contextual reference (<a href="https://issues.jboss.org/browse/WELD-2687" target="_blank" rel="noopener">WELD-2687</a>)</p>
+</li>
+<li>
+<p>Fixed <code>BeanConfigurator#produceWith()</code> leaking dependent bean under certain conditions (<a href="https://issues.jboss.org/browse/WELD-2693" target="_blank" rel="noopener">WELD-2693</a>)</p>
+</li>
+<li>
+<p>Correct default package detection inside <code>ProxyFactory</code> (<a href="https://issues.jboss.org/browse/WELD-2704" target="_blank" rel="noopener">WELD-2704</a>)</p>
+</li>
+<li>
+<p>Several minor changes with regard to testing setup and update configurations (<a href="https://issues.jboss.org/browse/WELD-2706" target="_blank" rel="noopener">WELD-2706</a> and <a href="https://issues.jboss.org/browse/WELD-2707" target="_blank" rel="noopener">WELD-2707</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Last but not least, for those using WildFly, I would recommend taking a look into their <a href="https://www.wildfly.org/news/2022/01/21/WildFly-2022/" target="_blank" rel="noopener">release plan for 2022</a>.
+It details which WildFly is the last for EE 8 and EE 9 and what happens going onwards.
+Weld is of course going to keep up the pace and we are working on integrating Weld 5 into Wildfly.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/4.0.3.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.3.Final</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.1.9.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.9.Final</a> &#93;
+&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12359404" target="_blank" rel="noopener">Release notes for Weld 4.0.3.Final</a> &#93;
+&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12359403" target="_blank" rel="noopener">Release notes for Weld 3.1.9.Final</a> &#93;</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2022/01/24/weld-500Beta1/">Weld 5.0.0.Beta1</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1182,136 +1254,6 @@ As for core artifacts, there are some bugfixes as usual, so let&#8217;s take a l
 <p>&#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12343306" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2020/05/13/weld-jakarta-ee-9/">Weld 4 and Jakarta EE 9</a>
-</h2>
-<div class="news-date news-boxed">
-2020-5-13
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-, 
-<a href="/news/tags/jakarta">jakarta</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="sect1">
-<h2 id="_weld_meets_jakarta_ee_9">Weld Meets Jakarta EE 9</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Most of you surely know that Jakarta EE 9 is on the horizon; slowly but steadily it is making its way into Java world.
-And we are not far behind, in fact we have just released <strong>Weld 4.0.0.Alpha2</strong> which is an implementation of CDI 3.0!
-You heard that right, in Jakarta EE 9, all APIs have bumped their major versions; CDI turned 3.0 and so Weld version implementing that became 4.0.
-Hand in hand with it goes Weld API 4.0.Alpha1, also adapted to EE 9.</p>
-</div>
-<div class="paragraph">
-<p>Some basic information about the release:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>All the bits should be available in Maven Central at this point.</p>
-</li>
-<li>
-<p>There is also <code>.zip</code> distribution as usual, see <a href="/download/">download page</a> for more information.</p>
-</li>
-<li>
-<p>No WildFly patch is provided this time around because WildFly does not yet have an EE 9 branch.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_working_and_broken_parts">Working and Broken Parts</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The only, yet considerably huge, change in APIs is (or at least should be) the swap from <code>javax</code> to <code>jakarta</code> packages.
-This comes with bunch of problems, for instance there is no EE server that could run on EE 9 with new packages yet.
-GlassFish is going to be first and they are working on integrating all the EE 9 reference implementations.
-There are some chicken-egg problems such as Weld requiring EE 9 server to execute CDI TCKs, but at the same time there is GlassFish needing Weld 4.0 to start operating with EE 9 in the first place.
-For this reason, our first few 4.0 releases are going to be marked as <code>Alpha</code> or <code>Beta</code>, they will not be fully tested and might be missing some parts that previous releases contained.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s what&#8217;s working:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>All testing that doesn&#8217;t require full EE container</p>
-</li>
-<li>
-<p>Weld core implementation and API works as usual and is fully released</p>
-</li>
-<li>
-<p>Weld examples work only partially, all those needing EE container have nowhere to be deployed</p>
-</li>
-<li>
-<p>Weld SE works fully</p>
-</li>
-<li>
-<p>Weld Probe should work so long as you are in SE</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>And here are the missing parts:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>We cannot execute CDI TCKs until there are stable GlassFish build</p>
-<div class="ulist">
-<ul>
-<li>
-<p>We should be able to renew this pretty soon</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Other in-container tests that we have (running on WildFly) are now disabled</p>
-</li>
-<li>
-<p>Servlet parts of Weld are <strong>completely excluded</strong> from early releases</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This is because there is currently no servlet working on EE 9, therefore we have nothing to adapt our internals to, yet</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>One big and sadly unanswered question is that of backward compatibility.
-In Jakarta itself, there seems to be a consensus of EE 9 not being backward compatible with EE 8.
-Weld 4 on its own will not work with applications written for Java EE 8 - basically with anything requiring old <code>javax</code> namespace packages.
-However, EE servers will be forced to adapt somehow, so I expect a tooling might eventually emerge that will allow to run legacy applications on newer servers.
-But that is yet to be seen and surely no sooner than after EE 9 release when other big servers start to adopt it.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_development_plans">Development Plans</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Just to make things clear - we are planning on actively developing both, Weld 3 and Weld 4.
-We understand that EE server will need to take their time switching to Jakarta EE 9, all the more due to the aforementioned circumstances around backward compatibility.
-Therefore, both our versions will get their share of updates and bug fixes in the future!</p>
 </div>
 </div>
 </div>
