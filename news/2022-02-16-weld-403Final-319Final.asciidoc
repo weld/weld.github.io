@@ -1,0 +1,34 @@
+---
+layout: news
+title: Weld 4.0.3.Final and 3.1.9.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 4.0.3.Final and 3.1.9.Final are now available
+desc: Updated versions of Weld 3 and 4
+tags: [release]
+---
+:linkattrs:
+
+Weld 3.1.9.Final for Jakarta EE 8 and Weld 4.0.3.Final for Jakarta EE 9 are now available.
+
+NOTE: Weld 3.1 and Weld 4.0 now enter a maintenance mode - there will be no further active development on these branches. Instead, the focus will be on Weld 5/EE 10 and beyond.
+
+Here is a brief list of notable changes; all of these are present in both Weld versions:
+
+* Gracefully handle non-existing classpath entries in SE (link:https://issues.jboss.org/browse/WELD-2605[WELD-2605, window="_blank"])
+* Proxies for classes starting with `jakarta.*` now have Weld proxy prefix instead (link:https://issues.jboss.org/browse/WELD-2684[WELD-2684, window="_blank"])
+* `WeldInstance.Handle#get()` could incorrectly return the same instance even after destroying underlying contextual reference (link:https://issues.jboss.org/browse/WELD-2687[WELD-2687, window="_blank"])
+* Fixed `BeanConfigurator#produceWith()` leaking dependent bean under certain conditions (link:https://issues.jboss.org/browse/WELD-2693[WELD-2693, window="_blank"])
+* Correct default package detection inside `ProxyFactory` (link:https://issues.jboss.org/browse/WELD-2704[WELD-2704, window="_blank"])
+* Several minor changes with regard to testing setup and update configurations (link:https://issues.jboss.org/browse/WELD-2706[WELD-2706, window="_blank"] and link:https://issues.jboss.org/browse/WELD-2707[WELD-2707, window="_blank"])
+
+Last but not least, for those using WildFly, I would recommend taking a look into their link:https://www.wildfly.org/news/2022/01/21/WildFly-2022/[release plan for 2022, window="_blank"].
+It details which WildFly is the last for EE 8 and EE 9 and what happens going onwards.
+Weld is of course going to keep up the pace and we are working on integrating Weld 5 into Wildfly.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/4.0.3.Final/en-US/html_single/[Documentation Weld 4.0.3.Final, window="_blank"] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/3.1.9.Final/en-US/html_single/[Documentation Weld 3.1.9.Final, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12359404[Release notes for Weld 4.0.3.Final, window="_blank"] &#93;
+&#91; link:https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&version=12359403[Release notes for Weld 3.1.9.Final, window="_blank"] &#93;
