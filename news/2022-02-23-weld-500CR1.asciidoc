@@ -1,0 +1,25 @@
+---
+layout: news
+title: Weld 5.0.0.CR1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.0.0.CR1
+desc: Weld 5.0.0.CR1 has arrived
+tags: [release]
+---
+:linkattrs:
+
+Weld 5 now has its first candidate release; Weld API 5.0.CR1 and Weld Core 5.0.0.CR1 are headed towards Maven Central.
+
+This release has only minor differences from the Beta but it is a testable basis for Final specification release.
+Here is a quick overview:
+
+* Correct default package detection inside `ProxyFactory` (link:https://issues.jboss.org/browse/WELD-2704[WELD-2704, window="_blank"])
+* Use secure actions when obtaining constructors via reflection in `LiteExtensionTranslator` (link:https://issues.jboss.org/browse/WELD-2705[WELD-2705, window="_blank"])
+* Dozens of dependabot updates for various dependencies
+* Updated to the latest released CDI version (4.0.0-RC5) and latest CDI TCK version (4.0.0.RC6)
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.0.0.CR1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12380311[Release notes, window="_blank"] &#93;
