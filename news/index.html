@@ -143,6 +143,42 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2022/03/23/weld-500CR2/">Weld 5.0.0.CR2</a>
+</h2>
+<div class="news-date news-boxed">
+2022-3-23
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Final ballot of CDI 4 has uncovered untested and unimplemented area in the newly added <code>Startup</code> and <code>Shutdown</code> events.</p>
+</div>
+<div class="paragraph">
+<p>Our previous release was guilty of not supporting this properly, hence here comes Weld API 5.0.CR2 and Weld Core 5.0.0.CR2.</p>
+</div>
+<div class="paragraph">
+<p>Weld now automatically fires these events and the JIRA issue for this can be seen <a href="https://issues.jboss.org/browse/WELD-2709" target="_blank" rel="noopener">here (WELD-2709)</a>.
+However, integrators can choose to override this behavior and fire both events themselves in case there is more bootstrapping logic that needs to come together before the container is deemed ready.
+The API interface <a href="https://github.com/weld/api/blob/5.0.CR2/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environment.java#L48-L70"><code>org.jboss.weld.bootstrap.api.Environment</code></a> allows implementors to override a specific method which will then prevent Weld from handling these events.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12382781" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2022/02/23/weld-500CR1/">Weld 5.0.0.CR1</a>
 </h2>
 <div class="news-date news-boxed">
@@ -631,67 +667,6 @@ Matej Novotny
 &#91; <a href="http://docs.jboss.org/weld/reference/3.1.8.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.8.Final</a> &#93;
 &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12356277" target="_blank" rel="noopener">Release notes for Weld 4.0.2.Final</a> &#93;
 &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12356276" target="_blank" rel="noopener">Release notes for Weld 3.1.8.Final</a> &#93;</p>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2021/04/14/weld-401SP1-317SP1/">Weld 4.0.1.SP1 and 3.1.7.SP1</a>
-</h2>
-<div class="news-date news-boxed">
-2021-4-14
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Thanks to your reports, several flaws were discovered in the new class defining for JDK 11+.
-We have addressed those issues and because we reckon they are potentially blocking, we have released Weld 3.1.7.SP1 and 4.0.1.SP1.</p>
-</div>
-<div class="paragraph">
-<p>Two main issues were:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Producers returning an interface type could sometimes try to define a proxy class with invalid name (<a href="https://issues.jboss.org/browse/WELD-2662" target="_blank" rel="noopener">WELD-2662</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Similar thing could happen for inner classes which should now work as well</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Proxy class names for hierarchical type structures of interfaces could lead to a jumbled combination of package and name (<a href="https://issues.jboss.org/browse/WELD-2666" target="_blank" rel="noopener">WELD-2666</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Part of this fix is also an improvement wherein Weld actively tries to define new proxies into non-java packages making sure it uses <code>MethodHandles.Lookup</code> whenever applicable</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Apart from that, this release also addresses a problem with Undertow servlet integration in which (<a href="https://issues.redhat.com/browse/WELD-2664" target=""_blank">Weld tried too eagerly to provide it&#8217;s own instances of <code>Listener</code></a>).</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.1.SP1</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.7.SP1</a> &#93;
-&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354546" target="_blank" rel="noopener">Release notes for Weld 4.0.1.SP1</a> &#93;
-&#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354545" target="_blank" rel="noopener">Release notes for Weld 3.1.7.SP1</a> &#93;</p>
 </div>
 </div>
 <hr>

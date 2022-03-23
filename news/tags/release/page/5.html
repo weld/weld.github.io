@@ -143,6 +143,88 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/02/12/weld-233Final/">Weld 2.3.3.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2016-2-12
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 2.3.3.Final the next bug-fix version of the stable 2.3 branch has been released!
+See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12328954" target="_blank" rel="noopener">the release details</a>.
+Thanks to everyone involved in this release!
+Notable improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>allow to proxy classes with non-static non-private final methods</p>
+<div class="ulist">
+<ul>
+<li>
+<p>this is a non-portable way to get around the <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#unproxyable" target="_blank" rel="noopener">CDI spec restrictions</a>, see also <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/configure.html#_proxying_classes_with_final_methods" target="_blank" rel="noopener">Proxying classes with final methods</a> and <a href="https://issues.jboss.org/browse/CDI-527" target="_blank" rel="noopener">CDI-527</a></p>
+</li>
+<li>
+<p><strong>use with caution!</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>other enhancements and bug-fixes around proxies:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>better support for DeltaSpike partial beans (<a href="https://issues.jboss.org/browse/WELD-2084" target="_blank" rel="noopener">WELD-2084</a>)</p>
+</li>
+<li>
+<p>better support for Camel CDI (<a href="https://issues.jboss.org/browse/WELD-2089" target="_blank" rel="noopener">WELD-2089</a>)</p>
+</li>
+<li>
+<p>better support for proxies with non public classes (<a href="https://issues.jboss.org/browse/WELD-2091" target="_blank" rel="noopener">WELD-2091</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld Probe has a slightly redesigned menu and a new Dashboard view with some basic stats</p>
+</li>
+<li>
+<p>the decorator validation was improved (<a href="https://issues.jboss.org/browse/WELD-2085" target="_blank" rel="noopener">WELD-2085</a>, <a href="https://issues.jboss.org/browse/WELD-1811" target="_blank" rel="noopener">WELD-1811</a>, <a href="https://issues.jboss.org/browse/WELD-2039" target="_blank" rel="noopener">WELD-2039</a>)</p>
+</li>
+<li>
+<p>minor SPI cleanup was performed  (<a href="https://issues.jboss.org/browse/WELD-2077" target="_blank" rel="noopener">WELD-2077</a>, <a href="https://issues.jboss.org/browse/WELD-2079" target="_blank" rel="noopener">WELD-2079</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://download.jboss.org/weld/2.3.3.Final/wildfly-10.0.0.Final-weld-2.3.3.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
+&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/2.3.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12328954" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2016/02/04/weld-300Alpha15/">Weld 3.0.0.Alpha15</a>
 </h2>
 <div class="news-date news-boxed">
