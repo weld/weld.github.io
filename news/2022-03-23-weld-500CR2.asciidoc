@@ -1,0 +1,23 @@
+---
+layout: news
+title: Weld 5.0.0.CR2
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.0.0.CR2
+desc: Weld 5 Candidate Release, Round 2
+tags: [release]
+---
+:linkattrs:
+
+Final ballot of CDI 4 has uncovered untested and unimplemented area in the newly added `Startup` and `Shutdown` events.
+
+Our previous release was guilty of not supporting this properly, hence here comes Weld API 5.0.CR2 and Weld Core 5.0.0.CR2.
+
+Weld now automatically fires these events and the JIRA issue for this can be seen link:https://issues.jboss.org/browse/WELD-2709[here (WELD-2709), window="_blank"].
+However, integrators can choose to override this behavior and fire both events themselves in case there is more bootstrapping logic that needs to come together before the container is deemed ready.
+The API interface link:https://github.com/weld/api/blob/5.0.CR2/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environment.java#L48-L70[`org.jboss.weld.bootstrap.api.Environment`] allows implementors to override a specific method which will then prevent Weld from handling these events.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.0.0.CR2/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12382781[Release notes, window="_blank"] &#93;
