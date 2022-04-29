@@ -143,6 +143,83 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2022/04/29/weld-500Final/">Weld 5.0.0.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2022-4-29
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>CDI 4 has passed its Final ballot and is now available in Maven Central.
+Some of you may have played with it already, but where is the fun in it, if you don&#8217;t have a Final implementation, right?
+Have no fear, Weld 5 Final is here!</p>
+</div>
+<div class="paragraph">
+<p>As usual, there is Weld 5.0.Final API as well as Weld 5.0.0.Final core impl.</p>
+</div>
+<div class="paragraph">
+<p>It is very much the same as CR2, with some additional tweaks and fixes that came to light when working on integrations within EE servers.
+That&#8217;s right, EE servers are already making progress towards integrating CDI 4 and Weld 5.
+Folks over at Open Liberty did their Weld 5 homework about a week ago and WildFly now has a pending <a href="https://github.com/wildfly/wildfly/pull/15474">pull request</a> that adds missing bits for CDI 4 support.
+It might still be a while before there is a Beta WildFly release, but if you have the nerves, you can build the SNAPSHOT at least.</p>
+</div>
+<div class="paragraph">
+<p>Back on the topic of changes, here is a list of fixes from CR2 to Final:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Self-interception can now be used on protected methods, params and return types (<a href="https://issues.jboss.org/browse/WELD-2712" target="_blank" rel="noopener">WELD-2712</a>)</p>
+</li>
+<li>
+<p>Rewieved Weld examples and made sure they run for EE 10 (<a href="https://issues.jboss.org/browse/WELD-2708" target="_blank" rel="noopener">WELD-2708</a>)</p>
+</li>
+<li>
+<p>Review Weld 5 documentation (<a href="https://issues.jboss.org/browse/WELD-2696" target="_blank" rel="noopener">WELD-2696</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that the servlet part is still outdated and being worked on as we need to see if there is workable EE 10 variant, see <a href="https://issues.jboss.org/browse/WELD-2716" target="_blank" rel="noopener">WELD-2716</a></p>
+</li>
+<li>
+<p>We expect that this will be sorted by the time we ship 5.0.1.Final</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Firing of the <code>Startup</code> event for web modules can happen too early (<a href="https://issues.jboss.org/browse/WELD-2717" target="_blank" rel="noopener">WELD-2717</a>)</p>
+</li>
+<li>
+<p>Synthetic beans coming from Build Compatible extension should be registered under their respective extensions (<a href="https://issues.jboss.org/browse/WELD-2718" target="_blank" rel="noopener">WELD-2718</a>)</p>
+</li>
+<li>
+<p>Exceptions thrown during execution of Build Compatible extensions now correctly preserve their cause (<a href="https://issues.jboss.org/browse/WELD-2710" target="_blank" rel="noopener">WELD-2710</a>)</p>
+</li>
+<li>
+<p>Some of our SE testing was being skipped ever since Groovy dependency update, this is now corrected (<a href="https://issues.jboss.org/browse/WELD-2714" target="_blank" rel="noopener">WELD-2714</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12383754" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2022/03/23/weld-500CR2/">Weld 5.0.0.CR2</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1056,80 +1133,7 @@ Without further due, let&#8217;s dive straight into it!</p>
 </div>
 <hr>
 </div>
-<div class="post">
-<h2>
-<a href="/news/2020/12/16/weld-400Final/">Weld 4.0.0.Final</a>
-</h2>
-<div class="news-date news-boxed">
-2020-12-16
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>An early Xmas present for CDI lovers is here - <code>Final</code> release for Weld 4 is now available!
-You can pick your Xmas jar-packaged present from Maven Central right away.</p>
-</div>
-<div class="paragraph">
-<p>Since there were no new reported issues after integrating Weld <code>4.0.0.CR1</code> version into GlassFish and WildFly EE 9 preview, we have promoted Weld to <code>Final</code> release.
-Latest core version is now <code>4.0.0.Final</code> and Weld API that ships with it is <code>4.0.Final</code>.</p>
-</div>
-<div class="paragraph">
-<p>Functionally, Weld 3 and 4 remain identical and both are getting the same treatment and doses of bugfixes.
-The main difference is that Weld 4 operates with EE 9, meaning it expects you to use it with CDI 3.0 along with the new <code>jakarta</code> package names.</p>
-</div>
-<div class="paragraph">
-<p>Given that most changes poured into this version were more about dependecy updates, structural changes etc., I won&#8217;t list them all here.
-However, if you are still curious, you could take a peek at <a href="https://issues.redhat.com/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&amp;status=all">JIRA release page</a> and browse various Weld 4 releases that we did over time.</p>
-</div>
-<div class="paragraph">
-<p>What&#8217;s more important is that we are keen on hearing from you should you find any issues with this version.
-Whether you are an integrator or user, we realize no project is ever bug-free and we want to smack those bugs!
-So if you hit any problems that you think are bugs, let us know via one of the usual channels:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Ask on mailing list <code>weld-dev@lists.jboss.org</code></p>
-</li>
-<li>
-<p>Create <a href="https://issues.redhat.com/projects/WELD/summary">JIRA</a> issues</p>
-</li>
-<li>
-<p>Drop the question on <a href="https://gitter.im/weld/user">Weld Gitter</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Last but not least, the Weld team wishes you Merry Christmas and Happy New Year.</p>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Sorry to disappoint, but we cannot provide a patch yet.
-WildFly <a href="https://github.com/wildfly/wildfly/tree/master/ee-9">source code</a> already contains the needed bits for EE 9 server variant, but there wasn&#8217;t a release yet.
-Good news is, once there is a release, it will already contain Weld 4 Final!
-From there on, we can then deliver patches as we used to.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352570" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="pagination-links"><span class="current-page">1</span> <a href="/news/tags/release/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/tags/release/page/4.html" class="page-link">4</a> <a href="/news/tags/release/page/5.html" class="page-link">5</a> <a href="/news/tags/release/page/2.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><span class="current-page">1</span> <a href="/news/tags/release/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/tags/release/page/5.html" class="page-link">5</a> <a href="/news/tags/release/page/6.html" class="page-link">6</a> <a href="/news/tags/release/page/2.html" class="next-link">Next</a> </div>
 <hr>
 <div>
 <a href="http://weld.cdi-spec.org/news.atom">
