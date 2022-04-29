@@ -1,3 +1,7 @@
+- version: '5.0.0.Final'
+  category: Final
+  date: 29.04.2022
+  versionId: 12383754
 - version: '5.0.0.CR2'
   category: Preview
   date: 23.03.2022

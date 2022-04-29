@@ -1,0 +1,38 @@
+---
+layout: news
+title: Weld 5.0.0.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Finally, Weld 5 Final is here!
+desc: Finally, Weld 5 Final is here!
+tags: [release]
+---
+:linkattrs:
+
+CDI 4 has passed its Final ballot and is now available in Maven Central.
+Some of you may have played with it already, but where is the fun in it, if you don't have a Final implementation, right?
+Have no fear, Weld 5 Final is here!
+
+As usual, there is Weld 5.0.Final API as well as Weld 5.0.0.Final core impl.
+
+It is very much the same as CR2, with some additional tweaks and fixes that came to light when working on integrations within EE servers.
+That's right, EE servers are already making progress towards integrating CDI 4 and Weld 5.
+Folks over at Open Liberty did their Weld 5 homework about a week ago and WildFly now has a pending link:https://github.com/wildfly/wildfly/pull/15474[pull request] that adds missing bits for CDI 4 support.
+It might still be a while before there is a Beta WildFly release, but if you have the nerves, you can build the SNAPSHOT at least.
+
+Back on the topic of changes, here is a list of fixes from CR2 to Final:
+
+* Self-interception can now be used on protected methods, params and return types (link:https://issues.jboss.org/browse/WELD-2712[WELD-2712, window="_blank"])
+* Rewieved Weld examples and made sure they run for EE 10 (link:https://issues.jboss.org/browse/WELD-2708[WELD-2708, window="_blank"])
+* Review Weld 5 documentation (link:https://issues.jboss.org/browse/WELD-2696[WELD-2696, window="_blank"])
+** Note that the servlet part is still outdated and being worked on as we need to see if there is workable EE 10 variant, see link:https://issues.jboss.org/browse/WELD-2716[WELD-2716, window="_blank"]
+** We expect that this will be sorted by the time we ship 5.0.1.Final
+* Firing of the `Startup` event for web modules can happen too early (link:https://issues.jboss.org/browse/WELD-2717[WELD-2717, window="_blank"])
+* Synthetic beans coming from Build Compatible extension should be registered under their respective extensions (link:https://issues.jboss.org/browse/WELD-2718[WELD-2718, window="_blank"])
+* Exceptions thrown during execution of Build Compatible extensions now correctly preserve their cause (link:https://issues.jboss.org/browse/WELD-2710[WELD-2710, window="_blank"])
+* Some of our SE testing was being skipped ever since Groovy dependency update, this is now corrected (link:https://issues.jboss.org/browse/WELD-2714[WELD-2714, window="_blank"])
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.0.0.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12383754[Release notes, window="_blank"] &#93;
