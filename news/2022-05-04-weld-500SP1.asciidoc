@@ -1,0 +1,23 @@
+---
+layout: news
+title: Weld 5.0.0.SP1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Service release for Weld 5 Final
+desc: Service release for Weld 5 Final
+tags: [release]
+---
+:linkattrs:
+
+A new version of Weld core is now in Maven Central - 5.0.0.SP1.
+
+There have been reports of a bytecode verification error in certain scenarios reported by link:https://www.eclipse.org/lists/cdi-dev/msg00586.html[GlassFish] and link:https://github.com/wildfly/wildfly/pull/15474#issuecomment-1113505376[WildFly] trying to integrate Weld 5.0.0.Final.
+We have investigated the cause and identified the problematic change, you can read more about it in link:https://issues.redhat.com/browse/WELD-2719[WELD-2719].
+
+Weld 5.0.0.SP1 release reverts the offending change (link:https://issues.redhat.com/browse/WELD-2712[WELD-2712]) and otherwise keeps Weld intant in terms of changes.
+In case you identify any further issues, don't hesitate to reach out.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.0.0.SP1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12385753[Release notes, window="_blank"] &#93;
