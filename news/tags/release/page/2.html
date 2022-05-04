@@ -143,6 +143,125 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2021/01/13/weld-316Final/">Weld 3.1.6.Final</a>
+</h2>
+<div class="news-date news-boxed">
+2021-1-13
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Matej Novotny
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>Weld 3.1.6.Final is now available and brings a dosage of bug fixes and updates with it.
+Without further due, let&#8217;s dive straight into it!</p>
+</div>
+<div class="paragraph">
+<p>Fixes and improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld Core</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix for decorators operating on interfaces with default methods (<a href="https://issues.jboss.org/browse/WELD-2647" target="_blank" rel="noopener">WELD-2647</a>)</p>
+</li>
+<li>
+<p>Weld will no longer try to load classes for specific JDK version when using multi-release JARs (<a href="https://issues.jboss.org/browse/WELD-2652" target="_blank" rel="noopener">WELD-2652</a>)</p>
+</li>
+<li>
+<p><code>ProxyFactory</code> was changed to produce more deterministic and sensible names when based off interfaces (<a href="https://issues.jboss.org/browse/WELD-2618" target="_blank" rel="noopener">WELD-2618</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NOTE: this slightly changes names of generated proxy classes but has no effect on the functionality itself</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld Servlet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Detect Jetty server in GWT 2.8+ test environment (<a href="https://issues.jboss.org/browse/WELD-2635" target="_blank" rel="noopener">WELD-2635</a>)</p>
+</li>
+<li>
+<p>Injection into Undertow servlet listener now works as intended (<a href="https://issues.jboss.org/browse/WELD-2636" target="_blank" rel="noopener">WELD-2636</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This should work from Undertow 2.2.0.Final onwards</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bean defining annotation can be specified as generic <code>SeContainerInitializer</code> property (<a href="https://issues.jboss.org/browse/WELD-2639" target="_blank" rel="noopener">WELD-2639</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other bits</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed issue preventing upgrade of surefire plugin in our testsuite (<a href="https://issues.jboss.org/browse/WELD-2634" target="_blank" rel="noopener">WELD-2634</a>)</p>
+</li>
+<li>
+<p>Several corrections to OSGi package configuration (<a href="https://issues.jboss.org/browse/WELD-2642" target="_blank" rel="noopener">WELD-2642</a>, <a href="https://issues.jboss.org/browse/WELD-2644" target="_blank" rel="noopener">WELD-2644</a>, <a href="https://issues.jboss.org/browse/WELD-2645" target="_blank" rel="noopener">WELD-2645</a>, <a href="https://issues.jboss.org/browse/WELD-2646" target="_blank" rel="noopener">WELD-2646</a>)</p>
+</li>
+<li>
+<p>Re-introduce multi HTML documentation output in best-effort mode; this is mainly to keep old links working (<a href="https://issues.jboss.org/browse/WELD-2640" target="_blank" rel="noopener">WELD-2640</a>)</p>
+</li>
+<li>
+<p>Fix intermittent test failure in <code>DispatchingTest</code> caused by race condition (<a href="https://issues.jboss.org/browse/WELD-2650" target="_blank" rel="noopener">WELD-2650</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This time around, the <a href="http://download.jboss.org/weld/3.1.6.Final/wildfly-21.0.2.Final-weld-3.1.6.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 21.0.2.Final</a> is available.</p>
+</div>
+<div class="paragraph">
+<p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.1.6.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12346955" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2020/12/16/weld-400Final/">Weld 4.0.0.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1214,109 +1333,6 @@ Integrators (WildFly, Liberty, GlassFish, &#8230;&#8203;) will have to adjust to
 <p>&#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/3.1.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12339977" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2018/09/26/weld-248Final/">Weld 2.4.8.Final</a>
-</h2>
-<div class="news-date news-boxed">
-2018-9-26
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Weld 2 has entered maintenance mode with its 2.4.7.Final release earlier this year.
-Now we are coming with a maintenance release containing fixes to several nuisances you might have come across.</p>
-</div>
-<div class="paragraph">
-<p>Notable fixes and improvements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld Core:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Opt-in enhancement in HTTP session replication, more eager approach (<a href="https://issues.jboss.org/browse/WELD-1130" target="_blank" rel="noopener">WELD-1130</a>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Note that WildFly does not need to use this</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>AfterTypeDiscovery</code> did not allow to remove declared interceptors/decorators/alternatives correctly (<a href="https://issues.jboss.org/browse/WELD-2479" target="_blank" rel="noopener">WELD-2479</a>)</p>
-</li>
-<li>
-<p>Corrected decorator subclass creation when said decorator overrides only default method (<a href="https://issues.jboss.org/browse/WELD-2501" target="_blank" rel="noopener">WELD-2501</a>)</p>
-</li>
-<li>
-<p>Avoid optimizing self invocation of private methods in order to avoid <code>IllegalAccessError</code>(<a href="https://issues.jboss.org/browse/WELD-2506" target="_blank" rel="noopener">WELD-2506</a>)</p>
-</li>
-<li>
-<p>Allow interception of abstract, package-private classes with public methods (<a href="https://issues.jboss.org/browse/WELD-2507" target="_blank" rel="noopener">WELD-2507</a>)</p>
-</li>
-<li>
-<p>Fix interception of overriden generic methods invoked via superclass (<a href="https://issues.jboss.org/browse/WELD-2514" target="_blank" rel="noopener">WELD-2514</a>)</p>
-</li>
-<li>
-<p>Implement reflection fallback for qualifier loading when there are multiple instances of the class in the deployment (<a href="https://issues.jboss.org/browse/WELD-2531" target="_blank" rel="noopener">WELD-2531</a>)</p>
-</li>
-<li>
-<p>Fixed possible race condition appearing during bean index creation (<a href="https://issues.jboss.org/browse/WELD-2532" target="_blank" rel="noopener">WELD-2532</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Weld SE</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fix NPE which could occur if trying to intercept a method called by constructor (<a href="https://issues.jboss.org/browse/WELD-2473" target="_blank" rel="noopener">WELD-2473</a> and <a href="https://issues.jboss.org/browse/WELD-2478" target="_blank" rel="noopener">WELD-2478</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Other</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Correction to licenses in Probe (<a href="https://issues.jboss.org/browse/WELD-2480" target="_blank" rel="noopener">WELD-2480</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, a <a href="http://download.jboss.org/weld/2.4.8.Final/wildfly-11.0.0.Final-weld-2.4.8.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.
-If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/2.4.8.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12337222" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
 </div>

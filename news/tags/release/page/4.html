@@ -143,6 +143,155 @@ News - tagged as &quot;release&quot;
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2017/05/15/weld-300Final/">Weld 3.0.0.Final - the first implementation of CDI 2.0!</a>
+</h2>
+<div class="news-date news-boxed">
+2017-5-15
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/release">release</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div class="paragraph">
+<p>I am very pleased to announce the release of Weld <strong>3.0.0.Final</strong> - the first implementation of <strong>CDI 2.0</strong>!
+I would like to thank not only to everyone involved in this particular release but also to the Weld community as a whole and also to all active CDI EG members who invested a lot of energy into the specification process!</p>
+</div>
+<div class="paragraph">
+<p>[ source, java ]</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/**&#x000A; * TODO: Continue to deliver bugfixes and improvements&#x000A; */&#x000A;public class WeldTeam extends OpenSourceCommunity {&#x000A;&#x000A;  @Inject&#x000A;  @AwesomeNews&#x000A;  Event&lt;String&gt; event;&#x000A;&#x000A;  public void release() {&#x000A;    // Fire asynchronously so that we don't need to wait for observer notification before we start celebrating!&#x000A;    event.fireAsync("CDI 1.2 is dead, long live CDI 2.0!");&#x000A;    celebrate();&#x000A;  }&#x000A;&#x000A;}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Weld 3 is an IMPORTANT MILESTONE.
+Therefore, we&#8217;re preparing a special blogpost summarizing all the important stuff that was added.
+Expect the <strong>Tour around Weld 3</strong> blogpost within a few days.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s sum up the notable changes since <strong>3.0.0.CR2</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Weld defines two non-portable <strong>notification options</strong> to configure the notification of asynchronous observer methods (see also <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Notification options</a> for more info):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>weld.async.notification.mode</code> - the notification mode, possible values are: <code>SERIAL</code> (default) and <code>PARALLEL</code></p>
+</li>
+<li>
+<p><code>weld.async.notification.timeout</code> - the notification timeout (in milliseconds) after which the returned completion stage must be completed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the time expires the stage is completed exceptionally with a <code>CompletionException</code> holding the <code>java.util.concurrent.TimeoutException</code> as its cause</p>
+</li>
+<li>
+<p>The expiration does not abort the notification of the observers</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Session replication - handle situation when <code>HTTPSessionBean</code> might not be serializable (<a href="https://issues.jboss.org/browse/WELD-2346" target="_blank" rel="noopener">WELD-2346</a>)</p>
+</li>
+<li>
+<p>Fire <code>@Initialied(RequestScoped.class)</code>/<code>@Destroyed(RequestScoped.class)</code> events for a <code>@PostConstruct</code> callback if the request context was activated for the specific callback</p>
+</li>
+<li>
+<p>Weld SE</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s possible to easily register a <code>org.jboss.weld.bootstrap.api.Service</code> during container bootstrap (<a href="https://issues.jboss.org/browse/WELD-2360" target="_blank" rel="noopener">WELD-2360</a>)</p>
+</li>
+<li>
+<p>Any <code>javax.enterprise.inject.spi.CDI</code> method can now be called during <code>AfterDeploymentValidation</code> (<a href="https://issues.jboss.org/browse/WELD-2371" target="_blank" rel="noopener">WELD-2371</a>)</p>
+</li>
+<li>
+<p><code>ContainerInitialized</code> and <code>ContainerShutdown</code> now implement <code>toString()</code> (<a href="https://issues.jboss.org/browse/WELD-2354" target="_blank" rel="noopener">WELD-2354</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Weld Servlet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed usage of Jandex on Tomcat when using <code>unpackWars=false</code> (<a href="https://issues.jboss.org/browse/WELD-2357" target="_blank" rel="noopener">WELD-2357</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Added option to disable Jandex in Weld SE and Weld Servlet (<a href="https://issues.jboss.org/browse/WELD-2374" target="_blank" rel="noopener">WELD-2374</a>)</p>
+</li>
+<li>
+<p>Development tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If a deployment validation fails and the development mode is enabled a simple <strong>validation HTML report</strong> (which contains a lot of useful information) is generated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users are encouraged to always attach this report when asking a question on the mailing list or any other communication channel</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Updated documentation and migration notes for integrators</p>
+</li>
+<li>
+<p>Examples cleanup (dropped GAE support, etc.)</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_patch">WildFly Patch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual, a <a href="http://wildfly.org/" target="_blank" rel="noopener">patch for WildFly</a> is available.
+This time the target platforms are <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-10.1.0.Final-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 10.1.0.Final</a> and <a href="http://download.jboss.org/weld/3.0.0.Final/wildfly-11.0.0.Alpha1-weld-3.0.0.Final-patch.zip" target="_blank" rel="noopener">WildFly 11.0.0.Alpha1</a>.
+If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+</div>
+<div class="paragraph">
+<p>&#91; <a href="/download/">Download</a> &#93;
+&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333608" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2017/04/07/weld-243Final/">Weld 2.4.3.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -1027,157 +1176,6 @@ See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=123
 &#91; <a href="/download/">Download</a> &#93;
 &#91; <a href="http://docs.jboss.org/weld/reference/2.3.5.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12330052" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2016/04/28/weld-300Alpha16/">Weld 3.0.0.Alpha16</a>
-</h2>
-<div class="news-date news-boxed">
-2016-4-28
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-, 
-<a href="/news/tags/cdi2">cdi2</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>The next experimental Weld version has been released!
-See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
-Thanks to everyone involved in this release!</p>
-</div>
-<div class="paragraph">
-<p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
-However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
-So that everyone can play with the API, discover possibilities and find potential issues.
-Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
-So it should be even easier to get started - no extension class is needed in Weld SE.</p>
-</div>
-<div class="sect1">
-<h2 id="_metadata_configurators_basic_ideas">Metadata configurators - basic ideas</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Note that we don&#8217;t use the term "builder" because there is no <code>build()</code> method in the API.
-Also note that the API is not intended to cover every possible case.
-Instead, we would like to help with common tasks.
-And if necessary, an extension developer can always use the original replacement methods for more complicated stuff.</p>
-</div>
-<div class="paragraph">
-<p>IMPORTANT POINTS:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>an extension developer receives a configurator instance from a container lifecycle event</p>
-</li>
-<li>
-<p>a configurator instance is always automatically processed at the end of the observer invocation</p>
-</li>
-<li>
-<p>for <strong>bean discovery events</strong> (all events starting with <code>Process</code>):</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>configureX()</code> methods return the same configurator instance (for the given observer method invocation)</p>
-</li>
-<li>
-<p>the configurator is initialized/preconfigured with the component being processed, e.g. <code>ProcessAnnotatedType.configureAnnotatedType()</code> returns a configurator initialized with <code>ProcessAnnotatedType.getAnnotatedType()</code></p>
-</li>
-<li>
-<p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
-</li>
-<li>
-<p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>for <strong>application lifecycle events</strong> (e.g. <code>AfterBeanDiscovery</code>):</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addX()</code> methods always return a new configurator instance</p>
-</li>
-<li>
-<p>the configurator is always uninitialized/empty, but we should probably define some default values wherever it makes sense (e.g. <code>Reception</code> for observer methods)</p>
-</li>
-<li>
-<p>the result of the configurator will be automatically added (e.g. <code>Bean</code> in case of <code>AfterBeanDiscovery.addBean()</code>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We have prepared some simple examples - see below.
-More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
-And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_beforebeandiscovery_example">BeforeBeanDiscovery example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_processannotatedtype_example">ProcessAnnotatedType example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_processbeanattributes_example">ProcessBeanAttributes example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_afterbeandiscovery_example">AfterBeanDiscovery example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
 </div>
