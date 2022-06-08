@@ -143,6 +143,205 @@ News
 </h1>
 <div class="post">
 <h2>
+<a href="/news/2016/10/01/tip1-logging/">Weld Tip 1 - Logging</a>
+</h2>
+<div class="news-date news-boxed">
+2016-10-1
+&nbsp;
+<span class="tags">
+<i class="fa fa-tags"></i>
+<a href="/news/tags/tips">tips</a>
+</span>
+&nbsp;
+<i class="fa fa-pencil"></i>
+Martin Kouba
+</div>
+<p></p>
+<div class="content">
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#under_the_hood">Under the hood</a></li>
+<li><a href="#filter">Set the log level and use categories to filter messages</a></li>
+<li><a href="#bootstrap">Monitoring bootstrap</a>
+<ul class="sectlevel2">
+<li><a href="#_registered_beans">Registered beans</a></li>
+<li><a href="#_actions_performed_by_extensions">Actions performed by extensions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is the first article from a series of short articles covering some useful Weld features.
+In this article we talk about logging.
+The topics for the next articles include: <strong>DEVELOPMENT MODE</strong>, <strong>PERFORMANCE</strong>, <strong>NON-EE ENVIRONMENTS</strong> and <strong>TESTING</strong>.</p>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Logging is usually no fancy stuff.
+But very often it&#8217;s <em>the best thing to start with if problems arise</em>.
+Moreover, it&#8217;s the easiest form of debugging.</p>
+</div>
+<div class="paragraph">
+<p>In this article you will find:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#under_the_hood">Under the hood</a> - how to control and configure the output</p>
+</li>
+<li>
+<p><a href="#filter">Set the log level and use categories to filter messages</a> - how to keep logs small and to the point</p>
+</li>
+<li>
+<p><a href="#bootstrap">Monitoring bootstrap</a> - registered beans, actions performed by extensions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="under_the_hood">Under the hood</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Weld is using <a href="https://developer.jboss.org/wiki/JBossLoggingTooling">JBoss Logging</a>.
+This is an abstraction layer wchich does not "write" any log messages at all.
+Instead, it effectively constructs a log message and then delegates to a back-end logging framework.
+The supported frameworks include <a href="https://developer.jboss.org/wiki/StandaloneJBossLogManager">jboss-logmanager</a>, <a href="http://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">SLF4J</a> and JDK logging.</p>
+</div>
+<div class="paragraph">
+<p>So which logging framework is actually used to write the Weld messages?
+Well, it depends on the environment.
+In a <strong>Java EE container</strong> (e.g. WildFly) the logging configuration is under the direction of the container.
+You should follow the container-specific guides to change the configuration (see for example <a href="https://docs.jboss.org/author/display/WFLY10/Logging+Configuration">WildFly - Logging Configuration</a> and <a href="/documentation/#7">How do I enable debug logging for Weld in a specific container?</a>).</p>
+</div>
+<div class="paragraph">
+<p>A web application deployed to a <strong>servlet container</strong> usually bundles a logging framework and possibly some configuration file.
+In this case, the configuration is in hands of the application developer.
+If no logging framework is bundled follow the container-specific guides to change the configuration (e.g. <a href="http://tomcat.apache.org/tomcat-8.0-doc/logging.html">Logging in Tomcat</a>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+A system property <code>org.jboss.logging.provider</code> can be used to specify the logging framework directly. If not set, the JBoss Logging will attempt to find the "best match" on the classpath. See also <a href="https://github.com/jboss-logging/jboss-logging/blob/master/src/main/java/org/jboss/logging/LoggerProviders.java" target="_blank" rel="noopener">LoggerProviders</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In <strong>Java SE</strong> the situation is very similar to servlet containers except the class loading is usually even less complicated (see also <a href="/documentation/#10"> How do I enable debug logging for Weld SE?</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filter">Set the log level and use categories to filter messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default log level is usually <code>INFO</code>.
+Weld does not log that much information with this level.
+You will have to set the log level to <code>DEBUG</code> (or even <code>TRACE</code>) to see what&#8217;s going on in your application.
+If you set the level globally (for all frameworks and libraries), the log files will be bloated and it will be very hard to get some relevant info from there.
+If you set the level for Weld only (i.e. for <code>org.jboss.weld</code>), it should be better.
+Moreover, it&#8217;s possible to use categories to filter messages from a particular "domain".
+Weld log messages are grouped into several categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.jboss.weld.Bootstrap</code></p>
+</li>
+<li>
+<p><code>org.jboss.weld.Validator</code></p>
+</li>
+<li>
+<p><code>org.jboss.weld.Bean</code></p>
+</li>
+<li>
+<p><code>org.jboss.weld.Context</code></p>
+</li>
+<li>
+<p><code>org.jboss.weld.El</code></p>
+</li>
+<li>
+<p>and others (see also <a href="https://github.com/weld/core/blob/master/impl/src/main/java/org/jboss/weld/logging/Category.java" target="_blank" rel="noopener">org.jboss.weld.logging.Category</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So for example, if you&#8217;re only interested in log messages related to <strong>EL resolution</strong> set the log level for the <code>org.jboss.weld.El</code> category to <code>TRACE</code> (or level with corresponding priority).
+Another useful example is the check of <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_weld_configuration" target="_blank" rel="noopener">Weld configuration</a>.
+Simply set the log level to <code>DEBUG</code> and filter the <code>org.jboss.weld.Configuration</code> category:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DEBUG [Configuration] WELD-001907: Reading properties file: test.war/WEB-INF/classes/weld.properties&#x000A;DEBUG [Configuration] WELD-001903: Configuration key RESOLUTION_CACHE_SIZE already set to 1 000 in a source with higher priority, value 500 from system properties is ignored&#x000A;DEBUG [Configuration] WELD-001904: Unsupported configuration key found and ignored: com.foo.bar&#x000A;DEBUG [Configuration] WELD-001902: Configuration initialized: {CONCURRENT_DEPLOYMENT=false, RESOLUTION_CACHE_SIZE=1000, RELAXED_CONSTRUCTION=true}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bootstrap">Monitoring bootstrap</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CDI is designed to fail fast.
+An extensive validation is performed during application initialization in order to avoid malicious errors at runtime.
+Container usually also logs a lot of interesting info during bootstrap.
+Let&#8217;s try to set the log level to <strong>DEBUG</strong> for the <code>org.jboss.weld.Bootstrap</code> category and see what we get.</p>
+</div>
+<div class="sect2">
+<h3 id="_registered_beans">Registered beans</h3>
+<div class="paragraph">
+<p>As simple as it looks - Weld logs <em>all the beans</em> found in the application, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DEBUG [Bootstrap] WELD-000106: Bean: Managed Bean [class org.jboss.cdi.tck.tests.lookup.dependency.resolution.broken.unsatisfied.Vanilla] with qualifiers [@Any @Default]&#x000A;DEBUG [Bootstrap] WELD-000106: Bean: Producer Method [String[]] with qualifiers [@BatchProperty @Any] declared as [[UnbackedAnnotatedMethod] @Produces @BatchProperty public org.jberet.creation.BatchBeanProducer.getStringArray(InjectionPoint)]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_actions_performed_by_extensions">Actions performed by extensions</h3>
+<div class="paragraph">
+<p>There is no doubt that portable extensions are really powerful.
+They can change almost anything.
+That&#8217;s great for framework/libraries developers.
+On the other hand, this may cause problems when looking for a bug.
+There is an application class provided by a developer but what does the CDI container actually see?
+Well, it depends&#8230;&#8203; because portable extensions are allowed to redefine this.
+And that&#8217;s why Weld logs all the <em>"modification"</em> operations performed by extensions, such as <code>ProcessAnnotatedType.veto()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DEBUG [Bootstrap] WELD-000148: ProcessAnnotatedType.veto() called by com.foo.MyExtension@50fed5b1 for [BackedAnnotatedType] public class com.foo.Foo</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+If your application deploys successfully, you can use <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html#devtools">Development Tools</a> to inspect the runtime info (will be covered in one of the follow-up articles).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="post">
+<h2>
 <a href="/news/2016/09/13/weld-240Final/">Weld 2.4.0.Final</a>
 </h2>
 <div class="news-date news-boxed">
@@ -556,58 +755,6 @@ See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=123
 &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12330052" target="_blank" rel="noopener">Release notes</a> &#93;</p>
 </div>
 </div>
-</div>
-</div>
-<hr>
-</div>
-<div class="post">
-<h2>
-<a href="/news/2016/06/21/update-on-weld-vertx/">Update on weld-vertx</a>
-</h2>
-<div class="news-date news-boxed">
-2016-6-21
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/vertx">vertx</a>
-, 
-<a href="/news/tags/integration">integration</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>This is a follow-up on the article <a href="/news/2016/04/11/weld-meets-vertx/" target="_blank" rel="noopener">Weld meets Vert.x</a>.
-Weld team has just released the first alpha version of <a href="https://github.com/weld/weld-vertx" target="_blank" rel="noopener">weld-vertx</a> (artifacts are available in <a href="http://search.maven.org/#search%7Cga%7C1%7Cweld-vertx" target="_blank" rel="noopener">Maven Central</a>).
-Since the last time we talked about <code>weld-vertx</code> two new features were added.
-First, it&#8217;s possible to inject the relevant <code>io.vertx.core.Vertx</code> and <code>io.vertx.core.Context</code> instances direcly into beans.
-Also there is a new module called <code>weld-vertx-web</code> which extends functionality of <code>weld-vertx-core</code> and <code>io.vertx:vertx-web</code> and allows to register <code>Route</code> handlers discovered during container initialization.
-In other words, it&#8217;s possible to configure a <code>Route</code> in a declarative way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">import javax.inject.Inject;&#x000A;&#x000A;import org.jboss.weld.vertx.web.WebRoute;&#x000A;&#x000A;import io.vertx.core.Handler;&#x000A;import io.vertx.ext.web.RoutingContext;&#x000A;&#x000A;// This annotation is used to configure a Route&#x000A;@WebRoute("/hello")&#x000A;public class HelloHandler implements Handler&lt;RoutingContext&gt; {&#x000A;&#x000A;    @Inject&#x000A;    SayHelloService service;&#x000A;&#x000A;    @Override&#x000A;    public void handle(RoutingContext ctx) {&#x000A;        ctx.response().setStatusCode(200).end(service.hello());&#x000A;    }&#x000A;&#x000A;}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The registered handler instances are NOT real bean instances, i.e. they&#8217;re not managed by the CDI container (similarly as <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#javaee_components">Java EE components</a>).
-However, the <strong>dependency injection</strong> is supported.</p>
-</div>
-<div class="paragraph">
-<p>The central point of integration is the <code>org.jboss.weld.vertx.web.WeldWebVerticle</code>.
-This Verticle extends <code>org.jboss.weld.vertx.WeldVerticle</code> and provides the <code>WeldWebVerticle.registerRoutes(Router)</code> method:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs"> class MyApp {&#x000A;&#x000A;     public static void main(String[] args) {&#x000A;         final Vertx vertx = Vertx.vertx();&#x000A;         final WeldWebVerticle weldVerticle = new WeldWebVerticle();&#x000A;&#x000A;         vertx.deployVerticle(weldVerticle, result -&gt; {&#x000A;&#x000A;             if (result.succeeded()) {&#x000A;                 // Configure the router after Weld bootstrap finished&#x000A;                 Router router = Router.router(vertx);&#x000A;                 router.route().handler(BodyHandler.create());&#x000A;                 weldVerticle.registerRoutes(router);&#x000A;                 vertx.createHttpServer().requestHandler(router::accept).listen(8080);&#x000A;             }&#x000A;         });&#x000A;     }&#x000A; }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Give it a try and let us know if you have any idea how to extend the functionality of <code>weld-vertx</code>.
-Any feedback is appreciated!</p>
 </div>
 </div>
 <hr>
