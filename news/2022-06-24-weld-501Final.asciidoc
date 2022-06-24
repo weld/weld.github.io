@@ -1,0 +1,29 @@
+---
+layout: news
+title: Weld 5.0.1.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.0.1.Final coming your way!
+desc: Weld 5.0.1.Final coming your way!
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 5.0.1.Final is now available and comes with Weld API 5.0.SP2.
+
+Main highlights are as follows:
+
+* Updated all CDI related versions (API and TCKs) to their latest released variants and made sure we are passing
+* Updated many other EE 10 APIs to their latest releases
+* We are once again fully continuously testing against an EE container (nightly WildFly builds) which helped us polish more bumps in tests and code
+* Tomcat 10.1 is available and supports EE 10, so we have upgraded to test against that and can therefore confirm our support for servlets is working well
+* Jetty support is at the moment not verified as there is no public Jetty 12 release to test against
+* Reviewed Servlet related parts of our documentation and updated them
+* Reviewed Weld SE-Servlet cooperation and renewed continuous testing for it
+
+As always, if you find further issues with Weld 5, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.0.1.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12385166[Release notes, window="_blank"] &#93;
