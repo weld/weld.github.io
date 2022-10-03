@@ -1,0 +1,39 @@
+---
+layout: news
+title: Weld 5.1.0.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.1 and dropping Weld Probe
+desc: Weld 5.1.0.Final is now available
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 5.1.0.Final and Weld API 5.0.SP3 are now availabe in Maven Central.
+
+Most notable change, which is also the cause of a minor version bump, is the removal of Weld Probe from our codebase.
+Details are in link:https://issues.redhat.com/browse/WELD-2733[this JIRA issue, window="_blank)] and were also communicated via link:https://lists.jboss.org/archives/list/weld-dev@lists.jboss.org/thread/I72EU5I746F4DESLSENJVZFAEFPHXJYV/[weld-dev email, window="_blank].
+
+In short, Probe hasn't been maintained for a long time and its UI part is using outdated libraries and would need to be completely re-written which is something that we opted not to do at the moment.
+The JIRA issue has more information as to how we could re-integrate it in the future if there is interest from the community.
+
+WARNING: Probe removal affects any integrators that were using Probe up until now! This typically concerns EE integrators such as WildFly or Liberty.
+
+As usual, here is a list of notable bugfixes in this version:
+
+* Made decorators more Groovy friendly (link:https://issues.jboss.org/browse/WELD-2713[WELD-2713, window="_blank"])
+* Updated Jandex and remove deprecated usages (link:https://issues.jboss.org/browse/WELD-2724[WELD-2724, window="_blank"])
+* Added tools to execute TCK lang model in EE container (using WildFly) (link:https://issues.jboss.org/browse/WELD-2725[WELD-2725, window="_blank"])
+* Introduced method to `WeldManager` which allows to obtain instances of all registered contexts regardless of whether they are active (link:https://issues.jboss.org/browse/WELD-2726[WELD-2726, window="_blank"])
+* Brought WildFly Arquillian dependency setup up to date and fix affected examples (link:https://issues.jboss.org/browse/WELD-2727[WELD-2727, window="_blank"])
+* `AbstractResourceServices` in Weld API now correctly take into consideration lookup value of `@Resource` (link:https://issues.jboss.org/browse/WELD-2728[WELD-2728, window="_blank"])
+* `AbstractResourceServices` now supports setter methods for `@Resource` where the name is defaulted (link:https://issues.jboss.org/browse/WELD-2732[WELD-2732, window="_blank"])
+* Corrected the implementation of `WeldExpressionFactory#equals` (link:https://issues.jboss.org/browse/WELD-2729[WELD-2729, window="_blank"])
+* Fixed `BeanManager` bean types to also include `BeanContainer` (link:https://issues.jboss.org/browse/WELD-2731[WELD-2731, window="_blank"])
+* Avoid logging information about non-bindings member when using `BeanManager#isQualifier` for annotations that aren't qualifiers (link:https://issues.jboss.org/browse/WELD-2643[WELD-2643, window="_blank"])
+* Removal of Weld Probe (link:https://issues.jboss.org/browse/WELD-2733[WELD-2733, window="_blank"])
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.0.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12391030[Release notes, window="_blank"] &#93;
