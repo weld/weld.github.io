@@ -1,344 +1,341 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Weld: Weld 3.0.0.Alpha16
-</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld 3.0.0.Alpha16 released" name="description">
-<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-<script>
-hljs.initHighlightingOnLoad();
-</script>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 col-sm-3">
-<div class="sidebar-nav">
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-<span class="sr-only">
-Toggle navigation
-</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a ="#" class="visible-xs navbar-brand">
-<img alt="Weld Logo" src="/images/weld_logo_100x.png">
-</a>
-</div>
-<div class="collapse navbar-collapse sidebar-navbar-collapse">
-<ul class="nav navbar-nav">
-<li>
-<a href="/">
-<i class="fa fa-home"></i>
-&nbsp;Home
-</a>
-</li>
-<li>
-<a href="/download">
-<i class="fa fa-download"></i>
-&nbsp;Download
-</a>
-</li>
-<li>
-<a href="/news">
-<i class="fa fa-newspaper-o"></i>
-&nbsp;News
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-<i class="fa fa-road"></i>
-&nbsp;Road Map
-</a>
-</li>
-<li>
-<a href="/documentation">
-<i class="fa fa-book"></i>
-&nbsp;Docs &amp; FAQ
-</a>
-</li>
-<li>
-<a href="/news/tags/tips">
-<i class="fa fa-lightbulb-o"></i>
-&nbsp;Tips and Tricks
-</a>
-</li>
-<li>
-<a href="/community">
-<i class="fa fa-group"></i>
-&nbsp;Community
-</a>
-</li>
-<li>
-<a href="http://github.com/weld" target="_blank">
-<i class="fa fa-github-alt"></i>
-&nbsp;Source Code
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-<i class="fa fa-tasks"></i>
-&nbsp;Bug Tracker
-</a>
-</li>
-<li>
-<a href="https://twitter.com/jbossweld" target="_blank">
-<i class="fa fa-twitter"></i>
-&nbsp;Follow @jbossweld
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-10 col-sm-9">
-<div class="row hidden-xs">
-<div class="dropup">
-<div id="ajbossproject">
-A JBoss Project
-</div>
-<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-<script>
-window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-</script>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4">
-<a href="/">
-<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-</a>
-</div>
-<div class="col-md-8">
-<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-</div>
-</div>
-<div class="row content-wrapper">
-<div class="col-md-12">
-<div class="post">
-<h1>
-Weld 3.0.0.Alpha16
-<a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
-<i class="fa fa-rss"></i>
-</a>
-</h1>
-<div class="news-date news-boxed">
-2016-4-28
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-, 
-<a href="/news/tags/cdi2">cdi2</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>The next experimental Weld version has been released!
-See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
-Thanks to everyone involved in this release!</p>
-</div>
-<div class="paragraph">
-<p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
-However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
-So that everyone can play with the API, discover possibilities and find potential issues.
-Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
-So it should be even easier to get started - no extension class is needed in Weld SE.</p>
-</div>
-<div class="sect1">
-<h2 id="_metadata_configurators_basic_ideas">Metadata configurators - basic ideas</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Note that we don&#8217;t use the term "builder" because there is no <code>build()</code> method in the API.
-Also note that the API is not intended to cover every possible case.
-Instead, we would like to help with common tasks.
-And if necessary, an extension developer can always use the original replacement methods for more complicated stuff.</p>
-</div>
-<div class="paragraph">
-<p>IMPORTANT POINTS:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>an extension developer receives a configurator instance from a container lifecycle event</p>
-</li>
-<li>
-<p>a configurator instance is always automatically processed at the end of the observer invocation</p>
-</li>
-<li>
-<p>for <strong>bean discovery events</strong> (all events starting with <code>Process</code>):</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>configureX()</code> methods return the same configurator instance (for the given observer method invocation)</p>
-</li>
-<li>
-<p>the configurator is initialized/preconfigured with the component being processed, e.g. <code>ProcessAnnotatedType.configureAnnotatedType()</code> returns a configurator initialized with <code>ProcessAnnotatedType.getAnnotatedType()</code></p>
-</li>
-<li>
-<p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
-</li>
-<li>
-<p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>for <strong>application lifecycle events</strong> (e.g. <code>AfterBeanDiscovery</code>):</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addX()</code> methods always return a new configurator instance</p>
-</li>
-<li>
-<p>the configurator is always uninitialized/empty, but we should probably define some default values wherever it makes sense (e.g. <code>Reception</code> for observer methods)</p>
-</li>
-<li>
-<p>the result of the configurator will be automatically added (e.g. <code>Bean</code> in case of <code>AfterBeanDiscovery.addBean()</code>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We have prepared some simple examples - see below.
-More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
-And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_beforebeandiscovery_example">BeforeBeanDiscovery example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_processannotatedtype_example">ProcessAnnotatedType example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_processbeanattributes_example">ProcessBeanAttributes example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_afterbeandiscovery_example">AfterBeanDiscovery example</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-            var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/";
-            var disqus_developer = null;
-            var disqus_identifier = "3f6c59ec62b291d4b4eb6b34b74c2eb48535f1ac";
-            (function() {
-              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
-          
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class="row">
-<div class="container" id="companyfooter">
-<div class="redhatlogo" style="text-align:center;">
-<div class="logospacer" style="height:10px;"></div>
-<a href="http://www.redhat.com/">
-<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-</a>
-</div>
-</div>
-</div>
-</footer>
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount','UA-45187401-1']);
-_gaq.push(['_trackPageview']);
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#toggle_menu').click(function(){
-      $("#mobile_menu").toggle();
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 3.0.0.Alpha16
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Weld 3.0.0.Alpha16 released" name="description">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">
+                    Toggle navigation
+                  </span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a ="#" class="visible-xs navbar-brand">
+                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="/">
+                      <i class="fa fa-home"></i>
+                      &nbsp;Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/download">
+                      <i class="fa fa-download"></i>
+                      &nbsp;Download
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <i class="fa fa-newspaper-o"></i>
+                      &nbsp;News
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+                      <i class="fa fa-road"></i>
+                      &nbsp;Road Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation">
+                      <i class="fa fa-book"></i>
+                      &nbsp;Docs &amp; FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news/tags/tips">
+                      <i class="fa fa-lightbulb-o"></i>
+                      &nbsp;Tips and Tricks
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/community">
+                      <i class="fa fa-group"></i>
+                      &nbsp;Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://github.com/weld" target="_blank">
+                      <i class="fa fa-github-alt"></i>
+                      &nbsp;Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+                      <i class="fa fa-tasks"></i>
+                      &nbsp;Bug Tracker
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/jbossweld" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      &nbsp;Follow @jbossweld
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+          <div class="row hidden-xs">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="/">
+                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row content-wrapper">
+            <div class="col-md-12">
+              <div class="post">
+                <h1>
+                  Weld 3.0.0.Alpha16
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
+                <div class="news-date news-boxed">
+                  2016-4-28
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                    ,
+                    <a href="/news/tags/cdi2">cdi2</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>The next experimental Weld version has been released!
+                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">the release details</a>.
+                  Thanks to everyone involved in this release!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This release includes a lot of bugfixes and improvements (e.g. all the notable tasks implemented in the latest stable version: <a href="/news/2016/04/22/weld-234Final/">Weld 2.3.4.Final</a>).
+                  However, the main goal of this release is to align with CDI API 2.0.Alpha4, and in particular to implement the current version of "metadata builders" API (<a href="https://issues.jboss.org/browse/CDI-558" target="_blank" rel="noopener">CDI-558</a>).
+                  So that everyone can play with the API, discover possibilities and find potential issues.
+                  Note that this release also introduces a non-standard experimental feature: <a href="/news/2016/02/08/weld-se-synth-lifecycle-events/">Weld SE synthetic container lifecycle event observers</a>.
+                  So it should be even easier to get started - no extension class is needed in Weld SE.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_metadata_configurators_basic_ideas">Metadata configurators - basic ideas</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Note that we don&#8217;t use the term "builder" because there is no <code>build()</code> method in the API.
+                  Also note that the API is not intended to cover every possible case.
+                  Instead, we would like to help with common tasks.
+                  And if necessary, an extension developer can always use the original replacement methods for more complicated stuff.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>IMPORTANT POINTS:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>an extension developer receives a configurator instance from a container lifecycle event</p>
+                  </li>
+                  <li>
+                  <p>a configurator instance is always automatically processed at the end of the observer invocation</p>
+                  </li>
+                  <li>
+                  <p>for <strong>bean discovery events</strong> (all events starting with <code>Process</code>):</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>configureX()</code> methods return the same configurator instance (for the given observer method invocation)</p>
+                  </li>
+                  <li>
+                  <p>the configurator is initialized/preconfigured with the component being processed, e.g. <code>ProcessAnnotatedType.configureAnnotatedType()</code> returns a configurator initialized with <code>ProcessAnnotatedType.getAnnotatedType()</code></p>
+                  </li>
+                  <li>
+                  <p>the result of the configurator will automatically replace the original component (e.g. <code>AnnotatedType</code> in case of <code>ProcessAnnotatedType</code>)</p>
+                  </li>
+                  <li>
+                  <p>replacement methods (e.g. <code>ProcessAnnotatedType.setAnnotatedType()</code>) should not be used together with configurators (<a href="https://issues.jboss.org/browse/CDI-596" target="_blank" rel="noopener">CDI-596</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>for <strong>application lifecycle events</strong> (e.g. <code>AfterBeanDiscovery</code>):</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>addX()</code> methods always return a new configurator instance</p>
+                  </li>
+                  <li>
+                  <p>the configurator is always uninitialized/empty, but we should probably define some default values wherever it makes sense (e.g. <code>Reception</code> for observer methods)</p>
+                  </li>
+                  <li>
+                  <p>the result of the configurator will be automatically added (e.g. <code>Bean</code> in case of <code>AfterBeanDiscovery.addBean()</code>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>We have prepared some simple examples - see below.
+                  More advanced examples can be found in <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests/extensions/configurators" target="_blank" rel="noopener">the TCK test cases</a>.
+                  And as usual - feel free to add comments to this blog post. Any feedback is appreciated!</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_beforebeandiscovery_example">BeforeBeanDiscovery example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Singleton&#x000A;class MyService {&#x000A;    // This class is not placed in a bean archive&#x000A;}&#x000A;&#x000A;class MyExtension implements Extension {&#x000A;&#x000A;    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery event) {&#x000A;        // Add MyService to the set of discovered classes and replace @Singleton with @ApplicationScoped&#x000A;        event.addAnnotatedType(MyService.class.getName(), MyService.class)&#x000A;               .remove(Singleton.class)&#x000A;               .add(ApplicationScoped.Literal.INSTANCE);&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_processannotatedtype_example">ProcessAnnotatedType example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void processAnnotatedType(@Observes @WithAnnotations({ Observes.class, ObservesAsync.class }) ProcessAnnotatedType&lt;?&gt; event) {&#x000A;        // Add interceptor binding to all methods annotated with @Observes or @ObservesAsync&#x000A;        event.configureAnnotatedType()&#x000A;                .filterMethods(MyExtension::isObserver)&#x000A;                .forEach(methodConfigurator -&gt; methodConfigurator.add(Monitored.Literal.INSTANCE))&#x000A;    }&#x000A;&#x000A;    static boolean isObserver(AnnotatedMethod&lt;?&gt; annotatedMethod) {&#x000A;        return annotatedMethod.isAnnotationPresent(Observes.class) || annotatedMethod.isAnnotationPresent(ObservesAsync.class);&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_processbeanattributes_example">ProcessBeanAttributes example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void processBeanAttributes(@Observes ProcessBeanAttributes&lt;?&gt; event) {&#x000A;        // For all beans remove the IllegalBeanType from the set of bean types&#x000A;        if (event.getBeanAttributes().getTypes().contains(IllegalBeanType.class)) {&#x000A;            Set&lt;Type&gt; legalTypes = new HashSet(event.getBeanAttributes().getTypes());&#x000A;            legalTypes.remove(IllegalBeanType.class);&#x000A;            event.configureBeanAttributes().types(legalTypes);&#x000A;        }&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_afterbeandiscovery_example">AfterBeanDiscovery example</h2>
+                  <div class="sectionbody">
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class MyExtension implements Extension {&#x000A;&#x000A;    void afterBeanDiscovery(@Observes AfterBeanDiscovery event) {&#x000A;        //  Add a new synthetic observer method - no need to use the fluent API&#x000A;        ObserverMethodConfigurator&lt;Foo&gt; configurator = event.&lt;Foo&gt;addObserverMethod();&#x000A;        configurator.observedType(Foo.class);&#x000A;        configurator.reception(Reception.ALWAYS);&#x000A;        configurator.transactionPhase(TransactionPhase.IN_PROGRESS);&#x000A;        configurator.notifyWith((foo) -&gt; System.out.println("Foo observed: " + foo));&#x000A;&#x000A;        // Add dependent bean - Integer between 0 and 999&#x000A;        event.addBean().addType(Integer.class).addQualifier(Random.Literal.INSTANCE)&#x000A;                .produceWith(() -&gt; new java.util.Random().nextInt(1000))&#x000A;    }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha16/wildfly-10.0.0.Final-weld-3.0.0.Alpha16-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available. This time the target platform is <strong>WildFly 10.0.0.Final</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html" target="_blank" rel="noopener">Markus&#8217;s tutorial</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.Alpha16/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327858" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "3f6c59ec62b291d4b4eb6b34b74c2eb48535f1ac";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+            <div class="logospacer" style="height:10px;"></div>
+            <a href="http://www.redhat.com/">
+              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
     });
-  });
-</script>
+  </script>
 </html>

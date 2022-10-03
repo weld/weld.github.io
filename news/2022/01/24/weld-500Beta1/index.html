@@ -1,502 +1,499 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Weld: Weld 5.0.0.Beta1
-</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld 5.0.0.Beta1 is now available" name="description">
-<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-<script>
-hljs.initHighlightingOnLoad();
-</script>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 col-sm-3">
-<div class="sidebar-nav">
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-<span class="sr-only">
-Toggle navigation
-</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a ="#" class="visible-xs navbar-brand">
-<img alt="Weld Logo" src="/images/weld_logo_100x.png">
-</a>
-</div>
-<div class="collapse navbar-collapse sidebar-navbar-collapse">
-<ul class="nav navbar-nav">
-<li>
-<a href="/">
-<i class="fa fa-home"></i>
-&nbsp;Home
-</a>
-</li>
-<li>
-<a href="/download">
-<i class="fa fa-download"></i>
-&nbsp;Download
-</a>
-</li>
-<li>
-<a href="/news">
-<i class="fa fa-newspaper-o"></i>
-&nbsp;News
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-<i class="fa fa-road"></i>
-&nbsp;Road Map
-</a>
-</li>
-<li>
-<a href="/documentation">
-<i class="fa fa-book"></i>
-&nbsp;Docs &amp; FAQ
-</a>
-</li>
-<li>
-<a href="/news/tags/tips">
-<i class="fa fa-lightbulb-o"></i>
-&nbsp;Tips and Tricks
-</a>
-</li>
-<li>
-<a href="/community">
-<i class="fa fa-group"></i>
-&nbsp;Community
-</a>
-</li>
-<li>
-<a href="http://github.com/weld" target="_blank">
-<i class="fa fa-github-alt"></i>
-&nbsp;Source Code
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-<i class="fa fa-tasks"></i>
-&nbsp;Bug Tracker
-</a>
-</li>
-<li>
-<a href="https://twitter.com/jbossweld" target="_blank">
-<i class="fa fa-twitter"></i>
-&nbsp;Follow @jbossweld
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-10 col-sm-9">
-<div class="row hidden-xs">
-<div class="dropup">
-<div id="ajbossproject">
-A JBoss Project
-</div>
-<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-<script>
-window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-</script>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4">
-<a href="/">
-<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-</a>
-</div>
-<div class="col-md-8">
-<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-</div>
-</div>
-<div class="row content-wrapper">
-<div class="col-md-12">
-<div class="post">
-<h1>
-Weld 5.0.0.Beta1
-<a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
-<i class="fa fa-rss"></i>
-</a>
-</h1>
-<div class="news-date news-boxed">
-2022-1-24
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>Some of you might have noticed that Weld already had some version 5 releases, namely two Alphas.
-Those were a work-in-progress implementations so I didn&#8217;t post any actual release notes as the specification was still undergoing changes.
-CDI 4 is now in very much ready-to-fly state as its first CR release has recently landed in Maven Central.
-Therefore, here we are with a proper release of Weld API <code>5.0.Beta5</code> and Weld Core <code>5.0.0.Beta1</code> which implements all the bits and pieces of CDI 4.0 plus brings a few more changes and deprecation removals.</p>
-</div>
-<div class="paragraph">
-<p>This post will try to cover Weld-side of things meaning anything that changed and is Weld specific or influences integrators in any way.
-If you want to learn what&#8217;s new in CDI 4.0, I suggest taking a look at <a href="https://eclipse-ee4j.github.io/cdi/2021/10/25/way-to-cdi4.html">this detailed article</a> I wrote some time ago.
-It provides a good overview of all major changes, all of which are implemented in this Weld release.
-In case you want to check out the list of JIRA issues for Weld releases, the last chapter will provide links for both Alpha releases as well as this Beta release.
-Last but not least, you can also reach out to us via <a href="https://gitter.im/weld/user">Gitter channel</a> or <a href="https://lists.jboss.org/admin/lists/weld-dev.lists.jboss.org/"><code>weld-dev@lists.jboss.org</code> mailing list</a>.</p>
-</div>
-<div class="paragraph">
-<p>Without further ado, let&#8217;s dive into it!</p>
-</div>
-<div class="sect1">
-<h2 id="_target_jdk_version_for_weld_5_and_for_cdi_4_is_now_11">Target JDK version for Weld 5 (and for CDI 4) is now 11</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Therefore, JDK 11 is now the minimal version required to run Weld.
-This is basically a requirement for all Jakarta EE 10 specifications.
-On the other hand, Weld 5 is also tested against and supports JDK 17 as well.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_weld_5_is_no_longer_a_multi_release_mr_jars">Weld 5 is no longer a multi-release (MR) JARs</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As you might know, Weld 3 and 4 are running some different class defining strategies for JDK 8 or 11+ resulting in an MR JAR solution.
-Since JDK 11 is the basis, this is no longer needed and similar workarounds were removed from code.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_deprecations_and_removals">Deprecations and removals</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Here is a list of all changes of this nature within Weld APIs:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Multiple methods from <code>org.jboss.weld.serialization.spi.ProxyServices</code> were removed.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If you are an integrator, you probably implemented this interface at some point in time; these methods weren&#8217;t used by Weld anyway, so they are now gone for good.</p>
-</li>
-<li>
-<p>Here is a <a href="https://issues.redhat.com/browse/WELD-2702">link to the issue removing it</a>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Any integrators basing their implementations of Jandex likely implemented <code>ClassFileInfo</code>; its <code>isTopLevelClass()</code> has been removed.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Note that this method was redundant and can be replaced by <code>getClassNestingType()</code>.</p>
-</li>
-<li>
-<p>This was removed as part of the above mentioned issue.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>WeldInstance.Handler</code> class is now deprecated and so are multiple methods returning this type from <code>WeldInstance</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>The reasons for this removal is that the very same feature was accepted into CDI specification so you can now use CDI API interfaces to achieve the same.</p>
-</li>
-<li>
-<p>For more information, take a look at <a href="https://github.com/eclipse-ee4j/cdi/blob/master/api/src/main/java/jakarta/enterprise/inject/Instance.java#L266-L315"><code>Instance.Handle</code> class from CDI API</a>.</p>
-</li>
-<li>
-<p>And again, a <a href="https://issues.redhat.com/browse/WELD-2685">link to the relevant issue</a>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>CDI has had a similar cleanup and some long deprecated API methods were removed; glance at <a href="https://github.com/eclipse-ee4j/cdi/issues/472">this GitHub issue</a> if you want to learn more about that.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_empty_beans_xml_interpretation">Empty `beans.xml interpretation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There is one breaking change in CDI 4.0 that should be mentioned here - change of default interpretation of empty <code>beans.xml</code> descriptor.
-Up until CDI 3.0, leaving this file empty meant discovery mode <code>all</code> whereas starting with CDI 4 it now defaults to <code>annotated</code> discovery mode.
-As per specification, in <code>all</code> discovery mode, all classes in bean archive are scanned and if fitting, turned into beans.
-However, <code>annotated</code> discovery mode only scans classes with <em>bean defining annotations</em>.
-Therefore, this change can be breaking for lots of applications using empty <code>beans.xml</code> and relying on CDI to discover classes without annotations.
-In order to ease the transition to this new default, CDI 4 specification says the following:</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>For compatibility with CDI versions prior to 4.0, CDI Full products must contain an option that causes an archive with empty beans.xml to be considered an explicit bean archive.</p>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>This option is vendor-dependent and integrators needs to define how to achieve it in their frameworks/platforms.
-That being said, Weld has been updated to allow for this.
-If you are using Weld tooling to parse <code>beans.xml</code>, chances are, you&#8217;re doing one of these:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Directly invoking parser via <a href="https://github.com/weld/core/blob/5.0.0.Beta1/impl/src/main/java/org/jboss/weld/xml/BeansXmlStreamParser.java"><code>org.jboss.weld.xml.BeansXmlStreamParser</code></a>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>BeansXmlStreamParser</code> now has new constructor methods which allow passing <code>BeanDiscoveryMode</code> parameter telling Weld how to interpret empty <code>beans.xml</code>.</p>
-</li>
-<li>
-<p>All former constructors were retained and default to <code>BeanDiscoveryMode.ANNOTATED</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Indirectly invoking it via an implementation of <code>org.jboss.weld.bootstrap.api.Bootstrap</code> and its <code>parse</code> methods.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>New variantions of the <code>parse</code> methods were added and accept <code>BeanDiscoveryMode</code> parameter telling Weld how to interpret empty <code>beans.xml</code>.</p>
-</li>
-<li>
-<p>All former variantion of <code>parse</code> methods were retained and default to <code>BeanDiscoveryMode.ANNOTATED</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This should give integrators enough leeway to implement the backward compatibility switch.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_weld_versus_cdi_lite_versus_cdi_full">Weld versus CDI Lite versus CDI Full</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>By far the biggest change in CDI 4.0 is the introduction of CDI Lite.
-At this point I should reiterate that I highly recommend looking <a href="https://eclipse-ee4j.github.io/cdi/2021/10/25/way-to-cdi4.html">this article</a> if you don&#8217;t know what CDI Lite is.
-In short, CDI Lite is a feature subset of CDI Full that broadens the amount of environments in which CDI can execute; more presicely, it enables CDI in build time oriented frameworks such as Micronaut or Quarkus.
-What does that means for Weld users? Nothing much, Weld is and will be a runtime oriented implementation and you can keep using CDI as you did up until now.
-More precisely, Weld is so called CDI Full implementation meaning it provides each and every CDI feature and while there were some deprecations and removals, the rest stays the same.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_build_compatible_extensions">Build Compatible Extensions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of the notable additions to CDI Lite  (and therefore into CDI Full as well) were Build Compatible Extensions (BCE).
-These are akin to Portable Extensions but tuned in a way so that they can be used in build time oriented environments as well.
-Along with it comes a different language model because <code>AnnotatedType</code> and friends are reflection-heavy and not a good fit for that API.
-If you want to learns more, <a href="https://eclipse-ee4j.github.io/cdi/2021/12/03/you-know-build-compatible-extensions.html">here is an excellent article</a> by Ladislav Thon that covers how they work.</p>
-</div>
-<div class="paragraph">
-<p>From Weld perspective, you can use BCE as much as you like although they are also executed at runtime, just as Portable Extensions are.
-It is still recommended to use Portable Extensions if possible because BCE are (in Weld) implemented via Portable Extensions.
-That being said, if you have some portability demands between Lite and Full, you should be able to use BCE as much as you like.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_integrators_how_to_make_weld_understand_build_compatible_extensions">Integrators - how to make Weld understand Build Compatible Extensions?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This part focuses mainly on integrators and describes how Weld implements Build Compatible Extensions and what needs to be done by integrators in order to fully support CDI Lite.</p>
-</div>
-<div class="sect2">
-<h3 id="_weld_lite_extension_translator_module"><code>weld-lite-extension-translator</code> module</h3>
-<div class="paragraph">
-<p>Weld 5 has a new module that enables Build Compatible Extensions (BCE) and the new language model that goes along with it - <a href="https://github.com/weld/core/tree/5.0.0.Beta1/weld-lite-extension-translator"><code>weld-lite-extension-translator</code></a>.
-GAV of this new artifact is <code>org.jboss.weld:weld-lite-extension-translator:5.0.0.Beta1</code>.
-As I mentioned in previous point, BCE are executed via a Portable extension.
-More precisely, the key class is <a href="https://github.com/weld/core/blob/5.0.0.Beta1/weld-lite-extension-translator/src/main/java/org/jboss/weld/lite/extension/translator/LiteExtensionTranslator.java"><code>WeldLiteExtensionTranslator</code></a>.</p>
-</div>
-<div class="paragraph">
-<p>Just like any Portable extension, it needs an entry in <code>META-INF</code> or an instance of this extensions has to be added programmaticaly during Weld bootstrap.
-This is where it gets tricky; <strong>it doesn&#8217;t work out of the box in all environments</strong>!</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld SE - works out of the box, the extension is automagically added</p>
-</li>
-<li>
-<p>Weld Servlet - works out of the box, the extensions is automagically added</p>
-</li>
-<li>
-<p>EE - <strong>doesn&#8217;t work without integrator registering the extension</strong></p>
-</li>
-<li>
-<p>Any other custom integration - <strong>doesn&#8217;t work without integrator registering the extension</strong></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>There is of course a reason for it - complex structured deployments (such as EAR or WAR) and the fact that Weld alone cannot know the deployment well enough to make sure this extension wouldn&#8217;t be registered multiple times.
-On top of that, you might also want to avoid registering this extension if there are no BCE found inside the deployment which can also be dependent on how the given platform performs such discovery.
-Therefore, Weld leaves it up to the integrator (WildFly, GF, Liberty,&#8230;&#8203;) to identify where and when to register this extension for each deployment.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_registering_liteextensiontranslator">Registering <code>LiteExtensionTranslator</code></h3>
-<div class="paragraph">
-<p>Registering the <code>LiteExtensionTranslator</code> can be as easy as adding a <code>META-INF</code> entry with it into some archive in the deployment.
-An example of this would be <code>arquillian-container-weld</code>, a test container for Weld applications.
-As you can see from <a href="https://github.com/arquillian/arquillian-container-weld/pull/114/files">this pull request</a>, it basically adds a <code>META-INF</code> entry which is sufficient to support new extension model.
-Since it a test tool, the extension is always registered without any attempt to optimize it.</p>
-</div>
-<div class="paragraph">
-<p>The above solution is nice and clean, but won&#8217;t cut it for any EE integrators.
-Instead, you will want to register this extension very similarly to how you currently register <a href="https://github.com/weld/core/blob/5.0.0.Beta1/probe/core/src/main/java/org/jboss/weld/probe/ProbeExtension.java"><code>ProbeExtension</code></a> - add it programmatically as part of the CDI deployment.
-As mentioned above, this extension should to be registered at most once per deployment, so I&#8217;d recommend welding (pun intended) this directly into your <code>org.jboss.weld.bootstrap.spi.CDI11Deployment</code> implementation.
-Because WildFly does not yet have a public branch with this, I can at least point to how <a href="https://github.com/wildfly/wildfly/blob/main/weld/subsystem/src/main/java/org/jboss/as/weld/deployment/processors/DevelopmentModeProcessor.java#L138-L139">it registers <code>ProbeExtension</code></a>.
-With a little bit of digging, it boils down to <a href="https://github.com/wildfly/wildfly/blob/main/weld/subsystem/src/main/java/org/jboss/as/weld/deployment/WeldDeployment.java#L97">creating <code>CDI11Deployment</code> impl</a> with list of extensions already containing this one.</p>
-</div>
-<div class="paragraph">
-<p>Which brings us to the second point - I&#8217;d recommend integrators to optimize this process and only register/include <code>LiteExtensionTranslator</code> when there is at least one BCE present in any given deployment.
-The reason being that this extension has to monitor a very wide range of events including <code>ProcessAnnotatedType&lt;?&gt;</code> for all types in order to properly implement BCE.
-Many integrators can perform BCE detection in their own ways (such as Jandex in WildFly) but for those that want a generic solution, take a look at <code>org.jboss.weld.lite.extension.translator.BuildCompatibleExtensionLoader</code> which is a utility class alowing to perform a standard service discovery process with given <code>ClassLoader</code> and returns the set of discovered BCE classes.
-You can then instantiate <code>LiteExtensionTranslator</code> via a constructor that takes this set as an input; or skip registering it if you haven&#8217;t found any BCE at all.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tck_structural_changes_and_lang_model_tcks">TCK structural changes and lang model TCKs</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Few paragraphs above I mentioned new language model used by Build Compatible Extensions.
-Obviously, this needed some testing and so CDI TCK has a separate module for it; see <a href="https://github.com/eclipse-ee4j/cdi-tck/tree/4.0.0-RC2/lang-model"><code>lang-model</code> module and its README</a>.
-Weld tests and passes these TCKs via <a href="https://github.com/weld/core/tree/5.0.0.Beta1/lang-model-tck"><code>lang-model-tck</code> module</a>.</p>
-</div>
-<div class="paragraph">
-<p>Next change was a separation of tests between pure CDI tests and tests requiring other Jakarta EE technologies such as JSF, EL and other.
-Many of these are candidates for move into their respective specifications but are for now still hosted in CDI TCK.
-All of these tests now reside under a <a href="https://github.com/eclipse-ee4j/cdi-tck/tree/4.0.0-RC2/web">separate module</a> with GAV <code>jakarta.enterprise:cdi-tck-web-impl</code>.</p>
-</div>
-<div class="paragraph">
-<p>Lastly, due to the split between CDI Lite and Full and the ability to have CDI implementations only for Lite, all TCKs had to be reviewed and a new test category was added - <a href="https://github.com/eclipse-ee4j/cdi-tck/blob/4.0.0-RC2/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L37"><code>cdi-full</code></a>.
-It is easy to guess that this category was assigned to tests that are supposed to only execute in CDI Full implementations; i.e. tests containing features that aren&#8217;t present in CDI Lite.
-Weld, as noted before, is a CDI Full implementation and as such passes all TCKs.
-The current setup used for TCK execution can be read from <a href="https://github.com/weld/core/blob/5.0.0.Beta1/jboss-tck-runner/pom.xml">this POM file</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_more_in_depth_overview_of_resolved_issues_in_weld_5">More in-depth overview of resolved issues in Weld 5</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Finally, for those who would like to inspect a more detailed list of changes, here are links to release notes of all version 5 releases up to and including Beta1:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12358586">Weld 5.0.0.Alpha1 Release Notes</a></p>
-</li>
-<li>
-<p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378774">Weld 5.0.0.Alpha2 Release Notes</a></p>
-</li>
-<li>
-<p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495">Weld 5.0.0.Beta1 Release Notes</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-            var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/";
-            var disqus_developer = null;
-            var disqus_identifier = "c81c9056d345ec88f868c6a1b8dbb96d7b125eb5";
-            (function() {
-              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
-          
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class="row">
-<div class="container" id="companyfooter">
-<div class="redhatlogo" style="text-align:center;">
-<div class="logospacer" style="height:10px;"></div>
-<a href="http://www.redhat.com/">
-<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-</a>
-</div>
-</div>
-</div>
-</footer>
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount','UA-45187401-1']);
-_gaq.push(['_trackPageview']);
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#toggle_menu').click(function(){
-      $("#mobile_menu").toggle();
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 5.0.0.Beta1
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Weld 5.0.0.Beta1 is now available" name="description">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">
+                    Toggle navigation
+                  </span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a ="#" class="visible-xs navbar-brand">
+                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="/">
+                      <i class="fa fa-home"></i>
+                      &nbsp;Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/download">
+                      <i class="fa fa-download"></i>
+                      &nbsp;Download
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <i class="fa fa-newspaper-o"></i>
+                      &nbsp;News
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+                      <i class="fa fa-road"></i>
+                      &nbsp;Road Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation">
+                      <i class="fa fa-book"></i>
+                      &nbsp;Docs &amp; FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news/tags/tips">
+                      <i class="fa fa-lightbulb-o"></i>
+                      &nbsp;Tips and Tricks
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/community">
+                      <i class="fa fa-group"></i>
+                      &nbsp;Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://github.com/weld" target="_blank">
+                      <i class="fa fa-github-alt"></i>
+                      &nbsp;Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+                      <i class="fa fa-tasks"></i>
+                      &nbsp;Bug Tracker
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/jbossweld" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      &nbsp;Follow @jbossweld
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+          <div class="row hidden-xs">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="/">
+                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row content-wrapper">
+            <div class="col-md-12">
+              <div class="post">
+                <h1>
+                  Weld 5.0.0.Beta1
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
+                <div class="news-date news-boxed">
+                  2022-1-24
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Some of you might have noticed that Weld already had some version 5 releases, namely two Alphas.
+                  Those were a work-in-progress implementations so I didn&#8217;t post any actual release notes as the specification was still undergoing changes.
+                  CDI 4 is now in very much ready-to-fly state as its first CR release has recently landed in Maven Central.
+                  Therefore, here we are with a proper release of Weld API <code>5.0.Beta5</code> and Weld Core <code>5.0.0.Beta1</code> which implements all the bits and pieces of CDI 4.0 plus brings a few more changes and deprecation removals.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This post will try to cover Weld-side of things meaning anything that changed and is Weld specific or influences integrators in any way.
+                  If you want to learn what&#8217;s new in CDI 4.0, I suggest taking a look at <a href="https://eclipse-ee4j.github.io/cdi/2021/10/25/way-to-cdi4.html">this detailed article</a> I wrote some time ago.
+                  It provides a good overview of all major changes, all of which are implemented in this Weld release.
+                  In case you want to check out the list of JIRA issues for Weld releases, the last chapter will provide links for both Alpha releases as well as this Beta release.
+                  Last but not least, you can also reach out to us via <a href="https://gitter.im/weld/user">Gitter channel</a> or <a href="https://lists.jboss.org/admin/lists/weld-dev.lists.jboss.org/"><code>weld-dev@lists.jboss.org</code> mailing list</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Without further ado, let&#8217;s dive into it!</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_target_jdk_version_for_weld_5_and_for_cdi_4_is_now_11">Target JDK version for Weld 5 (and for CDI 4) is now 11</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Therefore, JDK 11 is now the minimal version required to run Weld.
+                  This is basically a requirement for all Jakarta EE 10 specifications.
+                  On the other hand, Weld 5 is also tested against and supports JDK 17 as well.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_5_is_no_longer_a_multi_release_mr_jars">Weld 5 is no longer a multi-release (MR) JARs</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As you might know, Weld 3 and 4 are running some different class defining strategies for JDK 8 or 11+ resulting in an MR JAR solution.
+                  Since JDK 11 is the basis, this is no longer needed and similar workarounds were removed from code.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_deprecations_and_removals">Deprecations and removals</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Here is a list of all changes of this nature within Weld APIs:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Multiple methods from <code>org.jboss.weld.serialization.spi.ProxyServices</code> were removed.</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>If you are an integrator, you probably implemented this interface at some point in time; these methods weren&#8217;t used by Weld anyway, so they are now gone for good.</p>
+                  </li>
+                  <li>
+                  <p>Here is a <a href="https://issues.redhat.com/browse/WELD-2702">link to the issue removing it</a>.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Any integrators basing their implementations of Jandex likely implemented <code>ClassFileInfo</code>; its <code>isTopLevelClass()</code> has been removed.</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Note that this method was redundant and can be replaced by <code>getClassNestingType()</code>.</p>
+                  </li>
+                  <li>
+                  <p>This was removed as part of the above mentioned issue.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p><code>WeldInstance.Handler</code> class is now deprecated and so are multiple methods returning this type from <code>WeldInstance</code></p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The reasons for this removal is that the very same feature was accepted into CDI specification so you can now use CDI API interfaces to achieve the same.</p>
+                  </li>
+                  <li>
+                  <p>For more information, take a look at <a href="https://github.com/eclipse-ee4j/cdi/blob/master/api/src/main/java/jakarta/enterprise/inject/Instance.java#L266-L315"><code>Instance.Handle</code> class from CDI API</a>.</p>
+                  </li>
+                  <li>
+                  <p>And again, a <a href="https://issues.redhat.com/browse/WELD-2685">link to the relevant issue</a>.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>CDI has had a similar cleanup and some long deprecated API methods were removed; glance at <a href="https://github.com/eclipse-ee4j/cdi/issues/472">this GitHub issue</a> if you want to learn more about that.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_empty_beans_xml_interpretation">Empty `beans.xml interpretation</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>There is one breaking change in CDI 4.0 that should be mentioned here - change of default interpretation of empty <code>beans.xml</code> descriptor.
+                  Up until CDI 3.0, leaving this file empty meant discovery mode <code>all</code> whereas starting with CDI 4 it now defaults to <code>annotated</code> discovery mode.
+                  As per specification, in <code>all</code> discovery mode, all classes in bean archive are scanned and if fitting, turned into beans.
+                  However, <code>annotated</code> discovery mode only scans classes with <em>bean defining annotations</em>.
+                  Therefore, this change can be breaking for lots of applications using empty <code>beans.xml</code> and relying on CDI to discover classes without annotations.
+                  In order to ease the transition to this new default, CDI 4 specification says the following:</p>
+                  </div>
+                  <div class="quoteblock">
+                  <blockquote>
+                  <div class="paragraph">
+                  <p>For compatibility with CDI versions prior to 4.0, CDI Full products must contain an option that causes an archive with empty beans.xml to be considered an explicit bean archive.</p>
+                  </div>
+                  </blockquote>
+                  </div>
+                  <div class="paragraph">
+                  <p>This option is vendor-dependent and integrators needs to define how to achieve it in their frameworks/platforms.
+                  That being said, Weld has been updated to allow for this.
+                  If you are using Weld tooling to parse <code>beans.xml</code>, chances are, you&#8217;re doing one of these:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Directly invoking parser via <a href="https://github.com/weld/core/blob/5.0.0.Beta1/impl/src/main/java/org/jboss/weld/xml/BeansXmlStreamParser.java"><code>org.jboss.weld.xml.BeansXmlStreamParser</code></a>.</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>BeansXmlStreamParser</code> now has new constructor methods which allow passing <code>BeanDiscoveryMode</code> parameter telling Weld how to interpret empty <code>beans.xml</code>.</p>
+                  </li>
+                  <li>
+                  <p>All former constructors were retained and default to <code>BeanDiscoveryMode.ANNOTATED</code>.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Indirectly invoking it via an implementation of <code>org.jboss.weld.bootstrap.api.Bootstrap</code> and its <code>parse</code> methods.</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>New variantions of the <code>parse</code> methods were added and accept <code>BeanDiscoveryMode</code> parameter telling Weld how to interpret empty <code>beans.xml</code>.</p>
+                  </li>
+                  <li>
+                  <p>All former variantion of <code>parse</code> methods were retained and default to <code>BeanDiscoveryMode.ANNOTATED</code>.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>This should give integrators enough leeway to implement the backward compatibility switch.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_weld_versus_cdi_lite_versus_cdi_full">Weld versus CDI Lite versus CDI Full</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>By far the biggest change in CDI 4.0 is the introduction of CDI Lite.
+                  At this point I should reiterate that I highly recommend looking <a href="https://eclipse-ee4j.github.io/cdi/2021/10/25/way-to-cdi4.html">this article</a> if you don&#8217;t know what CDI Lite is.
+                  In short, CDI Lite is a feature subset of CDI Full that broadens the amount of environments in which CDI can execute; more presicely, it enables CDI in build time oriented frameworks such as Micronaut or Quarkus.
+                  What does that means for Weld users? Nothing much, Weld is and will be a runtime oriented implementation and you can keep using CDI as you did up until now.
+                  More precisely, Weld is so called CDI Full implementation meaning it provides each and every CDI feature and while there were some deprecations and removals, the rest stays the same.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_build_compatible_extensions">Build Compatible Extensions</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>One of the notable additions to CDI Lite  (and therefore into CDI Full as well) were Build Compatible Extensions (BCE).
+                  These are akin to Portable Extensions but tuned in a way so that they can be used in build time oriented environments as well.
+                  Along with it comes a different language model because <code>AnnotatedType</code> and friends are reflection-heavy and not a good fit for that API.
+                  If you want to learns more, <a href="https://eclipse-ee4j.github.io/cdi/2021/12/03/you-know-build-compatible-extensions.html">here is an excellent article</a> by Ladislav Thon that covers how they work.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>From Weld perspective, you can use BCE as much as you like although they are also executed at runtime, just as Portable Extensions are.
+                  It is still recommended to use Portable Extensions if possible because BCE are (in Weld) implemented via Portable Extensions.
+                  That being said, if you have some portability demands between Lite and Full, you should be able to use BCE as much as you like.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_integrators_how_to_make_weld_understand_build_compatible_extensions">Integrators - how to make Weld understand Build Compatible Extensions?</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This part focuses mainly on integrators and describes how Weld implements Build Compatible Extensions and what needs to be done by integrators in order to fully support CDI Lite.</p>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_weld_lite_extension_translator_module"><code>weld-lite-extension-translator</code> module</h3>
+                  <div class="paragraph">
+                  <p>Weld 5 has a new module that enables Build Compatible Extensions (BCE) and the new language model that goes along with it - <a href="https://github.com/weld/core/tree/5.0.0.Beta1/weld-lite-extension-translator"><code>weld-lite-extension-translator</code></a>.
+                  GAV of this new artifact is <code>org.jboss.weld:weld-lite-extension-translator:5.0.0.Beta1</code>.
+                  As I mentioned in previous point, BCE are executed via a Portable extension.
+                  More precisely, the key class is <a href="https://github.com/weld/core/blob/5.0.0.Beta1/weld-lite-extension-translator/src/main/java/org/jboss/weld/lite/extension/translator/LiteExtensionTranslator.java"><code>WeldLiteExtensionTranslator</code></a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Just like any Portable extension, it needs an entry in <code>META-INF</code> or an instance of this extensions has to be added programmaticaly during Weld bootstrap.
+                  This is where it gets tricky; <strong>it doesn&#8217;t work out of the box in all environments</strong>!</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld SE - works out of the box, the extension is automagically added</p>
+                  </li>
+                  <li>
+                  <p>Weld Servlet - works out of the box, the extensions is automagically added</p>
+                  </li>
+                  <li>
+                  <p>EE - <strong>doesn&#8217;t work without integrator registering the extension</strong></p>
+                  </li>
+                  <li>
+                  <p>Any other custom integration - <strong>doesn&#8217;t work without integrator registering the extension</strong></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>There is of course a reason for it - complex structured deployments (such as EAR or WAR) and the fact that Weld alone cannot know the deployment well enough to make sure this extension wouldn&#8217;t be registered multiple times.
+                  On top of that, you might also want to avoid registering this extension if there are no BCE found inside the deployment which can also be dependent on how the given platform performs such discovery.
+                  Therefore, Weld leaves it up to the integrator (WildFly, GF, Liberty,&#8230;&#8203;) to identify where and when to register this extension for each deployment.</p>
+                  </div>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_registering_liteextensiontranslator">Registering <code>LiteExtensionTranslator</code></h3>
+                  <div class="paragraph">
+                  <p>Registering the <code>LiteExtensionTranslator</code> can be as easy as adding a <code>META-INF</code> entry with it into some archive in the deployment.
+                  An example of this would be <code>arquillian-container-weld</code>, a test container for Weld applications.
+                  As you can see from <a href="https://github.com/arquillian/arquillian-container-weld/pull/114/files">this pull request</a>, it basically adds a <code>META-INF</code> entry which is sufficient to support new extension model.
+                  Since it a test tool, the extension is always registered without any attempt to optimize it.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The above solution is nice and clean, but won&#8217;t cut it for any EE integrators.
+                  Instead, you will want to register this extension very similarly to how you currently register <a href="https://github.com/weld/core/blob/5.0.0.Beta1/probe/core/src/main/java/org/jboss/weld/probe/ProbeExtension.java"><code>ProbeExtension</code></a> - add it programmatically as part of the CDI deployment.
+                  As mentioned above, this extension should to be registered at most once per deployment, so I&#8217;d recommend welding (pun intended) this directly into your <code>org.jboss.weld.bootstrap.spi.CDI11Deployment</code> implementation.
+                  Because WildFly does not yet have a public branch with this, I can at least point to how <a href="https://github.com/wildfly/wildfly/blob/main/weld/subsystem/src/main/java/org/jboss/as/weld/deployment/processors/DevelopmentModeProcessor.java#L138-L139">it registers <code>ProbeExtension</code></a>.
+                  With a little bit of digging, it boils down to <a href="https://github.com/wildfly/wildfly/blob/main/weld/subsystem/src/main/java/org/jboss/as/weld/deployment/WeldDeployment.java#L97">creating <code>CDI11Deployment</code> impl</a> with list of extensions already containing this one.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Which brings us to the second point - I&#8217;d recommend integrators to optimize this process and only register/include <code>LiteExtensionTranslator</code> when there is at least one BCE present in any given deployment.
+                  The reason being that this extension has to monitor a very wide range of events including <code>ProcessAnnotatedType&lt;?&gt;</code> for all types in order to properly implement BCE.
+                  Many integrators can perform BCE detection in their own ways (such as Jandex in WildFly) but for those that want a generic solution, take a look at <code>org.jboss.weld.lite.extension.translator.BuildCompatibleExtensionLoader</code> which is a utility class alowing to perform a standard service discovery process with given <code>ClassLoader</code> and returns the set of discovered BCE classes.
+                  You can then instantiate <code>LiteExtensionTranslator</code> via a constructor that takes this set as an input; or skip registering it if you haven&#8217;t found any BCE at all.</p>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_tck_structural_changes_and_lang_model_tcks">TCK structural changes and lang model TCKs</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Few paragraphs above I mentioned new language model used by Build Compatible Extensions.
+                  Obviously, this needed some testing and so CDI TCK has a separate module for it; see <a href="https://github.com/eclipse-ee4j/cdi-tck/tree/4.0.0-RC2/lang-model"><code>lang-model</code> module and its README</a>.
+                  Weld tests and passes these TCKs via <a href="https://github.com/weld/core/tree/5.0.0.Beta1/lang-model-tck"><code>lang-model-tck</code> module</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Next change was a separation of tests between pure CDI tests and tests requiring other Jakarta EE technologies such as JSF, EL and other.
+                  Many of these are candidates for move into their respective specifications but are for now still hosted in CDI TCK.
+                  All of these tests now reside under a <a href="https://github.com/eclipse-ee4j/cdi-tck/tree/4.0.0-RC2/web">separate module</a> with GAV <code>jakarta.enterprise:cdi-tck-web-impl</code>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Lastly, due to the split between CDI Lite and Full and the ability to have CDI implementations only for Lite, all TCKs had to be reviewed and a new test category was added - <a href="https://github.com/eclipse-ee4j/cdi-tck/blob/4.0.0-RC2/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L37"><code>cdi-full</code></a>.
+                  It is easy to guess that this category was assigned to tests that are supposed to only execute in CDI Full implementations; i.e. tests containing features that aren&#8217;t present in CDI Lite.
+                  Weld, as noted before, is a CDI Full implementation and as such passes all TCKs.
+                  The current setup used for TCK execution can be read from <a href="https://github.com/weld/core/blob/5.0.0.Beta1/jboss-tck-runner/pom.xml">this POM file</a>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_more_in_depth_overview_of_resolved_issues_in_weld_5">More in-depth overview of resolved issues in Weld 5</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Finally, for those who would like to inspect a more detailed list of changes, here are links to release notes of all version 5 releases up to and including Beta1:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12358586">Weld 5.0.0.Alpha1 Release Notes</a></p>
+                  </li>
+                  <li>
+                  <p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378774">Weld 5.0.0.Alpha2 Release Notes</a></p>
+                  </li>
+                  <li>
+                  <p><a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495">Weld 5.0.0.Beta1 Release Notes</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "c81c9056d345ec88f868c6a1b8dbb96d7b125eb5";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+            <div class="logospacer" style="height:10px;"></div>
+            <a href="http://www.redhat.com/">
+              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
     });
-  });
-</script>
+  </script>
 </html>

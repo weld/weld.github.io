@@ -1,266 +1,263 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Weld: Weld 4.0.0.Final
-</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld 4.0.0.Final released" name="description">
-<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-<script>
-hljs.initHighlightingOnLoad();
-</script>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 col-sm-3">
-<div class="sidebar-nav">
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-<span class="sr-only">
-Toggle navigation
-</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a ="#" class="visible-xs navbar-brand">
-<img alt="Weld Logo" src="/images/weld_logo_100x.png">
-</a>
-</div>
-<div class="collapse navbar-collapse sidebar-navbar-collapse">
-<ul class="nav navbar-nav">
-<li>
-<a href="/">
-<i class="fa fa-home"></i>
-&nbsp;Home
-</a>
-</li>
-<li>
-<a href="/download">
-<i class="fa fa-download"></i>
-&nbsp;Download
-</a>
-</li>
-<li>
-<a href="/news">
-<i class="fa fa-newspaper-o"></i>
-&nbsp;News
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-<i class="fa fa-road"></i>
-&nbsp;Road Map
-</a>
-</li>
-<li>
-<a href="/documentation">
-<i class="fa fa-book"></i>
-&nbsp;Docs &amp; FAQ
-</a>
-</li>
-<li>
-<a href="/news/tags/tips">
-<i class="fa fa-lightbulb-o"></i>
-&nbsp;Tips and Tricks
-</a>
-</li>
-<li>
-<a href="/community">
-<i class="fa fa-group"></i>
-&nbsp;Community
-</a>
-</li>
-<li>
-<a href="http://github.com/weld" target="_blank">
-<i class="fa fa-github-alt"></i>
-&nbsp;Source Code
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-<i class="fa fa-tasks"></i>
-&nbsp;Bug Tracker
-</a>
-</li>
-<li>
-<a href="https://twitter.com/jbossweld" target="_blank">
-<i class="fa fa-twitter"></i>
-&nbsp;Follow @jbossweld
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-10 col-sm-9">
-<div class="row hidden-xs">
-<div class="dropup">
-<div id="ajbossproject">
-A JBoss Project
-</div>
-<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-<script>
-window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-</script>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4">
-<a href="/">
-<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-</a>
-</div>
-<div class="col-md-8">
-<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-</div>
-</div>
-<div class="row content-wrapper">
-<div class="col-md-12">
-<div class="post">
-<h1>
-Weld 4.0.0.Final
-<a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
-<i class="fa fa-rss"></i>
-</a>
-</h1>
-<div class="news-date news-boxed">
-2020-12-16
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>An early Xmas present for CDI lovers is here - <code>Final</code> release for Weld 4 is now available!
-You can pick your Xmas jar-packaged present from Maven Central right away.</p>
-</div>
-<div class="paragraph">
-<p>Since there were no new reported issues after integrating Weld <code>4.0.0.CR1</code> version into GlassFish and WildFly EE 9 preview, we have promoted Weld to <code>Final</code> release.
-Latest core version is now <code>4.0.0.Final</code> and Weld API that ships with it is <code>4.0.Final</code>.</p>
-</div>
-<div class="paragraph">
-<p>Functionally, Weld 3 and 4 remain identical and both are getting the same treatment and doses of bugfixes.
-The main difference is that Weld 4 operates with EE 9, meaning it expects you to use it with CDI 3.0 along with the new <code>jakarta</code> package names.</p>
-</div>
-<div class="paragraph">
-<p>Given that most changes poured into this version were more about dependecy updates, structural changes etc., I won&#8217;t list them all here.
-However, if you are still curious, you could take a peek at <a href="https://issues.redhat.com/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&amp;status=all">JIRA release page</a> and browse various Weld 4 releases that we did over time.</p>
-</div>
-<div class="paragraph">
-<p>What&#8217;s more important is that we are keen on hearing from you should you find any issues with this version.
-Whether you are an integrator or user, we realize no project is ever bug-free and we want to smack those bugs!
-So if you hit any problems that you think are bugs, let us know via one of the usual channels:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Ask on mailing list <code>weld-dev@lists.jboss.org</code></p>
-</li>
-<li>
-<p>Create <a href="https://issues.redhat.com/projects/WELD/summary">JIRA</a> issues</p>
-</li>
-<li>
-<p>Drop the question on <a href="https://gitter.im/weld/user">Weld Gitter</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Last but not least, the Weld team wishes you Merry Christmas and Happy New Year.</p>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Sorry to disappoint, but we cannot provide a patch yet.
-WildFly <a href="https://github.com/wildfly/wildfly/tree/master/ee-9">source code</a> already contains the needed bits for EE 9 server variant, but there wasn&#8217;t a release yet.
-Good news is, once there is a release, it will already contain Weld 4 Final!
-From there on, we can then deliver patches as we used to.</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352570" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-            var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/";
-            var disqus_developer = null;
-            var disqus_identifier = "78fdfa4291fe99bd9edbd4720575cb5639ed5391";
-            (function() {
-              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
-          
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class="row">
-<div class="container" id="companyfooter">
-<div class="redhatlogo" style="text-align:center;">
-<div class="logospacer" style="height:10px;"></div>
-<a href="http://www.redhat.com/">
-<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-</a>
-</div>
-</div>
-</div>
-</footer>
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount','UA-45187401-1']);
-_gaq.push(['_trackPageview']);
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#toggle_menu').click(function(){
-      $("#mobile_menu").toggle();
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 4.0.0.Final
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Weld 4.0.0.Final released" name="description">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">
+                    Toggle navigation
+                  </span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a ="#" class="visible-xs navbar-brand">
+                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="/">
+                      <i class="fa fa-home"></i>
+                      &nbsp;Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/download">
+                      <i class="fa fa-download"></i>
+                      &nbsp;Download
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <i class="fa fa-newspaper-o"></i>
+                      &nbsp;News
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+                      <i class="fa fa-road"></i>
+                      &nbsp;Road Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation">
+                      <i class="fa fa-book"></i>
+                      &nbsp;Docs &amp; FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news/tags/tips">
+                      <i class="fa fa-lightbulb-o"></i>
+                      &nbsp;Tips and Tricks
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/community">
+                      <i class="fa fa-group"></i>
+                      &nbsp;Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://github.com/weld" target="_blank">
+                      <i class="fa fa-github-alt"></i>
+                      &nbsp;Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+                      <i class="fa fa-tasks"></i>
+                      &nbsp;Bug Tracker
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/jbossweld" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      &nbsp;Follow @jbossweld
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+          <div class="row hidden-xs">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="/">
+                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row content-wrapper">
+            <div class="col-md-12">
+              <div class="post">
+                <h1>
+                  Weld 4.0.0.Final
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
+                <div class="news-date news-boxed">
+                  2020-12-16
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>An early Xmas present for CDI lovers is here - <code>Final</code> release for Weld 4 is now available!
+                  You can pick your Xmas jar-packaged present from Maven Central right away.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Since there were no new reported issues after integrating Weld <code>4.0.0.CR1</code> version into GlassFish and WildFly EE 9 preview, we have promoted Weld to <code>Final</code> release.
+                  Latest core version is now <code>4.0.0.Final</code> and Weld API that ships with it is <code>4.0.Final</code>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Functionally, Weld 3 and 4 remain identical and both are getting the same treatment and doses of bugfixes.
+                  The main difference is that Weld 4 operates with EE 9, meaning it expects you to use it with CDI 3.0 along with the new <code>jakarta</code> package names.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Given that most changes poured into this version were more about dependecy updates, structural changes etc., I won&#8217;t list them all here.
+                  However, if you are still curious, you could take a peek at <a href="https://issues.redhat.com/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&amp;status=all">JIRA release page</a> and browse various Weld 4 releases that we did over time.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What&#8217;s more important is that we are keen on hearing from you should you find any issues with this version.
+                  Whether you are an integrator or user, we realize no project is ever bug-free and we want to smack those bugs!
+                  So if you hit any problems that you think are bugs, let us know via one of the usual channels:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Ask on mailing list <code>weld-dev@lists.jboss.org</code></p>
+                  </li>
+                  <li>
+                  <p>Create <a href="https://issues.redhat.com/projects/WELD/summary">JIRA</a> issues</p>
+                  </li>
+                  <li>
+                  <p>Drop the question on <a href="https://gitter.im/weld/user">Weld Gitter</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Last but not least, the Weld team wishes you Merry Christmas and Happy New Year.</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Sorry to disappoint, but we cannot provide a patch yet.
+                  WildFly <a href="https://github.com/wildfly/wildfly/tree/master/ee-9">source code</a> already contains the needed bits for EE 9 server variant, but there wasn&#8217;t a release yet.
+                  Good news is, once there is a release, it will already contain Weld 4 Final!
+                  From there on, we can then deliver patches as we used to.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352570" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "78fdfa4291fe99bd9edbd4720575cb5639ed5391";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+            <div class="logospacer" style="height:10px;"></div>
+            <a href="http://www.redhat.com/">
+              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
     });
-  });
-</script>
+  </script>
 </html>

@@ -1,418 +1,415 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Weld: Weld Tip 2 - Development Mode
-</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld Tip 2 - Development Mode" name="description">
-<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-<script>
-hljs.initHighlightingOnLoad();
-</script>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 col-sm-3">
-<div class="sidebar-nav">
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-<span class="sr-only">
-Toggle navigation
-</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a ="#" class="visible-xs navbar-brand">
-<img alt="Weld Logo" src="/images/weld_logo_100x.png">
-</a>
-</div>
-<div class="collapse navbar-collapse sidebar-navbar-collapse">
-<ul class="nav navbar-nav">
-<li>
-<a href="/">
-<i class="fa fa-home"></i>
-&nbsp;Home
-</a>
-</li>
-<li>
-<a href="/download">
-<i class="fa fa-download"></i>
-&nbsp;Download
-</a>
-</li>
-<li>
-<a href="/news">
-<i class="fa fa-newspaper-o"></i>
-&nbsp;News
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-<i class="fa fa-road"></i>
-&nbsp;Road Map
-</a>
-</li>
-<li>
-<a href="/documentation">
-<i class="fa fa-book"></i>
-&nbsp;Docs &amp; FAQ
-</a>
-</li>
-<li>
-<a href="/news/tags/tips">
-<i class="fa fa-lightbulb-o"></i>
-&nbsp;Tips and Tricks
-</a>
-</li>
-<li>
-<a href="/community">
-<i class="fa fa-group"></i>
-&nbsp;Community
-</a>
-</li>
-<li>
-<a href="http://github.com/weld" target="_blank">
-<i class="fa fa-github-alt"></i>
-&nbsp;Source Code
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-<i class="fa fa-tasks"></i>
-&nbsp;Bug Tracker
-</a>
-</li>
-<li>
-<a href="https://twitter.com/jbossweld" target="_blank">
-<i class="fa fa-twitter"></i>
-&nbsp;Follow @jbossweld
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-10 col-sm-9">
-<div class="row hidden-xs">
-<div class="dropup">
-<div id="ajbossproject">
-A JBoss Project
-</div>
-<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-<script>
-window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-</script>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4">
-<a href="/">
-<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-</a>
-</div>
-<div class="col-md-8">
-<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-</div>
-</div>
-<div class="row content-wrapper">
-<div class="col-md-12">
-<div class="post">
-<h1>
-Weld Tip 2 - Development Mode
-<a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
-<i class="fa fa-rss"></i>
-</a>
-</h1>
-<div class="news-date news-boxed">
-2016-10-7
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/tips">tips</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Martin Kouba
-</div>
-<p></p>
-<div class="content">
-<div id="toc" class="toc">
-<div id="toctitle" class="title">Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_how_to_enable_the_development_mode">How to enable the development mode</a>
-<ul class="sectlevel2">
-<li><a href="#_web_application">Web application</a></li>
-<li><a href="#_wildfly">WildFly</a></li>
-<li><a href="#_weld_se">Weld SE</a></li>
-</ul>
-</li>
-<li><a href="#_how_does_it_actually_work">How does it actually work?</a></li>
-<li><a href="#_probe_ui">Probe UI</a></li>
-<li><a href="#_what_if_i_dont_have_a_webapp">What if I don&#8217;t have a webapp?</a></li>
-<li><a href="#probe-offline">Does it work offline?</a></li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In this article we&#8217;re going to cover the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html" target="_blank" rel="noopener">special mode for application development</a>.
-When enabled, a built-in tool called <strong>Probe</strong> provides a detailed insight into internals of a CDI application.
-Probe makes it easy to inspect:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>bean archives</p>
-</li>
-<li>
-<p>beans and their properties such as qualifiers, stereotypes and name</p>
-</li>
-<li>
-<p>a graph of bean dependencies</p>
-</li>
-<li>
-<p>observers and producers declared by beans</p>
-</li>
-<li>
-<p>interceptors and decorators bound to a bean</p>
-</li>
-<li>
-<p>extensions</p>
-</li>
-<li>
-<p>information about current contextual instances</p>
-</li>
-<li>
-<p>tracking of invocations and invocation trees</p>
-</li>
-<li>
-<p>tracking of fired events</p>
-</li>
-<li>
-<p>Weld configuration</p>
-</li>
-<li>
-<p>and more!</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Ok, now let&#8217;s get it working!</p>
-</div>
-<div class="sect1">
-<h2 id="_how_to_enable_the_development_mode">How to enable the development mode</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>No surprise that the development mode is <em>DISABLED</em> by default.
-It should <em>NEVER</em> be used in production as it may have negative impact on performance and/or represent a potential security risk.
-Note that if you successfully enable the development mode you should see <code>Weld Development Mode: ENABLED</code> warning in the log during application bootstrap.
-Make sure to disable the development mode before deploying to production!</p>
-</div>
-<div class="sect2">
-<h3 id="_web_application">Web application</h3>
-<div class="paragraph">
-<p>For any web application, set the Servlet initialization parameter <code>org.jboss.weld.development</code> to <code>true</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;web-app&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.development&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;true&lt;/param-value&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_wildfly">WildFly</h3>
-<div class="paragraph">
-<p>Since WildFly 10 it&#8217;s also possible to enable the Weld development mode globally (i.e. for all the applications deployed) by setting <code>development-mode</code> attribute to true:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>/subsystem=weld:write-attribute(name=development-mode,value=true)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>See also <a href="https://docs.jboss.org/author/display/WFLY10/CDI+Reference" target="_blank" rel="noopener">WildFly CDI Reference</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_weld_se">Weld SE</h3>
-<div class="paragraph">
-<p>For a Java SE application, set the system property <code>org.jboss.weld.development</code> to true:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>java -cp myCoolApp.jar -Dorg.jboss.weld.development=true com.foo.MyMain</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or use the <code>Weld.property()</code> method:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">org.jboss.weld.environment.se.Weld;&#x000A;&#x000A;public static void main(String[] args) {&#x000A;   Weld weld = new Weld().property("org.jboss.weld.development", true);&#x000A;   try (WeldContainer container = weld.initialize()) {&#x000A;      ...&#x000A;   }&#x000A;}</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_how_does_it_actually_work">How does it actually work?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Probe collects CDI-related data from your application and then makes the data available through the <em>REST API</em>, eventually through the <em>MXBean</em> of name <code>org.jboss.weld.probe:type=JsonData,context=ID</code> where ID should be replaced with an idenfitier of an application.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_probe_ui">Probe UI</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Probe has also a <em>web UI</em> (single-page application) available at <code>{webapp-context-path}/weld-probe</code> (once your webapp starts), e.g. <code><a href="http://localhost:8080/weld-numberguess/weld-probe" class="bare">http://localhost:8080/weld-numberguess/weld-probe</a></code>.
-By default, Probe also embeds a tiny information bar directly into the application’s HTML output.
-That makes it easy to navigate to Probe directly from the application anytime.
-Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The best place to start is probably the <code>Beans</code> view</p>
-</li>
-<li>
-<p>You may also discover the observer methods declared by an extension</p>
-</li>
-<li>
-<p>Monitor all the fired events and track which observer methods a particular event was delivered to</p>
-</li>
-<li>
-<p>And more&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We believe the UI is quite intuitive but feel free to ask questions on any channel (irc, gitter, mailing list, etc.).</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-There are some configuration properties which allow to tune or disable Probe features, e.g. to restrict the set of components which will be monitored. See also <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_if_i_dont_have_a_webapp">What if I don&#8217;t have a webapp?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Nothing is lost!
-JMX and <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> come to rescue.
-This "adapter" allows to reuse the default HTML UI even if there is no REST API available (non-web environments).
-The adapter either connects to a JMX server (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Probe JMX support must be enabled</a>) or loads data from an exported file (see also <a href="#probe-offline">Does it work offline?</a>), then starts an embedded Undertow webserver instance and exposes the default HTML client but using the data from the first step.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="probe-offline">Does it work offline?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Sometimes it&#8217;s not possible to inspect a running system (e.g. due to security reasons).
-Probe allows to <em>export</em> the collected data and inspect it <em>offline</em>.
-There are two ways to export the data:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Using REST API: HTTP GET <code>{webapp-context-path}/weld-probe/export</code></p>
-</li>
-<li>
-<p>Configure Probe to export data after deployment (see also <code>org.jboss.weld.probe.exportDataAfterDeployment</code> property in <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>)</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>And now use the <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> again:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>java -jar weld-probe-client-adapter-1.0.0.Final-shaded.jar /home/weld/weld-probe-export.zip</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-            var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/";
-            var disqus_developer = null;
-            var disqus_identifier = "56dc845c16cfa3beadad79369e8e87cc1d29fc98";
-            (function() {
-              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
-          
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class="row">
-<div class="container" id="companyfooter">
-<div class="redhatlogo" style="text-align:center;">
-<div class="logospacer" style="height:10px;"></div>
-<a href="http://www.redhat.com/">
-<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-</a>
-</div>
-</div>
-</div>
-</footer>
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount','UA-45187401-1']);
-_gaq.push(['_trackPageview']);
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#toggle_menu').click(function(){
-      $("#mobile_menu").toggle();
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld Tip 2 - Development Mode
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Weld Tip 2 - Development Mode" name="description">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">
+                    Toggle navigation
+                  </span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a ="#" class="visible-xs navbar-brand">
+                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="/">
+                      <i class="fa fa-home"></i>
+                      &nbsp;Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/download">
+                      <i class="fa fa-download"></i>
+                      &nbsp;Download
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <i class="fa fa-newspaper-o"></i>
+                      &nbsp;News
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+                      <i class="fa fa-road"></i>
+                      &nbsp;Road Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation">
+                      <i class="fa fa-book"></i>
+                      &nbsp;Docs &amp; FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news/tags/tips">
+                      <i class="fa fa-lightbulb-o"></i>
+                      &nbsp;Tips and Tricks
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/community">
+                      <i class="fa fa-group"></i>
+                      &nbsp;Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://github.com/weld" target="_blank">
+                      <i class="fa fa-github-alt"></i>
+                      &nbsp;Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+                      <i class="fa fa-tasks"></i>
+                      &nbsp;Bug Tracker
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/jbossweld" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      &nbsp;Follow @jbossweld
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+          <div class="row hidden-xs">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="/">
+                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row content-wrapper">
+            <div class="col-md-12">
+              <div class="post">
+                <h1>
+                  Weld Tip 2 - Development Mode
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
+                <div class="news-date news-boxed">
+                  2016-10-7
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/tips">tips</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div id="toc" class="toc">
+                  <div id="toctitle" class="title">Contents</div>
+                  <ul class="sectlevel1">
+                  <li><a href="#_how_to_enable_the_development_mode">How to enable the development mode</a>
+                  <ul class="sectlevel2">
+                  <li><a href="#_web_application">Web application</a></li>
+                  <li><a href="#_wildfly">WildFly</a></li>
+                  <li><a href="#_weld_se">Weld SE</a></li>
+                  </ul>
+                  </li>
+                  <li><a href="#_how_does_it_actually_work">How does it actually work?</a></li>
+                  <li><a href="#_probe_ui">Probe UI</a></li>
+                  <li><a href="#_what_if_i_dont_have_a_webapp">What if I don&#8217;t have a webapp?</a></li>
+                  <li><a href="#probe-offline">Does it work offline?</a></li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>In this article we&#8217;re going to cover the <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/devmode.html" target="_blank" rel="noopener">special mode for application development</a>.
+                  When enabled, a built-in tool called <strong>Probe</strong> provides a detailed insight into internals of a CDI application.
+                  Probe makes it easy to inspect:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>bean archives</p>
+                  </li>
+                  <li>
+                  <p>beans and their properties such as qualifiers, stereotypes and name</p>
+                  </li>
+                  <li>
+                  <p>a graph of bean dependencies</p>
+                  </li>
+                  <li>
+                  <p>observers and producers declared by beans</p>
+                  </li>
+                  <li>
+                  <p>interceptors and decorators bound to a bean</p>
+                  </li>
+                  <li>
+                  <p>extensions</p>
+                  </li>
+                  <li>
+                  <p>information about current contextual instances</p>
+                  </li>
+                  <li>
+                  <p>tracking of invocations and invocation trees</p>
+                  </li>
+                  <li>
+                  <p>tracking of fired events</p>
+                  </li>
+                  <li>
+                  <p>Weld configuration</p>
+                  </li>
+                  <li>
+                  <p>and more!</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Ok, now let&#8217;s get it working!</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_how_to_enable_the_development_mode">How to enable the development mode</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>No surprise that the development mode is <em>DISABLED</em> by default.
+                  It should <em>NEVER</em> be used in production as it may have negative impact on performance and/or represent a potential security risk.
+                  Note that if you successfully enable the development mode you should see <code>Weld Development Mode: ENABLED</code> warning in the log during application bootstrap.
+                  Make sure to disable the development mode before deploying to production!</p>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_web_application">Web application</h3>
+                  <div class="paragraph">
+                  <p>For any web application, set the Servlet initialization parameter <code>org.jboss.weld.development</code> to <code>true</code>:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;web-app&gt;&#x000A;    &lt;context-param&gt;&#x000A;        &lt;param-name&gt;org.jboss.weld.development&lt;/param-name&gt;&#x000A;        &lt;param-value&gt;true&lt;/param-value&gt;&#x000A;    &lt;/context-param&gt;&#x000A;&lt;/web-app&gt;</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_wildfly">WildFly</h3>
+                  <div class="paragraph">
+                  <p>Since WildFly 10 it&#8217;s also possible to enable the Weld development mode globally (i.e. for all the applications deployed) by setting <code>development-mode</code> attribute to true:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>/subsystem=weld:write-attribute(name=development-mode,value=true)</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>See also <a href="https://docs.jboss.org/author/display/WFLY10/CDI+Reference" target="_blank" rel="noopener">WildFly CDI Reference</a>.</p>
+                  </div>
+                  </div>
+                  <div class="sect2">
+                  <h3 id="_weld_se">Weld SE</h3>
+                  <div class="paragraph">
+                  <p>For a Java SE application, set the system property <code>org.jboss.weld.development</code> to true:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>java -cp myCoolApp.jar -Dorg.jboss.weld.development=true com.foo.MyMain</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>or use the <code>Weld.property()</code> method:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">org.jboss.weld.environment.se.Weld;&#x000A;&#x000A;public static void main(String[] args) {&#x000A;   Weld weld = new Weld().property("org.jboss.weld.development", true);&#x000A;   try (WeldContainer container = weld.initialize()) {&#x000A;      ...&#x000A;   }&#x000A;}</code></pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_how_does_it_actually_work">How does it actually work?</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Probe collects CDI-related data from your application and then makes the data available through the <em>REST API</em>, eventually through the <em>MXBean</em> of name <code>org.jboss.weld.probe:type=JsonData,context=ID</code> where ID should be replaced with an idenfitier of an application.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_probe_ui">Probe UI</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Probe has also a <em>web UI</em> (single-page application) available at <code>{webapp-context-path}/weld-probe</code> (once your webapp starts), e.g. <code><a href="http://localhost:8080/weld-numberguess/weld-probe" class="bare">http://localhost:8080/weld-numberguess/weld-probe</a></code>.
+                  By default, Probe also embeds a tiny information bar directly into the application’s HTML output.
+                  That makes it easy to navigate to Probe directly from the application anytime.
+                  Furthermore, if invocation tracking is enabled, the information bar helps navigate directly to the invocation tree related to the request that rendered the output.</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The best place to start is probably the <code>Beans</code> view</p>
+                  </li>
+                  <li>
+                  <p>You may also discover the observer methods declared by an extension</p>
+                  </li>
+                  <li>
+                  <p>Monitor all the fired events and track which observer methods a particular event was delivered to</p>
+                  </li>
+                  <li>
+                  <p>And more&#8230;&#8203;</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>We believe the UI is quite intuitive but feel free to ask questions on any channel (irc, gitter, mailing list, etc.).</p>
+                  </div>
+                  <div class="admonitionblock tip">
+                  <table>
+                  <tr>
+                  <td class="icon">
+                  <div class="title">Tip</div>
+                  </td>
+                  <td class="content">
+                  There are some configuration properties which allow to tune or disable Probe features, e.g. to restrict the set of components which will be monitored. See also <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>.
+                  </td>
+                  </tr>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_what_if_i_dont_have_a_webapp">What if I don&#8217;t have a webapp?</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Nothing is lost!
+                  JMX and <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> come to rescue.
+                  This "adapter" allows to reuse the default HTML UI even if there is no REST API available (non-web environments).
+                  The adapter either connects to a JMX server (<a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Probe JMX support must be enabled</a>) or loads data from an exported file (see also <a href="#probe-offline">Does it work offline?</a>), then starts an embedded Undertow webserver instance and exposes the default HTML client but using the data from the first step.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="probe-offline">Does it work offline?</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Sometimes it&#8217;s not possible to inspect a running system (e.g. due to security reasons).
+                  Probe allows to <em>export</em> the collected data and inspect it <em>offline</em>.
+                  There are two ways to export the data:</p>
+                  </div>
+                  <div class="olist arabic">
+                  <ol class="arabic">
+                  <li>
+                  <p>Using REST API: HTTP GET <code>{webapp-context-path}/weld-probe/export</code></p>
+                  </li>
+                  <li>
+                  <p>Configure Probe to export data after deployment (see also <code>org.jboss.weld.probe.exportDataAfterDeployment</code> property in <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode" target="_blank" rel="noopener">Development Mode Configuration</a>)</p>
+                  </li>
+                  </ol>
+                  </div>
+                  <div class="paragraph">
+                  <p>And now use the <a href="https://github.com/weld/weld-probe-client-adapter" target="_blank" rel="noopener">weld-probe-client-adapter</a> again:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>java -jar weld-probe-client-adapter-1.0.0.Final-shaded.jar /home/weld/weld-probe-export.zip</pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "56dc845c16cfa3beadad79369e8e87cc1d29fc98";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+            <div class="logospacer" style="height:10px;"></div>
+            <a href="http://www.redhat.com/">
+              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
     });
-  });
-</script>
+  </script>
 </html>

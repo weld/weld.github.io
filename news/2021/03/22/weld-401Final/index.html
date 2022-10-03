@@ -1,299 +1,296 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Weld: Weld 4.0.1.Final
-</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Weld 4.0.1.Final has been released" name="description">
-<link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-<script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
-<link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
-<script>
-hljs.initHighlightingOnLoad();
-</script>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 col-sm-3">
-<div class="sidebar-nav">
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-<button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
-<span class="sr-only">
-Toggle navigation
-</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a ="#" class="visible-xs navbar-brand">
-<img alt="Weld Logo" src="/images/weld_logo_100x.png">
-</a>
-</div>
-<div class="collapse navbar-collapse sidebar-navbar-collapse">
-<ul class="nav navbar-nav">
-<li>
-<a href="/">
-<i class="fa fa-home"></i>
-&nbsp;Home
-</a>
-</li>
-<li>
-<a href="/download">
-<i class="fa fa-download"></i>
-&nbsp;Download
-</a>
-</li>
-<li>
-<a href="/news">
-<i class="fa fa-newspaper-o"></i>
-&nbsp;News
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
-<i class="fa fa-road"></i>
-&nbsp;Road Map
-</a>
-</li>
-<li>
-<a href="/documentation">
-<i class="fa fa-book"></i>
-&nbsp;Docs &amp; FAQ
-</a>
-</li>
-<li>
-<a href="/news/tags/tips">
-<i class="fa fa-lightbulb-o"></i>
-&nbsp;Tips and Tricks
-</a>
-</li>
-<li>
-<a href="/community">
-<i class="fa fa-group"></i>
-&nbsp;Community
-</a>
-</li>
-<li>
-<a href="http://github.com/weld" target="_blank">
-<i class="fa fa-github-alt"></i>
-&nbsp;Source Code
-</a>
-</li>
-<li>
-<a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
-<i class="fa fa-tasks"></i>
-&nbsp;Bug Tracker
-</a>
-</li>
-<li>
-<a href="https://twitter.com/jbossweld" target="_blank">
-<i class="fa fa-twitter"></i>
-&nbsp;Follow @jbossweld
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-10 col-sm-9">
-<div class="row hidden-xs">
-<div class="dropup">
-<div id="ajbossproject">
-A JBoss Project
-</div>
-<a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-<script>
-window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
-</script>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4">
-<a href="/">
-<img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
-</a>
-</div>
-<div class="col-md-8">
-<img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
-</div>
-</div>
-<div class="row content-wrapper">
-<div class="col-md-12">
-<div class="post">
-<h1>
-Weld 4.0.1.Final
-<a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
-<i class="fa fa-rss"></i>
-</a>
-</h1>
-<div class="news-date news-boxed">
-2021-3-22
-&nbsp;
-<span class="tags">
-<i class="fa fa-tags"></i>
-<a href="/news/tags/release">release</a>
-</span>
-&nbsp;
-<i class="fa fa-pencil"></i>
-Matej Novotny
-</div>
-<p></p>
-<div class="content">
-<div class="paragraph">
-<p>First maintainance release of Weld 4 is now available along with API version 4.0.SP1.</p>
-</div>
-<div class="paragraph">
-<p>The crux of this release is (much like 3.1.7.Final) a rework of Weld&#8217;s default class defining capabilities.
-With 4.0.1.Final you should no longer see illegal reflective access warning so long as you are on JDK 11 or newer.
-More details on this are below or in the respective <a href="https://issues.redhat.com/browse/WELD-2581">JIRA ticket</a>; in case you encounter any issue with it, please don&#8217;t hesitate to reach out to us.</p>
-</div>
-<div class="paragraph">
-<p>So, let&#8217;s take a closer look:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Class Defining in Weld</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Weld Core is now a Multi-Release JAR providing two different implementations for JDK 8 and JDK 11 or newer</p>
-</li>
-<li>
-<p>Integrators are still encouraged to implement <a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java"><code>ProxyServices</code></a> class from our API</p>
-<div class="ulist">
-<ul>
-<li>
-<p>All implementations of this interface are now presumed to support class defining (<a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java#L138-L150"><code>ProxyServices#supportsClassDefining()</code></a> is now deprecated and not used)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>For SE environment or an integrator that doesn&#8217;t implement the aforementioned API, Weld now provides a default implementation of <code>ProxyServices</code> which:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>On JDK 8 behaves the same as it did until now - it cracks open <code>ClassLoader.defineClass(&#8230;&#8203;)</code> method and uses that</p>
-</li>
-<li>
-<p>On JDK 11+ it uses a combination of <code>MethodHandles.Lookup</code> and a custom <code>ClassLoader</code>; the former is used for vast majority of cases with class loader being a solution for edge cases such as default packages or beans from signed JARs</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Other Weld Core Fixes</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>BeanAttributesConfigurator</code> could incorrectly initialize default qualifiers when <code>@Named</code> was involved (<a href="https://issues.jboss.org/browse/WELD-2659" target="_blank" rel="noopener">WELD-2659</a>)</p>
-</li>
-<li>
-<p>Synthetic alternative beans did not trigger <code>ProcessBean</code> event as they should when enabled (<a href="https://issues.jboss.org/browse/WELD-2658" target="_blank" rel="noopener">WELD-2658</a>)</p>
-</li>
-<li>
-<p>Fixed proxy creation for beans in default package (<a href="https://issues.jboss.org/browse/WELD-2657" target="_blank" rel="noopener">WELD-2657</a>)</p>
-</li>
-<li>
-<p>Fixed a corner case scenario where a hierarchy of classes with bridge methods would not get correctly intercepted (<a href="https://issues.jboss.org/browse/WELD-2656" target="_blank" rel="noopener">WELD-2656</a>)</p>
-</li>
-<li>
-<p><code>ProxyFactory</code> now creates determininistic proxy names (<a href="https://issues.jboss.org/browse/WELD-2618" target="_blank" rel="noopener">WELD-2618</a>)</p>
-</li>
-<li>
-<p>Decorators for interfaces with non-decorated default method now work properly (<a href="https://issues.jboss.org/browse/WELD-2647" target="_blank" rel="noopener">WELD-2647</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="sect1">
-<h2 id="_wildfly_patch">WildFly Patch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There is no WildFly patch at the moment. We are currently exploring how to properly ship a patch that would align with WildFly usage of Galleon; the tracking JIRA can be seen (<a href="https://issues.redhat.com/browse/WELD-2660">here</a>).</p>
-</div>
-<div class="paragraph">
-<p>&#91; <a href="/download/">Download</a> &#93;
-&#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-&#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352776" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-</div>
-</div>
-</div>
-</div>
-
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-            var disqus_shortname = 'weld-cdi';
-            var disqus_url = "https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/";
-            var disqus_developer = null;
-            var disqus_identifier = "09efc13ebae657dddce3c3998b6110b0a9192c66";
-            (function() {
-              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
-          
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class="row">
-<div class="container" id="companyfooter">
-<div class="redhatlogo" style="text-align:center;">
-<div class="logospacer" style="height:10px;"></div>
-<a href="http://www.redhat.com/">
-<img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
-</a>
-</div>
-</div>
-</div>
-</footer>
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount','UA-45187401-1']);
-_gaq.push(['_trackPageview']);
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#toggle_menu').click(function(){
-      $("#mobile_menu").toggle();
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weld: Weld 4.0.1.Final
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Weld 4.0.1.Final has been released" name="description">
+    <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://weld.cdi-spec.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="//static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="https://weld.cdi-spec.org/news.atom" rel="alternate" type="application/atom+xml">
+    <link href="//cdn.jsdelivr.net/highlight.js/8.9.1/styles/hybrid.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/highlight.js/8.9.1/highlight.min.js" type="text/javascript"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button ="button" class="navbar-toggle" data-target=".sidebar-navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">
+                    Toggle navigation
+                  </span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a ="#" class="visible-xs navbar-brand">
+                  <img alt="Weld Logo" src="/images/weld_logo_100x.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="/">
+                      <i class="fa fa-home"></i>
+                      &nbsp;Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/download">
+                      <i class="fa fa-download"></i>
+                      &nbsp;Download
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <i class="fa fa-newspaper-o"></i>
+                      &nbsp;News
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/projects/WELD?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page" target="_blank">
+                      <i class="fa fa-road"></i>
+                      &nbsp;Road Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation">
+                      <i class="fa fa-book"></i>
+                      &nbsp;Docs &amp; FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news/tags/tips">
+                      <i class="fa fa-lightbulb-o"></i>
+                      &nbsp;Tips and Tricks
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/community">
+                      <i class="fa fa-group"></i>
+                      &nbsp;Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://github.com/weld" target="_blank">
+                      <i class="fa fa-github-alt"></i>
+                      &nbsp;Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://issues.jboss.org/browse/WELD#selectedTab=com.atlassian.jira.plugin.system.project%3Asummary-panel" target="_blank">
+                      <i class="fa fa-tasks"></i>
+                      &nbsp;Bug Tracker
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/jbossweld" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      &nbsp;Follow @jbossweld
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+          <div class="row hidden-xs">
+            <div class="dropup">
+              <div id="ajbossproject">
+                A JBoss Project
+              </div>
+              <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+              <script>
+                window.addEventListener('load', function() {renderTabzilla("Weld", "weld", false )}, false);
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="/">
+                <img alt="Weld Logo" class="hidden-xs weld-home-logo" src="/images/weld_logo_450x.png">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <img alt="CDI tagcloud" class="hidden-xs hidden-sm cdi-background" src="/images/CDIbackground.png">
+            </div>
+          </div>
+          <div class="row content-wrapper">
+            <div class="col-md-12">
+              <div class="post">
+                <h1>
+                  Weld 4.0.1.Final
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
+                <div class="news-date news-boxed">
+                  2021-3-22
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>First maintainance release of Weld 4 is now available along with API version 4.0.SP1.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The crux of this release is (much like 3.1.7.Final) a rework of Weld&#8217;s default class defining capabilities.
+                  With 4.0.1.Final you should no longer see illegal reflective access warning so long as you are on JDK 11 or newer.
+                  More details on this are below or in the respective <a href="https://issues.redhat.com/browse/WELD-2581">JIRA ticket</a>; in case you encounter any issue with it, please don&#8217;t hesitate to reach out to us.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>So, let&#8217;s take a closer look:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Class Defining in Weld</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld Core is now a Multi-Release JAR providing two different implementations for JDK 8 and JDK 11 or newer</p>
+                  </li>
+                  <li>
+                  <p>Integrators are still encouraged to implement <a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java"><code>ProxyServices</code></a> class from our API</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>All implementations of this interface are now presumed to support class defining (<a href="https://github.com/weld/api/blob/4.0.SP1/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java#L138-L150"><code>ProxyServices#supportsClassDefining()</code></a> is now deprecated and not used)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>For SE environment or an integrator that doesn&#8217;t implement the aforementioned API, Weld now provides a default implementation of <code>ProxyServices</code> which:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>On JDK 8 behaves the same as it did until now - it cracks open <code>ClassLoader.defineClass(&#8230;&#8203;)</code> method and uses that</p>
+                  </li>
+                  <li>
+                  <p>On JDK 11+ it uses a combination of <code>MethodHandles.Lookup</code> and a custom <code>ClassLoader</code>; the former is used for vast majority of cases with class loader being a solution for edge cases such as default packages or beans from signed JARs</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other Weld Core Fixes</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>BeanAttributesConfigurator</code> could incorrectly initialize default qualifiers when <code>@Named</code> was involved (<a href="https://issues.jboss.org/browse/WELD-2659" target="_blank" rel="noopener">WELD-2659</a>)</p>
+                  </li>
+                  <li>
+                  <p>Synthetic alternative beans did not trigger <code>ProcessBean</code> event as they should when enabled (<a href="https://issues.jboss.org/browse/WELD-2658" target="_blank" rel="noopener">WELD-2658</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fixed proxy creation for beans in default package (<a href="https://issues.jboss.org/browse/WELD-2657" target="_blank" rel="noopener">WELD-2657</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fixed a corner case scenario where a hierarchy of classes with bridge methods would not get correctly intercepted (<a href="https://issues.jboss.org/browse/WELD-2656" target="_blank" rel="noopener">WELD-2656</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>ProxyFactory</code> now creates determininistic proxy names (<a href="https://issues.jboss.org/browse/WELD-2618" target="_blank" rel="noopener">WELD-2618</a>)</p>
+                  </li>
+                  <li>
+                  <p>Decorators for interfaces with non-decorated default method now work properly (<a href="https://issues.jboss.org/browse/WELD-2647" target="_blank" rel="noopener">WELD-2647</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>There is no WildFly patch at the moment. We are currently exploring how to properly ship a patch that would align with WildFly usage of Galleon; the tracking JIRA can be seen (<a href="https://issues.redhat.com/browse/WELD-2660">here</a>).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352776" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "09efc13ebae657dddce3c3998b6110b0a9192c66";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+            <div class="logospacer" style="height:10px;"></div>
+            <a href="http://www.redhat.com/">
+              <img src="https://static.jboss.org/theme/images/common/redhat_logo.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount','UA-45187401-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#toggle_menu').click(function(){
+        $("#mobile_menu").toggle();
+      });
     });
-  });
-</script>
+  </script>
 </html>

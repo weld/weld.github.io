@@ -1,543 +1,549 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://weld.cdi-spec.org/bug/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>0.5</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/community/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>0.5</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/dist/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>1</priority>
-<changefreq>daily</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/documentation/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>0.5</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/download/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>0.5</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>0.5</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</loc>
-<lastmod>2013-04-25</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</loc>
-<lastmod>2013-06-06</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</loc>
-<lastmod>2013-06-20</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</loc>
-<lastmod>2013-09-20</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</loc>
-<lastmod>2013-10-22</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</loc>
-<lastmod>2013-12-11</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</loc>
-<lastmod>2014-01-14</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</loc>
-<lastmod>2014-02-04</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</loc>
-<lastmod>2014-04-15</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/09/18/weld-next/</loc>
-<lastmod>2014-09-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</loc>
-<lastmod>2014-10-02</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</loc>
-<lastmod>2014-12-10</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</loc>
-<lastmod>2015-02-05</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</loc>
-<lastmod>2015-02-25</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</loc>
-<lastmod>2015-04-21</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</loc>
-<lastmod>2015-08-05</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</loc>
-<lastmod>2015-09-08</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</loc>
-<lastmod>2015-09-15</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/09/18/weld-230Final/</loc>
-<lastmod>2015-09-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/10/27/weld-231Final/</loc>
-<lastmod>2015-10-27</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/</loc>
-<lastmod>2015-11-10</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</loc>
-<lastmod>2015-11-25</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</loc>
-<lastmod>2015-12-04</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</loc>
-<lastmod>2015-12-10</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</loc>
-<lastmod>2016-02-04</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</loc>
-<lastmod>2016-02-08</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</loc>
-<lastmod>2016-02-12</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</loc>
-<lastmod>2016-04-11</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</loc>
-<lastmod>2016-04-22</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</loc>
-<lastmod>2016-04-28</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</loc>
-<lastmod>2016-05-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</loc>
-<lastmod>2016-06-21</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</loc>
-<lastmod>2016-07-01</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</loc>
-<lastmod>2016-07-21</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</loc>
-<lastmod>2016-08-19</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</loc>
-<lastmod>2016-09-13</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</loc>
-<lastmod>2016-10-01</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</loc>
-<lastmod>2016-10-07</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</loc>
-<lastmod>2016-10-25</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</loc>
-<lastmod>2016-11-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</loc>
-<lastmod>2016-12-19</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</loc>
-<lastmod>2017-01-23</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</loc>
-<lastmod>2017-02-01</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</loc>
-<lastmod>2017-02-02</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</loc>
-<lastmod>2017-03-03</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</loc>
-<lastmod>2017-04-07</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</loc>
-<lastmod>2017-05-15</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</loc>
-<lastmod>2017-05-19</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</loc>
-<lastmod>2017-06-14</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</loc>
-<lastmod>2017-08-07</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</loc>
-<lastmod>2017-08-25</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</loc>
-<lastmod>2017-09-11</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</loc>
-<lastmod>2017-11-23</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</loc>
-<lastmod>2017-12-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</loc>
-<lastmod>2017-12-19</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</loc>
-<lastmod>2018-02-09</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</loc>
-<lastmod>2018-03-20</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</loc>
-<lastmod>2018-04-26</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</loc>
-<lastmod>2018-07-10</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</loc>
-<lastmod>2018-07-26</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</loc>
-<lastmod>2018-09-26</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</loc>
-<lastmod>2019-02-06</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</loc>
-<lastmod>2019-05-07</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</loc>
-<lastmod>2019-08-06</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</loc>
-<lastmod>2019-11-28</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</loc>
-<lastmod>2020-03-28</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/</loc>
-<lastmod>2020-05-13</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/</loc>
-<lastmod>2020-08-12</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/</loc>
-<lastmod>2020-09-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/</loc>
-<lastmod>2020-12-16</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/</loc>
-<lastmod>2021-01-13</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/</loc>
-<lastmod>2021-03-18</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/</loc>
-<lastmod>2021-03-22</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/</loc>
-<lastmod>2021-04-14</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/</loc>
-<lastmod>2021-07-14</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/</loc>
-<lastmod>2022-01-24</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/</loc>
-<lastmod>2022-02-16</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/</loc>
-<lastmod>2022-02-23</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/</loc>
-<lastmod>2022-03-23</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/</loc>
-<lastmod>2022-04-29</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/</loc>
-<lastmod>2022-05-04</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/</loc>
-<lastmod>2022-06-08</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>1</priority>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>https://weld.cdi-spec.org/news/</loc>
-<lastmod>2022-06-24</lastmod>
-<priority>1</priority>
-<changefreq>daily</changefreq>
-</url>
+  <url>
+    <loc>https://weld.cdi-spec.org/bug/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/community/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/dist/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>1</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/documentation/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/download/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/04/25/weld-200-final/</loc>
+    <lastmod>2013-04-25</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/06/06/weld-201-final/</loc>
+    <lastmod>2013-06-06</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/06/20/new-weld-site/</loc>
+    <lastmod>2013-06-20</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/09/20/weld-210beta2-tip/</loc>
+    <lastmod>2013-09-20</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/10/22/weld-210-final/</loc>
+    <lastmod>2013-10-22</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2013/12/11/weld-211-final/</loc>
+    <lastmod>2013-12-11</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/01/14/weld-212-final/</loc>
+    <lastmod>2014-01-14</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/02/04/weld-220-alpha1/</loc>
+    <lastmod>2014-02-04</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/04/15/weld-220-final/</loc>
+    <lastmod>2014-04-15</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/09/18/weld-next/</loc>
+    <lastmod>2014-09-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/10/02/weld-300Alpha1/</loc>
+    <lastmod>2014-10-02</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2014/12/10/an-update-on-weld-3/</loc>
+    <lastmod>2014-12-10</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/02/05/weld-300Alpha4/</loc>
+    <lastmod>2015-02-05</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/02/25/weld-300Alpha5/</loc>
+    <lastmod>2015-02-25</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/04/21/weld-300Alpha8/</loc>
+    <lastmod>2015-04-21</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/08/05/weld-300Alpha12/</loc>
+    <lastmod>2015-08-05</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/09/08/weld-team-changes/</loc>
+    <lastmod>2015-09-08</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/09/15/jdk-8u60-problem/</loc>
+    <lastmod>2015-09-15</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/09/18/weld-230Final/</loc>
+    <lastmod>2015-09-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/10/27/weld-231Final/</loc>
+    <lastmod>2015-10-27</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/11/10/weld-probe-jmx/</loc>
+    <lastmod>2015-11-10</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/11/25/arq-container-se-CR1/</loc>
+    <lastmod>2015-11-25</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/12/04/weld-300Alpha14/</loc>
+    <lastmod>2015-12-04</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2015/12/10/weld-232Final/</loc>
+    <lastmod>2015-12-10</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/02/04/weld-300Alpha15/</loc>
+    <lastmod>2016-02-04</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/</loc>
+    <lastmod>2016-02-08</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/02/12/weld-233Final/</loc>
+    <lastmod>2016-02-12</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/04/11/weld-meets-vertx/</loc>
+    <lastmod>2016-04-11</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/04/22/weld-234Final/</loc>
+    <lastmod>2016-04-22</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/04/28/weld-300Alpha16/</loc>
+    <lastmod>2016-04-28</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/05/18/enhanced-instance/</loc>
+    <lastmod>2016-05-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/06/21/update-on-weld-vertx/</loc>
+    <lastmod>2016-06-21</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/07/01/weld-235Final/</loc>
+    <lastmod>2016-07-01</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/07/21/arq-container-weld-releasel/</loc>
+    <lastmod>2016-07-21</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/08/19/weld-240CR1/</loc>
+    <lastmod>2016-08-19</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/09/13/weld-240Final/</loc>
+    <lastmod>2016-09-13</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/10/01/tip1-logging/</loc>
+    <lastmod>2016-10-01</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/10/07/tip2-devmode/</loc>
+    <lastmod>2016-10-07</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</loc>
+    <lastmod>2016-10-25</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</loc>
+    <lastmod>2016-11-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</loc>
+    <lastmod>2016-12-19</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</loc>
+    <lastmod>2017-01-23</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</loc>
+    <lastmod>2017-02-01</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</loc>
+    <lastmod>2017-02-02</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</loc>
+    <lastmod>2017-03-03</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</loc>
+    <lastmod>2017-04-07</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</loc>
+    <lastmod>2017-05-15</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</loc>
+    <lastmod>2017-05-19</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</loc>
+    <lastmod>2017-06-14</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</loc>
+    <lastmod>2017-08-07</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</loc>
+    <lastmod>2017-08-25</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</loc>
+    <lastmod>2017-09-11</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</loc>
+    <lastmod>2017-11-23</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</loc>
+    <lastmod>2017-12-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</loc>
+    <lastmod>2017-12-19</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</loc>
+    <lastmod>2018-02-09</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</loc>
+    <lastmod>2018-03-20</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</loc>
+    <lastmod>2018-04-26</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</loc>
+    <lastmod>2018-07-10</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</loc>
+    <lastmod>2018-07-26</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</loc>
+    <lastmod>2018-09-26</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</loc>
+    <lastmod>2019-02-06</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</loc>
+    <lastmod>2019-05-07</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</loc>
+    <lastmod>2019-08-06</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</loc>
+    <lastmod>2019-11-28</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</loc>
+    <lastmod>2020-03-28</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/</loc>
+    <lastmod>2020-05-13</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/</loc>
+    <lastmod>2020-08-12</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/</loc>
+    <lastmod>2020-09-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/</loc>
+    <lastmod>2020-12-16</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/</loc>
+    <lastmod>2021-01-13</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/</loc>
+    <lastmod>2021-03-18</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/</loc>
+    <lastmod>2021-03-22</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/</loc>
+    <lastmod>2021-07-14</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/</loc>
+    <lastmod>2022-01-24</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/</loc>
+    <lastmod>2022-02-16</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/</loc>
+    <lastmod>2022-02-23</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/</loc>
+    <lastmod>2022-03-23</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/</loc>
+    <lastmod>2022-05-04</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/</loc>
+    <lastmod>2022-06-08</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/</loc>
+    <lastmod>2022-06-24</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/2022/10/03/weld-510Final/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>1</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://weld.cdi-spec.org/news/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <priority>1</priority>
+    <changefreq>daily</changefreq>
+  </url>
 </urlset>
