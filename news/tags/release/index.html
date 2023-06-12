@@ -143,6 +143,69 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2023/06/12/weld-511Final/">Weld 5.1.1.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2023-6-12
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>It&#8217;s time for some minor updates and fixes, Weld 5.1.1.Final is now available!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Main highlights are as follows:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fix bean type assignability for beans with recursive generic types (<a href="https://issues.redhat.com/browse/WELD-2738">WELD-2738</a>)</p>
+                  </li>
+                  <li>
+                  <p>Failing validation for pasivation capability, Weld should throw <code>DeploymentException</code> instead of <code>DefinitionException</code> (<a href="https://issues.redhat.com/browse/WELD-2741">WELD-2741</a>)</p>
+                  </li>
+                  <li>
+                  <p>Avoid firing <code>ProcessInjectionTarget</code> multiple times if a specialized bean was vetoed (<a href="https://issues.redhat.com/browse/WELD-2742">WELD-2742</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>BeanManager#getReference</code> should not create a child <code>CreationalContext</code> instance (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This should only affect scenarios in which beans were 'manually' created and destroyed in which case the destruction could end up incomplete</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fix how Weld defines proxies to avoid problems in JDK 17+ along with the newest JBoss Class File Writer (1.3.0.Final) (<a href="https://issues.redhat.com/browse/WELD-2744">WELD-2744</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correction to documentation which incorrectly suggested <code>@ManagedBean</code> was a bean defining annotation (<a href="https://issues.redhat.com/browse/WELD-2737">WELD-2737</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12397581" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/10/03/weld-510Final/">Weld 5.1.0.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -898,71 +961,6 @@
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12378495" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2021/07/14/weld-402Final-318Final/">Weld 4.0.2.Final and 3.1.8.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2021-7-14
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>New maintenance releases for Weld 3 and 4 have been rolled out.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>There is only a handful of changes this time so let&#8217;s skid across them:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Prevent <code>WeldInvocationContext</code> from ever returning <code>null</code> when queried for interceptor bindings (<a href="https://issues.jboss.org/browse/WELD-2675" target="_blank" rel="noopener">WELD-2675</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix an NPE if there is an EJB bean with default package present (<a href="https://issues.jboss.org/browse/WELD-2674" target="_blank" rel="noopener">WELD-2674</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld wasn&#8217;t working on JDK 17 due to <code>jboss-classfilewriter</code> issue; this should no longer be the case (<a href="https://issues.jboss.org/browse/WELD-2671" target="_blank" rel="noopener">WELD-2671</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correction to proxy name creation for producers based on interfaces - Weld should now use package and class of the most specific interface (<a href="https://issues.jboss.org/browse/WELD-2675" target="_blank" rel="noopener">WELD-2675</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld now provides correct metadata (via <code>@Decorated</code>) in cases where more than one decorator is applied to a single bean (<a href="https://issues.jboss.org/browse/WELD-2673" target="_blank" rel="noopener">WELD-2673</a>)</p>
-                  </li>
-                  <li>
-                  <p>We have decided to no longer provide WildFly patches for each release (<a href="https://issues.jboss.org/browse/WELD-2660" target="_blank" rel="noopener">WELD-2660</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>After discussion with WildFly team, we figured the current way is not going to work for anything beyond Weld 3</p>
-                  </li>
-                  <li>
-                  <p>And we aren&#8217;t even certain this feature is requested and/or used anymore; if you feel otherwise, please create a JIRA to let us know</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.2.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.2.Final</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.8.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.8.Final</a> &#93;
-                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12356277" target="_blank" rel="noopener">Release notes for Weld 4.0.2.Final</a> &#93;
-                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12356276" target="_blank" rel="noopener">Release notes for Weld 3.1.8.Final</a> &#93;</p>
                   </div>
                 </div>
                 <hr>

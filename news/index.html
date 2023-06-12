@@ -143,6 +143,69 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2023/06/12/weld-511Final/">Weld 5.1.1.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2023-6-12
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>It&#8217;s time for some minor updates and fixes, Weld 5.1.1.Final is now available!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Main highlights are as follows:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fix bean type assignability for beans with recursive generic types (<a href="https://issues.redhat.com/browse/WELD-2738">WELD-2738</a>)</p>
+                  </li>
+                  <li>
+                  <p>Failing validation for pasivation capability, Weld should throw <code>DeploymentException</code> instead of <code>DefinitionException</code> (<a href="https://issues.redhat.com/browse/WELD-2741">WELD-2741</a>)</p>
+                  </li>
+                  <li>
+                  <p>Avoid firing <code>ProcessInjectionTarget</code> multiple times if a specialized bean was vetoed (<a href="https://issues.redhat.com/browse/WELD-2742">WELD-2742</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>BeanManager#getReference</code> should not create a child <code>CreationalContext</code> instance (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This should only affect scenarios in which beans were 'manually' created and destroyed in which case the destruction could end up incomplete</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fix how Weld defines proxies to avoid problems in JDK 17+ along with the newest JBoss Class File Writer (1.3.0.Final) (<a href="https://issues.redhat.com/browse/WELD-2744">WELD-2744</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correction to documentation which incorrectly suggested <code>@ManagedBean</code> was a bean defining annotation (<a href="https://issues.redhat.com/browse/WELD-2737">WELD-2737</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12397581" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/10/03/weld-510Final/">Weld 5.1.0.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -356,83 +419,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12385753" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/04/29/weld-500Final/">Weld 5.0.0.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-4-29
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>CDI 4 has passed its Final ballot and is now available in Maven Central.
-                  Some of you may have played with it already, but where is the fun in it, if you don&#8217;t have a Final implementation, right?
-                  Have no fear, Weld 5 Final is here!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As usual, there is Weld 5.0.Final API as well as Weld 5.0.0.Final core impl.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>It is very much the same as CR2, with some additional tweaks and fixes that came to light when working on integrations within EE servers.
-                  That&#8217;s right, EE servers are already making progress towards integrating CDI 4 and Weld 5.
-                  Folks over at Open Liberty did their Weld 5 homework about a week ago and WildFly now has a pending <a href="https://github.com/wildfly/wildfly/pull/15474">pull request</a> that adds missing bits for CDI 4 support.
-                  It might still be a while before there is a Beta WildFly release, but if you have the nerves, you can build the SNAPSHOT at least.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Back on the topic of changes, here is a list of fixes from CR2 to Final:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Self-interception can now be used on protected methods, params and return types (<a href="https://issues.jboss.org/browse/WELD-2712" target="_blank" rel="noopener">WELD-2712</a>)</p>
-                  </li>
-                  <li>
-                  <p>Rewieved Weld examples and made sure they run for EE 10 (<a href="https://issues.jboss.org/browse/WELD-2708" target="_blank" rel="noopener">WELD-2708</a>)</p>
-                  </li>
-                  <li>
-                  <p>Review Weld 5 documentation (<a href="https://issues.jboss.org/browse/WELD-2696" target="_blank" rel="noopener">WELD-2696</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Note that the servlet part is still outdated and being worked on as we need to see if there is workable EE 10 variant, see <a href="https://issues.jboss.org/browse/WELD-2716" target="_blank" rel="noopener">WELD-2716</a></p>
-                  </li>
-                  <li>
-                  <p>We expect that this will be sorted by the time we ship 5.0.1.Final</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Firing of the <code>Startup</code> event for web modules can happen too early (<a href="https://issues.jboss.org/browse/WELD-2717" target="_blank" rel="noopener">WELD-2717</a>)</p>
-                  </li>
-                  <li>
-                  <p>Synthetic beans coming from Build Compatible extension should be registered under their respective extensions (<a href="https://issues.jboss.org/browse/WELD-2718" target="_blank" rel="noopener">WELD-2718</a>)</p>
-                  </li>
-                  <li>
-                  <p>Exceptions thrown during execution of Build Compatible extensions now correctly preserve their cause (<a href="https://issues.jboss.org/browse/WELD-2710" target="_blank" rel="noopener">WELD-2710</a>)</p>
-                  </li>
-                  <li>
-                  <p>Some of our SE testing was being skipped ever since Groovy dependency update, this is now corrected (<a href="https://issues.jboss.org/browse/WELD-2714" target="_blank" rel="noopener">WELD-2714</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12383754" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
