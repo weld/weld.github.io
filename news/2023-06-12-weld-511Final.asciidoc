@@ -1,0 +1,30 @@
+---
+layout: news
+title: Weld 5.1.1.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.1.1.Final released!
+desc: Weld 5.1.1.Final released!
+tags: [release]
+---
+:linkattrs:
+
+It's time for some minor updates and fixes, Weld 5.1.1.Final is now available!
+
+Main highlights are as follows:
+
+* Fix bean type assignability for beans with recursive generic types (link:https://issues.redhat.com/browse/WELD-2738[WELD-2738])
+* Failing validation for pasivation capability, Weld should throw `DeploymentException` instead of `DefinitionException` (link:https://issues.redhat.com/browse/WELD-2741[WELD-2741])
+* Avoid firing `ProcessInjectionTarget` multiple times if a specialized bean was vetoed (link:https://issues.redhat.com/browse/WELD-2742[WELD-2742])
+* `BeanManager#getReference` should not create a child `CreationalContext` instance (link:https://issues.redhat.com/browse/WELD-2743[WELD-2743])
+** This should only affect scenarios in which beans were 'manually' created and destroyed in which case the destruction could end up incomplete
+* Fix how Weld defines proxies to avoid problems in JDK 17+ along with the newest JBoss Class File Writer (1.3.0.Final) (link:https://issues.redhat.com/browse/WELD-2744[WELD-2744])
+* Correction to documentation which incorrectly suggested `@ManagedBean` was a bean defining annotation (link:https://issues.redhat.com/browse/WELD-2737[WELD-2737])
+
+
+As always, if you find further issues with Weld 5, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12397581[Release notes, window="_blank"] &#93;
