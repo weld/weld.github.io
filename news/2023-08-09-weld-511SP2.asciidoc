@@ -1,0 +1,22 @@
+---
+layout: news
+title: Weld 5.1.1.SP2
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.1.1.SP2 available
+desc: Weld 5.1.1.SP2 available
+tags: [release]
+---
+:linkattrs:
+
+Another bug-smashing release has landed in Maven Central and this time it's Weld 5.1.1.SP2.
+
+This is a very small but important change which addresses possible memory leak scenario (link:https://issues.redhat.com/browse/WELD-2750[WELD-2750]).
+There are multiple conditions for this leak to occur and while most applications are unlikely to be affected, it is still recommended to upgrade to this latest version.
+
+As always, if you find further issues with Weld 5, do let us know.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.1.SP2/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12410416[Release notes, window="_blank"] &#93;
