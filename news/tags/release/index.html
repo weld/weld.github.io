@@ -143,6 +143,41 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2023/08/09/weld-511SP2/">Weld 5.1.1.SP2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2023-8-9
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Another bug-smashing release has landed in Maven Central and this time it&#8217;s Weld 5.1.1.SP2.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This is a very small but important change which addresses possible memory leak scenario (<a href="https://issues.redhat.com/browse/WELD-2750">WELD-2750</a>).
+                  There are multiple conditions for this leak to occur and while most applications are unlikely to be affected, it is still recommended to upgrade to this latest version.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 5, do let us know.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410416" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2023/07/11/weld-511SP1/">Weld 5.1.1.SP1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -632,78 +667,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12380311" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/02/16/weld-403Final-319Final/">Weld 4.0.3.Final and 3.1.9.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-2-16
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.1.9.Final for Jakarta EE 8 and Weld 4.0.3.Final for Jakarta EE 9 are now available.</p>
-                  </div>
-                  <div class="admonitionblock note">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Note</div>
-                  </td>
-                  <td class="content">
-                  Weld 3.1 and Weld 4.0 now enter a maintenance mode - there will be no further active development on these branches. Instead, the focus will be on Weld 5/EE 10 and beyond.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Here is a brief list of notable changes; all of these are present in both Weld versions:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Gracefully handle non-existing classpath entries in SE (<a href="https://issues.jboss.org/browse/WELD-2605" target="_blank" rel="noopener">WELD-2605</a>)</p>
-                  </li>
-                  <li>
-                  <p>Proxies for classes starting with <code>jakarta.*</code> now have Weld proxy prefix instead (<a href="https://issues.jboss.org/browse/WELD-2684" target="_blank" rel="noopener">WELD-2684</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldInstance.Handle#get()</code> could incorrectly return the same instance even after destroying underlying contextual reference (<a href="https://issues.jboss.org/browse/WELD-2687" target="_blank" rel="noopener">WELD-2687</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed <code>BeanConfigurator#produceWith()</code> leaking dependent bean under certain conditions (<a href="https://issues.jboss.org/browse/WELD-2693" target="_blank" rel="noopener">WELD-2693</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct default package detection inside <code>ProxyFactory</code> (<a href="https://issues.jboss.org/browse/WELD-2704" target="_blank" rel="noopener">WELD-2704</a>)</p>
-                  </li>
-                  <li>
-                  <p>Several minor changes with regard to testing setup and update configurations (<a href="https://issues.jboss.org/browse/WELD-2706" target="_blank" rel="noopener">WELD-2706</a> and <a href="https://issues.jboss.org/browse/WELD-2707" target="_blank" rel="noopener">WELD-2707</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Last but not least, for those using WildFly, I would recommend taking a look into their <a href="https://www.wildfly.org/news/2022/01/21/WildFly-2022/" target="_blank" rel="noopener">release plan for 2022</a>.
-                  It details which WildFly is the last for EE 8 and EE 9 and what happens going onwards.
-                  Weld is of course going to keep up the pace and we are working on integrating Weld 5 into Wildfly.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.3.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.3.Final</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.9.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.9.Final</a> &#93;
-                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12359404" target="_blank" rel="noopener">Release notes for Weld 4.0.3.Final</a> &#93;
-                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12359403" target="_blank" rel="noopener">Release notes for Weld 3.1.9.Final</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
