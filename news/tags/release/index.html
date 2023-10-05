@@ -143,6 +143,66 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2023/10/05/weld-512Final/">Weld 5.1.2.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2023-10-5
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 5.1.2.Final has landed in Central and with it some new bufgixes.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Here is a summary of the changes:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Avoid creation of duplicated thread groups on application re-deploy (<a href="https://issues.redhat.com/browse/WELD-2755">WELD-2755</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This could lead to a very tiny memory leak on repeated app re-deploy while on app servers (such as WildFly)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p><code>WeldInitialListener</code> can no longer throw <code>NullPointerException</code> if the application failed to start properly (<a href="https://issues.redhat.com/browse/WELD-2752">WELD-2752</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>WeldManager#getContexts</code> not properly returns empty collection when there is no context for given scope (<a href="https://issues.redhat.com/browse/WELD-2761">WELD-2761</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix client proxy creation for <code>@Typed</code> beans with package-protected types (<a href="https://issues.redhat.com/browse/WELD-2758">WELD-2758</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld project now uses unified and automatic formatting and import sorting that happens during build (<a href="https://issues.redhat.com/browse/WELD-2753">WELD-2753</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.2.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12411521" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2023/08/09/weld-511SP2/">Weld 5.1.1.SP2</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -619,54 +679,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12382781" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/02/23/weld-500CR1/">Weld 5.0.0.CR1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-2-23
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 5 now has its first candidate release; Weld API 5.0.CR1 and Weld Core 5.0.0.CR1 are headed towards Maven Central.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This release has only minor differences from the Beta but it is a testable basis for Final specification release.
-                  Here is a quick overview:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Correct default package detection inside <code>ProxyFactory</code> (<a href="https://issues.jboss.org/browse/WELD-2704" target="_blank" rel="noopener">WELD-2704</a>)</p>
-                  </li>
-                  <li>
-                  <p>Use secure actions when obtaining constructors via reflection in <code>LiteExtensionTranslator</code> (<a href="https://issues.jboss.org/browse/WELD-2705" target="_blank" rel="noopener">WELD-2705</a>)</p>
-                  </li>
-                  <li>
-                  <p>Dozens of dependabot updates for various dependencies</p>
-                  </li>
-                  <li>
-                  <p>Updated to the latest released CDI version (4.0.0-RC5) and latest CDI TCK version (4.0.0.RC6)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12380311" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>

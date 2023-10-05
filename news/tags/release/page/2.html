@@ -143,6 +143,54 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2022/02/23/weld-500CR1/">Weld 5.0.0.CR1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2022-2-23
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 5 now has its first candidate release; Weld API 5.0.CR1 and Weld Core 5.0.0.CR1 are headed towards Maven Central.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This release has only minor differences from the Beta but it is a testable basis for Final specification release.
+                  Here is a quick overview:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Correct default package detection inside <code>ProxyFactory</code> (<a href="https://issues.jboss.org/browse/WELD-2704" target="_blank" rel="noopener">WELD-2704</a>)</p>
+                  </li>
+                  <li>
+                  <p>Use secure actions when obtaining constructors via reflection in <code>LiteExtensionTranslator</code> (<a href="https://issues.jboss.org/browse/WELD-2705" target="_blank" rel="noopener">WELD-2705</a>)</p>
+                  </li>
+                  <li>
+                  <p>Dozens of dependabot updates for various dependencies</p>
+                  </li>
+                  <li>
+                  <p>Updated to the latest released CDI version (4.0.0-RC5) and latest CDI TCK version (4.0.0.RC6)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12380311" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/02/16/weld-403Final-319Final/">Weld 4.0.3.Final and 3.1.9.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -1137,123 +1185,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12346364" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2020/08/12/weld-315Final/">Weld 3.1.5.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2020-8-12
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>New maintenance release is now out - Weld 3.1.5.Final.
-                  It comes along with Weld API 3.1.SP3 although there are no significant changes in the API.
-                  The release was mainly to update to a new parent project version, allowing us to consume newer plugins and prepare ground for MR JAR support.
-                  As for core artifacts, there are some bugfixes as usual, so let&#8217;s take a look at those.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Allow to aggressively invoke <code>setAttribute()</code> when manipulating with conversation map in session (<a href="https://issues.jboss.org/browse/WELD-2626" target="_blank" rel="noopener">WELD-2626</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This behaviour is gated behind a property; it doesn&#8217;t affect standard Weld behaviour</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Automatically cleanup leftover <code>HttpSessionDestructionContext</code> when starting new session context on a thread (<a href="https://issues.jboss.org/browse/WELD-2631" target="_blank" rel="noopener">WELD-2631</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix a rare case where an integer overflow could happen during alternative priority ordering (<a href="https://issues.jboss.org/browse/WELD-2628" target="_blank" rel="noopener">WELD-2628</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet Support</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Change <code>WebAppBeanArchiveScanner</code> to allow serving modules without publishing (<a href="https://issues.jboss.org/browse/WELD-2570" target="_blank" rel="noopener">WELD-2570</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other bits</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>ObserverMethodConfigurator</code> initialized by reading an <code>AnnotatedType</code> previously didn&#8217;t set the method as async when it should (<a href="https://issues.jboss.org/browse/WELD-2609" target="_blank" rel="noopener">WELD-2609</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix up generation of javadoc (especially with JDK 11) for shaded artifacts and make it include Weld API/SPI as well as CDI API javadoc</p>
-                  </li>
-                  <li>
-                  <p>Prepare ground for MR JAR releases which are a likely solution to JDK 11 class defining for SE (<a href="https://issues.jboss.org/browse/WELD-2619" target="_blank" rel="noopener">WELD-2619</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This is hopefully coming in the very next release</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Updates to website tooling (Docker image, Ruby dependencies) and updates to some old <code>http</code> references which should now be <code>https</code></p>
-                  </li>
-                  <li>
-                  <p>Re-enable testing of CDI TCK 1.2 with Weld 3.x; this was broken sometime during migration to Jakarta artifacts (<a href="https://issues.jboss.org/browse/WELD-2624" target="_blank" rel="noopener">WELD-2624</a>)</p>
-                  </li>
-                  <li>
-                  <p>A test that assumed an order in between conversation context lifecycle and session timeouts was found to be wrong (<code>ConversationContextDestroyedOnSessionTimeoutTest</code>) and was re-written to remove the erroneous assumption (<a href="https://issues.jboss.org/browse/WELD-2629" target="_blank" rel="noopener">WELD-2629</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct JaCoCo TCK execution (<a href="https://issues.jboss.org/browse/WELD-2625" target="_blank" rel="noopener">WELD-2625</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.5.Final/wildfly-20.0.1.Final-weld-3.1.5.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 20.0.1.Final</a> is available.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.4.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12343306" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
