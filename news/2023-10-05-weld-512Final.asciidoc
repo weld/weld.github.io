@@ -1,0 +1,28 @@
+---
+layout: news
+title: Weld 5.1.2.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 5.1.2.Final is now available
+desc: Weld 5.1.2.Final is now available
+tags: [release]
+---
+:linkattrs:
+
+Weld 5.1.2.Final has landed in Central and with it some new bufgixes.
+
+Here is a summary of the changes:
+
+* Avoid creation of duplicated thread groups on application re-deploy (link:https://issues.redhat.com/browse/WELD-2755[WELD-2755])
+** This could lead to a very tiny memory leak on repeated app re-deploy while on app servers (such as WildFly)
+* `WeldInitialListener` can no longer throw `NullPointerException` if the application failed to start properly (link:https://issues.redhat.com/browse/WELD-2752[WELD-2752])
+* `WeldManager#getContexts` not properly returns empty collection when there is no context for given scope (link:https://issues.redhat.com/browse/WELD-2761[WELD-2761])
+* Fix client proxy creation for `@Typed` beans with package-protected types (link:https://issues.redhat.com/browse/WELD-2758[WELD-2758])
+* Weld project now uses unified and automatic formatting and import sorting that happens during build (link:https://issues.redhat.com/browse/WELD-2753[WELD-2753])
+
+As always, if you find further issues with Weld 5, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.2.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12411521[Release notes, window="_blank"] &#93;
