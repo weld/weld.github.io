@@ -1,3 +1,7 @@
+- version: '6.0.0.Alpha1'
+  category: Experimental
+  date: 26.10.2023
+  versionId: 12413485
 - version: '5.1.2.Final'
   category: Final
   date: 05.10.2023

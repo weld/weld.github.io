@@ -1,0 +1,46 @@
+---
+layout: news
+title: Weld 6.0.0.Alpha1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 6.0.0.Alpha1 is now available
+desc: Weld 6.0.0.Alpha1 is now available
+tags: [release]
+---
+:linkattrs:
+
+Looking for a CDI 4.1 implementation? We've got you covered!
+Weld Core 6.0.0.Alpha1 is now available and comes along with CDI API 4.1.0.Alpha1.
+Note that this version also uses latest version (2.2.0-RC1) of the Jakarta Interceptors specification.
+
+
+CDI/CDI TCK related additions:
+
+* Create first implementation of CDI method invokers using `MethodHandles` (link:https://issues.redhat.com/browse/WELD-2764[WELD-2764])
+** If you want to read up more about the original CDI API design and PR, take a look (link:https://github.com/jakartaee/cdi/pull/639[here])
+** Note that this feature is still being improved on both, CDI side and (link:https://issues.redhat.com/browse/WELD-2765[Weld side]) but the general shape of it is already carved out
+* Support standardized means of getting interceptor bindings from `InvocationContext` (link:https://issues.redhat.com/browse/WELD-2756[WELD-2756])
+** This was already possible via set of methods in `WeldInvocationContext` as well as the `String` key under which we stored these bindings in `InvocationContext`
+** Both of the above are no deprecated (but still working) and users are expected to use the standardized approach
+* Support inspectable `CreationalContext` and `Contextual` in CDI TCK SPI (link:https://issues.redhat.com/browse/WELD-2757[WELD-2757])
+
+Other bugfixes and project QoL features:
+
+* Fix proxy creation for beans using `@Typed` and having package-protected types split across packages (link:https://issues.redhat.com/browse/WELD-2758[WELD-2758])
+* Correct how we determine proxy package for beans with unassignable types in their bean type set (link:https://issues.redhat.com/browse/WELD-2763[WELD-2763])
+** This  was only problematic in environments using `WeldDefaultProxyServices` to define their proxies (such as Weld SE)
+* `WeldManager#getContexts` now correctly returns an empty set when there are no contexts for given scope (link:https://issues.redhat.com/browse/WELD-2761[WELD-2761])
+* Fix possible memory leak with repetitive thread group creation (link:https://issues.redhat.com/browse/WELD-2755[WELD-2755])
+* `WeldInitialListener` can no longer throw NPE is application fails to start (link:https://issues.redhat.com/browse/WELD-2752[WELD-2752])
+** Only possible in some EE containers on repeated re-deployment of Weld applications
+* `LazySessionBeanStore` no longer swallows exceptions happening when attempting to initiate HTTP session (link:https://issues.redhat.com/browse/WELD-2762[WELD-2762])
+* Weld Core and Weld API are now using formatter plugin and impsort instead of checkstyle (link:https://issues.redhat.com/browse/WELD-2753[WELD-2753])
+* Jandex version was bumped to 3.x across the project (link:https://issues.redhat.com/browse/WELD-2754[WELD-2754])
+
+
+As always, if you find further issues with Weld 6, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.0.Alpha1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12413485[Release notes, window="_blank"] &#93;
