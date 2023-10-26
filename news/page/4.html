@@ -143,6 +143,67 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2021/04/14/weld-401SP1-317SP1/">Weld 4.0.1.SP1 and 3.1.7.SP1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2021-4-14
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Thanks to your reports, several flaws were discovered in the new class defining for JDK 11+.
+                  We have addressed those issues and because we reckon they are potentially blocking, we have released Weld 3.1.7.SP1 and 4.0.1.SP1.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Two main issues were:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Producers returning an interface type could sometimes try to define a proxy class with invalid name (<a href="https://issues.jboss.org/browse/WELD-2662" target="_blank" rel="noopener">WELD-2662</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Similar thing could happen for inner classes which should now work as well</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Proxy class names for hierarchical type structures of interfaces could lead to a jumbled combination of package and name (<a href="https://issues.jboss.org/browse/WELD-2666" target="_blank" rel="noopener">WELD-2666</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Part of this fix is also an improvement wherein Weld actively tries to define new proxies into non-java packages making sure it uses <code>MethodHandles.Lookup</code> whenever applicable</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Apart from that, this release also addresses a problem with Undertow servlet integration in which (<a href="https://issues.redhat.com/browse/WELD-2664" target=""_blank">Weld tried too eagerly to provide it&#8217;s own instances of <code>Listener</code></a>).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 4.0.1.SP1</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation Weld 3.1.7.SP1</a> &#93;
+                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354546" target="_blank" rel="noopener">Release notes for Weld 4.0.1.SP1</a> &#93;
+                  &#91; <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12354545" target="_blank" rel="noopener">Release notes for Weld 3.1.7.SP1</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2021/03/22/weld-401Final/">Weld 4.0.1.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -532,104 +593,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352570" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2020/09/18/weld-400Beta1/">Weld 4.0.0.Beta1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2020-9-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new Weld 4 release is now available!
-                  Latest core version is now 4.0.0.Beta1 and Weld API that ships with it is 4.0.Beta1.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I will not be listing links to issues as usual, because I think more important work was done outside of JIRA tracking this time (although you can check the issues <a href="https://issues.redhat.com/projects/WELD/versions/12346364">here</a>).
-                  Instead, let me sum it up in a short list of noticeable changes:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>All Weld bits are now present in Maven Central</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Including servlet core (and shaded) which had to be left out last time</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>We are able to execute CDI TCKs in EE 9 environment once again and it&#8217;s all passing</p>
-                  </li>
-                  <li>
-                  <p>We are now able to test servlets with Tomcats and Undertow</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Jetty testing is not possible yet because there is no <a href="https://github.com/arquillian/arquillian-container-jetty/issues/43">Arquillian adapter</a> for it yet</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Reworked documentation generation tooling</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld docs now have similar look to those of CDI and are distributed in either PDF or single page HTML format</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Did some updates on Javadoc generation in API and Core if generated with JDK 11</p>
-                  </li>
-                  <li>
-                  <p>Big update pass on tooling and dependencies</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>We are now using Dependabot and have bumped almost every dependency and tooling in the project</p>
-                  </li>
-                  <li>
-                  <p>Which also led to nice cleanup and fixing of several issues</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>On top of that, every bugfix that would go into Weld 3 is of course being added to Weld 4 as well so those aren&#8217;t missing either!</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Sadly we cannot provide a patch for WildFly as there is not yet any official release that would support EE 9.
-                  As soon as there is one, we will surely follow up with Weld patch!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12346364" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

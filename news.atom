@@ -2,13 +2,150 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>https://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2023-10-05T20:22:24+00:00</updated>
+  <updated>2023-10-26T09:41:51+00:00</updated>
   <link href="https://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="https://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>https://weld.cdi-spec.org/news/2023/10/26/weld-600Alpha1/</id>
+    <title>Weld 6.0.0.Alpha1</title>
+    <updated>2023-10-26T09:41:51+00:00</updated>
+    <published>2023-10-26T00:00:00+00:00</published>
+    <link href="https://weld.cdi-spec.org/news/2023/10/26/weld-600Alpha1/" rel="alternate" type="text/html" />
+    <author>
+      <name>Matej Novotny</name>
+    </author>
+    <category term="release"></category>
+    <summary>
+      Looking for a CDI 4.1 implementation? We&#8217;ve got you covered!
+      Weld Core 6.0.0.Alpha1 is now available and comes along with CDI API 4.1.0.Alpha1.
+      Note that this version also uses latest version (2.2.0-RC1) of the Jakarta Interceptors specification.
+      
+      
+      CDI/CDI TCK related additions:
+      
+      
+      
+      
+      Create first implementation of CDI method invokers using MethodHandles (WELD-2764)
+      
+      
+      
+      If you want to read up more about the original CDI API design and PR, take a look (here)
+      
+      
+      Note that this feature is still being improved on both, CDI side and (Weld side) but the general shape of it is already carved out
+      
+      
+      
+      
+      
+      Support standardized means of getting interceptor bindings from InvocationContext (WELD-2756)
+      
+      
+      
+      This was already...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Looking for a CDI 4.1 implementation? We’ve got you covered!
+      Weld Core 6.0.0.Alpha1 is now available and comes along with CDI API 4.1.0.Alpha1.
+      Note that this version also uses latest version (2.2.0-RC1) of the Jakarta Interceptors specification.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;CDI/CDI TCK related additions:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Create first implementation of CDI method invokers using &lt;code&gt;MethodHandles&lt;/code&gt; (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2764&quot;&gt;WELD-2764&lt;/a&gt;)&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;If you want to read up more about the original CDI API design and PR, take a look (&lt;a href=&quot;https://github.com/jakartaee/cdi/pull/639&quot;&gt;here&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Note that this feature is still being improved on both, CDI side and (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2765&quot;&gt;Weld side&lt;/a&gt;) but the general shape of it is already carved out&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Support standardized means of getting interceptor bindings from &lt;code&gt;InvocationContext&lt;/code&gt; (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2756&quot;&gt;WELD-2756&lt;/a&gt;)&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;This was already possible via set of methods in &lt;code&gt;WeldInvocationContext&lt;/code&gt; as well as the &lt;code&gt;String&lt;/code&gt; key under which we stored these bindings in &lt;code&gt;InvocationContext&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Both of the above are no deprecated (but still working) and users are expected to use the standardized approach&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Support inspectable &lt;code&gt;CreationalContext&lt;/code&gt; and &lt;code&gt;Contextual&lt;/code&gt; in CDI TCK SPI (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2757&quot;&gt;WELD-2757&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Other bugfixes and project QoL features:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Fix proxy creation for beans using &lt;code&gt;@Typed&lt;/code&gt; and having package-protected types split across packages (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2758&quot;&gt;WELD-2758&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Correct how we determine proxy package for beans with unassignable types in their bean type set (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2763&quot;&gt;WELD-2763&lt;/a&gt;)&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;This  was only problematic in environments using &lt;code&gt;WeldDefaultProxyServices&lt;/code&gt; to define their proxies (such as Weld SE)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;&lt;code&gt;WeldManager#getContexts&lt;/code&gt; now correctly returns an empty set when there are no contexts for given scope (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2761&quot;&gt;WELD-2761&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Fix possible memory leak with repetitive thread group creation (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2755&quot;&gt;WELD-2755&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;&lt;code&gt;WeldInitialListener&lt;/code&gt; can no longer throw NPE is application fails to start (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2752&quot;&gt;WELD-2752&lt;/a&gt;)&lt;/p&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Only possible in some EE containers on repeated re-deployment of Weld applications&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;&lt;code&gt;LazySessionBeanStore&lt;/code&gt; no longer swallows exceptions happening when attempting to initiate HTTP session (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2762&quot;&gt;WELD-2762&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Weld Core and Weld API are now using formatter plugin and impsort instead of checkstyle (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2753&quot;&gt;WELD-2753&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Jandex version was bumped to 3.x across the project (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2754&quot;&gt;WELD-2754&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;As always, if you find further issues with Weld 6, let us know and we’ll try to help.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;https://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
+      [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/6.0.0.Alpha1/en-US/html_single/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12413485&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>https://weld.cdi-spec.org/news/2023/10/05/weld-512Final/</id>
     <title>Weld 5.1.2.Final</title>
-    <updated>2023-10-05T20:22:24+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2023-10-05T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/10/05/weld-512Final/" rel="alternate" type="text/html" />
     <author>
@@ -96,7 +233,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/08/09/weld-511SP2/</id>
     <title>Weld 5.1.1.SP2</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2023-08-09T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/08/09/weld-511SP2/" rel="alternate" type="text/html" />
     <author>
@@ -139,7 +276,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/07/11/weld-511SP1/</id>
     <title>Weld 5.1.1.SP1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2023-07-11T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/07/11/weld-511SP1/" rel="alternate" type="text/html" />
     <author>
@@ -203,7 +340,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/06/12/weld-511Final/</id>
     <title>Weld 5.1.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2023-06-12T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/06/12/weld-511Final/" rel="alternate" type="text/html" />
     <author>
@@ -292,7 +429,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/10/03/weld-510Final/</id>
     <title>Weld 5.1.0.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-10-03T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/10/03/weld-510Final/" rel="alternate" type="text/html" />
     <author>
@@ -384,7 +521,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/</id>
     <title>Weld 5.0.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-06-24T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/" rel="alternate" type="text/html" />
     <author>
@@ -459,7 +596,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/</id>
     <title>Weld 5.0.0.SP2</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-06-08T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/" rel="alternate" type="text/html" />
     <author>
@@ -504,7 +641,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/</id>
     <title>Weld 5.0.0.SP1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-05-04T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/" rel="alternate" type="text/html" />
     <author>
@@ -549,7 +686,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/</id>
     <title>Weld 5.0.0.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-04-29T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/" rel="alternate" type="text/html" />
     <author>
@@ -632,7 +769,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/</id>
     <title>Weld 5.0.0.CR2</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-03-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/" rel="alternate" type="text/html" />
     <author>
@@ -672,7 +809,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/</id>
     <title>Weld 5.0.0.CR1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-02-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/" rel="alternate" type="text/html" />
     <author>
@@ -741,7 +878,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/</id>
     <title>Weld 4.0.3.Final and 3.1.9.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-02-16T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/" rel="alternate" type="text/html" />
     <author>
@@ -838,7 +975,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/</id>
     <title>Weld 5.0.0.Beta1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2022-01-24T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -1149,7 +1286,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/</id>
     <title>Weld 4.0.2.Final and 3.1.8.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2021-07-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/" rel="alternate" type="text/html" />
     <author>
@@ -1230,7 +1367,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/</id>
     <title>Weld 4.0.1.SP1 and 3.1.7.SP1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2021-04-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/" rel="alternate" type="text/html" />
     <author>
@@ -1310,7 +1447,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/</id>
     <title>Weld 4.0.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2021-03-22T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/" rel="alternate" type="text/html" />
     <author>
@@ -1429,7 +1566,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/</id>
     <title>Weld 3.1.7.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2021-03-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/" rel="alternate" type="text/html" />
     <author>
@@ -1543,7 +1680,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/</id>
     <title>Weld 3.1.6.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2021-01-13T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/" rel="alternate" type="text/html" />
     <author>
@@ -1701,7 +1838,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/</id>
     <title>Weld 4.0.0.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2020-12-16T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/" rel="alternate" type="text/html" />
     <author>
@@ -1779,7 +1916,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/</id>
     <title>Weld 4.0.0.Beta1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2020-09-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -1896,7 +2033,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/</id>
     <title>Weld 3.1.5.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2020-08-12T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/" rel="alternate" type="text/html" />
     <author>
@@ -2034,7 +2171,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/</id>
     <title>Weld 4 and Jakarta EE 9</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2020-05-13T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/" rel="alternate" type="text/html" />
     <author>
@@ -2173,7 +2310,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</id>
     <title>Weld 3.1.4.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2020-03-28T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/" rel="alternate" type="text/html" />
     <author>
@@ -2285,7 +2422,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</id>
     <title>Weld 3.1.3.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2019-11-28T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/" rel="alternate" type="text/html" />
     <author>
@@ -2419,7 +2556,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</id>
     <title>Weld 3.1.2.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2019-08-06T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/" rel="alternate" type="text/html" />
     <author>
@@ -2573,7 +2710,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</id>
     <title>Weld 3.1.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2019-05-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/" rel="alternate" type="text/html" />
     <author>
@@ -2706,7 +2843,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</id>
     <title>Weld 3.1.0.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2019-02-06T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/" rel="alternate" type="text/html" />
     <author>
@@ -2958,7 +3095,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</id>
     <title>Weld 2.4.8.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-09-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/" rel="alternate" type="text/html" />
     <author>
@@ -3095,7 +3232,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</id>
     <title>Weld 3.0.5.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-07-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/" rel="alternate" type="text/html" />
     <author>
@@ -3259,7 +3396,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-07-10T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -3308,7 +3445,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</id>
     <title>Weld 3.0.4.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-04-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/" rel="alternate" type="text/html" />
     <author>
@@ -3507,7 +3644,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</id>
     <title>Weld 2.4.7.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-03-20T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/" rel="alternate" type="text/html" />
     <author>
@@ -3690,7 +3827,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</id>
     <title>Weld 3.0.3.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2018-02-09T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/" rel="alternate" type="text/html" />
     <author>
@@ -3825,7 +3962,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</id>
     <title>Weld meets JUnit 5</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-12-19T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/" rel="alternate" type="text/html" />
     <author>
@@ -4002,7 +4139,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</id>
     <title>Weld 2.4.6.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-12-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/" rel="alternate" type="text/html" />
     <author>
@@ -4181,7 +4318,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</id>
     <title>Weld 3.0.2.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-11-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/" rel="alternate" type="text/html" />
     <author>
@@ -4356,7 +4493,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</id>
     <title>Weld 2.4.5.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-09-11T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/" rel="alternate" type="text/html" />
     <author>
@@ -4473,7 +4610,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</id>
     <title>Weld 3.0.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-08-25T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/" rel="alternate" type="text/html" />
     <author>
@@ -4624,7 +4761,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</id>
     <title>Weld Vert.x Next?</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-08-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/" rel="alternate" type="text/html" />
     <author>
@@ -4883,7 +5020,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</id>
     <title>Weld 2.4.4.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-06-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/" rel="alternate" type="text/html" />
     <author>
@@ -5035,7 +5172,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</id>
     <title>Tour around Weld 3</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-05-19T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -5353,7 +5490,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</id>
     <title>Weld 3.0.0.Final - the first implementation of CDI 2.0!</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-05-15T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/" rel="alternate" type="text/html" />
     <author>
@@ -5531,7 +5668,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</id>
     <title>Weld 2.4.3.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-04-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/" rel="alternate" type="text/html" />
     <author>
@@ -5659,7 +5796,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</id>
     <title>Weld 3.0.0.CR2</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-03-03T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/" rel="alternate" type="text/html" />
     <author>
@@ -5795,7 +5932,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</id>
     <title>Weld 2.4.2.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-02-02T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/" rel="alternate" type="text/html" />
     <author>
@@ -5913,7 +6050,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/</id>
     <title>Weld Tip 4 - Testing CDI/Weld apps</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-02-01T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/02/01/tip4-testing/" rel="alternate" type="text/html" />
     <author>
@@ -6176,7 +6313,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/</id>
     <title>Weld 3.0.0.CR1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2017-01-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/01/23/weld-300CR1/" rel="alternate" type="text/html" />
     <author>
@@ -6228,7 +6365,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/</id>
     <title>Weld 3.0.0.Beta1</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2016-12-19T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2016/12/19/weld-300Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -6339,7 +6476,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/</id>
     <title>Weld 2.4.1.Final</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
+    <updated>2023-10-26T08:44:55+00:00</updated>
     <published>2016-11-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2016/11/18/weld-241Final/" rel="alternate" type="text/html" />
     <author>
@@ -6434,358 +6571,6 @@
       [ &lt;a href=&quot;https://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
       [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
       [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12331553&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-    </content>
-  </entry>
-  <entry>
-    <id>https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/</id>
-    <title>Weld Tip 3 - Boost performance of Weld apps</title>
-    <updated>2023-08-09T09:01:51+00:00</updated>
-    <published>2016-10-25T00:00:00+00:00</published>
-    <link href="https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/" rel="alternate" type="text/html" />
-    <author>
-      <name>Martin Kouba</name>
-    </author>
-    <category term="tips"></category>
-    <summary>
-      Contents
-      
-      Bootstrap
-      
-      Discovery mode
-      Extensions
-      Jandex
-      
-      
-      Runtime
-      
-      Identify problematic components easily
-      Lazy initialization of bean instances
-      Drawbacks of @Dependent pseudo-scope
-      Mapping CDI contexts to HTTP requests
-      Bean identifier index optimization
-      
-      
-      
-      
-      
-      In this article we&#8217;re going to dive into various performance aspects of CDI applications.
-      As you&#8217;ve probably noticed performance testing is sometimes tricky.
-      First of all, it&#8217;s difficult to create a meaningful benchmark.
-      One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. JMH for microbenchmarks) accordingly.
-      But even that usually proves to be unsufficient.
-      One should also run the test in a relevant context (data, load, etc.).
-      Performance specialists also say that&#8217;s it&#8217;s good to...
-    </summary>
-    <content type="html">
-      &lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
-      &lt;div id=&quot;toctitle&quot; class=&quot;title&quot;&gt;Contents&lt;/div&gt;
-      &lt;ul class=&quot;sectlevel1&quot;&gt;
-      &lt;li&gt;&lt;a href=&quot;#_bootstrap&quot;&gt;Bootstrap&lt;/a&gt;
-      &lt;ul class=&quot;sectlevel2&quot;&gt;
-      &lt;li&gt;&lt;a href=&quot;#_discovery_mode&quot;&gt;Discovery mode&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_extensions&quot;&gt;Extensions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jandex&quot;&gt;Jandex&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_runtime&quot;&gt;Runtime&lt;/a&gt;
-      &lt;ul class=&quot;sectlevel2&quot;&gt;
-      &lt;li&gt;&lt;a href=&quot;#_identify_problematic_components_easily&quot;&gt;Identify problematic components easily&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_lazy_initialization_of_bean_instances&quot;&gt;Lazy initialization of bean instances&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_drawbacks_of_dependent_pseudo_scope&quot;&gt;Drawbacks of &lt;code&gt;@Dependent&lt;/code&gt; pseudo-scope&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_mapping_cdi_contexts_to_http_requests&quot;&gt;Mapping CDI contexts to HTTP requests&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#_bean_identifier_index_optimization&quot;&gt;Bean identifier index optimization&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In this article we’re going to dive into various performance aspects of CDI applications.
-      As you’ve probably noticed performance testing is sometimes tricky.
-      First of all, it’s difficult to create a meaningful benchmark.
-      One should understand the JVM specifics (the need for warmup, garbage collection, JVM settings, etc.) and also use appropriate tools (e.g. &lt;a href=&quot;http://openjdk.java.net/projects/code-tools/jmh/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JMH&lt;/a&gt; for microbenchmarks) accordingly.
-      But even that usually proves to be unsufficient.
-      One should also run the test in a relevant context (data, load, etc.).
-      Performance specialists also say that’s it’s good to avoid premature optimizations but keep performance aspects in mind when tuning the &quot;final&quot; code.
-      But all these considerations are out of scope of this article.
-      Let’s go through several areas where CDI affects the performance of your application and discuss the possibilities.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_bootstrap&quot;&gt;Bootstrap&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;During bootstrap the overhead of a framework should be minimal so that it does not &lt;em&gt;slow down&lt;/em&gt; the application startup and also does not eat all the memory available.
-      However, CDI needs to do all that magic behind the scenes - read annotations, build and validate metadata, etc.
-      The following sections describe what could be done to minimize the impact.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_discovery_mode&quot;&gt;Discovery mode&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In CDI 1.0 there was only one &lt;em&gt;&quot;discovery mode&quot;&lt;/em&gt;.
-      How does it work?
-      Simply put: find all bean archives (containing &lt;code&gt;beans.xml&lt;/code&gt;), discover and process all the found classes (identify beans, etc.).
-      Needless to say, this might be a performance problem for large applications with thousands of classes.
-      In CDI 1.1+ we call this mode &lt;code&gt;all&lt;/code&gt; and a bean archive with this mode is called &lt;strong&gt;EXPLICIT&lt;/strong&gt;.
-      Since CDI 1.1+ a new discovery mode - &lt;code&gt;annotated&lt;/code&gt; - can be used.
-      The difference is that if this mode is used only classes with a &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#bean_defining_annotations&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;bean defining annotation&lt;/a&gt; are considered.
-      In other words, a component must be explicitly designated.
-      A bean archive with this mode is called &lt;strong&gt;IMPLICIT&lt;/strong&gt;.
-      To make things a little bit more complicated, an implicit bean archive does not have to contain a &lt;code&gt;beans.xml&lt;/code&gt; file at all.
-      One class with a bean defining annotation or a session bean is enough.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Implicit bean archive has pros and cons:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot; /&gt;&lt;/span&gt; saves a lot of memory if an archive contains a lot of classes which should NOT become beans (the container does not have to store the metadata)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot; /&gt;&lt;/span&gt; speeds up the bootstrap (the container does not have to process all the types, fire events like &lt;code&gt;ProcessBean&lt;/code&gt;, etc.)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; does not fire &lt;code&gt;ProcessAnnotatedType&lt;/code&gt; for all types from the bean archive; this breaks some extensions (e.g. &lt;code&gt;MessageBundleExtension&lt;/code&gt; from DeltaSpike)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; does not pick up &lt;code&gt;@javax.inject.Singleton&lt;/code&gt; beans (it’s not a bean defining annotation)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;strong&gt;CONCLUSION&lt;/strong&gt;: If possible, use the &lt;code&gt;annotated&lt;/code&gt; discovery mode.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      Most Weld-based runtimes allow to suppress implicit bean archives without &lt;code&gt;beans.xml&lt;/code&gt;, i.e. to require the &lt;code&gt;beans.xml&lt;/code&gt; file in bean archives so that it’s not necessary to scan all the parts of the application. See also &lt;a href=&quot;https://weld.cdi-spec.org/documentation/#4&quot;&gt;FAQ&lt;/a&gt;.
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      If it’s not possible to use &lt;code&gt;annotated&lt;/code&gt; mode, you can try a Weld-specific feature to conserve memory used: &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Veto types without bean defining annotation&lt;/a&gt;.
-      A similar solution is going to be standardized in CDI 2.0 (see also &lt;a href=&quot;https://issues.jboss.org/browse/CDI-420&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CDI-420&lt;/a&gt;).
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_extensions&quot;&gt;Extensions&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;CDI portable extensions are essential integration points.
-      And users love integrated technologies.
-      However, the more extensions the more work must be done during bootstrap.
-      For example, there is a &lt;code&gt;ProcessAnnotatedType&lt;/code&gt; container lifecycle event.
-      This event is fired:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;for every type in an EXPLICIT bean archive,&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;for every session bean and every type with a bean defining annotation in an IMPLICIT bean archive.&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;The delivery might be restricted by means of type arguments, e.g. for observer &lt;code&gt;void observeNumbers(@Observes ProcessAnnotatedType&amp;lt;? extends Number&amp;gt; event)&lt;/code&gt; an extension will be notified for every class assignable to &lt;code&gt;Number&lt;/code&gt;.
-      However, if you do &lt;code&gt;&amp;lt;T&amp;gt; void observe(@Observes ProcessAnnotatedType&amp;lt;T&amp;gt; event)&lt;/code&gt; your extension will be notified for every class that is discovered.
-      Now if we have an application with one EXPLICIT bean archive with 2000 classes, then a specific observer method on such extesion will be called 2000x.
-      And if there are three similar extensions, the CDI container will have to create 2000 events and notify 6000 observers.
-      This should be ok unless the observer logic is overly complex.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;&lt;strong&gt;CONCLUSION&lt;/strong&gt;: Pay attention to extensions used in your application.
-      If you wonder what extensions are in service, use for example Weld Probe observers view or fired events view together with &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#config-dev-mode&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;org.jboss.weld.probe.eventMonitor.containerLifecycleEvents&lt;/code&gt; enabled&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      If possible, don’t use the extensions which observe all the annotated types from your application, i.e. which defined something like &lt;code&gt;void observe(@Observes ProcessAnnotatedType&amp;lt;?&amp;gt; event)&lt;/code&gt;.
-      Since CDI 1.1 &lt;code&gt;@WithAnnotations&lt;/code&gt; should be used to restrict the set of types an extension is going to process. Weld Probe warns you about these extensions.
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;jandex&quot;&gt;Jandex&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In some environments (WildFly, Weld SE, and more) Weld can leverage an &quot;offline reflection library&quot;, such as &lt;a href=&quot;https://github.com/wildfly/jandex&quot; target=&quot;&amp;lt;em&amp;gt;blank&quot;&gt;Jandex&lt;/a&gt;, to speed up the scanning process.
-      These libraries allow to effectively filter classes &lt;a href=&quot;http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#what_classes_are_beans&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;which are not beans&lt;/a&gt; and vetoed classes.
-      It works like this: Jandex generates an index (scans the bytecode) and Weld is using this index to filter out useless classes.
-      As a result Weld does not even have to _load the classes&lt;/p&gt; or use &lt;em&gt;reflection API&lt;/em&gt; to detect types which should be ignored.&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      In Weld SE and Servlet it’s also possible to generate the Jandex index beforehand, e.g. using the &lt;a href=&quot;https://github.com/wildfly/jandex#user-content-using-the-ant-task-to-index-your-project&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ant task&lt;/a&gt;.
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_runtime&quot;&gt;Runtime&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In runtime the overhead of a framework should be minimal so that it’s not an application bottleneck.
-      However, CDI needs to do all that magic behind the scenes - create bean instances, manage contexts, intercept and decorate invocations, etc.
-      The following sections describe what could be done to minimize the impact.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_identify_problematic_components_easily&quot;&gt;Identify problematic components easily&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Before you start a profiler or a similar tool, it’s a good idea to identify all the CDI components involved in a problematic &quot;request&quot;.
-      This means all the beans, observer methods, interceptors and decorators.
-      The good start might be the Weld Probe invocation trees view.
-      An invocation tree shows all the business method invocations (including producers, disposers and observer methods).
-      Once you spot a problematic component, you can check the business logic and associated interceptors and decorators.
-      Sometimes profilers are just an overkill.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_lazy_initialization_of_bean_instances&quot;&gt;Lazy initialization of bean instances&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Weld initializes bean instances of normal scoped beans lazily.
-      In other words, when injecting a normal scoped bean (&lt;code&gt;@RequestScoped&lt;/code&gt;, &lt;code&gt;@ApplicationScoped&lt;/code&gt;, etc.) a new instance is not created until actually used.
-      Instead, a shared client proxy is injected.
-      This proxy invokes a method upon the correct bean instance (created if necessary).&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      Having many injection points resolving to normal scoped beans does not necessarily mean additional overhead associated with bean instance creation.
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;In the following example, an &lt;code&gt;OrderProcessor&lt;/code&gt; instance is not created until its &lt;code&gt;OrderProcess.process()&lt;/code&gt; method is called:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java hljs&quot; data-lang=&quot;java&quot;&gt;@ApplicationScoped
-      class OrderProcessor {
-        @PostConstruct
-        void init() {
-          // Do some expensive initialization logic
-        }
-        void process() {
-          // Business logic
-        }
-      }
-      @RequestScoped
-      class OrderService {
-        @Inject
-        OrderProcessor processor; // A shared client proxy is injected
-      
-        void create(Order order) {
-          if (order.isValid()) {
-              // Processor is not initialized unless we have a valid order
-              processor.process(order);
-          }
-        }
-      }&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock tip&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot; /&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      Weld’s session context is also initilized lazily and doesn’t require an HTTP session to actually exist until a bean instance must be written (i.e. until a method of a &lt;code&gt;@SessionScoped&lt;/code&gt; bean is invoked).
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_drawbacks_of_dependent_pseudo_scope&quot;&gt;Drawbacks of &lt;code&gt;@Dependent&lt;/code&gt; pseudo-scope&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;From performance point of view &lt;code&gt;@Dependent&lt;/code&gt; is NOT a best fit for:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean that declares a producer which is frequently used (i.e. the produced bean is created very often)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean that declares an observer method which is frequently notified (i.e. the event is fired very often)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot; /&gt;&lt;/span&gt; a bean which is used in EL expressions&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;For all these cases, a new &lt;code&gt;@Dependent&lt;/code&gt; bean instance is created to handle the logic and destroyed when the invocation/evaluation completes.
-      In other words, the bean instances are not reused.
-      That’s not necessarily a problem if a bean does not have an &quot;expensive&quot; initialization or depends on others &quot;heavyweight&quot; components.
-      But very often, a wider scope is more suitable.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_mapping_cdi_contexts_to_http_requests&quot;&gt;Mapping CDI contexts to HTTP requests&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;By default, bult-in CDI contexts are activated at the beginning of an HTTP request processing and deactivated once the processing finishes.
-      This might be an unnecessary overhead in certain situations, e.g. when serving static resources (images, JavaScript, etc.).
-      Weld allows to activate the contexts only for a subset of requests only.
-      A regular expression may be used for filtering HTTP requests that should have contexts active during their processing.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;listingblock&quot;&gt;
-      &lt;div class=&quot;content&quot;&gt;
-      &lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml hljs&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;web-app version=&quot;3.1&quot; xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee/&quot;
-          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-          xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;&amp;gt;
-          &amp;lt;context-param&amp;gt;
-              &amp;lt;param-name&amp;gt;org.jboss.weld.context.mapping&amp;lt;/param-name&amp;gt;
-              &amp;lt;param-value&amp;gt;.*\.html&amp;lt;/param-value&amp;gt; &amp;lt;!-- Only activate contexts for resources with html suffix, e.g. /some/path.html --&amp;gt;
-          &amp;lt;/context-param&amp;gt;
-      &amp;lt;/web-app&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect2&quot;&gt;
-      &lt;h3 id=&quot;_bean_identifier_index_optimization&quot;&gt;Bean identifier index optimization&lt;/h3&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;This optimization is used to &lt;strong&gt;reduce the HTTP session replication overhead&lt;/strong&gt; (clustering use case).
-      Simply put: Weld tries to minimize the amount of bytes send over the network.
-      However, the inconsistency detection mechanism may cause problems in environments where application stop does not imply HTTP session destruction.
-      Thus it’s disabled by default in Servlet containers.
-      See also the &lt;a href=&quot;http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#_bean_identifier_index_optimization&quot;&gt;reference guide&lt;/a&gt; for more info.&lt;/p&gt;
-      &lt;/div&gt;
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;/div&gt;

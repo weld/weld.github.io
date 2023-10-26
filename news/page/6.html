@@ -143,6 +143,133 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2019/08/06/weld-312Final/">Weld 3.1.2.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2019-8-6
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 3.1.2.Final is coming along with Weld API 3.1.SP1. It is another small release bringing in mainly bugfixes.
+                  One notable thing is that thanks to guys from Jetty, Weld 3.1.2.Final is ready to operate with lastest Jetty 9 as well as upcoming Jetty 10.
+                  Other than that we have tried to address some dodgy issues with possible race conditions and leaks - see for yourself!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld API/SPI</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fixed possible leak in Jandex index through <code>SimpleServiceRegistry</code> (<a href="https://issues.jboss.org/browse/WELD-2592" target="_blank" rel="noopener">WELD-2592</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This could only happen on application server supporting Jandex index and was only noticeable with a lot of application deployed at the same time</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Core</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fixed a case where some context event notification wouldn&#8217;t trigger observers due to race condition (<a href="https://issues.jboss.org/browse/WELD-2557" target="_blank" rel="noopener">WELD-2557</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fixed rare <code>IllegalAccessError</code> problem during interception when methods had (package) private parameters from different methods (<a href="https://issues.jboss.org/browse/WELD-2583" target="_blank" rel="noopener">WELD-2583</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Such methods are now automatically ignored when creating intercepted subclasses</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Attempted to fix a race condition that could happen when trying to concurrently initiate conversation ID generator (<a href="https://issues.jboss.org/browse/WELD-2585" target="_blank" rel="noopener">WELD-2585</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld now correctly disregards synthetic methods when considering proxyability (<a href="https://issues.jboss.org/browse/WELD-2586" target="_blank" rel="noopener">WELD-2586</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correction to <code>beans.xml</code> parses when using Weld namespace (<a href="https://issues.jboss.org/browse/WELD-2591" target="_blank" rel="noopener">WELD-2591</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld SE</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Improved classpath scanning to account for manifest file entries (<a href="https://issues.jboss.org/browse/WELD-2589" target="_blank" rel="noopener">WELD-2589</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>javax.enterprise.inject.scan.implicit=true</code> and <code>org.jboss.weld.se.archive.isolation=false</code> now work together correctly (<a href="https://issues.jboss.org/browse/WELD-2590" target="_blank" rel="noopener">WELD-2590</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Update Weld to new Jetty integration model prior to Jetty release (<a href="https://issues.jboss.org/browse/WELD-2587" target="_blank" rel="noopener">WELD-2587</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld 3.1.2.Final is ready to roll with to-be-released Jetty 9.4.x as well as Jetty 10.x</p>
+                  </li>
+                  <li>
+                  <p>Of course we also kept legacy support in place, so even older version will still run</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.2.Final/wildfly-17.0.1.Final-weld-3.1.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 17.0.1.Final</a> is available.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.2.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12341958" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2019/05/07/weld-311Final/">Weld 3.1.1.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -742,47 +869,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/3.0.5.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12337420" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2018/07/10/weld-team-changes/">Weld team changes</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2018-7-10
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/team">team</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I&#8217;m pleased to announce a couple of changes coming to the Weld team.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>First of all, <a href="https://github.com/manovotn">Matěj Novotný</a> will be taking over the leadership of the project.
-                  Matěj has proven himself to be an excellent engineer, contributing not only to Weld projects but also to the CDI specification and TCK development.
-                  I&#8217;m really happy that I can hand over the leadership to this guy!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Matěj&#8217;s primary task is leading the project towards "Java 11 world" and to meet the other challenges such as reactive programming model enhancements.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Secondly, <a href="https://github.com/nziakova">Nikoleta Žiaková</a> is joining the team as a quality engineer.
-                  She’s going to work on expanding our testsuites and improving our continuous integration.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Last but not least, I&#8217;m not going to leave the project but stay as a contributor focused on related technologies such as <a href="http://wildfly.org/">WildFly</a>, <a href="https://github.com/thorntail/thorntail">Thorntail</a> and MicroProfile.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Martin</p>
                   </div>
                 </div>
                 <hr>
