@@ -143,6 +143,106 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/02/26/weld-600Beta1/">Weld 6.0.0.Beta1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-2-26
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld Core 6.0.0.Beta1 along with Weld API 6.0.Beta2 are the latest two artifacts you&#8217;re going to need if you&#8217;re looking for an implementation of the CDI API 4.1.0.Beta1.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Changes based on CDI specification since last 6.x version:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The method invoker API in CDI has been simplified and the transformer functionality removed from the specification (<a href="https://issues.redhat.com/browse/WELD-2765">WELD-2765</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld API introduced <code>WeldInvokerBuilder</code> which retains all of the transformers/wrappers that were originally present</p>
+                  </li>
+                  <li>
+                  <p>We also added some more validation and other tweaks but the whole functionality is still being worked on as part of the follow up release</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Support declaring <code>@Priority</code> on producers (<a href="https://issues.redhat.com/browse/WELD-2768">WELD-2768</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This is also one of the features added by CDI API 4.1 and Beta1 of Weld supports it</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p><code>BeanManager</code> implementations in Weld now correctly extend <code>ELAwareBeanManager</code> from newly introduced CDI API module (<a href="https://issues.redhat.com/browse/WELD-2769">WELD-2769</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>There is no functionality change, this is just a step forward towards removing EL dependency from core CDI</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Implemented programmatic access to assignability rules on <code>BeanManager</code> (<a href="https://issues.redhat.com/browse/WELD-2774">WELD-2774</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>BeanContainer</code>/<code>BeanManager</code> now allow users to invoke <code>#isMatchingBean()</code> and <code>#isMatchingEvent()</code> methods</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Other changes and bugfixes:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Correct inheritance of producer fields if there is an extension present (<a href="https://issues.redhat.com/browse/WELD-2773">WELD-2773</a>)</p>
+                  </li>
+                  <li>
+                  <p>Make sure <code>@Default</code> qualifier is added to events fired via <code>BeanManager#getEvent()</code> where appropriate (<a href="https://issues.redhat.com/browse/WELD-2775">WELD-2775</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE - manually registered portable extensions now reside in synthetic bean archive instead of their own (<a href="https://issues.redhat.com/browse/WELD-2776">WELD-2776</a>)</p>
+                  </li>
+                  <li>
+                  <p>Updated CI setup to make sure bulk of our tests is running against JDK 21 (<a href="https://issues.redhat.com/browse/WELD-2777">WELD-2777</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 6, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12415474" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2023/10/26/weld-600Alpha1/">Weld 6.0.0.Alpha1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -398,69 +498,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410330" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/06/12/weld-511Final/">Weld 5.1.1.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-6-12
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>It&#8217;s time for some minor updates and fixes, Weld 5.1.1.Final is now available!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Main highlights are as follows:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fix bean type assignability for beans with recursive generic types (<a href="https://issues.redhat.com/browse/WELD-2738">WELD-2738</a>)</p>
-                  </li>
-                  <li>
-                  <p>Failing validation for pasivation capability, Weld should throw <code>DeploymentException</code> instead of <code>DefinitionException</code> (<a href="https://issues.redhat.com/browse/WELD-2741">WELD-2741</a>)</p>
-                  </li>
-                  <li>
-                  <p>Avoid firing <code>ProcessInjectionTarget</code> multiple times if a specialized bean was vetoed (<a href="https://issues.redhat.com/browse/WELD-2742">WELD-2742</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>BeanManager#getReference</code> should not create a child <code>CreationalContext</code> instance (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This should only affect scenarios in which beans were 'manually' created and destroyed in which case the destruction could end up incomplete</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Fix how Weld defines proxies to avoid problems in JDK 17+ along with the newest JBoss Class File Writer (1.3.0.Final) (<a href="https://issues.redhat.com/browse/WELD-2744">WELD-2744</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correction to documentation which incorrectly suggested <code>@ManagedBean</code> was a bean defining annotation (<a href="https://issues.redhat.com/browse/WELD-2737">WELD-2737</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12397581" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>

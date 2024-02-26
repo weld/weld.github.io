@@ -143,6 +143,106 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/02/26/weld-600Beta1/">Weld 6.0.0.Beta1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-2-26
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld Core 6.0.0.Beta1 along with Weld API 6.0.Beta2 are the latest two artifacts you&#8217;re going to need if you&#8217;re looking for an implementation of the CDI API 4.1.0.Beta1.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Changes based on CDI specification since last 6.x version:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The method invoker API in CDI has been simplified and the transformer functionality removed from the specification (<a href="https://issues.redhat.com/browse/WELD-2765">WELD-2765</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld API introduced <code>WeldInvokerBuilder</code> which retains all of the transformers/wrappers that were originally present</p>
+                  </li>
+                  <li>
+                  <p>We also added some more validation and other tweaks but the whole functionality is still being worked on as part of the follow up release</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Support declaring <code>@Priority</code> on producers (<a href="https://issues.redhat.com/browse/WELD-2768">WELD-2768</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This is also one of the features added by CDI API 4.1 and Beta1 of Weld supports it</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p><code>BeanManager</code> implementations in Weld now correctly extend <code>ELAwareBeanManager</code> from newly introduced CDI API module (<a href="https://issues.redhat.com/browse/WELD-2769">WELD-2769</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>There is no functionality change, this is just a step forward towards removing EL dependency from core CDI</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Implemented programmatic access to assignability rules on <code>BeanManager</code> (<a href="https://issues.redhat.com/browse/WELD-2774">WELD-2774</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>BeanContainer</code>/<code>BeanManager</code> now allow users to invoke <code>#isMatchingBean()</code> and <code>#isMatchingEvent()</code> methods</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Other changes and bugfixes:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Correct inheritance of producer fields if there is an extension present (<a href="https://issues.redhat.com/browse/WELD-2773">WELD-2773</a>)</p>
+                  </li>
+                  <li>
+                  <p>Make sure <code>@Default</code> qualifier is added to events fired via <code>BeanManager#getEvent()</code> where appropriate (<a href="https://issues.redhat.com/browse/WELD-2775">WELD-2775</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE - manually registered portable extensions now reside in synthetic bean archive instead of their own (<a href="https://issues.redhat.com/browse/WELD-2776">WELD-2776</a>)</p>
+                  </li>
+                  <li>
+                  <p>Updated CI setup to make sure bulk of our tests is running against JDK 21 (<a href="https://issues.redhat.com/browse/WELD-2777">WELD-2777</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 6, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12415474" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2023/10/26/weld-600Alpha1/">Weld 6.0.0.Alpha1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -684,84 +784,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/04/29/weld-500Final/">Weld 5.0.0.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-4-29
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>CDI 4 has passed its Final ballot and is now available in Maven Central.
-                  Some of you may have played with it already, but where is the fun in it, if you don&#8217;t have a Final implementation, right?
-                  Have no fear, Weld 5 Final is here!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As usual, there is Weld 5.0.Final API as well as Weld 5.0.0.Final core impl.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>It is very much the same as CR2, with some additional tweaks and fixes that came to light when working on integrations within EE servers.
-                  That&#8217;s right, EE servers are already making progress towards integrating CDI 4 and Weld 5.
-                  Folks over at Open Liberty did their Weld 5 homework about a week ago and WildFly now has a pending <a href="https://github.com/wildfly/wildfly/pull/15474">pull request</a> that adds missing bits for CDI 4 support.
-                  It might still be a while before there is a Beta WildFly release, but if you have the nerves, you can build the SNAPSHOT at least.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Back on the topic of changes, here is a list of fixes from CR2 to Final:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Self-interception can now be used on protected methods, params and return types (<a href="https://issues.jboss.org/browse/WELD-2712" target="_blank" rel="noopener">WELD-2712</a>)</p>
-                  </li>
-                  <li>
-                  <p>Rewieved Weld examples and made sure they run for EE 10 (<a href="https://issues.jboss.org/browse/WELD-2708" target="_blank" rel="noopener">WELD-2708</a>)</p>
-                  </li>
-                  <li>
-                  <p>Review Weld 5 documentation (<a href="https://issues.jboss.org/browse/WELD-2696" target="_blank" rel="noopener">WELD-2696</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Note that the servlet part is still outdated and being worked on as we need to see if there is workable EE 10 variant, see <a href="https://issues.jboss.org/browse/WELD-2716" target="_blank" rel="noopener">WELD-2716</a></p>
-                  </li>
-                  <li>
-                  <p>We expect that this will be sorted by the time we ship 5.0.1.Final</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Firing of the <code>Startup</code> event for web modules can happen too early (<a href="https://issues.jboss.org/browse/WELD-2717" target="_blank" rel="noopener">WELD-2717</a>)</p>
-                  </li>
-                  <li>
-                  <p>Synthetic beans coming from Build Compatible extension should be registered under their respective extensions (<a href="https://issues.jboss.org/browse/WELD-2718" target="_blank" rel="noopener">WELD-2718</a>)</p>
-                  </li>
-                  <li>
-                  <p>Exceptions thrown during execution of Build Compatible extensions now correctly preserve their cause (<a href="https://issues.jboss.org/browse/WELD-2710" target="_blank" rel="noopener">WELD-2710</a>)</p>
-                  </li>
-                  <li>
-                  <p>Some of our SE testing was being skipped ever since Groovy dependency update, this is now corrected (<a href="https://issues.jboss.org/browse/WELD-2714" target="_blank" rel="noopener">WELD-2714</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12383754" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/tags/release/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/tags/release/page/5.html" class="page-link">5</a> <a href="/news/tags/release/page/6.html" class="page-link">6</a> <a href="/news/tags/release/page/2.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/tags/release/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/tags/release/page/6.html" class="page-link">6</a> <a href="/news/tags/release/page/7.html" class="page-link">7</a> <a href="/news/tags/release/page/2.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
