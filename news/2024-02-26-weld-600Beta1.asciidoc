@@ -1,0 +1,39 @@
+---
+layout: news
+title: Weld 6.0.0.Beta1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 6.0.0.Beta1 is now available
+desc: Weld 6.0.0.Beta1 is now available
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 6.0.0.Beta1 along with Weld API 6.0.Beta2 are the latest two artifacts you're going to need if you're looking for an implementation of the CDI API 4.1.0.Beta1.
+
+Changes based on CDI specification since last 6.x version:
+
+* The method invoker API in CDI has been simplified and the transformer functionality removed from the specification (link:https://issues.redhat.com/browse/WELD-2765[WELD-2765])
+** Weld API introduced `WeldInvokerBuilder` which retains all of the transformers/wrappers that were originally present
+** We also added some more validation and other tweaks but the whole functionality is still being worked on as part of the follow up release
+* Support declaring `@Priority` on producers (link:https://issues.redhat.com/browse/WELD-2768[WELD-2768])
+** This is also one of the features added by CDI API 4.1 and Beta1 of Weld supports it
+* `BeanManager` implementations in Weld now correctly extend `ELAwareBeanManager` from newly introduced CDI API module (link:https://issues.redhat.com/browse/WELD-2769[WELD-2769])
+** There is no functionality change, this is just a step forward towards removing EL dependency from core CDI
+* Implemented programmatic access to assignability rules on `BeanManager` (link:https://issues.redhat.com/browse/WELD-2774[WELD-2774])
+** `BeanContainer`/`BeanManager` now allow users to invoke `#isMatchingBean()` and `#isMatchingEvent()` methods
+
+Other changes and bugfixes:
+
+* Correct inheritance of producer fields if there is an extension present (link:https://issues.redhat.com/browse/WELD-2773[WELD-2773])
+* Make sure `@Default` qualifier is added to events fired via `BeanManager#getEvent()` where appropriate (link:https://issues.redhat.com/browse/WELD-2775[WELD-2775])
+* Weld SE - manually registered portable extensions now reside in synthetic bean archive instead of their own (link:https://issues.redhat.com/browse/WELD-2776[WELD-2776])
+* Updated CI setup to make sure bulk of our tests is running against JDK 21 (link:https://issues.redhat.com/browse/WELD-2777[WELD-2777])
+
+
+As always, if you find further issues with Weld 6, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.0.Beta1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12415474[Release notes, window="_blank"] &#93;
