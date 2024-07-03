@@ -1,0 +1,48 @@
+---
+layout: news
+title: Weld 6.0.0.Beta4
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 6.0.0.Beta4 is now available
+desc: Weld 6.0.0.Beta4 is now available
+tags: [release]
+---
+:linkattrs:
+
+New versions of Weld artifacts are now available in Central - Weld Core `6.0.0.Beta4` accompanied by Weld API `6.0.Beta5`.
+
+Where applicable, `6.0.0.Beta4` bumps up Jakarta dependencies to their `Final` variants as well as implements remaining features from CDI spec, adds new Weld-specific API and addresses multiple backlog issues that were scheduled for this major release.
+
+You might be wondering where did Betas 2 and 3 go. While you can find their artifacts in Central, they bear no difference from `Beta4` apart from not having separate distributable ZIP and docs.
+With that in mind, below is the list of changes since Weld 6.0.0.Beta1:
+
+* Added the ability to register Build Compatible Extension in Weld SE without discovery (link:https://issues.redhat.com/browse/WELD-2772[WELD-2772])
+* Use `Lock` instead of `synchronized` within `ContextualInstanceStrategy` to be more virtual thread-friendly (link:https://issues.redhat.com/browse/WELD-2788[WELD-2788])
+* Skip superclass declarations of final methods when creating proxies (link:https://issues.redhat.com/browse/WELD-2785[WELD-2785])
+* Observer method confiurator now correctly allow to override `Reception` settings without changing its `notify()` method (link:https://issues.redhat.com/browse/WELD-2786[WELD-2786])
+* Correct `CommonLogger` to mention correct GAV for Jandex (link:https://issues.redhat.com/browse/WELD-2770[WELD-2770])
+* Invoker API enhancements (link:https://issues.redhat.com/browse/WELD-2780[WELD-2780])
+** Proper exception handling
+** Document API Weld offer above what CDI specification has; Weld retains all parts of the initial design CDI had
+** Added benchmarks to have a measure of our implementation versus direct invocation
+** Code cleanup and other minor tweaks
+* Remove `SecurityManager` related code from Weld (link:https://issues.redhat.com/browse/WELD-2789[WELD-2789])
+** `SecurityManager` has been deprecated for quite a upcoming JDK versions plan to remove it completely so we remove it as part of the major release version
+** This means Weld 6 no longer uses priviledged actions to perform various tasks, such as constructor invocations, reflection on classes etc.
+* Remove `WARN` logging when an interceptor binding target of lifecycle interceptors targets anything other than `TYPE` (link:https://issues.redhat.com/browse/WELD-2790[WELD-2790])
+* Revise Weld 6 examples; only keep essentials (link:https://issues.redhat.com/browse/WELD-2771[WELD-2771])
+* Address Weld API javadoc warning (link:https://issues.redhat.com/browse/WELD-2779[WELD-2779])
+* Revisit servlet setup and testing (link:https://issues.redhat.com/browse/WELD-2784[WELD-2784])
+* Clean up legacy Jetty integration parts (link:https://issues.redhat.com/browse/WELD-2787[WELD-2787])
+
+
+Note that the latest link:http://docs.jboss.org/weld/reference/6.0.0.Beta4/en-US/html_single/[documentation, window="_blank"] incorrectly states that it is for `SNAPSHOT` which isn't the case.
+It is built for Beta4 but due to incorrect script setup the version number wasn't picked up properly.
+This will be corrected for the next release.
+
+As always, if you find further issues with Weld 6, let us know and we'll try to help.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.0.Beta4/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12423381[Release notes, window="_blank"] &#93;
