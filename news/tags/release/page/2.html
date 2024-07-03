@@ -143,6 +143,42 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2022/05/04/weld-500SP1/">Weld 5.0.0.SP1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2022-5-4
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>A new version of Weld core is now in Maven Central - 5.0.0.SP1.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There have been reports of a bytecode verification error in certain scenarios reported by <a href="https://www.eclipse.org/lists/cdi-dev/msg00586.html">GlassFish</a> and <a href="https://github.com/wildfly/wildfly/pull/15474#issuecomment-1113505376">WildFly</a> trying to integrate Weld 5.0.0.Final.
+                  We have investigated the cause and identified the problematic change, you can read more about it in <a href="https://issues.redhat.com/browse/WELD-2719">WELD-2719</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Weld 5.0.0.SP1 release reverts the offending change (<a href="https://issues.redhat.com/browse/WELD-2712">WELD-2712</a>) and otherwise keeps Weld intant in terms of changes.
+                  In case you identify any further issues, don&#8217;t hesitate to reach out.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12385753" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/04/29/weld-500Final/">Weld 5.0.0.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -1008,125 +1044,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12353263" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2021/01/13/weld-316Final/">Weld 3.1.6.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2021-1-13
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.1.6.Final is now available and brings a dosage of bug fixes and updates with it.
-                  Without further due, let&#8217;s dive straight into it!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fix for decorators operating on interfaces with default methods (<a href="https://issues.jboss.org/browse/WELD-2647" target="_blank" rel="noopener">WELD-2647</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld will no longer try to load classes for specific JDK version when using multi-release JARs (<a href="https://issues.jboss.org/browse/WELD-2652" target="_blank" rel="noopener">WELD-2652</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>ProxyFactory</code> was changed to produce more deterministic and sensible names when based off interfaces (<a href="https://issues.jboss.org/browse/WELD-2618" target="_blank" rel="noopener">WELD-2618</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>NOTE: this slightly changes names of generated proxy classes but has no effect on the functionality itself</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld Servlet</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Detect Jetty server in GWT 2.8+ test environment (<a href="https://issues.jboss.org/browse/WELD-2635" target="_blank" rel="noopener">WELD-2635</a>)</p>
-                  </li>
-                  <li>
-                  <p>Injection into Undertow servlet listener now works as intended (<a href="https://issues.jboss.org/browse/WELD-2636" target="_blank" rel="noopener">WELD-2636</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This should work from Undertow 2.2.0.Final onwards</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Bean defining annotation can be specified as generic <code>SeContainerInitializer</code> property (<a href="https://issues.jboss.org/browse/WELD-2639" target="_blank" rel="noopener">WELD-2639</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other bits</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed issue preventing upgrade of surefire plugin in our testsuite (<a href="https://issues.jboss.org/browse/WELD-2634" target="_blank" rel="noopener">WELD-2634</a>)</p>
-                  </li>
-                  <li>
-                  <p>Several corrections to OSGi package configuration (<a href="https://issues.jboss.org/browse/WELD-2642" target="_blank" rel="noopener">WELD-2642</a>, <a href="https://issues.jboss.org/browse/WELD-2644" target="_blank" rel="noopener">WELD-2644</a>, <a href="https://issues.jboss.org/browse/WELD-2645" target="_blank" rel="noopener">WELD-2645</a>, <a href="https://issues.jboss.org/browse/WELD-2646" target="_blank" rel="noopener">WELD-2646</a>)</p>
-                  </li>
-                  <li>
-                  <p>Re-introduce multi HTML documentation output in best-effort mode; this is mainly to keep old links working (<a href="https://issues.jboss.org/browse/WELD-2640" target="_blank" rel="noopener">WELD-2640</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix intermittent test failure in <code>DispatchingTest</code> caused by race condition (<a href="https://issues.jboss.org/browse/WELD-2650" target="_blank" rel="noopener">WELD-2650</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.6.Final/wildfly-21.0.2.Final-weld-3.1.6.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 21.0.2.Final</a> is available.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.6.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12346955" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

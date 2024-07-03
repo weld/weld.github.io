@@ -143,6 +143,115 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/07/03/weld-600Beta4/">Weld 6.0.0.Beta4</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-7-3
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>New versions of Weld artifacts are now available in Central - Weld Core <code>6.0.0.Beta4</code> accompanied by Weld API <code>6.0.Beta5</code>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Where applicable, <code>6.0.0.Beta4</code> bumps up Jakarta dependencies to their <code>Final</code> variants as well as implements remaining features from CDI spec, adds new Weld-specific API and addresses multiple backlog issues that were scheduled for this major release.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>You might be wondering where did Betas 2 and 3 go. While you can find their artifacts in Central, they bear no difference from <code>Beta4</code> apart from not having separate distributable ZIP and docs.
+                  With that in mind, below is the list of changes since Weld 6.0.0.Beta1:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Added the ability to register Build Compatible Extension in Weld SE without discovery (<a href="https://issues.redhat.com/browse/WELD-2772">WELD-2772</a>)</p>
+                  </li>
+                  <li>
+                  <p>Use <code>Lock</code> instead of <code>synchronized</code> within <code>ContextualInstanceStrategy</code> to be more virtual thread-friendly (<a href="https://issues.redhat.com/browse/WELD-2788">WELD-2788</a>)</p>
+                  </li>
+                  <li>
+                  <p>Skip superclass declarations of final methods when creating proxies (<a href="https://issues.redhat.com/browse/WELD-2785">WELD-2785</a>)</p>
+                  </li>
+                  <li>
+                  <p>Observer method confiurator now correctly allow to override <code>Reception</code> settings without changing its <code>notify()</code> method (<a href="https://issues.redhat.com/browse/WELD-2786">WELD-2786</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correct <code>CommonLogger</code> to mention correct GAV for Jandex (<a href="https://issues.redhat.com/browse/WELD-2770">WELD-2770</a>)</p>
+                  </li>
+                  <li>
+                  <p>Invoker API enhancements (<a href="https://issues.redhat.com/browse/WELD-2780">WELD-2780</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Proper exception handling</p>
+                  </li>
+                  <li>
+                  <p>Document API Weld offer above what CDI specification has; Weld retains all parts of the initial design CDI had</p>
+                  </li>
+                  <li>
+                  <p>Added benchmarks to have a measure of our implementation versus direct invocation</p>
+                  </li>
+                  <li>
+                  <p>Code cleanup and other minor tweaks</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Remove <code>SecurityManager</code> related code from Weld (<a href="https://issues.redhat.com/browse/WELD-2789">WELD-2789</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>SecurityManager</code> has been deprecated for quite a upcoming JDK versions plan to remove it completely so we remove it as part of the major release version</p>
+                  </li>
+                  <li>
+                  <p>This means Weld 6 no longer uses priviledged actions to perform various tasks, such as constructor invocations, reflection on classes etc.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Remove <code>WARN</code> logging when an interceptor binding target of lifecycle interceptors targets anything other than <code>TYPE</code> (<a href="https://issues.redhat.com/browse/WELD-2790">WELD-2790</a>)</p>
+                  </li>
+                  <li>
+                  <p>Revise Weld 6 examples; only keep essentials (<a href="https://issues.redhat.com/browse/WELD-2771">WELD-2771</a>)</p>
+                  </li>
+                  <li>
+                  <p>Address Weld API javadoc warning (<a href="https://issues.redhat.com/browse/WELD-2779">WELD-2779</a>)</p>
+                  </li>
+                  <li>
+                  <p>Revisit servlet setup and testing (<a href="https://issues.redhat.com/browse/WELD-2784">WELD-2784</a>)</p>
+                  </li>
+                  <li>
+                  <p>Clean up legacy Jetty integration parts (<a href="https://issues.redhat.com/browse/WELD-2787">WELD-2787</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Note that the latest <a href="http://docs.jboss.org/weld/reference/6.0.0.Beta4/en-US/html_single/" target="_blank" rel="noopener">documentation</a> incorrectly states that it is for <code>SNAPSHOT</code> which isn&#8217;t the case.
+                  It is built for Beta4 but due to incorrect script setup the version number wasn&#8217;t picked up properly.
+                  This will be corrected for the next release.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 6, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Beta4/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12423381" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/02/26/weld-600Beta1/">Weld 6.0.0.Beta1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -450,59 +559,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/07/11/weld-511SP1/">Weld 5.1.1.SP1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-7-11
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new SP release of Weld 5 is now avaiable.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Latest release, Weld 5.1.1.Final, has shown that one of the changes (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>) had unforseen and, sadly, untested consequences.
-                  Some of the integrators and some of community were using <code>BeanManager#getReference</code> in scenarios which were broken by this change.
-                  While the use cases aren&#8217;t explicitly backed by the specification or its TCKs, we decided we don&#8217;t want to break them, especially not in a micro release.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This SP release therefore aims to correct the above and only adds one other tiny change:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Revert the change of <code>BeanManager#getReference</code> and solve this issue differently (<a href="https://issues.redhat.com/browse/WELD-2745">WELD-2745</a>)</p>
-                  </li>
-                  <li>
-                  <p>Modify how <code>toString()</code> is invoked on proxies of removed EJB beans (<a href="https://issues.redhat.com/browse/WELD-2747">WELD-2747	</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Big thanks for (<a href="https://github.com/ljnelson">Laird Nelson</a>) and (<a href="https://github.com/arjantijms">Arjan Tijms</a>) for bringing these cases to my attention as well as helping to understand and resolve them!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 5, do let us know.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410330" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/17.html" class="page-link">17</a> <a href="/news/page/18.html" class="page-link">18</a> <a href="/news/page/2.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/18.html" class="page-link">18</a> <a href="/news/page/19.html" class="page-link">19</a> <a href="/news/page/2.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
