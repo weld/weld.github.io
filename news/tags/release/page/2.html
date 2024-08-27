@@ -143,6 +143,42 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2022/06/08/weld-500SP2/">Weld 5.0.0.SP2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2022-6-8
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Another quick turnaround as more integrators adopt Weld 5 and help us squash bugs.
+                  Weld 5.0.0.SP2 is headed into Central as we speak.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The main reason for this service release is <a href="https://issues.redhat.com/browse/WELD-2721">WELD-2721</a> which was a spec violation in how <code>AfterBeanDiscovery</code> methods were treated outside of lifecycle observer method invocations.
+                  Apart from that, there was also a corner case NPE during Weld Servlet and SE cooperation bootstrap (<a href="https://issues.redhat.com/browse/WELD-2720">WELD-2720</a>).</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if there are more problems with Weld 5, let us know and we&#8217;ll try to help.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.SP2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12390013" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/05/04/weld-500SP1/">Weld 5.0.0.SP1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -945,105 +981,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/4.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352776" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2021/03/18/weld-317Final/">Weld 3.1.7.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2021-3-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.1.7.Final along with API 3.1.SP4 is now up for grabs!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along a few bugfixes, the flagship of this release is a rework of Weld&#8217;s default class defining utilities which should eliminate those pesky JDK 11+ warnings about illegal reflective access.
-                  You can find more details on it below or in the <a href="https://issues.redhat.com/browse/WELD-2581">JIRA ticket</a>; in case you encounter any issue with it, please don&#8217;t hesitate to reach out to us.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>So, let&#8217;s take a closer look:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Class Defining in Weld</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core is now a Multi-Release JAR providing two different implementations for JDK 8 and JDK 11 or newer</p>
-                  </li>
-                  <li>
-                  <p>Integrators are still encouraged to implement <a href="https://github.com/weld/api/blob/3.1.SP4/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java"><code>ProxyServices</code></a> class from our API</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>All implementations of this interface are now presumed to support class defining (<a href="https://github.com/weld/api/blob/3.1.SP4/weld-spi/src/main/java/org/jboss/weld/serialization/spi/ProxyServices.java#L138-L150"><code>ProxyServices#supportsClassDefining()</code></a> is now deprecated and not used)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>For SE environment or an integrator that doesn&#8217;t implement the aforementioned API, Weld now provides a default implementation of <code>ProxyServices</code> which:</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>On JDK 8 behaves the same as it did until now - it cracks open <code>ClassLoader.defineClass(&#8230;&#8203;)</code> method and uses that</p>
-                  </li>
-                  <li>
-                  <p>On JDK 11+ it uses a combination of <code>MethodHandles.Lookup</code> and a custom <code>ClassLoader</code>; the former is used for vast majority of cases with class loader being a solution for edge cases such as default packages or beans from signed JARs</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other Weld Core Fixes</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>BeanAttributesConfigurator</code> could incorrectly initialize default qualifiers when <code>@Named</code> was involved (<a href="https://issues.jboss.org/browse/WELD-2659" target="_blank" rel="noopener">WELD-2659</a>)</p>
-                  </li>
-                  <li>
-                  <p>Synthetic alternative beans did not trigger <code>ProcessBean</code> event as they should when enabled (<a href="https://issues.jboss.org/browse/WELD-2658" target="_blank" rel="noopener">WELD-2658</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed proxy creation for beans in default package (<a href="https://issues.jboss.org/browse/WELD-2657" target="_blank" rel="noopener">WELD-2657</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed a corner case scenario where a hierarchy of classes with bridge methods would not get correctly intercepted (<a href="https://issues.jboss.org/browse/WELD-2656" target="_blank" rel="noopener">WELD-2656</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>There is no WildFly patch at the moment. We are currently exploring how to properly ship a patch that would align with WildFly usage of Galleon; the tracking JIRA can be seen (<a href="https://issues.redhat.com/browse/WELD-2660">here</a>).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.7.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12353263" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
