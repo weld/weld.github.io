@@ -1,0 +1,33 @@
+---
+layout: news
+title: Weld 5.1.3.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Squashing bugs with Weld 5.1.3.Final!
+desc: Squashing bugs with Weld 5.1.3.Final!
+tags: [release]
+---
+:linkattrs:
+
+A new version of Weld 5.1 has landed in Maven Central.
+
+This is a bug squashing round which backports several notable fixes and changes from Weld 6 into Weld 5:
+
+* Change `BeanManager` resolution process for `BuildCompatibleExtension` not belonging to any bean archive (link:https://issues.redhat.com/browse/WELD-2794[WELD-2794])
+* `LazySessionBeanStore` no longer swallows exceptions happening when attempting to initiate HTTP session (link:https://issues.redhat.com/browse/WELD-2762[WELD-2762])
+* Correct how we determine proxy package for beans with unassignable types in their bean type set (link:https://issues.redhat.com/browse/WELD-2763[WELD-2763])
+** This was only problematic in environments using WeldDefaultProxyServices to define their proxies (such as Weld SE)
+* Correct `CommonLogger` to mention correct GAV for Jandex (link:https://issues.redhat.com/browse/WELD-2770[WELD-2770])
+* Added the ability to register Build Compatible Extension in Weld SE without discovery (link:https://issues.redhat.com/browse/WELD-2772[WELD-2772])
+* Correct inheritance of producer fields if there is an extension present (link:https://issues.redhat.com/browse/WELD-2773[WELD-2773])
+* Make sure `@Default` qualifier is added to events fired via `BeanManager#getEvent()` where appropriate (link:https://issues.redhat.com/browse/WELD-2775[WELD-2775])
+* Observer method confiurator now correctly allows to override `Reception` settings without changing its `notify()` method (link:https://issues.redhat.com/browse/WELD-2786[WELD-2786])
+* Clean up legacy Jetty integration parts (link:https://issues.redhat.com/browse/WELD-2787[WELD-2787])
+* Use `Lock` instead of `synchronized` within `ContextualInstanceStrategy` to be more virtual thread-friendly (link:https://issues.redhat.com/browse/WELD-2788[WELD-2788])
+* Skip superclass declarations of final methods when creating proxies (link:https://issues.redhat.com/browse/WELD-2785[WELD-2785])
+* Ensure OSGi bundle has access to all dependencies needed for built-in beans (link:https://issues.redhat.com/browse/WELD-2796[WELD-2796])
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.3.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12414627[Release notes, window="_blank"] &#93;
