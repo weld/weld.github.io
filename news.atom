@@ -2,13 +2,76 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>https://weld.cdi-spec.org/</id>
   <title>Weld</title>
-  <updated>2024-11-13T07:46:56+00:00</updated>
+  <updated>2024-11-28T10:19:02+00:00</updated>
   <link href="https://weld.cdi-spec.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="https://weld.cdi-spec.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>https://weld.cdi-spec.org/news/2024/11/28/weld-600CR2/</id>
+    <title>Weld 6.0.0.CR2</title>
+    <updated>2024-11-28T10:19:02+00:00</updated>
+    <published>2024-11-28T00:00:00+00:00</published>
+    <link href="https://weld.cdi-spec.org/news/2024/11/28/weld-600CR2/" rel="alternate" type="text/html" />
+    <author>
+      <name>Matej Novotny</name>
+    </author>
+    <category term="release"></category>
+    <summary>
+      Turns out we forgot to perform some code cleanup in the CR1 - so here goes 6.0.0.CR2 which removes deprecated code pieces.
+      Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we&#8217;ve kept that code around for now.
+      
+      
+      Resolved issues in this version:
+      
+      
+      
+      
+      Revisit deprecated code in Weld Core (WELD-2804)
+      
+      
+      Remove WeldCrossContextFilter (WELD-2803)
+      
+      
+      
+      
+      As per usual, please report any issues you discover with this release so that we can squash those bugs.
+      
+      
+      &#91; Download &#93;
+      &#91; Documentation &#93;
+      &#91; Release notes &#93;...
+    </summary>
+    <content type="html">
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Turns out we forgot to perform some code cleanup in the &lt;code&gt;CR1&lt;/code&gt; - so here goes &lt;code&gt;6.0.0.CR2&lt;/code&gt; which removes deprecated code pieces.
+      Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we’ve kept that code around for now.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;Resolved issues in this version:&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ulist&quot;&gt;
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;p&gt;Revisit deprecated code in Weld Core (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2804&quot;&gt;WELD-2804&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+      &lt;p&gt;Remove &lt;code&gt;WeldCrossContextFilter&lt;/code&gt; (&lt;a href=&quot;https://issues.redhat.com/browse/WELD-2803&quot;&gt;WELD-2803&lt;/a&gt;)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;As per usual, please report any issues you discover with this release so that we can squash those bugs.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;[ &lt;a href=&quot;https://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
+      [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
+      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12436952&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
+      &lt;/div&gt;
+    </content>
+  </entry>
+  <entry>
     <id>https://weld.cdi-spec.org/news/2024/11/13/weld-600CR1/</id>
     <title>Weld 6.0.0.CR1</title>
-    <updated>2024-11-13T07:46:56+00:00</updated>
+    <updated>2024-11-28T10:12:29+00:00</updated>
     <published>2024-11-13T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2024/11/13/weld-600CR1/" rel="alternate" type="text/html" />
     <author>
@@ -106,7 +169,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2024/08/27/weld-513Final/</id>
     <title>Weld 5.1.3.Final</title>
-    <updated>2024-11-13T07:46:56+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2024-08-27T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2024/08/27/weld-513Final/" rel="alternate" type="text/html" />
     <author>
@@ -207,7 +270,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2024/07/03/weld-600Beta4/</id>
     <title>Weld 6.0.0.Beta4</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2024-07-03T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2024/07/03/weld-600Beta4/" rel="alternate" type="text/html" />
     <author>
@@ -324,7 +387,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2024/02/26/weld-600Beta1/</id>
     <title>Weld 6.0.0.Beta1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2024-02-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2024/02/26/weld-600Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -445,7 +508,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/10/26/weld-600Alpha1/</id>
     <title>Weld 6.0.0.Alpha1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2023-10-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/10/26/weld-600Alpha1/" rel="alternate" type="text/html" />
     <author>
@@ -582,7 +645,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/10/05/weld-512Final/</id>
     <title>Weld 5.1.2.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2023-10-05T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/10/05/weld-512Final/" rel="alternate" type="text/html" />
     <author>
@@ -670,7 +733,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/08/09/weld-511SP2/</id>
     <title>Weld 5.1.1.SP2</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2023-08-09T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/08/09/weld-511SP2/" rel="alternate" type="text/html" />
     <author>
@@ -713,7 +776,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/07/11/weld-511SP1/</id>
     <title>Weld 5.1.1.SP1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2023-07-11T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/07/11/weld-511SP1/" rel="alternate" type="text/html" />
     <author>
@@ -777,7 +840,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2023/06/12/weld-511Final/</id>
     <title>Weld 5.1.1.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2023-06-12T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2023/06/12/weld-511Final/" rel="alternate" type="text/html" />
     <author>
@@ -866,7 +929,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/10/03/weld-510Final/</id>
     <title>Weld 5.1.0.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-10-03T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/10/03/weld-510Final/" rel="alternate" type="text/html" />
     <author>
@@ -958,7 +1021,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/</id>
     <title>Weld 5.0.1.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-06-24T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/06/24/weld-501Final/" rel="alternate" type="text/html" />
     <author>
@@ -1033,7 +1096,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/</id>
     <title>Weld 5.0.0.SP2</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-06-08T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/06/08/weld-500SP2/" rel="alternate" type="text/html" />
     <author>
@@ -1078,7 +1141,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/</id>
     <title>Weld 5.0.0.SP1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-05-04T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/05/04/weld-500SP1/" rel="alternate" type="text/html" />
     <author>
@@ -1123,7 +1186,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/</id>
     <title>Weld 5.0.0.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-04-29T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/04/29/weld-500Final/" rel="alternate" type="text/html" />
     <author>
@@ -1206,7 +1269,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/</id>
     <title>Weld 5.0.0.CR2</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-03-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/03/23/weld-500CR2/" rel="alternate" type="text/html" />
     <author>
@@ -1246,7 +1309,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/</id>
     <title>Weld 5.0.0.CR1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-02-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/02/23/weld-500CR1/" rel="alternate" type="text/html" />
     <author>
@@ -1315,7 +1378,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/</id>
     <title>Weld 4.0.3.Final and 3.1.9.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-02-16T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/02/16/weld-403Final-319Final/" rel="alternate" type="text/html" />
     <author>
@@ -1412,7 +1475,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/</id>
     <title>Weld 5.0.0.Beta1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2022-01-24T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2022/01/24/weld-500Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -1723,7 +1786,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/</id>
     <title>Weld 4.0.2.Final and 3.1.8.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2021-07-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/07/14/weld-402Final-318Final/" rel="alternate" type="text/html" />
     <author>
@@ -1804,7 +1867,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/</id>
     <title>Weld 4.0.1.SP1 and 3.1.7.SP1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2021-04-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/04/14/weld-401SP1-317SP1/" rel="alternate" type="text/html" />
     <author>
@@ -1884,7 +1947,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/</id>
     <title>Weld 4.0.1.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2021-03-22T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/03/22/weld-401Final/" rel="alternate" type="text/html" />
     <author>
@@ -2003,7 +2066,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/</id>
     <title>Weld 3.1.7.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2021-03-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/03/18/weld-317Final/" rel="alternate" type="text/html" />
     <author>
@@ -2117,7 +2180,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/</id>
     <title>Weld 3.1.6.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2021-01-13T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2021/01/13/weld-316Final/" rel="alternate" type="text/html" />
     <author>
@@ -2275,7 +2338,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/</id>
     <title>Weld 4.0.0.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2020-12-16T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/12/16/weld-400Final/" rel="alternate" type="text/html" />
     <author>
@@ -2353,7 +2416,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/</id>
     <title>Weld 4.0.0.Beta1</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2020-09-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/09/18/weld-400Beta1/" rel="alternate" type="text/html" />
     <author>
@@ -2470,7 +2533,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/</id>
     <title>Weld 3.1.5.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2020-08-12T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/08/12/weld-315Final/" rel="alternate" type="text/html" />
     <author>
@@ -2608,7 +2671,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/</id>
     <title>Weld 4 and Jakarta EE 9</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2020-05-13T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/05/13/weld-jakarta-ee-9/" rel="alternate" type="text/html" />
     <author>
@@ -2747,7 +2810,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/</id>
     <title>Weld 3.1.4.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2020-03-28T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2020/03/28/weld-314Final/" rel="alternate" type="text/html" />
     <author>
@@ -2859,7 +2922,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/</id>
     <title>Weld 3.1.3.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2019-11-28T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/11/28/weld-313Final/" rel="alternate" type="text/html" />
     <author>
@@ -2993,7 +3056,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/</id>
     <title>Weld 3.1.2.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2019-08-06T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/08/06/weld-312Final/" rel="alternate" type="text/html" />
     <author>
@@ -3147,7 +3210,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/</id>
     <title>Weld 3.1.1.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2019-05-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/05/07/weld-311Final/" rel="alternate" type="text/html" />
     <author>
@@ -3280,7 +3343,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/</id>
     <title>Weld 3.1.0.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2019-02-06T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2019/02/06/weld-310Final/" rel="alternate" type="text/html" />
     <author>
@@ -3532,7 +3595,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/</id>
     <title>Weld 2.4.8.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-09-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/09/26/weld-248Final/" rel="alternate" type="text/html" />
     <author>
@@ -3669,7 +3732,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/</id>
     <title>Weld 3.0.5.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-07-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/07/26/weld-305Final/" rel="alternate" type="text/html" />
     <author>
@@ -3833,7 +3896,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/</id>
     <title>Weld team changes</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-07-10T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/07/10/weld-team-changes/" rel="alternate" type="text/html" />
     <author>
@@ -3882,7 +3945,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/</id>
     <title>Weld 3.0.4.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-04-26T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/04/26/weld-304Final/" rel="alternate" type="text/html" />
     <author>
@@ -4081,7 +4144,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/</id>
     <title>Weld 2.4.7.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-03-20T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/03/20/weld-247Final/" rel="alternate" type="text/html" />
     <author>
@@ -4264,7 +4327,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/</id>
     <title>Weld 3.0.3.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2018-02-09T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2018/02/09/weld-303Final/" rel="alternate" type="text/html" />
     <author>
@@ -4399,7 +4462,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/</id>
     <title>Weld meets JUnit 5</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-12-19T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/12/19/weld-meets-junit5/" rel="alternate" type="text/html" />
     <author>
@@ -4576,7 +4639,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/</id>
     <title>Weld 2.4.6.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-12-18T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/12/18/weld-246Final/" rel="alternate" type="text/html" />
     <author>
@@ -4755,7 +4818,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/</id>
     <title>Weld 3.0.2.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-11-23T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/11/23/weld-302Final/" rel="alternate" type="text/html" />
     <author>
@@ -4930,7 +4993,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/</id>
     <title>Weld 2.4.5.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-09-11T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/09/11/weld-245Final/" rel="alternate" type="text/html" />
     <author>
@@ -5047,7 +5110,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/</id>
     <title>Weld 3.0.1.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-08-25T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/08/25/weld-301Final/" rel="alternate" type="text/html" />
     <author>
@@ -5198,7 +5261,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/</id>
     <title>Weld Vert.x Next?</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-08-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/08/07/weld-vertx-next/" rel="alternate" type="text/html" />
     <author>
@@ -5457,7 +5520,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/</id>
     <title>Weld 2.4.4.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-06-14T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/06/14/weld-244Final/" rel="alternate" type="text/html" />
     <author>
@@ -5609,7 +5672,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/</id>
     <title>Tour around Weld 3</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-05-19T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/05/19/tour-around-weld-3/" rel="alternate" type="text/html" />
     <author>
@@ -5927,7 +5990,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/</id>
     <title>Weld 3.0.0.Final - the first implementation of CDI 2.0!</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-05-15T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/05/15/weld-300Final/" rel="alternate" type="text/html" />
     <author>
@@ -6105,7 +6168,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/</id>
     <title>Weld 2.4.3.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-04-07T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/04/07/weld-243Final/" rel="alternate" type="text/html" />
     <author>
@@ -6233,7 +6296,7 @@
   <entry>
     <id>https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/</id>
     <title>Weld 3.0.0.CR2</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
+    <updated>2024-11-28T10:12:26+00:00</updated>
     <published>2017-03-03T00:00:00+00:00</published>
     <link href="https://weld.cdi-spec.org/news/2017/03/03/weld-300CR2/" rel="alternate" type="text/html" />
     <author>
@@ -6361,124 +6424,6 @@
       &lt;p&gt;[ &lt;a href=&quot;https://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
       [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
       [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12333159&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-    </content>
-  </entry>
-  <entry>
-    <id>https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/</id>
-    <title>Weld 2.4.2.Final</title>
-    <updated>2024-08-27T14:29:44+00:00</updated>
-    <published>2017-02-02T00:00:00+00:00</published>
-    <link href="https://weld.cdi-spec.org/news/2017/02/02/weld-242Final/" rel="alternate" type="text/html" />
-    <author>
-      <name>Martin Kouba</name>
-    </author>
-    <category term="release"></category>
-    <summary>
-      As you may know, CDI 2 (JSR 365) is in Public Review phase.
-      That&#8217;s great news for early adopters.
-      But for now, I am very pleased to announce another production-ready version of Weld 2.4 (CDI 1.2).
-      See also the release details.
-      Thanks to everyone involved in this release!
-      
-      
-      
-      
-      
-      Warning
-      
-      
-      There is a regression in Weld 2.4.2.Final. The problem only occurs if a Security Manager is used. However, users are encouraged to upgrade to 2.4.2.SP1 which contains a fix for the issue.
-      
-      
-      
-      
-      
-      Notable fixes and improvements:
-      
-      
-      
-      
-      Added trimmed bean archives support (CDI 2.0, WELD-2314)
-      
-      
-      Fixed Weld SE and Weld Servlet cooperation (WELD-2260 and WELD-2262)
-      
-      
-      Fixed ActivateRequestContextInterceptor - align the priority with...
-    </summary>
-    <content type="html">
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;As you may know, CDI 2 (JSR 365) is in Public Review phase.
-      That’s great news for early adopters.
-      But for now, I am very pleased to announce another production-ready version of &lt;strong&gt;Weld 2.4&lt;/strong&gt; (CDI 1.2).
-      See also &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12332808&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;the release details&lt;/a&gt;.
-      Thanks to everyone involved in this release!&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;admonitionblock warning&quot;&gt;
-      &lt;table&gt;
-      &lt;tr&gt;
-      &lt;td class=&quot;icon&quot;&gt;
-      &lt;div class=&quot;title&quot;&gt;Warning&lt;/div&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;content&quot;&gt;
-      There is a &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2328&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;regression&lt;/a&gt; in Weld &lt;strong&gt;2.4.2.Final&lt;/strong&gt;. The problem only occurs if a &lt;a href=&quot;https://docs.oracle.com/javase/tutorial/essential/environment/security.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Security Manager&lt;/a&gt; is used. However, users are encouraged to upgrade to &lt;strong&gt;2.4.2.SP1&lt;/strong&gt; which contains a fix for the issue.
-      &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;Notable fixes and improvements:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;ulist&quot;&gt;
-      &lt;ul&gt;
-      &lt;li&gt;
-      &lt;p&gt;Added &lt;strong&gt;trimmed bean archives&lt;/strong&gt; support (CDI 2.0, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2314&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2314&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Fixed Weld SE and Weld Servlet cooperation (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2260&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2260&lt;/a&gt; and &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2262&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2262&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Fixed &lt;code&gt;ActivateRequestContextInterceptor&lt;/code&gt; - align the priority with CDI 2.0, fire &lt;code&gt;@Initialized&lt;/code&gt; and &lt;code&gt;@Destroyed&lt;/code&gt; events (CDI 2.0, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2281&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2281&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Fixed JDK9 build problems (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2303&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2303&lt;/a&gt; and &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2301&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2301&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Validation - allow to use CDI 2 rules when validating selected alternatives in &lt;code&gt;bean.xml&lt;/code&gt; (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2313&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2313&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Performance improvements in &lt;code&gt;javax.enterprise.inject.Instance&lt;/code&gt; implementation (CDI 2.0, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2323&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2323&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Illegal bean types ignored for a session bean (&lt;a href=&quot;https://issues.jboss.org/browse/WELD-2315&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2315&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Dependency upgrade - &lt;code&gt;jboss-classfilewriter&lt;/code&gt; to 1.2.1.Final (enables interception of default methods, see also &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2093&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2093&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Weld SE - addded useful methods from &lt;code&gt;SeContainerInitializer&lt;/code&gt; (CDI 2.0, &lt;a href=&quot;https://issues.jboss.org/browse/WELD-2316&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WELD-2316&lt;/a&gt;)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-      &lt;p&gt;Probe development tool - extended bean archive info&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;sect1&quot;&gt;
-      &lt;h2 id=&quot;_wildfly_patch&quot;&gt;WildFly Patch&lt;/h2&gt;
-      &lt;div class=&quot;sectionbody&quot;&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;As usual, a &lt;a href=&quot;http://download.jboss.org/weld/2.4.2.Final/wildfly-10.1.0.Final-weld-2.4.2.Final-patch.zip&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;patch for WildFly&lt;/a&gt; is available.
-      This time the target platform is &lt;strong&gt;WildFly 10.1.0.Final&lt;/strong&gt;.
-      If you’re not familiar with patching WildFly, check the &lt;a href=&quot;https://weld.cdi-spec.org/documentation/#12&quot;&gt;FAQ&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;paragraph&quot;&gt;
-      &lt;p&gt;[ &lt;a href=&quot;http://docs.jboss.org/cdi/api/1.2/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CDI 1.2 API&lt;/a&gt; ]
-      [ &lt;a href=&quot;https://weld.cdi-spec.org/download/&quot;&gt;Download&lt;/a&gt; ]
-      [ &lt;a href=&quot;http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Documentation&lt;/a&gt; ]
-      [ &lt;a href=&quot;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;amp;version=12332808&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Release notes&lt;/a&gt; ]&lt;/p&gt;
       &lt;/div&gt;
       &lt;/div&gt;
       &lt;/div&gt;

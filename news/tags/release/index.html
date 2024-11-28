@@ -143,6 +143,51 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/11/28/weld-600CR2/">Weld 6.0.0.CR2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-11-28
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Turns out we forgot to perform some code cleanup in the <code>CR1</code> - so here goes <code>6.0.0.CR2</code> which removes deprecated code pieces.
+                  Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we&#8217;ve kept that code around for now.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Resolved issues in this version:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Revisit deprecated code in Weld Core (<a href="https://issues.redhat.com/browse/WELD-2804">WELD-2804</a>)</p>
+                  </li>
+                  <li>
+                  <p>Remove <code>WeldCrossContextFilter</code> (<a href="https://issues.redhat.com/browse/WELD-2803">WELD-2803</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As per usual, please report any issues you discover with this release so that we can squash those bugs.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12436952" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/11/13/weld-600CR1/">Weld 6.0.0.CR1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -827,94 +872,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12397581" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/10/03/weld-510Final/">Weld 5.1.0.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-10-3
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld Core 5.1.0.Final and Weld API 5.0.SP3 are now availabe in Maven Central.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Most notable change, which is also the cause of a minor version bump, is the removal of Weld Probe from our codebase.
-                  Details are in <a href="https://issues.redhat.com/browse/WELD-2733" target=""_blank)">this JIRA issue</a> and were also communicated via <a href="https://lists.jboss.org/archives/list/weld-dev@lists.jboss.org/thread/I72EU5I746F4DESLSENJVZFAEFPHXJYV/" target=""_blank">weld-dev email</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>In short, Probe hasn&#8217;t been maintained for a long time and its UI part is using outdated libraries and would need to be completely re-written which is something that we opted not to do at the moment.
-                  The JIRA issue has more information as to how we could re-integrate it in the future if there is interest from the community.</p>
-                  </div>
-                  <div class="admonitionblock warning">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Warning</div>
-                  </td>
-                  <td class="content">
-                  Probe removal affects any integrators that were using Probe up until now! This typically concerns EE integrators such as WildFly or Liberty.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>As usual, here is a list of notable bugfixes in this version:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Made decorators more Groovy friendly (<a href="https://issues.jboss.org/browse/WELD-2713" target="_blank" rel="noopener">WELD-2713</a>)</p>
-                  </li>
-                  <li>
-                  <p>Updated Jandex and remove deprecated usages (<a href="https://issues.jboss.org/browse/WELD-2724" target="_blank" rel="noopener">WELD-2724</a>)</p>
-                  </li>
-                  <li>
-                  <p>Added tools to execute TCK lang model in EE container (using WildFly) (<a href="https://issues.jboss.org/browse/WELD-2725" target="_blank" rel="noopener">WELD-2725</a>)</p>
-                  </li>
-                  <li>
-                  <p>Introduced method to <code>WeldManager</code> which allows to obtain instances of all registered contexts regardless of whether they are active (<a href="https://issues.jboss.org/browse/WELD-2726" target="_blank" rel="noopener">WELD-2726</a>)</p>
-                  </li>
-                  <li>
-                  <p>Brought WildFly Arquillian dependency setup up to date and fix affected examples (<a href="https://issues.jboss.org/browse/WELD-2727" target="_blank" rel="noopener">WELD-2727</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>AbstractResourceServices</code> in Weld API now correctly take into consideration lookup value of <code>@Resource</code> (<a href="https://issues.jboss.org/browse/WELD-2728" target="_blank" rel="noopener">WELD-2728</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>AbstractResourceServices</code> now supports setter methods for <code>@Resource</code> where the name is defaulted (<a href="https://issues.jboss.org/browse/WELD-2732" target="_blank" rel="noopener">WELD-2732</a>)</p>
-                  </li>
-                  <li>
-                  <p>Corrected the implementation of <code>WeldExpressionFactory#equals</code> (<a href="https://issues.jboss.org/browse/WELD-2729" target="_blank" rel="noopener">WELD-2729</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed <code>BeanManager</code> bean types to also include <code>BeanContainer</code> (<a href="https://issues.jboss.org/browse/WELD-2731" target="_blank" rel="noopener">WELD-2731</a>)</p>
-                  </li>
-                  <li>
-                  <p>Avoid logging information about non-bindings member when using <code>BeanManager#isQualifier</code> for annotations that aren&#8217;t qualifiers (<a href="https://issues.jboss.org/browse/WELD-2643" target="_blank" rel="noopener">WELD-2643</a>)</p>
-                  </li>
-                  <li>
-                  <p>Removal of Weld Probe (<a href="https://issues.jboss.org/browse/WELD-2733" target="_blank" rel="noopener">WELD-2733</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12391030" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
