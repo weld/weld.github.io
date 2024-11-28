@@ -1,0 +1,25 @@
+---
+layout: news
+title: Weld 6.0.0.CR2
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 6.0.0.CR2 is now available
+desc: Weld 6.0.0.CR2 is now available
+tags: [release]
+---
+:linkattrs:
+
+Turns out we forgot to perform some code cleanup in the `CR1` - so here goes `6.0.0.CR2` which removes deprecated code pieces.
+Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we've kept that code around for now.
+
+Resolved issues in this version:
+
+* Revisit deprecated code in Weld Core (link:https://issues.redhat.com/browse/WELD-2804[WELD-2804])
+* Remove `WeldCrossContextFilter` (link:https://issues.redhat.com/browse/WELD-2803[WELD-2803])
+
+As per usual, please report any issues you discover with this release so that we can squash those bugs.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12436952[Release notes, window="_blank"] &#93;

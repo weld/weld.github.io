@@ -1,3 +1,7 @@
+- version: '6.0.0.CR2'
+  category: Preview
+  date: 28.11.2024
+  versionId: 12436952
 - version: '6.0.0.CR1'
   category: Preview
   date: 13.11.2024
