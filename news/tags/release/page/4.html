@@ -143,6 +143,102 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2019/11/28/weld-313Final/">Weld 3.1.3.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2019-11-28
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 3.1.3.Final arrives along with Weld API 3.1.SP2.
+                  This is a minor update which had a main goal of swapping whole Weld internals from Java EE 8 to Jakarta EE 8.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld API/SPI</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>API was transferred to Jakarta EE GAVs (<a href="https://issues.jboss.org/browse/WELD-2598" target="_blank" rel="noopener">WELD-2598</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Core</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Core and whole testing was transferred to Jakarta EE GAvs (<a href="https://issues.jboss.org/browse/WELD-2598" target="_blank" rel="noopener">WELD-2598</a>)</p>
+                  </li>
+                  <li>
+                  <p>Properties inside <code>beans.xml</code> now support spec-descriptor-property-replacement on WildFly (<a href="https://issues.jboss.org/browse/WELD-2600" target="_blank" rel="noopener">WELD-2600</a>)</p>
+                  </li>
+                  <li>
+                  <p>Rolling updates delimiter is now correctly ignored for external bean archives (<a href="https://issues.jboss.org/browse/WELD-2596" target="_blank" rel="noopener">WELD-2596</a>)</p>
+                  </li>
+                  <li>
+                  <p>Allow for <code>private final</code> method in intercepted beans, these methods are then ignored during interception but Weld no longer blows up (<a href="https://issues.jboss.org/browse/WELD-2595" target="_blank" rel="noopener">WELD-2595</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld Servlet</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Adjust Jetty attributes accordingly to how they were renamed (<a href="https://issues.jboss.org/browse/WELD-2597" target="_blank" rel="noopener">WELD-2597</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fix several misplaced licenses that were causing confusion (<a href="https://issues.jboss.org/browse/WELD-2599" target="_blank" rel="noopener">WELD-2599</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>This time around, the <a href="http://download.jboss.org/weld/3.1.3.Final/wildfly-18.0.1.Final-weld-3.1.3.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 18.0.1.Final</a> is available.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/3.1.3.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12342783" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2019/08/06/weld-312Final/">Weld 3.1.2.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -1436,130 +1532,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.4.6.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?version=12334958&amp;styleName=Html&amp;projectId=12310891" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/11/23/weld-302Final/">Weld 3.0.2.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-11-23
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.0.2.Final is out and targetting WildFly 11!
-                  Ever wished you could select events and instances in a truly generic way using just <code>java.lang.reflect.Type</code>?
-                  Looking for easier way to configure SE container?
-                  We have a bunch of bugfixes and improvements for you, so read on&#8230;&#8203;</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld Core</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Improved subclass generation mechanism for generic interceptors (<a href="https://issues.jboss.org/browse/WELD-2414" target="_blank" rel="noopener">WELD-2414</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed OSGi bundling, we missed out one package on last release (<a href="https://issues.jboss.org/browse/WELD-2421" target="_blank" rel="noopener">WELD-2421</a>)</p>
-                  </li>
-                  <li>
-                  <p>Improved behaviour with no-interface EJB view with non-public methods (<a href="https://issues.jboss.org/browse/WELD-2430" target="_blank" rel="noopener">WELD-2430</a>)</p>
-                  </li>
-                  <li>
-                  <p>Corrected proxy creation for signed classes (<a href="https://issues.jboss.org/browse/WELD-2425" target="_blank" rel="noopener">WELD-2425</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld SE</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>There are now multiple convenient error-proof methods to quickly configure SE container (<a href="https://issues.jboss.org/browse/WELD-2426" target="_blank" rel="noopener">WELD-2426</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>Weld.enableDevMode()</code>, <code>Weld.scanClasspathEntries()</code>, &#8230;&#8203;</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Weld API/SPI</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><code>WeldInstance</code> has several improvements</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>It now allows you to <code>select()</code> beans based on <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank" rel="noopener">WELD-2427</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldInstance.Handler</code> had become lazy which means you can now iterate/filter/sort <code>WeldInstance</code> without actually instantiating beans (<a href="https://issues.jboss.org/browse/WELD-2258" target="_blank" rel="noopener">WELD-2258</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>There is new interface in the API - <code>WeldEvent</code> - which can be used in place of well known <code>Event</code> but allows you narrow down event type by using <code>select()</code> with <code>java.lang.reflect.Type</code> (<a href="https://issues.jboss.org/browse/WELD-2427" target="_blank" rel="noopener">WELD-2427</a>)</p>
-                  </li>
-                  <li>
-                  <p>API now contains a <code>String</code> key used to obtain interceptors binding from <code>InvocationContext</code> (<a href="https://issues.jboss.org/browse/WELD-2436" target="_blank" rel="noopener">WELD-2436</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Other</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Probe now correctly recognizes beans which have <code>@Priority</code> but aren&#8217;t alternatives (<a href="https://issues.jboss.org/browse/WELD-2432" target="_blank" rel="noopener">WELD-2432</a>)</p>
-                  </li>
-                  <li>
-                  <p>Multiple documentation improvements regarding all things, old and new (<a href="https://issues.jboss.org/browse/WELD-2440" target="_blank" rel="noopener">WELD-2440</a>, <a href="https://issues.jboss.org/browse/WELD-2431" target="_blank" rel="noopener">WELD-2431</a>, <a href="https://issues.jboss.org/browse/WELD-2434" target="_blank" rel="noopener">WELD-2434</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, there is a <a href="http://download.jboss.org/weld/3.0.2.Final/wildfly-11.0.0.Final-weld-3.0.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/3.0.2.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12335442" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

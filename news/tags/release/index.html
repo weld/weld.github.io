@@ -143,6 +143,60 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/12/16/weld-514Final/">Weld 5.1.4.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-12-16
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>A small update for Weld 5.1 (5.1.4.Final) has been released.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>List of changes from 5.1.3.Final version:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fix resource injection into beans added via extensions (<a href="https://issues.redhat.com/browse/WELD-2798">WELD-2798</a>)</p>
+                  </li>
+                  <li>
+                  <p>Prevent file leak in Weld&#8217;s <code>ServiceLoader</code> (<a href="https://issues.redhat.com/browse/WELD-2800">WELD-2800</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Note that most environments were unaffected by this; the only reported issue was for testing setup of GlassFish on Windows machines</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Deprecate <code>WeldCrossContextFilter</code>, to be removed in Weld 6 (<a href="https://issues.redhat.com/browse/WELD-2803">WELD-2803</a>)</p>
+                  </li>
+                  <li>
+                  <p>Update custom TCK exclusion list used for <code>relaxed mode</code> testing (<a href="https://issues.redhat.com/browse/WELD-2806">WELD-2806</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.4.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12432223" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/11/28/weld-600CR2/">Weld 6.0.0.CR2</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -809,69 +863,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410330" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/06/12/weld-511Final/">Weld 5.1.1.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-6-12
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>It&#8217;s time for some minor updates and fixes, Weld 5.1.1.Final is now available!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Main highlights are as follows:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fix bean type assignability for beans with recursive generic types (<a href="https://issues.redhat.com/browse/WELD-2738">WELD-2738</a>)</p>
-                  </li>
-                  <li>
-                  <p>Failing validation for pasivation capability, Weld should throw <code>DeploymentException</code> instead of <code>DefinitionException</code> (<a href="https://issues.redhat.com/browse/WELD-2741">WELD-2741</a>)</p>
-                  </li>
-                  <li>
-                  <p>Avoid firing <code>ProcessInjectionTarget</code> multiple times if a specialized bean was vetoed (<a href="https://issues.redhat.com/browse/WELD-2742">WELD-2742</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>BeanManager#getReference</code> should not create a child <code>CreationalContext</code> instance (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This should only affect scenarios in which beans were 'manually' created and destroyed in which case the destruction could end up incomplete</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Fix how Weld defines proxies to avoid problems in JDK 17+ along with the newest JBoss Class File Writer (1.3.0.Final) (<a href="https://issues.redhat.com/browse/WELD-2744">WELD-2744</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correction to documentation which incorrectly suggested <code>@ManagedBean</code> was a bean defining annotation (<a href="https://issues.redhat.com/browse/WELD-2737">WELD-2737</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12397581" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
