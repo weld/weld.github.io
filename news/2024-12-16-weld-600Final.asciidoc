@@ -1,0 +1,30 @@
+---
+layout: news
+title: Weld 6.0.0.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Weld 6.0.0.Final released
+desc: Weld 6.0.0.Final released
+tags: [release]
+---
+:linkattrs:
+
+Since there have been no further bugs reported, Weld `6.0.0.CR2` has evolved into its `Final` form.
+Say hello to `Weld API 6.0.Final` as well as `Weld Core 6.0.0.Final`!
+
+Since there are no changes from the previous `CR2` version, early adopters shouldn't encounter any unwelcome surprises.
+
+Nonetheless, should you run into any bugs, do get in touch so that we can squash them as soon as possible!
+
+And speaking of getting in touch, we recognize that JIRA can be a little daunting, so we are trying to make that easier by *enabling GitHub discussions*.
+You can now ask your question in:
+
+* link:https://github.com/weld/core/discussions[Weld Core] GH discussions
+* link:https://github.com/weld/api/discussions[Weld API] GH discussions
+
+And don't you worry, the `weld-dev` mailing list is still kicking plus, for the time being, we are still using JIRA for per-release issue tracking.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.0.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12439250[Release notes, window="_blank"] &#93;
