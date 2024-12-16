@@ -1,0 +1,25 @@
+---
+layout: news
+title: Weld 5.1.4.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Tiny update for Weld 5.1
+desc: Tiny update for Weld 5.1
+tags: [release]
+---
+:linkattrs:
+
+A small update for Weld 5.1 (5.1.4.Final) has been released.
+
+List of changes from 5.1.3.Final version:
+
+* Fix resource injection into beans added via extensions (link:https://issues.redhat.com/browse/WELD-2798[WELD-2798])
+* Prevent file leak in Weld's `ServiceLoader` (link:https://issues.redhat.com/browse/WELD-2800[WELD-2800])
+** Note that most environments were unaffected by this; the only reported issue was for testing setup of GlassFish on Windows machines
+* Deprecate `WeldCrossContextFilter`, to be removed in Weld 6 (link:https://issues.redhat.com/browse/WELD-2803[WELD-2803])
+* Update custom TCK exclusion list used for `relaxed mode` testing (link:https://issues.redhat.com/browse/WELD-2806[WELD-2806])
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.4.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12432223[Release notes, window="_blank"] &#93;
