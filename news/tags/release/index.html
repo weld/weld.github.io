@@ -143,6 +143,58 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/12/16/weld-600Final/">Weld 6.0.0.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-12-16
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Since there have been no further bugs reported, Weld <code>6.0.0.CR2</code> has evolved into its <code>Final</code> form.
+                  Say hello to <code>Weld API 6.0.Final</code> as well as <code>Weld Core 6.0.0.Final</code>!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Since there are no changes from the previous <code>CR2</code> version, early adopters shouldn&#8217;t encounter any unwelcome surprises.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Nonetheless, should you run into any bugs, do get in touch so that we can squash them as soon as possible!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>And speaking of getting in touch, we recognize that JIRA can be a little daunting, so we are trying to make that easier by <strong>enabling GitHub discussions</strong>.
+                  You can now ask your question in:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><a href="https://github.com/weld/core/discussions">Weld Core</a> GH discussions</p>
+                  </li>
+                  <li>
+                  <p><a href="https://github.com/weld/api/discussions">Weld API</a> GH discussions</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>And don&#8217;t you worry, the <code>weld-dev</code> mailing list is still kicking plus, for the time being, we are still using JIRA for per-release issue tracking.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12439250" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/12/16/weld-514Final/">Weld 5.1.4.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -811,58 +863,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410416" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/07/11/weld-511SP1/">Weld 5.1.1.SP1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-7-11
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new SP release of Weld 5 is now avaiable.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Latest release, Weld 5.1.1.Final, has shown that one of the changes (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>) had unforseen and, sadly, untested consequences.
-                  Some of the integrators and some of community were using <code>BeanManager#getReference</code> in scenarios which were broken by this change.
-                  While the use cases aren&#8217;t explicitly backed by the specification or its TCKs, we decided we don&#8217;t want to break them, especially not in a micro release.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This SP release therefore aims to correct the above and only adds one other tiny change:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Revert the change of <code>BeanManager#getReference</code> and solve this issue differently (<a href="https://issues.redhat.com/browse/WELD-2745">WELD-2745</a>)</p>
-                  </li>
-                  <li>
-                  <p>Modify how <code>toString()</code> is invoked on proxies of removed EJB beans (<a href="https://issues.redhat.com/browse/WELD-2747">WELD-2747	</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Big thanks for (<a href="https://github.com/ljnelson">Laird Nelson</a>) and (<a href="https://github.com/arjantijms">Arjan Tijms</a>) for bringing these cases to my attention as well as helping to understand and resolve them!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 5, do let us know.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410330" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
