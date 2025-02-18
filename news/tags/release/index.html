@@ -143,6 +143,70 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/02/18/weld-601Final/">Weld 6.0.1.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-2-18
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>First small update for Weld 6 has landed in Central.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are only two notable fixes here, so let us take a look at them:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fixed a bug that EJC (Eclipse Java Compiler) users can encounter in combination with interceptors and lambdas in their beans (<a href="https://issues.redhat.com/browse/WELD-2806">WELD-2806</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This could, in certain circumstances, yield a very hard to decipher bytecode generation error.</p>
+                  </li>
+                  <li>
+                  <p>Note that this does not manifest when using standard <code>javac</code> compiler.</p>
+                  </li>
+                  <li>
+                  <p>If you are interested in more gory details, they are in the issue and/or pull requests linked to it.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Make <code>ElAwareBeanManager</code> injectable as a bean type</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Inability to perform this was an oversight as it is a requirement in Jakarta EE WebProfile specification.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, do report any bugs you encounter so that we can squash them as soon as possible!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12440352" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/01/21/weld-515Final/">Weld 5.1.5.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -804,66 +868,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Alpha1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12413485" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/10/05/weld-512Final/">Weld 5.1.2.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-10-5
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 5.1.2.Final has landed in Central and with it some new bufgixes.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Here is a summary of the changes:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Avoid creation of duplicated thread groups on application re-deploy (<a href="https://issues.redhat.com/browse/WELD-2755">WELD-2755</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This could lead to a very tiny memory leak on repeated app re-deploy while on app servers (such as WildFly)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p><code>WeldInitialListener</code> can no longer throw <code>NullPointerException</code> if the application failed to start properly (<a href="https://issues.redhat.com/browse/WELD-2752">WELD-2752</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldManager#getContexts</code> not properly returns empty collection when there is no context for given scope (<a href="https://issues.redhat.com/browse/WELD-2761">WELD-2761</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix client proxy creation for <code>@Typed</code> beans with package-protected types (<a href="https://issues.redhat.com/browse/WELD-2758">WELD-2758</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld project now uses unified and automatic formatting and import sorting that happens during build (<a href="https://issues.redhat.com/browse/WELD-2753">WELD-2753</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 5, let us know and we&#8217;ll try to help.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.2.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12411521" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>

@@ -143,6 +143,151 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2018/03/20/weld-247Final/">Weld 2.4.7.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2018-3-20
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 2.4.7.Final is now available.
+                  It includes multiple important bugfixes, many of them focused around proxy generation and/or invocation.</p>
+                  </div>
+                  <div class="admonitionblock note">
+                  <table>
+                  <tr>
+                  <td class="icon">
+                  <div class="title">Note</div>
+                  </td>
+                  <td class="content">
+                  Weld 2.4 now enters maintenance mode - there will be no further active development on Weld 2. We will be channeling our efforts into Weld 3 instead.
+                  </td>
+                  </tr>
+                  </table>
+                  </div>
+                  <div class="paragraph">
+                  <p>Notable fixes and improvements:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld Core:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Proxy-related issues:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fixed possible NPE with multiple deployments one of which uses <code>relaxed construction</code> configuration (<a href="https://issues.jboss.org/browse/WELD-2448" target="_blank" rel="noopener">WELD-2448</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>BeanManager.getInjectableReference</code> was using unnecessarily strict checks for proxyability (<a href="https://issues.jboss.org/browse/WELD-2466" target="_blank" rel="noopener">WELD-2466</a>)</p>
+                  </li>
+                  <li>
+                  <p>Proxy serialization is now container agnostic (<a href="https://issues.jboss.org/browse/WELD-2447" target="_blank" rel="noopener">WELD-2447</a>)</p>
+                  </li>
+                  <li>
+                  <p>Fix invocation of private observer method (<a href="https://issues.jboss.org/browse/WELD-2443" target="_blank" rel="noopener">WELD-2443</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This only applies to private observer method which is not intercepted but is declared on a bean which has some other intercepted methods</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Correct proxy generation for class hierarchy with abstract class and generics (<a href="https://issues.jboss.org/browse/WELD-2470" target="_blank" rel="noopener">WELD-2470</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other issues:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Minor optimization in internal structures of <code>InterceptionModel</code> (<a href="https://issues.jboss.org/browse/WELD-2455" target="_blank" rel="noopener">WELD-2455</a>)</p>
+                  </li>
+                  <li>
+                  <p>Improve exception logging for <code>DeploymentException</code> (<a href="https://issues.jboss.org/browse/WELD-2453" target="_blank" rel="noopener">WELD-2453</a>)</p>
+                  </li>
+                  <li>
+                  <p>Prevent NPE if <code>ProtectionDomain.getPermissions()</code> returns <code>null</code> (<a href="https://issues.jboss.org/browse/WELD-2464" target="_blank" rel="noopener">WELD-2464</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Weld SE</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fields in <code>org.jboss.weld.environment.se.Weld</code> are now <code>protected</code> (<a href="https://issues.jboss.org/browse/WELD-2451" target="_blank" rel="noopener">WELD-2451</a>)</p>
+                  </li>
+                  <li>
+                  <p>Allow to register custom <code>BeanArchiveHandler</code> using <code>ServiceLoader</code> mechanism (<a href="https://issues.jboss.org/browse/WELD-2450" target="_blank" rel="noopener">WELD-2450</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This applies to SE and Servlet environments</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Other</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>With OSGi, <code>javax.ejb</code> is now imported optionally (<a href="https://issues.jboss.org/browse/WELD-2458" target="_blank" rel="noopener">WELD-2458</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld now uses SpotBugs (a successor to FindBugs) (<a href="https://issues.jboss.org/browse/WELD-2462" target="_blank" rel="noopener">WELD-2462</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>module-info</code>, if present, is now correctly ignored during bean discovery phase (<a href="https://issues.jboss.org/browse/WELD-2459" target="_blank" rel="noopener">WELD-2459</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_wildfly_patch">WildFly Patch</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.7.Final/wildfly-11.0.0.Final-weld-2.4.7.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly 11.0.0.Final</a> is available.
+                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.7.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12336351" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2018/02/09/weld-303Final/">Weld 3.0.3.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -1202,98 +1347,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12333159" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/02/02/weld-242Final/">Weld 2.4.2.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-2-2
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>As you may know, CDI 2 (JSR 365) is in Public Review phase.
-                  That&#8217;s great news for early adopters.
-                  But for now, I am very pleased to announce another production-ready version of <strong>Weld 2.4</strong> (CDI 1.2).
-                  See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12332808" target="_blank" rel="noopener">the release details</a>.
-                  Thanks to everyone involved in this release!</p>
-                  </div>
-                  <div class="admonitionblock warning">
-                  <table>
-                  <tr>
-                  <td class="icon">
-                  <div class="title">Warning</div>
-                  </td>
-                  <td class="content">
-                  There is a <a href="https://issues.jboss.org/browse/WELD-2328" target="_blank" rel="noopener">regression</a> in Weld <strong>2.4.2.Final</strong>. The problem only occurs if a <a href="https://docs.oracle.com/javase/tutorial/essential/environment/security.html" target="_blank" rel="noopener">Security Manager</a> is used. However, users are encouraged to upgrade to <strong>2.4.2.SP1</strong> which contains a fix for the issue.
-                  </td>
-                  </tr>
-                  </table>
-                  </div>
-                  <div class="paragraph">
-                  <p>Notable fixes and improvements:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Added <strong>trimmed bean archives</strong> support (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2314" target="_blank" rel="noopener">WELD-2314</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed Weld SE and Weld Servlet cooperation (<a href="https://issues.jboss.org/browse/WELD-2260" target="_blank" rel="noopener">WELD-2260</a> and <a href="https://issues.jboss.org/browse/WELD-2262" target="_blank" rel="noopener">WELD-2262</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed <code>ActivateRequestContextInterceptor</code> - align the priority with CDI 2.0, fire <code>@Initialized</code> and <code>@Destroyed</code> events (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2281" target="_blank" rel="noopener">WELD-2281</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fixed JDK9 build problems (<a href="https://issues.jboss.org/browse/WELD-2303" target="_blank" rel="noopener">WELD-2303</a> and <a href="https://issues.jboss.org/browse/WELD-2301" target="_blank" rel="noopener">WELD-2301</a>)</p>
-                  </li>
-                  <li>
-                  <p>Validation - allow to use CDI 2 rules when validating selected alternatives in <code>bean.xml</code> (<a href="https://issues.jboss.org/browse/WELD-2313" target="_blank" rel="noopener">WELD-2313</a>)</p>
-                  </li>
-                  <li>
-                  <p>Performance improvements in <code>javax.enterprise.inject.Instance</code> implementation (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2323" target="_blank" rel="noopener">WELD-2323</a>)</p>
-                  </li>
-                  <li>
-                  <p>Illegal bean types ignored for a session bean (<a href="https://issues.jboss.org/browse/WELD-2315" target="_blank" rel="noopener">WELD-2315</a>)</p>
-                  </li>
-                  <li>
-                  <p>Dependency upgrade - <code>jboss-classfilewriter</code> to 1.2.1.Final (enables interception of default methods, see also <a href="https://issues.jboss.org/browse/WELD-2093" target="_blank" rel="noopener">WELD-2093</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld SE - addded useful methods from <code>SeContainerInitializer</code> (CDI 2.0, <a href="https://issues.jboss.org/browse/WELD-2316" target="_blank" rel="noopener">WELD-2316</a>)</p>
-                  </li>
-                  <li>
-                  <p>Probe development tool - extended bean archive info</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/2.4.2.Final/wildfly-10.1.0.Final-weld-2.4.2.Final-patch.zip" target="_blank" rel="noopener">patch for WildFly</a> is available.
-                  This time the target platform is <strong>WildFly 10.1.0.Final</strong>.
-                  If you’re not familiar with patching WildFly, check the <a href="/documentation/#12">FAQ</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/cdi/api/1.2/" target="_blank" rel="noopener">CDI 1.2 API</a> &#93;
-                  &#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12332808" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>

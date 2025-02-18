@@ -143,6 +143,256 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2017/05/19/tour-around-weld-3/">Tour around Weld 3</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2017-5-19
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div id="toc" class="toc">
+                  <div id="toctitle" class="title">Contents</div>
+                  <ul class="sectlevel1">
+                  <li><a href="#_async_events_and_notification_options">Async Events and Notification Options</a></li>
+                  <li><a href="#_configurators_api">Configurators API</a></li>
+                  <li><a href="#_se_bootstrap_api">SE Bootstrap API</a></li>
+                  <li><a href="#_on_demand_request_context_activation">On-demand Request Context Activation</a></li>
+                  <li><a href="#_observer_method_ordering">Observer Method Ordering</a></li>
+                  <li><a href="#_intercepting_produced_beans">Intercepting Produced Beans</a></li>
+                  <li><a href="#_trimmed_bean_archives">Trimmed Bean Archives</a></li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>This post briefly describes all the main CDI 2.0 features and elaborates on Weld-specific features we added on top of that.
+                  It is not intended as a deep-dive but rather to give you the overall idea of what is going on and what can the new release offer.
+                  So, enough talk, let&#8217;s get the show on the road!</p>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_async_events_and_notification_options">Async Events and Notification Options</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Up until now, the only way to send events was to do so synchronously.
+                  That meant stopping the work of your current thread to instead occupy it with observer resolution and subsequent notification of observer methods.
+                  Once all that was done, the thread resumed it&#8217;s work.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>With CDI 2.0 there are asynchronous events - a 'fire &amp; forget' way of handling things.
+                  Here is how to fire such and event and how to observe it:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>// nothing new here, plain old Event is used&#x000A;    @Inject Event&lt;Payload&gt; event;&#x000A;    &#x000A;    public void sendAsyncEvent() {&#x000A;        // we use a new fireAsync method for asynchronous events&#x000A;        CompletionStage&lt;Payload&gt; eventResult = event.fireAsync(new Payload()).thenAccept(...);&#x000A;    }&#x000A;    &#x000A;    public void asyncObserver (@ObservesAsync Payload payload){ … }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Few things to note here - first of all, the return value of <code>fireAsync</code> is <code>CompletionStage</code> allowing you to chain the work for when the event is done.
+                  You can follow-up with more tasks, react on exceptional return value and so on.
+                  Another noticeable detail is that observers which are to be notified have to have <code>@ObservesAsync</code> annotation.
+                  As you might have guessed, an observer can be notified of either synchronous (<code>@Observes</code>) or asynchronous (<code>@ObservesAsync</code>) events but never both!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Apart from this very basic usage, async events allow you to specify <code>NotificationOptions</code> - an option allowing you to tweak the way notification works.
+                  From CDI perspective, there is currently only one standardized option and that enables usage of custom executors which will be used for notifications.
+                  But the API was designed in a generic way so that implementation can enrich it with its own options.
+                  Weld currently offers two more options - timeout and parallel execution - both of which are well described in <a href="http://docs.jboss.org/weld/reference/3.0.0.Final/en-US/html/events.html#_notification_options" target="_blank" rel="noopener">Weld docs</a>.
+                  And here is a snippet showing it in action:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>public void sendAsyncEventWithOptions() {&#x000A;        // we use a secondary version of fireAsync method with NotificationOptions parameter&#x000A;        event.fireAsync(new Payload(), NotificationOptions.of("weld.async.notification.timeout", 2000));&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_configurators_api">Configurators API</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Another of the key features are <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#configurators" target="blank"><code>Configurators</code></a>.
+                  They are here to ease our work when doing small tweaks in extensions.
+                  Here is a snippet showing how easy it can be to register a new bean in <code>AfterBeanDiscovery</code> using configurator.
+                  You don&#8217;t have to create a new class implementing <code>Bean&lt;X&gt;</code> anymore:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>public void addABean(@Observes AfterBeanDiscovery event) {&#x000A;        // get an instance of BeanConfigurator&#x000A;        event.addBean()&#x000A;          // set the desired data&#x000A;          .types(Foo.class)&#x000A;          .scope(RequestScoped.class)&#x000A;          .addQualifier(Custom.CustomLiteral.INSTANCE);&#x000A;          //finally, add a callback to tell CDI how to instantiate this bean&#x000A;          .produceWith(obj -&gt; new Foo());&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>Following configurators were added:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>AnnotatedTypeConfigurator</code></p>
+                  </li>
+                  <li>
+                  <p><code>InjectionPointConfigurator</code></p>
+                  </li>
+                  <li>
+                  <p><code>BeanAttributesConfigurator</code></p>
+                  </li>
+                  <li>
+                  <p><code>BeanConfigurator</code></p>
+                  </li>
+                  <li>
+                  <p><code>ObserverMethodConfigurator</code></p>
+                  </li>
+                  <li>
+                  <p><code>ProducerConfigurator</code></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>On top of that, Weld adds one additional configurator - <a href="http://docs.jboss.org/weld/reference/latest/en-US/html_single/#_weld_enriched_container_lifecycle_events" target="_blank" rel="noopener"><code>InterceptorConfigurator</code></a>.
+                  This one allows you to observe <code>WeldAfterBeanDiscovery</code> and then use this configurator to create and register a custom interceptor from scratch.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_se_bootstrap_api">SE Bootstrap API</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>A big change in CDI 2.0 is the SE support.
+                  Of course, Weld fans have had this for years now, but it has gone official, so that still counts, right?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The official CDI API is very similar to that of Weld, here is how it looks like:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>public void bootBasicContainer() {&#x000A;        SeContainerInitializer initializer = SeContainerInitializer.newInstance();&#x000A;        try (SeContainer container = initializer.initialize()) {&#x000A;            Assert.assertTrue(container.isRunning());&#x000A;        }&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>This is the very basic way; you can also opt to use synthetic bean archive where you cherry-pick all the beans/interceptors/&#8230;&#8203; in your archive.
+                  <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#se_bootstrap" target="_blank" rel="noopener">CDI spec</a> describes this fairly well, so how about we instead shift our attention to what Weld SE offers on top of that?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>A small reminder of how to boot SE container using pure Weld API:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>public void bootWeldSeContainer() {&#x000A;        Weld weld = new Weld();&#x000A;        try (WeldContainer container = weld.initialize()) {&#x000A;            container.select(FooBean.class).get();&#x000A;        }&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>One of the things Weld makes easier, is when you want to create a quick extension, but don&#8217;t really want to write a whole new class which you then need to place in <code>META-INF/services</code> or register on bootstrap.
+                  You can easily create a 'synthetic extension' programatically:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>Extension testExtension = ContainerLifecycleObserver.extensionBuilder()&#x000A;        .add(afterBeanDiscovery((e) -&gt; System.out.println("Bean discovery completed!")))&#x000A;        .add(processAnnotatedType().notify((e) -&gt; {&#x000A;                if (e.getAnnotatedType().getJavaClass().getName().startsWith("com.foo")) {&#x000A;                    e.veto();&#x000A;                }&#x000A;            })).build();&#x000A;    &#x000A;    try (WeldContainer container = new Weld().addExtension(testExtension).initialize()) {&#x000A;        // Use the container...&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>What we just did was to create an extension with two container lifecycle observer methods.
+                  It follows a familiar builder pattern and the body of the observer methods is specified as lambda expression.
+                  Before booting SE container, we register this extension as we would any other.
+                  For more information about this, don&#8217;t hesitate to check our older <a href="http://weld.cdi-spec.org/news/2016/02/08/weld-se-synth-lifecycle-events/">news post</a>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_on_demand_request_context_activation">On-demand Request Context Activation</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Especially in SE (although not only there) you might want to activate a <code>RequestContext</code> manually for certain period of time.
+                  There are two ways to achieve that, first of which is an interceptor - <code>@ActivateRequestContext</code>.
+                  You can use that on either a method or a type (enabling it for all methods).
+                  As you might expect, it will activate the context before executing your method and shut it down afterwards.
+                  The other way is through means of built-in bean named <code>RequestContextController</code>.
+                  This bean can be injected as any other CDI bean and offers to self-explanatory methods: <code>activate</code> and <code>deactivate</code>.
+                  The obvious advantage of this approach is that you can enable the context for an extended period of time.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_observer_method_ordering">Observer Method Ordering</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>A small but noteworthy improvement to observer methods.
+                  You can not leverage <code>@Priority</code> annotation in observer methods hence ordering them as you wish.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>public void observeFirst (@Observes @Priority(1) EventPayload payload) {...}&#x000A;    &#x000A;    public void observeSecond (@Observes @Priority(2) EventPayload payload) {...}</pre>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_intercepting_produced_beans">Intercepting Produced Beans</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Up until now, anything you created using producers could not be easily intercepted.
+                  CDI 2.0 allows this for <code>@AroundInvoke</code> interceptors in two ways.
+                  There is a new method on <code>BeanManager</code> named <code>createInterceptionFactory</code> but most of the time you will rather use a built-in bean <code>InterceptionFactory</code> which can be injected as a producer method parameter.
+                  Here is a snippet:</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>[ source, java ]</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre>@Produces&#x000A;    @Dependent&#x000A;    public ProducedBean produceFoo(InterceptionFactory&lt;ProducedBean&gt; factory) {&#x000A;        factory.configure().add(Counter.Literal.INSTANCE);&#x000A;        return factory.createInterceptedInstance(new ProducedBean());&#x000A;    }</pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>To explain this a bit, we first inject the built-in bean with the type equal to the produced type we wish to intercept.
+                  Then we <code>configure()</code> it, which returns an <code>AnnotatedTypeConfigurator</code> allowing us to add interceptor binding.
+                  Finally, we invoke <code>InterceptionFactory.createInterceptedInstance()</code> which takes a the object we produce as a parameter.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>You can read more about this in <a href="http://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#interception_factory" target="_blank" rel="noopener">this CDI spec chapter</a>.</p>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="sect1">
+                  <h2 id="_trimmed_bean_archives">Trimmed Bean Archives</h2>
+                  <div class="sectionbody">
+                  <div class="paragraph">
+                  <p>Last but not least feature we will mention are so called 'trimmed' bean archives.
+                  You can mark an explicit bean archive as trimmed in <code>beans.xml</code> by adding the <code>&lt;/trim&gt;</code> element.
+                  Such bean archive will perform an annotated type discovery as with <code>bean-discovery-mode="all"</code> but all types that don&#8217;t have a bean defining annotation or any scope annotation are then removed from the set of discovered types.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Even in this case, Weld allows you to go one step further and <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/configure.html#veto-types-without-bean-defining-annotation">veto types based on regular expression</a>.
+                  It works on a similar principle but affects your whole application - it processess all types from all bean archives.
+                  Your archives will be scanned as they would be with bean discovery mode <code>all</code> and <code>ProcessAnnotatedType</code> will be fired for all found annotated types.
+                  Then, based on the regular expression you provide, annotated types which do not have a bean defining annotation and match the regular expression will be vetoed.</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2017/05/15/weld-300Final/">Weld 3.0.0.Final - the first implementation of CDI 2.0!</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -589,204 +839,6 @@
                   &#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.4.0.Final/en-US/html/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12332808" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2017/02/01/tip4-testing/">Weld Tip 4 - Testing CDI/Weld apps</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2017-2-1
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/tips">tips</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Tomas Remes, Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div id="toc" class="toc">
-                  <div id="toctitle" class="title">Contents</div>
-                  <ul class="sectlevel1">
-                  <li><a href="#_using_weld_in_junit_tests">Using Weld in JUnit tests</a></li>
-                  <li><a href="#_arquillian_as_the_chosen_framework_for_testing">Arquillian as the chosen framework for testing</a></li>
-                  <li><a href="#_java_ee_application_server">Java EE application server</a></li>
-                  <li><a href="#_servlet_environment">Servlet environment</a></li>
-                  <li><a href="#_java_se_environment">Java SE environment</a></li>
-                  <li><a href="#_arquillian_weld_embedded_container">Arquillian Weld Embedded container</a></li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>In this follow-up article of our Weld Tips series we are going to focus on testing of CDI/Weld applications.
-                  Let&#8217;s discover options for unit testing in the first part and then continue with integration testing.
-                  To set things straight - by integration testing we mean testing in some kind of container and hence in certain environment (SE, servlet, full EE server).
-                  However, no matter the environment we always make use of <a href="http://arquillian.org/">Arquillian</a> integration testing framework.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_using_weld_in_junit_tests">Using Weld in JUnit tests</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Recently we created Weld JUnit extension which uses JUnit4 <code>@Rule</code> to initialize a Weld SE container before each test method execution. For further information please check following <a href="https://developer.jboss.org/people/mkouba/blog/2017/01/24/easy-testing-of-cdi-components-with-weld-and-junit4/">blogpost</a>.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_arquillian_as_the_chosen_framework_for_testing">Arquillian as the chosen framework for testing</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>While Arquillian may look complex at first, it is certainly worth it. Here are some of the advantages it gives you:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Allows usage of CDI <code>@javax.inject.Inject</code> directly in test classes</p>
-                  </li>
-                  <li>
-                  <p>Works well with ShrinkWrap making archive creation and deployment a breeze</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p><a href="http://arquillian.org/guides/shrinkwrap_introduction/">ShrinkWrap</a> can create any type of deployment archive (WAR, JAR, even infamous EAR) with exactly the capabilities you wish it to have</p>
-                  </li>
-                  <li>
-                  <p>You can use dedicated <code>beans.xml</code> or <code>@Alternatives</code> for given test case</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Portability - allows to write one test and run it on any container</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Arquillian only needs correct adapter; therefore, combined with Maven profiles this gives you some nice fire power for matrix testing</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Allows for very complex testing scenarios</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>For instance you can create several deployments which you then manually (if you so wish) deploy/undeploy</p>
-                  </li>
-                  <li>
-                  <p>This makes it viable even for cluster testing (session replication, failover scenarios, &#8230;&#8203;)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Can start the application server itself or can just connect to running one</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>In fact writing tests with Arquillian is quite straightforward. It&#8217;s basically about right usage of right annotations. Basic test could like this:
-                  [ source, java ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre> package org.arquillian.example;&#x000A;    &#x000A;     import javax.inject.Inject;&#x000A;     import org.jboss.arquillian.container.test.api.Deployment;&#x000A;     import org.jboss.arquillian.junit.Arquillian;&#x000A;     import org.jboss.shrinkwrap.api.ShrinkWrap;&#x000A;     import org.jboss.shrinkwrap.api.asset.EmptyAsset;&#x000A;     import org.jboss.shrinkwrap.api.spec.JavaArchive;&#x000A;     import org.junit.Assert;&#x000A;     import org.junit.Test;&#x000A;     import org.junit.runner.RunWith;&#x000A;    &#x000A;     @RunWith(Arquillian.class)&#x000A;     public class GreeterTest {&#x000A;    &#x000A;         // This static method builds the virtual test deployment archive&#x000A;         @Deployment&#x000A;         public static JavaArchive createDeployment() {&#x000A;             return ShrinkWrap.create(JavaArchive.class)&#x000A;                 .addClass(Greeter.class)&#x000A;                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");&#x000A;         }&#x000A;    &#x000A;         @Inject&#x000A;         Greeter greeter;&#x000A;    &#x000A;         @Test&#x000A;         public void should_create_greeting() {&#x000A;            Assert.assertEquals("Hello, Earthling!", greeter.createGreeting("Earthling"));&#x000A;         }&#x000A;     }</pre>
-                  </div>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you are a complete Arquillian rookie, you might want to look at their <a href="http://arquillian.org/guides/getting_started_rinse_and_repeat/">Getting started guide</a>.
-                  Should you just need an inspiration, you needn&#8217;t look any further than our <a href="https://github.com/weld/core/tree/master/tests-arquillian/src/test/java/org/jboss/weld/tests">testsuite</a>.
-                  To support the though of Arquillian usefulness for CDI/Weld testing, we may also point out that even <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests">CDI TCK tests</a> use it.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Now, let&#8217;s take a look at different environments and then round it up with <a href="https://github.com/arquillian/arquillian-container-weld">Arquillian Weld Embedded container</a>, which can be used in each and every environment.</p>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_java_ee_application_server">Java EE application server</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>When you want to test your application in Java EE application server you basically need to create your test deployment archive, deploy it, execute the test and undeploy the archive.
-                  As stated above, <a href="http://arquillian.org/modules/shrinkwrap-shrinkwrap/">ShrinkWrap</a> covers the archive creation (typically WAR or EAR).
-                  When it comes to deployment/undeployment, Arquillian controls that, unless you take the reins and control it yourself - just keep an eye for dangling deployments.
-                  You also get to chose between using so called managed container, where Arquillian starts and stops the desired container for you, and remote container where Arquillian tries to connect to already running container.
-                  Since we are talking Java EE application server, you can use CDI out of the box.
-                  Just pay attention to <a href="https://docs.jboss.org/author/display/ARQ/Test+run+modes">test mode</a> you are using.
-                  You can check available Arquillian container adapters <a href="http://arquillian.org/modules/">here</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>For example to use Arquillian WildFly Managed container you need to define following dependency:
-                  [ source, xml ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.wildfly.arquillian&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.1.0.Final&lt;/version&gt;&#x000A;                       &lt;scope&gt;test&lt;/scope&gt;&#x000A;                   &lt;/dependency&gt;</pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_servlet_environment">Servlet environment</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>In basic Servlet environment you need to deploy all the dependencies of Weld Servlet integration (as CDI API, Interceptors API, etc.) to your Servlet container and thus embedded container option could be sufficient.
-                  As you can <a href="http://arquillian.org/modules/">see</a> Arquillian offers embedded container adapters for all well known Servlet containers such as Tomcat, Jetty and Undertow.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>For example to use Arquillian Embedded Tomcat container you need to define following dependency:
-                  [ source, xml ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-tomcat-embedded-8&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;1.0.0.CR8&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_java_se_environment">Java SE environment</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Java SE is not effectively a container, however it could be very handy to have an option to easily configure classpath elements of your test.
-                  This is exactly what <a href="https://github.com/arquillian/arquillian-container-se">Arquillian container SE</a> offers.
-                  With this extension you can build your test classpath and the test executes remotely over JMX in new isolated JVM process.
-                  You can find basic information in <a href="https://github.com/arquillian/arquillian-container-se/blob/master/README.adoc">README</a> or you can take look into already mentioned <a href="https://github.com/cdi-spec/cdi-tck/tree/master/impl/src/main/java/org/jboss/cdi/tck/tests">CDI TCK tests</a> where you can find <a href="https://github.com/cdi-spec/cdi-tck/blob/master/impl/src/main/java/org/jboss/cdi/tck/TestGroups.java#L100">SE testgroup</a> which involves all SE related tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The maven dependency for this extension looks like this:
-                  [ source, xml ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>               &lt;dependency&gt;&#x000A;                       &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                       &lt;artifactId&gt;container-se-managed&lt;/artifactId&gt;&#x000A;                       &lt;version&gt;1.0.1.Final&lt;/version&gt;&#x000A;                   &lt;/dependency&gt;</pre>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_arquillian_weld_embedded_container">Arquillian Weld Embedded container</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>First of all - this test container is suitable in situations when you know you don&#8217;t need to work with full Java EE application server and you are OK with dummy mock EJB, JTA, JPA etc. services.
-                  As stated in the beginning of this article, you can use it for any environment but you have to keep it mind, that other technologies/services will be mocked only.
-                  By default, this container operates in SE mode, as you don&#8217;t need to mock anything there, but you can use a system property (<code>Denvironment=EE</code>) or a programmatic approach in order to make it work in other environments.
-                  For full list of supported environments, see <a href="https://github.com/weld/api/blob/master/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environments.java"><code>Environments.java</code></a>.
-                  We recommend you to take a glance at <a href="https://github.com/arquillian/arquillian-container-weld/blob/master/README.adoc">README</a> file - especially those few lines about flat deployment structure (this means this container is not very suitable for testing EAR deployments) and configuration property for setting testing environment.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The maven dependency for this container could look like this:
-                  [ source, xml ]</p>
-                  </div>
-                  <div class="listingblock">
-                  <div class="content">
-                  <pre>               &lt;dependency&gt;&#x000A;                        &lt;groupId&gt;org.jboss.arquillian.container&lt;/groupId&gt;&#x000A;                        &lt;artifactId&gt;arquillian-weld-embedded&lt;/artifactId&gt;&#x000A;                        &lt;version&gt;2.0.0.Beta4&lt;/version&gt;&#x000A;                        &lt;scope&gt;test&lt;/scope&gt;&#x000A;                    &lt;/dependency&gt;</pre>
-                  </div>
                   </div>
                   </div>
                   </div>

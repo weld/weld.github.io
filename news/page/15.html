@@ -143,6 +143,100 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2016/04/11/weld-meets-vertx/">Weld meets Vert.x</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2016-4-11
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/vertx">vertx</a>
+                    ,
+                    <a href="/news/tags/integration">integration</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Martin Kouba
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p><a href="http://vertx.io/" target="_blank" rel="noopener">Vert.x</a> defines itself as "a toolkit for building reactive applications on the JVM".
+                  Sounds cool and trendy.
+                  Weld, on the other hand, comes from the Java EE world, based on standards and traditional concepts.
+                  But wait, what if we try to combine the two worlds to get the best of them?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Vert.x makes use of a light-weight distributed messaging system to allow application components to communicate in a loosely coupled way.
+                  This should sound familiar to all CDI users where beans may produce and consume events as well.
+                  Weld team developed a <a href="https://github.com/weld/weld-vertx">working prototype</a> of Weld/Vert.x integration that allows to automatically register certain observer methods as Vert.x message consumers.
+                  A simple echo message consumer could look like this:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jboss.weld.vertx.VertxConsumer;&#x000A;    import org.jboss.weld.vertx.VertxEvent;&#x000A;    &#x000A;    class Foo {&#x000A;        public void echoConsumer(@Observes @VertxConsumer("test.echo.address") VertxEvent event) {&#x000A;            event.setReply(event.getMessageBody());&#x000A;        }&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><code>@VertxConsumer</code> - a qualifier used to specify the address the consumer will be registered to: <code>test.echo.address</code></p>
+                  </li>
+                  <li>
+                  <p><code>VertxEvent</code> - a wrapper of a Vert.x message</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Since we&#8217;re working with a regular observer method, additional parameters may be declared (next to the event parameter).
+                  These parameters are injection points. So it&#8217;s easy to <strong>declare a message consumer dependencies</strong>:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerWithDependencies(@Observes @VertxConsumer("test.dependencies.address") VertxEvent event, CoolService coolService, StatsService statsService) {&#x000A;        coolService.process(event.getMessageBody());&#x000A;        statsService.log(event);&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="admonitionblock note">
+                  <table>
+                  <tr>
+                  <td class="icon">
+                  <div class="title">Note</div>
+                  </td>
+                  <td class="content">
+                  If you inject a dependent bean, it will be destroyed when the invocation completes.
+                  </td>
+                  </tr>
+                  </table>
+                  </div>
+                  <div class="paragraph">
+                  <p>Last but not least - an observer may also <strong>send/publish messages using the Vert.x event bus</strong>:</p>
+                  </div>
+                  <div class="listingblock">
+                  <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void consumerStrikesBack(@Observes @VertxConsumer("test.publish.address") VertxEvent event) {&#x000A;        event.messageTo("test.huhu.address").publish("huhu");&#x000A;    }</code></pre>
+                  </div>
+                  </div>
+                  <div class="paragraph">
+                  <p>And how does it work under the hood?
+                  First of all, it&#8217;s necessary to deploy <code>org.jboss.weld.vertx.WeldVerticle</code>.
+                  This <code>Verticle</code> starts Weld SE container and automatically registers <code>org.jboss.weld.vertx.VertxExtension</code> to process all observer methods and detect observers which should become message consumers.
+                  Then a special handler is registered for each address to bridge the event bus to the CDI world.
+                  Handlers use <code>Vertx.executeBlocking()</code> since we expect the code to be blocking.
+                  Later on, whenever a new message is delivered to the handler, <code>Event.fire()</code> is used to notify all relevant observers.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>The prototype is surely missing some features. Nevertheless, it shows the CDI programming model might be applicable to the "reactive" world even if not a first class citizen.
+                  Moreover, the prototype demonstrates the flexibility of the CDI extension mechanism.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you want to try it out, you&#8217;ll have to clone the <a href="https://github.com/weld/weld-vertx" class="bare">https://github.com/weld/weld-vertx</a> repository and build it from source (i.e. run <code>mvn clean install</code>).
+                  And if you find it useful feel free to add comments to this blog post. Any feedback is appreciated!</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2016/02/12/weld-233Final/">Weld 2.3.3.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -403,48 +497,6 @@
                   &#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/2.3.2.Final/en-US/html/">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12328625">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2015/12/04/weld-300Alpha14/">Weld 3.0.0.Alpha14</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2015-12-4
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                    ,
-                    <a href="/news/tags/cdi2">cdi2</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 3.0.0.Alpha14 the penultimate Weld version for this year has been released into the wild.
-                  It reflects some of the most recent changes in the CDI 2.0 specification, mostly related to asynchronous events.
-                  Moreover, this release also contains quite a lot of enhancements and bugfixes. See also <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327856">the release details</a>.</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>As usual, a <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">patch for WildFly</a> is available. This patch not only upgrades Weld within an existing WildFly instance but also upgrades CDI API to 2.0 EDR1. This time the target platform is <strong>WildFly 10.0.0.CR4</strong>.  If you’re not familiar with patching WildFly, check <a href="http://blog.eisele.net/2015/02/playing-with-weld-probe-see-all-of-your.html">Markus&#8217;s tutorial</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="http://docs.jboss.org/weld/javadoc/3.0/weld-api/org/jboss/weld/experimental/package-frame.html">Experimental API documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12327856">Release notes</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/weld-3.0.0.Alpha14.zip">Distribution</a> &#93;
-                  &#91; <a href="http://download.jboss.org/weld/3.0.0.Alpha14/wildfly-10.0.0.CR4-weld-3.0.0.Alpha14-patch.zip">Patch for Wildfly 10 CR4</a>
-                  &#93;</p>
                   </div>
                   </div>
                   </div>

@@ -143,6 +143,70 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/02/18/weld-601Final/">Weld 6.0.1.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-2-18
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>First small update for Weld 6 has landed in Central.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are only two notable fixes here, so let us take a look at them:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Fixed a bug that EJC (Eclipse Java Compiler) users can encounter in combination with interceptors and lambdas in their beans (<a href="https://issues.redhat.com/browse/WELD-2806">WELD-2806</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This could, in certain circumstances, yield a very hard to decipher bytecode generation error.</p>
+                  </li>
+                  <li>
+                  <p>Note that this does not manifest when using standard <code>javac</code> compiler.</p>
+                  </li>
+                  <li>
+                  <p>If you are interested in more gory details, they are in the issue and/or pull requests linked to it.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Make <code>ElAwareBeanManager</code> injectable as a bean type</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Inability to perform this was an oversight as it is a requirement in Jakarta EE WebProfile specification.</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, do report any bugs you encounter so that we can squash them as soon as possible!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12440352" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/01/21/weld-515Final/">Weld 5.1.5.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -324,85 +388,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12436952" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2024/11/13/weld-600CR1/">Weld 6.0.0.CR1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2024-11-13
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>First version of the Jakarta EE TCKs has finally landed in Central and with that, we have re-enabled all remaining TCK tests and are confident enough to issue a candidate release for Weld 6!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Note that both, Weld API and Weld Core artifacts have been released.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Here is the list of changes from last Beta:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Implement validation for unproxyability of sealed types (<a href="https://issues.redhat.com/browse/WELD-2799">WELD-2799</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct injection into <code>@Resource</code> fields of beans registered through extensions (<a href="https://issues.redhat.com/browse/WELD-2798">WELD-2798</a>)</p>
-                  </li>
-                  <li>
-                  <p>Improve the algorithm that determines <code>BeanManager</code> instance for synthetic beans coming from build compatible extensions (<a href="https://issues.redhat.com/browse/WELD-2794">WELD-2794</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld OSGi bundle now correctly exports <code>org.jboss.weld.util.reflection</code> (<a href="https://issues.redhat.com/browse/WELD-2793">WELD-2793</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld OSGi bundle now contains imports for built-in bean proxies (<a href="https://issues.redhat.com/browse/WELD-2796">WELD-2796</a>)</p>
-                  </li>
-                  <li>
-                  <p>Re-introduce Jakarta EE CDI TCK into continuous integration (<a href="https://issues.redhat.com/browse/WELD-2778">WELD-2778</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>The TCK artifact in Central is not yet final (it is <code>M1</code>) but it is enough to make sure Weld passes all related CDI tests with WildFly</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Fix possible file leak in <code>org.jboss.weld.util.ServiceLoader</code> (<a href="https://issues.redhat.com/browse/WELD-2800">WELD-2800</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This was only reported during GlassFish testing and affected just Windows machines</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Resolve license conflict of <code>jboss-logging-processor</code> inside shaded Weld SE JAR (<a href="https://issues.redhat.com/browse/WELD-2795">WELD-2795</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As per usual, please report any issues you discover with this release so that we can squash those bugs.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12429945" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
