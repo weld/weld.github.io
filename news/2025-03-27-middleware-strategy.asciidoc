@@ -1,0 +1,26 @@
+---
+layout: news
+title: Red Hat Middleware Strategy
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+tags: [team]
+---
+
+By now you might have heard that Red Hat announced significant changes to their middleware strategy last month. +
+Let me start by saying that this has come as a surprise to us as we were not aware of it in advance. +
+Nonetheless, here we are, and I wanted to provide Weld community with some context as well as talk about how this affects the project.
+
+If you want to read the official announcement, it can be found on the link:https://www.redhat.com/en/blog/evolving-our-middleware-strategy[Red Hat blog]. +
+In short, some key points from the article are:
+
+* Red Hat’s Middleware and Integration Engineering and Products teams are moving to IBM in May/June 2025.
+* Red Hat will continue to sell and support its Middleware and Integration offerings as they do today; this will not be impacted.
+* All transitioning Red Hat technology will remain open source and continue to follow an upstream-first development model.
+
+I do not anticipate this change having any significant impact on Weld project perhaps with the exception of a temporary disruption during the transition period. +
+We remain committed to development of Weld as the compatible implementation of Jakarta CDI specification as well as its standalone capabilities. +
+The project remains open source and contributions as well as bug reports are still very much welcome!
+
+For Weld team +
+Matej
