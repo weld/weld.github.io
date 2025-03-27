@@ -143,6 +143,51 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/11/28/weld-600CR2/">Weld 6.0.0.CR2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-11-28
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Turns out we forgot to perform some code cleanup in the <code>CR1</code> - so here goes <code>6.0.0.CR2</code> which removes deprecated code pieces.
+                  Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we&#8217;ve kept that code around for now.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Resolved issues in this version:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Revisit deprecated code in Weld Core (<a href="https://issues.redhat.com/browse/WELD-2804">WELD-2804</a>)</p>
+                  </li>
+                  <li>
+                  <p>Remove <code>WeldCrossContextFilter</code> (<a href="https://issues.redhat.com/browse/WELD-2803">WELD-2803</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>As per usual, please report any issues you discover with this release so that we can squash those bugs.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12436952" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/11/13/weld-600CR1/">Weld 6.0.0.CR1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -503,120 +548,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12415474" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2023/10/26/weld-600Alpha1/">Weld 6.0.0.Alpha1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2023-10-26
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Looking for a CDI 4.1 implementation? We&#8217;ve got you covered!
-                  Weld Core 6.0.0.Alpha1 is now available and comes along with CDI API 4.1.0.Alpha1.
-                  Note that this version also uses latest version (2.2.0-RC1) of the Jakarta Interceptors specification.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>CDI/CDI TCK related additions:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Create first implementation of CDI method invokers using <code>MethodHandles</code> (<a href="https://issues.redhat.com/browse/WELD-2764">WELD-2764</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>If you want to read up more about the original CDI API design and PR, take a look (<a href="https://github.com/jakartaee/cdi/pull/639">here</a>)</p>
-                  </li>
-                  <li>
-                  <p>Note that this feature is still being improved on both, CDI side and (<a href="https://issues.redhat.com/browse/WELD-2765">Weld side</a>) but the general shape of it is already carved out</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Support standardized means of getting interceptor bindings from <code>InvocationContext</code> (<a href="https://issues.redhat.com/browse/WELD-2756">WELD-2756</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This was already possible via set of methods in <code>WeldInvocationContext</code> as well as the <code>String</code> key under which we stored these bindings in <code>InvocationContext</code></p>
-                  </li>
-                  <li>
-                  <p>Both of the above are no deprecated (but still working) and users are expected to use the standardized approach</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Support inspectable <code>CreationalContext</code> and <code>Contextual</code> in CDI TCK SPI (<a href="https://issues.redhat.com/browse/WELD-2757">WELD-2757</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>Other bugfixes and project QoL features:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fix proxy creation for beans using <code>@Typed</code> and having package-protected types split across packages (<a href="https://issues.redhat.com/browse/WELD-2758">WELD-2758</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct how we determine proxy package for beans with unassignable types in their bean type set (<a href="https://issues.redhat.com/browse/WELD-2763">WELD-2763</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This  was only problematic in environments using <code>WeldDefaultProxyServices</code> to define their proxies (such as Weld SE)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p><code>WeldManager#getContexts</code> now correctly returns an empty set when there are no contexts for given scope (<a href="https://issues.redhat.com/browse/WELD-2761">WELD-2761</a>)</p>
-                  </li>
-                  <li>
-                  <p>Fix possible memory leak with repetitive thread group creation (<a href="https://issues.redhat.com/browse/WELD-2755">WELD-2755</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>WeldInitialListener</code> can no longer throw NPE is application fails to start (<a href="https://issues.redhat.com/browse/WELD-2752">WELD-2752</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Only possible in some EE containers on repeated re-deployment of Weld applications</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p><code>LazySessionBeanStore</code> no longer swallows exceptions happening when attempting to initiate HTTP session (<a href="https://issues.redhat.com/browse/WELD-2762">WELD-2762</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld Core and Weld API are now using formatter plugin and impsort instead of checkstyle (<a href="https://issues.redhat.com/browse/WELD-2753">WELD-2753</a>)</p>
-                  </li>
-                  <li>
-                  <p>Jandex version was bumped to 3.x across the project (<a href="https://issues.redhat.com/browse/WELD-2754">WELD-2754</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if you find further issues with Weld 6, let us know and we&#8217;ll try to help.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.Alpha1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12413485" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
