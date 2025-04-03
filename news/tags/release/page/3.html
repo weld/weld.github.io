@@ -143,6 +143,42 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2022/03/23/weld-500CR2/">Weld 5.0.0.CR2</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2022-3-23
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Final ballot of CDI 4 has uncovered untested and unimplemented area in the newly added <code>Startup</code> and <code>Shutdown</code> events.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Our previous release was guilty of not supporting this properly, hence here comes Weld API 5.0.CR2 and Weld Core 5.0.0.CR2.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Weld now automatically fires these events and the JIRA issue for this can be seen <a href="https://issues.jboss.org/browse/WELD-2709" target="_blank" rel="noopener">here (WELD-2709)</a>.
+                  However, integrators can choose to override this behavior and fire both events themselves in case there is more bootstrapping logic that needs to come together before the container is deemed ready.
+                  The API interface <a href="https://github.com/weld/api/blob/5.0.CR2/weld-spi/src/main/java/org/jboss/weld/bootstrap/api/Environment.java#L48-L70"><code>org.jboss.weld.bootstrap.api.Environment</code></a> allows implementors to override a specific method which will then prevent Weld from handling these events.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12382781" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2022/02/23/weld-500CR1/">Weld 5.0.0.CR1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -1087,104 +1123,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12352570" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2020/09/18/weld-400Beta1/">Weld 4.0.0.Beta1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2020-9-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new Weld 4 release is now available!
-                  Latest core version is now 4.0.0.Beta1 and Weld API that ships with it is 4.0.Beta1.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I will not be listing links to issues as usual, because I think more important work was done outside of JIRA tracking this time (although you can check the issues <a href="https://issues.redhat.com/projects/WELD/versions/12346364">here</a>).
-                  Instead, let me sum it up in a short list of noticeable changes:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>All Weld bits are now present in Maven Central</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Including servlet core (and shaded) which had to be left out last time</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>We are able to execute CDI TCKs in EE 9 environment once again and it&#8217;s all passing</p>
-                  </li>
-                  <li>
-                  <p>We are now able to test servlets with Tomcats and Undertow</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Jetty testing is not possible yet because there is no <a href="https://github.com/arquillian/arquillian-container-jetty/issues/43">Arquillian adapter</a> for it yet</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Reworked documentation generation tooling</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Weld docs now have similar look to those of CDI and are distributed in either PDF or single page HTML format</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Did some updates on Javadoc generation in API and Core if generated with JDK 11</p>
-                  </li>
-                  <li>
-                  <p>Big update pass on tooling and dependencies</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>We are now using Dependabot and have bumped almost every dependency and tooling in the project</p>
-                  </li>
-                  <li>
-                  <p>Which also led to nice cleanup and fixing of several issues</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>On top of that, every bugfix that would go into Weld 3 is of course being added to Weld 4 as well so those aren&#8217;t missing either!</p>
-                  </div>
-                  <div class="sect1">
-                  <h2 id="_wildfly_patch">WildFly Patch</h2>
-                  <div class="sectionbody">
-                  <div class="paragraph">
-                  <p>Sadly we cannot provide a patch for WildFly as there is not yet any official release that would support EE 9.
-                  As soon as there is one, we will surely follow up with Weld patch!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/4.0.0.Beta1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12346364" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                   </div>
                   </div>
