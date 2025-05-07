@@ -143,6 +143,58 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2023/07/11/weld-511SP1/">Weld 5.1.1.SP1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2023-7-11
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>A new SP release of Weld 5 is now avaiable.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Latest release, Weld 5.1.1.Final, has shown that one of the changes (<a href="https://issues.redhat.com/browse/WELD-2743">WELD-2743</a>) had unforseen and, sadly, untested consequences.
+                  Some of the integrators and some of community were using <code>BeanManager#getReference</code> in scenarios which were broken by this change.
+                  While the use cases aren&#8217;t explicitly backed by the specification or its TCKs, we decided we don&#8217;t want to break them, especially not in a micro release.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This SP release therefore aims to correct the above and only adds one other tiny change:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Revert the change of <code>BeanManager#getReference</code> and solve this issue differently (<a href="https://issues.redhat.com/browse/WELD-2745">WELD-2745</a>)</p>
+                  </li>
+                  <li>
+                  <p>Modify how <code>toString()</code> is invoked on proxies of removed EJB beans (<a href="https://issues.redhat.com/browse/WELD-2747">WELD-2747	</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Big thanks for (<a href="https://github.com/ljnelson">Laird Nelson</a>) and (<a href="https://github.com/arjantijms">Arjan Tijms</a>) for bringing these cases to my attention as well as helping to understand and resolve them!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>As always, if you find further issues with Weld 5, do let us know.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.1.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12410330" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2023/06/12/weld-511Final/">Weld 5.1.1.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -387,43 +439,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/05/04/weld-500SP1/">Weld 5.0.0.SP1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-5-4
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new version of Weld core is now in Maven Central - 5.0.0.SP1.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>There have been reports of a bytecode verification error in certain scenarios reported by <a href="https://www.eclipse.org/lists/cdi-dev/msg00586.html">GlassFish</a> and <a href="https://github.com/wildfly/wildfly/pull/15474#issuecomment-1113505376">WildFly</a> trying to integrate Weld 5.0.0.Final.
-                  We have investigated the cause and identified the problematic change, you can read more about it in <a href="https://issues.redhat.com/browse/WELD-2719">WELD-2719</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Weld 5.0.0.SP1 release reverts the offending change (<a href="https://issues.redhat.com/browse/WELD-2712">WELD-2712</a>) and otherwise keeps Weld intant in terms of changes.
-                  In case you identify any further issues, don&#8217;t hesitate to reach out.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.SP1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12385753" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/3.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <a href="/news/page/3.html" class="page-link">3</a> <span class="current-page">4</span> <a href="/news/page/5.html" class="page-link">5</a> <span class="skip">...</span><a href="/news/page/19.html" class="page-link">19</a> <a href="/news/page/20.html" class="page-link">20</a> <a href="/news/page/5.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><a href="/news/page/3.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <a href="/news/page/3.html" class="page-link">3</a> <span class="current-page">4</span> <a href="/news/page/5.html" class="page-link">5</a> <span class="skip">...</span><a href="/news/page/20.html" class="page-link">20</a> <a href="/news/page/21.html" class="page-link">21</a> <a href="/news/page/5.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">
