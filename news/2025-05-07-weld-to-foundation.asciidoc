@@ -1,0 +1,35 @@
+---
+layout: news
+title: Moving to a Foundation
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+tags: [team]
+---
+
+Just like other projects in the ecosystem around us (WildFly, SmallRye, RESTEasy, Undertow, ...), Weld too has been looking for a friendly vendor-neutral place it could inhabit - a software foundation. +
+It is our hope that by joining a foundation we can make Weld more open, expand the community, improve transparency and encourage participation from contributors coming from all over the software landscape. 
+
+=== Things to Keep in Mind
+
+When choosing a foundation to join, there are several importants things to consider:
+
+* Ability to use the tooling we currently have to minimize the impact of the move. For instance, we still use JIRA for issues.
+* Maintain the ability to perform quick release when needed and at flexible intervals.
+* As a project, retain independence in decision-making. I.e. if possible do not fall under foundation imposed restrictions and rules.
+
+=== What Does the Move Entail?
+
+Red Hat has always been supportive of open source and collaboration in vendor-neutral projects and this is still the case; Red Hat bussiness leaders are fully supportive of this move. +
+Furthermore, we, as in the Weld team, aim to keep working on the project and supporting it just like we did up until now.
+
+=== Current Status
+
+At the moment we are eyeing the option to move along with link:https://www.commonhaus.org/activity/259.html[WildFly under the Commonhaus Foundation]. +
+
+=== Community Feedback
+
+We'd love to hear your thoughts on this so don't hesitate to speak through the mailing list or via a discussion topic directly in the GitHub repository.
+
+Best Regards +
+Matej
