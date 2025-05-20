@@ -143,6 +143,80 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/05/20/weld-603Final/">Weld 6.0.3.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-5-20
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 6.0.3.Final release is now available in Maven Central.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are only two fixes to mention here:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Added validation for interceptor classes declaring multiple methods for the same interception type (<a href="https://issues.redhat.com/browse/WELD-2814">WELD-2814</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This is a fail-fast(er) mechanism for users; otherwise the behavior is mandated by the Interceptors specification</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Correct <code>AnnotatedType</code> ID creation to avoid cache miss leading to possible memory leak (<a href="https://issues.redhat.com/browse/WELD-2815">WELD-2815</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The leak is not generic and doesn&#8217;t affect most deployments. In fact it requires at least all of the below condition to start appearing:</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Using CDI producers along with <code>InterceptionFactory</code></p>
+                  </li>
+                  <li>
+                  <p>Repeatedly creating these beans, so most likely <code>@Dependent</code> bean</p>
+                  </li>
+                  <li>
+                  <p>And most importantly, the <code>AnnotatedType</code> backing the bean has to have an annotation with a non-empty array type value</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Even if this issue is unlikely to manifest, we recommend users to update their Weld version if possible</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find any issues with the current release, don&#8217;t hesistate to report them via usual channels.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.3.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12450058" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/05/20/weld-516Final/">Weld 5.1.6.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -353,70 +427,6 @@
                   <div class="paragraph">
                   <p>For Weld team<br>
                   Matej</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2025/02/18/weld-601Final/">Weld 6.0.1.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2025-2-18
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>First small update for Weld 6 has landed in Central.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>There are only two notable fixes here, so let us take a look at them:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Fixed a bug that EJC (Eclipse Java Compiler) users can encounter in combination with interceptors and lambdas in their beans (<a href="https://issues.redhat.com/browse/WELD-2806">WELD-2806</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This could, in certain circumstances, yield a very hard to decipher bytecode generation error.</p>
-                  </li>
-                  <li>
-                  <p>Note that this does not manifest when using standard <code>javac</code> compiler.</p>
-                  </li>
-                  <li>
-                  <p>If you are interested in more gory details, they are in the issue and/or pull requests linked to it.</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Make <code>ElAwareBeanManager</code> injectable as a bean type</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Inability to perform this was an oversight as it is a requirement in Jakarta EE WebProfile specification.</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, do report any bugs you encounter so that we can squash them as soon as possible!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12440352" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
