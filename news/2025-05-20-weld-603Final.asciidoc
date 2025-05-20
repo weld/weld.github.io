@@ -1,0 +1,30 @@
+---
+layout: news
+title: Weld 6.0.3.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Minor bugfix for Weld 6
+desc: Minor bugfix for Weld 6
+tags: [release]
+---
+:linkattrs:
+
+Weld 6.0.3.Final release is now available in Maven Central.
+
+There are only two fixes to mention here:
+
+* Added validation for interceptor classes declaring multiple methods for the same interception type (link:https://issues.redhat.com/browse/WELD-2814[WELD-2814])
+** This is a fail-fast(er) mechanism for users; otherwise the behavior is mandated by the Interceptors specification
+* Correct `AnnotatedType` ID creation to avoid cache miss leading to possible memory leak (link:https://issues.redhat.com/browse/WELD-2815[WELD-2815])
+** The leak is not generic and doesn't affect most deployments. In fact it requires at least all of the below condition to start appearing:
+*** Using CDI producers along with `InterceptionFactory`
+*** Repeatedly creating these beans, so most likely `@Dependent` bean
+*** And most importantly, the `AnnotatedType` backing the bean has to have an annotation with a non-empty array type value
+** Even if this issue is unlikely to manifest, we recommend users to update their Weld version if possible
+    
+If you find any issues with the current release, don't hesistate to report them via usual channels.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/6.0.3.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12450058[Release notes, window="_blank"] &#93;
