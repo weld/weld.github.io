@@ -143,6 +143,58 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/05/20/weld-516Final/">Weld 5.1.6.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-5-20
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 5.1.6.Final is now headed towards Maven Central with a tiny fix for potential memory leak.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There was a very specific scenario possibly leading to a memory leak due to caching mismatch.<br>
+                  Note that this only occured if the following conditions were met:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Having a producer using <code>InterceptionFactory</code></p>
+                  </li>
+                  <li>
+                  <p>Repeatedly creating those bean (most likely <code>@Dependent</code> beans)</p>
+                  </li>
+                  <li>
+                  <p>The underlying <code>AnnotatedType</code> backing this bean had to have an annotation with a non-empty array type value</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>Because this requires a very narrow set of conditions, it is reasonable to believe that most deployments are unaffected.<br>
+                  That said, if you can upgrade, we definitely encourage you to!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>For more details and links to the PRs, feel free to browse <a href="https://issues.redhat.com/browse/WELD-2815">WELD-2815 JIRA</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.6.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12460753" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/05/07/weld-to-foundation/">Moving to a Foundation</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -365,42 +417,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12440352" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2025/01/21/weld-515Final/">Weld 5.1.5.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2025-1-21
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A tiny update for Weld 5 has just been released.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>We have identified a bug that EJC (Eclipse Java Compiler) users can encounter in combination with interceptors and lambdas in their beans and fixed it.
-                  This could, in certain circumstances, yield a very hard to decipher bytecode generation error.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Note that never manifests when using standard <code>javac</code> compiler.
-                  For those interested, the details are in the <a href="https://issues.redhat.com/browse/WELD-2806">WELD-2806 JIRA</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.5.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12440351" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
