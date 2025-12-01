@@ -1,0 +1,39 @@
+---
+layout: news
+title: Weld 7.0.0.Alpha1
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: First release of Weld 7
+desc: First release of Weld 7
+tags: [release]
+---
+:linkattrs:
+
+First release of Weld 7, a CDI 5.0 compatible implementation, has landed in Central. +
+Look for Weld Core 7.0.0.Alpha1 and Weld API 7.0.Alpha4!
+
+What's new in this CDI version?
+
+* First of all, starting with CDI 5.0.Alpha3 (released after M1), the artifacts have new coordinates which this Weld release consumes
+** The group ID has changed from `jakarta.enterprise` to `jakarta.cdi` so it is now in line with other Jakarta projects
+** The artifact IDs are always in the form of `jakarta.cdi-[something]`; the basic CDI API artifact ID is now `jakarta.cdi-api`
+** CDI also provides relocation artifacts meaning users will be able to keep consuming the old coordinates but a warning during their build will help them migrate to new artifacts
+* Added implementation of the newly introduced `@Reserve` concept (link:https://issues.redhat.com/browse/WELD-2824[WELD-2824])
+* Implement client proxy unwrapping API (link:https://issues.redhat.com/browse/WELD-2823[WELD-2823])
+* Lang model implementation now supports records and sealed classes (link:https://issues.redhat.com/browse/WELD-2809[WELD-2809] and link:https://issues.redhat.com/browse/WELD-2810[WELD-2810])
+
+There are various other bugfixes that went into this version, the list of related issues can be found link:https://issues.redhat.com/projects/WELD/versions/12446960[here].
+
+What else is coming?
+
+Aside from smaller changes and clarifications, two more features are being worked on:
+
+* link:https://github.com/jakartaee/cdi/pull/911[`@Eager` bean instantiation]
+* link:https://github.com/jakartaee/cdi/pull/907[Asynchronous `Invoker` API]
+
+If you find an issue with this release of some of the implemented features, don't hesitate to reach out.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/7.0.0.Alpha1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12446960[Release notes, window="_blank"] &#93;
