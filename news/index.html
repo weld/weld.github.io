@@ -143,6 +143,89 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/12/01/weld-700Alpha1/">Weld 7.0.0.Alpha1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-12-1
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>First release of Weld 7, a CDI 5.0 compatible implementation, has landed in Central.<br>
+                  Look for Weld Core 7.0.0.Alpha1 and Weld API 7.0.Alpha4!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What&#8217;s new in this CDI version?</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>First of all, starting with CDI 5.0.Alpha3 (released after M1), the artifacts have new coordinates which this Weld release consumes</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The group ID has changed from <code>jakarta.enterprise</code> to <code>jakarta.cdi</code> so it is now in line with other Jakarta projects</p>
+                  </li>
+                  <li>
+                  <p>The artifact IDs are always in the form of <code>jakarta.cdi-[something]</code>; the basic CDI API artifact ID is now <code>jakarta.cdi-api</code></p>
+                  </li>
+                  <li>
+                  <p>CDI also provides relocation artifacts meaning users will be able to keep consuming the old coordinates but a warning during their build will help them migrate to new artifacts</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Added implementation of the newly introduced <code>@Reserve</code> concept (<a href="https://issues.redhat.com/browse/WELD-2824">WELD-2824</a>)</p>
+                  </li>
+                  <li>
+                  <p>Implement client proxy unwrapping API (<a href="https://issues.redhat.com/browse/WELD-2823">WELD-2823</a>)</p>
+                  </li>
+                  <li>
+                  <p>Lang model implementation now supports records and sealed classes (<a href="https://issues.redhat.com/browse/WELD-2809">WELD-2809</a> and <a href="https://issues.redhat.com/browse/WELD-2810">WELD-2810</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are various other bugfixes that went into this version, the list of related issues can be found <a href="https://issues.redhat.com/projects/WELD/versions/12446960">here</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What else is coming?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Aside from smaller changes and clarifications, two more features are being worked on:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/911"><code>@Eager</code> bean instantiation</a></p>
+                  </li>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/907">Asynchronous <code>Invoker</code> API</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find an issue with this release of some of the implemented features, don&#8217;t hesitate to reach out.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/7.0.0.Alpha1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12446960" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/05/20/weld-603Final/">Weld 6.0.3.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -376,57 +459,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.2.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12446323" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2025/03/27/middleware-strategy/">Red Hat Middleware Strategy</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2025-3-27
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/team">team</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>By now you might have heard that Red Hat announced significant changes to their middleware strategy last month.<br>
-                  Let me start by saying that this has come as a surprise to us as we were not aware of it in advance.<br>
-                  Nonetheless, here we are, and I wanted to provide Weld community with some context as well as talk about how this affects the project.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>If you want to read the official announcement, it can be found on the <a href="https://www.redhat.com/en/blog/evolving-our-middleware-strategy">Red Hat blog</a>.<br>
-                  In short, some key points from the article are:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Red Hat’s Middleware and Integration Engineering and Products teams are moving to IBM in May/June 2025.</p>
-                  </li>
-                  <li>
-                  <p>Red Hat will continue to sell and support its Middleware and Integration offerings as they do today; this will not be impacted.</p>
-                  </li>
-                  <li>
-                  <p>All transitioning Red Hat technology will remain open source and continue to follow an upstream-first development model.</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>I do not anticipate this change having any significant impact on Weld project perhaps with the exception of a temporary disruption during the transition period.<br>
-                  We remain committed to development of Weld as the compatible implementation of Jakarta CDI specification as well as its standalone capabilities.<br>
-                  The project remains open source and contributions as well as bug reports are still very much welcome!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>For Weld team<br>
-                  Matej</p>
                   </div>
                 </div>
                 <hr>

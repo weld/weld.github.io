@@ -143,6 +143,89 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2025/12/01/weld-700Alpha1/">Weld 7.0.0.Alpha1</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2025-12-1
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>First release of Weld 7, a CDI 5.0 compatible implementation, has landed in Central.<br>
+                  Look for Weld Core 7.0.0.Alpha1 and Weld API 7.0.Alpha4!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What&#8217;s new in this CDI version?</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>First of all, starting with CDI 5.0.Alpha3 (released after M1), the artifacts have new coordinates which this Weld release consumes</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The group ID has changed from <code>jakarta.enterprise</code> to <code>jakarta.cdi</code> so it is now in line with other Jakarta projects</p>
+                  </li>
+                  <li>
+                  <p>The artifact IDs are always in the form of <code>jakarta.cdi-[something]</code>; the basic CDI API artifact ID is now <code>jakarta.cdi-api</code></p>
+                  </li>
+                  <li>
+                  <p>CDI also provides relocation artifacts meaning users will be able to keep consuming the old coordinates but a warning during their build will help them migrate to new artifacts</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Added implementation of the newly introduced <code>@Reserve</code> concept (<a href="https://issues.redhat.com/browse/WELD-2824">WELD-2824</a>)</p>
+                  </li>
+                  <li>
+                  <p>Implement client proxy unwrapping API (<a href="https://issues.redhat.com/browse/WELD-2823">WELD-2823</a>)</p>
+                  </li>
+                  <li>
+                  <p>Lang model implementation now supports records and sealed classes (<a href="https://issues.redhat.com/browse/WELD-2809">WELD-2809</a> and <a href="https://issues.redhat.com/browse/WELD-2810">WELD-2810</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are various other bugfixes that went into this version, the list of related issues can be found <a href="https://issues.redhat.com/projects/WELD/versions/12446960">here</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What else is coming?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Aside from smaller changes and clarifications, two more features are being worked on:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/911"><code>@Eager</code> bean instantiation</a></p>
+                  </li>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/907">Asynchronous <code>Invoker</code> API</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find an issue with this release of some of the implemented features, don&#8217;t hesitate to reach out.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/7.0.0.Alpha1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12446960" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/05/20/weld-603Final/">Weld 6.0.3.Final</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -640,84 +723,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12429945" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2024/08/27/weld-513Final/">Weld 5.1.3.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2024-8-27
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>A new version of Weld 5.1 has landed in Maven Central.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>This is a bug squashing round which backports several notable fixes and changes from Weld 6 into Weld 5:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Change <code>BeanManager</code> resolution process for <code>BuildCompatibleExtension</code> not belonging to any bean archive (<a href="https://issues.redhat.com/browse/WELD-2794">WELD-2794</a>)</p>
-                  </li>
-                  <li>
-                  <p><code>LazySessionBeanStore</code> no longer swallows exceptions happening when attempting to initiate HTTP session (<a href="https://issues.redhat.com/browse/WELD-2762">WELD-2762</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct how we determine proxy package for beans with unassignable types in their bean type set (<a href="https://issues.redhat.com/browse/WELD-2763">WELD-2763</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This was only problematic in environments using WeldDefaultProxyServices to define their proxies (such as Weld SE)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Correct <code>CommonLogger</code> to mention correct GAV for Jandex (<a href="https://issues.redhat.com/browse/WELD-2770">WELD-2770</a>)</p>
-                  </li>
-                  <li>
-                  <p>Added the ability to register Build Compatible Extension in Weld SE without discovery (<a href="https://issues.redhat.com/browse/WELD-2772">WELD-2772</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct inheritance of producer fields if there is an extension present (<a href="https://issues.redhat.com/browse/WELD-2773">WELD-2773</a>)</p>
-                  </li>
-                  <li>
-                  <p>Make sure <code>@Default</code> qualifier is added to events fired via <code>BeanManager#getEvent()</code> where appropriate (<a href="https://issues.redhat.com/browse/WELD-2775">WELD-2775</a>)</p>
-                  </li>
-                  <li>
-                  <p>Observer method confiurator now correctly allows to override <code>Reception</code> settings without changing its <code>notify()</code> method (<a href="https://issues.redhat.com/browse/WELD-2786">WELD-2786</a>)</p>
-                  </li>
-                  <li>
-                  <p>Clean up legacy Jetty integration parts (<a href="https://issues.redhat.com/browse/WELD-2787">WELD-2787</a>)</p>
-                  </li>
-                  <li>
-                  <p>Use <code>Lock</code> instead of <code>synchronized</code> within <code>ContextualInstanceStrategy</code> to be more virtual thread-friendly (<a href="https://issues.redhat.com/browse/WELD-2788">WELD-2788</a>)</p>
-                  </li>
-                  <li>
-                  <p>Skip superclass declarations of final methods when creating proxies (<a href="https://issues.redhat.com/browse/WELD-2785">WELD-2785</a>)</p>
-                  </li>
-                  <li>
-                  <p>Ensure OSGi bundle has access to all dependencies needed for built-in beans (<a href="https://issues.redhat.com/browse/WELD-2796">WELD-2796</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.3.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12414627" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Weld: News
+      Weld: Weld 7.0.0.Alpha1
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Latest news about Weld." name="description">
+    <meta content="First release of Weld 7" name="description">
     <link href="/images/weld_icon_32x.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -135,118 +135,104 @@
           </div>
           <div class="row content-wrapper">
             <div class="col-md-12">
-              <h1>
-                News
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                </a>
-              </h1>
               <div class="post">
-                <h2>
-                  <a href="/news/2013/09/20/weld-210beta2-tip/">Weld 2.1.0.Beta2 tip</a>
-                </h2>
+                <h1>
+                  Weld 7.0.0.Alpha1
+                  <a href="http://weld.cdi-spec.org/news.atom" title="Subscribe to Weld news">
+                    <i class="fa fa-rss"></i>
+                  </a>
+                </h1>
                 <div class="news-date news-boxed">
-                  2013-9-20
+                  2025-12-1
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
                   &nbsp;
                   <i class="fa fa-pencil"></i>
-                  Martin Kouba
+                  Matej Novotny
                 </div>
                 <p></p>
                 <div class="content">
                   <div class="paragraph">
-                  <p>A tip how to configure a new feature introduced in Weld 2.1.0.Beta2 which allows to skip CDI context activation for some HTTP requests: <a href="http://goo.gl/PAiwBS" class="bare">http://goo.gl/PAiwBS</a></p>
+                  <p>First release of Weld 7, a CDI 5.0 compatible implementation, has landed in Central.<br>
+                  Look for Weld Core 7.0.0.Alpha1 and Weld API 7.0.Alpha4!</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What&#8217;s new in this CDI version?</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>First of all, starting with CDI 5.0.Alpha3 (released after M1), the artifacts have new coordinates which this Weld release consumes</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>The group ID has changed from <code>jakarta.enterprise</code> to <code>jakarta.cdi</code> so it is now in line with other Jakarta projects</p>
+                  </li>
+                  <li>
+                  <p>The artifact IDs are always in the form of <code>jakarta.cdi-[something]</code>; the basic CDI API artifact ID is now <code>jakarta.cdi-api</code></p>
+                  </li>
+                  <li>
+                  <p>CDI also provides relocation artifacts meaning users will be able to keep consuming the old coordinates but a warning during their build will help them migrate to new artifacts</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Added implementation of the newly introduced <code>@Reserve</code> concept (<a href="https://issues.redhat.com/browse/WELD-2824">WELD-2824</a>)</p>
+                  </li>
+                  <li>
+                  <p>Implement client proxy unwrapping API (<a href="https://issues.redhat.com/browse/WELD-2823">WELD-2823</a>)</p>
+                  </li>
+                  <li>
+                  <p>Lang model implementation now supports records and sealed classes (<a href="https://issues.redhat.com/browse/WELD-2809">WELD-2809</a> and <a href="https://issues.redhat.com/browse/WELD-2810">WELD-2810</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>There are various other bugfixes that went into this version, the list of related issues can be found <a href="https://issues.redhat.com/projects/WELD/versions/12446960">here</a>.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>What else is coming?</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>Aside from smaller changes and clarifications, two more features are being worked on:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/911"><code>@Eager</code> bean instantiation</a></p>
+                  </li>
+                  <li>
+                  <p><a href="https://github.com/jakartaee/cdi/pull/907">Asynchronous <code>Invoker</code> API</a></p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find an issue with this release of some of the implemented features, don&#8217;t hesitate to reach out.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/7.0.0.Alpha1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12446960" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/06/20/new-weld-site/">Weld has a new web site!</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-6-20
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Martin Kouba
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld has a new web site and it&#8217;s built with Awestruct!</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/06/06/weld-201-final/">Weld 2.0.1.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-6-6
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Weld 2.0.1.Final has been released. This is mainly a bug-fixing release with 20 issues fixed since the previous one. For details, see the <a href="/https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507:">release notes</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Our focus is now shifting towards WildFly and its Weld integration in order to provide a CDI 1.1 compliant container. For details about CDI 1.1, see <a href="http://in.relation.to/Bloggers/CDI11Available">Pete&#8217;s blog post</a>. Furthermore, we plan frequent releases of Weld to continue, so expect another release in early July at the latest!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="https://sourceforge.net/projects/jboss/files/Weld/2.0.1.Final">Distribution</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12321507">Release notes</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/2.0.1.Final/en-US/html/">Documentation</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1 Javadoc</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2013/04/25/weld-200-final/">Weld 2.0.0.Final released</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2013-4-25
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Jozef Hartinger
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>I am pleased to announce the release of Weld 2.0.0.Final, the reference implementation of Contexts and Dependency Injection for Java EE 1.1 (<a href="http://www.jcp.org/en/jsr/detail?id=346">JSR 346</a>). For a list of major changes in CDI 1.1 see the <a href="http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#_major_changes">specification</a>.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The reference implementation will soon be available in <a href="https://glassfish.java.net/">GlassFish 4</a> and <a href="http://wildfly.org/">WildFly</a> (formerly JBoss Application Server). In the meantime you can check snapshots of the application servers.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, Weld artifacts can be obtained from maven or you can use a distribution bundle.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Along with the Weld release comes the final release of the Technology Compatibility Kit (TCK) for CDI 1.1. Martin Kouba did an excellent job writing new tests and keeping the TCK in sync with the almost never-ending stream of specification changes. The TCK splits the specification into 1550 testable assertions out of which 96.71% is covered by TCK tests.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>I would like to thank to everyone who lent a hand and helped delivering these releases, especially: Martin Kouba, Pete Muir, Marko Lukša, Stuart Douglas, Marek Schmidt, Ron Šmeral, Tomáš Remeš, JJ Snyder, Phil Zampino, Tomaž Cerar, Hardy Ferentschik, Lincoln Baxter III, Matúš Abaffy and others.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; Distribution (<a href="http://sourceforge.net/projects/jboss/files/Weld/2.0.0.Final/">Weld</a>, <a href="https://sourceforge.net/projects/jboss/files/CDI-TCK/1.1.0.Final/">CDITCK</a>) &#93;
-                  &#91; Documentation (<a href="http://docs.jboss.org/weld/reference/2.0.0.Final/en-US/">Weld</a>, <a href="http://docs.jboss.org/cdi/tck/reference/1.1.0.Final/doc/">CDITCK</a>) &#93;
-                  &#91; Javadoc (<a href="http://docs.jboss.org/cdi/api/1.1/">CDI 1.1</a>, <a href="http://docs.jboss.org/weld/javadoc/2.0/">Weld SPI</a>) &#93;
-                  &#91; <a href="https://issues.jboss.org/browse/WELD">Issue tracker</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><a href="/news/page/20.html" class="previous-link">Previous</a> <a href="/news/" class="page-link">1</a> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/20.html" class="page-link">20</a> <span class="current-page">21</span> </div>
-              <hr>
-              <div>
-                <a href="http://weld.cdi-spec.org/news.atom">
-                  <i class="fa fa-rss"></i>
-                  Subscribe to Weld news
-                </a>
+                
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                            var disqus_shortname = 'weld-cdi';
+                            var disqus_url = "https://weld.cdi-spec.org/news/2025/12/01/weld-700Alpha1/";
+                            var disqus_developer = null;
+                            var disqus_identifier = "888c8a31fda96c797db7e5300fa5314d6f8e3821";
+                            (function() {
+                              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=weld-cdi">comments powered by Disqus.</a></noscript>
               </div>
             </div>
           </div>

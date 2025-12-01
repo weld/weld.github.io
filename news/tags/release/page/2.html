@@ -143,6 +143,84 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2024/08/27/weld-513Final/">Weld 5.1.3.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2024-8-27
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>A new version of Weld 5.1 has landed in Maven Central.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>This is a bug squashing round which backports several notable fixes and changes from Weld 6 into Weld 5:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Change <code>BeanManager</code> resolution process for <code>BuildCompatibleExtension</code> not belonging to any bean archive (<a href="https://issues.redhat.com/browse/WELD-2794">WELD-2794</a>)</p>
+                  </li>
+                  <li>
+                  <p><code>LazySessionBeanStore</code> no longer swallows exceptions happening when attempting to initiate HTTP session (<a href="https://issues.redhat.com/browse/WELD-2762">WELD-2762</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correct how we determine proxy package for beans with unassignable types in their bean type set (<a href="https://issues.redhat.com/browse/WELD-2763">WELD-2763</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>This was only problematic in environments using WeldDefaultProxyServices to define their proxies (such as Weld SE)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Correct <code>CommonLogger</code> to mention correct GAV for Jandex (<a href="https://issues.redhat.com/browse/WELD-2770">WELD-2770</a>)</p>
+                  </li>
+                  <li>
+                  <p>Added the ability to register Build Compatible Extension in Weld SE without discovery (<a href="https://issues.redhat.com/browse/WELD-2772">WELD-2772</a>)</p>
+                  </li>
+                  <li>
+                  <p>Correct inheritance of producer fields if there is an extension present (<a href="https://issues.redhat.com/browse/WELD-2773">WELD-2773</a>)</p>
+                  </li>
+                  <li>
+                  <p>Make sure <code>@Default</code> qualifier is added to events fired via <code>BeanManager#getEvent()</code> where appropriate (<a href="https://issues.redhat.com/browse/WELD-2775">WELD-2775</a>)</p>
+                  </li>
+                  <li>
+                  <p>Observer method confiurator now correctly allows to override <code>Reception</code> settings without changing its <code>notify()</code> method (<a href="https://issues.redhat.com/browse/WELD-2786">WELD-2786</a>)</p>
+                  </li>
+                  <li>
+                  <p>Clean up legacy Jetty integration parts (<a href="https://issues.redhat.com/browse/WELD-2787">WELD-2787</a>)</p>
+                  </li>
+                  <li>
+                  <p>Use <code>Lock</code> instead of <code>synchronized</code> within <code>ContextualInstanceStrategy</code> to be more virtual thread-friendly (<a href="https://issues.redhat.com/browse/WELD-2788">WELD-2788</a>)</p>
+                  </li>
+                  <li>
+                  <p>Skip superclass declarations of final methods when creating proxies (<a href="https://issues.redhat.com/browse/WELD-2785">WELD-2785</a>)</p>
+                  </li>
+                  <li>
+                  <p>Ensure OSGi bundle has access to all dependencies needed for built-in beans (<a href="https://issues.redhat.com/browse/WELD-2796">WELD-2796</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.3.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12414627" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2024/07/03/weld-600Beta4/">Weld 6.0.0.Beta4</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -817,42 +895,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.0.1.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12385166" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2022/06/08/weld-500SP2/">Weld 5.0.0.SP2</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2022-6-8
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Another quick turnaround as more integrators adopt Weld 5 and help us squash bugs.
-                  Weld 5.0.0.SP2 is headed into Central as we speak.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>The main reason for this service release is <a href="https://issues.redhat.com/browse/WELD-2721">WELD-2721</a> which was a spec violation in how <code>AfterBeanDiscovery</code> methods were treated outside of lifecycle observer method invocations.
-                  Apart from that, there was also a corner case NPE during Weld Servlet and SE cooperation bootstrap (<a href="https://issues.redhat.com/browse/WELD-2720">WELD-2720</a>).</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, if there are more problems with Weld 5, let us know and we&#8217;ll try to help.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/5.0.0.SP2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12390013" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
