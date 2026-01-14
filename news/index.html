@@ -143,6 +143,140 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2026/01/14/weld-517Final/">Weld 5.1.7.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2026-1-14
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 5.1.7.Final has landed in Central, let&#8217;s take a look at what&#8217;s been changed:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Observable <code>Startup</code> and <code>Shutdown</code> events for web modules are now fired within a synchronized block, similarly to <code>@Initialized</code> events for application scope (<a href="https://issues.redhat.com/browse/WELD-2827">WELD-2827</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE <code>annotated</code> reflection discovery strategy was incorrectly recognizing classes with indirectly present bean defining annotations as valid beans (<a href="https://issues.redhat.com/browse/WELD-2826">WELD-2826</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>For a class to be considered annotated with a bean defining annotation (for instance a scope), that annotation has to be <strong>directly present</strong> on the class; inheritance is not enough</p>
+                  </li>
+                  <li>
+                  <p>Note Jandex discovery was working correctly and is unaffected</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fixed stack overflow error that could appear when <code>TRACE</code> logging was enabled and JSF was present (<a href="https://issues.redhat.com/browse/WELD-2817">WELD-2817</a>)</p>
+                  </li>
+                  <li>
+                  <p>Minor project adjustment to make it buildable with Java 25 (<a href="https://issues.redhat.com/browse/WELD-2820">WELD-2820</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld itself should run with Java 25 even on earlier versions, these changes were aimed at making the project build with it too</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find any issues with the current release, don&#8217;t hesistate to report them via usual channels.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.7.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12461467" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
+                  <a href="/news/2026/01/14/weld-604Final/">Weld 6.0.4.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2026-1-14
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>New minor bugfix version of Weld 6 has landed in Central - say hello to Weld 6.0.4.Final.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There is only a handful on notable changes:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Observable <code>Startup</code> and <code>Shutdown</code> events for web modules are now fired within a synchronized block, similarly to <code>@Initialized</code> events for application scope (<a href="https://issues.redhat.com/browse/WELD-2827">WELD-2827</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE <code>annotated</code> reflection discovery strategy was incorrectly recognizing classes with indirectly present bean defining annotations as valid beans (<a href="https://issues.redhat.com/browse/WELD-2826">WELD-2826</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>For a class to be considered annotated with a bean defining annotation (for instance a scope), that annotation has to be <strong>directly present</strong> on the class; inheritance is not enough</p>
+                  </li>
+                  <li>
+                  <p>Note Jandex discovery was working correctly and is unaffected</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fixed stack overflow error that could appear when <code>TRACE</code> logging was enabled and JSF was present (<a href="https://issues.redhat.com/browse/WELD-2817">WELD-2817</a>)</p>
+                  </li>
+                  <li>
+                  <p>Minor project adjustment to make it buildable with Java 25 (<a href="https://issues.redhat.com/browse/WELD-2820">WELD-2820</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld itself should run with Java 25 even on earlier versions, these changes were aimed at making the project build with it too</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Replace deprecated method usage from JBoss Logging (<a href="https://issues.redhat.com/browse/WELD-2821">WELD-2821</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find any issues with the current release, don&#8217;t hesistate to report them via usual channels.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.4.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12461472" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/12/01/weld-700Alpha1/">Weld 7.0.0.Alpha1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -350,120 +484,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2025/05/07/weld-to-foundation/">Moving to a Foundation</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2025-5-7
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/team">team</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Just like other projects in the ecosystem around us (WildFly, SmallRye, RESTEasy, Undertow, &#8230;&#8203;), Weld too has been looking for a friendly vendor-neutral place it could inhabit - a software foundation.<br>
-                  It is our hope that by joining a foundation we can make Weld more open, expand the community, improve transparency and encourage participation from contributors coming from all over the software landscape.</p>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_things_to_keep_in_mind">Things to Keep in Mind</h3>
-                  <div class="paragraph">
-                  <p>When choosing a foundation to join, there are several importants things to consider:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Ability to use the tooling we currently have to minimize the impact of the move. For instance, we still use JIRA for issues.</p>
-                  </li>
-                  <li>
-                  <p>Maintain the ability to perform quick release when needed and at flexible intervals.</p>
-                  </li>
-                  <li>
-                  <p>As a project, retain independence in decision-making. I.e. if possible do not fall under foundation imposed restrictions and rules.</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_what_does_the_move_entail">What Does the Move Entail?</h3>
-                  <div class="paragraph">
-                  <p>Red Hat has always been supportive of open source and collaboration in vendor-neutral projects and this is still the case; Red Hat bussiness leaders are fully supportive of this move.<br>
-                  Furthermore, we, as in the Weld team, aim to keep working on the project and supporting it just like we did up until now.</p>
-                  </div>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_current_status">Current Status</h3>
-                  <div class="paragraph">
-                  <p>At the moment we are eyeing the option to move along with <a href="https://www.commonhaus.org/activity/259.html">WildFly under the Commonhaus Foundation</a>.<br></p>
-                  </div>
-                  </div>
-                  <div class="sect2">
-                  <h3 id="_community_feedback">Community Feedback</h3>
-                  <div class="paragraph">
-                  <p>We&#8217;d love to hear your thoughts on this so don&#8217;t hesitate to speak through the mailing list or via a discussion topic directly in the GitHub repository.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Best Regards<br>
-                  Matej</p>
-                  </div>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2025/04/03/weld-602Final/">Weld 6.0.2.Final</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2025-4-3
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Here we are with yet another small update to Weld 6; say hello to Weld 6.0.2.Final.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Changes in this version:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Support for records in the CDI Lang Model (<a href="https://issues.redhat.com/browse/WELD-2809">WELD-2809</a>)</p>
-                  </li>
-                  <li>
-                  <p>Container lifecycle observers can now inject any subclass of <code>BeanContainer</code> into them (<a href="https://issues.redhat.com/browse/WELD-2811">WELD-2811</a>)</p>
-                  </li>
-                  <li>
-                  <p>Substantially improved exception messages for invokers (<a href="https://issues.redhat.com/browse/WELD-2812">WELD-2812</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As always, do report any bugs you encounter so that we can squash them as soon as possible!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.2.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12446323" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/20.html" class="page-link">20</a> <a href="/news/page/21.html" class="page-link">21</a> <a href="/news/page/2.html" class="next-link">Next</a> </div>
+              <div class="pagination-links"><span class="current-page">1</span> <a href="/news/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/news/page/21.html" class="page-link">21</a> <a href="/news/page/22.html" class="page-link">22</a> <a href="/news/page/2.html" class="next-link">Next</a> </div>
               <hr>
               <div>
                 <a href="http://weld.cdi-spec.org/news.atom">

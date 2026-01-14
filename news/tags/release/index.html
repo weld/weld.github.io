@@ -143,6 +143,140 @@
               </h1>
               <div class="post">
                 <h2>
+                  <a href="/news/2026/01/14/weld-517Final/">Weld 5.1.7.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2026-1-14
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>Weld 5.1.7.Final has landed in Central, let&#8217;s take a look at what&#8217;s been changed:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Observable <code>Startup</code> and <code>Shutdown</code> events for web modules are now fired within a synchronized block, similarly to <code>@Initialized</code> events for application scope (<a href="https://issues.redhat.com/browse/WELD-2827">WELD-2827</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE <code>annotated</code> reflection discovery strategy was incorrectly recognizing classes with indirectly present bean defining annotations as valid beans (<a href="https://issues.redhat.com/browse/WELD-2826">WELD-2826</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>For a class to be considered annotated with a bean defining annotation (for instance a scope), that annotation has to be <strong>directly present</strong> on the class; inheritance is not enough</p>
+                  </li>
+                  <li>
+                  <p>Note Jandex discovery was working correctly and is unaffected</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fixed stack overflow error that could appear when <code>TRACE</code> logging was enabled and JSF was present (<a href="https://issues.redhat.com/browse/WELD-2817">WELD-2817</a>)</p>
+                  </li>
+                  <li>
+                  <p>Minor project adjustment to make it buildable with Java 25 (<a href="https://issues.redhat.com/browse/WELD-2820">WELD-2820</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld itself should run with Java 25 even on earlier versions, these changes were aimed at making the project build with it too</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find any issues with the current release, don&#8217;t hesistate to report them via usual channels.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/5.1.7.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12461467" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
+                  <a href="/news/2026/01/14/weld-604Final/">Weld 6.0.4.Final</a>
+                </h2>
+                <div class="news-date news-boxed">
+                  2026-1-14
+                  &nbsp;
+                  <span class="tags">
+                    <i class="fa fa-tags"></i>
+                    <a href="/news/tags/release">release</a>
+                  </span>
+                  &nbsp;
+                  <i class="fa fa-pencil"></i>
+                  Matej Novotny
+                </div>
+                <p></p>
+                <div class="content">
+                  <div class="paragraph">
+                  <p>New minor bugfix version of Weld 6 has landed in Central - say hello to Weld 6.0.4.Final.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>There is only a handful on notable changes:</p>
+                  </div>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Observable <code>Startup</code> and <code>Shutdown</code> events for web modules are now fired within a synchronized block, similarly to <code>@Initialized</code> events for application scope (<a href="https://issues.redhat.com/browse/WELD-2827">WELD-2827</a>)</p>
+                  </li>
+                  <li>
+                  <p>Weld SE <code>annotated</code> reflection discovery strategy was incorrectly recognizing classes with indirectly present bean defining annotations as valid beans (<a href="https://issues.redhat.com/browse/WELD-2826">WELD-2826</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>For a class to be considered annotated with a bean defining annotation (for instance a scope), that annotation has to be <strong>directly present</strong> on the class; inheritance is not enough</p>
+                  </li>
+                  <li>
+                  <p>Note Jandex discovery was working correctly and is unaffected</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Fixed stack overflow error that could appear when <code>TRACE</code> logging was enabled and JSF was present (<a href="https://issues.redhat.com/browse/WELD-2817">WELD-2817</a>)</p>
+                  </li>
+                  <li>
+                  <p>Minor project adjustment to make it buildable with Java 25 (<a href="https://issues.redhat.com/browse/WELD-2820">WELD-2820</a>)</p>
+                  <div class="ulist">
+                  <ul>
+                  <li>
+                  <p>Weld itself should run with Java 25 even on earlier versions, these changes were aimed at making the project build with it too</p>
+                  </li>
+                  </ul>
+                  </div>
+                  </li>
+                  <li>
+                  <p>Replace deprecated method usage from JBoss Logging (<a href="https://issues.redhat.com/browse/WELD-2821">WELD-2821</a>)</p>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="paragraph">
+                  <p>If you find any issues with the current release, don&#8217;t hesistate to report them via usual channels.</p>
+                  </div>
+                  <div class="paragraph">
+                  <p>&#91; <a href="/download/">Download</a> &#93;
+                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.4.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
+                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12461472" target="_blank" rel="noopener">Release notes</a> &#93;</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="post">
+                <h2>
                   <a href="/news/2025/12/01/weld-700Alpha1/">Weld 7.0.0.Alpha1</a>
                 </h2>
                 <div class="news-date news-boxed">
@@ -599,130 +733,6 @@
                   <p>&#91; <a href="/download/">Download</a> &#93;
                   &#91; <a href="http://docs.jboss.org/weld/reference/5.1.4.Final/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
                   &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12432223" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2024/11/28/weld-600CR2/">Weld 6.0.0.CR2</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2024-11-28
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>Turns out we forgot to perform some code cleanup in the <code>CR1</code> - so here goes <code>6.0.0.CR2</code> which removes deprecated code pieces.
-                  Note that Weld API is unchanged; the only deprecations there are changes coming in recent CDI versions so we&#8217;ve kept that code around for now.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Resolved issues in this version:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Revisit deprecated code in Weld Core (<a href="https://issues.redhat.com/browse/WELD-2804">WELD-2804</a>)</p>
-                  </li>
-                  <li>
-                  <p>Remove <code>WeldCrossContextFilter</code> (<a href="https://issues.redhat.com/browse/WELD-2803">WELD-2803</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As per usual, please report any issues you discover with this release so that we can squash those bugs.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR2/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12436952" target="_blank" rel="noopener">Release notes</a> &#93;</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="post">
-                <h2>
-                  <a href="/news/2024/11/13/weld-600CR1/">Weld 6.0.0.CR1</a>
-                </h2>
-                <div class="news-date news-boxed">
-                  2024-11-13
-                  &nbsp;
-                  <span class="tags">
-                    <i class="fa fa-tags"></i>
-                    <a href="/news/tags/release">release</a>
-                  </span>
-                  &nbsp;
-                  <i class="fa fa-pencil"></i>
-                  Matej Novotny
-                </div>
-                <p></p>
-                <div class="content">
-                  <div class="paragraph">
-                  <p>First version of the Jakarta EE TCKs has finally landed in Central and with that, we have re-enabled all remaining TCK tests and are confident enough to issue a candidate release for Weld 6!</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Note that both, Weld API and Weld Core artifacts have been released.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>Here is the list of changes from last Beta:</p>
-                  </div>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>Implement validation for unproxyability of sealed types (<a href="https://issues.redhat.com/browse/WELD-2799">WELD-2799</a>)</p>
-                  </li>
-                  <li>
-                  <p>Correct injection into <code>@Resource</code> fields of beans registered through extensions (<a href="https://issues.redhat.com/browse/WELD-2798">WELD-2798</a>)</p>
-                  </li>
-                  <li>
-                  <p>Improve the algorithm that determines <code>BeanManager</code> instance for synthetic beans coming from build compatible extensions (<a href="https://issues.redhat.com/browse/WELD-2794">WELD-2794</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld OSGi bundle now correctly exports <code>org.jboss.weld.util.reflection</code> (<a href="https://issues.redhat.com/browse/WELD-2793">WELD-2793</a>)</p>
-                  </li>
-                  <li>
-                  <p>Weld OSGi bundle now contains imports for built-in bean proxies (<a href="https://issues.redhat.com/browse/WELD-2796">WELD-2796</a>)</p>
-                  </li>
-                  <li>
-                  <p>Re-introduce Jakarta EE CDI TCK into continuous integration (<a href="https://issues.redhat.com/browse/WELD-2778">WELD-2778</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>The TCK artifact in Central is not yet final (it is <code>M1</code>) but it is enough to make sure Weld passes all related CDI tests with WildFly</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Fix possible file leak in <code>org.jboss.weld.util.ServiceLoader</code> (<a href="https://issues.redhat.com/browse/WELD-2800">WELD-2800</a>)</p>
-                  <div class="ulist">
-                  <ul>
-                  <li>
-                  <p>This was only reported during GlassFish testing and affected just Windows machines</p>
-                  </li>
-                  </ul>
-                  </div>
-                  </li>
-                  <li>
-                  <p>Resolve license conflict of <code>jboss-logging-processor</code> inside shaded Weld SE JAR (<a href="https://issues.redhat.com/browse/WELD-2795">WELD-2795</a>)</p>
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="paragraph">
-                  <p>As per usual, please report any issues you discover with this release so that we can squash those bugs.</p>
-                  </div>
-                  <div class="paragraph">
-                  <p>&#91; <a href="/download/">Download</a> &#93;
-                  &#91; <a href="http://docs.jboss.org/weld/reference/6.0.0.CR1/en-US/html_single/" target="_blank" rel="noopener">Documentation</a> &#93;
-                  &#91; <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&amp;version=12429945" target="_blank" rel="noopener">Release notes</a> &#93;</p>
                   </div>
                 </div>
                 <hr>
