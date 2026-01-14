@@ -1,0 +1,27 @@
+---
+layout: news
+title: Weld 5.1.7.Final
+author: Matej Novotny
+priority: 1
+change_frequency: weekly
+excerpt: Minor update for Weld 5
+desc: Minor update for Weld 5
+tags: [release]
+---
+:linkattrs:
+
+Weld 5.1.7.Final has landed in Central, let's take a look at what's been changed:
+
+* Observable `Startup` and `Shutdown` events for web modules are now fired within a synchronized block, similarly to `@Initialized` events for application scope (link:https://issues.redhat.com/browse/WELD-2827[WELD-2827])
+* Weld SE `annotated` reflection discovery strategy was incorrectly recognizing classes with indirectly present bean defining annotations as valid beans (link:https://issues.redhat.com/browse/WELD-2826[WELD-2826])
+** For a class to be considered annotated with a bean defining annotation (for instance a scope), that annotation has to be *directly present* on the class; inheritance is not enough
+** Note Jandex discovery was working correctly and is unaffected
+* Fixed stack overflow error that could appear when `TRACE` logging was enabled and JSF was present (link:https://issues.redhat.com/browse/WELD-2817[WELD-2817])
+* Minor project adjustment to make it buildable with Java 25 (link:https://issues.redhat.com/browse/WELD-2820[WELD-2820])
+** Weld itself should run with Java 25 even on earlier versions, these changes were aimed at making the project build with it too
+    
+If you find any issues with the current release, don't hesistate to report them via usual channels.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:http://docs.jboss.org/weld/reference/5.1.7.Final/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310891&version=12461467[Release notes, window="_blank"] &#93;

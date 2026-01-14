@@ -1,3 +1,11 @@
+- version: '5.1.7.Final'
+  category: Final
+  date: 14.01.2026
+  versionId: 12461467
+- version: '6.0.4.Final'
+  category: Final
+  date: 14.01.2026
+  versionId: 12461472
 - version: '7.0.0.Alpha1'
   category: Preview
   date: 01.12.2025
