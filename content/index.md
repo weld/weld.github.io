@@ -22,5 +22,10 @@ Weld is the reference implementation of [CDI](https://jakarta.ee/specifications/
 
 ## Latest News
 
-<!-- TODO: This section will show the latest 5 news posts once the news listing template is implemented. -->
-Latest news posts will appear here.
+{#for post in site.collections.posts}
+{#if post_count <= 5}
+- **[{post.title}]({post.url})** — {post.date.format('yyyy-MM-dd')}
+{/if}
+{/for}
+
+[View all news &raquo;](/news)

@@ -1,0 +1,52 @@
+---
+layout: default
+paginate:
+    collection: posts
+    size: 10
+    link: news/page-:page
+---
+{@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
+
+<h1>{page.title}</h1>
+<p class="mb-4">
+    <a href="{site.url('rss.xml')}" class="text-decoration-none" title="RSS Feed">
+        <i class="fas fa-rss-square fa-lg"></i> RSS Feed
+    </a>
+</p>
+
+{#for post in site.collections.posts.paginated(page.paginator)}
+<article class="mb-4 pb-4 border-bottom">
+    <h2><a href="{post.url}" class="text-decoration-none">{post.title}</a></h2>
+    <p class="text-muted">
+        <i class="fas fa-calendar"></i> {post.date.format('yyyy-MM-dd')}
+        {#if post.data.author} | <i class="fas fa-user"></i> {post.data.author}{/if}
+    </p>
+    <p>{site.pageContent(post).stripHtml.wordLimit(75).raw}</p>
+    <a href="{post.url}">Read more &raquo;</a>
+</article>
+{/for}
+
+{#if page.paginator}
+<nav aria-label="News pagination" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {#if page.paginator.previous}
+        <li class="page-item">
+            <a class="page-link" href="{page.paginator.previous}">&laquo; Newer Posts</a>
+        </li>
+        {#else}
+        <li class="page-item disabled">
+            <span class="page-link">&laquo; Newer Posts</span>
+        </li>
+        {/if}
+        {#if page.paginator.next}
+        <li class="page-item">
+            <a class="page-link" href="{page.paginator.next}">Older Posts &raquo;</a>
+        </li>
+        {#else}
+        <li class="page-item disabled">
+            <span class="page-link">Older Posts &raquo;</span>
+        </li>
+        {/if}
+    </ul>
+</nav>
+{/if}
