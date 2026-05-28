@@ -1,6 +1,23 @@
+# Build output
+target/
+
+# Quarkus
+.quarkus/
+
+# Node
+node_modules/
+
+# IDE files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Awestruct (legacy)
 _site
 _tmp
 .awestruct
 .sass-cache
 *~
-/.project
