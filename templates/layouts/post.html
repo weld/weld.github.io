@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article>
+    <h1>{page.title}</h1>
+    <p class="text-muted">
+        <i class="fas fa-calendar"></i> {page.date.format('yyyy-MM-dd')}
+        {#if page.data.author} | <i class="fas fa-user"></i> {page.data.author}{/if}
+    </p>
+    <hr>
+    {#insert /}
+</article>
