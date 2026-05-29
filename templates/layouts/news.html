@@ -7,44 +7,50 @@ paginate:
 ---
 {@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
 
-<h1>{page.title}</h1>
+<h2>{page.title}</h2>
 <p class="mb-4">
-    <a href="{site.url('rss.xml')}" class="text-decoration-none" title="RSS Feed">
+    <a href="/rss.xml" class="text-decoration-none" title="RSS Feed">
         <i class="fas fa-rss-square fa-lg"></i> RSS Feed
     </a>
 </p>
 
+<div class="blog-list-container">
 {#for post in site.collections.posts.paginated(page.paginator)}
-<article class="mb-4 pb-4 border-bottom">
-    <h2><a href="{post.url}" class="text-decoration-none">{post.title}</a></h2>
-    <p class="text-muted">
-        <i class="fas fa-calendar"></i> {post.date.format('yyyy-MM-dd')}
-        {#if post.data.author} | <i class="fas fa-user"></i> {post.data.author}{/if}
-    </p>
-    <p>{site.pageContent(post).stripHtml.wordLimit(75).raw}</p>
-    <a href="{post.url}">Read more &raquo;</a>
-</article>
+<div class="blog-post-card card mb-4">
+    <div class="card-body">
+        <a href="{post.url}" class="text-decoration-none">
+            <h4 class="post-title">{post.title}</h4>
+        </a>
+        <div class="post-meta">
+            <i class="fas fa-calendar"></i> {post.date.format('MMMM dd, yyyy')}
+            {#if post.data.author} | <i class="fas fa-user"></i> {post.data.author}{/if}
+        </div>
+        <p class="card-text mt-2">{site.pageContent(post).stripHtml.wordLimit(75).raw}</p>
+        <a href="{post.url}" class="btn btn-sm btn-outline-primary">Read more &raquo;</a>
+    </div>
+</div>
 {/for}
+</div>
 
 {#if page.paginator}
 <nav aria-label="News pagination" class="mt-4">
     <ul class="pagination justify-content-center">
         {#if page.paginator.previous}
         <li class="page-item">
-            <a class="page-link" href="{page.paginator.previous}">&laquo; Newer Posts</a>
+            <a class="page-link" href="{page.paginator.previous}"><i class="fas fa-chevron-left"></i> Newer Posts</a>
         </li>
         {#else}
         <li class="page-item disabled">
-            <span class="page-link">&laquo; Newer Posts</span>
+            <span class="page-link"><i class="fas fa-chevron-left"></i> Newer Posts</span>
         </li>
         {/if}
         {#if page.paginator.next}
         <li class="page-item">
-            <a class="page-link" href="{page.paginator.next}">Older Posts &raquo;</a>
+            <a class="page-link" href="{page.paginator.next}">Older Posts <i class="fas fa-chevron-right"></i></a>
         </li>
         {#else}
         <li class="page-item disabled">
-            <span class="page-link">Older Posts &raquo;</span>
+            <span class="page-link">Older Posts <i class="fas fa-chevron-right"></i></span>
         </li>
         {/if}
     </ul>

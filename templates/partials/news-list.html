@@ -1,0 +1,29 @@
+<div class="news-list-blocks mb-5">
+    <h3 class="mb-4">Latest News</h3>
+    <div class="row g-4">
+        {#for post in site.collections.posts.subList(0,6)}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title h5">
+                        <a href="{post.url.absolute}" class="text-decoration-none">
+                            {post.title}
+                        </a>
+                    </h4>
+                    <p class="byline text-muted small">
+                        By {post.data.author ?: "The Weld Team"} | {post.date.format("MMMM dd, yyyy")}
+                    </p>
+                    <p class="card-text">
+                        {site.pageContent(post).stripHtml.wordLimit(50).raw}
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a href="{post.url.absolute}" class="btn btn-sm btn-outline-primary">
+                        Read More &raquo;
+                    </a>
+                </div>
+            </div>
+        </div>
+        {/for}
+    </div>
+</div>

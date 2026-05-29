@@ -1,12 +1,16 @@
 ---
 layout: default
 ---
-<article>
-    <h1>{page.title}</h1>
-    <p class="text-muted">
-        <i class="fas fa-calendar"></i> {page.date.format('yyyy-MM-dd')}
-        {#if page.data.author} | <i class="fas fa-user"></i> {page.data.author}{/if}
-    </p>
-    <hr>
-    {#insert /}
-</article>
+<div id="breadcrumb">
+    <span>
+        <a href="/">Weld</a>
+        &gt;
+        <a href="/news">News</a>
+        &gt;
+        <a href="#">{page.title}</a>
+    </span>
+</div><!-- end breadcrumb -->
+<h3>{page.title}</h3>
+<h5>By {page.data.author ?: "The Weld Team"} | {page.date.format("MMMM dd, yyyy")}</h5>
+<p></p>
+{#insert /}

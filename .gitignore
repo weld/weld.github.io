@@ -7,6 +7,9 @@ target/
 # Node
 node_modules/
 
+# Claude Code
+.claude/
+
 # IDE files
 .idea/
 *.iml
