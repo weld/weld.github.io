@@ -15,9 +15,3 @@ node_modules/
 .settings/
 .vscode/
 
-# Awestruct (legacy)
-_site
-_tmp
-.awestruct
-.sass-cache
-*~
