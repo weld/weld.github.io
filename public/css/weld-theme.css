@@ -1,0 +1,384 @@
+/* ============================================
+   Weld Bootstrap Theme
+   Blue/gray palette based on Weld logo
+   ============================================ */
+
+:root {
+    --weld-primary: #3b6d8c;
+    --weld-primary-dark: #2a5068;
+    --weld-primary-light: #5a8fad;
+    --weld-accent: #e8a63a;
+    --weld-bg: #ffffff;
+    --weld-bg-alt: #f5f7fa;
+    --weld-text: #2d3748;
+    --weld-text-muted: #64748b;
+    --weld-border: #e2e8f0;
+    --weld-link: #3b6d8c;
+    --weld-link-hover: #2a5068;
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--weld-text);
+    background-color: var(--weld-bg);
+    line-height: 1.7;
+}
+
+a {
+    color: var(--weld-link);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: var(--weld-link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+    padding: 0.75rem 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    color: var(--weld-text) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--weld-primary) !important;
+    background-color: var(--weld-bg-alt);
+}
+
+#theme-toggle {
+    border: 1px solid var(--weld-border);
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    color: var(--weld-text-muted) !important;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--weld-bg-alt);
+    color: var(--weld-primary) !important;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+main.container {
+    max-width: 960px;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+h1 {
+    font-weight: 700;
+    color: var(--weld-primary-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+main h1:first-child {
+    font-size: 2.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--weld-accent);
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--weld-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--weld-border);
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--weld-primary-dark);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--weld-text-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+main ul, main ol {
+    padding-left: 1.5rem;
+}
+
+main li {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+}
+
+main li strong {
+    color: var(--weld-primary-dark);
+}
+
+/* ============================================
+   NEWS LISTING
+   ============================================ */
+.post-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--weld-border);
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.post-item h3 a {
+    color: var(--weld-primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.post-item h3 a:hover {
+    color: var(--weld-primary);
+    text-decoration: underline;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    color: var(--weld-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.post-excerpt {
+    color: var(--weld-text);
+    line-height: 1.7;
+}
+
+/* ============================================
+   INDIVIDUAL POST
+   ============================================ */
+article h1 {
+    font-size: 2rem;
+    border-bottom: 3px solid var(--weld-accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+article hr {
+    margin: 1rem 0 2rem;
+    border-color: var(--weld-border);
+}
+
+article .text-muted {
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   CODE
+   ============================================ */
+pre {
+    background-color: #f8fafc;
+    border: 1px solid var(--weld-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+code {
+    font-size: 0.875em;
+    color: var(--weld-primary-dark);
+}
+
+pre code {
+    color: inherit;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th {
+    background-color: var(--weld-bg-alt);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--weld-border);
+    color: var(--weld-primary-dark);
+}
+
+td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--weld-border);
+}
+
+tr:hover td {
+    background-color: var(--weld-bg-alt);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background-color: var(--weld-bg-alt) !important;
+    border-top: 1px solid var(--weld-border) !important;
+}
+
+footer h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--weld-primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+footer a {
+    color: var(--weld-text-muted) !important;
+    text-decoration: none !important;
+}
+
+footer a:hover {
+    color: var(--weld-primary) !important;
+}
+
+footer .text-muted {
+    color: var(--weld-text-muted) !important;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+.pagination .page-link {
+    color: var(--weld-primary);
+    border-color: var(--weld-border);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--weld-primary);
+    border-color: var(--weld-primary);
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--weld-bg-alt);
+    color: var(--weld-primary-dark);
+}
+
+/* ============================================
+   BLOCKQUOTES
+   ============================================ */
+blockquote {
+    border-left: 4px solid var(--weld-accent);
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    background-color: var(--weld-bg-alt);
+    border-radius: 0 6px 6px 0;
+    color: var(--weld-text);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+[data-bs-theme="dark"] {
+    --weld-bg: #1a1f2e;
+    --weld-bg-alt: #232838;
+    --weld-text: #e2e8f0;
+    --weld-text-muted: #94a3b8;
+    --weld-border: #334155;
+    --weld-link: #7db4d0;
+    --weld-link-hover: #a3cfe0;
+    --weld-primary: #7db4d0;
+    --weld-primary-dark: #a3cfe0;
+    --weld-primary-light: #5a9ab8;
+    --weld-accent: #e8a63a;
+}
+
+[data-bs-theme="dark"] body {
+    background-color: var(--weld-bg);
+    color: var(--weld-text);
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: var(--weld-bg) !important;
+    border-color: var(--weld-border) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-bs-theme="dark"] .navbar .nav-link {
+    color: var(--weld-text) !important;
+}
+
+[data-bs-theme="dark"] .navbar .nav-link:hover {
+    color: var(--weld-primary) !important;
+    background-color: var(--weld-bg-alt);
+}
+
+[data-bs-theme="dark"] #theme-toggle {
+    border-color: var(--weld-border);
+    color: var(--weld-text-muted) !important;
+}
+
+[data-bs-theme="dark"] footer {
+    background-color: var(--weld-bg-alt) !important;
+    border-color: var(--weld-border) !important;
+}
+
+[data-bs-theme="dark"] pre {
+    background-color: #0f1219;
+    border-color: var(--weld-border);
+}
+
+[data-bs-theme="dark"] code {
+    color: var(--weld-primary);
+}
+
+[data-bs-theme="dark"] th {
+    background-color: var(--weld-bg-alt);
+}
+
+[data-bs-theme="dark"] blockquote {
+    background-color: var(--weld-bg-alt);
+}
+
+[data-bs-theme="dark"] .logo-light {
+    display: none !important;
+}
+
+[data-bs-theme="dark"] .logo-dark {
+    display: inline !important;
+}
