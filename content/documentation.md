@@ -9,30 +9,30 @@ title: Documentation
 
 ### Weld 7 (CDI 5.0)
 
-- [HTML (Single page)](http://docs.jboss.org/weld/reference/latest/en-US/html_single/)
-- [PDF](http://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf)
+- [HTML (Single page)](https://docs.jboss.org/weld/reference/latest/en-US/html_single/)
+- [PDF](https://docs.jboss.org/weld/reference/latest/en-US/pdf/weld-reference.pdf)
 
 ### Weld 6 (CDI 4.1)
 
-- [HTML (Single page)](http://docs.jboss.org/weld/reference/latest-6.0/en-US/html_single/)
-- [PDF](http://docs.jboss.org/weld/reference/latest-6.0/en-US/pdf/weld-reference.pdf)
+- [HTML (Single page)](https://docs.jboss.org/weld/reference/latest-6.0/en-US/html_single/)
+- [PDF](https://docs.jboss.org/weld/reference/latest-6.0/en-US/pdf/weld-reference.pdf)
 
 ### Weld 5 (CDI 4.0)
 
-- [HTML (Single page)](http://docs.jboss.org/weld/reference/latest-5.1/en-US/html_single/)
-- [PDF](http://docs.jboss.org/weld/reference/latest-5.1/en-US/pdf/weld-reference.pdf)
+- [HTML (Single page)](https://docs.jboss.org/weld/reference/latest-5.1/en-US/html_single/)
+- [PDF](https://docs.jboss.org/weld/reference/latest-5.1/en-US/pdf/weld-reference.pdf)
 
 ### Weld 4 (CDI 3.0)
 
-- [HTML (Single page)](http://docs.jboss.org/weld/reference/latest-4.0/en-US/html_single/)
-- [PDF](http://docs.jboss.org/weld/reference/latest-4.0/en-US/pdf/weld-reference.pdf)
+- [HTML (Single page)](https://docs.jboss.org/weld/reference/latest-4.0/en-US/html_single/)
+- [PDF](https://docs.jboss.org/weld/reference/latest-4.0/en-US/pdf/weld-reference.pdf)
 
 ### Weld 3 (CDI 2.0)
 
-- [HTML (Single page)](http://docs.jboss.org/weld/reference/latest-3.1/en-US/html_single/)
-- [PDF](http://docs.jboss.org/weld/reference/latest-3.1/en-US/pdf/weld-reference.pdf)
+- [HTML (Single page)](https://docs.jboss.org/weld/reference/latest-3.1/en-US/html_single/)
+- [PDF](https://docs.jboss.org/weld/reference/latest-3.1/en-US/pdf/weld-reference.pdf)
 
-[Browse documentation for older Weld releases](http://docs.jboss.org/weld/reference/)
+[Browse documentation for older Weld releases](https://docs.jboss.org/weld/reference/)
 
 ---
 
@@ -40,7 +40,7 @@ title: Documentation
 
 ### If I create a thread in my CDI bean, how will Weld react?
 
-Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld [reference guide](http://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html) contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.
+Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld [reference guide](https://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html) contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.
 
 The dependent context and the application context will work as usual in any user created thread.
 
@@ -67,9 +67,9 @@ You can view more details by increasing the log level of the application server 
 **Update**: Since Weld 2.2 the conversation context is activated lazily and this problem does not occur.
 If you are using an older version of Weld or need the conversation context to be activated eagerly, read further.
 
-An application may set character encoding of a request by calling the [ServletRequest.setCharacterEncoding()](http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)) method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.
+An application may set character encoding of a request by calling the [ServletRequest.setCharacterEncoding()](https://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)) method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.
 
-In order to properly activate the conversation context, Weld reads the _cid_ request parameter in the beginning of request processing (see [the CDI spec for details](http://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context)). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter that tries to set character encoding will not work since it does that too late.
+In order to properly activate the conversation context, Weld reads the _cid_ request parameter in the beginning of request processing (see [the CDI spec for details](https://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context)). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter that tries to set character encoding will not work since it does that too late.
 
 A workaround is to have the application encoding-setting filter to be called before Weld tries to read the "cid" parameter in the ConversationFilter. This can be done by mapping the custom filter _before_ Weld's ConversationFilter in web.xml
 
@@ -165,7 +165,7 @@ The `Instance` API is often used in loops to obtain multiple instances of a cert
 ```
 
 By default, each object obtained using `Instance` remains managed (is not released) until the `Instance` object is destroyed. This can easily create a memory leak.
-Therefore, the application should explicitly destroy obtained instances when it no longer needs by calling the [Instance.destroy()](http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/Instance.html#destroy(T)) method.
+Therefore, the application should explicitly destroy obtained instances when it no longer needs by calling the [Instance.destroy()](https://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/Instance.html#destroy(T)) method.
 
 ### How do I enable debug logging for Weld in a specific container?
 
@@ -192,7 +192,7 @@ org.jboss.weld.level=DEBUG
 
 #### WildFly Swarm
 
-(more info: [Logging Fraction](http://docs.wildfly-swarm.io/2017.11.0/#_logging_2))
+(more info: [Logging Fraction](https://docs.wildfly-swarm.io/2017.11.0/#_logging_2))
 
 run the uberjar with the following system property:
 ```
@@ -203,7 +203,7 @@ run the uberjar with the following system property:
 
 #### GlassFish
 
-(more info: [Setting Log Levels - GlassFish](http://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html))
+(more info: [Setting Log Levels - GlassFish](https://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html))
 
 global configuration - add the following line to `_domain-dir_/config/logging.properties`
 ```
@@ -212,7 +212,7 @@ org.jboss.weld.level=FINE
 
 #### Tomcat
 
-(more info: [Logging in Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html))
+(more info: [Logging in Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/logging.html))
 
 global configuration - add the following line to `$CATALINA_HOME/conf/logging.properties`
 ```
@@ -225,7 +225,7 @@ org.jboss.weld.level=FINE
 
 #### Jetty
 
-For enabling debug logging on Jetty, see [Jetty Logging](http://www.eclipse.org/jetty/documentation/current/configuring-logging.html)
+For enabling debug logging on Jetty, see [Jetty Logging](https://www.eclipse.org/jetty/documentation/current/configuring-logging.html)
 
 ### What do WELD-000225, WELD-000335 and WELD-000715 warnings mean?
 
@@ -261,15 +261,15 @@ An overview is provided in the following table:
 
 ### How do I enable debug logging for Weld SE?
 
-In Weld 2.1 [SLF4J](http://www.slf4j.org) was replaced with [JBoss Logging](https://developer.jboss.org/wiki/JBossLoggingTooling) which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you'll have to **identify** and **configure** the underlying logging framework.
+In Weld 2.1 [SLF4J](https://www.slf4j.org) was replaced with [JBoss Logging](https://developer.jboss.org/wiki/JBossLoggingTooling) which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you'll have to **identify** and **configure** the underlying logging framework.
 
 **Which logging framework writes data?**
 
 The supported "back-end" frameworks include:
 
 1. [jboss-logmanager](https://developer.jboss.org/wiki/StandaloneJBossLogManager)
-2. [Log4j](http://logging.apache.org/log4j/2.x/)
-3. [SLF4J](http://www.slf4j.org/)
+2. [Log4j](https://logging.apache.org/log4j/2.x/)
+3. [SLF4J](https://www.slf4j.org/)
 4. JDK logging
 
 A system property `org.jboss.logging.provider` may be used to specify the logging framework directly. Supported values are `jboss`, `jdk`, `log4j` and `slf4j`. If this system property is not set, JBoss Logging will attempt to find the logging frameworks from the above-mentioned list on the classpath - the first one found is taken.
@@ -301,13 +301,13 @@ java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$
 ```
 
 The reason is that since Jetty 8 some internal classes are not visible from the web application.
-See also [Setting Server Classes](http://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes).
+See also [Setting Server Classes](https://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes).
 Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using.
 We can use the `jetty-web.xml` descriptor (see also [Jetty XML Reference](https://www.eclipse.org/jetty/documentation/current/jetty-web-xml-config.html)):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://www.eclipse.org/jetty/configure.dtd">
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
    <Call name="prependServerClass">
       <Arg>-org.eclipse.jetty.util.Decorator</Arg>
@@ -327,12 +327,12 @@ We can use the `jetty-web.xml` descriptor (see also [Jetty XML Reference](https:
 </Configure>
 ```
 
-Note that Jetty distributions (from version **9.2.4**) contain a dedicated [CDI/Weld module](http://www.eclipse.org/jetty/documentation/current/framework-weld.html) which allows to deploy a CDI application without bundling the Weld Servlet integration code.
+Note that Jetty distributions (from version **9.2.4**) contain a dedicated [CDI/Weld module](https://www.eclipse.org/jetty/documentation/current/framework-weld.html) which allows to deploy a CDI application without bundling the Weld Servlet integration code.
 However, note that if you want to deploy application using CDI along with JSF (e.g. weld-numberguess example) you need to copy the following dependencies directly to the CDI module directory:
 
 * JSF API
 * JSF IMPL
-* [Weld Core JSF](http://search.maven.org/#search|ga|1|weld-core-jsf)
+* [Weld Core JSF](https://search.maven.org/#search|ga|1|weld-core-jsf)
 
 ### How to patch WildFly with newer Weld version?
 
@@ -387,7 +387,7 @@ See [Weld Reference Guide](https://docs.jboss.org/weld/reference/latest/en-US/ht
 The container initializes the bean instances of normal scoped beans lazily.
 In other words, when injecting an `@ApplicationScoped` bean a new instance is not created until actually used.
 Instead, a shared client proxy is injected.
-See [Weld Tip 3 - Boost performance of Weld apps](http://weld.cdi-spec.org/news/2016/10/25/tip3-performance/#_lazy_initialization_of_bean_instances) for more information.
+See [Weld Tip 3 - Boost performance of Weld apps](https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/#_lazy_initialization_of_bean_instances) for more information.
 
 #### Circular Dependencies
 
