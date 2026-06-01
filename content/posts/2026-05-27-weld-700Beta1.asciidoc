@@ -1,0 +1,42 @@
+---
+layout: post
+title: Weld 7.0.0.Beta1
+author: Matej Novotny
+description: Weld 7.0.0.Beta1 — feature complete CDI 5.0 implementation
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 7.0.0.Beta1 and Weld API 7.0.Beta1 have landed in Maven Central. +
+This is a *feature complete* implementation of Jakarta CDI 5.0.Beta1!
+
+Since the link:/posts/weld-7-0-0-alpha1/[Alpha1 release], the remaining CDI 5.0 features have been implemented (link:https://redhat.atlassian.net/browse/WELD-2835[WELD-2835], link:https://redhat.atlassian.net/browse/WELD-2836[WELD-2836]):
+
+* `@Eager` annotation for eager initialization of `@ApplicationScoped` beans — the CDI equivalent of EJB's `@Startup`
+* `@AutoClose` annotation — beans implementing `AutoCloseable` are now automatically closed during destruction without the need for explicit `@PreDestroy` or `@Disposes` methods
+* Asynchronous method invokers via the new `AsyncHandler` API
+* Programmatic registration of `BuildCompatibleExtension` in CDI SE
+* `SyntheticInjections` for injection points in synthetic beans
+* Global scopes — application scope is now global
+* Support for parameterized types in `@Registration`
+* Removal of deprecated EL-related `BeanManager` methods (moved to `ELAwareBeanManager` in CDI 4.1)
+* Removal of `SecurityManager` references
+
+Other enhancements and bug fixes in this release:
+
+* Trimming a non-explicit bean archive is now correctly treated as a deployment problem (link:https://redhat.atlassian.net/browse/WELD-2832[WELD-2832])
+* Optimized how Weld keeps references to dependent instances within `CreationalContext` (link:https://redhat.atlassian.net/browse/WELD-2834[WELD-2834])
+* Fixed `ClassCastException` when unwrapping proxied `EntityManager` (link:https://redhat.atlassian.net/browse/WELD-2245[WELD-2245])
+* Fixed reflection discovery strategy incorrectly discovering beans with just inherited BDA in SE (link:https://redhat.atlassian.net/browse/WELD-2826[WELD-2826])
+* Startup event is now fired in a synchronized block (link:https://redhat.atlassian.net/browse/WELD-2827[WELD-2827])
+* Ensured proxy target JPMS modules can read Weld JPMS modules (link:https://redhat.atlassian.net/browse/WELD-2828[WELD-2828])
+* `ProcessSyntheticAnnotatedType` now correctly fired for types added via configurators (link:https://redhat.atlassian.net/browse/WELD-2831[WELD-2831])
+* `Weld#addExtensions` no longer swallows exceptions (link:https://redhat.atlassian.net/browse/WELD-2833[WELD-2833])
+
+For the full list of what's new in CDI 5.0, see the link:https://jakarta.ee/specifications/cdi/5.0/[Jakarta CDI 5.0 specification page].
+
+As always, if you find any issues, don't hesitate to reach out!
+
+&#91; link:/download/[Download] &#93;
+&#91; link:https://docs.jboss.org/weld/reference/7.0.0.Beta1/en-US/html_single/[Documentation, window="_blank"] &#93;
+&#91; link:https://github.com/weld/core/releases/tag/7.0.0.Beta1[Release, window="_blank"] &#93;
