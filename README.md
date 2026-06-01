@@ -47,9 +47,15 @@ Create a new file in `content/posts/` following the naming convention
 layout: post
 title: Your Post Title
 author: Your Name
+description: Short summary used in the RSS feed
 tags: [release]
 ---
 ```
+
+- `description` is used by the RSS feed (`rss.xml`). Keep it concise.
+- `tags` are not currently rendered on the site but are preserved for
+  future use (e.g. filtering). Common values: `release`, `team`, `tips`,
+  `testing`, `integration`. Multiple tags are supported: `[release, jakarta]`.
 
 Submit a pull request. On merge, the site is rebuilt and deployed automatically.
 
