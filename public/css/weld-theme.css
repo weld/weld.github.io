@@ -116,46 +116,6 @@ a:hover {
   max-height: none !important;
 }
 
-#wrapper,
-#maincontent-wrapper,
-#wrapper-2,
-#wrap-content,
-#wrapper-3,
-#main-wrapper {
-  all: unset !important;
-  display: block !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: none !important;
-  float: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  height: auto !important;
-  min-height: 0 !important;
-  overflow: visible !important;
-}
-
-#main {
-  all: unset !important;
-  display: block !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  background: white !important;
-  min-height: auto !important;
-  height: auto !important;
-  overflow: visible !important;
-}
-
-/* Hide old logo and branding */
-#branding,
-#logo,
-#proj_logo,
-#proj_logo-neg {
-  display: none !important;
-}
 
 /* ============================================
    HEADER & BANNER
@@ -194,15 +154,6 @@ a:hover {
   }
 }
 
-#projectname {
-  all: unset !important;
-  display: block !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  color: var(--weld-primary-dark) !important;
-  margin: 0.25rem 0 0.125rem 0 !important;
-  letter-spacing: -0.02em !important;
-}
 
 /* ============================================
    NAVIGATION - Bootstrap Navbar Style
@@ -1116,16 +1067,6 @@ table tbody tr:last-child td,
   color: #e6edf3 !important;
 }
 
-[data-bs-theme="dark"] #wrapper,
-[data-bs-theme="dark"] #maincontent-wrapper,
-[data-bs-theme="dark"] #wrapper-2,
-[data-bs-theme="dark"] #wrap-content,
-[data-bs-theme="dark"] #wrapper-3,
-[data-bs-theme="dark"] #main-wrapper,
-[data-bs-theme="dark"] #main {
-  background: #0d1117 !important;
-  color: #e6edf3 !important;
-}
 
 [data-bs-theme="dark"] #top_subnav_branding {
   background: #161b22 !important;
