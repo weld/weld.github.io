@@ -2,10 +2,7 @@
 layout: post
 title: Weld Vert.x Next?
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
-desc: Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
+description: Last year Weld team announced the weld-vertx project. It's a good time to summarize the features and plans for future.
 tags: [vertx, integration]
 aliases: [/news/2017/08/07/weld-vertx-next/]
 ---

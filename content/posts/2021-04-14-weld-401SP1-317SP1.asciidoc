@@ -2,10 +2,7 @@
 layout: post
 title: Weld 4.0.1.SP1 and 3.1.7.SP1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 4.0.1.SP1 and 3.1.7.SP1 are now available
-desc: Class defining fixes for Weld 3 and 4
+description: Class defining fixes for Weld 3 and 4
 tags: [release]
 aliases: [/news/2021/04/14/weld-401SP1-317SP1/]
 ---

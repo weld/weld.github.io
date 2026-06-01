@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.0.SP1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Service release for Weld 5 Final
-desc: Service release for Weld 5 Final
+description: Service release for Weld 5 Final
 tags: [release]
 aliases: [/news/2022/05/04/weld-500SP1/]
 ---

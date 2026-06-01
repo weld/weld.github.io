@@ -2,10 +2,7 @@
 layout: post
 title: Weld Tip 2 - Development Mode
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: Meet Weld Probe - a development tool which allows to inspect CDI components at runtime.
-desc: Weld Tip 2 - Development Mode
+description: Weld Tip 2 - Development Mode
 tags: [tips]
 aliases: [/news/2016/10/07/tip2-devmode/]
 ---

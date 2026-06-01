@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.6.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Minor bugfix for Weld 5.1
-desc: Minor bugfix for Weld 5.1
+description: Minor bugfix for Weld 5.1
 tags: [release]
 aliases: [/news/2025/05/20/weld-516Final/]
 ---

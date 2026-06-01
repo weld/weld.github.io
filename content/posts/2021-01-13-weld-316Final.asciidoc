@@ -2,10 +2,7 @@
 layout: post
 title: Weld 3.1.6.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 3.1.6.Final has been released
-desc: Weld 3.1.6.Final has been released
+description: Weld 3.1.6.Final has been released
 tags: [release]
 aliases: [/news/2021/01/13/weld-316Final/]
 ---

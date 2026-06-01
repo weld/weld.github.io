@@ -2,8 +2,6 @@
 layout: post
 title: Red Hat Middleware Strategy
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
 tags: [team]
 aliases: [/news/2025/03/27/middleware-strategy/]
 ---

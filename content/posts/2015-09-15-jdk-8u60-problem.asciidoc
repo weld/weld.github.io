@@ -2,8 +2,6 @@
 layout: post
 title: JDK 8u60 reveals a problem in Weld
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 tags: [bug, jdk]
 aliases: [/news/2015/09/15/jdk-8u60-problem/]
 ---

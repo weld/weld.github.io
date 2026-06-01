@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.0.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 6.0.0.Final released
-desc: Weld 6.0.0.Final released
+description: Weld 6.0.0.Final released
 tags: [release]
 aliases: [/news/2024/12/16/weld-600Final/]
 ---

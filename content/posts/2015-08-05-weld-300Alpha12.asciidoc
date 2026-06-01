@@ -2,8 +2,6 @@
 layout: post
 title: Weld 3.0.0.Alpha12 - CDI 2.0 EDR1 Reference Implementation!
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 tags: [release, cdi2]
 aliases: [/news/2015/08/05/weld-300Alpha12/]
 ---

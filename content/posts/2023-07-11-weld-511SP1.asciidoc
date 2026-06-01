@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.1.SP1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.1.1.SP1 available
-desc: Weld 5.1.1.SP1 available
+description: Weld 5.1.1.SP1 available
 tags: [release]
 aliases: [/news/2023/07/11/weld-511SP1/]
 ---

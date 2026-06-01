@@ -2,10 +2,7 @@
 layout: post
 title: Weld 2.3.5.Final
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: The next version of the stable 2.3 branch (CDI 1.2, WildFly 10) has been released.
-desc: Weld 2.3.5.Final released
+description: Weld 2.3.5.Final released
 tags: [release, plans]
 aliases: [/news/2016/07/01/weld-235Final/]
 ---

@@ -2,10 +2,7 @@
 layout: post
 title: Weld 3.0.2.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Watch out, Weld 3 release is coming your way!
-desc: Weld 3.0.2.Final released
+description: Weld 3.0.2.Final released
 tags: [release]
 aliases: [/news/2017/11/23/weld-302Final/]
 ---

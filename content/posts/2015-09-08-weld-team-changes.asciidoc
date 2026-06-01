@@ -2,8 +2,6 @@
 layout: post
 title: Weld team changes
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 tags: [team]
 aliases: [/news/2015/09/08/weld-team-changes/]
 ---

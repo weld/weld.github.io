@@ -2,8 +2,6 @@
 layout: post
 title: Weld has a new web site!
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 aliases: [/news/2013/06/20/new-weld-site/]
 ---
 :excerpt: Weld has a new web site and it's built with Awestruct!

@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.1.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: First update for Weld 6
-desc: First update for Weld 6
+description: First update for Weld 6
 tags: [release]
 aliases: [/news/2025/02/18/weld-601Final/]
 ---

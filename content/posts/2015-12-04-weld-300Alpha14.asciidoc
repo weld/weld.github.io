@@ -2,9 +2,7 @@
 layout: post
 title: Weld 3.0.0.Alpha14
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-desc: Weld 3.0.0.Alpha14 released.
+description: Weld 3.0.0.Alpha14 released.
 tags: [release, cdi2]
 aliases: [/news/2015/12/04/weld-300Alpha14/]
 ---

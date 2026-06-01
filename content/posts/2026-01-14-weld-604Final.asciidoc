@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.4.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Minor bugfix for Weld 6
-desc: Minor bugfix for Weld 6
+description: Minor bugfix for Weld 6
 tags: [release]
 aliases: [/news/2026/01/14/weld-604Final/]
 ---

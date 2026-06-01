@@ -2,8 +2,6 @@
 layout: post
 title: An update on Weld 3
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 tags: [cdi2]
 aliases: [/news/2014/12/10/an-update-on-weld-3/]
 ---

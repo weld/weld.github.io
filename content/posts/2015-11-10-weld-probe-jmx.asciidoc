@@ -2,8 +2,6 @@
 layout: post
 title: Weld development mode and JMX support
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 tags: [probe, jmx]
 aliases: [/news/2015/11/10/weld-probe-jmx/]
 ---

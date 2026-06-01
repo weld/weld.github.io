@@ -3,8 +3,6 @@ layout: post
 title: Weld team changes
 slug: weld-team-changes-2018
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 tags: [team]
 aliases: [/news/2018/07/10/weld-team-changes/]
 ---

@@ -2,10 +2,7 @@
 layout: post
 title: Weld 7.0.0.Alpha1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: First release of Weld 7
-desc: First release of Weld 7
+description: First release of Weld 7
 tags: [release]
 aliases: [/news/2025/12/01/weld-700Alpha1/]
 ---

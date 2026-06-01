@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.0.CR1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.0.0.CR1
-desc: Weld 5.0.0.CR1 has arrived
+description: Weld 5.0.0.CR1 has arrived
 tags: [release]
 aliases: [/news/2022/02/23/weld-500CR1/]
 ---

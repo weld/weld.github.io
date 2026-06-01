@@ -2,10 +2,7 @@
 layout: post
 title: Weld 3.0.0.Alpha15
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: The next experimental Weld version has been released.
-desc: Weld 3.0.0.Alpha15 released. ExperimentalAfterBeanDiscovery event has been enhanced.
+description: Weld 3.0.0.Alpha15 released. ExperimentalAfterBeanDiscovery event has been enhanced.
 tags: [release, cdi2]
 aliases: [/news/2016/02/04/weld-300Alpha15/]
 ---

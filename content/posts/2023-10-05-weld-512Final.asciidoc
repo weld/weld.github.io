@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.2.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.1.2.Final is now available
-desc: Weld 5.1.2.Final is now available
+description: Weld 5.1.2.Final is now available
 tags: [release]
 aliases: [/news/2023/10/05/weld-512Final/]
 ---

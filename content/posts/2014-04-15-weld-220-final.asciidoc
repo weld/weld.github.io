@@ -2,8 +2,6 @@
 layout: post
 title: Weld 2.2 (CDI 1.2 reference implementation) released!
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 aliases: [/news/2014/04/15/weld-220-final/]
 ---
 

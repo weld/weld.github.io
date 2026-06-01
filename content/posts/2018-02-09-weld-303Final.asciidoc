@@ -2,10 +2,7 @@
 layout: post
 title: Weld 3.0.3.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 3.0.3.Final released
-desc: Weld 3.0.3.Final released
+description: Weld 3.0.3.Final released
 tags: [release]
 aliases: [/news/2018/02/09/weld-303Final/]
 ---

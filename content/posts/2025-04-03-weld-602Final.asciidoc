@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.2.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 6.0.2.Final is now available
-desc: Weld 6.0.2.Final is now available
+description: Weld 6.0.2.Final is now available
 tags: [release]
 aliases: [/news/2025/04/03/weld-602Final/]
 ---

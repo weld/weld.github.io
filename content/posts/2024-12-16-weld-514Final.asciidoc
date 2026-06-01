@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.4.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Tiny update for Weld 5.1
-desc: Tiny update for Weld 5.1
+description: Tiny update for Weld 5.1
 tags: [release]
 aliases: [/news/2024/12/16/weld-514Final/]
 ---

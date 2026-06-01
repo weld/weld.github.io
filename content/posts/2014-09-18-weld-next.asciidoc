@@ -2,8 +2,6 @@
 layout: post
 title: Weld.Next
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 aliases: [/news/2014/09/18/weld-next/]
 ---
 

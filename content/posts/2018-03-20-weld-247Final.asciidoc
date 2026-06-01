@@ -2,10 +2,7 @@
 layout: post
 title: Weld 2.4.7.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 2.4.7.Final released
-desc: Weld 2.4.7.Final released
+description: Weld 2.4.7.Final released
 tags: [release]
 aliases: [/news/2018/03/20/weld-247Final/]
 ---

@@ -2,8 +2,6 @@
 layout: post
 title: Weld 2.3.0.Final released!
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
 tags: [release]
 aliases: [/news/2015/09/18/weld-230Final/]
 ---

@@ -2,10 +2,7 @@
 layout: post
 title: Weld meets JUnit 5
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: What if you could easily write JUnit 5 tests for Weld beans?
-desc: What if you could easily write JUnit 5 tests for Weld beans?
+description: What if you could easily write JUnit 5 tests for Weld beans?
 tags: [junit, testing, weld-se]
 aliases: [/news/2017/12/19/weld-meets-junit5/]
 ---

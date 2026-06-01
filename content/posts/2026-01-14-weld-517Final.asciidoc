@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.7.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Minor update for Weld 5
-desc: Minor update for Weld 5
+description: Minor update for Weld 5
 tags: [release]
 aliases: [/news/2026/01/14/weld-517Final/]
 ---
