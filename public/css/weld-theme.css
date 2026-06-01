@@ -116,7 +116,6 @@ a:hover {
   max-height: none !important;
 }
 
-
 /* ============================================
    HEADER & BANNER
    ============================================ */
@@ -153,7 +152,6 @@ a:hover {
     overflow: hidden !important;
   }
 }
-
 
 /* ============================================
    NAVIGATION - Bootstrap Navbar Style
@@ -1066,7 +1064,6 @@ table tbody tr:last-child td,
   background-color: #0d1117 !important;
   color: #e6edf3 !important;
 }
-
 
 [data-bs-theme="dark"] #top_subnav_branding {
   background: #161b22 !important;
