@@ -387,7 +387,7 @@ See [Weld Reference Guide](https://docs.jboss.org/weld/reference/latest/en-US/ht
 The container initializes the bean instances of normal scoped beans lazily.
 In other words, when injecting an `@ApplicationScoped` bean a new instance is not created until actually used.
 Instead, a shared client proxy is injected.
-See [Weld Tip 3 - Boost performance of Weld apps](https://weld.cdi-spec.org/news/2016/10/25/tip3-performance/#_lazy_initialization_of_bean_instances) for more information.
+See [Weld Tip 3 - Boost performance of Weld apps](/posts/weld-tip-3-boost-performance-of-weld-apps/#_lazy_initialization_of_bean_instances) for more information.
 
 #### Circular Dependencies
 
