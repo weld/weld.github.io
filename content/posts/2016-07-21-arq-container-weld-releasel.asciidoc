@@ -2,8 +2,6 @@
 layout: post
 title: Arquillian container Weld 2.0.0.Beta1 released!
 author: Tomas Remes
-priority: 1
-change_frequency: weekly
 tags: [arquillian, testing]
 aliases: [/news/2016/07/21/arq-container-weld-releasel/]
 ---

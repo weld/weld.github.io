@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.0.SP2
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Squashing some more bugs in Weld 5
-desc: Squashing some more bugs in Weld 5
+description: Squashing some more bugs in Weld 5
 tags: [release]
 aliases: [/news/2022/06/08/weld-500SP2/]
 ---

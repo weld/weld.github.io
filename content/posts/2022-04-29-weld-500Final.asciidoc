@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.0.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Finally, Weld 5 Final is here!
-desc: Finally, Weld 5 Final is here!
+description: Finally, Weld 5 Final is here!
 tags: [release]
 aliases: [/news/2022/04/29/weld-500Final/]
 ---

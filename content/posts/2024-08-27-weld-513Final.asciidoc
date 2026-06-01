@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.3.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Squashing bugs with Weld 5.1.3.Final!
-desc: Squashing bugs with Weld 5.1.3.Final!
+description: Squashing bugs with Weld 5.1.3.Final!
 tags: [release]
 aliases: [/news/2024/08/27/weld-513Final/]
 ---

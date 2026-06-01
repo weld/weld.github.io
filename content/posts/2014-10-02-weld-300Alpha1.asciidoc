@@ -2,8 +2,6 @@
 layout: post
 title: Weld 3.0.0.Alpha1 released!
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 aliases: [/news/2014/10/02/weld-300Alpha1/]
 ---
 

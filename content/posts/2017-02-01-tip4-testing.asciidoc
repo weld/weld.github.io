@@ -2,10 +2,7 @@
 layout: post
 title: Weld Tip 4 - Testing CDI/Weld apps
 author: Tomas Remes, Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Taking a dive into CDI/Weld application testing.
-desc: Weld Tip 4 - Testing CDI/Weld apps
+description: Weld Tip 4 - Testing CDI/Weld apps
 tags: [tips]
 aliases: [/news/2017/02/01/tip4-testing/]
 ---

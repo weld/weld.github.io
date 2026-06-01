@@ -2,8 +2,6 @@
 layout: post
 title: Three new Weld releases
 author: Jozef Hartinger
-priority: 1
-change_frequency: weekly
 aliases: [/news/2014/01/14/weld-212-final/]
 ---
 

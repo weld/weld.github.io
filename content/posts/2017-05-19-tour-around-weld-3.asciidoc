@@ -2,10 +2,7 @@
 layout: post
 title: Tour around Weld 3
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Tour around the new stuff in Weld 3
-desc: A summary of CDI 2.0 features coated with Weld and sprinkled with code samples
+description: A summary of CDI 2.0 features coated with Weld and sprinkled with code samples
 aliases: [/news/2017/05/19/tour-around-weld-3/]
 ---
 :linkattrs:

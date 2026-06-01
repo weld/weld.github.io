@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.0.Beta1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 6.0.0.Beta1 is now available
-desc: Weld 6.0.0.Beta1 is now available
+description: Weld 6.0.0.Beta1 is now available
 tags: [release]
 aliases: [/news/2024/02/26/weld-600Beta1/]
 ---

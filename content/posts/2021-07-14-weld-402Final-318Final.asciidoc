@@ -2,10 +2,7 @@
 layout: post
 title: Weld 4.0.2.Final and 3.1.8.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 4.0.2.Final and 3.1.8.Final are now available
-desc: Maintenance releases for Weld 3 and 4
+description: Maintenance releases for Weld 3 and 4
 tags: [release]
 aliases: [/news/2021/07/14/weld-402Final-318Final/]
 ---

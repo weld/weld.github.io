@@ -2,10 +2,7 @@
 layout: post
 title: Weld SE and synthetic container lifecycle event observers
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: A new experimental feature of Weld SE planned for 3.0.0.Alpha16.
-desc: Weld SE 3.x introducing synthetic lifecycle event observer.
+description: Weld SE 3.x introducing synthetic lifecycle event observer.
 tags: [api, draft]
 aliases: [/news/2016/02/08/weld-se-synth-lifecycle-events/]
 ---

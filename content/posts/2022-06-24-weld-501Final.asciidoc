@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.1.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.0.1.Final coming your way!
-desc: Weld 5.0.1.Final coming your way!
+description: Weld 5.0.1.Final coming your way!
 tags: [release]
 aliases: [/news/2022/06/24/weld-501Final/]
 ---

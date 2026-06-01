@@ -2,10 +2,7 @@
 layout: post
 title: Update on weld-vertx
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
-desc: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
+description: Weld team has just released the first version of weld-vertx. Check the new features and explore the possibilities.
 tags: [vertx, integration]
 aliases: [/news/2016/06/21/update-on-weld-vertx/]
 ---

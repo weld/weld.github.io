@@ -2,10 +2,7 @@
 layout: post
 title: Weld Tip 3 - Boost performance of Weld apps
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: Explore various aspects of CDI/Weld applications performance.
-desc: Weld Tip 3 - Boost performance of Weld apps
+description: Weld Tip 3 - Boost performance of Weld apps
 tags: [tips]
 aliases: [/news/2016/10/25/tip3-performance/]
 ---

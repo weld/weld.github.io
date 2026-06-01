@@ -2,8 +2,6 @@
 layout: post
 title: Arquillian container SE 1.0.0.CR1 released!
 author: Tomas Remes
-priority: 1
-change_frequency: weekly
 tags: [arquillian, testing]
 aliases: [/news/2015/11/25/arq-container-se-CR1/]
 ---

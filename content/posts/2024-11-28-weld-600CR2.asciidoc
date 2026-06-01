@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.0.CR2
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 6.0.0.CR2 is now available
-desc: Weld 6.0.0.CR2 is now available
+description: Weld 6.0.0.CR2 is now available
 tags: [release]
 aliases: [/news/2024/11/28/weld-600CR2/]
 ---

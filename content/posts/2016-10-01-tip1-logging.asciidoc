@@ -2,10 +2,7 @@
 layout: post
 title: Weld Tip 1 - Logging
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: The very first article from a series of concise Weld tips.
-desc: Weld Tips 1 - Logging
+description: Weld Tips 1 - Logging
 tags: [tips]
 aliases: [/news/2016/10/01/tip1-logging/]
 ---

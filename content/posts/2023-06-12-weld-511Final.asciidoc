@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.1.1.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.1.1.Final released!
-desc: Weld 5.1.1.Final released!
+description: Weld 5.1.1.Final released!
 tags: [release]
 aliases: [/news/2023/06/12/weld-511Final/]
 ---

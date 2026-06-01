@@ -2,10 +2,7 @@
 layout: post
 title: Weld 4.0.3.Final and 3.1.9.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 4.0.3.Final and 3.1.9.Final are now available
-desc: Updated versions of Weld 3 and 4
+description: Updated versions of Weld 3 and 4
 tags: [release]
 aliases: [/news/2022/02/16/weld-403Final-319Final/]
 ---

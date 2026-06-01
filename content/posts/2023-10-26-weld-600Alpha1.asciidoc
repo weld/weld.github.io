@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.0.Alpha1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 6.0.0.Alpha1 is now available
-desc: Weld 6.0.0.Alpha1 is now available
+description: Weld 6.0.0.Alpha1 is now available
 tags: [release]
 aliases: [/news/2023/10/26/weld-600Alpha1/]
 ---

@@ -2,10 +2,7 @@
 layout: post
 title: Weld 2.3.3.Final
 author: Martin Kouba
-priority: 1
-change_frequency: weekly
-excerpt: The next bug-fix release for the stable 2.3 branch (CDI 1.2 implementation) has been released.
-desc: Weld 2.3.3.Final released
+description: Weld 2.3.3.Final released
 tags: [release]
 aliases: [/news/2016/02/12/weld-233Final/]
 ---

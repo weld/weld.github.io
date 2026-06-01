@@ -2,10 +2,7 @@
 layout: post
 title: Weld 4.0.1.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 4.0.1.Final has been released
-desc: Weld 4.0.1.Final has been released
+description: Weld 4.0.1.Final has been released
 tags: [release]
 aliases: [/news/2021/03/22/weld-401Final/]
 ---

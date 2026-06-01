@@ -2,10 +2,7 @@
 layout: post
 title: Weld 5.0.0.Beta1
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Weld 5.0.0.Beta1
-desc: Weld 5.0.0.Beta1 is now available
+description: Weld 5.0.0.Beta1 is now available
 tags: [release]
 aliases: [/news/2022/01/24/weld-500Beta1/]
 ---

@@ -2,10 +2,7 @@
 layout: post
 title: Weld 6.0.3.Final
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
-excerpt: Minor bugfix for Weld 6
-desc: Minor bugfix for Weld 6
+description: Minor bugfix for Weld 6
 tags: [release]
 aliases: [/news/2025/05/20/weld-603Final/]
 ---

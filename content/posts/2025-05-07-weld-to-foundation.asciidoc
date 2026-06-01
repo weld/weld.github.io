@@ -2,8 +2,6 @@
 layout: post
 title: Moving to a Foundation
 author: Matej Novotny
-priority: 1
-change_frequency: weekly
 tags: [team]
 aliases: [/news/2025/05/07/weld-to-foundation/]
 ---
