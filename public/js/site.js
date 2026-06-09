@@ -157,6 +157,77 @@
 })();
 
 /**
+ * FAQ Deep Links
+ * Opens and scrolls to a specific FAQ accordion item when the URL contains a hash
+ * e.g. /documentation#faq3 will open and scroll to the third FAQ
+ * Also adds a permalink icon to each FAQ header for easy link sharing.
+ */
+(function() {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add permalink icons to each FAQ accordion header
+    const accordion = document.querySelector('.doc-accordion');
+    if (accordion) {
+      accordion.querySelectorAll('.accordion-item').forEach(item => {
+        const collapseEl = item.querySelector('.accordion-collapse');
+        if (!collapseEl || !collapseEl.id) return;
+
+        const header = item.querySelector('.accordion-header');
+        if (!header) return;
+
+        header.style.position = 'relative';
+
+        const link = document.createElement('a');
+        link.href = '#' + collapseEl.id;
+        link.className = 'faq-permalink';
+        link.title = 'Copy link to this FAQ';
+        link.innerHTML = '<i class="fas fa-link"></i>';
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const url = window.location.origin + window.location.pathname + '#' + collapseEl.id;
+          if (!navigator.clipboard) return;
+          navigator.clipboard.writeText(url).then(() => {
+            link.title = 'Copied!';
+            link.classList.add('faq-permalink-copied');
+            setTimeout(() => {
+              link.title = 'Copy link to this FAQ';
+              link.classList.remove('faq-permalink-copied');
+            }, 2000);
+          }).catch(() => {});
+        });
+        header.appendChild(link);
+      });
+    }
+
+    // Open and scroll to FAQ if URL has a hash
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    let target;
+    try { target = document.querySelector(hash); } catch (e) { return; }
+    if (!target || !target.classList.contains('accordion-collapse')) return;
+
+    if (typeof bootstrap === 'undefined' || !bootstrap.Collapse) return;
+    const bsCollapse = new bootstrap.Collapse(target, { toggle: false });
+    bsCollapse.show();
+
+    const accordionItem = target.closest('.accordion-item');
+    target.addEventListener('shown.bs.collapse', () => {
+      const el = accordionItem || target;
+      const navbar = document.querySelector('#top_subnav_branding');
+      const navHeight = navbar ? navbar.offsetHeight : 0;
+      const projNav = document.querySelector('#proj_nav');
+      const projNavHeight = projNav ? projNav.offsetHeight : 0;
+      const offset = navHeight + projNavHeight + 16;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }, { once: true });
+  });
+})();
+
+/**
  * Clickable News Cards
  * Makes entire news/blog cards clickable while maintaining link accessibility
  */
