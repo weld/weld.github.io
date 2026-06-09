@@ -1326,3 +1326,175 @@ blockquote {
   display: table !important;
   clear: both !important;
 }
+
+/* ============================================
+   DOCUMENTATION PAGE - Card Grid & Accordion
+   ============================================ */
+
+/* Doc card sub-group labels */
+.doc-card-group-label {
+  font-size: 0.6875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--weld-text-muted) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  margin-top: 0.75rem !important;
+  display: block !important;
+}
+
+.doc-card-group-label:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* Latest badge */
+.doc-badge-latest {
+  background-color: var(--weld-success) !important;
+  color: white !important;
+  padding: 0.125rem 0.5rem !important;
+  border-radius: 1rem !important;
+  font-size: 0.6875rem !important;
+  font-weight: 600 !important;
+  vertical-align: middle !important;
+  margin-left: 0.375rem !important;
+}
+
+/* Older releases link */
+.doc-older-releases-card {
+  text-align: center !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.doc-older-releases-card a {
+  color: var(--weld-primary) !important;
+  font-weight: 500 !important;
+  font-size: 0.9375rem !important;
+}
+
+/* Documentation accordion - spaced rounded cards */
+.doc-accordion .accordion-item {
+  border: 1px solid var(--weld-border) !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
+  overflow: hidden !important;
+}
+
+.doc-accordion .accordion-button {
+  font-weight: 500 !important;
+  color: var(--weld-primary-dark) !important;
+  background-color: var(--weld-bg-light) !important;
+  font-size: 0.9375rem !important;
+  padding: 0.875rem 1.25rem !important;
+}
+
+.doc-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--weld-bg-accent) !important;
+  color: var(--weld-primary-dark) !important;
+  box-shadow: none !important;
+}
+
+.doc-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(59, 109, 140, 0.25) !important;
+  border-color: var(--weld-primary) !important;
+}
+
+.doc-accordion .accordion-body {
+  font-size: 0.9375rem !important;
+  line-height: 1.7 !important;
+  color: var(--color-text) !important;
+}
+
+.doc-accordion .accordion-body h4 {
+  margin-top: 1.25rem !important;
+}
+
+.doc-accordion .accordion-body pre {
+  margin: 1rem 0 !important;
+}
+
+/* FAQ permalink icon */
+.faq-permalink {
+  position: absolute !important;
+  right: 2.5rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--weld-text-muted) !important;
+  font-size: 0.8rem !important;
+  opacity: 0 !important;
+  transition: opacity 0.15s ease, color 0.15s ease !important;
+  z-index: 10 !important;
+  padding: 0.25rem !important;
+  cursor: pointer !important;
+}
+
+.accordion-header:hover .faq-permalink,
+.accordion-item:has(.accordion-button:not(.collapsed)) .faq-permalink {
+  opacity: 1 !important;
+}
+
+.faq-permalink:hover {
+  color: var(--weld-primary) !important;
+  text-decoration: none !important;
+}
+
+.faq-permalink-copied,
+.faq-permalink-copied:hover {
+  opacity: 1 !important;
+  color: var(--weld-success) !important;
+}
+
+[data-bs-theme="dark"] .faq-permalink {
+  color: var(--weld-text-muted) !important;
+}
+
+[data-bs-theme="dark"] .faq-permalink:hover {
+  color: var(--weld-accent) !important;
+}
+
+[data-bs-theme="dark"] .faq-permalink-copied,
+[data-bs-theme="dark"] .faq-permalink-copied:hover {
+  color: var(--weld-success) !important;
+}
+
+/* Dark mode - doc cards */
+[data-bs-theme="dark"] .doc-card-group-label {
+  color: var(--weld-text-muted) !important;
+}
+
+[data-bs-theme="dark"] .doc-badge-latest {
+  background-color: var(--weld-success) !important;
+}
+
+[data-bs-theme="dark"] .doc-older-releases-card a {
+  color: var(--weld-accent) !important;
+}
+
+/* Dark mode - accordion */
+[data-bs-theme="dark"] .doc-accordion .accordion-item {
+  background-color: #161b22 !important;
+  border-color: var(--weld-border) !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-button {
+  background-color: #1a1f24 !important;
+  color: #e6edf3 !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-button:not(.collapsed) {
+  background-color: #242b32 !important;
+  color: #e6edf3 !important;
+  box-shadow: none !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-button::after {
+  filter: invert(1) !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(232, 166, 58, 0.25) !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-body {
+  color: #c9d1d9 !important;
+}
