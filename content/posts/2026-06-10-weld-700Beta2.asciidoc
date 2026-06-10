@@ -1,0 +1,18 @@
+---
+layout: post
+title: Weld 7.0.0.Beta2
+author: Matej Novotny
+description: Weld 7.0.0.Beta2 — Jakarta Persistence 4.0 EntityAgent support
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 7.0.0.Beta2 and Weld API 7.0.Beta2 are now available in Maven Central. +
+This is a small release adding support for Jakarta Persistence 4.0 integration.
+
+JPA 4.0 introduces `EntityAgent`, a stateless alternative to `EntityManager`. Containers can inject it using the new `@PersistenceAgent` annotation, similar to how `@PersistenceContext` works for `EntityManager`. This release updates the Weld SPI (link:https://github.com/weld/api/pull/258[weld/api#258, window="_blank"]) and adds the corresponding implementation in Core (link:https://github.com/weld/core/pull/3361[weld/core#3361, window="_blank"]).
+
+Thanks to link:https://github.com/marko-bekhta[Marko Bekhta, window="_blank"] for contributing both PRs!
+
+&#91; link:/download/[Download] &#93;
+&#91; link:https://github.com/weld/core/releases/tag/7.0.0.Beta2[Release, window="_blank"] &#93;

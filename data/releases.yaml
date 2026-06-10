@@ -1,3 +1,7 @@
+- version: 7.0.0.Beta2
+  date: '2026-06-10'
+  category: Experimental
+  cdi: '5.0'
 - version: 7.0.0.Beta1
   date: '2026-06-01'
   category: Experimental
