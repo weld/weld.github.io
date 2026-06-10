@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: download
 title: Download
+aliases: [/dist]
 ---
 
 # Download Weld
@@ -59,6 +60,3 @@ JUnit 5 extensions for testing CDI applications.
 
 - [weld-osgi-bundle](https://central.sonatype.com/search?q=g:org.jboss.weld%20%20a:weld-osgi-bundle)
 
-## Binary Distributions
-
-Binary distribution table will be added here.

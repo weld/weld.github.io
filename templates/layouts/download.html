@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+{#insert /}
+
+<div class="card mb-5">
+  <div class="card-header">
+    <h2 class="mb-0" style="margin-top: 0 !important;">
+      <i class="fas fa-download text-primary" aria-hidden="true"></i> Binary Distributions
+    </h2>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table id="releases-table">
+        <caption class="visually-hidden">Weld binary distribution releases</caption>
+        <thead>
+          <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Category</th>
+            <th scope="col">CDI</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#for release in cdi:releases.list}
+          <tr{#if release_count > 10} class="release-older"{/if}>
+            <td>{release.version}</td>
+            <td>{#if release.category == "Experimental" || release.category == "Preview"}<strong>{release.category}</strong>{#else}{release.category}{/if}</td>
+            <td>{release.cdi}</td>
+            <td>{release.date}</td>
+            <td>
+              {#if release.versionId}
+              <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310891&amp;version={release.versionId}" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-bug" aria-hidden="true"></i> JIRA Notes
+              </a>
+              {#else}
+              <a href="https://github.com/weld/core/releases/tag/{release.version}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github" aria-hidden="true"></i> GitHub Notes
+              </a>
+              {/if}
+            </td>
+            <td>
+              <a href="https://download.jboss.org/weld/{release.version}" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-download" aria-hidden="true"></i> Download
+              </a>
+            </td>
+          </tr>
+          {/for}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer text-center">
+    <button id="releases-toggle-btn" class="btn btn-outline-primary btn-sm" type="button" aria-expanded="false">
+      Show all releases <i class="fas fa-chevron-down" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
