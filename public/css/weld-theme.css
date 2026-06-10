@@ -1498,3 +1498,41 @@ blockquote {
 [data-bs-theme="dark"] .doc-accordion .accordion-body {
   color: #c9d1d9 !important;
 }
+
+/* ============================================
+   DOWNLOAD PAGE - Release Table Toggle
+   ============================================ */
+
+/* Hidden older releases */
+.release-older {
+  display: none !important;
+}
+
+.release-older.release-visible {
+  display: table-row !important;
+}
+
+/* Manual zebra striping for release table (overrides nth-child which miscounts hidden rows) */
+#releases-table tbody tr.row-even {
+  background-color: #f8f9fa !important;
+}
+
+[data-bs-theme="dark"] #releases-table tbody tr.row-even {
+  background-color: #30363d !important;
+}
+
+/* Release table inside card - remove default table margin */
+#releases-table {
+  margin: 0 !important;
+}
+
+/* Dark mode - download card */
+[data-bs-theme="dark"] .card-header {
+  background-color: #1a1f24 !important;
+  border-bottom-color: var(--weld-border) !important;
+}
+
+[data-bs-theme="dark"] .card-footer {
+  background-color: #1a1f24 !important;
+  border-top-color: var(--weld-border) !important;
+}

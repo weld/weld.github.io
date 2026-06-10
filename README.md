@@ -31,9 +31,10 @@ content or template file and the browser refreshes automatically.
 ```
 content/          Content pages (Markdown/AsciiDoc)
 content/posts/    News posts
+data/             Data files (YAML) exposed to templates via Roq
 templates/        Qute templates (layouts and partials)
 public/           Static assets (images, CSS, JS)
-src/              Quarkus configuration
+src/              Quarkus configuration and Java data mappings
 .github/          GitHub Actions workflows
 ```
 
@@ -56,6 +57,20 @@ tags: [release]
 - `tags` are not currently rendered on the site but are preserved for
   future use (e.g. filtering). Common values: `release`, `team`, `tips`,
   `testing`, `integration`. Multiple tags are supported: `[release, jakarta]`.
+
+For release announcements, also add an entry at the top of `data/releases.yaml`
+so the release appears in the binary distribution table on the Downloads page:
+
+```yaml
+- version: "7.0.1.Final"
+  date: "2026-07-15"
+  category: "Final"
+  cdi: "5.0"
+```
+
+For releases tracked in JIRA, also include `versionId: 12345678`. Releases
+without `versionId` link to GitHub Releases for their changelog; releases with
+`versionId` link to JIRA release notes.
 
 Submit a pull request. On merge, the site is rebuilt and deployed automatically.
 

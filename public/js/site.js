@@ -228,6 +228,50 @@
 })();
 
 /**
+ * Release Table Toggle
+ * Shows/hides older releases in the binary distribution table
+ */
+(function() {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('releases-toggle-btn');
+    if (!toggleBtn) return;
+
+    const olderRows = document.querySelectorAll('.release-older');
+    if (olderRows.length === 0) {
+      toggleBtn.style.display = 'none';
+      return;
+    }
+
+    const totalReleases = document.querySelectorAll('#releases-table tbody tr').length;
+    toggleBtn.innerHTML = 'Show all ' + totalReleases + ' releases <i class="fas fa-chevron-down"></i>';
+    let expanded = false;
+
+    toggleBtn.addEventListener('click', () => {
+      expanded = !expanded;
+      olderRows.forEach(row => {
+        row.classList.toggle('release-visible', expanded);
+      });
+      toggleBtn.setAttribute('aria-expanded', expanded);
+      if (expanded) {
+        toggleBtn.innerHTML = 'Show recent only <i class="fas fa-chevron-up" aria-hidden="true"></i>';
+      } else {
+        toggleBtn.innerHTML = 'Show all ' + totalReleases + ' releases <i class="fas fa-chevron-down" aria-hidden="true"></i>';
+      }
+      // Reapply zebra striping to visible rows only
+      const allRows = document.querySelectorAll('#releases-table tbody tr');
+      let visibleIndex = 0;
+      allRows.forEach(row => {
+        if (row.classList.contains('release-older') && !row.classList.contains('release-visible')) return;
+        row.classList.toggle('row-even', visibleIndex % 2 === 1);
+        visibleIndex++;
+      });
+    });
+  });
+})();
+
+/**
  * Clickable News Cards
  * Makes entire news/blog cards clickable while maintaining link accessibility
  */
