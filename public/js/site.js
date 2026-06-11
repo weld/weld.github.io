@@ -145,7 +145,7 @@
         item.classList.add('current');
       } else if (section === 'news' && (currentPath.startsWith('/news') || currentPath.startsWith('/posts'))) {
         item.classList.add('current');
-      } else if (section === 'download' && currentPath.startsWith('/download')) {
+      } else if (section === 'get-started' && currentPath.startsWith('/get-started')) {
         item.classList.add('current');
       } else if (section === 'documentation' && currentPath.startsWith('/documentation')) {
         item.classList.add('current');
