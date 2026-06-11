@@ -852,9 +852,8 @@ table tbody tr:last-child td,
 }
 
 /* ============================================
-   DOWNLOADS PAGE - Tables and Sections
+   CONTENT PAGES - Section Headers
    ============================================ */
-/* Section headers for download groups */
 #main h3 {
   color: var(--weld-primary-dark) !important;
   font-weight: 600 !important;
@@ -869,7 +868,7 @@ table tbody tr:last-child td,
   margin-top: 0 !important;
 }
 
-/* Dark mode for downloads page */
+/* Dark mode for section headers */
 [data-bs-theme="dark"] #main h3 {
   color: #e6edf3 !important;
   border-bottom-color: var(--weld-accent) !important;
@@ -1526,13 +1525,90 @@ blockquote {
   margin: 0 !important;
 }
 
-/* Dark mode - download card */
-[data-bs-theme="dark"] .card-header {
-  background-color: #1a1f24 !important;
-  border-bottom-color: var(--weld-border) !important;
-}
-
+/* Dark mode - release table card */
 [data-bs-theme="dark"] .card-footer {
   background-color: #1a1f24 !important;
   border-top-color: var(--weld-border) !important;
+}
+
+/* ============================================
+   GET STARTED PAGE
+   ============================================ */
+
+/* BOM callout box */
+.get-started-bom-callout {
+  background: var(--weld-bg-accent) !important;
+  border: 1px solid var(--weld-border) !important;
+  border-left: 4px solid var(--weld-primary) !important;
+  border-radius: 0.375rem !important;
+  padding: 1.25rem !important;
+  margin: 1.5rem 0 2rem 0 !important;
+}
+
+.get-started-bom-callout h4 {
+  font-size: 1rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+  color: var(--weld-primary-dark) !important;
+}
+
+.get-started-bom-callout p {
+  font-size: 0.9375rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.get-started-bom-callout pre {
+  margin-bottom: 0 !important;
+}
+
+/* Dependency label (Shaded/Core) */
+.get-started-dep-label {
+  font-size: 0.6875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--weld-text-muted) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* OSGi callout */
+.get-started-osgi-callout {
+  padding: 0.875rem 1.25rem !important;
+  background: var(--weld-bg-light) !important;
+  border-left: 3px solid var(--weld-accent) !important;
+  border-radius: 0 0.375rem 0.375rem 0 !important;
+  font-size: 0.9375rem !important;
+  margin-top: 2rem !important;
+  color: var(--weld-text-muted) !important;
+}
+
+.get-started-osgi-callout a {
+  color: var(--weld-primary) !important;
+}
+
+/* Dark mode */
+[data-bs-theme="dark"] .get-started-bom-callout {
+  background: #1c2a38 !important;
+  border-color: var(--weld-border) !important;
+  border-left-color: var(--weld-primary) !important;
+}
+
+[data-bs-theme="dark"] .get-started-bom-callout h4 {
+  color: var(--weld-primary-light) !important;
+}
+
+[data-bs-theme="dark"] .get-started-dep-label {
+  color: #8b949e !important;
+}
+
+[data-bs-theme="dark"] .get-started-osgi-callout {
+  background: #1a1f24 !important;
+  border-left-color: var(--weld-accent) !important;
+  color: #8b949e !important;
+}
+
+[data-bs-theme="dark"] .get-started-osgi-callout a {
+  color: var(--weld-accent) !important;
 }
