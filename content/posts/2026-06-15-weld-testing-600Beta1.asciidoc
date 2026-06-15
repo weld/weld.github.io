@@ -1,0 +1,29 @@
+---
+layout: post
+title: Weld Testing 6.0.0.Beta1
+author: Matej Novotny
+description: Weld Testing 6.0.0.Beta1 — first release supporting CDI 5.0 with breaking changes and OpenRewrite migration
+tags: [release, testing]
+---
+:linkattrs:
+
+Weld Testing 6.0.0.Beta1 is now available in Maven Central. +
+This is the first release supporting link:https://github.com/weld/core/releases/tag/7.0.0.Beta2[Weld 7.0.0.Beta2, window="_blank"] and link:https://jakarta.ee/specifications/cdi/5.0/[CDI 5.0, window="_blank"], completing the toolkit needed to run and test your CDI applications with the latest versions.
+
+=== Breaking changes
+
+The JUnit 5 extension artifact has been renamed from `weld-junit5` to `weld-junit-jupiter` and the `org.jboss.weld.junit5` package has been renamed to `org.jboss.weld.junit.jupiter`.
+
+The original name contained a version number which became misleading with the release of link:https://github.com/junit-team/junit-framework/releases/tag/r6.0.0[JUnit 6, window="_blank"] — the extension is tied to the Jupiter engine, not to a specific JUnit version, and works with both JUnit 5 and JUnit 6 (link:https://github.com/weld/weld-testing/issues/293[#293, window="_blank"], link:https://github.com/weld/weld-testing/pull/329[#329, window="_blank"]).
+
+An link:https://docs.openrewrite.org/[OpenRewrite, window="_blank"] migration recipe is provided to automate the transition.
+It handles the package rename in Java sources, the Maven dependency artifact change, and the `META-INF/services` SPI file rename for custom `WeldJunitEnricher` implementations.
+See the link:https://github.com/weld/weld-testing/blob/main/junit-jupiter/README.md#migrating-from-weld-junit5[migration guide, window="_blank"] for details.
+
+=== Other notable changes
+
+* *Jakarta Persistence 4.0 `EntityAgent` support* — JPA 4.0 introduces `EntityAgent`, a stateless alternative to `EntityManager`. The testing extensions now allow injecting it via `@PersistenceAgent` in your tests, mirroring the support added in Weld Core 7.0.0.Beta2.
+Thanks to link:https://github.com/marko-bekhta[Marko Bekhta, window="_blank"] for the contribution (link:https://github.com/weld/weld-testing/pull/336[#336, window="_blank"]).
+* *JUnit 6 compatibility* — the extension now works with both JUnit 5 and JUnit 6 (link:https://github.com/weld/weld-testing/pull/304[#304, window="_blank"]).
+
+&#91; link:https://github.com/weld/weld-testing/releases/tag/6.0.0.Beta1[Release, window="_blank"] &#93;
