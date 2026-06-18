@@ -1,0 +1,41 @@
+---
+layout: post
+title: Issue tracking moves to GitHub
+author: Matej Novotny
+description: All Weld projects now use GitHub Issues for bug reports and feature requests instead of JIRA
+tags: [team]
+---
+
+We are happy to announce that all Weld projects have migrated their issue tracking to **GitHub Issues**.
+
+=== Background
+
+Historically, the main Weld repositories — link:https://github.com/weld/core[Weld Core, window="_blank"], link:https://github.com/weld/api[Weld API, window="_blank"], and link:https://github.com/weld/parent[Weld Parent, window="_blank"] — used the link:https://redhat.atlassian.net/projects/WELD/issues/[WELD JIRA project, window="_blank"] to track bugs and feature requests.
+Other projects like link:https://github.com/weld/weld-testing[Weld Testing, window="_blank"] already used GitHub Issues.
+This split meant that contributors had to know which tracker to use for which project, and filing a JIRA issue required a separate account.
+
+Over the past few weeks, we have been gradually enabling GitHub Issues across all remaining repositories and updating our documentation and contribution guides to reflect the change.
+With that work now complete, GitHub Issues is the single place for all new bug reports, feature requests, and enhancement proposals across every Weld project.
+
+=== What does this mean for contributors?
+
+The main benefit is simplicity — if you already have a GitHub account, you can file an issue in any Weld repository without needing to create a separate JIRA account.
+Issues, pull requests, and discussions now all live in one place, making it easier to cross-reference and track progress.
+
+Use the issue tracker in the relevant repository:
+
+* link:https://github.com/weld/core/issues[Weld Core, window="_blank"]
+* link:https://github.com/weld/api/issues[Weld API, window="_blank"]
+* link:https://github.com/weld/parent/issues[Weld Parent, window="_blank"]
+* link:https://github.com/weld/weld-testing/issues[Weld Testing, window="_blank"]
+* link:https://github.com/weld/weld.github.io/issues[Weld Website, window="_blank"]
+
+=== What happens to JIRA?
+
+The link:https://redhat.atlassian.net/projects/WELD/issues/[WELD JIRA project, window="_blank"] will remain available in read-only mode.
+All existing issues, comments, and release notes will stay accessible so that we do not lose track of the history behind older changes and decisions.
+However, no new issues should be created there — please use GitHub Issues going forward.
+
+=== Discussions
+
+For questions or broader discussions that do not fit into a specific issue, use link:https://github.com/weld/core/discussions[GitHub Discussions, window="_blank"] on the Core repository or reach out via the link:https://lists.jboss.org/archives/list/weld-dev@lists.jboss.org/[weld-dev mailing list, window="_blank"].
