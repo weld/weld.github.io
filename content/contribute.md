@@ -35,11 +35,14 @@ to contribute, report issues, or connect with the team.
           <i class="fas fa-bug text-danger"></i> Issue Tracker
         </h3>
         <p class="card-text">
-          Found a bug or have a feature request? Weld Core, API, and Parent use JIRA.
-          Other projects like Weld Testing use GitHub Issues.
+          Found a bug or have a feature request? All Weld projects use GitHub Issues.
+          Use the issue tracker in the relevant repository.
         </p>
-        <a href="https://issues.redhat.com/projects/WELD/issues/" class="btn btn-outline-primary me-2" target="_blank">
-          JIRA <i class="fas fa-arrow-right"></i>
+        <a href="https://github.com/weld/core/issues" class="btn btn-outline-primary me-2" target="_blank">
+          Weld Core <i class="fab fa-github"></i>
+        </a>
+        <a href="https://github.com/weld/api/issues" class="btn btn-outline-secondary me-2" target="_blank">
+          Weld API <i class="fab fa-github"></i>
         </a>
         <a href="https://github.com/weld/weld-testing/issues" class="btn btn-outline-secondary" target="_blank">
           Weld Testing <i class="fab fa-github"></i>
@@ -153,7 +156,7 @@ to contribute, report issues, or connect with the team.
 
 ## Reporting Bugs
 
-When filing a bug, whether on [JIRA](https://issues.redhat.com/projects/WELD/issues/) or GitHub Issues, please:
+When filing a bug on GitHub Issues, please:
 
 1. **Browse existing issues** before creating a new one to avoid duplicates
 2. **Create one issue per bug** — keep each issue focused and trackable
