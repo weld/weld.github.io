@@ -1387,6 +1387,10 @@ blockquote {
   padding: 0.875rem 1.25rem !important;
 }
 
+.doc-accordion .accordion-button code {
+  padding: 0.1em 0.3em !important;
+}
+
 .doc-accordion .accordion-button:not(.collapsed) {
   background-color: var(--weld-bg-accent) !important;
   color: var(--weld-primary-dark) !important;
@@ -1496,6 +1500,10 @@ blockquote {
 
 [data-bs-theme="dark"] .doc-accordion .accordion-body {
   color: #c9d1d9 !important;
+}
+
+[data-bs-theme="dark"] .doc-accordion .accordion-body a {
+  text-decoration: underline !important;
 }
 
 /* ============================================
