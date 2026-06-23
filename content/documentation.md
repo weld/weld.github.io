@@ -178,9 +178,11 @@ title: Documentation
     <div id="faq1" class="accordion-collapse collapse">
       <div class="accordion-body">
 
-Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data. The Weld [reference guide](https://docs.jboss.org/weld/reference/latest/en-US/html/contexts.html) contains information on how to associate a request to a context and activate it. Doing this in your new thread will cause the contexts to be active, and contain the same contextual data.
+Weld assumes requests are single threaded, and uses thread locals to isolate requests. This means that if user created threads are used then built in implementation of the session scope, the request scope and the conversation scope, will become dissociated, and you will find they are no longer active in the new thread, nor able to access their contextual data.
 
 The dependent context and the application context will work as usual in any user created thread.
+
+If you need to activate a fresh request context on a new thread, you can use the standard CDI `RequestContextController` API or the `@ActivateRequestContext` interceptor binding. However, if you need full context propagation — transferring existing bean instances from one thread to another — you will need to use Weld-specific interfaces such as `WeldAlterableContext` and `WeldManager`. See the [Propagating built-in contexts](https://docs.jboss.org/weld/reference/latest/en-US/html_single/#_propagating_built_in_contexts) section of the Weld reference guide for details and examples.
 
 </div></div></div>
 
@@ -222,120 +224,6 @@ You can view more details by increasing the log level of the application server 
 
   <div class="accordion-item">
     <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-        Why does Weld set character encoding of an HTTP request/response body to ISO-8859-1?
-      </button>
-    </h3>
-    <div id="faq4" class="accordion-collapse collapse">
-      <div class="accordion-body">
-
-**Update**: Since Weld 2.2 the conversation context is activated lazily and this problem does not occur.
-If you are using an older version of Weld or need the conversation context to be activated eagerly, read further.
-
-An application may set character encoding of a request by calling the [ServletRequest.setCharacterEncoding()](https://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#setCharacterEncoding(java.lang.String)) method. This method has a limitation: it has to be called before the request parameters or request body are read, otherwise the method call has no effect.
-
-In order to properly activate the conversation context, Weld reads the _cid_ request parameter in the beginning of request processing (see [the CDI spec for details](https://docs.jboss.org/cdi/spec/1.1/cdi-spec.html#conversation_context)). As a side-effect, this makes it impossible to change the character encoding later in the request processing (since request parameters have been read already). As a result, an application servlet or filter that tries to set character encoding will not work since it does that too late.
-
-A workaround is to have the application encoding-setting filter to be called before Weld tries to read the "cid" parameter in the ConversationFilter. This can be done by mapping the custom filter _before_ Weld's ConversationFilter in web.xml
-
-```xml
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">  
-    <filter>  
-        <filter-name>SetCharacterEncoding</filter-name>  
-        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>  
-        <init-param>  
-            <param-name>encoding</param-name>  
-            <param-value>UTF-8</param-value>  
-        </init-param>  
-        <init-param>  
-            <param-name>ignore</param-name>  
-            <param-value>false</param-value>  
-        </init-param>          
-    </filter>  
-    <filter-mapping>  
-        <filter-name>SetCharacterEncoding</filter-name>  
-        <url-pattern>/*</url-pattern>  
-    </filter-mapping>    
-    <filter-mapping>  
-        <filter-name>CDI Conversation Filter</filter-name>  
-        <url-pattern>/*</url-pattern>  
-    </filter-mapping>  
-</web-app>  
-```
-
-</div></div></div>
-
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
-        My application bundles a third-party library which uses javax.inject annotations. This library was not intended to be a CDI library but on CDI 1.1 this library is being picked up as an implicit bean archive and breaks the deployment of my application. Why is this happening?
-      </button>
-    </h3>
-    <div id="faq5" class="accordion-collapse collapse">
-      <div class="accordion-body">
-
-Firstly, this issue only affects CDI 1.1. If possible, go and upgrade to CDI 1.2 (Weld 2.2 or later) where this issue does not occur.
-
-If you cannot do that, read further:
-This is a [known issue](https://issues.jboss.org/browse/CDI-377) in the CDI 1.1 specification and occurs with third-party libraries such as [Guava](https://code.google.com/p/guava-libraries/issues/detail?id=1433).
-
-A workaround is to configure the application server to require the `beans.xml` file in bean archives (suppress implicit bean archives). The way to configure this varies across application servers:
-
-#### GlassFish 4
-
-global configuration:
-```
-asadmin set configs.config.server-config.cdi-service.enable-implicit-cdi=false
-```
-per-deployment configuration:
-```
-asadmin deploy --property implicitCdiEnabled=false <archive>
-```
-
-#### WildFly 8
-
-global configuration:
-```
-/subsystem=weld:write-attribute(name=require-bean-descriptor,value=true)
-```
-per-deployment configuration - add the following content to `META-INF/jboss-all.xml` of the application
-```xml
-<jboss xmlns="urn:jboss:1.0">
-    <weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/>
-</jboss>
-```
-
-</div></div></div>
-
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
-        How can I bundle my entire SE application with Weld into a single jar?
-      </button>
-    </h3>
-    <div id="faq6" class="accordion-collapse collapse">
-      <div class="accordion-body">
-
-Weld internal classes are not intended to be used in a CDI deployment. As a result, you may [encounter validation errors](https://issues.jboss.org/browse/WELD-1129) when packaging your application together with Weld in a single fat jar file.
-
-A workaround is to exclude Weld classes from bean scanning:
-
-```xml
-<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
-       version="1.1" bean-discovery-mode="all">
-    <scan>
-        <exclude name="org.jboss.weld.**" />
-    </scan>
-</beans>
-```
-
-</div></div></div>
-
-  <div class="accordion-item">
-    <h3 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
         I use the Instance API to obtain bean instances. Why does it seem to cause a memory leak?
       </button>
@@ -343,21 +231,39 @@ A workaround is to exclude Weld classes from bean scanning:
     <div id="faq7" class="accordion-collapse collapse">
       <div class="accordion-body">
 
-The `Instance` API is often used in loops to obtain multiple instances of a certain bean. Here is an example:
+This primarily affects `@Dependent` scoped beans. Each `@Dependent` bean instance obtained via `Instance.get()` remains managed (is not released) until the `Instance` object itself is destroyed. Since the `Instance` is tied to the lifecycle of the bean that holds it, this can easily cause a memory leak — especially when `Instance.get()` is called in a loop from a long-lived bean such as `@ApplicationScoped`.
+
+Normal-scoped beans (e.g. `@RequestScoped`, `@ApplicationScoped`) are not affected because they are stored in their respective context and cleaned up when the context ends.
+
+For example:
 
 ```java
-    @Inject 
-    private Instance<A> instance;
-    
-    public void foo() {
-        // obtain multiple instances of A
-        for (;;) {
-            instance.get();
+@Inject
+private Instance<A> instance;
+
+public void foo() {
+    // obtain multiple instances of A
+    for (;;) {
+        A a = instance.get();
+        // use the instance ...
+        instance.destroy(a);
     }
+}
 ```
 
-By default, each object obtained using `Instance` remains managed (is not released) until the `Instance` object is destroyed. This can easily create a memory leak.
-Therefore, the application should explicitly destroy obtained instances when it no longer needs by calling the [Instance.destroy()](https://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/Instance.html#destroy(T)) method.
+The application should explicitly destroy `@Dependent` instances when no longer needed by calling [Instance.destroy()](https://jakarta.ee/specifications/cdi/4.1/apidocs/jakarta/enterprise/inject/instance#destroy(T)). Alternatively, you can use [Instance.Handle](https://jakarta.ee/specifications/cdi/4.1/apidocs/jakarta/enterprise/inject/instance.handle) which implements `AutoCloseable`:
+
+```java
+@Inject
+private Instance<A> instance;
+
+public void foo() {
+    try (Instance.Handle<A> handle = instance.getHandle()) {
+        A a = handle.get();
+        // use the instance
+    }
+}
+```
 
 </div></div></div>
 
@@ -376,10 +282,10 @@ Each container has its own way to do this:
 
 #### WildFly
 
-(more info: [Logging Configuration - WildFly](https://docs.jboss.org/author/display/WFLY8/Logging+Configuration))
+(more info: [Application Logging - WildFly](https://www.wildfly.org/guides/application-logging/))
 
 global configuration - add the following content to the logging subsystem in `$JBOSS_HOME/standalone/configuration/standalone-full.xml`
-```
+```xml
 <logger category="org.jboss.weld">
     <level name="DEBUG"/>
 </logger>
@@ -391,29 +297,35 @@ org.jboss.weld.level=DEBUG
 
 > **Tip:** If you want to see the debug messages also in the console, make sure the console handler's level is set to at least DEBUG.
 
-#### WildFly Swarm
-
-(more info: [Logging Fraction](https://docs.wildfly-swarm.io/2017.11.0/#_logging_2))
-
-run the uberjar with the following system property:
-```
--Dswarm.logging.loggers.[org.jboss.weld].level=DEBUG
-```
-
-> **Tip:** You can also use categories to filter messages - see also [Weld Tip 1 - Logging](/news/2016/10/01/tip1-logging/).
-
 #### GlassFish
 
-(more info: [Setting Log Levels - GlassFish](https://docs.oracle.com/cd/E19798-01/821-1751/ghgwi/index.html))
+(more info: [Administering the Logging Service - GlassFish](https://glassfish.org/docs/latest/administration-guide.html))
 
-global configuration - add the following line to `_domain-dir_/config/logging.properties`
+using asadmin:
+```
+asadmin set-log-levels org.jboss.weld=FINE
+```
+or add the following line to `_domain-dir_/config/logging.properties`
+```
+org.jboss.weld.level=FINE
+```
+
+#### Payara
+
+(more info: [Administering the Logging Service - Payara](https://docs.payara.fish/community/docs/Technical%20Documentation/Payara%20Server%20Documentation/General%20Administration/Administering%20the%20Logging%20Service.html))
+
+using asadmin:
+```
+asadmin set-log-levels org.jboss.weld=FINE
+```
+or add the following line to `_domain-dir_/config/logging.properties`
 ```
 org.jboss.weld.level=FINE
 ```
 
 #### Tomcat
 
-(more info: [Logging in Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/logging.html))
+(more info: [Logging in Tomcat](https://tomcat.apache.org/tomcat-11.0-doc/logging.html))
 
 global configuration - add the following line to `$CATALINA_HOME/conf/logging.properties`
 ```
@@ -426,7 +338,13 @@ org.jboss.weld.level=FINE
 
 #### Jetty
 
-For enabling debug logging on Jetty, see [Jetty Logging](https://www.eclipse.org/jetty/documentation/current/configuring-logging.html)
+(more info: [Logging - Jetty](https://jetty.org/docs/jetty/12.1/programming-guide/troubleshooting/logging.html))
+
+Jetty uses SLF4J. When using the default Jetty SLF4J binding, set the log level in `jetty-logging.properties`:
+```
+org.jboss.weld.LEVEL=DEBUG
+```
+If you use a different SLF4J binding (e.g. Logback, Log4j2), configure it according to that framework's documentation.
 
 </div></div></div>
 
@@ -460,7 +378,7 @@ for more details.
   <div class="accordion-item">
     <h3 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false" aria-controls="faq10">
-        What is the relation between Weld, CDI and Java EE versions?
+        What is the relation between Weld, CDI and Jakarta EE versions?
       </button>
     </h3>
     <div id="faq10" class="accordion-collapse collapse">
@@ -469,14 +387,15 @@ for more details.
 Weld versions do not match CDI versioning.
 An overview is provided in the following table:
 
-| Weld version | CDI version | Java version | Java EE version | Description |
+| Weld version | CDI version | Java version | EE version | Description |
 |:---:|:---:|:---:|:---:|---|
-| 1.1 | 1.0 | 6+ | 6 | Not actively developed anymore. Support available with [JBoss EAP 6](https://developers.redhat.com/products/eap/overview/) |
-| 2.1 | 1.1 | 6+ | 7 | Not actively developed anymore. |
-| 2.2 | 1.2 | 6+ | 7 | Not actively developed anymore. |
-| 2.3 | 1.2 | 7+ | 7 | Not actively developed anymore. Support available with [JBoss EAP 7.0](https://developers.redhat.com/products/eap/overview/) |
-| 2.4 | 1.2 | 7+ | 7 | In maintenance mode. Support available with [JBoss EAP 7.1](https://developers.redhat.com/products/eap/overview/) |
-| 3.0 | 2.0 | 8+ | 8 | Actively developed and stable version of Weld. |
+| 7.0 | 5.0 | 17+ | Jakarta EE 12 | In development |
+| 6.0 | 4.1 | 17+ | Jakarta EE 11 | Latest stable version of Weld |
+| 5.1 | 4.0 | 11+ | Jakarta EE 10 | In maintenance mode |
+| 4.0 | 3.0 | 8+ | Jakarta EE 9 | Namespace change from `javax` to `jakarta` |
+| 3.1 | 2.0 | 8+ | Java EE 8 | Not actively developed anymore |
+| 2.4 | 1.2 | 7+ | Java EE 7 | Not actively developed anymore |
+| 1.1 | 1.0 | 6+ | Java EE 6 | Not actively developed anymore |
 
 </div></div></div>
 
@@ -489,35 +408,54 @@ An overview is provided in the following table:
     <div id="faq11" class="accordion-collapse collapse">
       <div class="accordion-body">
 
-In Weld 2.1 [SLF4J](https://www.slf4j.org) was replaced with [JBoss Logging](https://developer.jboss.org/wiki/JBossLoggingTooling) which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. And so if you want to enable the debug logging for Weld SE, you'll have to **identify** and **configure** the underlying logging framework.
+Weld uses [JBoss Logging](https://github.com/jboss-logging/jboss-logging) which provides support for the internationalization and localization of log messages and exception messages. However, JBoss Logging itself does not write any log messages. Instead, it only constructs a log message and delegates to one of the supported logging frameworks. If no framework is explicitly configured, JBoss Logging auto-discovers one from the classpath in the following order:
 
-**Which logging framework writes data?**
+1. JBoss LogManager (used inside WildFly)
+2. [Log4j2](https://logging.apache.org/log4j/2.x/)
+3. [Logback](https://logback.qos.ch/) (via SLF4J)
+4. JDK logging (fallback)
 
-The supported "back-end" frameworks include:
+You can force a specific framework using the system property `org.jboss.logging.provider` with values `jboss`, `log4j2`, `slf4j`, or `jdk`.
 
-1. [jboss-logmanager](https://developer.jboss.org/wiki/StandaloneJBossLogManager)
-2. [Log4j](https://logging.apache.org/log4j/2.x/)
-3. [SLF4J](https://www.slf4j.org/)
-4. JDK logging
+#### SLF4J / Logback
 
-A system property `org.jboss.logging.provider` may be used to specify the logging framework directly. Supported values are `jboss`, `jdk`, `log4j` and `slf4j`. If this system property is not set, JBoss Logging will attempt to find the logging frameworks from the above-mentioned list on the classpath - the first one found is taken.
-
-**Simple way for testing purposes**
-
-If you just want to see the debug log messages as quickly as possible try to add `org.slf4j:slf4j-simple` on the classpath, set the "back-end" framework to `slf4j` and change the level for `org.jboss.weld`, e.g.:
+[SLF4J](https://www.slf4j.org/) is a logging facade and [Logback](https://logback.qos.ch/) is its native implementation. JBoss Logging auto-discovers SLF4J when Logback is on the classpath. Add `ch.qos.logback:logback-classic` to the classpath and configure `logback.xml`:
 
 ```xml
-<dependency>
-  <groupId>org.slf4j</groupId>
-  <artifactId>slf4j-simple</artifactId>
-  <version>1.7.2</version>
-  <scope>test</scope>
-</dependency>
+<configuration>
+    <logger name="org.jboss.weld" level="DEBUG"/>
+</configuration>
 ```
+
+#### Log4j2
+
+Add `org.apache.logging.log4j:log4j-core` to the classpath and configure `log4j2.xml`:
+
+```xml
+<Loggers>
+    <Logger name="org.jboss.weld" level="DEBUG"/>
+</Loggers>
+```
+
+#### JDK logging
+
+No extra dependencies needed. Set the level in `logging.properties`:
+
+```
+org.jboss.weld.level=FINE
+handlers=java.util.logging.ConsoleHandler
+java.util.logging.ConsoleHandler.level=FINE
+```
+
+#### Quick setup for testing
+
+If you just want to see debug messages as quickly as possible, add `org.slf4j:slf4j-simple` to the classpath and run with:
 
 ```
 mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4j.simpleLogger.log.org.jboss.weld=debug
 ```
+
+Note that `slf4j-simple` requires the explicit `-Dorg.jboss.logging.provider=slf4j` system property because JBoss Logging only auto-discovers SLF4J when Logback is present.
 
 </div></div></div>
 
@@ -530,46 +468,16 @@ mvn clean test -Dtest=MyWeldSETest -Dorg.jboss.logging.provider=slf4j -Dorg.slf4
     <div id="faq12" class="accordion-collapse collapse">
       <div class="accordion-body">
 
-You should not experience any classloading issues when starting Jetty as an embedded webapp server from within another Java program. However, if you're using a Jetty standalone instance the deployment with bundled Weld Servlet integration will probably fail and you may observe a similar message in the log:
+Current versions of Weld support Jetty 12 and newer. When starting Jetty as an embedded webapp server from within another Java program, no further configuration is needed.
+
+For a standalone Jetty instance, you need to enable the Jetty CDI module. The module name depends on which Jakarta EE version you target: `ee10-cdi` for Jakarta EE 10 (Jetty 12.0.x) or `ee11-cdi` for Jakarta EE 11 (Jetty 12.1.x):
 
 ```
-FAILED org.eclipse.jetty.annotations.ServletContainerInitializerListener@124d02b2: java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$Decorator
-java.lang.NoClassDefFoundError: org/eclipse/jetty/servlet/ServletContextHandler$Decorator
+cd $JETTY_BASE
+java -jar $JETTY_HOME/start.jar --add-modules=ee11-cdi
 ```
 
-The reason is that since Jetty 8 some internal classes are not visible from the web application.
-See also [Setting Server Classes](https://www.eclipse.org/jetty/documentation/current/jetty-classloading.html#setting-server-classes).
-Therefore, we have to tell Jetty not to hide the system classes which Weld integration code is using.
-We can use the `jetty-web.xml` descriptor (see also [Jetty XML Reference](https://www.eclipse.org/jetty/documentation/current/jetty-web-xml-config.html)):
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://www.eclipse.org/jetty/configure.dtd">
-<Configure class="org.eclipse.jetty.webapp.WebAppContext">
-   <Call name="prependServerClass">
-      <Arg>-org.eclipse.jetty.util.Decorator</Arg>
-   </Call>
-   <Call name="prependServerClass">
-      <Arg>-org.eclipse.jetty.util.DecoratedObjectFactory</Arg>
-   </Call>
-   <Call name="prependServerClass">
-      <Arg>-org.eclipse.jetty.server.handler.ContextHandler.</Arg>
-   </Call>
-   <Call name="prependServerClass">
-      <Arg>-org.eclipse.jetty.server.handler.ContextHandler</Arg>
-   </Call>
-   <Call name="prependServerClass">
-      <Arg>-org.eclipse.jetty.servlet.ServletContextHandler</Arg>
-   </Call>
-</Configure>
-```
-
-Note that Jetty distributions (from version **9.2.4**) contain a dedicated [CDI/Weld module](https://www.eclipse.org/jetty/documentation/current/framework-weld.html) which allows to deploy a CDI application without bundling the Weld Servlet integration code.
-However, note that if you want to deploy application using CDI along with JSF (e.g. weld-numberguess example) you need to copy the following dependencies directly to the CDI module directory:
-
-* JSF API
-* JSF IMPL
-* [Weld Core JSF](https://search.maven.org/#search|ga|1|weld-core-jsf)
+See the [Weld reference guide](https://docs.jboss.org/weld/reference/latest/en-US/html/environments.html#jetty) and the [Jetty examples](https://github.com/jetty/jetty-examples) for more details.
 
 </div></div></div>
 
@@ -582,31 +490,18 @@ However, note that if you want to deploy application using CDI along with JSF (e
     <div id="faq13" class="accordion-collapse collapse">
       <div class="accordion-body">
 
-Each version of WildFly is shipped with given version of Weld.
-However, for every Weld release we also prepare a patch for WildFly which allows you to easily upgrade Weld version.
-The patch has a form of `.zip` file with name such as `wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip`.
-The above indicates that the patch is meant for WildFly version 10.1.0.Final and applies Weld in version 3.0.0.Beta1.
-Using this patch for other WildFly versions is not guaranteed to work.
+Each version of WildFly is shipped with a given version of Weld. If you want to upgrade Weld in your WildFly installation, you can use the upgrade script from the [Weld source repository](https://github.com/weld/core).
 
-Here is an example how to apply the patch for Weld 3.0.0.Beta1 onto WildFly 10.1.0.Final:
-
-* Download WildFly (10.1.0.Final) and unzip it to desired location.
-* Download Weld patch.
-* Navigate to the WildFly folder.
-* Run the following command to apply the patch.
+Clone the repository and checkout the tag or branch for the Weld version you want. Then set the `JBOSS_HOME` environment variable and run:
 
 ```
-$>/{$WILDFLY_FOLDER}/bin/jboss-cli.bat|sh --command="patch apply /path/to/patch/wildfly-10.1.0.Final-weld-3.0.0.Beta1-patch.zip"
+export JBOSS_HOME=/path/to/wildfly
+mvn package -Pupdate-jboss-as -f jboss-as/pom.xml -Dweld.update.version=6.0.4.Final
 ```
-* You should now see an outcome such as this one.
 
-```json
-{
-    "outcome" : "success",
-    "result" : {}
-}
-```
-* That's it! Now you can start your WildFly and try out new Weld.
+Replace `6.0.4.Final` with the Weld version you want to use. The script will replace the Weld modules in your WildFly installation.
+
+Note that upgrading Weld to a version that targets a different CDI specification than the one shipped with your WildFly may require additional changes.
 
 </div></div></div>
 
@@ -627,7 +522,7 @@ However, there are some important differences.
 
 First of all, `@ApplicationScoped` is a *normal* scope whereas `@Singleton` is a *pseudo-scope* (using the CDI terminology).
 What does it mean?
-In the first place, for normal scopes a [client proxy](https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#client_proxies) is always injected.
+In the first place, for normal scopes a [client proxy](https://jakarta.ee/specifications/cdi/4.1/jakarta-cdi-spec-4.1#client_proxies) is always injected.
 This is a container construct that delegates all method calls to the current bean instance.
 While this may seem as an unnecessary overhead, it allows the container to do the following:
 
@@ -646,13 +541,75 @@ See [Weld Tip 3 - Boost performance of Weld apps](/posts/weld-tip-3-boost-perfor
 
 #### Circular Dependencies
 
-Client proxies make it possible to [support circularities](https://docs.jboss.org/cdi/spec/2.0/cdi-spec.html#injection_and_resolution) in the bean dependency graph.
+Client proxies make it possible to [support circularities](https://jakarta.ee/specifications/cdi/4.1/jakarta-cdi-spec-4.1#injection_and_resolution) in the bean dependency graph.
 
 #### Manual Bean Destruction
 
 There are also some use cases where it's desirable to destroy/recreate a bean instance via `Instance.destroy()` or `AlterableContext.destroy()`.
 With client proxy in place, all injection points operate on proxy objects that can lookup the contextual instance on demand therefore making it simple and safe to replace the contextual instance for a new one.
 On the other hand injecting a direct reference and attempting the same would lead to stale bean instances or working with outdated states of those instances.
+
+</div></div></div>
+
+  <div class="accordion-item">
+    <h3 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq15" aria-expanded="false" aria-controls="faq15">
+        My beans are no longer discovered after migrating to CDI 4.0 or newer. What happened?
+      </button>
+    </h3>
+    <div id="faq15" class="accordion-collapse collapse">
+      <div class="accordion-body">
+
+This only affects applications that use a completely **empty** `beans.xml` file (a file with no XML content at all). Applications with a `beans.xml` that contains XML content are not affected — the `bean-discovery-mode` attribute defaults to `annotated` per the schema regardless.
+
+Starting with CDI 4.0 (Jakarta EE 10), the default bean discovery mode changed. Previously, an empty `beans.xml` was treated as discovery mode `all`, meaning all classes in the archive were discovered as beans. Since CDI 4.0, an empty `beans.xml` is treated as discovery mode `annotated` — only classes with a [bean defining annotation](https://jakarta.ee/specifications/cdi/4.1/jakarta-cdi-spec-4.1#bean_defining_annotations) (such as `@ApplicationScoped`, `@RequestScoped`, `@Dependent`, etc.) are discovered.
+
+If your application relied on the old behavior, you have two options:
+
+#### Option 1: Add bean defining annotations (recommended)
+
+Add a scope annotation to each bean class that should be discovered:
+
+```java
+@ApplicationScoped
+public class MyService {
+    // ...
+}
+```
+
+This is the recommended approach and ensures your application works correctly with all CDI implementations.
+
+#### Option 2: Explicitly set discovery mode to `all`
+
+Update your `beans.xml` to explicitly request `all` discovery:
+
+```xml
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0" bean-discovery-mode="all">
+</beans>
+```
+
+#### Weld compatibility option (temporary)
+
+Weld also provides a compatibility option to temporarily restore the old behavior where empty `beans.xml` means `all` discovery. This is intended to ease migration and should not be relied upon long-term.
+
+For Weld SE:
+
+```java
+try (WeldContainer container = new Weld()
+    .property(Weld.LEGACY_EMPTY_BEANS_XML_TREATMENT, true)
+    .initialize()) {
+      // ...
+}
+```
+
+For Weld Servlet, set the `ServletContext` parameter `org.jboss.weld.environment.servlet.emptyBeansXmlModeAll` to `true`.
+
+For WildFly, consult the [WildFly documentation](https://docs.wildfly.org/) for the corresponding configuration option.
+
+See the [Weld reference guide](https://docs.jboss.org/weld/reference/latest/en-US/html_single/#legacy-empty-beans-xml) for more details.
 
 </div></div></div>
 
