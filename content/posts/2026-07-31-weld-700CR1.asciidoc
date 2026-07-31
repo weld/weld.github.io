@@ -1,0 +1,31 @@
+---
+layout: post
+title: Weld 7.0.0.CR1
+author: Matej Novotny
+description: Weld 7.0.0.CR1 — candidate release for CDI 5.0
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 7.0.0.CR1 and Weld API 7.0.CR1 are now available in Maven Central. +
+This is the first candidate release for Weld 7, implementing CDI 5.0 CR1.
+
+CDI 5.0 CR1 is considered feature complete — no further specification changes are expected before the Final release and the start of the release ballot.
+This means Weld 7.0.0.CR1 contains everything that CDI 5.0 has to offer and passes the full CDI TCK.
+
+Here is a summary of notable changes since Beta2:
+
+* Updated to CDI 5.0 CR1 API and TCK
+* Fix overly strict validation of wildcard `Event` and `Instance` injection (link:https://github.com/weld/core/issues/3362[#3362, window="_blank"])
+* Adapt to CDI race condition fix in `CDI#providerState` (link:https://github.com/weld/core/pull/3462[weld/core#3462, window="_blank"])
+* Add CDI API signature test module (link:https://github.com/weld/core/issues/3366[#3366, window="_blank"])
+* Fix Javadoc link formatting in `ContextNotActiveException` (link:https://github.com/weld/core/pull/3416[weld/core#3416, window="_blank"])
+* Documentation updates (link:https://github.com/weld/core/pull/3427[weld/core#3427, window="_blank"], link:https://github.com/weld/core/pull/3434[weld/core#3434, window="_blank"])
+* Various dependency updates
+
+The full list of changes can be found in the link:https://github.com/weld/core/releases/tag/7.0.0.CR1[release notes, window="_blank"].
+
+As always, please report any issues you discover so we can fix them before Final.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:https://github.com/weld/core/releases/tag/7.0.0.CR1[Release, window="_blank"] &#93;
