@@ -33,23 +33,31 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read PR number
+      - name: Read and validate PR number
         id: pr
-        run: echo "number=$(cat pr-number.txt)" >> "$GITHUB_OUTPUT"
+        run: |
+          PR_NUM=$(cat pr-number.txt)
+          if ! [[ "$PR_NUM" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid PR number: '$PR_NUM'"
+            exit 1
+          fi
+          echo "number=$PR_NUM" >> "$GITHUB_OUTPUT"
 
       - name: Install Surge
         run: npm install -g surge
 
       - name: Deploy to Surge
-        run: surge ./site ${{ env.PREVIEW_URL }} --token ${{ secrets.WEB_PREVIEW_TOKEN_SURGE }}
+        run: surge ./site "$PREVIEW_URL" --token ${{ secrets.WEB_PREVIEW_TOKEN_SURGE }}
         env:
           PREVIEW_URL: pr-${{ steps.pr.outputs.number }}-weld-site.surge.sh
 
       - name: Comment on PR
         uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
         with:
           script: |
-            const prNumber = ${{ steps.pr.outputs.number }};
+            const prNumber = parseInt(process.env.PR_NUMBER, 10);
             const previewUrl = `https://pr-${prNumber}-weld-site.surge.sh`;
             const body = `A preview of this PR is available at ${previewUrl}`;
             const { data: comments } = await github.rest.issues.listComments({
