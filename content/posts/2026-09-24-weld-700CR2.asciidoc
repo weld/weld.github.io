@@ -1,0 +1,42 @@
+---
+layout: post
+title: Weld 7.0.0.CR2
+author: Matej Novotny
+description: Weld 7.0.0.CR2 — compatible with CDI 5.0 and ready for Final
+tags: [release]
+---
+:linkattrs:
+
+Weld Core 7.0.0.CR2 and Weld API 7.0.CR2 are now available. +
+This is the last candidate release for Weld 7 and represents its intended final state, with no further changes planned before 7.0.0.Final beyond any fixes needed during CR2 testing.
+
+The link:https://jakarta.ee/specifications/cdi/5.0/[CDI 5.0 release ballot, window="_blank"] concluded successfully, and CR2 now uses the final CDI 5.0.0 API and TCK.
+As part of the specification release, our link:https://github.com/jakartaee/cdi/issues/1004[Compatibility Certification Request (CCR), window="_blank"] was accepted, making Weld 7 officially a compatible implementation of CDI 5.0!
+The certification was performed with Weld 7.0.0.CR1 against the final CDI 5.0 TCK.
+
+Here is a summary of notable changes since CR1:
+
+* Updated to the final CDI 5.0.0 API and TCK
+* Weld API cleanup (link:https://github.com/weld/api/pull/335[weld/api#335, window="_blank"])
+** Removed the deprecated `WeldInstance.Handler` API and related methods; use the standard `Instance.Handle`, `getHandle()`, `handles()` and `handlesStream()` methods, and Weld's `getHandlePriorityComparator()` for priority ordering
+** Removed `WeldInvocationContext`; interceptor bindings are available through the standard Jakarta Interceptors `InvocationContext` methods
+** Deprecated Weld's `@ActivateRequestContext`, `WeldBeanConfigurator` and `WeldAfterBeanDiscovery#addBean()` in favor of their standard CDI equivalents
+** Fixed service registry iteration and equality, and ensured unmodifiable registry views prevent changes to registrations
+* Core adaptations and fixes (link:https://github.com/weld/core/pull/3532[weld/core#3532, window="_blank"])
+** Adapted Core to the API removals and stopped populating the legacy `org.jboss.weld.interceptor.bindings` context-data entry
+** Removed the deprecated `WeldContainer.instance()` method; use `WeldContainer` directly as an `Instance` instead
+** Removed the deprecated `LiteExtensionTranslator(List, ClassLoader)` constructor; use `LiteExtensionTranslator(Collection, ClassLoader)` instead
+** Fixed asynchronous invoker handler matching and invocation wrapper support, including cleanup of dependent instances
+** Added `org.jboss.weld.invokable.asyncHandlers` configuration to select a handler explicitly when multiple providers support the same async type
+** Updated unused-bean detection to retain beans annotated with Jakarta REST annotations by default
+** Updated the reference documentation, including Weld 7 migration guidance
+* Improved BOM publishing to wait for Maven Central validation
+* Various dependency updates
+
+The full list of changes can be found in the link:https://github.com/weld/api/releases/tag/7.0.CR2[Weld API release notes, window="_blank"] and link:https://github.com/weld/core/releases/tag/7.0.0.CR2[Weld Core release notes, window="_blank"].
+
+As always, please report any issues you discover.
+Once CR2 testing is done, we expect to release *Weld 7.0.0.Final later today or tomorrow*!
+
+&#91; link:/download/[Download] &#93;
+&#91; link:https://github.com/weld/core/releases/tag/7.0.0.CR2[Release, window="_blank"] &#93;
