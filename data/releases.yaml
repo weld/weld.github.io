@@ -1,3 +1,7 @@
+- version: 7.0.0.Final
+  date: '2026-09-25'
+  category: Final
+  cdi: '5.0'
 - version: 7.0.0.CR2
   date: '2026-09-24'
   category: Preview

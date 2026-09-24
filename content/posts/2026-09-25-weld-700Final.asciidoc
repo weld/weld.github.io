@@ -1,0 +1,36 @@
+---
+layout: post
+title: Weld 7.0.0.Final
+author: Matej Novotny
+description: Weld 7.0.0.Final — finalizing our CDI 5.0 implementation
+tags: [release]
+---
+:linkattrs:
+
+Weld Core *7.0.0.Final* and Weld API *7.0.Final* are now available! +
+As planned, there are *no changes from CR2* — this release finalizes the Weld 7 effort and our compatible implementation of CDI 5.0.
+
+For those joining us from Weld 6, CDI 5.0 brings `@Eager` initialization, `@Reserve` fallback beans, `@AutoClose` resource cleanup, asynchronous method invokers and improvements to build compatible extensions.
+Weld also implements the new client proxy unwrapping API and language model support for records and sealed classes.
+For a closer look, see link:https://jakartaee.github.io/cdi/2026/06/05/whats-new-in-cdi50.html[What's new in CDI 5.0?, window="_blank"] and the link:https://jakarta.ee/specifications/cdi/5.0/[CDI 5.0 specification, window="_blank"].
+
+When upgrading, remember that CDI 5.0 requires Java 17 or newer and uses new Maven coordinates: `jakarta.cdi:jakarta.cdi-api`.
+It also removes the deprecated EL methods from `BeanManager` (use `ELAwareBeanManager`) and forbids trimming non-explicit bean archives.
+
+On the Weld side, the main changes to keep in mind are:
+
+* Support for Jakarta Persistence 4.0 `EntityAgent` injection through `@PersistenceAgent`.
+* Removal of `WeldInstance.Handler` and related methods; use the standard `Instance.Handle`, `getHandle()`, `handles()` and `handlesStream()` APIs, plus Weld's `getHandlePriorityComparator()` for priority ordering.
+* Removal of `WeldInvocationContext` and the legacy `org.jboss.weld.interceptor.bindings` context-data entry; use the standard Jakarta Interceptors `InvocationContext` methods to access interceptor bindings.
+* Removal of `WeldContainer.instance()` (use `WeldContainer` directly as an `Instance`) and the `LiteExtensionTranslator(List, ClassLoader)` constructor (use the `Collection` variant).
+* Deprecation of Weld's `@ActivateRequestContext`, `WeldBeanConfigurator` and `WeldAfterBeanDiscovery#addBean()` in favor of their standard CDI equivalents.
+
+The link:/posts/weld-7-0-0-cr2/[CR2 announcement] has more detail on the API cleanup and Core fixes, including asynchronous invoker handling and unused-bean detection.
+See also the link:https://docs.jboss.org/weld/reference/7.0.0.Final/en-US/html_single/[reference documentation, window="_blank"] for Weld 7 migration guidance.
+
+Thanks to everyone who contributed and tested the prereleases!
+As always, please link:https://github.com/weld/core/issues[report any issues, window="_blank"] you encounter.
+
+&#91; link:/download/[Download] &#93;
+&#91; link:https://github.com/weld/core/releases/tag/7.0.0.Final[Weld Core release, window="_blank"] &#93;
+&#91; link:https://github.com/weld/api/releases/tag/7.0.Final[Weld API release, window="_blank"] &#93;
