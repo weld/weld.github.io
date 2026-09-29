@@ -1,0 +1,40 @@
+---
+layout: post
+title: Weld Testing 6.0.0.Final
+author: Matej Novotny
+description: Weld Testing 6.0.0.Final — testing with CDI 5.0 and Weld 7, with an OpenRewrite recipe to help you migrate
+tags: [release, testing]
+---
+:linkattrs:
+
+Weld Testing *6.0.0.Final* is now available! +
+This release brings support for testing your CDI applications with *CDI 5.0 and Weld 7*, using Weld 7.0.0.Final.
+With extensions for JUnit 4, JUnit Jupiter and Spock, you can test your beans in a real CDI container with minimal setup.
+Java 17 or newer is required.
+
+=== Breaking change and migration
+
+As announced in link:/posts/weld-testing-6-0-0-beta1/[Beta1], the JUnit Jupiter extension artifact has been renamed from `weld-junit5` to `weld-junit-jupiter`, and the `org.jboss.weld.junit5` package is now `org.jboss.weld.junit.jupiter`.
+The new name reflects the Jupiter engine rather than a specific JUnit version — the extension works with both JUnit 5 and JUnit 6.
+
+To help you upgrade, we provide the OpenRewrite recipe `org.jboss.weld.junit.MigrateToWeldJunitJupiter`.
+It handles the package rename in Java sources, the Maven dependency artifact change, and the `META-INF/services` SPI file rename for custom `WeldJunitEnricher` implementations.
+See the link:https://github.com/weld/weld-testing/blob/6.0.0.Final/junit-jupiter/README.md#migrating-from-weld-junit5[migration guide, window="_blank"] for the plugin configuration and instructions.
+
+If you configure explicit parameter injection through a system property, also switch to `org.jboss.weld.junit.jupiter.explicitParamInjection`.
+The old `org.jboss.weld.junit5.explicitParamInjection` name is still accepted for backward compatibility but will be removed in a future version.
+
+=== Other notable changes
+
+Since Beta1, we have added several improvements to `MockBean` (link:https://github.com/weld/weld-testing/pull/402[#402, window="_blank"]):
+
+* Support for CDI 5 reserve beans, eager initialization and automatic resource cleanup through `@Reserve`, `@Eager` and `@AutoClose`, including corresponding builder options.
+* Improved destruction handling to release dependent instances even when a destruction callback fails.
+* Unmanaged mock lifecycles are now bound to their owning container, including when a mock is shared across multiple test containers.
+
+The release also includes dependency updates and the Jakarta Persistence 4.0 `EntityAgent` injection support introduced in Beta1.
+For the full list of changes since Beta1, see the link:https://github.com/weld/weld-testing/releases/tag/6.0.0.Final[release notes, window="_blank"].
+
+As always, please link:https://github.com/weld/weld-testing/issues[report any issues, window="_blank"] you encounter.
+
+&#91; link:https://github.com/weld/weld-testing/releases/tag/6.0.0.Final[Release, window="_blank"] &#93;
