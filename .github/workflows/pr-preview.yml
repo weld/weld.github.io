@@ -87,6 +87,8 @@ jobs:
   teardown-preview:
     if: github.event_name == 'pull_request_target' && github.event.action == 'closed'
     runs-on: ubuntu-latest
+    # Surge uses WEB_PREVIEW_TOKEN_SURGE; this job needs no GITHUB_TOKEN access.
+    permissions: {}
     steps:
       - name: Install Surge
         run: npm install -g surge
